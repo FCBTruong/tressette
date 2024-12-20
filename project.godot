@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://scripts/scene_manager.gd"
 
+[display]
+
+window/size/viewport_width=1300
+window/stretch/mode="canvas_items"
+
 [rendering]
 
 renderer/rendering_method="mobile"

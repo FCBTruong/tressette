@@ -8,14 +8,16 @@
 [ext_resource type="FontFile" uid="uid://rst2163jgwxb" path="res://assets/fonts/ARIALBD 1.TTF" id="6_epfhy"]
 [ext_resource type="Texture2D" uid="uid://dpf12h74d8rx5" path="res://assets/images/add-friend.png" id="7_t06mv"]
 
-[node name="UserInfoGui" type="Node2D"]
+[node name="UserInfoGui" type="CanvasLayer"]
 script = ExtResource("1_pd1jq")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="UserInfoPopup" type="Panel" parent="Control"]
 layout_mode = 1
@@ -24,10 +26,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 270.0
-offset_top = 120.0
-offset_right = 882.0
-offset_bottom = 498.0
+offset_left = -306.0
+offset_top = -189.0
+offset_right = 306.0
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 

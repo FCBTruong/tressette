@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 # Close button action
 func _on_CloseButton_pressed():

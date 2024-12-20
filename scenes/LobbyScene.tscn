@@ -1,47 +1,75 @@
-[gd_scene load_steps=12 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=15 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_esccj"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Texture2D" uid="uid://bisf3le0g5gdy" path="res://assets/images/btn_playnow.png" id="5_3kbq0"]
-[ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="5_kjau7"]
 [ext_resource type="Texture2D" uid="uid://2tvqotkvdx50" path="res://assets/images/img_01.png" id="6_7tuic"]
-[ext_resource type="Texture2D" uid="uid://bejvhlgo7m7uy" path="res://assets/images/shopping-cart.png" id="6_ib5nu"]
-[ext_resource type="Texture2D" uid="uid://c4m6rsf4ywn2x" path="res://assets/images/friendship.png" id="7_6g71u"]
+[ext_resource type="Texture2D" uid="uid://d08otqxw5pyym" path="res://assets/images/lobby/shopping_card.png" id="6_ccwgc"]
+[ext_resource type="Texture2D" uid="uid://dv83dxl1rc5g4" path="res://assets/images/lobby/settings.png" id="6_vby4e"]
+[ext_resource type="Texture2D" uid="uid://7x753n1i4ch7" path="res://assets/images/lobby/customer-service.png" id="7_48niu"]
 [ext_resource type="Texture2D" uid="uid://dys3frx0yshwh" path="res://assets/images/poker-table.png" id="7_en482"]
-[ext_resource type="Texture2D" uid="uid://c8nftsl1i0xyi" path="res://assets/images/survey.png" id="8_tev17"]
-[ext_resource type="Texture2D" uid="uid://b730yqqauu8l5" path="res://assets/images/gmail.png" id="8_v0ax3"]
+[ext_resource type="Texture2D" uid="uid://c28lqqxrgu2eg" path="res://assets/images/lobby/friends.png" id="7_l35oy"]
+[ext_resource type="Texture2D" uid="uid://cxkmagcclh5x6" path="res://assets/images/lobby/clipboard.png" id="8_p6t30"]
+[ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22e1k"]
+bg_color = Color(0.188235, 0.498039, 0.643137, 0.509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqssi"]
+bg_color = Color(0.92549, 0.866667, 0.764706, 0.4)
+corner_detail = 20
 
 [node name="LobbyScene" type="Node2D"]
 script = ExtResource("1_wigpx")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1159.0
-offset_bottom = 652.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("2_esccj")
 expand_mode = 1
+stretch_mode = 6
 
-[node name="PlayContainer" type="VBoxContainer" parent="."]
+[node name="PlayContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 828.0
-offset_top = 137.0
-offset_right = 1136.0
-offset_bottom = 524.0
+offset_left = -348.0
+offset_top = -184.0
+offset_right = -40.0
+offset_bottom = 203.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="StartBtn" type="Button" parent="PlayContainer"]
+[node name="StartBtn" type="Button" parent="CanvasLayer/Control/PlayContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 icon = ExtResource("5_3kbq0")
 flat = true
 
-[node name="Label" type="Label" parent="PlayContainer/StartBtn"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 97.0
@@ -52,18 +80,18 @@ text = "Play Now"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayContainer/StartBtn"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
 position = Vector2(159, 44)
 scale = Vector2(1.73047, 1.67188)
 texture = ExtResource("6_7tuic")
 
-[node name="StartBtn2" type="Button" parent="PlayContainer"]
+[node name="StartBtn2" type="Button" parent="CanvasLayer/Control/PlayContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 icon = ExtResource("5_3kbq0")
 flat = true
 
-[node name="Label" type="Label" parent="PlayContainer/StartBtn2"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
 layout_mode = 0
 offset_left = 96.0
 offset_top = 95.0
@@ -74,105 +102,140 @@ text = "Tables"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayContainer/StartBtn2"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
 position = Vector2(159, 50)
 scale = Vector2(0.251953, 0.277344)
 texture = ExtResource("7_en482")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 63.0
-offset_top = 3.0
-offset_right = 573.0
-offset_bottom = 111.0
+[node name="RightTopPanel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 100.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_22e1k")
 
-[node name="ShopBtn" type="Button" parent="HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/RightTopPanel"]
+layout_direction = 3
+layout_mode = 1
+offset_right = 336.0
+offset_bottom = 108.0
+theme_override_constants/separation = 10
+
+[node name="SettingBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
 layout_mode = 2
-icon = ExtResource("6_ib5nu")
+icon = ExtResource("6_vby4e")
+flat = true
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="SupportBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
 layout_mode = 2
-icon = ExtResource("7_6g71u")
+icon = ExtResource("7_48niu")
+flat = true
 
-[node name="Button4" type="Button" parent="HBoxContainer"]
+[node name="LeftPanel" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_right = 370.0
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control/LeftPanel"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-icon = ExtResource("8_tev17")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rqssi")
 
-[node name="Button3" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("8_v0ax3")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 824.0
-offset_top = 3.0
-offset_right = 1160.0
-offset_bottom = 111.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
 
-[node name="SettingBtn" type="Button" parent="HBoxContainer2"]
+[node name="ShopBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
 layout_mode = 2
-icon = ExtResource("5_kjau7")
+icon = ExtResource("6_ccwgc")
 flat = true
 
-[node name="SupportBtn" type="Button" parent="HBoxContainer2"]
+[node name="Button2" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
 layout_mode = 2
-icon = ExtResource("5_kjau7")
+icon = ExtResource("7_l35oy")
 flat = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="."]
-offset_left = 17.0
-offset_top = 173.0
-offset_right = 396.0
-offset_bottom = 270.0
+[node name="Button4" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_p6t30")
+flat = true
 
-[node name="AvatarBtn" type="Button" parent="HBoxContainer3"]
+[node name="Button3" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("9_bavc2")
+flat = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/LeftPanel"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Profile"
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="PanelInfo" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/Panel"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+offset_right = 350.0
+offset_bottom = 100.0
+
+[node name="AvatarBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer3/AvatarBtn"]
-position = Vector2(49.375, 46.25)
-scale = Vector2(0.0832519, 0.0854492)
+[node name="Avatar" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/AvatarBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_cni6g")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="NameLb" type="Label" parent="HBoxContainer3/VBoxContainer"]
+[node name="NameLb" type="Label" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Nguyen Huy Truong"
 
-[node name="Label" type="Label" parent="HBoxContainer3/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/VBoxContainer"]
 layout_mode = 2
 text = "100$"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 27.0
-offset_top = 265.0
-offset_right = 217.0
-offset_bottom = 295.0
+[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 text = "Friends"
+vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 23.0
-offset_top = 137.0
-offset_right = 213.0
-offset_bottom = 167.0
-text = "Profile"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 23.0
-offset_top = 308.0
-offset_right = 342.0
-offset_bottom = 621.0
-
-[node name="Panel" type="Panel" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel"]
+custom_minimum_size = Vector2(350, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/Panel"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel"]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 15.0
@@ -180,9 +243,9 @@ offset_right = 291.0
 offset_bottom = 78.0
 text = "Inviet Friend"
 
-[connection signal="pressed" from="PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="PlayContainer/StartBtn2" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/Button2" to="." method="_open_friend_gui"]
-[connection signal="pressed" from="HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
-[connection signal="pressed" from="HBoxContainer2/SupportBtn" to="." method="_open_setting_gui"]
-[connection signal="pressed" from="HBoxContainer3/AvatarBtn" to="." method="_open_user_info_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn2" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_setting_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button2" to="." method="_open_friend_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]
