@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxrhqd8w2syim"]
+
+[ext_resource type="Script" path="res://scripts/lobby/settings_gui.gd" id="1_h1gqm"]
+
+[node name="SettingsGui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h1gqm")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 1167.0
+offset_bottom = 651.0
+flat = true
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 766.0
+offset_top = -2.0
+offset_right = 1160.0
+offset_bottom = 656.0
+
+[node name="CheckButton" type="CheckButton" parent="Panel"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 59.0
+offset_right = 178.0
+offset_bottom = 90.0
+text = "Music"
+
+[node name="CheckButton" type="CheckButton" parent="Panel/CheckButton"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 37.0
+offset_right = 95.0
+offset_bottom = 68.0
+text = "Sound"
+
+[connection signal="pressed" from="Button" to="." method="_hide_gui"]

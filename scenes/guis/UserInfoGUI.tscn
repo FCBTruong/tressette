@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://bajq0x8ksakrb"]
+
+[ext_resource type="Script" path="res://scripts/user_info_gui.gd" id="1_pd1jq"]
+[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_eqg0k"]
+[ext_resource type="FontFile" uid="uid://ch42mq5011hvd" path="res://assets/fonts/ARIAL.TTF" id="3_qyhjo"]
+[ext_resource type="FontFile" uid="uid://caj3v2d78rden" path="res://assets/fonts/ARIALI.TTF" id="4_an512"]
+[ext_resource type="FontFile" uid="uid://bbsgc18o6j7yd" path="res://assets/fonts/ARIALBI 1.TTF" id="5_wtdx8"]
+[ext_resource type="FontFile" uid="uid://rst2163jgwxb" path="res://assets/fonts/ARIALBD 1.TTF" id="6_epfhy"]
+[ext_resource type="Texture2D" uid="uid://dpf12h74d8rx5" path="res://assets/images/add-friend.png" id="7_t06mv"]
+
+[node name="UserInfoGui" type="Node2D"]
+script = ExtResource("1_pd1jq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UserInfoPopup" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 270.0
+offset_top = 120.0
+offset_right = 882.0
+offset_bottom = 498.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseBtn" type="Button" parent="Control/UserInfoPopup"]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 20.0
+offset_right = 574.0
+offset_bottom = 61.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/UserInfoPopup/CloseBtn"]
+position = Vector2(21, 20)
+scale = Vector2(0.0654297, 0.0703125)
+texture = ExtResource("2_eqg0k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/UserInfoPopup"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 94.0
+offset_right = 436.0
+offset_bottom = 129.0
+theme_override_fonts/normal_font = ExtResource("3_qyhjo")
+theme_override_fonts/italics_font = ExtResource("4_an512")
+theme_override_fonts/bold_italics_font = ExtResource("5_wtdx8")
+theme_override_fonts/bold_font = ExtResource("6_epfhy")
+theme_override_font_sizes/normal_font_size = 21
+text = "Nguyen Huy Truong"
+
+[node name="Button" type="Button" parent="Control/UserInfoPopup"]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 286.0
+offset_right = 379.0
+offset_bottom = 333.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/UserInfoPopup/Button"]
+position = Vector2(32, 24)
+scale = Vector2(0.0791016, 0.0791016)
+texture = ExtResource("7_t06mv")
+
+[connection signal="pressed" from="Control/UserInfoPopup/CloseBtn" to="." method="_on_CloseButton_pressed"]
