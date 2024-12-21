@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://bps2yem3pob4b"]
+[gd_scene load_steps=2 format=3 uid="uid://bps2yem3pob4b"]
+
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="1_xob60"]
 
 [node name="ChooseTableScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.866588, 0.746746, 0.746746, 1)
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 31.0
+offset_right = 81.0
+offset_bottom = 69.0
+icon = ExtResource("1_xob60")

@@ -1,15 +1,33 @@
 extends CanvasLayer
 
+var default_pos: Vector2
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	default_pos = $Panel.position
+	
+	# Shift X so we can tween back to default at startup
+	$Panel.position.x += 300
+	
+	var tween = create_tween()
+	tween.tween_property(
+		$Panel,
+		"position",
+		default_pos,
+		0.3
+	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
 func _hide_gui() -> void:
-	hide()
+	var tween = create_tween()
+	tween.tween_property(
+		$Panel,
+		"position",
+		default_pos + Vector2(300, 0),
+		0.3
+	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	
+	# This is the correct way in Godot 4 to connect the `finished` signal
+	tween.finished.connect(_on_close_tween_finished)
+
+func _on_close_tween_finished() -> void:
+	hide()
+	$Panel.position = default_pos

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxrhqd8w2syim"]
+[gd_scene load_steps=3 format=3 uid="uid://cxrhqd8w2syim"]
 
 [ext_resource type="Script" path="res://scripts/lobby/settings_gui.gd" id="1_h1gqm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1m567"]
+bg_color = Color(0.278046, 0.34225, 0.483028, 1)
+corner_detail = 1
 
 [node name="SettingsGui" type="Control"]
 layout_mode = 3
@@ -15,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+flat = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 layout_direction = 3
@@ -22,37 +27,77 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 300.0
 grow_vertical = 2
-
-[node name="CheckButton" type="CheckButton" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 84.0
-offset_top = 59.0
-offset_right = 285.0
-offset_bottom = 101.0
-text = "Music"
-
-[node name="CheckButton" type="CheckButton" parent="CanvasLayer/Panel/CheckButton"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 72.0
-offset_right = 201.0
-offset_bottom = 109.0
-text = "Sound"
+theme_override_styles/panel = SubResource("StyleBoxFlat_1m567")
 
 [node name="Button" type="Button" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 164.0
-offset_top = 535.0
-offset_right = 247.0
-offset_bottom = 588.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -120.0
+offset_right = 41.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Logout"
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
-layout_mode = 0
-offset_left = 141.0
-offset_top = 607.0
-offset_right = 310.0
-offset_bottom = 653.0
+[node name="VersionLb" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -33.0
+offset_right = 84.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Version 1.0.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="MusicBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Music
+"
+flat = true
+
+[node name="SoundBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Sound
+"
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = 22.0
+offset_right = 31.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Settings"
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_hide_gui"]

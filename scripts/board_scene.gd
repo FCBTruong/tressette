@@ -2,7 +2,11 @@ extends Node
 
 
 # Called when the node enters the scene tree for the first time.
+var my_card_panel
+var play_ground
 func _ready() -> void:
+	my_card_panel = find_child('MyCardPanel')
+	play_ground = find_child('PlayGround')
 	# create players
 	create_players(2)
 	_init_my_cards()
@@ -22,14 +26,14 @@ func create_players(player_count: int) -> void:
 		
 		var player_pos_node = null
 		if i == 0:
-			player_pos_node = $PlayGround/PlayerPos1
+			player_pos_node = find_child('PlayerPos1')
 		else:
-			player_pos_node = $PlayGround/PlayerPos2
+			player_pos_node = find_child('PlayerPos2')
 			
 		player_instance.position = player_pos_node.position
 		
 		# Add to the current scene
-		add_child(player_instance)
+		play_ground.add_child(player_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,7 +46,7 @@ func _init_my_cards() -> void:
 	var card_scene = load("res://scenes/board/Card.tscn")
 	for i in range(10):
 		var card = card_scene.instantiate()
-		$PlayGround/MyCardPanel.add_child(card)
+		my_card_panel.add_child(card)
 		card.position = Vector2(60 * i , 0)
 		
 func _open_chat_gui() -> void:

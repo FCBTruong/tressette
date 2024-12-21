@@ -1,18 +1,73 @@
-[gd_scene load_steps=8 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=15 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/user_info_gui.gd" id="1_pd1jq"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_eqg0k"]
-[ext_resource type="FontFile" uid="uid://ch42mq5011hvd" path="res://assets/fonts/ARIAL.TTF" id="3_qyhjo"]
-[ext_resource type="FontFile" uid="uid://caj3v2d78rden" path="res://assets/fonts/ARIALI.TTF" id="4_an512"]
-[ext_resource type="FontFile" uid="uid://bbsgc18o6j7yd" path="res://assets/fonts/ARIALBI 1.TTF" id="5_wtdx8"]
-[ext_resource type="FontFile" uid="uid://rst2163jgwxb" path="res://assets/fonts/ARIALBD 1.TTF" id="6_epfhy"]
-[ext_resource type="Texture2D" uid="uid://dpf12h74d8rx5" path="res://assets/images/add-friend.png" id="7_t06mv"]
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="2_8xkbq"]
+[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
+[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
+[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_umvqn"]
+[ext_resource type="Texture2D" uid="uid://dua5jqujlm0kh" path="res://assets/images/lobby/user_info_gui/email.png" id="6_5upxd"]
+[ext_resource type="Texture2D" uid="uid://d1vyt6o5wfbr7" path="res://assets/images/lobby/add_friend.png" id="7_w3o0j"]
+[ext_resource type="Texture2D" uid="uid://dkgkp6amt0wmb" path="res://assets/images/lobby/user_info_gui/dollar.png" id="8_47ubv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub222"]
+bg_color = Color(0.997375, 0.980882, 0.998302, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.114925, 0.922245, 0.825003, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh3o1"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.113725, 0.921569, 0.823529, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v17p2"]
+bg_color = Color(0.0383711, 0.0369761, 0.0369761, 0.564706)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0uac"]
+bg_color = Color(0.266575, 0.266575, 0.266575, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y27un"]
+bg_color = Color(0, 0.528993, 0.00939041, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgqk0"]
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.113725, 0.921569, 0.823529, 1)
+border_blend = true
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="UserInfoGui" type="CanvasLayer"]
 script = ExtResource("1_pd1jq")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,42 +87,219 @@ offset_right = 306.0
 offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ub222")
 
-[node name="CloseBtn" type="Button" parent="Control/UserInfoPopup"]
+[node name="Panel" type="Panel" parent="Control/UserInfoPopup"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qh3o1")
+
+[node name="CloseBtn" type="Button" parent="Control/UserInfoPopup/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -19.0
+offset_right = 43.0
+offset_bottom = 19.0
+grow_vertical = 2
+icon = ExtResource("2_8xkbq")
+flat = true
+
+[node name="GoldBg" type="Panel" parent="Control/UserInfoPopup/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -17.0
+offset_right = -10.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v17p2")
+
+[node name="Label2" type="Label" parent="Control/UserInfoPopup/Panel/GoldBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -20.5
+offset_right = 74.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "1.000.000
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/UserInfoPopup/Panel/GoldBg"]
 layout_mode = 0
-offset_left = 532.0
-offset_top = 20.0
-offset_right = 574.0
-offset_bottom = 61.0
+offset_left = -16.0
+offset_top = -2.0
+offset_right = 24.0
+offset_bottom = 38.0
+texture = ExtResource("8_47ubv")
+expand_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/UserInfoPopup/CloseBtn"]
-position = Vector2(21, 20)
-scale = Vector2(0.0654297, 0.0703125)
-texture = ExtResource("2_eqg0k")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/UserInfoPopup"]
-layout_mode = 0
-offset_left = 187.0
-offset_top = 94.0
-offset_right = 436.0
-offset_bottom = 129.0
-theme_override_fonts/normal_font = ExtResource("3_qyhjo")
-theme_override_fonts/italics_font = ExtResource("4_an512")
-theme_override_fonts/bold_italics_font = ExtResource("5_wtdx8")
-theme_override_fonts/bold_font = ExtResource("6_epfhy")
-theme_override_font_sizes/normal_font_size = 21
+[node name="Label" type="Label" parent="Control/UserInfoPopup"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -115.0
+offset_top = 98.0
+offset_right = 115.0
+offset_bottom = 132.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Nguyen Huy Truong"
 
-[node name="Button" type="Button" parent="Control/UserInfoPopup"]
-layout_mode = 0
-offset_left = 318.0
-offset_top = 286.0
-offset_right = 379.0
-offset_bottom = 333.0
+[node name="ExpBar" type="ProgressBar" parent="Control/UserInfoPopup"]
+custom_minimum_size = Vector2(120, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -55.0
+offset_right = 60.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_g0uac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y27un")
+value = 50.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/UserInfoPopup/Button"]
-position = Vector2(32, 24)
-scale = Vector2(0.0791016, 0.0791016)
-texture = ExtResource("7_t06mv")
+[node name="PlayStatistic" type="Panel" parent="Control/UserInfoPopup"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sgqk0")
 
-[connection signal="pressed" from="Control/UserInfoPopup/CloseBtn" to="." method="_on_CloseButton_pressed"]
+[node name="Label2" type="Label" parent="Control/UserInfoPopup/PlayStatistic"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -136.0
+offset_right = 61.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 22
+text = "Win Rate: 40%"
+
+[node name="Label" type="Label" parent="Control/UserInfoPopup/PlayStatistic"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -175.0
+offset_right = 60.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 22
+text = "Total Match: 100"
+
+[node name="TextureRect2" type="TextureRect" parent="Control/UserInfoPopup"]
+self_modulate = Color(0.0156505, 0.030661, 0.394776, 1)
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = -15.0
+offset_right = 55.0
+offset_bottom = 95.0
+grow_horizontal = 2
+texture = ExtResource("3_gnbuq")
+expand_mode = 1
+
+[node name="AvatarNode" type="TextureRect" parent="Control/UserInfoPopup/TextureRect2"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_aqih6")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/UserInfoPopup/TextureRect2/AvatarNode"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_umvqn")
+expand_mode = 1
+
+[node name="ButtonPn" type="HBoxContainer" parent="Control/UserInfoPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -56.0
+offset_right = 58.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="MailBtn" type="Button" parent="Control/UserInfoPopup/ButtonPn"]
+layout_mode = 2
+size_flags_vertical = 8
+icon = ExtResource("6_5upxd")
+flat = true
+
+[node name="RequestFriendBtn" type="Button" parent="Control/UserInfoPopup/ButtonPn"]
+layout_mode = 2
+icon = ExtResource("7_w3o0j")
+flat = true
+
+[connection signal="pressed" from="Control/UserInfoPopup/Panel/CloseBtn" to="." method="_on_CloseButton_pressed"]
