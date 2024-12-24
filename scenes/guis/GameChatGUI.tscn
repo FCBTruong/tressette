@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvs3cl10d1nap"]
 
-[ext_resource type="Script" path="res://scripts/ingame_chat_gui.gd" id="1_45c2r"]
+[ext_resource type="Script" path="res://scripts/game/ingame_chat_gui.gd" id="1_45c2r"]
 
 [node name="InGameChatGui" type="Control"]
 layout_mode = 3

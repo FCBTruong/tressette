@@ -28,3 +28,12 @@ func _open_friend_gui():
 func _open_setting_gui():
 	SceneManager.open_gui("res://scenes/guis/SettingsGUI.tscn")
 	
+func _open_tables_scene():
+	SceneManager.switch_scene(SceneManager.TABLES_SCENE)
+	
+func _open_mail_gui():
+	SceneManager.open_gui("res://scenes/guis/ToastGUI.tscn")
+	
+func _open_customer_service_gui():
+	SceneManager.open_gui("res://scenes/customer_service/CustomerServiceGUI.tscn")
+	

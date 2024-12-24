@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://bajq0x8ksakrb"]
 
-[ext_resource type="Script" path="res://scripts/user_info_gui.gd" id="1_pd1jq"]
+[ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="2_8xkbq"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_umvqn"]
 [ext_resource type="Texture2D" uid="uid://dua5jqujlm0kh" path="res://assets/images/lobby/user_info_gui/email.png" id="6_5upxd"]
-[ext_resource type="Texture2D" uid="uid://d1vyt6o5wfbr7" path="res://assets/images/lobby/add_friend.png" id="7_w3o0j"]
+[ext_resource type="Texture2D" uid="uid://cvs720c5x14nn" path="res://assets/images/lobby/add_friend.png" id="7_w3o0j"]
 [ext_resource type="Texture2D" uid="uid://dkgkp6amt0wmb" path="res://assets/images/lobby/user_info_gui/dollar.png" id="8_47ubv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub222"]

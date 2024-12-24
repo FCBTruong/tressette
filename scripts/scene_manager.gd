@@ -2,6 +2,12 @@ extends Node
 
 const LOBBY_SCENE = 'res://scenes/LobbyScene.tscn'
 const BOARD_SCENE = 'res://scenes/BoardScene.tscn'
+const TABLES_SCENE = 'res://scenes/ChooseTableScene.tscn'
+const LOGIN_SCENE = 'res://scenes/LoginScene.tscn'
+
+static var INSTANCES = {
+	BOARD_SCENE: null
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,3 +30,7 @@ func open_gui(gui_path: String) -> void:
 		current_scene.add_child(popup_instance)
 	else:
 		print("Current GUI is null", gui_path)
+
+func get_current_scene():
+	var current_scene = get_tree().get_current_scene()
+	return current_scene

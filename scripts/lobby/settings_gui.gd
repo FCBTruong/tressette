@@ -31,3 +31,6 @@ func _hide_gui() -> void:
 func _on_close_tween_finished() -> void:
 	hide()
 	$Panel.position = default_pos
+
+func _logout() -> void:
+	SceneManager.switch_scene(SceneManager.LOGIN_SCENE)

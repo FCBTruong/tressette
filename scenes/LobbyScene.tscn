@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=17 format=3 uid="uid://b5dcg6pe5am20"]
 
-[ext_resource type="Script" path="res://scripts/lobby_scene.gd" id="1_wigpx"]
+[ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_esccj"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Texture2D" uid="uid://bisf3le0g5gdy" path="res://assets/images/btn_playnow.png" id="5_3kbq0"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c28lqqxrgu2eg" path="res://assets/images/lobby/friends.png" id="7_l35oy"]
 [ext_resource type="Texture2D" uid="uid://cxkmagcclh5x6" path="res://assets/images/lobby/clipboard.png" id="8_p6t30"]
 [ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
+[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="13_d0m06"]
+[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="14_byyp1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22e1k"]
 bg_color = Color(0.188235, 0.498039, 0.643137, 0.509804)
@@ -243,9 +245,113 @@ offset_right = 291.0
 offset_bottom = 78.0
 text = "Inviet Friend"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -119.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0.883559, 0.670932, 0.511509, 0.588235)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -11.0
+offset_right = -130.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Nguyen Huy Truong"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect2"]
+clip_children = 2
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 47.0
+offset_bottom = 45.0
+texture = ExtResource("13_d0m06")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect2/TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_cni6g")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect2"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 46.0
+texture = ExtResource("14_byyp1")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0.883559, 0.670932, 0.511509, 0.588235)
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -11.0
+offset_right = -130.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Nguyen Huy Truong"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect"]
+clip_children = 2
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 47.0
+offset_bottom = 45.0
+texture = ExtResource("13_d0m06")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect/TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_cni6g")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 46.0
+texture = ExtResource("14_byyp1")
+expand_mode = 1
+
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn2" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn2" to="." method="_open_tables_scene"]
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
-[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_setting_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button2" to="." method="_open_friend_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3" to="." method="_open_mail_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]

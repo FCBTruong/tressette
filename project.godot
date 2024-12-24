@@ -11,17 +11,18 @@ config_version=5
 [application]
 
 config/name="Tressette"
-run/main_scene="res://scenes/LobbyScene.tscn"
+run/main_scene="res://scenes/LoginScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
+GameConstants="*res://scripts/game_constants.gd"
 SceneManager="*res://scripts/scene_manager.gd"
+PlayerInfo="*res://scripts/player_info_mgr.gd"
 
 [display]
 
-window/size/viewport_width=1300
 window/stretch/mode="canvas_items"
 
 [rendering]

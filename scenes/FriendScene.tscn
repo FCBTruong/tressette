@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cel5a5m54g6jo"]
 
 [ext_resource type="Texture2D" uid="uid://b730yqqauu8l5" path="res://assets/images/gmail.png" id="1_0346p"]
-[ext_resource type="Script" path="res://scripts/friend_scene.gd" id="1_eo0n0"]
+[ext_resource type="Script" path="res://scripts/modules/friend/friend_scene.gd" id="1_eo0n0"]
 [ext_resource type="Texture2D" uid="uid://cqkey5gr1uhwn" path="res://assets/images/bg_friend.png" id="2_ivfb3"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="3_ibp5q"]
 

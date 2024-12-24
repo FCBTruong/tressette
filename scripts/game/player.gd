@@ -1,39 +1,51 @@
 extends Node
 
 
+@onready var time_progress_bar: TextureProgressBar = find_child('TimeProgressBar')
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+	start_timer()
 
 # Properties
-var player_name: String = "Default"
-var health: int = 100
-var uid: String = '0'
-var gold: int = 0
+var user_data
+
 
 # Function to update properties
-func set_properties(name: String, health_value: int) -> void:
-	player_name = name
-	health = health_value
+func set_user_data(user_dt: UserData) -> void:
+	user_data = user_dt
 	
-	var name_label = $NameLb  # Access the RichTextLabel
+	var name_label = find_child('NameLb')  # Access the RichTextLabel
 	if name_label:
-		name_label.text = player_name
-	print("Player:", player_name, "Health:", health)
+		name_label.text = user_data.name
 	
 var user_info_gui: PackedScene = preload("res://scenes/guis/UserInfoGUI.tscn")
 
 func _open_user_info_gui():
-	var current_scene = get_tree().get_current_scene()
-	if current_scene:
-		var user_info_gui = load("res://scenes/guis/UserInfoGUI.tscn")
-		var popup_instance = user_info_gui.instantiate()
-		current_scene.add_child(popup_instance)
-	else:
-		print("Current Scene is null")
+	SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
+	
+var timer_duration: float = 5.0  # Total duration of the timer in seconds
+var elapsed_time: float = 0.0  # Tracks the elapsed time
+var running: bool = false
+
+func start_timer():
+	time_progress_bar.visible = true
+	elapsed_time = 0.0
+	running = true
+	time_progress_bar.value = 0
+
+func _process(delta: float):
+	if running:
+		elapsed_time += delta
+		if elapsed_time < timer_duration:
+			# Update progress bar value based on elapsed time
+			time_progress_bar.value = elapsed_time / timer_duration * 100
+		else:
+			# Ensure progress bar is full and end the timer
+			time_progress_bar.value = 100
+			running = false
+			end_timer()
+
+func end_timer():
+	time_progress_bar.visible = false
+	running = false
+	print("Timer complete!")

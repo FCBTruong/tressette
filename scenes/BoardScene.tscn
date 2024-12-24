@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=9 format=3 uid="uid://ctmeyvn7w00v8"]
 
-[ext_resource type="Script" path="res://scripts/board_scene.gd" id="1_th5x2"]
+[ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_sor57"]
 [ext_resource type="Texture2D" uid="uid://bubgo5uxgpt3i" path="res://assets/images/left-arrow_10117838.png" id="3_70m1f"]
-[ext_resource type="Texture2D" uid="uid://dnnjel76xvcmf" path="res://assets/images/PNG-cards-1.3/king_of_diamonds.png" id="5_7ukf5"]
-[ext_resource type="Texture2D" uid="uid://cfl25qxf7rlax" path="res://assets/images/PNG-cards-1.3/king_of_hearts2.png" id="6_t7emn"]
-[ext_resource type="Texture2D" uid="uid://54e35joohhje" path="res://assets/images/PNG-cards-1.3/king_of_hearts.png" id="7_pd336"]
-[ext_resource type="Texture2D" uid="uid://cgspfwfxyu45w" path="res://assets/images/cards/Image 2.png" id="8_ejd6k"]
+[ext_resource type="Texture2D" uid="uid://c7ayq13fr3ylw" path="res://assets/images/cards/Image 1.png" id="3_vcjg4"]
+[ext_resource type="Texture2D" uid="uid://dclctdoan3m25" path="res://assets/images/cards/card_2.png" id="3_vm6jw"]
+[ext_resource type="Texture2D" uid="uid://ki8x4sty35jl" path="res://assets/images/cards/card_back.png" id="5_m272p"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/guis/GameChatGUI.tscn" id="9_fe2dn"]
 
@@ -32,47 +31,192 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="KingOfDiamonds" type="Sprite2D" parent="CanvasLayer/PlayGround"]
-position = Vector2(389, 320)
-scale = Vector2(0.163443, 0.148192)
-texture = ExtResource("5_7ukf5")
+[node name="ActionBtnPn" type="Control" parent="CanvasLayer/PlayGround"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -249.0
+offset_right = 98.0
+offset_bottom = -149.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
 
-[node name="KingOfDiamonds2" type="Sprite2D" parent="CanvasLayer/PlayGround"]
-position = Vector2(483.451, 319.697)
-scale = Vector2(0.150198, 0.153434)
-texture = ExtResource("5_7ukf5")
-
-[node name="KingOfHearts2" type="Sprite2D" parent="CanvasLayer/PlayGround"]
-position = Vector2(582.5, 322.5)
-scale = Vector2(0.15, 0.158402)
-texture = ExtResource("6_t7emn")
-
-[node name="KingOfHearts" type="Sprite2D" parent="CanvasLayer/PlayGround"]
-position = Vector2(683, 325)
-scale = Vector2(0.1535, 0.153581)
-texture = ExtResource("7_pd336")
-
-[node name="PlayerPos1" type="Node2D" parent="CanvasLayer/PlayGround"]
-position = Vector2(256, 435)
-
-[node name="PlayerPos2" type="Node2D" parent="CanvasLayer/PlayGround"]
-position = Vector2(863, 161)
-
-[node name="PlayerPos3" type="Node2D" parent="CanvasLayer/PlayGround"]
-position = Vector2(474, 451)
+[node name="PlayBtn" type="Button" parent="CanvasLayer/PlayGround/ActionBtnPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -15.5
+offset_right = 20.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
 
 [node name="MyCardPanel" type="Control" parent="CanvasLayer/PlayGround"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 243.0
-offset_top = 472.0
-offset_right = 963.0
-offset_bottom = 658.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -160.0
+offset_right = 360.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
-[node name="Image2" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(384.031, 196.156)
-scale = Vector2(0.198356, 0.177229)
-texture = ExtResource("8_ejd6k")
+[node name="CenterPlayPn" type="Control" parent="CanvasLayer/PlayGround"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayersPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -245.0
+offset_right = 300.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerPos4" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -37.0
+offset_right = 50.0
+offset_bottom = -37.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PlayerPos3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_right = -48.0
+grow_horizontal = 0
+
+[node name="PlayerPos2" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 140.0
+offset_right = 180.0
+offset_bottom = 40.0
+
+[node name="PlayerPos1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_right = -34.0
+grow_vertical = 0
+
+[node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25224
+anchor_top = 0.145926
+anchor_right = 0.329163
+anchor_bottom = 0.377408
+offset_left = -95.3438
+offset_top = -28.7778
+offset_right = -51.4976
+offset_bottom = 31.7776
+texture = ExtResource("5_m272p")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CardComparePn" type="ColorRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -135.0
+offset_right = 110.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="PlaceCard2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+layout_mode = 1
+offset_right = 90.0
+offset_bottom = 130.0
+texture = ExtResource("3_vm6jw")
+expand_mode = 1
+
+[node name="PlaceCard3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -90.0
+offset_bottom = 130.0
+grow_horizontal = 0
+texture = ExtResource("3_vcjg4")
+expand_mode = 1
+
+[node name="PlaceCard4" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -130.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_vcjg4")
+expand_mode = 1
+
+[node name="PlaceCard1" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+offset_right = 90.0
+grow_vertical = 0
+texture = ExtResource("3_vcjg4")
+expand_mode = 1
 
 [node name="BackBtn" type="Button" parent="CanvasLayer"]
 offset_left = 23.0
@@ -86,25 +230,73 @@ expand_icon = true
 
 [node name="ChatBtn" type="Button" parent="CanvasLayer"]
 offset_left = 23.0
-offset_top = 502.0
-offset_right = 161.0
-offset_bottom = 630.0
+offset_top = 522.0
+offset_right = 123.0
+offset_bottom = 622.0
 
-[node name="IconChat" type="Sprite2D" parent="CanvasLayer/ChatBtn"]
-position = Vector2(70, 60)
-scale = Vector2(0.134766, 0.119629)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ChatBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("8_f0rj1")
+expand_mode = 1
 
 [node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
+visible = false
 custom_minimum_size = Vector2(333, 300)
 anchors_preset = 4
 anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5
-offset_top = -186.0
+offset_top = -201.0
 offset_right = 333.0
-offset_bottom = 114.0
+offset_bottom = 99.0
 grow_horizontal = 1
 
+[node name="RightTopPanel" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 100.0
+grow_horizontal = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+
+[node name="Label" type="Label" parent="CanvasLayer/RightTopPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3125
+anchor_top = 0.11
+anchor_right = 0.505
+anchor_bottom = 0.11
+offset_left = 127.0
+offset_top = 23.0
+offset_right = 167.0
+offset_bottom = 46.0
+text = "ROOM ID: 1001"
+metadata/_edit_use_anchors_ = true
+
+[node name="LeftTopPn" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 100.0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 205.0
+offset_top = 47.0
+offset_right = 213.0
+offset_bottom = 55.0
+text = "Test Deal"
+
+[connection signal="pressed" from="CanvasLayer/PlayGround/ActionBtnPn/PlayBtn" to="." method="_on_click_btn_play_card"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="back_to_lobby"]
 [connection signal="pressed" from="CanvasLayer/ChatBtn" to="." method="_open_chat_gui"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="test_deal_card"]

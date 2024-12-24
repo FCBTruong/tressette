@@ -101,3 +101,4 @@ theme_override_font_sizes/font_size = 35
 text = "Settings"
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_hide_gui"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="CanvasLayer" method="_logout"]
