@@ -1,4 +1,4 @@
-extends RefCounted
+extends Node
 
 var my_user_data = UserData.new('', '')
 func get_user_id():

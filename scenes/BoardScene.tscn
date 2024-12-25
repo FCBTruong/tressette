@@ -105,7 +105,7 @@ offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerPos4" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+[node name="PlayerPos3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -119,7 +119,7 @@ offset_bottom = -37.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="PlayerPos3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+[node name="PlayerPos2" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -128,14 +128,14 @@ offset_left = -48.0
 offset_right = -48.0
 grow_horizontal = 0
 
-[node name="PlayerPos2" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+[node name="PlayerPos1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 140.0
 offset_right = 180.0
 offset_bottom = 40.0
 
-[node name="PlayerPos1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+[node name="PlayerPos0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -159,6 +159,30 @@ texture = ExtResource("5_m272p")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardBack"]
+layout_mode = 0
+offset_left = 26.9998
+offset_top = -16.0
+offset_right = 66.9998
+offset_bottom = 24.0
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardBack/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CardComparePn" type="ColorRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
 anchors_preset = 8
@@ -175,14 +199,14 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="PlaceCard2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard1" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 layout_mode = 1
 offset_right = 90.0
 offset_bottom = 130.0
 texture = ExtResource("3_vm6jw")
 expand_mode = 1
 
-[node name="PlaceCard3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -193,7 +217,7 @@ grow_horizontal = 0
 texture = ExtResource("3_vcjg4")
 expand_mode = 1
 
-[node name="PlaceCard4" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -207,7 +231,7 @@ grow_vertical = 0
 texture = ExtResource("3_vcjg4")
 expand_mode = 1
 
-[node name="PlaceCard1" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard0" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -296,7 +320,15 @@ offset_right = 213.0
 offset_bottom = 55.0
 text = "Test Deal"
 
+[node name="TestPlaycard" type="Button" parent="CanvasLayer/Button"]
+layout_mode = 0
+offset_left = 121.0
+offset_right = 201.0
+offset_bottom = 31.0
+text = "Test Deal"
+
 [connection signal="pressed" from="CanvasLayer/PlayGround/ActionBtnPn/PlayBtn" to="." method="_on_click_btn_play_card"]
 [connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="back_to_lobby"]
 [connection signal="pressed" from="CanvasLayer/ChatBtn" to="." method="_open_chat_gui"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="test_deal_card"]
+[connection signal="pressed" from="CanvasLayer/Button/TestPlaycard" to="." method="test_play_playercard"]

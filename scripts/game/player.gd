@@ -45,6 +45,9 @@ func _process(delta: float):
 			running = false
 			end_timer()
 
+func get_user_data() -> UserData:
+	return user_data
+	
 func end_timer():
 	time_progress_bar.visible = false
 	running = false

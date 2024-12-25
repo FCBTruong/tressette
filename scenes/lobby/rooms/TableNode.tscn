@@ -1,56 +1,315 @@
-[gd_scene load_steps=3 format=3 uid="uid://coalpvybk074r"]
+[gd_scene load_steps=9 format=3 uid="uid://coalpvybk074r"]
 
-[ext_resource type="Texture2D" uid="uid://d2n7fhf24agl6" path="res://assets/images/rooms/icon_table.png" id="1_724le"]
-[ext_resource type="Texture2D" uid="uid://dfq3y02a2b8k7" path="res://assets/images/rooms/semicircle.png" id="2_3fdpe"]
+[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="1_cswlw"]
+[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_lt5mh"]
+[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_h84l2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oqvr"]
+bg_color = Color(0.479634, 0.253882, 0.126262, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.744392, 0.60718, 0.628287, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf5gj"]
+bg_color = Color(0.275974, 0.137987, 0.151496, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.301961, 0.027451, 0.027451, 1)
+border_blend = true
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thuu4"]
+bg_color = Color(0.27451, 0.137255, 0.152941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.301961, 0.027451, 0.027451, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oj6v"]
+bg_color = Color(0.27451, 0.137255, 0.152941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.301961, 0.027451, 0.027451, 1)
+border_blend = true
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3efc"]
+bg_color = Color(0.27451, 0.137255, 0.152941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.303129, 0.0279655, 0.0279655, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
 
 [node name="TableNode" type="Node2D"]
 position = Vector2(441, 240)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = -77.0
-offset_right = 73.0
-offset_bottom = 77.0
+offset_left = -60.0
+offset_top = -45.5
+offset_right = 60.0
+offset_bottom = 45.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_724le")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7oqvr")
 
-[node name="Chair4" type="TextureRect" parent="."]
-offset_left = 80.0
-offset_top = 27.0
-offset_right = 140.0
-offset_bottom = 87.0
-rotation = -1.5708
-texture = ExtResource("2_3fdpe")
-expand_mode = 1
+[node name="Chair4" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 94.5
+offset_right = 82.0
+offset_bottom = 124.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_mf5gj")
 
-[node name="Chair3" type="TextureRect" parent="."]
-offset_left = -79.0
-offset_top = -32.0
-offset_right = -19.0
-offset_bottom = 28.0
-rotation = 1.5708
-texture = ExtResource("2_3fdpe")
-expand_mode = 1
+[node name="Chair3" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = -33.5
+offset_right = 81.0
+offset_bottom = -3.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_thuu4")
 
-[node name="Chair2" type="TextureRect" parent="."]
+[node name="Chair2" type="Panel" parent="Panel"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 24.5
+offset_right = 153.0
+offset_bottom = 64.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_4oj6v")
+
+[node name="Chair1" type="Panel" parent="Panel"]
+layout_mode = 0
 offset_left = -33.0
-offset_top = -104.0
-offset_right = 27.0
-offset_bottom = -44.0
-texture = ExtResource("2_3fdpe")
-expand_mode = 1
-flip_v = true
+offset_top = 24.5
+offset_right = -3.0
+offset_bottom = 64.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3efc")
 
-[node name="Chair1" type="TextureRect" parent="."]
-offset_left = -30.0
-offset_top = 45.0
-offset_right = 30.0
-offset_bottom = 105.0
-texture = ExtResource("2_3fdpe")
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 14.5
+offset_right = 32.0
+offset_bottom = 37.5
+grow_horizontal = 2
+text = "10.000 $"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Label"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_top = 35.5
+offset_right = 33.0
+offset_bottom = 58.5
+grow_horizontal = 2
+text = "Tressette"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Avatar3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -103.0
+offset_top = -18.0
+offset_right = -63.0
+offset_bottom = 22.0
+
+[node name="TextureRect" type="TextureRect" parent="Avatar3"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cswlw")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="Avatar3/TextureRect"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lt5mh")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Avatar3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h84l2")
+expand_mode = 1
+
+[node name="Avatar2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 62.0
+offset_top = -20.0
+offset_right = 102.0
+offset_bottom = 20.0
+
+[node name="TextureRect" type="TextureRect" parent="Avatar2"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cswlw")
+expand_mode = 1
+
+[node name="Img" type="TextureRect" parent="Avatar2/TextureRect"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lt5mh")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Avatar2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h84l2")
+expand_mode = 1
+
+[node name="Avatar0" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_top = 48.0
+offset_right = 20.0
+offset_bottom = 88.0
+
+[node name="TextureRect" type="TextureRect" parent="Avatar0"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cswlw")
+expand_mode = 1
+
+[node name="Img" type="TextureRect" parent="Avatar0/TextureRect"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lt5mh")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Avatar0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h84l2")
+expand_mode = 1
+
+[node name="Avatar1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -18.0
+offset_top = -86.0
+offset_right = 22.0
+offset_bottom = -46.0
+
+[node name="TextureRect" type="TextureRect" parent="Avatar1"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cswlw")
+expand_mode = 1
+
+[node name="Img" type="TextureRect" parent="Avatar1/TextureRect"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lt5mh")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Avatar1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_h84l2")
 expand_mode = 1

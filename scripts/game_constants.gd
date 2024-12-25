@@ -10,6 +10,11 @@ const GAME_MODE = {
 	BRISCOLA = 1,
 }
 
+const PLAYER_MODE = {
+	SOLO = 2,
+	TEAM = 4
+}
+
 const CARDS = {
 	CARDBACK = 52
 }
