@@ -17,9 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Config="*res://scripts/config.gd"
 GameConstants="*res://scripts/game_constants.gd"
 SceneManager="*res://scripts/scene_manager.gd"
 PlayerInfo="*res://scripts/player_info_mgr.gd"
+WebsocketClient="*res://scripts/network/websocket_client.gd"
+GameClient="*res://scripts/network/game_client.gd"
 
 [display]
 
