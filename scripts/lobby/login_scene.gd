@@ -13,10 +13,12 @@ func _process(delta: float) -> void:
 func _login() -> void:
 	var BaseSendPacket = preload("res://scripts/network/base_send_packet.gd")
 	var c = BaseSendPacket.new()
+	c.put_double(12.221)
 	c.put_string('hello')
-	c.put_byte(1)
-	c.put_int(1000)
+	c.put_int64(1)
+	c.put_int32(1000)
 	c.put_string('how are you')
+	c.put_bool(true)
 	GameClient.send_packet(1000, c)
 	return
 	SceneManager.switch_scene(SceneManager.LOBBY_SCENE)

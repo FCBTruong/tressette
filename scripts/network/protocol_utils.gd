@@ -1,4 +1,4 @@
-extends Object
+extends Node
 
 # Convert bytes to a double (using int64 for the conversion)
 static func bytes_to_float64(data: PackedByteArray) -> float:
@@ -12,13 +12,16 @@ static func bytes_to_float64(data: PackedByteArray) -> float:
 	# Convert 64-bit integer to float
 	return int64_to_float(result)
 
-# Convert a double to bytes (using int64)
-static func float64_to_bytes(value: float) -> PackedByteArray:
-	var result = PackedByteArray()
-	var int_value = float_to_int64(value)
-	for i in range(8):
-		result.append((int_value >> (i * 8)) & 0xFF)
-	return result
+# Function to convert a float to a byte array (4 bytes)
+static func float_to_bytes(float_value: float) -> PackedByteArray:
+	var bytes = PackedByteArray()
+	var float_array = PackedFloat32Array([float_value])
+	bytes = float_array.to_byte_array()
+	return bytes
+
+static func double_to_bytes(double_value: float) -> PackedByteArray:
+	var double_array = PackedFloat64Array([double_value])
+	return double_array.to_byte_array()
 
 # Convert int64 to float
 static func int64_to_float(value: int) -> float:
@@ -26,13 +29,3 @@ static func int64_to_float(value: int) -> float:
 	byte_array.append_array(PackedByteArray([value & 0xFF, (value >> 8) & 0xFF, (value >> 16) & 0xFF, (value >> 24) & 0xFF,
 			(value >> 32) & 0xFF, (value >> 40) & 0xFF, (value >> 48) & 0xFF, (value >> 56) & 0xFF]))
 	return byte_array.get_double(0)
-
-# Convert float to int64
-static func float_to_int64(value: float) -> int:
-	var byte_array = PackedByteArray()
-	byte_array.resize(8)
-	byte_array.set_double(0, value)
-	var int_value: int = 0
-	for i in range(8):
-		int_value |= (byte_array[i] << (i * 8))
-	return int_value

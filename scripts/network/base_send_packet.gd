@@ -39,31 +39,38 @@ func put_string(value: String) -> void:
 	# Append the actual string data
 	buffer.append_array(str_bytes)
 	field_number += 1
-	
+
 # Write an Integer (varint, wire type 0)
-func put_int(value: int):
+func put_int32(value: int):
 	var field_key = (field_number << 3) | 0  # Wire type 0 for varint
 	buffer.append(field_key)  # Append the field key
 	put_varint(value)  # Serialize value as varint
 	field_number += 1  # Increment field number for the next field
 
-# Write a Byte (fixed size, wire type 5)
-func put_byte(value: int):
-	var field_key = (field_number << 3) | 5  # Wire type 5 for 32-bit fixed size
+# Write an int64 (varint, wire type 0)
+func put_int64(value: int):
+	var field_key = (field_number << 3) | 0  # Wire type 0 for varint
 	buffer.append(field_key)  # Append the field key
-	buffer.append(value)  # Append the byte value
+	put_varint(value)  # Serialize value as varint
+	field_number += 1  # Increment field number for the next field
+
+# Write a bool (fixed size, wire type 0, but represents a 1-byte boolean value)
+func put_bool(value: bool):
+	var field_key = (field_number << 3) | 0  # Wire type 0 for varint
+	buffer.append(field_key)  # Append the field key
+	buffer.append(1 if value else 0)  # Store boolean as 1 (true) or 0 (false)
 	field_number += 1  # Increment field number for the next field
 
 # Write a Double (wire type 1 for 64-bit fixed size)
 func put_double(value: float):
 	var field_key = (field_number << 3) | 1  # Wire type 1 for 64-bit fixed size
 	buffer.append(field_key)  # Append the field key
-	var double_bytes = ProtocolUtils.float64_to_bytes(value)
+	var double_bytes = ProtocolUtils.double_to_bytes(value)
 	buffer.append_array(double_bytes)  # Append the actual double data
 	field_number += 1  # Increment field number for the next field
-
 
 # Reset buffer and position
 func clear():
 	buffer = PackedByteArray()
 	position = 0
+	field_number = 1  # Reset field number to 1 for the next message
