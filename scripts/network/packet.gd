@@ -23,13 +23,13 @@ func serialize() -> PackedByteArray:
 func parse(data: PackedByteArray) -> void:
 	var offset = 0
 	while offset < data.size():
-		# Read the field key
+		# Read the field key (field number + wire type)
 		var field_key = int(data[offset])
 		offset += 1
 		
 		# Parse based on field number and wire type
-		var field_number = field_key >> 3
-		var wire_type = field_key & 0x07
+		var field_number = field_key >> 3  # Field number (3 bits)
+		var wire_type = field_key & 0x07   # Wire type (3 bits)
 		
 		if field_number == 1 and wire_type == 0:  # cmd_id (varint)
 			var result = _parse_varint(data, offset)
@@ -42,7 +42,7 @@ func parse(data: PackedByteArray) -> void:
 		else:
 			push_error("Unknown field or wire type. Skipping.")
 			break
-
+			
 # Helper: Serialize a varint
 func _serialize_varint(value: int) -> PackedByteArray:
 	var buffer = PackedByteArray()

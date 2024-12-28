@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dclctdoan3m25" path="res://assets/images/cards/card_2.png" id="3_vm6jw"]
 [ext_resource type="Texture2D" uid="uid://ki8x4sty35jl" path="res://assets/images/cards/card_back.png" id="5_m272p"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
-[ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/guis/GameChatGUI.tscn" id="9_fe2dn"]
+[ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
 
 [node name="BoardScene" type="Node2D"]
 script = ExtResource("1_th5x2")

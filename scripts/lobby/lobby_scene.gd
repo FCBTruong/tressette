@@ -3,7 +3,6 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameClient.send_packet(1000)
 	_do_effect()
 	pass # Replace with function body.
 

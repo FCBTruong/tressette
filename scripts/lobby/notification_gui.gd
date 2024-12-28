@@ -10,6 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func login():
+func _click_ok():
+	WebsocketClient.connect_to_server()
+	self.get_parent().remove_child(self)
 	pass

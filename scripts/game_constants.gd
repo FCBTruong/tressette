@@ -18,3 +18,7 @@ const PLAYER_MODE = {
 const CARDS = {
 	CARDBACK = 52
 }
+
+const CMDs = {
+	PING_PONG = 0
+}

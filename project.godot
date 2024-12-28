@@ -23,6 +23,7 @@ SceneManager="*res://scripts/scene_manager.gd"
 PlayerInfo="*res://scripts/player_info_mgr.gd"
 WebsocketClient="*res://scripts/network/websocket_client.gd"
 GameClient="*res://scripts/network/game_client.gd"
+ProtocolUtils="*res://scripts/network/protocol_utils.gd"
 
 [display]
 

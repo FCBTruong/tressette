@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0r5ind8cn0yk"]
+
+[ext_resource type="Script" path="res://scripts/lobby/notification_gui.gd" id="1_okwls"]
+
+[node name="NotificationGui" type="Node2D"]
+script = ExtResource("1_okwls")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.5
+offset_top = -208.5
+offset_right = 327.5
+offset_bottom = 208.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 292.5
+offset_top = 315.5
+offset_right = 381.5
+offset_bottom = 346.5
+text = "Reconnect"
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 126.5
+offset_top = 52.5
+offset_right = 517.5
+offset_bottom = 232.5
+text = "You are disconnected"
+
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_click_ok"]

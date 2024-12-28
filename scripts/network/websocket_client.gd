@@ -3,8 +3,16 @@ extends Node
 # Our WebSocketPeer instance
 var socket: WebSocketPeer = WebSocketPeer.new()
 var Packet = preload("res://scripts/network/Packet.gd")
+# Timer to track the time since the last ping
+var ping_timeout: float = 30.0  # Timeout duration in seconds
+var time_since_last_ping: float = 0.0  # Tracks time since last ping
+var last_ping_time: float = 0.0  # The time when the last ping was received
+
 
 func _ready():
+	connect_to_server()
+	
+func connect_to_server():
 	var websocket_url = "ws://%s:%s/ws" % [Config.SERVER_IP, Config.SERVER_PORT]
 	# Initiate connection to the given URL
 	var err = socket.connect_to_url(websocket_url)
@@ -19,10 +27,18 @@ func _process(_delta):
 	socket.poll()
 	var state = socket.get_ready_state()
 
-	if state == WebSocketPeer.STATE_OPEN:
+	if state == WebSocketPeer.STATE_OPEN:	
 		while socket.get_available_packet_count() > 0:
 			var packet = socket.get_packet()
 			receive_packet(packet)
+			
+	 	# Track time since the last ping message
+		time_since_last_ping += _delta
+		# If no ping was received within the timeout period, disconnect
+		if time_since_last_ping >= ping_timeout:
+			print("Error: No ping received for %s seconds. Disconnecting." % ping_timeout)
+			set_process(false)
+			_disconnect()
 
 	elif state == WebSocketPeer.STATE_CLOSING:
 		print("WebSocket is closing...")
@@ -35,9 +51,11 @@ func _process(_delta):
 
 	elif state == WebSocketPeer.STATE_CONNECTING:
 		print("WebSocket is connecting...")
-
+		
 func _disconnect():
 	print("Disconnected from server.")
+	# show popup
+	SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
 	# Perform any cleanup operations if necessary
 
 func send_packet(cmd_id: int, payload: PackedByteArray):
@@ -55,4 +73,11 @@ func send_packet(cmd_id: int, payload: PackedByteArray):
 func receive_packet(data: PackedByteArray):
 	var received_packet = Packet.new()
 	received_packet.parse(data)
-	GameClient.on_receive_packet(received_packet.cmd_id, received_packet.payload)
+	
+	if received_packet.cmd_id == GameConstants.CMDs.PING_PONG:
+		# Send pong
+		print('server ping-pong')
+		send_packet(GameConstants.CMDs.PING_PONG, [])
+		time_since_last_ping = 0.0
+	else:
+		GameClient.on_receive_packet(received_packet.cmd_id, received_packet.payload)
