@@ -67,7 +67,10 @@ func get_string() -> String:
 func get_int32() -> int:
 	var tag = get_tag()
 	if not tag or tag.wire_type != 0:
-		skip_field(tag.wire_type)
+		if tag.has("wire_type"):
+			skip_field(tag.wire_type)
+		else:
+			skip_field(-1)
 		return 0
 	return get_varint()
 
@@ -75,7 +78,10 @@ func get_int32() -> int:
 func get_int64() -> int:
 	var tag = get_tag()
 	if not tag or tag.wire_type != 0:
-		skip_field(tag.wire_type)
+		if tag.has("wire_type"):
+			skip_field(tag.wire_type)
+		else:
+			skip_field(-1)
 		return 0
 	return get_varint()
 
@@ -120,7 +126,31 @@ func get_bool() -> bool:
 		return false
 	var int_value := get_varint()
 	return int_value != 0
+
+func get_int32s() -> Array[int]:
+	var len = get_int32()
+	var arr = []
+	for i in range(len):
+		var n = get_int32()
+		arr.append(n)
+	return arr
 	
+func get_int64s() -> Array[int]:
+	var len = get_int32()
+	var arr = []
+	for i in range(len):
+		var n = get_int64()
+		arr.append(n)
+	return arr
+	
+func get_strings() -> Array[String]:
+	var len = get_int32()
+	var arr = []
+	for i in range(len):
+		var n = get_string()
+		arr.append(n)
+	return arr
+
 # Reset buffer and position
 func clear():
 	buffer = PackedByteArray()

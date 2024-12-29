@@ -115,7 +115,7 @@ func _update_my_card_positions():
 		card.global_position = list_pos[i]
 		
 func _open_chat_gui() -> void:
-	SceneManager.open_gui("res://scenes/guis/GameChatGUI.tscn")
+	SceneManager.open_gui("res://scenes/board/GameChatGUI.tscn")
 
 func on_focus_card(card_id: int) -> void:
 	var card = _get_my_card(card_id)
@@ -226,7 +226,7 @@ func draw_cards(from_pos: Vector2, number: int) -> void:
 
 func play_card(user_id: int, card_id: int):
 	print("user " + str(user_id) + "play_a_card", card_id)
-	if user_id == PlayerInfo.my_user_data.uid:
+	if user_id == PlayerInfoMgr.my_user_data.uid:
 		play_my_card(card_id)
 		return
 

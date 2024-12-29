@@ -218,7 +218,7 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 text = "Nguyen Huy Truong"
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/VBoxContainer"]
+[node name="GoldLb" type="Label" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/VBoxContainer"]
 layout_mode = 2
 text = "100$"
 

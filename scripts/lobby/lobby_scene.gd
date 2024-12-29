@@ -4,11 +4,15 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_do_effect()
+	on_update_gui()
 	pass # Replace with function body.
 
 @onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')
 @onready var bg = find_child('Background')
+@onready var panel_info = find_child('PanelInfo')
+@onready var gold_lb:Label = panel_info.find_child('GoldLb')
+@onready var name_lb:Label = panel_info.find_child('NameLb')
 
 func _do_effect() -> void:
 	var left_panel_defaultpos = left_panel.position
@@ -29,6 +33,9 @@ func _do_effect() -> void:
 	#bg.scale = Vector2(1.2, 1.2)
 	#tween2.tween_property(bg, "scale", original_scale, 0.3)
 
+func on_update_gui():
+	gold_lb.text = str(PlayerInfoMgr.my_user_data.gold)
+	name_lb.text = str(PlayerInfoMgr.my_user_data.name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
