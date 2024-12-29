@@ -1,6 +1,6 @@
 extends Node
 
-var my_user_data = UserData.new('', '')
+var my_user_data = UserData.new(0, '')
 func get_user_id():
 	return 0
 	

@@ -224,8 +224,8 @@ func draw_cards(from_pos: Vector2, number: int) -> void:
 	tween.tween_callback(set_process.bind(true))
 	tween.tween_property(self, "sine_offset_mult", anim_offset_y, 1.5).from(0.0)
 
-func play_card(user_id: String, card_id: int):
-	print("user " + user_id + "play_a_card", card_id)
+func play_card(user_id: int, card_id: int):
+	print("user " + str(user_id) + "play_a_card", card_id)
 	if user_id == PlayerInfo.my_user_data.uid:
 		play_my_card(card_id)
 		return
@@ -253,7 +253,7 @@ func get_place_pos_card(seat_id: int) -> Vector2:
 	else:
 		return place_card3.global_position
 
-func get_player_node_by_uid(user_id: String):
+func get_player_node_by_uid(user_id: int):
 	for p in list_players:
 		if p.get_user_data().uid == user_id:
 			return p
@@ -263,5 +263,5 @@ func test_deal_card():
 	return
 
 func test_play_playercard():
-	play_card('4', 3)
+	play_card(4, 3)
 	return

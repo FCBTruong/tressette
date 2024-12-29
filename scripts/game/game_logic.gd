@@ -6,22 +6,22 @@ var game_mode: int = GameConstants.GAME_MODE.TRESSETTE
 
 var list_players = [
 	{
-		'uid': '1',
+		'uid': 1,
 		'name': 'Alex Nguyen',
 		'seat_id': 0
 	},
 	{
-		'uid': '2',
+		'uid': 2,
 		'name': 'An Alice',
 		'seat_id': 1
 	},
 	{
-		'uid': '3',
+		'uid': 3,
 		'name': 'Sir Abe',
 		'seat_id': 2
 	},
 		{
-		'uid': '4',
+		'uid': 4,
 		'name': 'Truong Huy',
 		'seat_id': 3
 	}

@@ -6,15 +6,20 @@ var payload: PackedByteArray
 # Serialize the object into a PackedByteArray
 func serialize() -> PackedByteArray:
 	var buffer = PackedByteArray()
+	var token = GameManager.get_token()
+	# Field 0: token (field number 1, wire type 2)
+	var field1_key = (1 << 3) | 2  # Field number 1, wire type 0
+	buffer.append(field1_key)  # Add field key
+	buffer.append_array(_serialize_length_delimited(token.to_utf8_buffer()))  #
 	
 	# Field 1: cmd_id (field number 1, wire type 0)
-	var field1_key = (1 << 3) | 0  # Field number 1, wire type 0
-	buffer.append(field1_key)  # Add field key
+	var field2_key = (2 << 3) | 0  # Field number 1, wire type 0
+	buffer.append(field2_key)  # Add field key
 	buffer.append_array(_serialize_varint(cmd_id))  # Add cmd_id as varint
 	
 	# Field 2: payload (field number 2, wire type 2)
-	var field2_key = (2 << 3) | 2  # Field number 2, wire type 2
-	buffer.append(field2_key)  # Add field key
+	var field3_key = (3 << 3) | 2  # Field number 2, wire type 2
+	buffer.append(field3_key)  # Add field key
 	buffer.append_array(_serialize_length_delimited(payload))  # Add payload with length prefix
 	
 	return buffer
@@ -31,11 +36,11 @@ func parse(data: PackedByteArray) -> void:
 		var field_number = field_key >> 3  # Field number (3 bits)
 		var wire_type = field_key & 0x07   # Wire type (3 bits)
 		
-		if field_number == 1 and wire_type == 0:  # cmd_id (varint)
+		if field_number == 2 and wire_type == 0:  # cmd_id (varint)
 			var result = _parse_varint(data, offset)
 			cmd_id = result[0]
 			offset = result[1]
-		elif field_number == 2 and wire_type == 2:  # payload (length-delimited)
+		elif field_number == 3 and wire_type == 2:  # payload (length-delimited)
 			var result = _parse_length_delimited(data, offset)
 			payload = result[0]
 			offset = result[1]

@@ -20,5 +20,11 @@ const CARDS = {
 }
 
 const CMDs = {
-	PING_PONG = 0
+	PING_PONG = 0,
+	LOGIN = 1,
+	TEST_MESSAGE = 100,
+	GENERAL_INFO = 1000,
+	USER_INFO = 1001,
+	QUICK_PLAY = 2000,
+	GAME_INFO = 2001
 }

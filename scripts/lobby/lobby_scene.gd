@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 
 func _on_start_game_button_pressed():
 	print('start game...')
-	SceneManager.switch_scene("res://scenes/BoardScene.tscn")
+	GameManager.send_quick_play()
 
 var user_info_gui: PackedScene = preload("res://scenes/guis/UserInfoGUI.tscn")
 
