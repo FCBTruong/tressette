@@ -8,22 +8,18 @@ func _ready() -> void:
 
 func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 	print('on_receive_packet', cmd_id)
-	var packet_receive = BaseReceivePacket.new(payload)
+
 	match cmd_id:
 		GameConstants.CMDs.TEST_MESSAGE:
-			var a = packet_receive.get_int32()
-			print('aaa', a)
-			var un = packet_receive.get_string()
-			var b = packet_receive.get_double()
-			var x = packet_receive.get_bool()
-			print('bbb', un)
-			print('bbb', b, x)
+			return
 		GameConstants.CMDs.LOGIN:
-			var uid = packet_receive.get_int32()
-			var token = packet_receive.get_string()
+			var pkg = GameConstants.PROTOBUF.PACKETS.LoginResponse.new()
+			var result_code = pkg.from_bytes(payload)
+			var uid = pkg.get_uid()
+			var token = pkg.get_token()
 			GameManager.login_success(uid, token)
 		GameConstants.CMDs.USER_INFO:
-			PlayerInfoMgr.on_receive_info(packet_receive)
+			PlayerInfoMgr.on_receive_info(payload)
 			pass
 		GameConstants.CMDs.GENERAL_INFO:
 			pass
@@ -33,6 +29,5 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			pass
 		
 
-func send_packet(cmd_id: int, packet: BaseSendPacket):
-	var chat_payload = packet.buffer
-	WebsocketClient.send_packet(cmd_id, chat_payload)
+func send_packet(cmd_id: int, payload: PackedByteArray):
+	WebsocketClient.send_packet(cmd_id, payload)

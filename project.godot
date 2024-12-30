@@ -30,6 +30,10 @@ GameManager="*res://scripts/game_manager.gd"
 
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/protobuf/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="mobile"

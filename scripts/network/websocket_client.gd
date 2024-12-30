@@ -2,7 +2,6 @@ extends Node
 
 # Our WebSocketPeer instance
 var socket: WebSocketPeer = WebSocketPeer.new()
-var Packet = preload("res://scripts/network/Packet.gd")
 # Timer to track the time since the last ping
 var ping_timeout: float = 30.0  # Timeout duration in seconds
 var time_since_last_ping: float = 0.0  # Tracks time since last ping
@@ -62,22 +61,30 @@ func send_packet(cmd_id: int, payload: PackedByteArray):
 	print('sending packet: ', cmd_id)
 	# Send a packet to the WebSocket server
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
-		var packet = Packet.new()
-		packet.cmd_id = cmd_id
-		packet.payload = payload
-		var serialized_packet = packet.serialize()
+		var packet = GameConstants.PROTOBUF.PACKETS.Packet.new()
+		packet.set_cmd_id(cmd_id)
+		packet.set_token(GameManager.get_token())
+		packet.set_payload(payload)
+		var serialized_packet = packet.to_bytes()
 		socket.put_packet(serialized_packet)
 	else:
 		print("Cannot send packet. WebSocket is not open.")
 
 func receive_packet(data: PackedByteArray):
-	var received_packet = Packet.new()
-	received_packet.parse(data)
+	var received_packet = GameConstants.PROTOBUF.PACKETS.Packet.new()
+	var result_code = received_packet.from_bytes(data)
 	
-	if received_packet.cmd_id == GameConstants.CMDs.PING_PONG:
+	if result_code == GameConstants.PROTOBUF.PACKETS.PB_ERR.NO_ERRORS:
+		print("OK")
+	else:
+		return
+	var cmd_id = received_packet.get_cmd_id()
+	print('receive cmd_id: ', cmd_id)
+	if cmd_id == GameConstants.CMDs.PING_PONG:
 		# Send pong
 		print('server ping-pong')
 		send_packet(GameConstants.CMDs.PING_PONG, [])
 		time_since_last_ping = 0.0
 	else:
-		GameClient.on_receive_packet(received_packet.cmd_id, received_packet.payload)
+		var payload = received_packet.get_payload()
+		GameClient.on_receive_packet(cmd_id, payload)

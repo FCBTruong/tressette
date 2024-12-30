@@ -20,8 +20,7 @@ func get_token() -> String:
 	return _token
 	
 func send_quick_play() -> void:
-	var pk = BaseSendPacket.new()
-	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, pk)
+	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, [])
 	
 func on_game_start() -> void:
 	SceneManager.switch_scene("res://scenes/BoardScene.tscn")

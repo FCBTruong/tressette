@@ -28,3 +28,7 @@ const CMDs = {
 	QUICK_PLAY = 2000,
 	GAME_INFO = 2001
 }
+
+const PROTOBUF = {
+	PACKETS = preload("res://scripts/protobuf/Packets.gd")
+}
