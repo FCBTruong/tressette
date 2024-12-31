@@ -23,9 +23,8 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			pass
 		GameConstants.CMDs.GENERAL_INFO:
 			pass
-		GameConstants.CMDs.GAME_INFO:
-			GameManager.on_receive_gameinfo()
 		_:
+			GameManager.on_receive_gameinfo(cmd_id, payload)
 			pass
 		
 

@@ -2,7 +2,8 @@ extends Node
 
 
 @onready var time_progress_bar: TextureProgressBar = find_child('TimeProgressBar')
-# Called when the node enters the scene tree for the first time.
+@onready var empty_slot = find_child("EmptySlot")
+@onready var main_pn = find_child("MainPn")
 func _ready() -> void:
 	start_timer()
 
@@ -13,6 +14,13 @@ var user_data
 # Function to update properties
 func set_user_data(user_dt: UserData) -> void:
 	user_data = user_dt
+	if not user_data or user_data.uid == -1:
+		main_pn.visible = false
+		empty_slot.visible = true
+		return
+
+	main_pn.visible = true
+	empty_slot.visible = false
 	
 	var name_label = find_child('NameLb')  # Access the RichTextLabel
 	if name_label:

@@ -71,4 +71,26 @@ text = "Login with Facebook"
 icon = ExtResource("4_egrs7")
 flat = true
 
+[node name="PnCheat" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 178.0
+offset_top = 365.0
+offset_right = 218.0
+offset_bottom = 405.0
+
+[node name="Button" type="Button" parent="CanvasLayer/PnCheat"]
+offset_right = 111.0
+offset_bottom = 87.0
+text = "User A"
+
+[node name="Button" type="Button" parent="CanvasLayer/PnCheat/Button"]
+offset_left = 178.0
+offset_top = 2.0
+offset_right = 289.0
+offset_bottom = 89.0
+text = "User B"
+
 [connection signal="pressed" from="CanvasLayer/GuestBtn" to="." method="_login"]
+[connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_login_user_A"]
+[connection signal="pressed" from="CanvasLayer/PnCheat/Button/Button" to="." method="test_login_userB"]

@@ -12,3 +12,9 @@ func _process(delta: float) -> void:
 
 func _login() -> void:
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, [])
+
+func test_login_user_A() -> void:
+	GameClient.send_packet(GameConstants.CMDs.LOGIN, [])
+
+func test_login_userB() -> void:
+	GameClient.send_packet(GameConstants.CMDs.LOGIN, [])

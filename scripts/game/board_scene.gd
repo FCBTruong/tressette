@@ -36,9 +36,9 @@ func _ready() -> void:
 func _on_enter():
 	var players_info = GameConstants.game_logic.get_list_player()
 	var i = 0
-	for p in list_players:
+	for p in list_players:	
 		p.queue_free()
-	_create_players(GameConstants.game_logic.player_mode)
+	_create_players(GameConstants.game_logic.match_data.player_mode)
 	for info in players_info:
 		list_players[i].set_user_data(info)
 		i += 1
@@ -60,7 +60,7 @@ func _create_players(player_count: int) -> void:
 func update_player_seat():
 	for player in list_players:
 		var seat_id = player.user_data.game_data.seat_id
-		var pos = _get_seat_position(GameConstants.game_logic.player_mode, seat_id)
+		var pos = _get_seat_position(GameConstants.game_logic.match_data.player_mode, seat_id)
 		player.global_position = pos
 		
 func _get_seat_position(mode_player: int, seat_id: int):
@@ -87,7 +87,7 @@ func _process(delta: float) -> void:
 	pass
 
 func back_to_lobby() -> void:
-	SceneManager.switch_scene("res://scenes/LobbyScene.tscn")
+	GameManager.request_leave_game()
 	
 func _init_my_cards() -> void:
 	return
