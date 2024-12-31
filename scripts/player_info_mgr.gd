@@ -18,4 +18,4 @@ func on_receive_info(bytes: PackedByteArray):
 	var ac = packet.get_abc()
 	print(scores, names, ac)
 	
-	print('on_receive_userinfo', my_user_data.uid, my_user_data.gold)
+	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.gold)
