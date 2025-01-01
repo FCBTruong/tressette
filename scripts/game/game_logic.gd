@@ -2,13 +2,150 @@ class_name GameLogic
 extends RefCounted
 
 var match_data: MatchData = null
+var current_turn = 0
 
 func get_list_player() -> Array[UserData]:
 	return match_data.users
 	
-func on_update_matchdata(p_match_data: MatchData):
-	match_data = p_match_data
-	print('Match data', len(match_data.users))
-
 func on_user_leave_game():
 	pass
+
+func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
+	match cmd_id:
+		GameConstants.CMDs.GAME_INFO:
+			_handle_game_info(payload)
+		GameConstants.CMDs.LEAVE_GAME:
+			_handle_leave_game(payload)
+		GameConstants.CMDs.NEW_USER_JOIN_MATCH:
+			_handle_user_join_match(payload)
+		GameConstants.CMDs.USER_LEAVE_MATCH:
+			_handle_user_leave_match(payload)
+		GameConstants.CMDs.DEAL_CARD:
+			_handle_deal_card(payload)
+		GameConstants.CMDs.PLAY_CARD:
+			_handle_play_card(payload)
+		GameConstants.CMDs.START_GAME:
+			_start_game(payload)
+
+func _handle_user_leave_match(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	for user in match_data.users:
+		if user.uid == uid:
+			# update info
+			user.uid = -1
+	
+	# reload
+	var board_scene: BoardScene = SceneManager.INSTANCES.BOARD_SCENE
+	board_scene.on_update_players()
+	
+func _handle_user_join_match(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.NewUserJoinMatch.new()
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	var seat_server = pkg.get_seat_server()
+	print('seat server', seat_server)
+	var seat_id = seat_server - match_data.seat_delta
+	if seat_id < 0:
+		seat_id += match_data.player_mode
+	print('user ', uid, ' join with seat ', seat_id)
+	
+	# find slot
+	for user in match_data.users:
+		if user.game_data.seat_id == seat_id:
+			# update info
+			user.uid = uid
+	for user in match_data.users:
+		print('debug seat', user.game_data.seat_id)
+	
+	# reload
+	var board_scene: BoardScene = SceneManager.INSTANCES.BOARD_SCENE
+	board_scene.on_update_players()
+		
+func _handle_leave_game(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.LeaveGame.new()
+	var result_code = pkg.from_bytes(payload)
+	var status_leave = pkg.get_status()
+	if status_leave == 0:
+		SceneManager.switch_scene("res://scenes/LobbyScene.tscn")
+	
+func _handle_game_info(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.GameInfo.new()
+	var result_code = pkg.from_bytes(payload)
+	match_data = MatchData.new()
+	match_data.match_id = pkg.get_match_id()
+	match_data.game_mode = pkg.get_game_mode()
+	match_data.player_mode = pkg.get_player_mode()
+	match_data.seat_delta = 0 # between server and client
+	
+	var uids = pkg.get_uids()
+	print('uids: ', uids)
+	var user_names = pkg.get_user_names()
+	var golds = pkg.get_user_golds()
+	
+	var users: Array[UserData] = []
+	
+	var my_idx = -1
+	for i in range(len(uids)):
+		var uid = uids[i]
+		var userdata = UserData.new(uid, user_names[i])
+		users.append(userdata)
+		if uid == PlayerInfoMgr.my_user_data.uid:
+			my_idx = i
+			userdata.game_data.seat_id = 0
+			match_data.seat_delta = i
+		
+	# Assign seat IDs
+	if my_idx != -1:
+		# Assign seat IDs starting from my_idx
+		var seat_id = 1  # Start with seat_id 1 as 0 is already assigned
+		for i in range(len(users)):
+			var index = (my_idx + i + 1) % len(users)  # Circular index
+			if index != my_idx:  # Skip the user's own seat
+				users[index].game_data.seat_id = seat_id
+				seat_id += 1
+	else:
+		# Assign seat IDs sequentially from 0
+		for i in range(len(users)):
+			users[i].game_data.seat_id = i
+	match_data.users = users
+	
+	SceneManager.switch_scene("res://scenes/BoardScene.tscn")
+
+func _handle_deal_card(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.DealCard.new()
+	var result_code = pkg.from_bytes(payload)
+	var cards = pkg.get_cards()
+	
+	for player in match_data.users:
+		if player.uid == PlayerInfoMgr.my_user_data.uid:
+			player.game_data.cards = []
+			for c in cards:
+				player.game_data.cards.append(int(c))
+	print('_handle_deal_card', cards)
+	SceneManager.INSTANCES.BOARD_SCENE.deal_my_cards(self.get_my_cards())
+	
+func _handle_play_card(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCard.new()
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	var card_id = pkg.get_card_id()
+	SceneManager.INSTANCES.BOARD_SCENE.play_card(uid, card_id)
+
+func send_play_card(card_id: int):
+	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCard.new()
+	pkg.set_card_id(card_id)
+	GameClient.send_packet(GameConstants.CMDs.PLAY_CARD, pkg.to_bytes())
+	
+func get_my_cards() -> Array[int]:
+	for user in match_data.users:
+		if user.uid == PlayerInfoMgr.my_user_data.uid:
+			return user.game_data.cards
+	return []
+	
+func _start_game(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.StartGame.new()
+	var result_code = pkg.from_bytes(payload)
+	current_turn = 0
+	match_data.state = MatchData.MATCH_STATE.PLAYING

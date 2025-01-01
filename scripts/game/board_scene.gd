@@ -1,5 +1,5 @@
 extends Node
-
+class_name BoardScene
 
 # Called when the node enters the scene tree for the first time.
 var my_card_panel
@@ -10,6 +10,7 @@ var _cur_focusing_card = null
 var place_card_node = null
 var tween: Tween
 var tween_animate: Tween
+var cards_compare = []
 @onready var players_pn = find_child("PlayersPn")
 @onready var center_play_pn = find_child('CenterPlayPn')
 @onready var cardback_node = find_child('CardBack')
@@ -23,7 +24,7 @@ var tween_animate: Tween
 @onready var place_card3 = find_child('PlaceCard3')
 
 var card_scene = preload("res://scenes/board/Card.tscn")
-
+var game_logic: GameLogic = GameConstants.game_logic
 func _ready() -> void:
 	SceneManager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
@@ -34,16 +35,20 @@ func _ready() -> void:
 	_on_enter()
 	
 func _on_enter():
-	var players_info = GameConstants.game_logic.get_list_player()
+	on_update_players()
+	pass
+	
+func on_update_players():
+	var players_info = game_logic.get_list_player()
 	var i = 0
 	for p in list_players:	
 		p.queue_free()
-	_create_players(GameConstants.game_logic.match_data.player_mode)
+	list_players.clear()
+	_create_players(game_logic.match_data.player_mode)
 	for info in players_info:
 		list_players[i].set_user_data(info)
 		i += 1
 	update_player_seat()
-	pass
 	
 # Function to create players
 func _create_players(player_count: int) -> void:
@@ -144,6 +149,7 @@ func play_my_card(id: int):
 		return
 	
 	card.is_played = true
+	card.player_id = PlayerInfoMgr.my_user_data.uid
 	_cur_focusing_card = null
 	
 	# Animate the card moving to (0, 0)
@@ -152,6 +158,14 @@ func play_my_card(id: int):
 	tween.tween_property(card, "global_position",p_place_world, 0.3)
 	_update_my_card_positions()
 	
+	# send to server
+	game_logic.send_play_card(id)
+	cards_compare.append(card)
+
+func on_new_round():
+	for card in cards_compare:
+		card.visible = false
+		
 func _on_click_btn_play_card():
 	if _cur_focusing_card:
 		play_my_card(_cur_focusing_card.get_card_id())
@@ -185,9 +199,11 @@ func remove_all_current_cards():
 		card.queue_free()
 	list_my_cards.clear()
 		
-func draw_cards(from_pos: Vector2, number: int) -> void:
+func deal_my_cards(cards: Array[int]) -> void:
+	var from_pos = cardback_node.global_position
 	remove_all_current_cards()
 	list_my_cards = []
+	var number = len(cards)
 	var drawn = true
 	if tween and tween.is_running():
 		tween.kill()
@@ -196,7 +212,7 @@ func draw_cards(from_pos: Vector2, number: int) -> void:
 	for i in range(number):
 		var instance = card_scene.instantiate()
 		play_ground.add_child(instance)
-		instance.set_card(i)
+		instance.set_card(cards[i])
 		instance.turn_face_down()
 		list_my_cards.append(instance)
 		instance.global_position = from_pos
@@ -227,11 +243,12 @@ func draw_cards(from_pos: Vector2, number: int) -> void:
 func play_card(user_id: int, card_id: int):
 	print("user " + str(user_id) + "play_a_card", card_id)
 	if user_id == PlayerInfoMgr.my_user_data.uid:
-		play_my_card(card_id)
 		return
 
 	var card_instance = card_scene.instantiate()
 	play_ground.add_child(card_instance)
+	card_instance.set_card(card_id)
+	card_instance.turn_face_up()
 	var player_node = get_player_node_by_uid(user_id)
 	if not player_node:
 		return
@@ -242,6 +259,7 @@ func play_card(user_id: int, card_id: int):
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
 	tween.tween_property(card_instance, "global_position",p_place_world, 0.3)
 	_update_my_card_positions()
+	cards_compare.append(card_instance)
 	
 func get_place_pos_card(seat_id: int) -> Vector2:
 	if seat_id == 0:
@@ -259,7 +277,7 @@ func get_player_node_by_uid(user_id: int):
 			return p
 	return null
 func test_deal_card():
-	draw_cards(cardback_node.global_position, 10)
+	deal_my_cards([2, 3, 5, 6, 7, 8, 9])
 	return
 
 func test_play_playercard():

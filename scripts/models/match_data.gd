@@ -12,6 +12,7 @@ enum MATCH_STATE {
 @export var users: Array[UserData] = []
 @export var game_mode: int = GameConstants.GAME_MODE.TRESSETTE
 @export var player_mode:int = GameConstants.PLAYER_MODE.SOLO
+@export var seat_delta: int = 0
 	
 func print_info():
 	pass

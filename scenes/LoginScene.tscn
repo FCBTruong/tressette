@@ -80,11 +80,13 @@ offset_right = 218.0
 offset_bottom = 405.0
 
 [node name="Button" type="Button" parent="CanvasLayer/PnCheat"]
+layout_mode = 0
 offset_right = 111.0
 offset_bottom = 87.0
 text = "User A"
 
 [node name="Button" type="Button" parent="CanvasLayer/PnCheat/Button"]
+layout_mode = 0
 offset_left = 178.0
 offset_top = 2.0
 offset_right = 289.0

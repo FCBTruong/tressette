@@ -3,6 +3,7 @@ class_name UserGameData
 extends Resource  # Use RefCounted for lightweight, reference-managed objects
 
 var seat_id :int = 0
+var cards: Array[int] = []
 
 
 func _init() -> void:

@@ -10,6 +10,7 @@ var id = 0
 var _default_z_index = 0
 var is_played = false
 var tween: Tween
+var player_id = -1 # ref uid
 @onready var card_image = find_child('CardImage')
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
