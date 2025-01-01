@@ -1136,6 +1136,21 @@ class GameInfo:
 		service.field = _user_names
 		data[_user_names.tag] = service
 		
+		_cards_compare = PBField.new("cards_compare", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 7, true, [])
+		service = PBServiceField.new()
+		service.field = _cards_compare
+		data[_cards_compare.tag] = service
+		
+		_current_turn = PBField.new("current_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _current_turn
+		data[_current_turn.tag] = service
+		
+		_game_state = PBField.new("game_state", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 9, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _game_state
+		data[_game_state.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1191,6 +1206,33 @@ class GameInfo:
 		_user_names.value = []
 	func add_user_names(value : String) -> void:
 		_user_names.value.append(value)
+	
+	var _cards_compare: PBField
+	func get_cards_compare() -> Array:
+		return _cards_compare.value
+	func clear_cards_compare() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_cards_compare.value = []
+	func add_cards_compare(value : int) -> void:
+		_cards_compare.value.append(value)
+	
+	var _current_turn: PBField
+	func get_current_turn() -> int:
+		return _current_turn.value
+	func clear_current_turn() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_current_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_current_turn(value : int) -> void:
+		_current_turn.value = value
+	
+	var _game_state: PBField
+	func get_game_state() -> int:
+		return _game_state.value
+	func clear_game_state() -> void:
+		data[9].state = PB_SERVICE_STATE.UNFILLED
+		_game_state.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_game_state(value : int) -> void:
+		_game_state.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

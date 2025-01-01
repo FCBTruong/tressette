@@ -142,6 +142,9 @@ func _get_my_card(id):
 	return null
 	
 func play_my_card(id: int):
+	if not game_logic.is_my_turn():
+		print('not your turn')
+		return
 	print("play_a_card", id)
 	var card = _get_my_card(id)
 	if not card:
@@ -162,9 +165,10 @@ func play_my_card(id: int):
 	game_logic.send_play_card(id)
 	cards_compare.append(card)
 
-func on_new_round():
-	for card in cards_compare:
-		card.visible = false
+func on_end_round():
+	#for card in cards_compare:
+		#card.visible = false
+	cards_compare = []
 		
 func _on_click_btn_play_card():
 	if _cur_focusing_card:
@@ -243,6 +247,7 @@ func deal_my_cards(cards: Array[int]) -> void:
 func play_card(user_id: int, card_id: int):
 	print("user " + str(user_id) + "play_a_card", card_id)
 	if user_id == PlayerInfoMgr.my_user_data.uid:
+		play_my_card(card_id)
 		return
 
 	var card_instance = card_scene.instantiate()
@@ -260,7 +265,7 @@ func play_card(user_id: int, card_id: int):
 	tween.tween_property(card_instance, "global_position",p_place_world, 0.3)
 	_update_my_card_positions()
 	cards_compare.append(card_instance)
-	
+#	
 func get_place_pos_card(seat_id: int) -> Vector2:
 	if seat_id == 0:
 		return place_card0.global_position

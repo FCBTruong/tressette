@@ -78,6 +78,11 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.game_mode = pkg.get_game_mode()
 	match_data.player_mode = pkg.get_player_mode()
 	match_data.seat_delta = 0 # between server and client
+	match_data.state = pkg.get_game_state()
+	match_data.current_turn = pkg.get_current_turn()
+	var compare = pkg.get_cards_compare()
+	for c in compare:
+		match_data.cards_compare.append(c)
 	
 	var uids = pkg.get_uids()
 	print('uids: ', uids)
@@ -132,11 +137,29 @@ func _handle_play_card(payload: PackedByteArray):
 	var uid = pkg.get_uid()
 	var card_id = pkg.get_card_id()
 	SceneManager.INSTANCES.BOARD_SCENE.play_card(uid, card_id)
+	push_cards_compare(uid, card_id)
 
 func send_play_card(card_id: int):
 	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCard.new()
 	pkg.set_card_id(card_id)
 	GameClient.send_packet(GameConstants.CMDs.PLAY_CARD, pkg.to_bytes())
+	
+	push_cards_compare(PlayerInfoMgr.my_user_data.uid, card_id)
+	
+func push_cards_compare(uid, card_id):
+	var idx = get_index_by_uid(uid)
+	match_data.cards_compare[idx] = card_id
+	
+	var finished_round = check_finish_round()
+	if finished_round:
+		print('finish rounds...')
+		SceneManager.INSTANCES.BOARD_SCENE.on_end_round()
+		reset_cards_compare()
+		match_data.current_turn = -1
+	else:
+		# update current turn
+		var next_turn = match_data.current_turn + 1
+		match_data.current_turn = next_turn % len(match_data.users)
 	
 func get_my_cards() -> Array[int]:
 	for user in match_data.users:
@@ -149,3 +172,31 @@ func _start_game(payload: PackedByteArray):
 	var result_code = pkg.from_bytes(payload)
 	current_turn = 0
 	match_data.state = MatchData.MATCH_STATE.PLAYING
+	reset_cards_compare()
+
+func check_finish_round():
+	print('cards compares', match_data.cards_compare)
+	for c in match_data.cards_compare:
+		if c == -1:
+			return false
+	return true
+
+func get_index_by_uid(uid: int) -> int:
+	for i in range(len(match_data.users)):
+		var u = match_data.users[i]
+		if u.uid == uid:
+			return i
+	return -1
+	
+func reset_cards_compare():
+	match_data.cards_compare = []
+	for i in range(len(match_data.users)):
+		match_data.cards_compare.append(-1)
+
+func is_my_turn():
+	var uid_inturn = match_data.users[match_data.current_turn].uid
+	if uid_inturn == PlayerInfoMgr.my_user_data.uid:
+		return true
+	else:
+		return false
+	
