@@ -1151,6 +1151,16 @@ class GameInfo:
 		service.field = _game_state
 		data[_game_state.tag] = service
 		
+		_my_cards = PBField.new("my_cards", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 10, true, [])
+		service = PBServiceField.new()
+		service.field = _my_cards
+		data[_my_cards.tag] = service
+		
+		_remain_cards = PBField.new("remain_cards", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 11, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _remain_cards
+		data[_remain_cards.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1233,6 +1243,24 @@ class GameInfo:
 		_game_state.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_game_state(value : int) -> void:
 		_game_state.value = value
+	
+	var _my_cards: PBField
+	func get_my_cards() -> Array:
+		return _my_cards.value
+	func clear_my_cards() -> void:
+		data[10].state = PB_SERVICE_STATE.UNFILLED
+		_my_cards.value = []
+	func add_my_cards(value : int) -> void:
+		_my_cards.value.append(value)
+	
+	var _remain_cards: PBField
+	func get_remain_cards() -> int:
+		return _remain_cards.value
+	func clear_remain_cards() -> void:
+		data[11].state = PB_SERVICE_STATE.UNFILLED
+		_remain_cards.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_remain_cards(value : int) -> void:
+		_remain_cards.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1429,6 +1457,11 @@ class DealCard:
 		service.field = _cards
 		data[_cards.tag] = service
 		
+		_remain_cards = PBField.new("remain_cards", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _remain_cards
+		data[_remain_cards.tag] = service
+		
 	var data = {}
 	
 	var _cards: PBField
@@ -1439,6 +1472,15 @@ class DealCard:
 		_cards.value = []
 	func add_cards(value : int) -> void:
 		_cards.value.append(value)
+	
+	var _remain_cards: PBField
+	func get_remain_cards() -> int:
+		return _remain_cards.value
+	func clear_remain_cards() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_remain_cards.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_remain_cards(value : int) -> void:
+		_remain_cards.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1521,6 +1563,102 @@ class StartGame:
 		var service
 		
 	var data = {}
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class NewRound:
+	func _init():
+		var service
+		
+		_current_turn = PBField.new("current_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _current_turn
+		data[_current_turn.tag] = service
+		
+		_my_cards = PBField.new("my_cards", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 2, true, [])
+		service = PBServiceField.new()
+		service.field = _my_cards
+		data[_my_cards.tag] = service
+		
+	var data = {}
+	
+	var _current_turn: PBField
+	func get_current_turn() -> int:
+		return _current_turn.value
+	func clear_current_turn() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_current_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_current_turn(value : int) -> void:
+		_current_turn.value = value
+	
+	var _my_cards: PBField
+	func get_my_cards() -> Array:
+		return _my_cards.value
+	func clear_my_cards() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_my_cards.value = []
+	func add_my_cards(value : int) -> void:
+		_my_cards.value.append(value)
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class UpdateGamePoint:
+	func _init():
+		var service
+		
+		_points = PBField.new("points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 1, true, [])
+		service = PBServiceField.new()
+		service.field = _points
+		data[_points.tag] = service
+		
+	var data = {}
+	
+	var _points: PBField
+	func get_points() -> Array:
+		return _points.value
+	func clear_points() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_points.value = []
+	func add_points(value : int) -> void:
+		_points.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

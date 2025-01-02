@@ -22,21 +22,48 @@ var cards_compare = []
 @onready var place_card1 = find_child('PlaceCard1')
 @onready var place_card2 = find_child('PlaceCard2')
 @onready var place_card3 = find_child('PlaceCard3')
+@onready var remain_cards_lb = find_child('RemainCardsLb')
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
+var SCALE_CARD_COMPARE = 0.8
 func _ready() -> void:
 	SceneManager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
 	play_ground = find_child('PlayGround')
 	place_card_node = find_child('PlaceCard1')
-	
-	_init_my_cards()
+
 	_on_enter()
 	
 func _on_enter():
 	on_update_players()
-	pass
+	update_remain_cards()
+	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
+		# case reconnect
+		# update cards compare
+		var idx = 0
+		for card_id in game_logic.match_data.cards_compare:
+			var user = game_logic.match_data.users[idx]
+			idx += 1
+			if card_id != -1:
+				var instance = card_scene.instantiate()
+				play_ground.add_child(instance)
+				instance.set_card(card_id)
+				instance.turn_face_up()
+				instance.scale = Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE)
+				instance.player_id = user.uid
+				instance.global_position = get_place_pos_card(user.game_data.seat_id)
+		# update current cards
+		var cards = game_logic.get_my_cards()
+		var number = len(cards)
+		var list_pos_des = _calculate_world_card_positions(number)
+		for i in range(number):
+			var instance = card_scene.instantiate()
+			play_ground.add_child(instance)
+			instance.set_card(cards[i])
+			instance.turn_face_up()
+			list_my_cards.append(instance)
+			instance.global_position = list_pos_des[i]
 	
 func on_update_players():
 	var players_info = game_logic.get_list_player()
@@ -93,19 +120,6 @@ func _process(delta: float) -> void:
 
 func back_to_lobby() -> void:
 	GameManager.request_leave_game()
-	
-func _init_my_cards() -> void:
-	return
-	list_my_cards = []
-	for i in range(10):
-		var card = card_scene.instantiate()
-		my_card_panel.add_child(card)
-		list_my_cards.append(card)
-		card.set_card(i)
-		card._set_default_z_index(i)
-	
-	# Update position
-	_update_my_card_positions()
 
 func _update_my_card_positions():
 	var list = []
@@ -153,12 +167,15 @@ func play_my_card(id: int):
 	
 	card.is_played = true
 	card.player_id = PlayerInfoMgr.my_user_data.uid
+	var player_node = get_player_node_by_uid(PlayerInfoMgr.my_user_data.uid)
 	_cur_focusing_card = null
 	
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
-	var p_place_world = place_card_node.global_position
-	tween.tween_property(card, "global_position",p_place_world, 0.3)
+	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
+	tween.parallel().tween_property(card, "global_position",p_place_world, 0.3)
+	tween.parallel().tween_property(card, "scale", 
+		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
 	_update_my_card_positions()
 	
 	# send to server
@@ -202,8 +219,11 @@ func remove_all_current_cards():
 	for card in list_my_cards:
 		card.queue_free()
 	list_my_cards.clear()
-		
-func deal_my_cards(cards: Array[int]) -> void:
+
+func update_remain_cards():
+	remain_cards_lb.text = str(game_logic.match_data.remain_cards)
+	
+func deal_my_cards(cards) -> void:	
 	var from_pos = cardback_node.global_position
 	remove_all_current_cards()
 	list_my_cards = []
@@ -262,19 +282,27 @@ func play_card(user_id: int, card_id: int):
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
-	tween.tween_property(card_instance, "global_position",p_place_world, 0.3)
+	tween.parallel().tween_property(card_instance, "global_position",p_place_world, 0.3)
+	tween.parallel().tween_property(card_instance, "scale", 
+		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
 	_update_my_card_positions()
 	cards_compare.append(card_instance)
 #	
 func get_place_pos_card(seat_id: int) -> Vector2:
-	if seat_id == 0:
-		return place_card0.global_position
-	elif seat_id == 1:
-		return place_card1.global_position
-	elif seat_id == 2:
-		return place_card2.global_position
+	if game_logic.match_data.player_mode == GameConstants.PLAYER_MODE.SOLO:
+		if seat_id == 0:
+			return place_card0.global_position
+		else:
+			return place_card2.global_position
 	else:
-		return place_card3.global_position
+		if seat_id == 0:
+			return place_card0.global_position
+		elif seat_id == 1:
+			return place_card1.global_position
+		elif seat_id == 2:
+			return place_card2.global_position
+		else:
+			return place_card3.global_position
 
 func get_player_node_by_uid(user_id: int):
 	for p in list_players:

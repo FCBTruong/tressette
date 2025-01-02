@@ -15,6 +15,7 @@ enum MATCH_STATE {
 @export var seat_delta: int = 0
 @export var cards_compare = []
 @export var current_turn: int = 0
+@export var remain_cards: int = 0
 	
 func print_info():
 	pass

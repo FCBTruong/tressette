@@ -80,6 +80,8 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.seat_delta = 0 # between server and client
 	match_data.state = pkg.get_game_state()
 	match_data.current_turn = pkg.get_current_turn()
+	match_data.remain_cards = pkg.get_remain_cards()
+	
 	var compare = pkg.get_cards_compare()
 	for c in compare:
 		match_data.cards_compare.append(c)
@@ -116,12 +118,16 @@ func _handle_game_info(payload: PackedByteArray):
 			users[i].game_data.seat_id = i
 	match_data.users = users
 	
+	var my_cards = pkg.get_my_cards()
+	_update_my_cards(my_cards)
+	
 	SceneManager.switch_scene("res://scenes/BoardScene.tscn")
 
 func _handle_deal_card(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.DealCard.new()
 	var result_code = pkg.from_bytes(payload)
 	var cards = pkg.get_cards()
+	match_data.remain_cards = pkg.get_remain_cards()
 	
 	for player in match_data.users:
 		if player.uid == PlayerInfoMgr.my_user_data.uid:
@@ -145,6 +151,9 @@ func send_play_card(card_id: int):
 	GameClient.send_packet(GameConstants.CMDs.PLAY_CARD, pkg.to_bytes())
 	
 	push_cards_compare(PlayerInfoMgr.my_user_data.uid, card_id)
+	if match_data.remain_cards > 0:
+		match_data.remain_cards -= 1
+		SceneManager.INSTANCES.BOARD_SCENE.update_remain_cards()
 	
 func push_cards_compare(uid, card_id):
 	var idx = get_index_by_uid(uid)
@@ -161,7 +170,7 @@ func push_cards_compare(uid, card_id):
 		var next_turn = match_data.current_turn + 1
 		match_data.current_turn = next_turn % len(match_data.users)
 	
-func get_my_cards() -> Array[int]:
+func get_my_cards():
 	for user in match_data.users:
 		if user.uid == PlayerInfoMgr.my_user_data.uid:
 			return user.game_data.cards
@@ -190,13 +199,18 @@ func get_index_by_uid(uid: int) -> int:
 	
 func reset_cards_compare():
 	match_data.cards_compare = []
-	for i in range(len(match_data.users)):
+	for i in range(match_data.player_mode):
 		match_data.cards_compare.append(-1)
 
 func is_my_turn():
+	print('is_my_turn ', match_data.current_turn)
 	var uid_inturn = match_data.users[match_data.current_turn].uid
 	if uid_inturn == PlayerInfoMgr.my_user_data.uid:
 		return true
 	else:
 		return false
 	
+func _update_my_cards(card_ids):
+	for player in match_data.users:
+		if player.uid == PlayerInfoMgr.my_user_data.uid:
+			player.game_data.cards = card_ids
