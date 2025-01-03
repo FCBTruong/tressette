@@ -58,7 +58,6 @@ func _disconnect():
 	# Perform any cleanup operations if necessary
 
 func send_packet(cmd_id: int, payload: PackedByteArray):
-	print('sending packet: ', cmd_id)
 	# Send a packet to the WebSocket server
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		var packet = GameConstants.PROTOBUF.PACKETS.Packet.new()
@@ -75,16 +74,16 @@ func receive_packet(data: PackedByteArray):
 	var result_code = received_packet.from_bytes(data)
 	
 	if result_code == GameConstants.PROTOBUF.PACKETS.PB_ERR.NO_ERRORS:
-		print("OK")
+		pass
 	else:
+		print('error package parse')
 		return
 	var cmd_id = received_packet.get_cmd_id()
-	print('receive cmd_id: ', cmd_id)
+
 	if cmd_id == GameConstants.CMDs.PING_PONG:
-		# Send pong
-		print('server ping-pong')
 		send_packet(GameConstants.CMDs.PING_PONG, [])
 		time_since_last_ping = 0.0
 	else:
+		print('receive cmd_id: ', cmd_id)
 		var payload = received_packet.get_payload()
 		GameClient.on_receive_packet(cmd_id, payload)

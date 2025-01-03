@@ -10,7 +10,7 @@ var _cur_focusing_card = null
 var place_card_node = null
 var tween: Tween
 var tween_animate: Tween
-var cards_compare = []
+var cards_node_compare = []
 @onready var players_pn = find_child("PlayersPn")
 @onready var center_play_pn = find_child('CenterPlayPn')
 @onready var cardback_node = find_child('CardBack')
@@ -23,10 +23,15 @@ var cards_compare = []
 @onready var place_card2 = find_child('PlaceCard2')
 @onready var place_card3 = find_child('PlaceCard3')
 @onready var remain_cards_lb = find_child('RemainCardsLb')
+const DEFAULT_CARD_Z_INDEX = 10
+const COMPARE_CARD_Z_INDEX = 11
+const WIN_CARD_Z_INDEX = 12
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
 var SCALE_CARD_COMPARE = 0.8
+@onready var timer = $Timer
+
 func _ready() -> void:
 	SceneManager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
@@ -50,9 +55,12 @@ func _on_enter():
 				play_ground.add_child(instance)
 				instance.set_card(card_id)
 				instance.turn_face_up()
+				instance.z_index = COMPARE_CARD_Z_INDEX
 				instance.scale = Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE)
 				instance.player_id = user.uid
 				instance.global_position = get_place_pos_card(user.game_data.seat_id)
+				cards_node_compare.append(instance)
+				
 		# update current cards
 		var cards = game_logic.get_my_cards()
 		var number = len(cards)
@@ -64,6 +72,9 @@ func _on_enter():
 			instance.turn_face_up()
 			list_my_cards.append(instance)
 			instance.global_position = list_pos_des[i]
+			
+		if game_logic.check_finish_round():
+			on_finish_round()
 	
 func on_update_players():
 	var players_info = game_logic.get_list_player()
@@ -166,6 +177,7 @@ func play_my_card(id: int):
 		return
 	
 	card.is_played = true
+	card.z_index = COMPARE_CARD_Z_INDEX
 	card.player_id = PlayerInfoMgr.my_user_data.uid
 	var player_node = get_player_node_by_uid(PlayerInfoMgr.my_user_data.uid)
 	_cur_focusing_card = null
@@ -176,17 +188,58 @@ func play_my_card(id: int):
 	tween.parallel().tween_property(card, "global_position",p_place_world, 0.3)
 	tween.parallel().tween_property(card, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
-	_update_my_card_positions()
 	
 	# send to server
 	game_logic.send_play_card(id)
-	cards_compare.append(card)
+	cards_node_compare.append(card)
+	
+	list_my_cards.erase(card)
+	_update_my_card_positions()
 
-func on_end_round():
-	#for card in cards_compare:
+func on_finish_round(delay = 0.5):
+	#for card in cards_node_compare:
 		#card.visible = false
-	cards_compare = []
+	var card_win_id = game_logic.get_card_win_in_round()
+	
+	# show effect
+	var card_win_node = null
+	var player_win_id = null
+	for c in cards_node_compare:
+		if c.get_card_id() == card_win_id:
+			card_win_node = c
+			card_win_node.z_index = WIN_CARD_Z_INDEX
+			player_win_id = c.player_id
+			break
+	
+	# effect card_win
+	card_win_node.effect_win_card()
+			
+	if not player_win_id:
+		return
+	
+	# effect move to cards win
+	var player_node = get_player_node_by_uid(player_win_id)
+	var time_gathering_cards = 0.3
+	
+	await get_tree().create_timer(1).timeout
+	var tween = create_tween()
+	
+	for c in cards_node_compare:
+		if c != card_win_node:
+			tween.parallel().tween_property(c, "global_position",card_win_node.global_position, time_gathering_cards)
+	
+	tween.tween_interval(0)  # 1-second delay
+	
+	for c in cards_node_compare:
+		tween.parallel().tween_property(c, "global_position", player_node.global_position, 0.3).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+		tween.parallel().tween_property(c, "scale", Vector2(0.6, 0.6), 0.3)
 		
+	tween.tween_interval(0)
+	for c in cards_node_compare:
+		tween.tween_callback(c.queue_free)
+	
+	cards_node_compare.clear()
+
 func _on_click_btn_play_card():
 	if _cur_focusing_card:
 		play_my_card(_cur_focusing_card.get_card_id())
@@ -238,6 +291,7 @@ func deal_my_cards(cards) -> void:
 		play_ground.add_child(instance)
 		instance.set_card(cards[i])
 		instance.turn_face_down()
+		instance.z_index = DEFAULT_CARD_Z_INDEX
 		list_my_cards.append(instance)
 		instance.global_position = from_pos
 		
@@ -272,6 +326,7 @@ func play_card(user_id: int, card_id: int):
 
 	var card_instance = card_scene.instantiate()
 	play_ground.add_child(card_instance)
+	card_instance.player_id = user_id
 	card_instance.set_card(card_id)
 	card_instance.turn_face_up()
 	var player_node = get_player_node_by_uid(user_id)
@@ -286,7 +341,7 @@ func play_card(user_id: int, card_id: int):
 	tween.parallel().tween_property(card_instance, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
 	_update_my_card_positions()
-	cards_compare.append(card_instance)
+	cards_node_compare.append(card_instance)
 #	
 func get_place_pos_card(seat_id: int) -> Vector2:
 	if game_logic.match_data.player_mode == GameConstants.PLAYER_MODE.SOLO:

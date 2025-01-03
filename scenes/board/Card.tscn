@@ -6,7 +6,7 @@
 [node name="Card" type="Node2D"]
 script = ExtResource("1_1xv6o")
 
-[node name="Control" type="Control" parent="."]
+[node name="Main" type="Control" parent="."]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 3
 anchors_preset = 8
@@ -21,7 +21,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CardImage" type="TextureRect" parent="Control"]
+[node name="CardImage" type="TextureRect" parent="Main"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +32,7 @@ pivot_offset = Vector2(50, 75)
 texture = ExtResource("2_rvdq3")
 expand_mode = 1
 
-[node name="CardBtn" type="Button" parent="Control"]
+[node name="CardBtn" type="Button" parent="Main"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -41,6 +41,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="button_down" from="Control/CardBtn" to="." method="_on_touch_card_down"]
-[connection signal="button_up" from="Control/CardBtn" to="." method="_on_touch_card_up"]
-[connection signal="pressed" from="Control/CardBtn" to="." method="_on_touch_card"]
+[connection signal="button_down" from="Main/CardBtn" to="." method="_on_touch_card_down"]
+[connection signal="button_up" from="Main/CardBtn" to="." method="_on_touch_card_up"]
+[connection signal="pressed" from="Main/CardBtn" to="." method="_on_touch_card"]

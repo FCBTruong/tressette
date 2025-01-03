@@ -1161,6 +1161,11 @@ class GameInfo:
 		service.field = _remain_cards
 		data[_remain_cards.tag] = service
 		
+		_user_points = PBField.new("user_points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 12, true, [])
+		service = PBServiceField.new()
+		service.field = _user_points
+		data[_user_points.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1261,6 +1266,15 @@ class GameInfo:
 		_remain_cards.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_remain_cards(value : int) -> void:
 		_remain_cards.value = value
+	
+	var _user_points: PBField
+	func get_user_points() -> Array:
+		return _user_points.value
+	func clear_user_points() -> void:
+		data[12].state = PB_SERVICE_STATE.UNFILLED
+		_user_points.value = []
+	func add_user_points(value : int) -> void:
+		_user_points.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1659,6 +1673,75 @@ class UpdateGamePoint:
 		_points.value = []
 	func add_points(value : int) -> void:
 		_points.value.append(value)
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class EndRound:
+	func _init():
+		var service
+		
+		_win_uid = PBField.new("win_uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_uid
+		data[_win_uid.tag] = service
+		
+		_win_card = PBField.new("win_card", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_card
+		data[_win_card.tag] = service
+		
+		_user_points = PBField.new("user_points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _user_points
+		data[_user_points.tag] = service
+		
+	var data = {}
+	
+	var _win_uid: PBField
+	func get_win_uid() -> int:
+		return _win_uid.value
+	func clear_win_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_win_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_uid(value : int) -> void:
+		_win_uid.value = value
+	
+	var _win_card: PBField
+	func get_win_card() -> int:
+		return _win_card.value
+	func clear_win_card() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_win_card.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_card(value : int) -> void:
+		_win_card.value = value
+	
+	var _user_points: PBField
+	func get_user_points() -> Array:
+		return _user_points.value
+	func clear_user_points() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_user_points.value = []
+	func add_user_points(value : int) -> void:
+		_user_points.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

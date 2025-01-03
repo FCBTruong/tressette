@@ -12,11 +12,12 @@ var is_played = false
 var tween: Tween
 var player_id = -1 # ref uid
 @onready var card_image = find_child('CardImage')
+@onready var main_pn = find_child('Main')
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	is_played = false
 	pos_card = card_image.position
-	pass # Replace with function body.
+	main_pn.z_index = 1
 	
 func _on_touch_card() -> void:
 	SceneManager.INSTANCES.BOARD_SCENE.play_my_card(id)
@@ -100,3 +101,12 @@ func show_card(effect_flip: bool = false):
 		)
 		# Second part: Scale X back to 1 (flip card back)
 		tween.tween_property(card_image, "scale:x", 1, halfway_time).set_ease(Tween.EASE_OUT)
+
+
+var light_scene = preload("res://scenes/board/EffectLightCard.tscn")
+func effect_win_card():
+	var instance = light_scene.instantiate()
+	add_child(instance)
+	var tween = create_tween()
+	tween.tween_property(instance, "rotation_degrees", 360, 1.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)  
+	tween.finished.connect(func(): instance.queue_free())

@@ -3,6 +3,7 @@ extends RefCounted
 
 var match_data: MatchData = null
 var current_turn = 0
+var card_win_id: int
 
 func get_list_player() -> Array[UserData]:
 	return match_data.users
@@ -26,6 +27,10 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_play_card(payload)
 		GameConstants.CMDs.START_GAME:
 			_start_game(payload)
+		GameConstants.CMDs.END_ROUND:
+			_handle_end_round(payload)
+		GameConstants.CMDs.NEW_ROUND:
+			_handle_new_round(payload)
 
 func _handle_user_leave_match(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
@@ -90,6 +95,7 @@ func _handle_game_info(payload: PackedByteArray):
 	print('uids: ', uids)
 	var user_names = pkg.get_user_names()
 	var golds = pkg.get_user_golds()
+	var user_points = pkg.get_user_points()
 	
 	var users: Array[UserData] = []
 	
@@ -97,6 +103,7 @@ func _handle_game_info(payload: PackedByteArray):
 	for i in range(len(uids)):
 		var uid = uids[i]
 		var userdata = UserData.new(uid, user_names[i])
+		userdata.game_data.points = user_points[i]
 		users.append(userdata)
 		if uid == PlayerInfoMgr.my_user_data.uid:
 			my_idx = i
@@ -150,6 +157,11 @@ func send_play_card(card_id: int):
 	pkg.set_card_id(card_id)
 	GameClient.send_packet(GameConstants.CMDs.PLAY_CARD, pkg.to_bytes())
 	
+	var idx = get_index_by_uid(PlayerInfoMgr.my_user_data.uid)
+	
+	# remove this card 
+	match_data.users[idx].game_data.cards.erase(card_id)
+	
 	push_cards_compare(PlayerInfoMgr.my_user_data.uid, card_id)
 	if match_data.remain_cards > 0:
 		match_data.remain_cards -= 1
@@ -161,9 +173,6 @@ func push_cards_compare(uid, card_id):
 	
 	var finished_round = check_finish_round()
 	if finished_round:
-		print('finish rounds...')
-		SceneManager.INSTANCES.BOARD_SCENE.on_end_round()
-		reset_cards_compare()
 		match_data.current_turn = -1
 	else:
 		# update current turn
@@ -204,13 +213,42 @@ func reset_cards_compare():
 
 func is_my_turn():
 	print('is_my_turn ', match_data.current_turn)
+	if match_data.current_turn == -1:
+		return false
 	var uid_inturn = match_data.users[match_data.current_turn].uid
 	if uid_inturn == PlayerInfoMgr.my_user_data.uid:
 		return true
 	else:
 		return false
+		
+func get_uid_in_turn():
+	if match_data.current_turn == -1:
+		return -1
+	return match_data.users[match_data.current_turn].uid
 	
 func _update_my_cards(card_ids):
 	for player in match_data.users:
 		if player.uid == PlayerInfoMgr.my_user_data.uid:
 			player.game_data.cards = card_ids
+			
+func get_card_win_in_round():
+	return card_win_id
+	return match_data.cards_compare[0]
+
+func _handle_end_round(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.EndRound.new()
+	var result_code = pkg.from_bytes(payload)
+	var win_uid = pkg.get_win_uid()
+	card_win_id = pkg.get_win_card()
+	var points = pkg.get_user_points()
+	
+	print('finish rounds...')
+	SceneManager.INSTANCES.BOARD_SCENE.on_finish_round()
+	reset_cards_compare()
+	
+func _handle_new_round(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.NewRound.new()
+	var result_code = pkg.from_bytes(payload)
+	match_data.current_turn = pkg.get_current_turn()
+	
+	print('handle_new_round', pkg._to_string())

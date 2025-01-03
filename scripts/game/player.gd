@@ -4,8 +4,9 @@ extends Node
 @onready var time_progress_bar: TextureProgressBar = find_child('TimeProgressBar')
 @onready var empty_slot = find_child("EmptySlot")
 @onready var main_pn = find_child("MainPn")
+@onready var score_lb = find_child("ScoreLb")
 func _ready() -> void:
-	start_timer()
+	pass
 
 # Properties
 var user_data
@@ -25,6 +26,8 @@ func set_user_data(user_dt: UserData) -> void:
 	var name_label = find_child('NameLb')  # Access the RichTextLabel
 	if name_label:
 		name_label.text = user_data.name
+	score_lb.text = str(user_data.game_data.points)
+	
 	
 var user_info_gui: PackedScene = preload("res://scenes/guis/UserInfoGUI.tscn")
 
@@ -42,6 +45,11 @@ func start_timer():
 	time_progress_bar.value = 0
 
 func _process(delta: float):
+	if GameConstants.game_logic.get_uid_in_turn() == self.user_data.uid:
+		time_progress_bar.visible = true
+		time_progress_bar.value = 100
+	else:
+		time_progress_bar.visible = false
 	if running:
 		elapsed_time += delta
 		if elapsed_time < timer_duration:

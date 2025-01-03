@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvggiqkn2bjut"]
+[gd_scene load_steps=6 format=3 uid="uid://dvggiqkn2bjut"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_phee0"]
+[ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_2fpyj"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_q0xlc"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="2_tf5fi"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="4_40e2j"]
@@ -8,6 +9,13 @@
 [node name="Player" type="Node2D"]
 position = Vector2(465, 470)
 script = ExtResource("1_phee0")
+
+[node name="Vortex" parent="." instance=ExtResource("2_2fpyj")]
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+color = Color(0.157628, 0.785124, 0.290129, 1)
 
 [node name="MainPn" type="Control" parent="."]
 layout_mode = 3
@@ -114,6 +122,9 @@ offset_top = 1.0
 offset_right = 123.0
 offset_bottom = 24.0
 text = "10"
+
+[node name="PlaceCard0" type="Node2D" parent="MainPn/ScoreLb"]
+position = Vector2(42, 188)
 
 [node name="TimeProgressBar" type="TextureProgressBar" parent="MainPn"]
 self_modulate = Color(0.618377, 1, 0.652441, 1)
