@@ -30,7 +30,7 @@ const WIN_CARD_Z_INDEX = 12
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
 var SCALE_CARD_COMPARE = 0.8
-@onready var timer = $Timer
+var SCALE_CARD_DEAL_INIT = 0.8
 
 func _ready() -> void:
 	SceneManager.INSTANCES.BOARD_SCENE = self
@@ -239,6 +239,9 @@ func on_finish_round(delay = 0.5):
 		tween.tween_callback(c.queue_free)
 	
 	cards_node_compare.clear()
+	
+	for player in list_players:
+		player.update_points_display(true)
 
 func _on_click_btn_play_card():
 	if _cur_focusing_card:
@@ -369,5 +372,55 @@ func test_deal_card():
 	return
 
 func test_play_playercard():
-	play_card(4, 3)
+	#play_card(4, 3)
+	_effect_draw_card(1000000, 4)
 	return
+	
+func on_draw_cards(arr):
+	for obj in arr:
+		var uid = obj['uid']
+		var card_id = obj['card']
+		_effect_draw_card(uid, card_id)
+		await get_tree().create_timer(1.75).timeout
+		
+func _effect_draw_card(uid, card_id):
+	var tween = create_tween()
+	var instance = card_scene.instantiate()
+	play_ground.add_child(instance)
+	instance.set_card(card_id)
+	instance.scale = Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT)
+	instance.turn_face_down()
+	instance.show_card(true)
+	instance.z_index = DEFAULT_CARD_Z_INDEX
+	var from_pos = get_center(cardback_node)
+	instance.global_position = from_pos
+	var final_pos
+	if uid != PlayerInfoMgr.my_user_data.uid:
+		var player_node = get_player_node_by_uid(uid)
+		final_pos = player_node.global_position
+		tween.tween_property(instance, "global_position", final_pos, 0.3).set_delay(1)
+		tween.tween_callback(
+			func():
+				instance.queue_free()
+		)
+		return
+	
+	var l = len(list_my_cards)
+	if l > 0:
+		final_pos = list_my_cards[l - 1].global_position
+	else:
+		final_pos = Vector2(400, 600)
+	# Animate pos
+	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(1)
+	tween.parallel().tween_property(instance, "scale", Vector2(1, 1), 0.3).set_delay(1)
+	tween.tween_interval(0)
+	tween.tween_callback(
+		func():
+			list_my_cards.append(instance)
+			_update_my_card_positions()
+	)
+func _on_received_draw_card():
+	pass
+func get_center(node):
+	var scaled_size = node.size * node.scale
+	return node.global_position + (scaled_size / 2)

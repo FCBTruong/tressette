@@ -26,8 +26,10 @@ func set_user_data(user_dt: UserData) -> void:
 	var name_label = find_child('NameLb')  # Access the RichTextLabel
 	if name_label:
 		name_label.text = user_data.name
+	update_points_display()
+
+func update_points_display(effect_add = false):
 	score_lb.text = str(user_data.game_data.points)
-	
 	
 var user_info_gui: PackedScene = preload("res://scenes/guis/UserInfoGUI.tscn")
 

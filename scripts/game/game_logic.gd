@@ -31,6 +31,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_end_round(payload)
 		GameConstants.CMDs.NEW_ROUND:
 			_handle_new_round(payload)
+		GameConstants.CMDs.DRAW_CARD:
+			_handle_draw_card(payload)
 
 func _handle_user_leave_match(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
@@ -242,6 +244,11 @@ func _handle_end_round(payload: PackedByteArray):
 	card_win_id = pkg.get_win_card()
 	var points = pkg.get_user_points()
 	
+	var i = 0
+	for user in match_data.users:
+		user.game_data.points = points[i]
+		i += 1
+	
 	print('finish rounds...')
 	SceneManager.INSTANCES.BOARD_SCENE.on_finish_round()
 	reset_cards_compare()
@@ -250,5 +257,23 @@ func _handle_new_round(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.NewRound.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.current_turn = pkg.get_current_turn()
+
+
+func _handle_draw_card(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.DrawCard.new()
+	var result_code = pkg.from_bytes(payload)
+	var cards = pkg.get_cards()
+	var i = 0
+	var arr = []
+	for user in match_data.users:
+		user.game_data.cards.append(cards[i])
+		
+		var obj = {
+			'uid': user.uid,
+			'card': cards[i]
+		}
+		arr.append(obj)
+		i += 1
 	
-	print('handle_new_round', pkg._to_string())
+	SceneManager.INSTANCES.BOARD_SCENE.on_draw_cards(arr)
+	

@@ -1764,4 +1764,45 @@ class EndRound:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class DrawCard:
+	func _init():
+		var service
+		
+		_cards = PBField.new("cards", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 1, true, [])
+		service = PBServiceField.new()
+		service.field = _cards
+		data[_cards.tag] = service
+		
+	var data = {}
+	
+	var _cards: PBField
+	func get_cards() -> Array:
+		return _cards.value
+	func clear_cards() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_cards.value = []
+	func add_cards(value : int) -> void:
+		_cards.value.append(value)
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################
