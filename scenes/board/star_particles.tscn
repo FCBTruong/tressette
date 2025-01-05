@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcqkvqo75hdtc"]
+
+[ext_resource type="Texture2D" uid="uid://bdu7r3udca471" path="res://assets/images/star.png" id="1_xgdal"]
+
+[sub_resource type="Curve" id="Curve_xo2gi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.512968, 0.989474), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mxxu2"]
+curve = SubResource("Curve_xo2gi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ddc2t"]
+lifetime_randomness = 0.48
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(80, 80, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_mxxu2")
+
+[node name="StarParticles" type="GPUParticles2D"]
+position = Vector2(99, 94)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ddc2t")
+texture = ExtResource("1_xgdal")
+lifetime = 2.5

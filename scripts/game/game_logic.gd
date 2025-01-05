@@ -33,6 +33,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_new_round(payload)
 		GameConstants.CMDs.DRAW_CARD:
 			_handle_draw_card(payload)
+		GameConstants.CMDs.END_GAME:
+			_handle_end_game(payload)
 
 func _handle_user_leave_match(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
@@ -275,3 +277,7 @@ func _handle_draw_card(payload: PackedByteArray):
 	
 	SceneManager.INSTANCES.BOARD_SCENE.on_draw_cards(arr)
 	
+func _handle_end_game(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.EndGame.new()
+	var result_code = pkg.from_bytes(payload)
+	SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')
