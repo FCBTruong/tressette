@@ -167,9 +167,6 @@ func _get_my_card(id):
 	return null
 	
 func play_my_card(id: int):
-	if not game_logic.is_my_turn():
-		print('not your turn')
-		return
 	print("play_a_card", id)
 	var card = _get_my_card(id)
 	if not card:
@@ -211,6 +208,8 @@ func on_finish_round(delay = 0.5):
 			player_win_id = c.player_id
 			break
 	
+	if not card_win_node:
+		return 
 	# effect card_win
 	card_win_node.effect_win_card()
 			
@@ -243,10 +242,6 @@ func on_finish_round(delay = 0.5):
 	for player in list_players:
 		player.update_points_display(true)
 
-func _on_click_btn_play_card():
-	if _cur_focusing_card:
-		play_my_card(_cur_focusing_card.get_card_id())
-
 func _calculate_world_card_positions(number: int):
 	var list_pos = []
 	var p_center = Vector2(my_card_panel.size.x / 2, my_card_panel.size.y / 2)
@@ -277,7 +272,11 @@ func remove_all_current_cards():
 	list_my_cards.clear()
 
 func update_remain_cards():
-	remain_cards_lb.text = str(game_logic.match_data.remain_cards)
+	if game_logic.match_data.remain_cards == 0:
+		cardback_node.visible = false
+	else:
+		cardback_node.visible = true
+		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
 	
 func deal_my_cards(cards) -> void:	
 	var from_pos = cardback_node.global_position
@@ -321,10 +320,11 @@ func deal_my_cards(cards) -> void:
 	tween.tween_callback(set_process.bind(true))
 	tween.tween_property(self, "sine_offset_mult", anim_offset_y, 1.5).from(0.0)
 
-func play_card(user_id: int, card_id: int):
+func play_card(user_id: int, card_id: int, auto: bool = false):
 	print("user " + str(user_id) + "play_a_card", card_id)
 	if user_id == PlayerInfoMgr.my_user_data.uid:
-		play_my_card(card_id)
+		if auto:
+			play_my_card(card_id)
 		return
 
 	var card_instance = card_scene.instantiate()

@@ -1,6 +1,7 @@
 extends Node
 
 @export var _token:String = ''
+@export var timestamp_server_delta = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -32,3 +33,8 @@ func request_leave_game():
 	var pkg = GameConstants.PROTOBUF.PACKETS.LeaveGame.new()
 	GameClient.send_packet(GameConstants.CMDs.LEAVE_GAME, pkg.to_bytes())
 	
+func get_timestamp_server():
+	return Time.get_unix_time_from_system() + timestamp_server_delta
+	
+func set_timestamp_server_delta(del):
+	timestamp_server_delta = del # milliseconds

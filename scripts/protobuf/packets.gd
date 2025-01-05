@@ -1531,6 +1531,16 @@ class PlayCard:
 		service.field = _card_id
 		data[_card_id.tag] = service
 		
+		_auto = PBField.new("auto", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _auto
+		data[_auto.tag] = service
+		
+		_current_turn = PBField.new("current_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _current_turn
+		data[_current_turn.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1550,6 +1560,24 @@ class PlayCard:
 		_card_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_card_id(value : int) -> void:
 		_card_id.value = value
+	
+	var _auto: PBField
+	func get_auto() -> bool:
+		return _auto.value
+	func clear_auto() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_auto.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_auto(value : bool) -> void:
+		_auto.value = value
+	
+	var _current_turn: PBField
+	func get_current_turn() -> int:
+		return _current_turn.value
+	func clear_current_turn() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_current_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_current_turn(value : int) -> void:
+		_current_turn.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1783,6 +1811,47 @@ class DrawCard:
 		_cards.value = []
 	func add_cards(value : int) -> void:
 		_cards.value.append(value)
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class GeneralInfo:
+	func _init():
+		var service
+		
+		_timestamp = PBField.new("timestamp", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		service = PBServiceField.new()
+		service.field = _timestamp
+		data[_timestamp.tag] = service
+		
+	var data = {}
+	
+	var _timestamp: PBField
+	func get_timestamp() -> int:
+		return _timestamp.value
+	func clear_timestamp() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_timestamp.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
+	func set_timestamp(value : int) -> void:
+		_timestamp.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

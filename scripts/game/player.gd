@@ -5,6 +5,7 @@ extends Node
 @onready var empty_slot = find_child("EmptySlot")
 @onready var main_pn = find_child("MainPn")
 @onready var score_lb = find_child("ScoreLb")
+@onready var vortex = find_child("Vortex")
 func _ready() -> void:
 	pass
 
@@ -36,7 +37,7 @@ var user_info_gui: PackedScene = preload("res://scenes/guis/UserInfoGUI.tscn")
 func _open_user_info_gui():
 	SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
 	
-var timer_duration: float = 5.0  # Total duration of the timer in seconds
+var timer_duration: float = 10.0  # Total duration of the timer in seconds
 var elapsed_time: float = 0.0  # Tracks the elapsed time
 var running: bool = false
 
@@ -45,13 +46,21 @@ func start_timer():
 	elapsed_time = 0.0
 	running = true
 	time_progress_bar.value = 0
+	vortex.visible = true
 
 func _process(delta: float):
+	if self.user_data.uid == -1:
+		time_progress_bar.visible = false
+		vortex.visible = false
+		return
 	if GameConstants.game_logic.get_uid_in_turn() == self.user_data.uid:
-		time_progress_bar.visible = true
-		time_progress_bar.value = 100
+		if not running: 
+			start_timer()
 	else:
 		time_progress_bar.visible = false
+		vortex.visible = false
+		running = false
+		
 	if running:
 		elapsed_time += delta
 		if elapsed_time < timer_duration:
@@ -68,5 +77,8 @@ func get_user_data() -> UserData:
 	
 func end_timer():
 	time_progress_bar.visible = false
+	vortex.visible = false
 	running = false
 	print("Timer complete!")
+	
+	# send auto play to server

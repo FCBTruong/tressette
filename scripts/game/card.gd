@@ -20,6 +20,9 @@ func _ready() -> void:
 	main_pn.z_index = 1
 	
 func _on_touch_card() -> void:
+	if not GameConstants.game_logic.is_my_turn():
+		print('not your turn')
+		return
 	SceneManager.INSTANCES.BOARD_SCENE.play_my_card(id)
 	
 func set_state_focusing(focus = false) -> void:

@@ -52,6 +52,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var seat_server = pkg.get_seat_server()
+	var name = pkg.get_name()
 	print('seat server', seat_server)
 	var seat_id = seat_server - match_data.seat_delta
 	if seat_id < 0:
@@ -63,6 +64,8 @@ func _handle_user_join_match(payload: PackedByteArray):
 		if user.game_data.seat_id == seat_id:
 			# update info
 			user.uid = uid
+			user.name = name
+			
 	for user in match_data.users:
 		print('debug seat', user.game_data.seat_id)
 	
@@ -151,10 +154,13 @@ func _handle_play_card(payload: PackedByteArray):
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var card_id = pkg.get_card_id()
-	SceneManager.INSTANCES.BOARD_SCENE.play_card(uid, card_id)
+	var auto = pkg.get_auto()
+	match_data.current_turn = pkg.get_current_turn()
+	SceneManager.INSTANCES.BOARD_SCENE.play_card(uid, card_id, auto)
 	push_cards_compare(uid, card_id)
 
 func send_play_card(card_id: int):
+	match_data.current_turn = -1
 	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCard.new()
 	pkg.set_card_id(card_id)
 	GameClient.send_packet(GameConstants.CMDs.PLAY_CARD, pkg.to_bytes())
@@ -173,14 +179,6 @@ func push_cards_compare(uid, card_id):
 	var idx = get_index_by_uid(uid)
 	match_data.cards_compare[idx] = card_id
 	
-	var finished_round = check_finish_round()
-	if finished_round:
-		match_data.current_turn = -1
-	else:
-		# update current turn
-		var next_turn = match_data.current_turn + 1
-		match_data.current_turn = next_turn % len(match_data.users)
-	
 func get_my_cards():
 	for user in match_data.users:
 		if user.uid == PlayerInfoMgr.my_user_data.uid:
@@ -190,7 +188,7 @@ func get_my_cards():
 func _start_game(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.StartGame.new()
 	var result_code = pkg.from_bytes(payload)
-	current_turn = 0
+	current_turn = -1
 	match_data.state = MatchData.MATCH_STATE.PLAYING
 	reset_cards_compare()
 
