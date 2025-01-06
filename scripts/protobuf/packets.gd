@@ -1878,21 +1878,63 @@ class EndGame:
 	func _init():
 		var service
 		
-		_points = PBField.new("points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 1, true, [])
+		_win_uids = PBField.new("win_uids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 1, true, [])
 		service = PBServiceField.new()
-		service.field = _points
-		data[_points.tag] = service
+		service.field = _win_uids
+		data[_win_uids.tag] = service
+		
+		_score_cards = PBField.new("score_cards", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 2, true, [])
+		service = PBServiceField.new()
+		service.field = _score_cards
+		data[_score_cards.tag] = service
+		
+		_score_last_tricks = PBField.new("score_last_tricks", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _score_last_tricks
+		data[_score_last_tricks.tag] = service
+		
+		_score_totals = PBField.new("score_totals", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 4, true, [])
+		service = PBServiceField.new()
+		service.field = _score_totals
+		data[_score_totals.tag] = service
 		
 	var data = {}
 	
-	var _points: PBField
-	func get_points() -> Array:
-		return _points.value
-	func clear_points() -> void:
+	var _win_uids: PBField
+	func get_win_uids() -> Array:
+		return _win_uids.value
+	func clear_win_uids() -> void:
 		data[1].state = PB_SERVICE_STATE.UNFILLED
-		_points.value = []
-	func add_points(value : int) -> void:
-		_points.value.append(value)
+		_win_uids.value = []
+	func add_win_uids(value : int) -> void:
+		_win_uids.value.append(value)
+	
+	var _score_cards: PBField
+	func get_score_cards() -> Array:
+		return _score_cards.value
+	func clear_score_cards() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_score_cards.value = []
+	func add_score_cards(value : int) -> void:
+		_score_cards.value.append(value)
+	
+	var _score_last_tricks: PBField
+	func get_score_last_tricks() -> Array:
+		return _score_last_tricks.value
+	func clear_score_last_tricks() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_score_last_tricks.value = []
+	func add_score_last_tricks(value : int) -> void:
+		_score_last_tricks.value.append(value)
+	
+	var _score_totals: PBField
+	func get_score_totals() -> Array:
+		return _score_totals.value
+	func clear_score_totals() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_score_totals.value = []
+	func add_score_totals(value : int) -> void:
+		_score_totals.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

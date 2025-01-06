@@ -4,6 +4,7 @@ extends RefCounted
 var match_data: MatchData = null
 var current_turn = 0
 var card_win_id: int
+var match_result = MatchData.MatchResult.new()
 
 func get_list_player() -> Array[UserData]:
 	return match_data.users
@@ -280,4 +281,19 @@ func _handle_draw_card(payload: PackedByteArray):
 func _handle_end_game(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.EndGame.new()
 	var result_code = pkg.from_bytes(payload)
+	var win_uids = pkg.get_win_uids()
+	var score_cards = pkg.get_score_cards()
+	var score_last_tricks = pkg.get_score_last_tricks()
+	var score_totals = pkg.get_score_totals()
+	match_result = MatchData.MatchResult.new()
+	match_result.is_win = PlayerInfoMgr.my_user_data.uid in win_uids
+	
+	match_result.scores = []
+	for i in range(len(match_data.users)):
+		var score_data = MatchData.MatchResultScore.new()
+		score_data.score_card = score_cards[i]
+		score_data.score_last_trick = score_last_tricks[i]
+		score_data.score_total = score_totals[i]
+		match_result.scores.append(score_data)
+		
 	SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')

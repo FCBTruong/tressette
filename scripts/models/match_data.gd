@@ -19,3 +19,16 @@ enum MATCH_STATE {
 	
 func print_info():
 	pass
+
+
+class MatchResult:
+	var is_win: bool = false
+	var scores = [
+		MatchResultScore.new(),
+		MatchResultScore.new()
+	]
+
+class MatchResultScore:
+	var score_card = 1
+	var score_last_trick = 0
+	var score_total = 0
