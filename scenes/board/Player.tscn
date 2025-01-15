@@ -80,15 +80,13 @@ vertical_alignment = 1
 layout_mode = 1
 
 [node name="ScoreLb" type="Label" parent="MainPn"]
+visible = false
 layout_mode = 0
 offset_left = 83.0
 offset_top = 1.0
 offset_right = 123.0
 offset_bottom = 24.0
 text = "10"
-
-[node name="PlaceCard0" type="Node2D" parent="MainPn/ScoreLb"]
-position = Vector2(42, 188)
 
 [node name="TimeProgressBar" type="TextureProgressBar" parent="MainPn"]
 self_modulate = Color(0.618377, 1, 0.652441, 1)

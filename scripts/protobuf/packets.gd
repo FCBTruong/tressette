@@ -1166,6 +1166,16 @@ class GameInfo:
 		service.field = _user_points
 		data[_user_points.tag] = service
 		
+		_team_ids = PBField.new("team_ids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 13, true, [])
+		service = PBServiceField.new()
+		service.field = _team_ids
+		data[_team_ids.tag] = service
+		
+		_hand_suit = PBField.new("hand_suit", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 14, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _hand_suit
+		data[_hand_suit.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1276,6 +1286,24 @@ class GameInfo:
 	func add_user_points(value : int) -> void:
 		_user_points.value.append(value)
 	
+	var _team_ids: PBField
+	func get_team_ids() -> Array:
+		return _team_ids.value
+	func clear_team_ids() -> void:
+		data[13].state = PB_SERVICE_STATE.UNFILLED
+		_team_ids.value = []
+	func add_team_ids(value : int) -> void:
+		_team_ids.value.append(value)
+	
+	var _hand_suit: PBField
+	func get_hand_suit() -> int:
+		return _hand_suit.value
+	func clear_hand_suit() -> void:
+		data[14].state = PB_SERVICE_STATE.UNFILLED
+		_hand_suit.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_hand_suit(value : int) -> void:
+		_hand_suit.value = value
+	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
 		
@@ -1362,6 +1390,11 @@ class NewUserJoinMatch:
 		service.field = _seat_server
 		data[_seat_server.tag] = service
 		
+		_team_id = PBField.new("team_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _team_id
+		data[_team_id.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1399,6 +1432,15 @@ class NewUserJoinMatch:
 		_seat_server.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_seat_server(value : int) -> void:
 		_seat_server.value = value
+	
+	var _team_id: PBField
+	func get_team_id() -> int:
+		return _team_id.value
+	func clear_team_id() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_team_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_team_id(value : int) -> void:
+		_team_id.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1541,6 +1583,11 @@ class PlayCard:
 		service.field = _current_turn
 		data[_current_turn.tag] = service
 		
+		_hand_suit = PBField.new("hand_suit", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _hand_suit
+		data[_hand_suit.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1578,6 +1625,15 @@ class PlayCard:
 		_current_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_current_turn(value : int) -> void:
 		_current_turn.value = value
+	
+	var _hand_suit: PBField
+	func get_hand_suit() -> int:
+		return _hand_suit.value
+	func clear_hand_suit() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_hand_suit.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_hand_suit(value : int) -> void:
+		_hand_suit.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1627,7 +1683,7 @@ class StartGame:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
-class NewRound:
+class NewHand:
 	func _init():
 		var service
 		
@@ -1723,7 +1779,7 @@ class UpdateGamePoint:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
-class EndRound:
+class EndHand:
 	func _init():
 		var service
 		

@@ -4,6 +4,8 @@ extends RefCounted
 var match_data: MatchData = null
 var current_turn = 0
 var card_win_id: int
+var hand_suit = -1 # current hand suit need to follow
+var my_idx = 0 # in list users
 var match_result = MatchData.MatchResult.new()
 
 func get_list_player() -> Array[UserData]:
@@ -28,10 +30,10 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_play_card(payload)
 		GameConstants.CMDs.START_GAME:
 			_start_game(payload)
-		GameConstants.CMDs.END_ROUND:
-			_handle_end_round(payload)
-		GameConstants.CMDs.NEW_ROUND:
-			_handle_new_round(payload)
+		GameConstants.CMDs.END_HAND:
+			_handle_endhand(payload)
+		GameConstants.CMDs.NEW_HAND:
+			_handle_newhand(payload)
 		GameConstants.CMDs.DRAW_CARD:
 			_handle_draw_card(payload)
 		GameConstants.CMDs.END_GAME:
@@ -56,6 +58,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 	var uid = pkg.get_uid()
 	var seat_server = pkg.get_seat_server()
 	var name = pkg.get_name()
+	var team_id = pkg.get_team_id()
 	print('seat server', seat_server)
 	var seat_id = seat_server - match_data.seat_delta
 	if seat_id < 0:
@@ -68,6 +71,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 			# update info
 			user.uid = uid
 			user.name = name
+			user.game_data.team_id = team_id
 			
 	for user in match_data.users:
 		print('debug seat', user.game_data.seat_id)
@@ -94,6 +98,7 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.state = pkg.get_game_state()
 	match_data.current_turn = pkg.get_current_turn()
 	match_data.remain_cards = pkg.get_remain_cards()
+	self.hand_suit = pkg.get_hand_suit()
 	
 	var compare = pkg.get_cards_compare()
 	for c in compare:
@@ -104,14 +109,16 @@ func _handle_game_info(payload: PackedByteArray):
 	var user_names = pkg.get_user_names()
 	var golds = pkg.get_user_golds()
 	var user_points = pkg.get_user_points()
+	var team_ids = pkg.get_team_ids()
 	
 	var users: Array[UserData] = []
 	
-	var my_idx = -1
+	my_idx = -1
 	for i in range(len(uids)):
 		var uid = uids[i]
 		var userdata = UserData.new(uid, user_names[i])
 		userdata.game_data.points = user_points[i]
+		userdata.game_data.team_id = team_ids[i]
 		users.append(userdata)
 		if uid == PlayerInfoMgr.my_user_data.uid:
 			my_idx = i
@@ -158,6 +165,7 @@ func _handle_play_card(payload: PackedByteArray):
 	var uid = pkg.get_uid()
 	var card_id = pkg.get_card_id()
 	var auto = pkg.get_auto()
+	self.hand_suit = pkg.get_hand_suit()
 	match_data.current_turn = pkg.get_current_turn()
 	SceneManager.INSTANCES.BOARD_SCENE.play_card(uid, card_id, auto)
 	push_cards_compare(uid, card_id)
@@ -195,7 +203,7 @@ func _start_game(payload: PackedByteArray):
 	match_data.state = MatchData.MATCH_STATE.PLAYING
 	reset_cards_compare()
 
-func check_finish_round():
+func check_finishhand():
 	print('cards compares', match_data.cards_compare)
 	for c in match_data.cards_compare:
 		if c == -1:
@@ -234,12 +242,12 @@ func _update_my_cards(card_ids):
 		if player.uid == PlayerInfoMgr.my_user_data.uid:
 			player.game_data.cards = card_ids
 			
-func get_card_win_in_round():
+func get_card_win_inhand():
 	return card_win_id
 	return match_data.cards_compare[0]
 
-func _handle_end_round(payload: PackedByteArray):
-	var pkg = GameConstants.PROTOBUF.PACKETS.EndRound.new()
+func _handle_endhand(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.EndHand.new()
 	var result_code = pkg.from_bytes(payload)
 	var win_uid = pkg.get_win_uid()
 	card_win_id = pkg.get_win_card()
@@ -251,13 +259,16 @@ func _handle_end_round(payload: PackedByteArray):
 		i += 1
 	
 	print('finish rounds...')
-	SceneManager.INSTANCES.BOARD_SCENE.on_finish_round()
+	SceneManager.INSTANCES.BOARD_SCENE.on_finishhand()
 	reset_cards_compare()
 	
-func _handle_new_round(payload: PackedByteArray):
-	var pkg = GameConstants.PROTOBUF.PACKETS.NewRound.new()
+func _handle_newhand(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.NewHand.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.current_turn = pkg.get_current_turn()
+	print('new hand: ', match_data.current_turn)
+	
+	self.hand_suit = -1
 
 
 func _handle_draw_card(payload: PackedByteArray):
@@ -297,3 +308,19 @@ func _handle_end_game(payload: PackedByteArray):
 		match_result.scores.append(score_data)
 		
 	SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')
+
+func get_my_team_score() -> int:
+	var c = 0
+	var my_team_id = match_data.users[my_idx].game_data.team_id
+	for u in match_data.users:
+		if u.game_data.team_id == my_team_id:
+			c += u.game_data.points
+	return c
+
+func get_opponent_team_score() -> int:
+	var c = 0
+	var my_team_id = match_data.users[my_idx].game_data.team_id
+	for u in match_data.users:
+		if u.game_data.team_id != my_team_id:
+			c += u.game_data.points
+	return c

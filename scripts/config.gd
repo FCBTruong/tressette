@@ -5,14 +5,16 @@ extends Node
 
 enum MODES { LOCAL, PRIVATE, LIVE }
 
-@export var CURRENT_MODE: int = MODES.PRIVATE
+@export var CURRENT_MODE: int = MODES.LOCAL
 
 var WEBSOCKET_URL: String
 
 func _ready():
 	if CURRENT_MODE == MODES.PRIVATE:
 			WEBSOCKET_URL = "ws://game-dev-bl-1488570784.ap-southeast-1.elb.amazonaws.com/ws"
-	else:
+	elif CURRENT_MODE == MODES.LOCAL:
 		WEBSOCKET_URL = "ws://%s:%s/ws" % [SERVER_IP, SERVER_PORT]
+	else:
+		WEBSOCKET_URL = ""
 
 	print("WebSocket URL: %s" % WEBSOCKET_URL)

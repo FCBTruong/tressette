@@ -30,7 +30,8 @@ func set_user_data(user_dt: UserData) -> void:
 	update_points_display()
 
 func update_points_display(effect_add = false):
-	score_lb.text = str(user_data.game_data.points)
+	pass
+	#score_lb.text = str(user_data.game_data.points)
 	
 var user_info_gui: PackedScene = preload("res://scenes/guis/UserInfoGUI.tscn")
 
@@ -65,7 +66,7 @@ func _process(delta: float):
 		elapsed_time += delta
 		if elapsed_time < timer_duration:
 			# Update progress bar value based on elapsed time
-			time_progress_bar.value = elapsed_time / timer_duration * 100
+			time_progress_bar.value = (timer_duration - elapsed_time) / timer_duration * 100
 		else:
 			# Ensure progress bar is full and end the timer
 			time_progress_bar.value = 100

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=10 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_sor57"]
 [ext_resource type="Texture2D" uid="uid://bubgo5uxgpt3i" path="res://assets/images/left-arrow_10117838.png" id="3_70m1f"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
 [ext_resource type="Texture2D" uid="uid://ki8x4sty35jl" path="res://assets/images/cards/card_back.png" id="5_m272p"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
@@ -19,6 +20,11 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th6m6"]
+bg_color = Color(0.242957, 0.357438, 0.141108, 0.816)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="BoardScene" type="Node2D"]
 script = ExtResource("1_th5x2")
@@ -110,9 +116,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -300.0
-offset_top = -245.0
+offset_top = -178.0
 offset_right = 300.0
-offset_bottom = 55.0
+offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -152,7 +158,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 14.0
+offset_top = -43.0
 offset_right = 14.0
+offset_bottom = -43.0
 grow_vertical = 0
 
 [node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
@@ -238,6 +246,70 @@ position = Vector2(40, 75)
 
 [node name="PlaceCard0" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 position = Vector2(40, 195)
+
+[node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround"]
+layout_mode = 0
+offset_left = 483.0
+offset_right = 683.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_th6m6")
+
+[node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -24.0
+offset_right = -13.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.122525, 0.744392, 0.281657, 1)
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 40
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -24.0
+offset_right = 74.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.886954, 0.15474, 0.15474, 1)
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 40
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackBtn" type="Button" parent="CanvasLayer"]
 offset_left = 23.0

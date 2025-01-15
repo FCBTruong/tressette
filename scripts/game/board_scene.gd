@@ -23,6 +23,8 @@ var cards_node_compare = []
 @onready var place_card2 = find_child('PlaceCard2')
 @onready var place_card3 = find_child('PlaceCard3')
 @onready var remain_cards_lb = find_child('RemainCardsLb')
+@onready var my_score_lb = find_child('MyScoreLb')
+@onready var opponent_score_lb = find_child('OpponentScoreLb')
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 11
 const WIN_CARD_Z_INDEX = 12
@@ -73,8 +75,10 @@ func _on_enter():
 			list_my_cards.append(instance)
 			instance.global_position = list_pos_des[i]
 			
-		if game_logic.check_finish_round():
-			on_finish_round()
+		if game_logic.check_finishhand():
+			on_finishhand()
+			
+	self.update_team_scores()
 	
 func on_update_players():
 	var players_info = game_logic.get_list_player()
@@ -193,10 +197,10 @@ func play_my_card(id: int):
 	list_my_cards.erase(card)
 	_update_my_card_positions()
 
-func on_finish_round(delay = 0.5):
+func on_finishhand(delay = 0.5):
 	#for card in cards_node_compare:
 		#card.visible = false
-	var card_win_id = game_logic.get_card_win_in_round()
+	var card_win_id = game_logic.get_card_win_inhand()
 	
 	# show effect
 	var card_win_node = null
@@ -241,6 +245,13 @@ func on_finish_round(delay = 0.5):
 	
 	for player in list_players:
 		player.update_points_display(true)
+	self.update_team_scores()
+		
+func update_team_scores():
+	var my_score = game_logic.get_my_team_score()
+	var opponent_score = game_logic.get_opponent_team_score()
+	my_score_lb.text = str(my_score)
+	opponent_score_lb.text = str(opponent_score)
 
 func _calculate_world_card_positions(number: int):
 	var list_pos = []
