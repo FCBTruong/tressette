@@ -12,7 +12,7 @@ func _ready():
 	connect_to_server()
 	
 func connect_to_server():
-	var websocket_url = "ws://%s:%s/ws" % [Config.SERVER_IP, Config.SERVER_PORT]
+	var websocket_url = Config.WEBSOCKET_URL
 	# Initiate connection to the given URL
 	var err = socket.connect_to_url(websocket_url)
 	if err != OK:
