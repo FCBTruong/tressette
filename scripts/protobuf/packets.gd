@@ -2013,4 +2013,45 @@ class EndGame:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class PrepareStartGame:
+	func _init():
+		var service
+		
+		_time_start = PBField.new("time_start", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _time_start
+		data[_time_start.tag] = service
+		
+	var data = {}
+	
+	var _time_start: PBField
+	func get_time_start() -> int:
+		return _time_start.value
+	func clear_time_start() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_time_start.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_time_start(value : int) -> void:
+		_time_start.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

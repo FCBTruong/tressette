@@ -113,3 +113,11 @@ func effect_win_card():
 	var tween = create_tween()
 	tween.tween_property(instance, "rotation_degrees", 360, 1.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)  
 	tween.finished.connect(func(): instance.queue_free())
+
+func update_state_can_play(is_valid: bool):
+	if is_valid:
+		main_pn.modulate = Color(1, 1, 1)  # RGB values for red
+		pass
+	else:
+		main_pn.modulate = Color('585151')  # RGB values for red
+		pass

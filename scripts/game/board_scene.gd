@@ -25,6 +25,7 @@ var cards_node_compare = []
 @onready var remain_cards_lb = find_child('RemainCardsLb')
 @onready var my_score_lb = find_child('MyScoreLb')
 @onready var opponent_score_lb = find_child('OpponentScoreLb')
+@onready var countdown_start_lb = find_child('CountdownStartLb')
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 11
 const WIN_CARD_Z_INDEX = 12
@@ -39,8 +40,9 @@ func _ready() -> void:
 	my_card_panel = find_child('MyCardPanel')
 	play_ground = find_child('PlayGround')
 	place_card_node = find_child('PlaceCard1')
-
+	countdown_start_lb.visible = false
 	_on_enter()
+	#show_prepare_start()
 	
 func _on_enter():
 	on_update_players()
@@ -131,7 +133,18 @@ func _get_seat_position(mode_player: int, seat_id: int):
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	for c in list_my_cards:
+		c.update_state_can_play(true)
+	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
+		if game_logic.is_my_turn():
+			for c in list_my_cards:
+				var is_valid_play = game_logic.check_valid_card_play(c.id)
+				c.update_state_can_play(is_valid_play)
+	
+	if countdown_timer:
+		countdown_start_lb.text = str(ceil(countdown_timer.time_left))
+		if countdown_timer.time_left <= 0:
+			countdown_start_lb.visible = false
 
 func back_to_lobby() -> void:
 	GameManager.request_leave_game()
@@ -172,6 +185,10 @@ func _get_my_card(id):
 	
 func play_my_card(id: int):
 	print("play_a_card", id)
+	var valid_card = game_logic.check_valid_card_play(id)
+	if not valid_card:
+		print('card not valid suit')
+		return 
 	var card = _get_my_card(id)
 	if not card:
 		print('not found card')
@@ -435,3 +452,14 @@ func _on_received_draw_card():
 func get_center(node):
 	var scaled_size = node.size * node.scale
 	return node.global_position + (scaled_size / 2)
+
+# Countdown duration and initial value
+var countdown_value: int = 3
+@onready var countdown_timer: Timer = find_child('CountdownTimer')
+
+func show_prepare_start():
+	print('show_prepare_start')
+	countdown_start_lb.visible = true
+	countdown_timer.start()
+	# count from 3 -> 2 -> 1 -> 0 and disappear
+	pass

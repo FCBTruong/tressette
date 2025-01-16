@@ -2,7 +2,6 @@ class_name GameLogic
 extends RefCounted
 
 var match_data: MatchData = null
-var current_turn = 0
 var card_win_id: int
 var hand_suit = -1 # current hand suit need to follow
 var my_idx = 0 # in list users
@@ -38,6 +37,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_draw_card(payload)
 		GameConstants.CMDs.END_GAME:
 			_handle_end_game(payload)
+		GameConstants.CMDs.PREPARE_START_GAME:
+			_handle_prepare_start(payload)
 
 func _handle_user_leave_match(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
@@ -199,7 +200,6 @@ func get_my_cards():
 func _start_game(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.StartGame.new()
 	var result_code = pkg.from_bytes(payload)
-	current_turn = -1
 	match_data.state = MatchData.MATCH_STATE.PLAYING
 	reset_cards_compare()
 
@@ -223,7 +223,7 @@ func reset_cards_compare():
 		match_data.cards_compare.append(-1)
 
 func is_my_turn():
-	print('is_my_turn ', match_data.current_turn)
+	#print('is_my_turn ', match_data.current_turn)
 	if match_data.current_turn == -1:
 		return false
 	var uid_inturn = match_data.users[match_data.current_turn].uid
@@ -238,10 +238,30 @@ func get_uid_in_turn():
 	return match_data.users[match_data.current_turn].uid
 	
 func _update_my_cards(card_ids):
+	card_ids.sort_custom(_card_sorter)
+	# sort card ids by suits and rank tressette
 	for player in match_data.users:
 		if player.uid == PlayerInfoMgr.my_user_data.uid:
 			player.game_data.cards = card_ids
-			
+
+func _card_sorter(a: int, b: int) -> bool:
+	var suit_a = a % 4  # Suit of card a
+	var suit_b = b % 4  # Suit of card b
+
+	# First, compare by suit (mod 4)
+	if suit_a < suit_b:
+		return false
+	elif suit_a > suit_b:
+		return true
+
+	# If suits are the same, compare by card ID (optional)
+	if a < b:
+		return false
+	elif a > b:
+		return true
+
+	return false
+	
 func get_card_win_inhand():
 	return card_win_id
 	return match_data.cards_compare[0]
@@ -309,6 +329,13 @@ func _handle_end_game(payload: PackedByteArray):
 		
 	SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')
 
+func _handle_prepare_start(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.PrepareStartGame.new()
+	var result_code = pkg.from_bytes(payload)
+	var time_start = pkg.get_time_start()
+	await SceneManager.get_tree().create_timer(0.5).timeout
+	SceneManager.INSTANCES.BOARD_SCENE.show_prepare_start()
+	
 func get_my_team_score() -> int:
 	var c = 0
 	var my_team_id = match_data.users[my_idx].game_data.team_id
@@ -318,9 +345,31 @@ func get_my_team_score() -> int:
 	return c
 
 func get_opponent_team_score() -> int:
+	#SignalBus.update_current_turn.emit()
 	var c = 0
 	var my_team_id = match_data.users[my_idx].game_data.team_id
 	for u in match_data.users:
 		if u.game_data.team_id != my_team_id:
 			c += u.game_data.points
 	return c
+
+func check_valid_card_play(card_id):
+	if self.hand_suit == -1:
+		return true
+	var suit = card_id % 4
+	if suit == self.hand_suit:
+		return true
+	
+	# get my cards
+	var user = self.match_data.users[my_idx]
+	var my_cards = user.game_data.cards
+	for c in my_cards:
+		var c_suit = c % 4
+		if c_suit == self.hand_suit:
+			# because you have a card with that suit -> must play
+			return false
+			
+	return true
+	
+
+	

@@ -13,4 +13,5 @@ func _process(delta: float) -> void:
 func _click_ok():
 	WebsocketClient.connect_to_server()
 	self.get_parent().remove_child(self)
+	SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
 	pass
