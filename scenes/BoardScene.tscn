@@ -248,11 +248,16 @@ position = Vector2(40, 75)
 position = Vector2(40, 195)
 
 [node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround"]
-layout_mode = 0
-offset_left = 483.0
-offset_right = 683.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
 offset_bottom = 80.0
+grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_th6m6")
+metadata/_edit_use_anchors_ = true
 
 [node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
 layout_mode = 1

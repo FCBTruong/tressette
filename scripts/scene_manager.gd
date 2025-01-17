@@ -22,6 +22,15 @@ func switch_scene(new_scene_path: String) -> void:
 	else:
 		print("Loaded scene:", new_scene_path)
 		
+	if Config.CURRENT_MODE != Config.MODES.LIVE:
+		# Wait for the scene to be ready
+		await get_tree().process_frame
+		var current_scene = get_tree().get_current_scene()
+		if current_scene:
+			var gui = load('res://scenes/DevGUI.tscn')
+			var popup_instance = gui.instantiate()
+			current_scene.add_child(popup_instance)
+		
 func open_gui(gui_path: String) -> void:
 	var current_scene = get_tree().get_current_scene()
 	if current_scene:

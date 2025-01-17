@@ -41,5 +41,5 @@ const CMDs = {
 }
 
 const PROTOBUF = {
-	PACKETS = preload("res://scripts/protobuf/Packets.gd")
+	PACKETS = preload("res://scripts/protobuf/packets.gd")
 }
