@@ -2,6 +2,7 @@ extends Node
 
 @export var _token:String = ''
 @export var timestamp_server_delta = 0
+@export var enable_sound = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

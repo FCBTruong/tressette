@@ -1,22 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvggiqkn2bjut"]
+[gd_scene load_steps=9 format=3 uid="uid://dvggiqkn2bjut"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_phee0"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_2fpyj"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_riqo0"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="3_tw46g"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="4_40e2j"]
+[ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="5_6p0k0"]
 [ext_resource type="Texture2D" uid="uid://c7t46btjgrrjc" path="res://assets/images/board/user.png" id="6_l3lsr"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="6_lqmp5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cubyn"]
-bg_color = Color(0.197288, 0.516972, 0.317409, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.473, 0.785, 0.521956, 0.822)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjdqh"]
+bg_color = Color(0.0994691, 0.0788446, 0.0788446, 0.797)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Player" type="Node2D"]
 position = Vector2(465, 470)
@@ -57,6 +54,7 @@ offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjdqh")
 
 [node name="NameLb" type="Label" parent="MainPn/Panel"]
 layout_mode = 1
@@ -65,12 +63,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
+offset_left = -50.0
 offset_top = -15.0
-offset_right = 75.0
+offset_right = 50.0
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_riqo0")
 theme_override_font_sizes/font_size = 18
 text = "Truong"
 horizontal_alignment = 1
@@ -89,44 +88,57 @@ offset_bottom = 24.0
 text = "10"
 
 [node name="TimeProgressBar" type="TextureProgressBar" parent="MainPn"]
-self_modulate = Color(0.618377, 1, 0.652441, 1)
+self_modulate = Color(1, 0.888832, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -75.0
-offset_right = 75.0
-offset_bottom = 75.0
+offset_left = -89.0
+offset_top = -89.0
+offset_right = 111.0
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.55, 0.55)
 pivot_offset = Vector2(75, 75)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 step = 0.001
-value = 80.0
-fill_mode = 4
-texture_progress = ExtResource("4_40e2j")
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("5_6p0k0")
 
-[node name="EmptySlot" type="Panel" parent="."]
+[node name="EmptySlot" type="Control" parent="."]
+visible = false
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cubyn")
+
+[node name="TextureRect2" type="TextureRect" parent="EmptySlot"]
+modulate = Color(0.452479, 0.452479, 0.452479, 0.694)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_lqmp5")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="EmptySlot"]
-modulate = Color(1, 1, 1, 0.487)
+modulate = Color(0.522619, 0.62559, 0.531533, 0.651)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -140,3 +152,14 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_l3lsr")
+
+[node name="TextureRect3" type="TextureRect" parent="EmptySlot"]
+modulate = Color(0.184327, 0.126106, 0.135525, 0.76)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_6p0k0")
+expand_mode = 1

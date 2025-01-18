@@ -26,6 +26,8 @@ var cards_node_compare = []
 @onready var my_score_lb = find_child('MyScoreLb')
 @onready var opponent_score_lb = find_child('OpponentScoreLb')
 @onready var countdown_start_lb = find_child('CountdownStartLb')
+@onready var room_id_lb = find_child('RoomIdLb')
+@onready var pn_cheat = find_child('PnCheat')
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 11
 const WIN_CARD_Z_INDEX = 12
@@ -47,6 +49,8 @@ func _ready() -> void:
 func _on_enter():
 	on_update_players()
 	update_remain_cards()
+	pn_cheat.visible = false #Config.CURRENT_MODE != Config.MODES.LIVE
+	room_id_lb.text = 'ROOM ID: ' + str(game_logic.match_data.match_id)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		# case reconnect
 		# update cards compare
@@ -133,6 +137,7 @@ func _get_seat_position(mode_player: int, seat_id: int):
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	game_logic.update()
 	for c in list_my_cards:
 		c.update_state_can_play(true)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
@@ -193,7 +198,8 @@ func play_my_card(id: int):
 	if not card:
 		print('not found card')
 		return
-	
+	if GameManager.enable_sound:
+		$AudioPlayCard.play()
 	card.is_played = true
 	card.z_index = COMPARE_CARD_Z_INDEX
 	card.player_id = PlayerInfoMgr.my_user_data.uid
@@ -236,6 +242,9 @@ func on_finishhand(delay = 0.5):
 			
 	if not player_win_id:
 		return
+	if player_win_id == PlayerInfoMgr.my_user_data.uid:
+		if GameManager.enable_sound:
+			$AudioWinTurn.play()
 	
 	# effect move to cards win
 	var player_node = get_player_node_by_uid(player_win_id)
@@ -307,6 +316,9 @@ func update_remain_cards():
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
 	
 func deal_my_cards(cards) -> void:	
+	update_remain_cards()
+	if GameManager.enable_sound:
+		$AudioShuffleDealCard.play()
 	var from_pos = cardback_node.global_position
 	remove_all_current_cards()
 	list_my_cards = []
@@ -354,6 +366,8 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 		if auto:
 			play_my_card(card_id)
 		return
+	if GameManager.enable_sound:
+		$AudioPlayCard.play()
 
 	var card_instance = card_scene.instantiate()
 	play_ground.add_child(card_instance)
@@ -409,9 +423,17 @@ func on_draw_cards(arr):
 		var uid = obj['uid']
 		var card_id = obj['card']
 		_effect_draw_card(uid, card_id)
+		game_logic.match_data.remain_cards -= 1
+		update_remain_cards()
 		await get_tree().create_timer(1.75).timeout
-		
+
+func play_sound_my_turn():
+	if GameManager.enable_sound:
+		$AudioYourTurn.play()
+			
 func _effect_draw_card(uid, card_id):
+	if GameManager.enable_sound:
+		$AudioDrawCard.play()
 	var tween = create_tween()
 	var instance = card_scene.instantiate()
 	play_ground.add_child(instance)
@@ -463,3 +485,6 @@ func show_prepare_start():
 	countdown_timer.start()
 	# count from 3 -> 2 -> 1 -> 0 and disappear
 	pass
+
+func exit_game():
+	SceneManager.switch_scene("res://scenes/LobbyScene.tscn")

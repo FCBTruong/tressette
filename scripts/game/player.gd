@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass
 
 # Properties
-var user_data
+var user_data: UserData
 
 
 # Function to update properties
@@ -43,6 +43,8 @@ var elapsed_time: float = 0.0  # Tracks the elapsed time
 var running: bool = false
 
 func start_timer():
+	if self.user_data.uid == PlayerInfoMgr.my_user_data.uid:
+		SceneManager.INSTANCES.BOARD_SCENE.play_sound_my_turn()
 	time_progress_bar.visible = true
 	elapsed_time = 0.0
 	running = true
@@ -79,6 +81,7 @@ func get_user_data() -> UserData:
 func end_timer():
 	time_progress_bar.visible = false
 	vortex.visible = false
+	await get_tree().create_timer(1).timeout
 	running = false
 	print("Timer complete!")
 	

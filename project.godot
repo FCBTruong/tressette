@@ -29,6 +29,8 @@ SignalBus="*res://scripts/signal_bus.gd"
 
 [display]
 
+window/size/viewport_width=1300
+window/size/viewport_height=600
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

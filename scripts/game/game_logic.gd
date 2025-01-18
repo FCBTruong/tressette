@@ -44,13 +44,16 @@ func _handle_user_leave_match(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
+	var board_scene: BoardScene = SceneManager.INSTANCES.BOARD_SCENE
+	if uid == PlayerInfoMgr.my_user_data.uid:
+		board_scene.exit_game()
+		return
 	for user in match_data.users:
 		if user.uid == uid:
 			# update info
 			user.uid = -1
 	
 	# reload
-	var board_scene: BoardScene = SceneManager.INSTANCES.BOARD_SCENE
 	board_scene.on_update_players()
 	
 func _handle_user_join_match(payload: PackedByteArray):
@@ -183,9 +186,6 @@ func send_play_card(card_id: int):
 	match_data.users[idx].game_data.cards.erase(card_id)
 	
 	push_cards_compare(PlayerInfoMgr.my_user_data.uid, card_id)
-	if match_data.remain_cards > 0:
-		match_data.remain_cards -= 1
-		SceneManager.INSTANCES.BOARD_SCENE.update_remain_cards()
 	
 func push_cards_compare(uid, card_id):
 	var idx = get_index_by_uid(uid)
@@ -370,6 +370,11 @@ func check_valid_card_play(card_id):
 			return false
 			
 	return true
+	
+func update():
+	# handle logic every frame
+	if match_data.state == MatchData.MATCH_STATE.PLAYING:
+		pass
 	
 
 	

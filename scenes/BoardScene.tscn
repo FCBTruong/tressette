@@ -1,12 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=20 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_sor57"]
-[ext_resource type="Texture2D" uid="uid://bubgo5uxgpt3i" path="res://assets/images/left-arrow_10117838.png" id="3_70m1f"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
+[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_snlll"]
 [ext_resource type="Texture2D" uid="uid://ki8x4sty35jl" path="res://assets/images/cards/card_back.png" id="5_m272p"]
+[ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
+[ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="8_afrgf"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
+[ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
+[ext_resource type="AudioStream" uid="uid://c2xavtkvg1e1f" path="res://assets/sounds/shuffle_dealcard.mp3" id="9_5p4s2"]
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
+[ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="9_g7ymd"]
+[ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="9_ujbxy"]
+[ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="11_mpmvk"]
+[ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="12_b6jtg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wdn7"]
+bg_color = Color(0.476, 0.446, 0.44, 0.648)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjq8g"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -22,16 +38,19 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th6m6"]
-bg_color = Color(0.242957, 0.357438, 0.141108, 0.816)
+bg_color = Color(0.223619, 0.333678, 0.125145, 0.872)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlx11"]
+bg_color = Color(0.130018, 0.127001, 0.127001, 0.698)
 
 [node name="BoardScene" type="Node2D"]
 script = ExtResource("1_th5x2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -141,15 +160,15 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -48.0
-offset_right = -48.0
+offset_left = -26.0
+offset_right = -26.0
 grow_horizontal = 0
 
 [node name="PlayerPos1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 140.0
-offset_right = 180.0
+offset_left = 38.0
+offset_right = 78.0
 offset_bottom = 40.0
 
 [node name="PlayerPos0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
@@ -157,10 +176,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = -43.0
-offset_right = 14.0
-offset_bottom = -43.0
+offset_left = 27.0
+offset_top = -89.0
+offset_right = 27.0
+offset_bottom = -89.0
 grow_vertical = 0
 
 [node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
@@ -184,9 +203,11 @@ layout_mode = 0
 offset_left = 26.9998
 offset_top = -16.0
 offset_right = 66.9998
-offset_bottom = 24.0
+offset_bottom = 14.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2wdn7")
 
 [node name="RemainCardsLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardBack/Panel"]
+modulate = Color(0.944657, 0.832392, 0.515816, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -194,11 +215,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -18.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_snlll")
+theme_override_font_sizes/font_size = 26
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -266,7 +289,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -56.0
+offset_left = -113.0
 offset_top = -24.0
 offset_right = -13.0
 offset_bottom = 26.0
@@ -275,7 +298,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.122525, 0.744392, 0.281657, 1)
 theme_override_fonts/font = ExtResource("4_cv557")
 theme_override_font_sizes/font_size = 40
-text = "10"
+text = "11"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -286,13 +309,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 9.0
+offset_left = 15.0
 offset_top = -24.0
-offset_right = 74.0
+offset_right = 85.0
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.886954, 0.15474, 0.15474, 1)
+theme_override_colors/font_color = Color(0.781729, 0.164658, 0.164658, 1)
 theme_override_fonts/font = ExtResource("4_cv557")
 theme_override_font_sizes/font_size = 40
 text = "100"
@@ -321,7 +344,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="CountdownStartLb" type="Label" parent="CanvasLayer/PlayGround"]
-modulate = Color(1, 0.415236, 0.0889679, 1)
+modulate = Color(0.93108, 0.78044, 0.186932, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -334,35 +357,12 @@ offset_right = 27.0
 offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.391381, 0.350126, 0.350126, 0.714)
+theme_override_colors/font_outline_color = Color(0.639168, 0.0169322, 0.127514, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("4_cv557")
 theme_override_font_sizes/font_size = 100
 text = "3"
-
-[node name="BackBtn" type="Button" parent="CanvasLayer"]
-offset_left = 23.0
-offset_top = 25.0
-offset_right = 115.0
-offset_bottom = 100.0
-icon = ExtResource("3_70m1f")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="ChatBtn" type="Button" parent="CanvasLayer"]
-offset_left = 23.0
-offset_top = 522.0
-offset_right = 123.0
-offset_bottom = 622.0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ChatBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_f0rj1")
-expand_mode = 1
 
 [node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
 visible = false
@@ -387,19 +387,35 @@ grow_horizontal = 0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="Label" type="Label" parent="CanvasLayer/RightTopPanel"]
+[node name="RoomIdLb" type="Label" parent="CanvasLayer/RightTopPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3125
-anchor_top = 0.11
-anchor_right = 0.505
-anchor_bottom = 0.11
+anchor_left = 0.0025
+anchor_top = 0.17
+anchor_right = 0.31
+anchor_bottom = 0.26
 offset_left = 127.0
 offset_top = 23.0
 offset_right = 167.0
 offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.482, 0.867, 0.512, 0.497)
+theme_override_fonts/font = ExtResource("8_afrgf")
+theme_override_font_sizes/font_size = 22
 text = "ROOM ID: 1001"
+horizontal_alignment = 2
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/RightTopPanel"]
+modulate = Color(0.628296, 0.659534, 0.607362, 0.882)
+layout_mode = 0
+offset_left = 296.0
+offset_top = 28.0
+offset_right = 404.0
+offset_bottom = 136.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("9_ujbxy")
+flat = true
 
 [node name="LeftTopPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -409,22 +425,125 @@ offset_bottom = 100.0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="BackBtn" type="Button" parent="CanvasLayer/LeftTopPn"]
+modulate = Color(0.17728, 0.313312, 0.169019, 1)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 30.0
+offset_right = 142.0
+offset_bottom = 105.0
+icon = ExtResource("9_g7ymd")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="PnCheat" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/PnCheat"]
+layout_mode = 0
 offset_left = 205.0
 offset_top = 47.0
-offset_right = 213.0
-offset_bottom = 55.0
+offset_right = 285.0
+offset_bottom = 78.0
 text = "Test Deal"
 
-[node name="TestPlaycard" type="Button" parent="CanvasLayer/Button"]
+[node name="TestPlaycard" type="Button" parent="CanvasLayer/PnCheat/Button"]
 layout_mode = 0
 offset_left = 121.0
 offset_right = 201.0
 offset_bottom = 31.0
 text = "Test Deal"
 
+[node name="BottomLeftPn" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -41.0
+offset_right = 40.0
+offset_bottom = -1.0
+grow_vertical = 0
+
+[node name="ChatBtn" type="Button" parent="CanvasLayer/BottomLeftPn"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = -176.0
+offset_right = 115.0
+offset_bottom = -116.0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
+modulate = Color(0.109055, 0.364227, 0.228637, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_f0rj1")
+expand_mode = 1
+
+[node name="SettingsGUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/SettingsGUI"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlx11")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SettingsGUI/Panel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 148.0
+offset_right = 143.0
+offset_bottom = 214.0
+
+[node name="MusicCheck" type="CheckButton" parent="CanvasLayer/SettingsGUI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Sound"
+
+[node name="SoundCheck" type="CheckButton" parent="CanvasLayer/SettingsGUI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Sound"
+
+[node name="AudioDrawCard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_gg0m3")
+
+[node name="AudioShuffleDealCard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_5p4s2")
+
+[node name="AudioYourTurn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_mpmvk")
+volume_db = 5.0
+
+[node name="AudioWinTurn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_b6jtg")
+volume_db = 1.0
+
+[node name="AudioPlayCard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_62q6d")
+volume_db = 12.0
+
 [connection signal="pressed" from="CanvasLayer/PlayGround/ActionBtnPn/PlayBtn" to="." method="_on_click_btn_play_card"]
-[connection signal="pressed" from="CanvasLayer/BackBtn" to="." method="back_to_lobby"]
-[connection signal="pressed" from="CanvasLayer/ChatBtn" to="." method="_open_chat_gui"]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="test_deal_card"]
-[connection signal="pressed" from="CanvasLayer/Button/TestPlaycard" to="." method="test_play_playercard"]
+[connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="back_to_lobby"]
+[connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
+[connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
+[connection signal="pressed" from="CanvasLayer/BottomLeftPn/ChatBtn" to="." method="_open_chat_gui"]
