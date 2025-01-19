@@ -28,6 +28,9 @@ var cards_node_compare = []
 @onready var countdown_start_lb = find_child('CountdownStartLb')
 @onready var room_id_lb = find_child('RoomIdLb')
 @onready var pn_cheat = find_child('PnCheat')
+@onready var in_game_chat_gui = find_child('InGameChatGui')
+@onready var chat_btn = find_child('ChatBtn')
+@onready var chat_btn_reddot = chat_btn.find_child('RedDot')
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 11
 const WIN_CARD_Z_INDEX = 12
@@ -49,6 +52,9 @@ func _ready() -> void:
 func _on_enter():
 	on_update_players()
 	update_remain_cards()
+	in_game_chat_gui.visible = false
+	chat_btn.visible = GameManager.enable_chat_ingame
+	chat_btn_reddot.visible = false
 	pn_cheat.visible = false #Config.CURRENT_MODE != Config.MODES.LIVE
 	room_id_lb.text = 'ROOM ID: ' + str(game_logic.match_data.match_id)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
@@ -166,9 +172,6 @@ func _update_my_card_positions():
 		var card = list[i]
 		card.global_position = list_pos[i]
 		
-func _open_chat_gui() -> void:
-	SceneManager.open_gui("res://scenes/board/GameChatGUI.tscn")
-
 func on_focus_card(card_id: int) -> void:
 	var card = _get_my_card(card_id)
 	if card.is_played:
@@ -488,3 +491,13 @@ func show_prepare_start():
 
 func exit_game():
 	SceneManager.switch_scene("res://scenes/LobbyScene.tscn")
+
+func on_show_chat_gui():
+	in_game_chat_gui.visible = !in_game_chat_gui.visible
+	chat_btn_reddot.visible = false
+
+func on_new_chat_message(uid, message):
+	if not in_game_chat_gui.visible:
+		chat_btn_reddot.visible = true
+		
+	in_game_chat_gui.on_received_new_chat(uid, message)

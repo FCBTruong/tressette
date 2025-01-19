@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=21 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_sor57"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="9_g7ymd"]
 [ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="9_ujbxy"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_lcke6"]
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="11_mpmvk"]
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="12_b6jtg"]
 
@@ -364,18 +365,6 @@ theme_override_fonts/font = ExtResource("4_cv557")
 theme_override_font_sizes/font_size = 100
 text = "3"
 
-[node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
-visible = false
-custom_minimum_size = Vector2(333, 300)
-anchors_preset = 4
-anchor_top = 0.5
-anchor_right = 0.0
-anchor_bottom = 0.5
-offset_top = -201.0
-offset_right = 333.0
-offset_bottom = 99.0
-grow_horizontal = 1
-
 [node name="RightTopPanel" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 1
@@ -459,6 +448,19 @@ offset_right = 201.0
 offset_bottom = 31.0
 text = "Test Deal"
 
+[node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
+visible = false
+custom_minimum_size = Vector2(333, 250)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 27.0
+offset_top = -187.0
+offset_right = 360.0
+offset_bottom = 63.0
+grow_horizontal = 1
+
 [node name="BottomLeftPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 2
@@ -486,6 +488,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_f0rj1")
+expand_mode = 1
+
+[node name="RedDot" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
+modulate = Color(0.798701, 0, 0, 1)
+layout_mode = 0
+offset_left = 45.0
+offset_top = 3.0
+offset_right = 60.0
+offset_bottom = 18.0
+texture = ExtResource("11_lcke6")
 expand_mode = 1
 
 [node name="SettingsGUI" type="Control" parent="CanvasLayer"]
@@ -546,4 +558,4 @@ volume_db = 12.0
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="back_to_lobby"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
-[connection signal="pressed" from="CanvasLayer/BottomLeftPn/ChatBtn" to="." method="_open_chat_gui"]
+[connection signal="pressed" from="CanvasLayer/BottomLeftPn/ChatBtn" to="." method="on_show_chat_gui"]

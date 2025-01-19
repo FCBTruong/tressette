@@ -3,6 +3,7 @@ extends Node
 @export var _token:String = ''
 @export var timestamp_server_delta = 0
 @export var enable_sound = true
+@export var enable_chat_ingame = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -29,6 +30,7 @@ func on_game_start() -> void:
 	
 func on_receive_gameinfo(cmd_id: int, payload: PackedByteArray) -> void:
 	GameConstants.game_logic.on_receive(cmd_id, payload)
+	InGameChatMgr.on_receive(cmd_id, payload)
 	
 func request_leave_game():
 	var pkg = GameConstants.PROTOBUF.PACKETS.LeaveGame.new()

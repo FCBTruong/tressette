@@ -2054,4 +2054,59 @@ class PrepareStartGame:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class InGameChatMessage:
+	func _init():
+		var service
+		
+		_uid = PBField.new("uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _uid
+		data[_uid.tag] = service
+		
+		_chat_message = PBField.new("chat_message", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _chat_message
+		data[_chat_message.tag] = service
+		
+	var data = {}
+	
+	var _uid: PBField
+	func get_uid() -> int:
+		return _uid.value
+	func clear_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_uid(value : int) -> void:
+		_uid.value = value
+	
+	var _chat_message: PBField
+	func get_chat_message() -> String:
+		return _chat_message.value
+	func clear_chat_message() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_chat_message.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_chat_message(value : String) -> void:
+		_chat_message.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

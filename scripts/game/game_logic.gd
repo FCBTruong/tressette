@@ -40,6 +40,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 		GameConstants.CMDs.PREPARE_START_GAME:
 			_handle_prepare_start(payload)
 
+
 func _handle_user_leave_match(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
 	var result_code = pkg.from_bytes(payload)
@@ -216,6 +217,13 @@ func get_index_by_uid(uid: int) -> int:
 		if u.uid == uid:
 			return i
 	return -1
+
+func get_user(uid: int) -> UserData:
+	for i in range(len(match_data.users)):
+		var u = match_data.users[i]
+		if u.uid == uid:
+			return u
+	return null
 	
 func reset_cards_compare():
 	match_data.cards_compare = []
