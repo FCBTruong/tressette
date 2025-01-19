@@ -34,7 +34,7 @@ func _do_effect() -> void:
 	#tween2.tween_property(bg, "scale", original_scale, 0.3)
 
 func on_update_gui():
-	gold_lb.text = str(PlayerInfoMgr.my_user_data.gold)
+	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)
 	name_lb.text = str(PlayerInfoMgr.my_user_data.name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,3 +68,5 @@ func _open_mail_gui():
 func _open_customer_service_gui():
 	SceneManager.open_gui("res://scenes/customer_service/CustomerServiceGUI.tscn")
 	
+func open_shop():
+	SceneManager.switch_scene(SceneManager.SHOP_SCENE)

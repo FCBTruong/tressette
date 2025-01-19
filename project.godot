@@ -27,6 +27,7 @@ ProtocolUtils="*res://scripts/network/protocol_utils.gd"
 GameManager="*res://scripts/game_manager.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 InGameChatMgr="*res://scripts/game/chat/ingame_chat_mgr.gd"
+StringUtils="*res://scripts/utils/string_utils.gd"
 
 [display]
 

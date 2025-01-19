@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxrhqd8w2syim"]
+[gd_scene load_steps=6 format=3 uid="uid://cxrhqd8w2syim"]
 
 [ext_resource type="Script" path="res://scripts/lobby/settings_gui.gd" id="1_h1gqm"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_wld6o"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_j4bw7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1m567"]
-bg_color = Color(0.278046, 0.34225, 0.483028, 1)
+bg_color = Color(0.105462, 0.213894, 0.364227, 0.987)
 corner_detail = 1
+shadow_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6fp7"]
+bg_color = Color(0.12, 0.12, 0.14, 0.773)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="SettingsGui" type="Control"]
 layout_mode = 3
@@ -30,6 +40,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1m567")
 
 [node name="Button" type="Button" parent="CanvasLayer/Panel"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -42,9 +53,38 @@ offset_right = 41.0
 offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 0
+flat = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q6fp7")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Button/Panel"]
+modulate = Color(1, 1, 1, 0.803)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wld6o")
+theme_override_font_sizes/font_size = 20
 text = "Logout"
 
 [node name="VersionLb" type="Label" parent="CanvasLayer/Panel"]
+modulate = Color(1, 1, 1, 0.612)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -88,6 +128,7 @@ text = "Sound
 "
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
+modulate = Color(1, 1, 1, 0.704)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -97,7 +138,8 @@ offset_top = 22.0
 offset_right = 31.0
 offset_bottom = 45.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 35
+theme_override_fonts/font = ExtResource("3_j4bw7")
+theme_override_font_sizes/font_size = 30
 text = "Settings"
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_hide_gui"]
