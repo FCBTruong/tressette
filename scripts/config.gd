@@ -5,11 +5,14 @@ extends Node
 
 enum MODES { LOCAL, PRIVATE, LIVE }
 
-@export var CURRENT_MODE: int = MODES.LOCAL
+@export var CURRENT_MODE: int = MODES.PRIVATE
 
 var WEBSOCKET_URL: String
 
 func _ready():
+	if CURRENT_MODE == MODES.LOCAL:
+		if OS.get_name() == "Android":
+			CURRENT_MODE = MODES.PRIVATE		
 	if CURRENT_MODE == MODES.PRIVATE:
 			WEBSOCKET_URL = "ws://game-dev-bl-1488570784.ap-southeast-1.elb.amazonaws.com/ws"
 	elif CURRENT_MODE == MODES.LOCAL:

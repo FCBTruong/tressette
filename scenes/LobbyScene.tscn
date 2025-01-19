@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=24 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_esccj"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
-[ext_resource type="Texture2D" uid="uid://bisf3le0g5gdy" path="res://assets/images/btn_playnow.png" id="5_3kbq0"]
 [ext_resource type="Texture2D" uid="uid://2tvqotkvdx50" path="res://assets/images/img_01.png" id="6_7tuic"]
 [ext_resource type="Texture2D" uid="uid://d08otqxw5pyym" path="res://assets/images/lobby/shopping_card.png" id="6_ccwgc"]
 [ext_resource type="Texture2D" uid="uid://dv83dxl1rc5g4" path="res://assets/images/lobby/settings.png" id="6_vby4e"]
@@ -12,15 +11,58 @@
 [ext_resource type="Texture2D" uid="uid://c28lqqxrgu2eg" path="res://assets/images/lobby/friends.png" id="7_l35oy"]
 [ext_resource type="Texture2D" uid="uid://cxkmagcclh5x6" path="res://assets/images/lobby/clipboard.png" id="8_p6t30"]
 [ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
+[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="12_q3rst"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="13_d0m06"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="14_byyp1"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
+bg_color = Color(0.0143579, 0.618802, 0.243289, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 10
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.51)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reuhb"]
+bg_color = Color(0.771546, 0.449481, 0.261458, 0.872)
+corner_radius_top_left = 20
+corner_radius_top_right = 10
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.53)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22e1k"]
-bg_color = Color(0.188235, 0.498039, 0.643137, 0.509804)
+bg_color = Color(0.101961, 0.101961, 0.121569, 0.701961)
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqssi"]
-bg_color = Color(0.92549, 0.866667, 0.764706, 0.4)
+bg_color = Color(0.102475, 0.102922, 0.119835, 0.7)
+corner_radius_bottom_right = 20
 corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv6aw"]
+bg_color = Color(0.093, 0.128, 0.208, 0.572)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6i40"]
+bg_color = Color(0.126624, 0.126624, 0.126624, 0.414)
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu0cq"]
+bg_color = Color(0.435294, 0.423529, 0.415686, 0.356863)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="LobbyScene" type="Node2D"]
 script = ExtResource("1_wigpx")
@@ -59,90 +101,178 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -348.0
-offset_top = -184.0
-offset_right = -40.0
-offset_bottom = 203.0
+offset_left = -534.0
+offset_top = -136.0
+offset_right = -204.0
+offset_bottom = 251.0
 grow_horizontal = 0
 grow_vertical = 2
 
 [node name="StartBtn" type="Button" parent="CanvasLayer/Control/PlayContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-icon = ExtResource("5_3kbq0")
 flat = true
 
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_infkq")
+
 [node name="Label" type="Label" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
-layout_mode = 0
-offset_left = 92.0
-offset_top = 97.0
-offset_right = 226.0
-offset_bottom = 139.0
+modulate = Color(1, 1, 1, 0.812)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.5
+offset_top = -49.0
+offset_right = 78.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_wid5y")
 theme_override_font_sizes/font_size = 35
 text = "Play Now"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
-position = Vector2(159, 44)
-scale = Vector2(1.73047, 1.67188)
+modulate = Color(1, 1, 1, 0.925)
+position = Vector2(159, 32)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("6_7tuic")
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/PlayContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 
 [node name="StartBtn2" type="Button" parent="CanvasLayer/Control/PlayContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-icon = ExtResource("5_3kbq0")
 flat = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
-layout_mode = 0
-offset_left = 96.0
-offset_top = 95.0
-offset_right = 230.0
-offset_bottom = 144.0
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_reuhb")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
+modulate = Color(1, 1, 1, 0.812)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.5
+offset_top = -49.0
+offset_right = 78.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_wid5y")
 theme_override_font_sizes/font_size = 35
-text = "Tables"
+text = "Rooms"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
-position = Vector2(159, 50)
-scale = Vector2(0.251953, 0.277344)
+[node name="Sprite2D2" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
+modulate = Color(1, 1, 1, 0.717)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -83.0
+offset_right = 65.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("7_en482")
+expand_mode = 1
 
 [node name="RightTopPanel" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.963846
+anchor_right = 0.963846
 offset_left = -300.0
 offset_bottom = 100.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_22e1k")
+metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/RightTopPanel"]
 layout_direction = 3
 layout_mode = 1
-offset_right = 336.0
-offset_bottom = 108.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="SettingBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
+modulate = Color(0.737255, 0.74902, 0.780392, 1)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-icon = ExtResource("6_vby4e")
 flat = true
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn"]
+modulate = Color(0.737255, 0.74902, 0.780392, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vby4e")
+
 [node name="SupportBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-icon = ExtResource("7_48niu")
 flat = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn"]
+modulate = Color(0.737255, 0.74902, 0.780392, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_48niu")
 
 [node name="LeftPanel" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_right = 370.0
+offset_left = 50.0
+offset_right = 400.0
 grow_vertical = 2
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/Control/LeftPanel"]
@@ -159,47 +289,115 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="ShopBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+[node name="Button4" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+modulate = Color(0.737255, 0.74902, 0.780392, 1)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-icon = ExtResource("6_ccwgc")
 flat = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_p6t30")
 
 [node name="Button2" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+modulate = Color(0.737255, 0.74902, 0.780392, 1)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-icon = ExtResource("7_l35oy")
 flat = true
 
-[node name="Button4" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_l35oy")
+
+[node name="ShopBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+modulate = Color(0.737886, 0.750155, 0.781729, 1)
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
-icon = ExtResource("8_p6t30")
 flat = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ccwgc")
 
 [node name="Button3" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+visible = false
+modulate = Color(0.737255, 0.74902, 0.780392, 1)
 layout_mode = 2
-icon = ExtResource("9_bavc2")
 flat = true
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/LeftPanel"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-text = "Profile"
-vertical_alignment = 1
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_bavc2")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel"]
+[node name="Label2" type="Label" parent="CanvasLayer/Control/LeftPanel"]
+modulate = Color(1, 1, 1, 0.816)
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_q3rst")
+theme_override_font_sizes/font_size = 24
+text = "Profile"
+vertical_alignment = 2
+
+[node name="UserInfoPn" type="Panel" parent="CanvasLayer/Control/LeftPanel"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wv6aw")
 
-[node name="PanelInfo" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/Panel"]
+[node name="PanelInfo" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/UserInfoPn"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 offset_right = 350.0
 offset_bottom = 100.0
 
-[node name="AvatarBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo"]
+[node name="AvatarBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="Avatar" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/AvatarBtn"]
+[node name="Avatar" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -209,24 +407,40 @@ grow_vertical = 2
 texture = ExtResource("4_cni6g")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo"]
+[node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
 
-[node name="NameLb" type="Label" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/VBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="NameLb" type="Label" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("14_wid5y")
+theme_override_font_sizes/font_size = 26
 text = "Nguyen Huy Truong"
 
-[node name="GoldLb" type="Label" parent="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/VBoxContainer"]
+[node name="GoldLb" type="Label" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("15_g7l3g")
+theme_override_font_sizes/font_size = 26
 text = "100$"
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel"]
-custom_minimum_size = Vector2(0, 30)
+modulate = Color(1, 1, 1, 0.816)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("12_q3rst")
+theme_override_font_sizes/font_size = 24
 text = "Friends"
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel"]
 custom_minimum_size = Vector2(350, 300)
@@ -237,117 +451,85 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 15.0
-offset_right = 291.0
-offset_bottom = 78.0
-text = "Inviet Friend"
+theme_override_styles/panel = SubResource("StyleBoxFlat_w6i40")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -119.0
-offset_bottom = 141.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
-color = Color(0.883559, 0.670932, 0.511509, 0.588235)
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect2"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uu0cq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -284.0
-offset_top = -11.0
-offset_right = -130.0
-offset_bottom = 12.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-text = "Nguyen Huy Truong"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect2"]
+[node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer/Control"]
 clip_children = 2
-layout_mode = 0
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 47.0
-offset_bottom = 45.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("13_d0m06")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect2/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer/Control/TextureRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_cni6g")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect2"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 48.0
-offset_bottom = 46.0
-texture = ExtResource("14_byyp1")
-expand_mode = 1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-color = Color(0.883559, 0.670932, 0.511509, 0.588235)
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer/Control"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -284.0
-offset_top = -11.0
-offset_right = -130.0
-offset_bottom = 12.0
-grow_horizontal = 0
+offset_left = -21.5
+offset_top = -21.5
+offset_right = 21.5
+offset_bottom = 21.5
+grow_horizontal = 2
 grow_vertical = 2
-text = "Nguyen Huy Truong"
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect"]
-clip_children = 2
-layout_mode = 0
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 47.0
-offset_bottom = 45.0
-texture = ExtResource("13_d0m06")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect/TextureRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_cni6g")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ColorRect"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 48.0
-offset_bottom = 46.0
 texture = ExtResource("14_byyp1")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.815)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_g7l3g")
+theme_override_font_sizes/font_size = 20
+text = "Nguyen Huy Truong"
 
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn2" to="." method="_open_tables_scene"]
@@ -355,4 +537,4 @@ expand_mode = 1
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button2" to="." method="_open_friend_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3" to="." method="_open_mail_gui"]
-[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]
