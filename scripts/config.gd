@@ -21,3 +21,22 @@ func _ready():
 		WEBSOCKET_URL = ""
 
 	print("WebSocket URL: %s" % WEBSOCKET_URL)
+
+var platform = OS.get_name()
+enum PLATFORMS {
+	ANDROID,
+	IOS,
+	MAC_OS,
+	WINDOWS,
+	UNKNOWN
+}
+func get_platform():
+	if platform == "Android":
+		return PLATFORMS.ANDROID
+	elif platform == 'iOS':
+		return PLATFORMS.IOS
+	elif platform == "MacOS":
+		return PLATFORMS.MAC_OS
+	elif  platform == "Windows":
+		return PLATFORMS.WINDOWS
+	return PLATFORMS.UNKNOWN

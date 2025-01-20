@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dre6witgv0vxh"]
+[gd_scene load_steps=5 format=3 uid="uid://dre6witgv0vxh"]
 
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_4bwsr"]
 [ext_resource type="Script" path="res://scripts/modules/shop/shop_scene.gd" id="1_lrbfb"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="2_fwqk2"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_f7wm3"]
-[ext_resource type="PackedScene" uid="uid://doyshtw1etx6n" path="res://scenes/shop/ItemShopPack.tscn" id="4_b73sn"]
 
 [node name="ShopScene" type="Node2D"]
 script = ExtResource("1_lrbfb")
@@ -82,20 +81,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
-
-[node name="ItemShopPack1" parent="CanvasLayer/TextureRect/Control/PacksContainer" instance=ExtResource("4_b73sn")]
-layout_mode = 2
-
-[node name="ItemShopPack2" parent="CanvasLayer/TextureRect/Control/PacksContainer" instance=ExtResource("4_b73sn")]
-layout_mode = 2
-
-[node name="ItemShopPack3" parent="CanvasLayer/TextureRect/Control/PacksContainer" instance=ExtResource("4_b73sn")]
-layout_mode = 2
-
-[node name="ItemShopPack4" parent="CanvasLayer/TextureRect/Control/PacksContainer" instance=ExtResource("4_b73sn")]
-layout_mode = 2
-
-[node name="ItemShopPack5" parent="CanvasLayer/TextureRect/Control/PacksContainer" instance=ExtResource("4_b73sn")]
-layout_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/TextureRect/BackBtn" to="." method="_back_to_lobby"]

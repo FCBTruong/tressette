@@ -3,11 +3,32 @@ extends Node
 @onready var packs_container = find_child('PacksContainer')
 # Called when the node enters the scene tree for the first time.
 var packs_node = []
-func _ready() -> void:
-	for i in range(5):
-		var name = 'ItemShopPack' + str(i + 1)
-		var n = packs_container.find_child(name)
-		packs_node.append(n)
+var item_scene = preload("res://scenes/shop/ItemShopPack.tscn")
+func _ready() -> void:	
+	var packs = [
+		{
+			'id': 'pack_01'
+		},
+		{
+			'id': 'pack_02'
+		},
+		{
+			'id': 'pack_03'
+		},
+		{
+			'id': 'pack_04'
+		},
+		{
+			'id': 'pack_05'
+		}
+	]
+	
+	for i in range(len(packs)):
+		var instance = item_scene.instantiate()
+		instance.name = 'ItemShopPack' + str(i + 1)
+		packs_container.add_child(instance)
+		packs_node.append(instance)
+		instance.set_info(packs[i])
 	
 	_effect_appear()
 

@@ -15,9 +15,10 @@ func _process(delta: float) -> void:
 
 
 func login_success(uid: int, token: String):
+	PaymentMgr.on_user_login()
+	
 	_token = token
 	SceneManager.switch_scene(SceneManager.LOBBY_SCENE)
-	pass
 
 func get_token() -> String:
 	return _token

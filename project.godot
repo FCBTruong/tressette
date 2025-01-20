@@ -13,7 +13,7 @@ config_version=5
 config/name="Tressette"
 run/main_scene="res://scenes/LoginScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -28,6 +28,7 @@ GameManager="*res://scripts/game_manager.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 InGameChatMgr="*res://scripts/game/chat/ingame_chat_mgr.gd"
 StringUtils="*res://scripts/utils/string_utils.gd"
+PaymentMgr="*res://scripts/modules/payment/payment_mgr.gd"
 
 [display]
 
