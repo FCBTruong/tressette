@@ -55,7 +55,6 @@ func test_google_pay():
 	}
 	google_payment._process_purchase(purchase_data)
 func on_user_login():
-	test_google_pay()
 	if Config.get_platform() == Config.PLATFORMS.ANDROID:
 		if not google_payment.payment:
 			# init again
