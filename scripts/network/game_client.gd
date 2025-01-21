@@ -18,9 +18,6 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			var uid = pkg.get_uid()
 			var token = pkg.get_token()
 			GameManager.login_success(uid, token)
-		GameConstants.CMDs.USER_INFO:
-			PlayerInfoMgr.on_receive_info(payload)
-			pass
 		GameConstants.CMDs.GENERAL_INFO:
 			var pkg = GameConstants.PROTOBUF.PACKETS.GeneralInfo.new()
 			var result_code = pkg.from_bytes(payload)
@@ -30,7 +27,10 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			GameManager.set_timestamp_server_delta(delta)
 			pass
 		_:
-			GameManager.on_receive_gameinfo(cmd_id, payload)
+			GameManager.on_receive(cmd_id, payload)
+			InGameChatMgr.on_receive(cmd_id, payload)
+			PaymentMgr.on_receive(cmd_id, payload)
+			PlayerInfoMgr.on_receive(cmd_id, payload)
 			pass
 		
 

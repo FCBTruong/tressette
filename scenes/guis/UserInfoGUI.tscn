@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=18 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="2_8xkbq"]
+[ext_resource type="Texture2D" uid="uid://ba5hi2m6d1v62" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_b03ik"]
@@ -11,18 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://cvs720c5x14nn" path="res://assets/images/lobby/add_friend.png" id="7_w3o0j"]
 [ext_resource type="Texture2D" uid="uid://dkgkp6amt0wmb" path="res://assets/images/lobby/user_info_gui/dollar.png" id="8_47ubv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub222"]
-bg_color = Color(0.774941, 0.634263, 0.504688, 1)
-border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp3k3"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh3o1"]
-bg_color = Color(0.646, 0.308, 0.055, 0.53)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
+bg_color = Color(0.636, 0.636, 0.636, 0.339)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v17p2"]
 bg_color = Color(0.0383711, 0.0369761, 0.0369761, 0.564706)
@@ -38,7 +37,7 @@ bg_color = Color(0.266575, 0.266575, 0.266575, 1)
 bg_color = Color(0, 0.528993, 0.00939041, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgqk0"]
-bg_color = Color(0.540732, 0.49311, 0.481956, 0.132)
+bg_color = Color(0.717, 0.667, 0.656, 0.062)
 border_blend = true
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
@@ -62,7 +61,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UserInfoPopup" type="Panel" parent="Control"]
+[node name="MainPn" type="Control" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -75,9 +75,28 @@ offset_right = 306.0
 offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ub222")
 
-[node name="Panel" type="Panel" parent="Control/UserInfoPopup"]
+[node name="Panel2" type="Panel" parent="Control/MainPn"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qp3k3")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mmkv0")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Control/MainPn"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -85,7 +104,7 @@ offset_bottom = 60.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qh3o1")
 
-[node name="CloseBtn" type="Button" parent="Control/UserInfoPopup/Panel"]
+[node name="CloseBtn" type="Button" parent="Control/MainPn/Panel"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -98,7 +117,7 @@ grow_vertical = 2
 icon = ExtResource("2_8xkbq")
 flat = true
 
-[node name="GoldBg" type="Panel" parent="Control/UserInfoPopup/Panel"]
+[node name="GoldBg" type="Panel" parent="Control/MainPn/Panel"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -113,7 +132,7 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v17p2")
 
-[node name="GoldLb" type="Label" parent="Control/UserInfoPopup/Panel/GoldBg"]
+[node name="GoldLb" type="Label" parent="Control/MainPn/Panel/GoldBg"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -132,7 +151,7 @@ text = "1.000.000
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/UserInfoPopup/Panel/GoldBg"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/Panel/GoldBg"]
 layout_mode = 0
 offset_left = -16.0
 offset_top = -2.0
@@ -141,7 +160,7 @@ offset_bottom = 38.0
 texture = ExtResource("8_47ubv")
 expand_mode = 1
 
-[node name="UserNameLb" type="Label" parent="Control/UserInfoPopup"]
+[node name="UserNameLb" type="Label" parent="Control/MainPn"]
 modulate = Color(1, 1, 1, 0.928)
 layout_mode = 1
 anchors_preset = 5
@@ -159,7 +178,7 @@ text = "Nguyen Huy Truong"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExpBar" type="ProgressBar" parent="Control/UserInfoPopup"]
+[node name="ExpBar" type="ProgressBar" parent="Control/MainPn"]
 custom_minimum_size = Vector2(120, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -177,7 +196,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_g0uac")
 theme_override_styles/fill = SubResource("StyleBoxFlat_y27un")
 value = 50.0
 
-[node name="PlayStatistic" type="Panel" parent="Control/UserInfoPopup"]
+[node name="PlayStatistic" type="Panel" parent="Control/MainPn"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 12
@@ -188,7 +207,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sgqk0")
 
-[node name="Label2" type="Label" parent="Control/UserInfoPopup/PlayStatistic"]
+[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic"]
 modulate = Color(1, 1, 1, 0.891)
 layout_mode = 1
 anchors_preset = 7
@@ -206,7 +225,7 @@ theme_override_fonts/font = ExtResource("5_xl7qd")
 theme_override_font_sizes/font_size = 22
 text = "Win Rate: 40%"
 
-[node name="Label" type="Label" parent="Control/UserInfoPopup/PlayStatistic"]
+[node name="Label" type="Label" parent="Control/MainPn/PlayStatistic"]
 modulate = Color(1, 1, 1, 0.891)
 layout_mode = 1
 anchors_preset = 7
@@ -224,7 +243,7 @@ theme_override_fonts/font = ExtResource("5_xl7qd")
 theme_override_font_sizes/font_size = 22
 text = "Total Match: 100"
 
-[node name="TextureRect2" type="TextureRect" parent="Control/UserInfoPopup"]
+[node name="TextureRect2" type="TextureRect" parent="Control/MainPn"]
 self_modulate = Color(0.0156505, 0.030661, 0.394776, 1)
 custom_minimum_size = Vector2(110, 110)
 layout_mode = 1
@@ -239,7 +258,7 @@ grow_horizontal = 2
 texture = ExtResource("3_gnbuq")
 expand_mode = 1
 
-[node name="AvatarNode" type="TextureRect" parent="Control/UserInfoPopup/TextureRect2"]
+[node name="AvatarNode" type="TextureRect" parent="Control/MainPn/TextureRect2"]
 clip_children = 2
 layout_mode = 1
 anchors_preset = 8
@@ -256,7 +275,7 @@ grow_vertical = 2
 texture = ExtResource("4_aqih6")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/UserInfoPopup/TextureRect2/AvatarNode"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/TextureRect2/AvatarNode"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -272,7 +291,7 @@ grow_vertical = 2
 texture = ExtResource("4_umvqn")
 expand_mode = 1
 
-[node name="ButtonPn" type="HBoxContainer" parent="Control/UserInfoPopup"]
+[node name="ButtonPn" type="HBoxContainer" parent="Control/MainPn"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -287,21 +306,19 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="MailBtn" type="Button" parent="Control/UserInfoPopup/ButtonPn"]
-modulate = Color(0.42193, 0.143561, 0.0417005, 1)
+[node name="MailBtn" type="Button" parent="Control/MainPn/ButtonPn"]
 layout_mode = 2
 size_flags_vertical = 8
 icon = ExtResource("6_5upxd")
 flat = true
 
-[node name="Control" type="Control" parent="Control/UserInfoPopup/ButtonPn"]
+[node name="Control" type="Control" parent="Control/MainPn/ButtonPn"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="RequestFriendBtn" type="Button" parent="Control/UserInfoPopup/ButtonPn"]
-modulate = Color(0.0617175, 0.453789, 0.645956, 1)
+[node name="RequestFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
 layout_mode = 2
 icon = ExtResource("7_w3o0j")
 flat = true
 
-[connection signal="pressed" from="Control/UserInfoPopup/Panel/CloseBtn" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Control/MainPn/Panel/CloseBtn" to="." method="_on_CloseButton_pressed"]

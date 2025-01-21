@@ -7,7 +7,14 @@ func get_user_id():
 func set_my_userdata(user_data: UserData):
 	my_user_data = user_data
 
-func on_receive_info(bytes: PackedByteArray):
+func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
+	match cmd_id:
+		GameConstants.CMDs.USER_INFO:
+			_on_receive_info(payload)
+		GameConstants.CMDs.UPDATE_MONEY:
+			_on_update_money(payload)
+			
+func _on_receive_info(bytes: PackedByteArray):
 	var packet = GameConstants.PROTOBUF.PACKETS.UserInfo.new()
 	packet.from_bytes(bytes)
 	my_user_data.uid = packet.get_uid()
@@ -19,3 +26,10 @@ func on_receive_info(bytes: PackedByteArray):
 	print(scores, names, ac)
 	
 	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.gold)
+
+
+func _on_update_money(bytes: PackedByteArray):
+	var packet = GameConstants.PROTOBUF.PACKETS.UpdateMoney.new()
+	packet.from_bytes(bytes)
+	my_user_data.gold = packet.get_gold()
+	print('_on_update_money', my_user_data.gold)

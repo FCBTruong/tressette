@@ -54,7 +54,11 @@ func _process(_delta):
 func _disconnect():
 	print("Disconnected from server.")
 	# show popup
-	SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
+	SceneManager.show_dialog(
+		'You are disconnected, try to reconnect!',
+		func ():
+			SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
+	)
 	# Perform any cleanup operations if necessary
 
 func send_packet(cmd_id: int, payload: PackedByteArray):

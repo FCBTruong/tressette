@@ -28,10 +28,8 @@ func send_quick_play() -> void:
 func on_game_start() -> void:
 	SceneManager.switch_scene("res://scenes/BoardScene.tscn")
 	
-func on_receive_gameinfo(cmd_id: int, payload: PackedByteArray) -> void:
+func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	GameConstants.game_logic.on_receive(cmd_id, payload)
-	InGameChatMgr.on_receive(cmd_id, payload)
-	PaymentMgr.on_receive(cmd_id, payload)
 	
 func request_leave_game():
 	var pkg = GameConstants.PROTOBUF.PACKETS.LeaveGame.new()
