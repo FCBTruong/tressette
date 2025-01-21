@@ -20,7 +20,7 @@ offset_bottom = 208.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+[node name="OkBtn" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 0
 offset_left = 292.5
 offset_top = 315.5
@@ -28,7 +28,7 @@ offset_right = 381.5
 offset_bottom = 346.5
 text = "Reconnect"
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+[node name="MessageLb" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
 offset_left = 126.5
 offset_top = 52.5
@@ -36,4 +36,11 @@ offset_right = 517.5
 offset_bottom = 232.5
 text = "You are disconnected"
 
-[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_click_ok"]
+[node name="CloseBtn" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+
+[connection signal="pressed" from="CanvasLayer/Panel/OkBtn" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/CloseBtn" to="." method="_on_close_button_pressed"]

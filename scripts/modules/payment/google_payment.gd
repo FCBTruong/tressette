@@ -8,6 +8,14 @@ enum PurchaseState {
 	PENDING,
 }
 
+# Matches BillingClient.ConnectionState in the Play Billing Library
+enum ConnectionState {
+	DISCONNECTED, # not yet connected to billing service or was already closed
+	CONNECTING, # currently in process of connecting to billing service
+	CONNECTED, # currently connected to billing service
+	CLOSED, # already closed and shouldn't be used again
+}
+
 var packs = [
 	'pack_01',
 	'pack_02',
@@ -43,11 +51,6 @@ func init_connection():
 		payment.startConnection()
 	else:
 		print("Android IAP support is not enabled. Make sure you have enabled 'Gradle Build' and the GodotGooglePlayBilling plugin in your Android export settings! IAP will not work.")
-		
-	
-func _on_billing_resume():
-	print('payment: _on_billing_resume')
-	pass
 	
 func _on_connected():
 	print('payment: _on_connected')
@@ -128,10 +131,19 @@ func _on_query_purchases_response(query_result):
 
 func _process_purchase(purchase):
 	print('payment: _process_purchase')
-	if "my_consumable_iap_item" in purchase.products and purchase.purchase_state == PurchaseState.PURCHASED:
-		# Add code to store payment so we can reconcile the purchase token
-		# in the completion callback against the original purchase
-		payment.consumePurchase(purchase.purchase_token)
+	if Config.CURRENT_MODE != Config.MODES.LIVE:
+		for key in purchase.keys():
+			print("%s: %s" % [key, purchase[key]])
+	# get all keys and log
+	# Send to server to consume
+	
+	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentGoogleConsume.new()
+	pkg.set_purchase_token(purchase['purchase_token'])
+	pkg.set_quantity(purchase['quantity'])
+	pkg.set_sku(purchase['sku'])
+	pkg.set_signature(purchase['signature'])
+	GameClient.send_packet(GameConstants.CMDs.PAYMENT_GOOGLE_CONSUME, pkg.to_bytes())
+		#payment.consumePurchase(purchase.purchase_token)
 
 	
 func get_price_pack(pack_id):
@@ -139,3 +151,16 @@ func get_price_pack(pack_id):
 		if p['sku'] == pack_id:
 			return p['original_price']
 	return null
+	
+func purchase_pack(pack_id):
+	payment.purchase(pack_id)
+	
+	
+func _on_billing_resume():
+	print('payment: _on_billing_resume')
+	if payment.getConnectionState() == ConnectionState.CONNECTED:
+		_query_purchases()
+		
+func _query_purchases():
+	print('payment: _query_purchases')
+	payment.queryPurchases("inapp") # Or "subs" for subscriptions

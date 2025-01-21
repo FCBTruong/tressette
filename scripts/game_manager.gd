@@ -15,9 +15,8 @@ func _process(delta: float) -> void:
 
 
 func login_success(uid: int, token: String):
-	PaymentMgr.on_user_login()
-	
 	_token = token
+	PaymentMgr.on_user_login()
 	SceneManager.switch_scene(SceneManager.LOBBY_SCENE)
 
 func get_token() -> String:
@@ -32,6 +31,7 @@ func on_game_start() -> void:
 func on_receive_gameinfo(cmd_id: int, payload: PackedByteArray) -> void:
 	GameConstants.game_logic.on_receive(cmd_id, payload)
 	InGameChatMgr.on_receive(cmd_id, payload)
+	PaymentMgr.on_receive(cmd_id, payload)
 	
 func request_leave_game():
 	var pkg = GameConstants.PROTOBUF.PACKETS.LeaveGame.new()

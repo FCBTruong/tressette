@@ -28,3 +28,6 @@ func set_info(p_info):
 	print('set info pack', info.pack_id)
 	var price = PaymentMgr.get_price_pack(info.pack_id)
 	price_lb.text = price
+	
+func _click_buy():
+	PaymentMgr.buy_pack(info.pack_id)

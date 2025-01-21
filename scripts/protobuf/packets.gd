@@ -2109,4 +2109,142 @@ class InGameChatMessage:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class PaymentGoogleConsume:
+	func _init():
+		var service
+		
+		_purchase_token = PBField.new("purchase_token", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _purchase_token
+		data[_purchase_token.tag] = service
+		
+		_quantity = PBField.new("quantity", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _quantity
+		data[_quantity.tag] = service
+		
+		_skus = PBField.new("skus", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _skus
+		data[_skus.tag] = service
+		
+		_signature = PBField.new("signature", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _signature
+		data[_signature.tag] = service
+		
+		_sku = PBField.new("sku", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _sku
+		data[_sku.tag] = service
+		
+	var data = {}
+	
+	var _purchase_token: PBField
+	func get_purchase_token() -> String:
+		return _purchase_token.value
+	func clear_purchase_token() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_purchase_token.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_purchase_token(value : String) -> void:
+		_purchase_token.value = value
+	
+	var _quantity: PBField
+	func get_quantity() -> int:
+		return _quantity.value
+	func clear_quantity() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_quantity.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_quantity(value : int) -> void:
+		_quantity.value = value
+	
+	var _skus: PBField
+	func get_skus() -> Array:
+		return _skus.value
+	func clear_skus() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_skus.value = []
+	func add_skus(value : String) -> void:
+		_skus.value.append(value)
+	
+	var _signature: PBField
+	func get_signature() -> String:
+		return _signature.value
+	func clear_signature() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_signature.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_signature(value : String) -> void:
+		_signature.value = value
+	
+	var _sku: PBField
+	func get_sku() -> String:
+		return _sku.value
+	func clear_sku() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_sku.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_sku(value : String) -> void:
+		_sku.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class PaymentSuccess:
+	func _init():
+		var service
+		
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _gold
+		data[_gold.tag] = service
+		
+	var data = {}
+	
+	var _gold: PBField
+	func get_gold() -> int:
+		return _gold.value
+	func clear_gold() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_gold(value : int) -> void:
+		_gold.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

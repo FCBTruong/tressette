@@ -1,17 +1,22 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+signal ok_pressed
+signal close_pressed
 
+@onready var message_label: Label = find_child('MessageLb')
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func set_message(message: String):
+	message_label.text = message
 
-func _click_ok():
-	WebsocketClient.connect_to_server()
-	self.get_parent().remove_child(self)
-	SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
-	pass
+func _on_ok_button_pressed():
+	emit_signal("ok_pressed")
+
+func _on_close_button_pressed():
+	emit_signal("close_pressed")
+
+#func _click_ok():
+	#WebsocketClient.connect_to_server()
+	#self.get_parent().remove_child(self)
+	#SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
+	#pass

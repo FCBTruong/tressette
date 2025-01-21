@@ -61,7 +61,7 @@ theme_override_fonts/font = ExtResource("1_gjltu")
 theme_override_font_sizes/font_size = 30
 text = "1.000.000 $"
 
-[node name="Button" type="Button" parent="Main"]
+[node name="BuyBtn" type="Button" parent="Main"]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
 anchors_preset = 7
@@ -76,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 0
 flat = true
 
-[node name="Panel" type="Panel" parent="Main/Button"]
+[node name="Panel" type="Panel" parent="Main/BuyBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,7 +88,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ok3s")
 
-[node name="PriceLb" type="Label" parent="Main/Button/Panel"]
+[node name="PriceLb" type="Label" parent="Main/BuyBtn/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,3 +107,5 @@ theme_override_font_sizes/font_size = 22
 text = "10.000 VND"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Main/BuyBtn" to="." method="_click_buy"]
