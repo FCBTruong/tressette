@@ -27,6 +27,7 @@ offset_bottom = 75.0
 color = Color(0.157628, 0.785124, 0.290129, 1)
 
 [node name="MainPn" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,7 +113,6 @@ nine_patch_stretch = true
 texture_progress = ExtResource("5_6p0k0")
 
 [node name="EmptySlot" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -127,7 +127,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect2" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.452479, 0.452479, 0.452479, 0.694)
+modulate = Color(0.171699, 0.442296, 0.281232, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -138,7 +138,7 @@ texture = ExtResource("6_lqmp5")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.522619, 0.62559, 0.531533, 0.651)
+modulate = Color(0.934474, 0.934474, 0.934474, 0.651)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -154,7 +154,7 @@ grow_vertical = 2
 texture = ExtResource("6_l3lsr")
 
 [node name="TextureRect3" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.184327, 0.126106, 0.135525, 0.76)
+modulate = Color(0.0946986, 0.612013, 0.489388, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
