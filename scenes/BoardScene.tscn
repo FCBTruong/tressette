@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=21 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_sor57"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_snlll"]
 [ext_resource type="Texture2D" uid="uid://ki8x4sty35jl" path="res://assets/images/cards/card_back.png" id="5_m272p"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
+[ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="8_afrgf"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
 [ext_resource type="AudioStream" uid="uid://c2xavtkvg1e1f" path="res://assets/sounds/shuffle_dealcard.mp3" id="9_5p4s2"]
@@ -411,6 +412,24 @@ scale = Vector2(0.5, 0.5)
 icon = ExtResource("9_ujbxy")
 flat = true
 
+[node name="EvaluateLb" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 50)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 96.0
+offset_right = 200.0
+offset_bottom = 146.0
+grow_horizontal = 2
+pivot_offset = Vector2(200, 25)
+theme_override_colors/font_color = Color(1, 1, 1, 0.73)
+theme_override_fonts/font = ExtResource("8_afrgf")
+theme_override_font_sizes/font_size = 30
+text = "Fantastic!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LeftTopPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -554,12 +573,17 @@ offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/BottomCenter"]
-modulate = Color(1, 1, 1, 0.681)
-layout_mode = 0
-offset_top = -47.0
-offset_right = 260.0
-offset_bottom = -15.0
+[node name="WaitingOtherLb" type="Label" parent="CanvasLayer/BottomCenter"]
+modulate = Color(1, 1, 1, 0.592)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -44.0
+offset_right = 200.0
+offset_bottom = -12.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_snlll")
 theme_override_font_sizes/font_size = 25
 text = "Waiting for other players ..."

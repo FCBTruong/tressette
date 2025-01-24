@@ -31,24 +31,38 @@ var cards_node_compare = []
 @onready var in_game_chat_gui = find_child('InGameChatGui')
 @onready var chat_btn = find_child('ChatBtn')
 @onready var chat_btn_reddot = chat_btn.find_child('RedDot')
+@onready var waiting_other_lb = find_child('WaitingOtherLb')
+@onready var evaluate_lb = find_child('EvaluateLb')
+
 const DEFAULT_CARD_Z_INDEX = 10
-const COMPARE_CARD_Z_INDEX = 11
-const WIN_CARD_Z_INDEX = 12
+const COMPARE_CARD_Z_INDEX = 100
+const WIN_CARD_Z_INDEX = 101
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
 var SCALE_CARD_COMPARE = 0.8
 var SCALE_CARD_DEAL_INIT = 0.8
-
-func _ready() -> void:
+var base_text = "Waiting for other players"
+var evaluate_lb_default_pos
+func _ready() -> void:	
 	SceneManager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
 	play_ground = find_child('PlayGround')
 	place_card_node = find_child('PlaceCard1')
 	countdown_start_lb.visible = false
+	evaluate_lb_default_pos = evaluate_lb.position
+	evaluate_lb.modulate.a = 0
 	_on_enter()
-	#show_prepare_start()
 	
+	#show_prepare_start()
+func _get_card_rotates(n):
+	var rot_max_radians = deg_to_rad(rot_max)
+	var arr = []
+	for i in range(n):
+		var rot_radians: float = lerp_angle(-rot_max_radians, rot_max_radians, float(i)/float(n-1))
+		arr.append(rot_radians)
+	return arr
+		
 func _on_enter():
 	on_update_players()
 	update_remain_cards()
@@ -78,15 +92,15 @@ func _on_enter():
 		# update current cards
 		var cards = game_logic.get_my_cards()
 		var number = len(cards)
-		var list_pos_des = _calculate_world_card_positions(number)
+		var rotates = _get_card_rotates(number)
 		for i in range(number):
 			var instance = card_scene.instantiate()
 			play_ground.add_child(instance)
 			instance.set_card(cards[i])
 			instance.turn_face_up()
 			list_my_cards.append(instance)
-			instance.global_position = list_pos_des[i]
 			
+		_update_my_card_positions()
 		if game_logic.check_finishhand():
 			on_finishhand()
 			
@@ -152,6 +166,18 @@ func _process(delta: float) -> void:
 				var is_valid_play = game_logic.check_valid_card_play(c.id)
 				c.update_state_can_play(is_valid_play)
 	
+	if game_logic.match_data.state == MatchData.MATCH_STATE.WAITING:
+		var cur = int(Time.get_unix_time_from_system())
+		var str = base_text
+		if cur % 4 == 1:
+			str = base_text + " ."
+		elif cur % 4 == 2:
+			str = base_text + " .."
+		elif cur % 4 == 3:
+			str = base_text + " ..."
+		self.waiting_other_lb.text = str
+	else:
+		self.waiting_other_lb.text = ''
 	if countdown_timer:
 		countdown_start_lb.text = str(ceil(countdown_timer.time_left))
 		if countdown_timer.time_left <= 0:
@@ -160,17 +186,27 @@ func _process(delta: float) -> void:
 func back_to_lobby() -> void:
 	GameManager.request_leave_game()
 
-func _update_my_card_positions():
+func _update_my_card_positions(effect = false):
 	var list = []
 	for card in list_my_cards:
 		if card.is_played:
 			continue
 		list.append(card)
-		
-	var list_pos = _calculate_world_card_positions(len(list))
+	var size = len(list)
+	var list_pos = _calculate_world_card_positions(size)
+	var rotates = _get_card_rotates(size)
+	var tween = create_tween()
 	for i in range(len(list)):
 		var card = list[i]
-		card.global_position = list_pos[i]
+		card.z_index = DEFAULT_CARD_Z_INDEX + i
+		var desired_pos = list_pos[i]
+		var desired_rot = rotates[i]
+		if not effect:
+			card.global_position = desired_pos
+			card.rotation = desired_rot
+		else:
+			tween.parallel().tween_property(card, 'global_position', desired_pos, 0.3)
+			tween.parallel().tween_property(card, 'rotation', desired_rot, 0.3)
 		
 func on_focus_card(card_id: int) -> void:
 	var card = _get_my_card(card_id)
@@ -221,8 +257,10 @@ func play_my_card(id: int):
 	cards_node_compare.append(card)
 	
 	list_my_cards.erase(card)
-	_update_my_card_positions()
+	_update_my_card_positions(true)
 
+var win_messages = ["Fantastic!", "Well Done!", "Great Job!", "Congratulations!", "You're Amazing!"]
+var lose_msgs = ["Bad luck!", "Try again!", "Don't give up!", "Keep going!"]
 func on_finishhand(delay = 0.5):
 	#for card in cards_node_compare:
 		#card.visible = false
@@ -245,9 +283,22 @@ func on_finishhand(delay = 0.5):
 			
 	if not player_win_id:
 		return
+	var is_win = false
 	if player_win_id == PlayerInfoMgr.my_user_data.uid:
 		if GameManager.enable_sound:
 			$AudioWinTurn.play()
+		is_win = true
+	var eval_str = ''
+	if is_win: 
+		var random_index = randi() % win_messages.size()
+		var win_message = win_messages[random_index]
+		_effect_evaluate(win_message)
+		# Random textwin ('Fantastic!, 'Well Done!....)
+	else:
+		var random_index = randi() % lose_msgs.size()
+		var lose_message = lose_msgs[random_index]
+		_effect_evaluate(lose_message)
+	
 	
 	# effect move to cards win
 	var player_node = get_player_node_by_uid(player_win_id)
@@ -331,12 +382,13 @@ func deal_my_cards(cards) -> void:
 		tween.kill()
 	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	var list_pos_des = _calculate_world_card_positions(number)
+	var rotates = _get_card_rotates(number) 
 	for i in range(number):
 		var instance = card_scene.instantiate()
 		play_ground.add_child(instance)
 		instance.set_card(cards[i])
 		instance.turn_face_down()
-		instance.z_index = DEFAULT_CARD_Z_INDEX
+		instance.z_index = DEFAULT_CARD_Z_INDEX + i
 		list_my_cards.append(instance)
 		instance.global_position = from_pos
 		
@@ -346,7 +398,9 @@ func deal_my_cards(cards) -> void:
 		final_pos.x += ((card_offset_x * (number-1)) / 2.0)
 		
 		#print("Offset: ", float(i)/float(number-1))
-		var rot_radians: float = lerp_angle(-rot_max, rot_max, float(i)/float(number-1))
+		var rot_radians: float = 0
+		
+		rot_radians = rotates[i]
 		#print("Rot: ", rot_radians)
 		#print("Card %d: , size: %s, pivot: %s" % [i, str(instance.size), str(instance.pivot_offset)])
 		
@@ -385,7 +439,10 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
+	var rot_degrees = randf_range(5, 10) if randf() > 0.5 else randf_range(-10, -5)
+	var rot = deg_to_rad(rot_degrees)
 	tween.parallel().tween_property(card_instance, "global_position",p_place_world, 0.3)
+	tween.parallel().tween_property(card_instance, "rotation", rot, 0.3)
 	tween.parallel().tween_property(card_instance, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
 	_update_my_card_positions()
@@ -413,7 +470,9 @@ func get_player_node_by_uid(user_id: int):
 			return p
 	return null
 func test_deal_card():
-	deal_my_cards([2, 3, 5, 6, 7, 8, 9])
+	#deal_my_cards([2, 3, 5, 6, 7, 8, 9])
+	
+	_effect_evaluate()
 	return
 
 func test_play_playercard():
@@ -459,18 +518,37 @@ func _effect_draw_card(uid, card_id):
 		return
 	
 	var l = len(list_my_cards)
-	if l > 0:
-		final_pos = list_my_cards[l - 1].global_position
-	else:
-		final_pos = Vector2(400, 600)
+	var next_size = l + 1
+	var card_suit = card_id % 4
+	# Find suitable position
+	var des_i = l
+	for i in range(len(list_my_cards)):
+		var x = len(list_my_cards) - i - 1
+		var c = list_my_cards[x]
+		var suit = c.id % 4
+		print('debugggsuit', suit)
+		if suit == card_suit:
+			des_i = x + 1
+			break
+			
+	var new_pos_arr = _calculate_world_card_positions(next_size)
+	var new_rotates = _get_card_rotates(next_size)
+	final_pos = new_pos_arr[des_i]
+	
+	var rot_radians: float = new_rotates[des_i]
+	print(rot_radians)
+
 	# Animate pos
-	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(1)
-	tween.parallel().tween_property(instance, "scale", Vector2(1, 1), 0.3).set_delay(1)
-	tween.tween_interval(0)
-	tween.tween_callback(
+	var delay = 1
+
+	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
+	tween.parallel().tween_property(instance, "scale", Vector2(1, 1), 0.3).set_delay(delay)
+	tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
+
+	tween.chain().tween_callback(
 		func():
-			list_my_cards.append(instance)
-			_update_my_card_positions()
+			list_my_cards.insert(des_i, instance)
+			_update_my_card_positions(true)
 	)
 func _on_received_draw_card():
 	pass
@@ -501,3 +579,35 @@ func on_new_chat_message(uid, message):
 		chat_btn_reddot.visible = true
 		
 	in_game_chat_gui.on_received_new_chat(uid, message)
+
+func _effect_evaluate(text = 'Fantastic!'):
+	evaluate_lb.text = text
+	var tween = create_tween()
+	evaluate_lb.modulate.a = 1
+	evaluate_lb.position = evaluate_lb_default_pos
+	evaluate_lb.scale = Vector2(0, 0)
+	tween.tween_property(self.evaluate_lb, 'scale', Vector2(1, 1), 0.4)
+	# delay 1 second
+	var y = evaluate_lb_default_pos.y - 30
+	var d = 1
+	tween.parallel().tween_property(evaluate_lb, 'modulate:a', 0, 0.3).set_delay(d)
+	tween.parallel().tween_property(evaluate_lb, 'position:y', y, 0.3).set_delay(d)
+	tween.parallel().tween_property(evaluate_lb, 'scale', Vector2(0.7, 0.7), 0.3).set_delay(d)
+	pass
+
+func _input(event):
+	if Config.CURRENT_MODE != Config.MODES.LOCAL:
+		return
+	if event is InputEventKey:
+		if event.pressed:
+			if event.keycode == KEY_W:
+				_effect_evaluate()
+				print("W key pressed")
+			elif event.keycode == KEY_S:
+				test_play_playercard()
+				print("S key pressed")
+			elif event.keycode == KEY_1:
+				deal_my_cards([2, 3, 5, 6, 7, 8, 9])
+		else:
+			if event.keycode == KEY_W:
+				print("W key released")

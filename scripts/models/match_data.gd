@@ -3,9 +3,10 @@ class_name MatchData
 
 enum MATCH_STATE {
 	WAITING = 0,
-	PLAYING = 1,
-	ENDING = 2,
-	ENDED = 3
+	PREPARING_START = 1,
+	PLAYING = 2,
+	ENDING = 3,
+	ENDED = 4
 }
 @export var match_id: int = 0
 @export var state: int = MATCH_STATE.WAITING

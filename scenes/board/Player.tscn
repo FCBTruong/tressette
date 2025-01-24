@@ -27,7 +27,6 @@ offset_bottom = 75.0
 color = Color(0.157628, 0.785124, 0.290129, 1)
 
 [node name="MainPn" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,6 +54,7 @@ offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjdqh")
 
 [node name="NameLb" type="Label" parent="MainPn/Panel"]

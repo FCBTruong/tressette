@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxtjcc2o2djd8"]
+
+[ext_resource type="Script" path="res://scripts/modules/friend/friend_requests_gui.gd" id="1_4tq2x"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_hhyhp"]
+[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_w4k6p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g05vm"]
+bg_color = Color(0.000129516, 0.398668, 0.700265, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="FriendRequestsGui" type="Node2D"]
+script = ExtResource("1_4tq2x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fog" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPn" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(400, 0)
+theme_override_styles/panel = SubResource("StyleBoxFlat_g05vm")
+
+[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 59.0
+offset_bottom = 54.0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+self_modulate = Color(0.893742, 0.890638, 0.890638, 0.744)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w4k6p")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_top = 13.0
+offset_right = 59.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.845)
+theme_override_fonts/font = ExtResource("2_hhyhp")
+theme_override_font_sizes/font_size = 30
+text = "REQUESTS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 74.0
+offset_right = 260.0
+offset_bottom = 394.0
+grow_horizontal = 2
+
+[node name="ListContainer" type="VBoxContainer" parent="CanvasLayer/MainPn/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]

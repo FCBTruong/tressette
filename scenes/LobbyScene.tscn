@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=25 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_esccj"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="14_byyp1"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="17_brags"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
 bg_color = Color(0.0143579, 0.618802, 0.243289, 1)
@@ -530,6 +531,33 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("15_g7l3g")
 theme_override_font_sizes/font_size = 20
 text = "Nguyen Huy Truong"
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer/Control2"]
+modulate = Color(0.0869777, 1, 0.0495088, 1)
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("17_brags")
+expand_mode = 1
 
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn2" to="." method="_open_tables_scene"]

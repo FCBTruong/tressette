@@ -4,78 +4,78 @@ extends Node
 var google_payment: GooglePayment
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    print('Payment Mgr ready')
-    _init_payment()
+	print('Payment Mgr ready')
+	_init_payment()
 
 # Payment should init after login success
 func _init_payment():
-    if Config.get_platform() == Config.PLATFORMS.ANDROID or \
-        Config.CURRENT_MODE == Config.MODES.LOCAL:
-            google_payment = GooglePayment.new()
-            google_payment.init_connection()
+	if Config.get_platform() == Config.PLATFORMS.ANDROID or \
+		Config.CURRENT_MODE == Config.MODES.LOCAL:
+			google_payment = GooglePayment.new()
+			google_payment.init_connection()
 
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
-    match cmd_id:
-        GameConstants.CMDs.PAYMENT_SUCCESS:
-            _handle_payment_success(payload)
+	match cmd_id:
+		GameConstants.CMDs.PAYMENT_SUCCESS:
+			_handle_payment_success(payload)
 
 func _handle_payment_success(payload):
-    var pkg = GameConstants.PROTOBUF.PACKETS.PaymentSuccess.new()
-    var result_code = pkg.from_bytes(payload)
-    var gold = pkg.get_gold()
-    
-    SceneManager.show_dialog('You receive ' + StringUtils.point_number(gold), 
-        func():
-            print('click ok'),
-        func():
-            print('click close')
-    )
-    return
-    
+	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentSuccess.new()
+	var result_code = pkg.from_bytes(payload)
+	var gold = pkg.get_gold()
+	
+	SceneManager.show_dialog('You receive ' + StringUtils.point_number(gold), 
+		func():
+			print('click ok'),
+		func():
+			print('click close')
+	)
+	return
+	
 # Resume billing that not proccessed yet
 # Should call after login
 func _on_billing_resume():
-    if Config.get_platform() == Config.PLATFORMS.ANDROID:
-        google_payment._on_billing_resume()
-            
+	if Config.get_platform() == Config.PLATFORMS.ANDROID:
+		google_payment._on_billing_resume()
+			
 func test_google_pay():
-    var purchase_data = {
-        "purchase_token": "nkkijakeekhblnpgfilaepgl.AO-J1OzWw9RKAnR2XeFNfTYBfmGFLMMW8qNGiSI6gnm1nVkNk_rNfiIc8khpWQdWxncMWlA29lRx8LmoFW4cnRRVjuZm6HmdW2kr1EypeK7hIEkl1_YKTBY",
-        "is_acknowledged": false,
-        "quantity": 1,
-        "skus": ["pack_02"],
-        "signature": "g01RIc5AEwDrXDeeiVfoLdK8AhdRPJzTYlaDa7eab1P3MV6KGtFQhuDNR01f+aO4y69VjHqUHjOKvT1eFbrFs198xG8MnMUeW2oF3+ANJaqqDT0YfUcsZ6LEgYGSxmQVu1GntPNsgI9ECDFBFhmPT9qA67CZRc6EHyHxb/oWWNd/TAWU9ljH1lkAKm0udWLf2ZWuKHvtlEPe7vgg3FOv7ZpY/PQNcd2qGhMFuKRU0PhpPF7DdBXsfVT4O/cAH8t7P5uTqS6PoWeIARMYpu0w5k7BAqcOxMksJbjOLMPDnSpewEs25J4Xj31QVV3u9wJo+cpk9i+qbTmv81gK1YIzSQ==",
-        "package_name": "com.clareentertainment.tressette",
-        "original_json": "{\"orderId\":\"GPA.3394-3459-3955-10526\",\"packageName\":\"com.clareentertainment.tressette\",\"productId\":\"pack_02\",\"purchaseTime\":1737387870183,\"purchaseState\":0,\"purchaseToken\":\"nkkijakeekhblnpgfilaepgl.AO-J1OzWw9RKAnR2XeFNfTYBfmGFLMMW8qNGiSI6gnm1nVkNk_rNfiIc8khpWQdWxncMWlA29lRx8LmoFW4cnRRVjuZm6HmdW2kr1EypeK7hIEkl1_YKTBY\",\"quantity\":1,\"acknowledged\":false}",
-        "purchase_time": 1737387870183,
-        "sku": "pack_02",
-        "order_id": "GPA.3394-3459-3955-10526",
-        "purchase_state": 1,
-        "is_auto_renewing": false
-    }
-    google_payment._process_purchase(purchase_data)
+	var purchase_data = {
+		"purchase_token": "nkkijakeekhblnpgfilaepgl.AO-J1OzWw9RKAnR2XeFNfTYBfmGFLMMW8qNGiSI6gnm1nVkNk_rNfiIc8khpWQdWxncMWlA29lRx8LmoFW4cnRRVjuZm6HmdW2kr1EypeK7hIEkl1_YKTBY",
+		"is_acknowledged": false,
+		"quantity": 1,
+		"skus": ["pack_02"],
+		"signature": "g01RIc5AEwDrXDeeiVfoLdK8AhdRPJzTYlaDa7eab1P3MV6KGtFQhuDNR01f+aO4y69VjHqUHjOKvT1eFbrFs198xG8MnMUeW2oF3+ANJaqqDT0YfUcsZ6LEgYGSxmQVu1GntPNsgI9ECDFBFhmPT9qA67CZRc6EHyHxb/oWWNd/TAWU9ljH1lkAKm0udWLf2ZWuKHvtlEPe7vgg3FOv7ZpY/PQNcd2qGhMFuKRU0PhpPF7DdBXsfVT4O/cAH8t7P5uTqS6PoWeIARMYpu0w5k7BAqcOxMksJbjOLMPDnSpewEs25J4Xj31QVV3u9wJo+cpk9i+qbTmv81gK1YIzSQ==",
+		"package_name": "com.clareentertainment.tressette",
+		"original_json": "{\"orderId\":\"GPA.3394-3459-3955-10526\",\"packageName\":\"com.clareentertainment.tressette\",\"productId\":\"pack_02\",\"purchaseTime\":1737387870183,\"purchaseState\":0,\"purchaseToken\":\"nkkijakeekhblnpgfilaepgl.AO-J1OzWw9RKAnR2XeFNfTYBfmGFLMMW8qNGiSI6gnm1nVkNk_rNfiIc8khpWQdWxncMWlA29lRx8LmoFW4cnRRVjuZm6HmdW2kr1EypeK7hIEkl1_YKTBY\",\"quantity\":1,\"acknowledged\":false}",
+		"purchase_time": 1737387870183,
+		"sku": "pack_02",
+		"order_id": "GPA.3394-3459-3955-10526",
+		"purchase_state": 1,
+		"is_auto_renewing": false
+	}
+	google_payment._process_purchase(purchase_data)
 func on_user_login():
-    if Config.get_platform() == Config.PLATFORMS.ANDROID:
-        if not google_payment.payment:
-            # init again
-            _init_payment()
-        
-        # continue resume
-        _on_billing_resume()
+	if Config.get_platform() == Config.PLATFORMS.ANDROID:
+		if not google_payment.payment:
+			# init again
+			_init_payment()
+		
+		# continue resume
+		_on_billing_resume()
 
 func get_price_pack(pack_id):
-    var price_str = 'Undefined'
-    if Config.get_platform() == Config.PLATFORMS.ANDROID:
-        var price_gg = google_payment.get_price_pack(pack_id)
-        if price_gg:
-            price_str = price_gg
-    return price_str
+	var price_str = 'Undefined'
+	if Config.get_platform() == Config.PLATFORMS.ANDROID:
+		var price_gg = google_payment.get_price_pack(pack_id)
+		if price_gg:
+			price_str = price_gg
+	return price_str
 
 func buy_pack(pack_id):
-    if not pack_id:
-        print('Pack ID must not null')
-        return
-    print('process buy_pack', pack_id)
-        
-    if Config.get_platform() == Config.PLATFORMS.ANDROID:
-        google_payment.purchase_pack(pack_id)
+	if not pack_id:
+		print('Pack ID must not null')
+		return
+	print('process buy_pack', pack_id)
+		
+	if Config.get_platform() == Config.PLATFORMS.ANDROID:
+		google_payment.purchase_pack(pack_id)

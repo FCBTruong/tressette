@@ -154,6 +154,7 @@ func _handle_deal_card(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.DealCard.new()
 	var result_code = pkg.from_bytes(payload)
 	var cards = pkg.get_cards()
+	cards.sort_custom(_card_sorter)
 	match_data.remain_cards = pkg.get_remain_cards()
 	
 	for player in match_data.users:
@@ -343,6 +344,7 @@ func _handle_prepare_start(payload: PackedByteArray):
 	var time_start = pkg.get_time_start()
 	await SceneManager.get_tree().create_timer(0.5).timeout
 	SceneManager.INSTANCES.BOARD_SCENE.show_prepare_start()
+	match_data.state = MatchData.MATCH_STATE.PREPARING_START
 	
 func get_my_team_score() -> int:
 	var c = 0
