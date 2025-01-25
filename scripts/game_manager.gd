@@ -1,6 +1,7 @@
 extends Node
 
-@export var _token:String = ''
+@export var _token:String = 'default' # note, protobuf string can not be empty, otherwise will error not sent
+
 @export var timestamp_server_delta = 0
 @export var enable_sound = true
 @export var enable_chat_ingame = true
