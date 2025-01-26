@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	_do_effect()
 	on_update_gui()
+	update_lobby_friends()
 	pass # Replace with function body.
 
 @onready var left_panel = find_child('LeftPanel')
@@ -70,3 +71,11 @@ func _open_customer_service_gui():
 	
 func open_shop():
 	SceneManager.switch_scene(SceneManager.SHOP_SCENE)
+var friend_lobby_scene = preload("res://scenes/lobby/FriendLobbyNode.tscn")
+@onready var lobby_friend_list = find_child('LobbyFriendList')	
+func update_lobby_friends():
+	for f in FriendManager.friends:
+		var n = friend_lobby_scene.instantiate()
+		lobby_friend_list.add_child(n)
+		
+	

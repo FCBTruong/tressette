@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxtjcc2o2djd8"]
+[gd_scene load_steps=6 format=3 uid="uid://dxtjcc2o2djd8"]
 
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_requests_gui.gd" id="1_4tq2x"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_hhyhp"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_thc1y"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_w4k6p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g05vm"]
@@ -39,11 +40,13 @@ pivot_offset = Vector2(400, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_g05vm")
 
 [node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 4.0
 offset_right = 59.0
 offset_bottom = 54.0
 flat = true
+script = ExtResource("2_thc1y")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
 self_modulate = Color(0.893742, 0.890638, 0.890638, 0.744)

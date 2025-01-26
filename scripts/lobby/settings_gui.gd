@@ -33,4 +33,4 @@ func _on_close_tween_finished() -> void:
 	$Panel.position = default_pos
 
 func _logout() -> void:
-	SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
+	GameClient.send_packet(GameConstants.CMDs.LOG_OUT, [])

@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=22 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_sor57"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_snlll"]
 [ext_resource type="Texture2D" uid="uid://ki8x4sty35jl" path="res://assets/images/cards/card_back.png" id="5_m272p"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="8_afrgf"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
@@ -402,15 +403,34 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingBtn" type="Button" parent="CanvasLayer/RightTopPanel"]
-modulate = Color(0.228638, 0.530549, 0.279563, 1)
-layout_mode = 0
-offset_left = 304.0
-offset_top = 35.0
-offset_right = 412.0
-offset_bottom = 143.0
-scale = Vector2(0.5, 0.5)
-icon = ExtResource("9_ujbxy")
+modulate = Color(0.634138, 0.768152, 0.656743, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -101.0
+offset_top = 25.0
+offset_right = -51.0
+offset_bottom = 75.0
+grow_horizontal = 0
 flat = true
+script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/SettingBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_ujbxy")
+expand_mode = 1
 
 [node name="EvaluateLb" type="Label" parent="CanvasLayer"]
 custom_minimum_size = Vector2(400, 50)
@@ -423,7 +443,7 @@ offset_right = 200.0
 offset_bottom = 146.0
 grow_horizontal = 2
 pivot_offset = Vector2(200, 25)
-theme_override_colors/font_color = Color(1, 1, 1, 0.73)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_afrgf")
 theme_override_font_sizes/font_size = 30
 text = "Fantastic!"
@@ -449,6 +469,7 @@ icon = ExtResource("9_g7ymd")
 flat = true
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("7_gov4p")
 
 [node name="PnCheat" type="Control" parent="CanvasLayer"]
 visible = false
@@ -502,6 +523,7 @@ offset_top = -176.0
 offset_right = 124.0
 offset_bottom = -116.0
 flat = true
+script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
 modulate = Color(0.105294, 0.652745, 0.624689, 0.757)

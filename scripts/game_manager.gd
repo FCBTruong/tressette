@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 func login_success(uid: int, token: String):
 	_token = token
 	PaymentMgr.on_user_login()
-	SceneManager.switch_scene(SceneManager.LOBBY_SCENE)
+	SceneManager.switch_scene(SceneManager.LOADING_SCENE)
 
 func get_token() -> String:
 	return _token
@@ -41,3 +41,6 @@ func get_timestamp_server():
 	
 func set_timestamp_server_delta(del):
 	timestamp_server_delta = del # milliseconds
+	
+func logout():
+	SceneManager.switch_scene(SceneManager.LOGIN_SCENE)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxrhqd8w2syim"]
+[gd_scene load_steps=7 format=3 uid="uid://cxrhqd8w2syim"]
 
 [ext_resource type="Script" path="res://scripts/lobby/settings_gui.gd" id="1_h1gqm"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_txiv8"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_wld6o"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_j4bw7"]
 
@@ -54,6 +55,7 @@ offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 0
 flat = true
+script = ExtResource("2_txiv8")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Panel/Button"]
 layout_mode = 1

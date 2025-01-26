@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dre6witgv0vxh"]
+[gd_scene load_steps=6 format=3 uid="uid://dre6witgv0vxh"]
 
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_4bwsr"]
 [ext_resource type="Script" path="res://scripts/modules/shop/shop_scene.gd" id="1_lrbfb"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="2_fwqk2"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_45jny"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_f7wm3"]
 
 [node name="ShopScene" type="Node2D"]
@@ -25,6 +26,7 @@ offset_top = 26.0
 offset_right = 119.0
 offset_bottom = 106.0
 flat = true
+script = ExtResource("3_45jny")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect/BackBtn"]
 modulate = Color(0.812, 0.812, 0.812, 0.526)

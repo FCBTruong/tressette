@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bufmkwwcovvdm"]
+[gd_scene load_steps=10 format=3 uid="uid://bufmkwwcovvdm"]
 
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_request_node.gd" id="1_daw0j"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="1_i6mhq"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_42fsm"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gvyii"]
 [ext_resource type="Texture2D" uid="uid://bq3rgtuk3jjpg" path="res://assets/images/lobby/check_icon.png" id="4_tfj5i"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_pu5sr"]
 [ext_resource type="Texture2D" uid="uid://cuodum7wf3mlx" path="res://assets/images/lobby/x_icon.png" id="5_tr680"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="6_0ie53"]
 
@@ -92,6 +93,7 @@ offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
 flat = true
+script = ExtResource("5_pu5sr")
 
 [node name="TextureRect" type="TextureRect" parent="AcceptBtn"]
 modulate = Color(0.121853, 0.822461, 0.122654, 1)
@@ -124,6 +126,7 @@ offset_bottom = 25.0
 grow_horizontal = 0
 grow_vertical = 2
 flat = true
+script = ExtResource("5_pu5sr")
 
 [node name="TextureRect" type="TextureRect" parent="RejectBtn"]
 modulate = Color(0.901, 0.157, 0.157, 0.882)

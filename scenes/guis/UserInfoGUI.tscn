@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=19 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
-[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="2_8xkbq"]
 [ext_resource type="Texture2D" uid="uid://ba5hi2m6d1v62" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
+[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="3_f4vbo"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_b03ik"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dua5jqujlm0kh" path="res://assets/images/lobby/user_info_gui/email.png" id="6_5upxd"]
 [ext_resource type="Texture2D" uid="uid://cvs720c5x14nn" path="res://assets/images/lobby/add_friend.png" id="7_w3o0j"]
 [ext_resource type="Texture2D" uid="uid://dkgkp6amt0wmb" path="res://assets/images/lobby/user_info_gui/dollar.png" id="8_47ubv"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp3k3"]
 corner_radius_top_left = 15
@@ -109,13 +110,30 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 5.0
-offset_top = -19.0
-offset_right = 43.0
-offset_bottom = 19.0
+offset_left = 6.0
+offset_top = -22.0
+offset_right = 56.0
+offset_bottom = 28.0
 grow_vertical = 2
-icon = ExtResource("2_8xkbq")
 flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/Panel/CloseBtn"]
+self_modulate = Color(0.930762, 0.945953, 1, 0.724)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_f4vbo")
+expand_mode = 1
 
 [node name="GoldBg" type="Panel" parent="Control/MainPn/Panel"]
 layout_mode = 1
@@ -311,6 +329,7 @@ layout_mode = 2
 size_flags_vertical = 8
 icon = ExtResource("6_5upxd")
 flat = true
+script = ExtResource("11_eoxhy")
 
 [node name="Control" type="Control" parent="Control/MainPn/ButtonPn"]
 custom_minimum_size = Vector2(20, 0)
@@ -320,6 +339,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 flat = true
+script = ExtResource("11_eoxhy")
 
 [node name="TextureRect" type="TextureRect" parent="Control/MainPn/ButtonPn/RequestFriendBtn"]
 layout_mode = 1

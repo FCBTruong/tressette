@@ -1,315 +1,143 @@
 [gd_scene load_steps=9 format=3 uid="uid://coalpvybk074r"]
 
-[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="1_cswlw"]
-[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_lt5mh"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_h84l2"]
+[ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_hp4ed"]
+[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="2_3wqxv"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_c3fu3"]
+[ext_resource type="Texture2D" uid="uid://roswew5btpo" path="res://assets/images/lobby/people_icon.png" id="3_wpwhv"]
+[ext_resource type="Texture2D" uid="uid://bfxxmv06hvokw" path="res://assets/images/lobby/bet_icon.png" id="4_ae8jn"]
+[ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="5_qhwvw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oqvr"]
-bg_color = Color(0.479634, 0.253882, 0.126262, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.744392, 0.60718, 0.628287, 1)
-border_blend = true
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aig1"]
+bg_color = Color(0.154, 0.176, 0.412, 0.776)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mf5gj"]
-bg_color = Color(0.275974, 0.137987, 0.151496, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.301961, 0.027451, 0.027451, 1)
-border_blend = true
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ethlx"]
+bg_color = Color(0, 0, 0, 0.115)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thuu4"]
-bg_color = Color(0.27451, 0.137255, 0.152941, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.301961, 0.027451, 0.027451, 1)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
+[node name="TableNode" type="Control"]
+custom_minimum_size = Vector2(300, 130)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 441.0
+offset_top = 240.0
+offset_right = 441.0
+offset_bottom = 240.0
+mouse_filter = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4oj6v"]
-bg_color = Color(0.27451, 0.137255, 0.152941, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.301961, 0.027451, 0.027451, 1)
-border_blend = true
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3efc"]
-bg_color = Color(0.27451, 0.137255, 0.152941, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.303129, 0.0279655, 0.0279655, 1)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_bottom_left = 20
-
-[node name="TableNode" type="Node2D"]
-position = Vector2(441, 240)
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_left = -427.0
+offset_top = -163.0
+offset_right = 773.0
+offset_bottom = 437.0
+texture = ExtResource("1_hp4ed")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4aig1")
+
+[node name="PlayBtn" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("2_c3fu3")
+
+[node name="Panel" type="Panel" parent="Panel/PlayBtn"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ethlx")
+
+[node name="Label" type="Label" parent="Panel/PlayBtn/Panel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -45.5
-offset_right = 60.0
-offset_bottom = 45.5
+offset_left = -20.5
+offset_top = -14.0
+offset_right = 20.5
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7oqvr")
+theme_override_fonts/font = ExtResource("2_3wqxv")
+theme_override_font_sizes/font_size = 22
+text = "Play"
 
-[node name="Chair4" type="Panel" parent="Panel"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 94.5
-offset_right = 82.0
-offset_bottom = 124.5
-theme_override_styles/panel = SubResource("StyleBoxFlat_mf5gj")
-
-[node name="Chair3" type="Panel" parent="Panel"]
-layout_mode = 0
-offset_left = 41.0
-offset_top = -33.5
-offset_right = 81.0
-offset_bottom = -3.5
-theme_override_styles/panel = SubResource("StyleBoxFlat_thuu4")
-
-[node name="Chair2" type="Panel" parent="Panel"]
-layout_mode = 0
-offset_left = 123.0
-offset_top = 24.5
-offset_right = 153.0
-offset_bottom = 64.5
-theme_override_styles/panel = SubResource("StyleBoxFlat_4oj6v")
-
-[node name="Chair1" type="Panel" parent="Panel"]
-layout_mode = 0
-offset_left = -33.0
-offset_top = 24.5
-offset_right = -3.0
-offset_bottom = 64.5
-theme_override_styles/panel = SubResource("StyleBoxFlat_f3efc")
-
-[node name="Label" type="Label" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -32.0
-offset_top = 14.5
-offset_right = 32.0
-offset_bottom = 37.5
-grow_horizontal = 2
-text = "10.000 $"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label" type="Label" parent="Panel/Label"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -31.0
-offset_top = 35.5
-offset_right = 33.0
-offset_bottom = 58.5
-grow_horizontal = 2
-text = "Tressette"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Avatar3" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -103.0
-offset_top = -18.0
-offset_right = -63.0
-offset_bottom = 22.0
-
-[node name="TextureRect" type="TextureRect" parent="Avatar3"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -33.0
+offset_right = 10.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_cswlw")
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("3_wpwhv")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Avatar3/TextureRect"]
-clip_children = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_lt5mh")
-expand_mode = 1
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3wqxv")
+theme_override_font_sizes/font_size = 22
+text = "1/4"
 
-[node name="TextureRect2" type="TextureRect" parent="Avatar3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_h84l2")
-expand_mode = 1
+[node name="Control" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
-[node name="Avatar2" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 62.0
-offset_top = -20.0
-offset_right = 102.0
-offset_bottom = 20.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Avatar2"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_cswlw")
-expand_mode = 1
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("4_ae8jn")
+expand_mode = 2
 
-[node name="Img" type="TextureRect" parent="Avatar2/TextureRect"]
-clip_children = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_lt5mh")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Avatar2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_h84l2")
-expand_mode = 1
-
-[node name="Avatar0" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -20.0
-offset_top = 48.0
-offset_right = 20.0
-offset_bottom = 88.0
-
-[node name="TextureRect" type="TextureRect" parent="Avatar0"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_cswlw")
-expand_mode = 1
-
-[node name="Img" type="TextureRect" parent="Avatar0/TextureRect"]
-clip_children = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_lt5mh")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Avatar0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_h84l2")
-expand_mode = 1
-
-[node name="Avatar1" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -18.0
-offset_top = -86.0
-offset_right = 22.0
-offset_bottom = -46.0
-
-[node name="TextureRect" type="TextureRect" parent="Avatar1"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_cswlw")
-expand_mode = 1
-
-[node name="Img" type="TextureRect" parent="Avatar1/TextureRect"]
-clip_children = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_lt5mh")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="Avatar1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_h84l2")
-expand_mode = 1
+[node name="BetLb" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_qhwvw")
+theme_override_font_sizes/font_size = 22
+text = "10.000$"

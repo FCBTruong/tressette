@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=22 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_esccj"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_x7pan"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Texture2D" uid="uid://2tvqotkvdx50" path="res://assets/images/img_01.png" id="6_7tuic"]
 [ext_resource type="Texture2D" uid="uid://d08otqxw5pyym" path="res://assets/images/lobby/shopping_card.png" id="6_ccwgc"]
@@ -12,11 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cxkmagcclh5x6" path="res://assets/images/lobby/clipboard.png" id="8_p6t30"]
 [ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="12_q3rst"]
-[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="13_d0m06"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="14_byyp1"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
-[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="17_brags"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
 bg_color = Color(0.0143579, 0.618802, 0.243289, 1)
@@ -57,13 +55,6 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6i40"]
 bg_color = Color(0.126624, 0.126624, 0.126624, 0.414)
 corner_radius_top_right = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu0cq"]
-bg_color = Color(0.435294, 0.423529, 0.415686, 0.356863)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="LobbyScene" type="Node2D"]
 script = ExtResource("1_wigpx")
@@ -113,6 +104,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 flat = true
+script = ExtResource("3_x7pan")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
 layout_mode = 1
@@ -153,12 +145,13 @@ texture = ExtResource("6_7tuic")
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="StartBtn2" type="Button" parent="CanvasLayer/Control/PlayContainer"]
+[node name="RoomsBtn" type="Button" parent="CanvasLayer/Control/PlayContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 flat = true
+script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/PlayContainer/RoomsBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -168,7 +161,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_reuhb")
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
+[node name="Label2" type="Label" parent="CanvasLayer/Control/PlayContainer/RoomsBtn"]
 modulate = Color(1, 1, 1, 0.812)
 layout_mode = 1
 anchors_preset = 7
@@ -187,7 +180,7 @@ text = "Rooms"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D2" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/StartBtn2"]
+[node name="Sprite2D2" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/RoomsBtn"]
 modulate = Color(1, 1, 1, 0.717)
 layout_mode = 1
 anchors_preset = 8
@@ -230,6 +223,7 @@ modulate = Color(0.737255, 0.74902, 0.780392, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
+script = ExtResource("3_x7pan")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn"]
 modulate = Color(0.737255, 0.74902, 0.780392, 1)
@@ -251,6 +245,7 @@ texture = ExtResource("6_vby4e")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
+script = ExtResource("3_x7pan")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn"]
 modulate = Color(0.737255, 0.74902, 0.780392, 1)
@@ -290,13 +285,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Button4" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+[node name="MissionBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
 modulate = Color(0.737255, 0.74902, 0.780392, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
+script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button4"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/MissionBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -311,13 +307,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_p6t30")
 
-[node name="Button2" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+[node name="FriendBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
 modulate = Color(0.737255, 0.74902, 0.780392, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
+script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button2"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -337,6 +334,7 @@ modulate = Color(0.737886, 0.750155, 0.781729, 1)
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 flat = true
+script = ExtResource("3_x7pan")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
 layout_mode = 1
@@ -397,6 +395,7 @@ offset_bottom = 100.0
 [node name="AvatarBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+script = ExtResource("3_x7pan")
 
 [node name="Avatar" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
 layout_mode = 1
@@ -464,106 +463,29 @@ offset_right = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Control2" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 3
+
+[node name="LobbyFriendList" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_uu0cq")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer/Control"]
-clip_children = 2
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("13_d0m06")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer/Control/TextureRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_cni6g")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -21.5
-offset_top = -21.5
-offset_right = 21.5
-offset_bottom = 21.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("14_byyp1")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.815)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("15_g7l3g")
-theme_override_font_sizes/font_size = 20
-text = "Nguyen Huy Truong"
-
-[node name="Control2" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/Panel/HBoxContainer/Control2"]
-modulate = Color(0.0869777, 1, 0.0495088, 1)
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-texture = ExtResource("17_brags")
-expand_mode = 1
-
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn2" to="." method="_open_tables_scene"]
+[connection signal="pressed" from="CanvasLayer/Control/PlayContainer/RoomsBtn" to="." method="_open_tables_scene"]
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
-[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button2" to="." method="_open_friend_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn" to="." method="_open_friend_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn" to="." method="open_shop"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3" to="." method="_open_mail_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]

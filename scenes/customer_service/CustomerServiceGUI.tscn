@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbafojlnj5n41"]
+[gd_scene load_steps=11 format=3 uid="uid://bbafojlnj5n41"]
 
 [ext_resource type="Script" path="res://scripts/modules/customer_service/customer_service_gui.gd" id="1_skaxo"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_5ljjh"]
 [ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="2_8xgyj"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_jge5g"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_1cn1o"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_pj2rb"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="5_33vxw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quive"]
@@ -120,6 +121,7 @@ offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 flat = true
+script = ExtResource("4_pj2rb")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/MainPn/SendBtn"]
 layout_mode = 1

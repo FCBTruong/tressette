@@ -5,6 +5,7 @@ const BOARD_SCENE = 'res://scenes/BoardScene.tscn'
 const TABLES_SCENE = 'res://scenes/ChooseTableScene.tscn'
 const LOGIN_SCENE = 'res://scenes/LoginScene.tscn'
 const SHOP_SCENE = 'res://scenes/ShopScene.tscn'
+const LOADING_SCENE = 'res://scenes/loading/LoadingScene.tscn'
 
 static var INSTANCES = {
 	BOARD_SCENE: null

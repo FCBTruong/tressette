@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://doyshtw1etx6n"]
+[gd_scene load_steps=7 format=3 uid="uid://doyshtw1etx6n"]
 
 [ext_resource type="Script" path="res://scripts/modules/shop/shop_item_node.gd" id="1_ffhj8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="1_gjltu"]
 [ext_resource type="FontFile" uid="uid://rst2163jgwxb" path="res://assets/fonts/ARIALBD 1.TTF" id="2_npgk3"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_eb3ac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1it3v"]
 bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
@@ -75,6 +76,7 @@ offset_right = 75.0
 grow_horizontal = 2
 grow_vertical = 0
 flat = true
+script = ExtResource("3_eb3ac")
 
 [node name="Panel" type="Panel" parent="Main/BuyBtn"]
 layout_mode = 1
