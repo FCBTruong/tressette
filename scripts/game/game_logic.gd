@@ -3,6 +3,7 @@ extends RefCounted
 
 var match_data: MatchData = null
 var card_win_id: int
+var win_point_hand: int
 var hand_suit = -1 # current hand suit need to follow
 var my_idx = 0 # in list users
 var match_result = MatchData.MatchResult.new()
@@ -64,6 +65,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 	var seat_server = pkg.get_seat_server()
 	var name = pkg.get_name()
 	var team_id = pkg.get_team_id()
+	var avatar = pkg.get_avatar()
 	print('seat server', seat_server)
 	var seat_id = seat_server - match_data.seat_delta
 	if seat_id < 0:
@@ -77,6 +79,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 			user.uid = uid
 			user.name = name
 			user.game_data.team_id = team_id
+			user.avatar = avatar
 			
 	for user in match_data.users:
 		print('debug seat', user.game_data.seat_id)
@@ -113,6 +116,7 @@ func _handle_game_info(payload: PackedByteArray):
 	print('uids: ', uids)
 	var user_names = pkg.get_user_names()
 	var golds = pkg.get_user_golds()
+	var avatars = pkg.get_avatars()
 	var user_points = pkg.get_user_points()
 	var team_ids = pkg.get_team_ids()
 	
@@ -124,6 +128,7 @@ func _handle_game_info(payload: PackedByteArray):
 		var userdata = UserData.new(uid, user_names[i])
 		userdata.game_data.points = user_points[i]
 		userdata.game_data.team_id = team_ids[i]
+		userdata.avatar = avatars[i]
 		users.append(userdata)
 		if uid == PlayerInfoMgr.my_user_data.uid:
 			my_idx = i
@@ -273,12 +278,12 @@ func _card_sorter(a: int, b: int) -> bool:
 	
 func get_card_win_inhand():
 	return card_win_id
-	return match_data.cards_compare[0]
-
+	
 func _handle_endhand(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.EndHand.new()
 	var result_code = pkg.from_bytes(payload)
 	var win_uid = pkg.get_win_uid()
+	win_point_hand = pkg.get_win_point()
 	card_win_id = pkg.get_win_card()
 	var points = pkg.get_user_points()
 	

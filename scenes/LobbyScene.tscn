@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=23 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_esccj"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="12_q3rst"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
 bg_color = Color(0.0143579, 0.618802, 0.243289, 1)
@@ -406,6 +407,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_cni6g")
 expand_mode = 1
+script = ExtResource("15_yoog2")
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
 custom_minimum_size = Vector2(10, 0)

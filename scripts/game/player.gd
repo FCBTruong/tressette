@@ -6,7 +6,9 @@ extends Node
 @onready var main_pn = find_child("MainPn")
 @onready var score_lb = find_child("ScoreLb")
 @onready var vortex = find_child("Vortex")
+@onready var avatar_img = find_child('AvatarImg')
 func _ready() -> void:
+	#effect_add_score(5)
 	pass
 
 # Properties
@@ -28,6 +30,10 @@ func set_user_data(user_dt: UserData) -> void:
 	if name_label:
 		name_label.text = user_data.name
 	update_points_display()
+	# update avatar
+	print('userdatavat', user_data.avatar)
+	avatar_img.set_avatar(user_data.avatar)
+	
 
 func update_points_display(effect_add = false):
 	pass
@@ -84,5 +90,26 @@ func end_timer():
 	await get_tree().create_timer(1).timeout
 	running = false
 	print("Timer complete!")
-	
+
+var effect_add_score_scene = preload('res://scenes/board/AddScoreEffect.tscn')
+func effect_add_score(score):
+	if score <= 0:
+		return
+	var main = score / 3
+	var sub = score % 3
 	# send auto play to server
+	var eff = effect_add_score_scene.instantiate()
+	self.add_child(eff)
+	eff.find_child('MainLb').text = str(main) if main > 0 else ''
+	eff.find_child('SubLb').text = str(sub)
+	eff.find_child('Sub').visible = true if sub > 0 else false
+	var x = 70
+	if self.global_position.x > get_viewport().get_visible_rect().size.x / 2:
+		x = -120
+	var default_pos = Vector2(x, 0)
+	eff.position = default_pos
+	var n_pos = Vector2(x, -50)
+	var tween = create_tween()
+	tween.tween_property(eff, 'position', n_pos, 0.5)
+	tween.tween_property(eff, 'modulate:a', 0, 0.5)
+	tween.tween_callback(eff.queue_free)

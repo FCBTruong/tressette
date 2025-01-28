@@ -14,7 +14,7 @@ func _ready() -> void:
 @onready var panel_info = find_child('PanelInfo')
 @onready var gold_lb:Label = panel_info.find_child('GoldLb')
 @onready var name_lb:Label = panel_info.find_child('NameLb')
-
+@onready var avatar_img = find_child('Avatar')
 func _do_effect() -> void:
 	var left_panel_defaultpos = left_panel.position
 	var play_container_defaultpos = play_container.position

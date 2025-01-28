@@ -1,0 +1,90 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg7rid5eea47b"]
+
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="1_52t3o"]
+
+[node name="AddScoreEffect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -21.0
+offset_right = 50.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MainLb2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52t3o")
+theme_override_font_sizes/font_size = 34
+text = "+"
+
+[node name="MainLb" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_52t3o")
+theme_override_font_sizes/font_size = 34
+text = "1"
+
+[node name="Sub" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SubLb" type="Label" parent="HBoxContainer/Sub"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -31.0
+offset_right = 28.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_52t3o")
+theme_override_font_sizes/font_size = 28
+text = "1"
+
+[node name="SubLb2" type="Label" parent="HBoxContainer/Sub"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 38.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_52t3o")
+theme_override_font_sizes/font_size = 28
+text = "3
+"
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Sub"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 28.0
+offset_bottom = 5.0
+grow_vertical = 2
+rotation = -0.424024

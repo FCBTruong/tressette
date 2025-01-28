@@ -25,6 +25,8 @@ var cards_node_compare = []
 @onready var remain_cards_lb = find_child('RemainCardsLb')
 @onready var my_score_lb = find_child('MyScoreLb')
 @onready var opponent_score_lb = find_child('OpponentScoreLb')
+@onready var my_score_sub = find_child('MyScoreSub')
+@onready var opponent_score_sub = find_child("OpponentScoreSub")
 @onready var countdown_start_lb = find_child('CountdownStartLb')
 @onready var room_id_lb = find_child('RoomIdLb')
 @onready var pn_cheat = find_child('PnCheat')
@@ -56,7 +58,9 @@ func _ready() -> void:
 	
 	#show_prepare_start()
 func _get_card_rotates(n):
-	var rot_max_radians = deg_to_rad(rot_max)
+	if n == 1:
+		return [0]
+	var rot_max_radians = deg_to_rad(rot_max * n / 10)
 	var arr = []
 	for i in range(n):
 		var rot_radians: float = lerp_angle(-rot_max_radians, rot_max_radians, float(i)/float(n-1))
@@ -265,7 +269,7 @@ func on_finishhand(delay = 0.5):
 	#for card in cards_node_compare:
 		#card.visible = false
 	var card_win_id = game_logic.get_card_win_inhand()
-	
+	var win_hand_point = game_logic.win_point_hand
 	# show effect
 	var card_win_node = null
 	var player_win_id = null
@@ -325,14 +329,43 @@ func on_finishhand(delay = 0.5):
 	
 	for player in list_players:
 		player.update_points_display(true)
+	# effect add score
+	await get_tree().create_timer(0.5).timeout
+	player_node.effect_add_score(win_hand_point)
 	self.update_team_scores()
 		
 func update_team_scores():
 	var my_score = game_logic.get_my_team_score()
 	var opponent_score = game_logic.get_opponent_team_score()
-	my_score_lb.text = str(my_score)
-	opponent_score_lb.text = str(opponent_score)
+	_update_display_score(true, my_score)
+	_update_display_score(false, opponent_score)
 
+func _update_display_score(is_myteam, score: int) -> void:
+	var main = score / 3
+	var sub = score % 3
+	if is_myteam:
+		if main == 0 and sub > 0:
+			my_score_lb.text = ''
+		else:
+			my_score_lb.text = str(main)
+	else:
+		if main == 0 and sub > 0:
+			opponent_score_lb.text = ''
+		else:
+			opponent_score_lb.text = str(main)
+	if sub != 0:
+		if is_myteam:
+			my_score_sub.visible = true
+			my_score_sub.find_child('Sub1').text = str(sub)
+		else:
+			opponent_score_sub.visible = true
+			opponent_score_sub.find_child('Sub1').text = str(sub)
+	else:
+		if is_myteam:
+			my_score_sub.visible = false
+		else:
+			opponent_score_sub.visible = false
+			
 func _calculate_world_card_positions(number: int):
 	var list_pos = []
 	var p_center = Vector2(my_card_panel.size.x / 2, my_card_panel.size.y / 2)
@@ -385,6 +418,7 @@ func deal_my_cards(cards) -> void:
 	var rotates = _get_card_rotates(number) 
 	for i in range(number):
 		var instance = card_scene.instantiate()
+		print('debug----01')
 		play_ground.add_child(instance)
 		instance.set_card(cards[i])
 		instance.turn_face_down()
@@ -607,7 +641,7 @@ func _input(event):
 				test_play_playercard()
 				print("S key pressed")
 			elif event.keycode == KEY_1:
-				deal_my_cards([2, 3, 5, 6, 7, 8, 9])
+				deal_my_cards([2,3,4,5,6,8,9,33])
 		else:
 			if event.keycode == KEY_W:
 				print("W key released")

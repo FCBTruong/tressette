@@ -20,6 +20,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	my_user_data.uid = packet.get_uid()
 	my_user_data.name = packet.get_name()
 	my_user_data.gold = packet.get_gold()
+	my_user_data.avatar = packet.get_avatar()
 	var scores = packet.get_scores()
 	var names = packet.get_names()
 	var ac = packet.get_abc()

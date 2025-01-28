@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=23 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_sor57"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_snlll"]
 [ext_resource type="Texture2D" uid="uid://ki8x4sty35jl" path="res://assets/images/cards/card_back.png" id="5_m272p"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="7_qu8fh"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="8_afrgf"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
@@ -288,43 +289,173 @@ offset_bottom = 80.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_th6m6")
 
-[node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -113.0
-offset_top = -24.0
-offset_right = -13.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn"]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 80.0
+alignment = 2
+
+[node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.122525, 0.744392, 0.281657, 1)
 theme_override_fonts/font = ExtResource("4_cv557")
 theme_override_font_sizes/font_size = 40
-text = "11"
+text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
+[node name="MyScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.9)
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Sub2" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.633333
+anchor_top = 1.0
+anchor_right = 0.633333
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -47.0
+offset_right = 13.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.121569, 0.745098, 0.286275, 1)
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 30
+text = "3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sub1" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.633333
+anchor_right = 0.633333
+offset_left = -24.0
+offset_top = 10.0
+offset_right = 8.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.121569, 0.745098, 0.286275, 1)
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.633333
+anchor_top = 0.5
+anchor_right = 0.633333
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = 5.0
+offset_right = 11.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.698132
+color = Color(0.121569, 0.745098, 0.286275, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.781729, 0.164658, 0.164658, 1)
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="Control3" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="OpponentScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0.9)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Sub2" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -47.0
+offset_right = 13.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.780392, 0.164706, 0.164706, 1)
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 30
+text = "3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sub1" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 10.0
+offset_right = 8.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.780392, 0.164706, 0.164706, 1)
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = -24.0
-offset_right = 85.0
-offset_bottom = 26.0
+offset_left = -9.0
+offset_top = 5.0
+offset_right = 11.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.781729, 0.164658, 0.164658, 1)
-theme_override_fonts/font = ExtResource("4_cv557")
-theme_override_font_sizes/font_size = 40
-text = "100"
+rotation = -0.698132
+color = Color(0.780392, 0.164706, 0.164706, 1)
 
 [node name="Label" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
 layout_mode = 1
@@ -334,12 +465,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -25.0
+offset_top = -27.0
 offset_right = 20.0
-offset_bottom = 25.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("7_qu8fh")
 theme_override_font_sizes/font_size = 40
 text = ":"
 horizontal_alignment = 1

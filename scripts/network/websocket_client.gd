@@ -68,6 +68,7 @@ func _disconnect():
 		'You are disconnected, try to reconnect!',
 		func ():
 			SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
+			connect_to_server()
 	)
 	# Perform any cleanup operations if necessary
 

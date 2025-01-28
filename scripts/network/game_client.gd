@@ -20,14 +20,6 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			GameManager.login_success(uid, token)
 		GameConstants.CMDs.LOG_OUT:
 			GameManager.logout()
-		GameConstants.CMDs.GENERAL_INFO:
-			var pkg = GameConstants.PROTOBUF.PACKETS.GeneralInfo.new()
-			var result_code = pkg.from_bytes(payload)
-			var timestamp_server = pkg.get_timestamp()
-			var delta = timestamp_server - Time.get_unix_time_from_system()
-			print('delta timestamp server-client', delta)
-			GameManager.set_timestamp_server_delta(delta)
-			pass
 		_:
 			GameManager.on_receive(cmd_id, payload)
 			InGameChatMgr.on_receive(cmd_id, payload)

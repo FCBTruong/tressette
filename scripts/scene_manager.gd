@@ -35,6 +35,7 @@ func switch_scene(new_scene_path: String) -> void:
 		
 func open_gui(gui_path: String):
 	var current_scene = get_tree().get_current_scene()
+	await get_tree().process_frame
 	if current_scene:
 		var gui = load(gui_path)
 		var popup_instance = gui.instantiate()
@@ -49,8 +50,9 @@ func get_current_scene():
 	return current_scene
 	
 func show_dialog(message: String, ok_callback: Callable = Callable(), close_callback: Callable = Callable()):
-	var gui = SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
-	
+	var gui = await SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
+	if not gui:
+		return
 	gui.set_message(message)
 	if ok_callback.is_valid():
 		gui.connect("ok_pressed", ok_callback)

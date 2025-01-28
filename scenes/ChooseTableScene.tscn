@@ -205,3 +205,4 @@ expand_mode = 1
 
 [connection signal="pressed" from="CanvasLayer/TextureRect/BackBtn" to="." method="_back_to_lobby"]
 [connection signal="pressed" from="CanvasLayer/TextureRect/CreateTableBtn" to="." method="open_create_table_gui"]
+[connection signal="pressed" from="CanvasLayer/TextureRect/RefreshBtn" to="." method="_refresh_list"]

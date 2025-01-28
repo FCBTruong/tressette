@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=20 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Texture2D" uid="uid://ba5hi2m6d1v62" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cvs720c5x14nn" path="res://assets/images/lobby/add_friend.png" id="7_w3o0j"]
 [ext_resource type="Texture2D" uid="uid://dkgkp6amt0wmb" path="res://assets/images/lobby/user_info_gui/dollar.png" id="8_47ubv"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp3k3"]
 corner_radius_top_left = 15
@@ -293,7 +294,7 @@ grow_vertical = 2
 texture = ExtResource("4_aqih6")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/TextureRect2/AvatarNode"]
+[node name="AvatarImg" type="TextureRect" parent="Control/MainPn/TextureRect2/AvatarNode"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -308,6 +309,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_umvqn")
 expand_mode = 1
+script = ExtResource("11_tjqgq")
 
 [node name="ButtonPn" type="HBoxContainer" parent="Control/MainPn"]
 layout_mode = 1
