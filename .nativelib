@@ -30,13 +30,13 @@
             }
         },
         "firebase-cloud-messaging": {
-            "version": "0.2.1",
+            "version": "0.2.0",
             "platforms": [
                 "all"
             ],
             "dependencies": [
-                "firebase-core@0.1.1",
-                "firebase-analytics@0.2.2"
+                "firebase-core@0.1.0",
+                "firebase-analytics@0.2.0"
             ],
             "autoload": {
                 "messaging": "*res://scripts/messaging.gd"
