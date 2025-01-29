@@ -2,6 +2,7 @@ extends Node
 
 
 var google_payment: GooglePayment
+var shop_packs = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print('Payment Mgr ready')
@@ -18,6 +19,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
 		GameConstants.CMDs.PAYMENT_SUCCESS:
 			_handle_payment_success(payload)
+		GameConstants.CMDs.SHOP_CONFIG:
+			_handle_shop_config(payload)
 
 func _handle_payment_success(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentSuccess.new()
@@ -64,11 +67,17 @@ func on_user_login():
 		_on_billing_resume()
 
 func get_price_pack(pack_id):
-	var price_str = 'Undefined'
+	var price_str = ''
 	if Config.get_platform() == Config.PLATFORMS.ANDROID:
 		var price_gg = google_payment.get_price_pack(pack_id)
 		if price_gg:
 			price_str = price_gg
+	
+	if price_str == '':
+		for p in shop_packs:
+			if p['pack_id'] == pack_id:
+				price_str = str(p['price']) + ' ' + p['currency']
+				break
 	return price_str
 
 func buy_pack(pack_id):
@@ -79,3 +88,23 @@ func buy_pack(pack_id):
 		
 	if Config.get_platform() == Config.PLATFORMS.ANDROID:
 		google_payment.purchase_pack(pack_id)
+
+func _handle_shop_config(payload):
+	print('_handle_shop_config')
+	var pkg = GameConstants.PROTOBUF.PACKETS.ShopConfig.new()
+	var result_code = pkg.from_bytes(payload)
+	var pack_ids = pkg.get_pack_ids()
+	var golds = pkg.get_golds()
+	var prices = pkg.get_prices()
+	var currencies = pkg.get_currencies()
+	
+	shop_packs = []
+	for i in range(len(pack_ids)):
+		shop_packs.append({
+			'pack_id': pack_ids[i],
+			'gold': golds[i],
+			'price': prices[i],
+			'currency': currencies[i]
+		})
+	
+	

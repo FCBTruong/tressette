@@ -24,10 +24,12 @@ func effect_appear(delay: float) -> void:
 	
 func set_info(p_info):
 	info = PackInfo.new()
-	info.pack_id = p_info['id']
+	info.pack_id = p_info['pack_id']
+	info.gold = p_info['gold']
 	print('set info pack', info.pack_id)
 	var price = PaymentMgr.get_price_pack(info.pack_id)
 	price_lb.text = price
+	gold_lb.text = StringUtils.point_number(info.gold) + '$'
 	
 func _click_buy():
 	PaymentMgr.buy_pack(info.pack_id)

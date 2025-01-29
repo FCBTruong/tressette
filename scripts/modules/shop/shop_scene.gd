@@ -5,23 +5,7 @@ extends Node
 var packs_node = []
 var item_scene = preload("res://scenes/shop/ItemShopPack.tscn")
 func _ready() -> void:	
-	var packs = [
-		{
-			'id': 'pack_01'
-		},
-		{
-			'id': 'pack_02'
-		},
-		{
-			'id': 'pack_03'
-		},
-		{
-			'id': 'pack_04'
-		},
-		{
-			'id': 'pack_05'
-		}
-	]
+	var packs = PaymentMgr.shop_packs
 	
 	for i in range(len(packs)):
 		var instance = item_scene.instantiate()

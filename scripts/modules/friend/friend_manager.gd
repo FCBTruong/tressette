@@ -13,11 +13,6 @@ func _ready() -> void:
 	b.name = 'Tomas Sheby'
 	
 	friends.append(a)
-	friends.append(a)
-	friends.append(a)
-	friends.append(a)
-	friends.append(a)
-	friends.append(a)
 	friends.append(b)
 	
 	requests.append(b)

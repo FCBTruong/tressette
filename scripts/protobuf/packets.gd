@@ -2468,4 +2468,87 @@ class TableList:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class ShopConfig:
+	func _init():
+		var service
+		
+		_pack_ids = PBField.new("pack_ids", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 1, true, [])
+		service = PBServiceField.new()
+		service.field = _pack_ids
+		data[_pack_ids.tag] = service
+		
+		_golds = PBField.new("golds", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 2, true, [])
+		service = PBServiceField.new()
+		service.field = _golds
+		data[_golds.tag] = service
+		
+		_prices = PBField.new("prices", PB_DATA_TYPE.DOUBLE, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _prices
+		data[_prices.tag] = service
+		
+		_currencies = PBField.new("currencies", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 4, true, [])
+		service = PBServiceField.new()
+		service.field = _currencies
+		data[_currencies.tag] = service
+		
+	var data = {}
+	
+	var _pack_ids: PBField
+	func get_pack_ids() -> Array:
+		return _pack_ids.value
+	func clear_pack_ids() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_pack_ids.value = []
+	func add_pack_ids(value : String) -> void:
+		_pack_ids.value.append(value)
+	
+	var _golds: PBField
+	func get_golds() -> Array:
+		return _golds.value
+	func clear_golds() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_golds.value = []
+	func add_golds(value : int) -> void:
+		_golds.value.append(value)
+	
+	var _prices: PBField
+	func get_prices() -> Array:
+		return _prices.value
+	func clear_prices() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_prices.value = []
+	func add_prices(value : float) -> void:
+		_prices.value.append(value)
+	
+	var _currencies: PBField
+	func get_currencies() -> Array:
+		return _currencies.value
+	func clear_currencies() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_currencies.value = []
+	func add_currencies(value : String) -> void:
+		_currencies.value.append(value)
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

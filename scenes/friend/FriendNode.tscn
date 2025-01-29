@@ -161,6 +161,7 @@ expand_mode = 1
 
 [node name="Button" type="Button" parent="Panel/HBoxContainer/HBoxContainer/Button/TextureRect"]
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 flat = true
 script = ExtResource("6_kam2u")
 

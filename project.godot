@@ -31,7 +31,8 @@ StringUtils="*res://scripts/utils/string_utils.gd"
 PaymentMgr="*res://scripts/modules/payment/payment_mgr.gd"
 FriendManager="*res://scripts/modules/friend/friend_manager.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
-FirebaseMessage="*res://scripts/base/firebase_message.gd"
+fba="*res://scripts/fba.gd"
+messaging="*res://scripts/messaging.gd"
 
 [display]
 
@@ -42,7 +43,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg", "res://addons/protobuf/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg", "res://addons/nativelib-export/plugin.cfg", "res://addons/protobuf/plugin.cfg")
 
 [rendering]
 
