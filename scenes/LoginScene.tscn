@@ -97,7 +97,7 @@ offset_right = 289.0
 offset_bottom = 89.0
 text = "User B"
 
-[connection signal="pressed" from="CanvasLayer/GuestBtn" to="." method="_login"]
+[connection signal="pressed" from="CanvasLayer/GuestBtn" to="." method="_login_guest"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/GoogleBtn" to="." method="_login_google"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_login_user_A"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/Button" to="." method="test_login_userB"]

@@ -33,6 +33,7 @@ FriendManager="*res://scripts/modules/friend/friend_manager.gd"
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 fba="*res://scripts/fba.gd"
 messaging="*res://scripts/messaging.gd"
+LoginMgr="*res://scripts/login_mgr.gd"
 
 [display]
 

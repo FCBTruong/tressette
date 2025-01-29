@@ -28,7 +28,7 @@ func set_user_data(user_dt: UserData) -> void:
 	
 	var name_label = find_child('NameLb')  # Access the RichTextLabel
 	if name_label:
-		name_label.text = user_data.name
+		name_label.text = StringUtils.sub_string(user_data.name, 9)
 	update_points_display()
 	# update avatar
 	print('userdatavat', user_data.avatar)

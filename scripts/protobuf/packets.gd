@@ -899,21 +899,35 @@ class Login:
 	func _init():
 		var service
 		
-		_uid = PBField.new("uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_type = PBField.new("type", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
-		service.field = _uid
-		data[_uid.tag] = service
+		service.field = _type
+		data[_type.tag] = service
+		
+		_token = PBField.new("token", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _token
+		data[_token.tag] = service
 		
 	var data = {}
 	
-	var _uid: PBField
-	func get_uid() -> int:
-		return _uid.value
-	func clear_uid() -> void:
+	var _type: PBField
+	func get_type() -> int:
+		return _type.value
+	func clear_type() -> void:
 		data[1].state = PB_SERVICE_STATE.UNFILLED
-		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
-	func set_uid(value : int) -> void:
-		_uid.value = value
+		_type.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_type(value : int) -> void:
+		_type.value = value
+	
+	var _token: PBField
+	func get_token() -> String:
+		return _token.value
+	func clear_token() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_token.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_token(value : String) -> void:
+		_token.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2529,6 +2543,47 @@ class ShopConfig:
 		_currencies.value = []
 	func add_currencies(value : String) -> void:
 		_currencies.value.append(value)
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class GuestAccount:
+	func _init():
+		var service
+		
+		_guest_id = PBField.new("guest_id", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _guest_id
+		data[_guest_id.tag] = service
+		
+	var data = {}
+	
+	var _guest_id: PBField
+	func get_guest_id() -> String:
+		return _guest_id.value
+	func clear_guest_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_guest_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_guest_id(value : String) -> void:
+		_guest_id.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

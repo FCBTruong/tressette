@@ -35,15 +35,21 @@ func _login() -> void:
 
 func test_login_user_A() -> void:
 	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
-	pkg.set_uid(1000000)
+	pkg.set_token('fb4e942c-ea07-437f-a56a-e12a8bb08709')
+	pkg.set_type(LoginMgr.LOGIN_GUEST)
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 
 func test_login_userB() -> void:
 	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
-	pkg.set_uid(1000001)
+	pkg.set_token('625fd7af-f734-41a1-877d-2cdef81df36a')
+	pkg.set_type(LoginMgr.LOGIN_GUEST)
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 
 func _login_google() -> void:
 	var provider: AuthProvider = Firebase.Auth.get_GoogleProvider()
 	Firebase.Auth.get_auth_localhost(provider, 8060)
 	pass
+
+func _login_guest() -> void:
+	print('login_guest')
+	LoginMgr.login_guest()

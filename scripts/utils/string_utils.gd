@@ -21,3 +21,8 @@ func point_number(number: int) -> String:
 		if count % 3 == 0 and i != 0:
 			formatted = "." + formatted
 	return formatted
+
+func sub_string(str: String, size: int) -> String:
+	if str.length() > size:
+		return str.substr(0, size) + "..."
+	return str
