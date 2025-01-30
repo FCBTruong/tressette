@@ -36,6 +36,8 @@ func _process(_delta):
 	if state == WebSocketPeer.STATE_OPEN:
 		if not is_connected:
 			is_connected = true
+			# switch to LoginScene	
+			SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
 			
 		while socket.get_available_packet_count() > 0:
 			var packet = socket.get_packet()

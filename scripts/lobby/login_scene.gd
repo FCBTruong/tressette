@@ -7,15 +7,14 @@ func _ready() -> void:
 	Firebase.Auth.signup_succeeded.connect(on_signup_succeeded)
 	Firebase.Auth.login_failed.connect(on_login_failed)
 	Firebase.Auth.signup_failed.connect(on_signup_failed)
+	
+	LoginMgr.auto_login()	
 	pass # Replace with function body.
 
 func on_login_succeeded(auth):
 	print('login succeeded')
 	print(auth)
-	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
-	pkg.set_type(LoginMgr.LOGIN_GOOGLE)	
-	pkg.set_token(auth.get('idtoken'))
-	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
+	LoginMgr.send_login_firebase(auth.get('idtoken'))
 
 func on_signup_succeeded(auth):
 	print(auth)

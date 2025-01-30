@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tressette"
-run/main_scene="res://scenes/LoginScene.tscn"
+run/main_scene="res://scenes/InitScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.png"
 
@@ -34,6 +34,7 @@ Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 fba="*res://scripts/fba.gd"
 messaging="*res://scripts/messaging.gd"
 LoginMgr="*res://scripts/login_mgr.gd"
+StorageCache="*res://scripts/storage_cache.gd"
 
 [display]
 

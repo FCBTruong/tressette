@@ -15,6 +15,11 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 		GameConstants.CMDs.LOGIN:
 			var pkg = GameConstants.PROTOBUF.PACKETS.LoginResponse.new()
 			var result_code = pkg.from_bytes(payload)
+			var error = pkg.get_error()
+			if error != 0:
+				print('error login')
+				GameManager.logout()
+				return
 			var uid = pkg.get_uid()
 			var token = pkg.get_token()
 			GameManager.login_success(uid, token)
