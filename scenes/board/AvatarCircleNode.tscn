@@ -20,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.520366, 0.520366, 0.520366, 1)
 clip_children = 2
 layout_mode = 1
 anchors_preset = 8

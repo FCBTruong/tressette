@@ -278,6 +278,7 @@ texture = ExtResource("3_gnbuq")
 expand_mode = 1
 
 [node name="AvatarNode" type="TextureRect" parent="Control/MainPn/TextureRect2"]
+self_modulate = Color(0.381198, 0.381198, 0.381198, 1)
 clip_children = 2
 layout_mode = 1
 anchors_preset = 8

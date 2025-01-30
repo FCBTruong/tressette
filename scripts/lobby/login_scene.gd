@@ -12,6 +12,10 @@ func _ready() -> void:
 func on_login_succeeded(auth):
 	print('login succeeded')
 	print(auth)
+	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
+	pkg.set_type(LoginMgr.LOGIN_GOOGLE)	
+	pkg.set_token(auth.get('idtoken'))
+	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 
 func on_signup_succeeded(auth):
 	print(auth)
