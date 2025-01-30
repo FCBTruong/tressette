@@ -684,6 +684,7 @@ func get_GoogleProvider() -> GoogleProvider:
 	return GoogleProvider.new(_config.clientId, _config.clientSecret)
 
 func get_FacebookProvider() -> FacebookProvider:
+	print('fb config', _config.auth_providers)
 	return FacebookProvider.new(_config.auth_providers.facebook_id, _config.auth_providers.facebook_secret)
 
 func get_GitHubProvider() -> GitHubProvider:

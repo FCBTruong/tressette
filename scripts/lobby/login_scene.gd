@@ -53,6 +53,11 @@ func _login_google() -> void:
 	Firebase.Auth.get_auth_localhost(provider, 8060)
 	pass
 
+func _login_facebook() -> void:
+	var provider: AuthProvider = Firebase.Auth.get_FacebookProvider()
+	Firebase.Auth.get_auth_localhost(provider, 8060)
+	pass
+
 func _login_guest() -> void:
 	print('login_guest')
 	LoginMgr.login_guest()
