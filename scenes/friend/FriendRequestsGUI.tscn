@@ -41,10 +41,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_g05vm")
 
 [node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 4.0
-offset_right = 59.0
-offset_bottom = 54.0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 55.0
+offset_bottom = 57.0
 flat = true
 script = ExtResource("2_thc1y")
 

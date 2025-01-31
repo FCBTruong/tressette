@@ -15,6 +15,8 @@ func _ready() -> void:
 @onready var gold_lb:Label = panel_info.find_child('GoldLb')
 @onready var name_lb:Label = panel_info.find_child('NameLb')
 @onready var avatar_img = find_child('Avatar')
+@onready var friend_btn = find_child('FriendBtn')
+@onready var friend_img_hot = friend_btn.find_child('ImgHot')
 func _do_effect() -> void:
 	var left_panel_defaultpos = left_panel.position
 	var play_container_defaultpos = play_container.position
@@ -37,6 +39,7 @@ func _do_effect() -> void:
 func on_update_gui():
 	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)
 	name_lb.text = str(PlayerInfoMgr.my_user_data.name)
+	friend_img_hot.visible = len(FriendManager.requests) > 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -102,9 +102,12 @@ func _check_emulating() -> void:
 			module._check_emulating()
 
 func _load_config() -> void:
+	var env_path = "res://addons/godot-firebase/.env"
+	#if OS.get_name() == "Android":
+		#env_path = "res://addons/godot-firebase/android.env"
 	if not (_config.apiKey != "" and _config.authDomain != ""):
 		var env = ConfigFile.new()
-		var err = env.load("res://addons/godot-firebase/.env")
+		var err = env.load(env_path)
 		if err == OK:
 			for key in _config.keys():
 				var config_value = _config[key]

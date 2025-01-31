@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=21 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Texture2D" uid="uid://ba5hi2m6d1v62" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_umvqn"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="5_xl7qd"]
 [ext_resource type="Texture2D" uid="uid://dua5jqujlm0kh" path="res://assets/images/lobby/user_info_gui/email.png" id="6_5upxd"]
+[ext_resource type="Texture2D" uid="uid://cr5rxwy32nhwn" path="res://assets/images/lobby/copying_icon.png" id="7_sq5rc"]
 [ext_resource type="Texture2D" uid="uid://cvs720c5x14nn" path="res://assets/images/lobby/add_friend.png" id="7_w3o0j"]
 [ext_resource type="Texture2D" uid="uid://dkgkp6amt0wmb" path="res://assets/images/lobby/user_info_gui/dollar.png" id="8_47ubv"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
@@ -215,6 +216,49 @@ theme_override_styles/background = SubResource("StyleBoxFlat_g0uac")
 theme_override_styles/fill = SubResource("StyleBoxFlat_y27un")
 value = 50.0
 
+[node name="CopyBtn" type="Button" parent="Control/MainPn"]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 66.0
+offset_right = 529.0
+offset_bottom = 96.0
+flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/CopyBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_sq5rc")
+expand_mode = 1
+
+[node name="UidLb" type="Label" parent="Control/MainPn"]
+modulate = Color(1, 1, 1, 0.891)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 103.0
+offset_top = -312.0
+offset_right = 259.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_xl7qd")
+theme_override_font_sizes/font_size = 22
+text = "1000000"
+
 [node name="PlayStatistic" type="Panel" parent="Control/MainPn"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
@@ -361,3 +405,4 @@ texture = ExtResource("7_w3o0j")
 expand_mode = 1
 
 [connection signal="pressed" from="Control/MainPn/Panel/CloseBtn" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Control/MainPn/CopyBtn" to="." method="_copy_uid"]

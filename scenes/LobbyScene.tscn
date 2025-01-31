@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=24 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_esccj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c28lqqxrgu2eg" path="res://assets/images/lobby/friends.png" id="7_l35oy"]
 [ext_resource type="Texture2D" uid="uid://cxkmagcclh5x6" path="res://assets/images/lobby/clipboard.png" id="8_p6t30"]
 [ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_pgu6f"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="12_q3rst"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
@@ -309,13 +310,13 @@ grow_vertical = 2
 texture = ExtResource("8_p6t30")
 
 [node name="FriendBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
-modulate = Color(0.737255, 0.74902, 0.780392, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
+self_modulate = Color(0.737255, 0.74902, 0.780392, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -329,6 +330,16 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_l35oy")
+
+[node name="ImgHot" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
+self_modulate = Color(1, 0.233651, 0.233651, 1)
+layout_mode = 0
+offset_left = 65.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 35.0
+texture = ExtResource("11_pgu6f")
+expand_mode = 1
 
 [node name="ShopBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
 modulate = Color(0.737886, 0.750155, 0.781729, 1)

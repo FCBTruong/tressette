@@ -60,7 +60,7 @@ func set_card(card_id: int):
 	id = card_id
 	
 func turn_face_down():
-	var path = "res://assets/images/cards/card_back.png"
+	var path = "res://assets/images/card_tressette/card_back.png"
 	_load_texture(path)
 	
 func _load_texture(path):
@@ -78,7 +78,8 @@ func _set_default_z_index(z):
 	self.z_index = z
 
 func turn_face_up():
-	var path = "res://assets/images/cards/card_" + str(id) + ".png"
+	var card_type = 'modern'
+	var path = "res://assets/images/card_tressette/" + card_type + "/card_" + str(id) + ".png"
 	_load_texture(path)
 	
 func show_card(effect_flip: bool = false):
