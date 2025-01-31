@@ -113,3 +113,8 @@ func effect_add_score(score):
 	tween.tween_property(eff, 'position', n_pos, 0.5)
 	tween.tween_property(eff, 'modulate:a', 0, 0.5)
 	tween.tween_callback(eff.queue_free)
+
+
+func _show_info():
+	SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
+	pass
