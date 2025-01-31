@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0r5ind8cn0yk"]
+[gd_scene load_steps=11 format=3 uid="uid://b0r5ind8cn0yk"]
 
 [ext_resource type="Script" path="res://scripts/lobby/notification_gui.gd" id="1_okwls"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_d540v"]
@@ -15,6 +15,15 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0co1"]
+bg_color = Color(0.846222, 0.53513, 0.117025, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.13593, 0.308344, 0.469451, 1)
+shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c7d7"]
 bg_color = Color(0.364776, 0.673042, 0.764758, 0.753)
@@ -83,24 +92,64 @@ text = "NOTIFICATION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OkBtn" type="Button" parent="CanvasLayer/MainPn"]
-custom_minimum_size = Vector2(120, 50)
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -78.5
-offset_right = 60.0
-offset_bottom = -28.5
+offset_left = -20.0
+offset_top = -70.5
+offset_right = 20.0
+offset_bottom = -30.5
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="CancelBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
 flat = true
 script = ExtResource("4_icld3")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/OkBtn"]
+[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/HBoxContainer/CancelBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s0co1")
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/CancelBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_pbit8")
+theme_override_font_sizes/font_size = 26
+text = "Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OkBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("4_icld3")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +159,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2c7d7")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/OkBtn"]
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -175,5 +224,6 @@ grow_vertical = 2
 texture = ExtResource("5_1a8cq")
 expand_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/MainPn/OkBtn" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/CancelBtn" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/OkBtn" to="." method="_on_ok_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close_button_pressed"]

@@ -297,6 +297,8 @@ func _handle_endhand(payload: PackedByteArray):
 	reset_cards_compare()
 	
 func _handle_newhand(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.NewHand.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.current_turn = pkg.get_current_turn()

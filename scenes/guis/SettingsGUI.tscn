@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxrhqd8w2syim"]
+[gd_scene load_steps=10 format=3 uid="uid://cxrhqd8w2syim"]
 
 [ext_resource type="Script" path="res://scripts/lobby/settings_gui.gd" id="1_h1gqm"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_txiv8"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_wld6o"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_j4bw7"]
+[ext_resource type="Texture2D" uid="uid://dclctdoan3m25" path="res://assets/images/card_tressette/classic/card_2.png" id="4_ehi4e"]
+[ext_resource type="Texture2D" uid="uid://cl1c861s5dvmy" path="res://assets/images/cards_modern/card_0.png" id="6_i81va"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1m567"]
 bg_color = Color(0.105462, 0.213894, 0.364227, 0.987)
@@ -16,6 +18,19 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vthgo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.483838, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="SettingsGui" type="Control"]
 layout_mode = 3
@@ -129,6 +144,73 @@ layout_mode = 2
 text = "Sound
 "
 
+[node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j4bw7")
+theme_override_font_sizes/font_size = 25
+text = "Card Style"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ClassicCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 100)
+layout_mode = 2
+script = ExtResource("2_txiv8")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ehi4e")
+expand_mode = 1
+
+[node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vthgo")
+
+[node name="ModernCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 100)
+layout_mode = 2
+script = ExtResource("2_txiv8")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_i81va")
+expand_mode = 1
+
+[node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vthgo")
+
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
 modulate = Color(1, 1, 1, 0.704)
 layout_mode = 1
@@ -142,7 +224,9 @@ offset_bottom = 45.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_j4bw7")
 theme_override_font_sizes/font_size = 30
-text = "Settings"
+text = "SETTINGS"
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_hide_gui"]
 [connection signal="pressed" from="CanvasLayer/Panel/Button" to="CanvasLayer" method="_logout"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn" to="CanvasLayer" method="_choose_card_classic"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn" to="CanvasLayer" method="_choose_card_modern"]

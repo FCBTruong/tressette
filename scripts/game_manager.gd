@@ -5,10 +5,12 @@ extends Node
 @export var timestamp_server_delta = 0
 @export var enable_sound = true
 @export var enable_chat_ingame = true
+var card_style: int = 0 # classic, default, 1 is modern
 var table_list = []
 var min_gold_play = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	card_style = int(StorageCache.fetch('card_style', '0'))
 	pass # Replace with function body.
 
 
@@ -82,3 +84,7 @@ func logout():
 	
 func send_get_table_list():
 	GameClient.send_packet(GameConstants.CMDs.TABLE_LIST, [])
+	
+func change_card_style(p_card_style):
+	card_style = p_card_style
+	StorageCache.store('card_style', card_style)

@@ -49,11 +49,12 @@ func get_current_scene():
 	var current_scene = get_tree().get_current_scene()
 	return current_scene
 	
-func show_dialog(message: String, ok_callback: Callable = Callable(), close_callback: Callable = Callable()):
+func show_dialog(message: String, ok_callback: Callable = Callable(), close_callback: Callable = Callable(), show_cancel_btn = false):
 	var gui = await SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
 	if not gui:
 		return
 	gui.set_message(message)
+	gui.set_show_cancel_btn(show_cancel_btn)
 	if ok_callback.is_valid():
 		gui.connect("ok_pressed", ok_callback)
 		
