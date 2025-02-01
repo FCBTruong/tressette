@@ -63,9 +63,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -42.0
+offset_left = -50.5
 offset_top = -120.0
-offset_right = 41.0
+offset_right = 49.5
 offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -98,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_wld6o")
 theme_override_font_sizes/font_size = 20
-text = "Logout"
+text = "LOGOUT"
 
 [node name="VersionLb" type="Label" parent="CanvasLayer/Panel"]
 modulate = Color(1, 1, 1, 0.612)
@@ -152,7 +152,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_j4bw7")
 theme_override_font_sizes/font_size = 25
-text = "Card Style"
+text = "CARD_STYLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 

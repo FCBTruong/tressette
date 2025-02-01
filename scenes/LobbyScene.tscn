@@ -133,7 +133,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("14_wid5y")
 theme_override_font_sizes/font_size = 35
-text = "Play Now"
+text = "PLAY_NOW"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -178,7 +178,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("14_wid5y")
 theme_override_font_sizes/font_size = 35
-text = "Rooms"
+text = "ROOMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -384,13 +384,13 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_bavc2")
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/LeftPanel"]
+[node name="ProfileLb" type="Label" parent="CanvasLayer/Control/LeftPanel"]
 modulate = Color(1, 1, 1, 0.816)
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("12_q3rst")
 theme_override_font_sizes/font_size = 24
-text = "Profile"
+text = "PROFILE"
 vertical_alignment = 2
 
 [node name="UserInfoPn" type="Panel" parent="CanvasLayer/Control/LeftPanel"]
@@ -446,13 +446,13 @@ theme_override_fonts/font = ExtResource("15_g7l3g")
 theme_override_font_sizes/font_size = 26
 text = "100$"
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/LeftPanel"]
+[node name="FriendsLb" type="Label" parent="CanvasLayer/Control/LeftPanel"]
 modulate = Color(1, 1, 1, 0.816)
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("12_q3rst")
 theme_override_font_sizes/font_size = 24
-text = "Friends"
+text = "FRIENDS"
 vertical_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel"]

@@ -47,6 +47,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg", "res://addons/nativelib-export/plugin.cfg", "res://addons/protobuf/plugin.cfg")
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/localize.csv", "res://localization/localize.en.translation", "res://localization/localize.it.translation", "res://localization/localize.vi.translation")
+
 [rendering]
 
 renderer/rendering_method="mobile"

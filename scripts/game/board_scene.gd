@@ -43,8 +43,8 @@ const WIN_CARD_Z_INDEX = 101
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
 var SCALE_CARD_COMPARE = 0.8
-var SCALE_CARD_DEAL_INIT = 0.8
-var base_text = "Waiting for other players"
+var SCALE_CARD_DEAL_INIT = 0.8	
+var base_text = tr('WAITING_FOR_OTHERS')
 var evaluate_lb_default_pos
 func _ready() -> void:	
 	SceneManager.INSTANCES.BOARD_SCENE = self

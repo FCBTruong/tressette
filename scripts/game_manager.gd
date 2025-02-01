@@ -10,6 +10,7 @@ var table_list = []
 var min_gold_play = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	TranslationServer.set_locale("it")
 	card_style = int(StorageCache.fetch('card_style', '0'))
 	pass # Replace with function body.
 

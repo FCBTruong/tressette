@@ -35,6 +35,7 @@ func _do_effect() -> void:
 	#var original_scale = bg.scale
 	#bg.scale = Vector2(1.2, 1.2)
 	#tween2.tween_property(bg, "scale", original_scale, 0.3)
+	
 
 func on_update_gui():
 	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)
