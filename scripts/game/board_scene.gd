@@ -618,6 +618,7 @@ func on_show_chat_gui():
 
 func on_new_chat_message(uid, message):
 	if not in_game_chat_gui.visible:
+		SoundManager.play_notification_alert()
 		chat_btn_reddot.visible = true
 		
 	in_game_chat_gui.on_received_new_chat(uid, message)

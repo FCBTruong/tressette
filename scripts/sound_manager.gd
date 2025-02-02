@@ -6,9 +6,16 @@ func _ready() -> void:
 	audio_player = AudioStreamPlayer.new()
 	add_child(audio_player)
 
-var click_sound = preload("res://assets/sounds/touch_sound.wav")
+var click_sound = preload("res://assets/sounds/touch_sound.mp3")
 func play_click():
 	if not GameManager.enable_sound:
 		return
 	audio_player.stream = click_sound
+	audio_player.play()
+
+var notification_alert_sound = preload('res://assets/sounds/notification_alert_sound.mp3')
+func play_notification_alert():
+	if not GameManager.enable_sound:
+		return
+	audio_player.stream = notification_alert_sound
 	audio_player.play()

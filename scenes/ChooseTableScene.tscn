@@ -79,6 +79,7 @@ grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0ao2y")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nqnom")
 placeholder_text = "SEARCH_ROOM_ID"
+virtual_keyboard_type = 2
 right_icon = ExtResource("4_kxarc")
 
 [node name="TripleTableNode" type="HBoxContainer" parent="CanvasLayer/TextureRect"]
@@ -137,9 +138,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -75.0
-offset_top = 35.0
+offset_top = 39.0
 offset_right = 75.0
-offset_bottom = 85.0
+offset_bottom = 89.0
 grow_horizontal = 2
 flat = true
 script = ExtResource("3_wafs1")

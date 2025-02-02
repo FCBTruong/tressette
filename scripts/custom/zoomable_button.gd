@@ -17,12 +17,12 @@ func _ready():
 	connect("button_up", Callable(self, "_on_button_up"))
 
 func _on_button_down():
+	SoundManager.play_click()
 	# Zoom in when pressed
 	tween = create_tween()
 	tween.tween_property(self, "scale", zoom_scale, zoom_duration).set_trans(Tween.TRANS_LINEAR)
 
 func _on_button_up():
-	SoundManager.play_click()
 	# Zoom back to normal when released
 	tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1, 1), zoom_duration).set_trans(Tween.TRANS_LINEAR)
