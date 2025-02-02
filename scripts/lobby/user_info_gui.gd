@@ -28,3 +28,6 @@ func _ready() -> void:
 func _copy_uid() -> void:
 	DisplayServer.clipboard_set(str(PlayerInfoMgr.my_user_data.uid))
 	pass
+	
+func _open_pick_avatar() -> void:
+	SceneManager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn', GameConstants.GUI_ZORDER.PICK_AVATAR)

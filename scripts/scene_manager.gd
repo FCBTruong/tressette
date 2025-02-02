@@ -33,13 +33,13 @@ func switch_scene(new_scene_path: String) -> void:
 			var popup_instance = gui.instantiate()
 			current_scene.add_child(popup_instance)
 		
-func open_gui(gui_path: String):
+func open_gui(gui_path: String, z_order = 1):
 	var current_scene = get_tree().get_current_scene()
 	await get_tree().process_frame
 	if current_scene:
 		var gui = load(gui_path)
 		var popup_instance = gui.instantiate()
-		current_scene.add_child(popup_instance)
+		current_scene.add_child(popup_instance, z_order)
 		return popup_instance
 	else:
 		print("Current GUI is null", gui_path)

@@ -21,6 +21,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	my_user_data.name = packet.get_name()
 	my_user_data.gold = packet.get_gold()
 	my_user_data.avatar = packet.get_avatar()
+	my_user_data.avatar_third_party = packet.get_avatar_third_party()
 	var scores = packet.get_scores()
 	var names = packet.get_names()
 	var ac = packet.get_abc()
@@ -34,3 +35,7 @@ func _on_update_money(bytes: PackedByteArray):
 	packet.from_bytes(bytes)
 	my_user_data.gold = packet.get_gold()
 	print('_on_update_money', my_user_data.gold)
+	
+func on_update_avatar(avatar: String):
+	my_user_data.avatar = avatar
+	SignalBus.emit_signal_global('on_changed_avatar')

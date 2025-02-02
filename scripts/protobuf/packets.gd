@@ -1126,6 +1126,11 @@ class UserInfo:
 		service.field = _avatar
 		data[_avatar.tag] = service
 		
+		_avatar_third_party = PBField.new("avatar_third_party", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _avatar_third_party
+		data[_avatar_third_party.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1190,6 +1195,15 @@ class UserInfo:
 		_avatar.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_avatar(value : String) -> void:
 		_avatar.value = value
+	
+	var _avatar_third_party: PBField
+	func get_avatar_third_party() -> String:
+		return _avatar_third_party.value
+	func clear_avatar_third_party() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_third_party.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_avatar_third_party(value : String) -> void:
+		_avatar_third_party.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2639,6 +2653,47 @@ class GuestAccount:
 		_guest_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_guest_id(value : String) -> void:
 		_guest_id.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class ChangeAvatar:
+	func _init():
+		var service
+		
+		_avatar_id = PBField.new("avatar_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _avatar_id
+		data[_avatar_id.tag] = service
+		
+	var data = {}
+	
+	var _avatar_id: PBField
+	func get_avatar_id() -> int:
+		return _avatar_id.value
+	func clear_avatar_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_avatar_id(value : int) -> void:
+		_avatar_id.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

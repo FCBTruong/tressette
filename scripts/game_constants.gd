@@ -48,6 +48,8 @@ const CMDs = {
 	PAYMENT_GOOGLE_CONSUME = 4000,
 	PAYMENT_SUCCESS = 4001,
 	SHOP_CONFIG = 4100,
+	
+	CHANGE_AVATAR = 6000,
 }
 
 const PROTOBUF = {
@@ -57,4 +59,8 @@ const PROTOBUF = {
 const CARD_STYLES = {
 	CLASSIC = 0,
 	MODERN = 1,
+}
+
+const GUI_ZORDER = {
+	PICK_AVATAR = 10
 }

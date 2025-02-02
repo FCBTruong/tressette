@@ -6,6 +6,7 @@ func _ready() -> void:
 	_do_effect()
 	on_update_gui()
 	update_lobby_friends()
+	
 	pass # Replace with function body.
 
 @onready var left_panel = find_child('LeftPanel')

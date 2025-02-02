@@ -7,6 +7,7 @@ extends Resource  # Use RefCounted for lightweight, reference-managed objects
 @export var gold: int = 0
 @export var game_data: UserGameData = UserGameData.new()
 @export var avatar: String
+@export var avatar_third_party: String = ''
 
 func _init(uid: int, name: String) -> void:
 	self.uid = uid

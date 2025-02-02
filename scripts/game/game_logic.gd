@@ -171,6 +171,8 @@ func _handle_deal_card(payload: PackedByteArray):
 	SceneManager.INSTANCES.BOARD_SCENE.deal_my_cards(self.get_my_cards())
 	
 func _handle_play_card(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCard.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()

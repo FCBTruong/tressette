@@ -9,8 +9,16 @@ func _ready() -> void:
 	if is_me:
 		set_avatar(PlayerInfoMgr.my_user_data.avatar)
 		print('avatar....', PlayerInfoMgr.my_user_data.avatar)
+		SignalBus.connect_global('on_changed_avatar', Callable(self, "on_changed_my_avatar"))
 	pass # Replace with function body.
 
+func _update_my_avatar():
+	set_avatar(PlayerInfoMgr.my_user_data.avatar)
+	print('avatar....', PlayerInfoMgr.my_user_data.avatar)
+
+func on_changed_my_avatar():
+	_update_my_avatar()
+	pass		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

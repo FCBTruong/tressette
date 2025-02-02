@@ -265,8 +265,14 @@ func play_my_card(id: int):
 	list_my_cards.erase(card)
 	_update_my_card_positions(true)
 
-var win_messages = ["Fantastic!", "Well Done!", "Great Job!", "Congratulations!", "You're Amazing!"]
-var lose_msgs = ["Bad luck!", "Try again!", "Don't give up!", "Keep going!"]
+var win_messages = [
+		'FANTASTIC',
+		'WELL_DONE',
+		'GREAT_JOB',
+		'CONGRATULATION',
+		'YOU_ARE_AMAZING'
+	]
+var lose_msgs = ['BAD_LUCK', 'TRY_AGAIN', 'DONT_GIVE_UP', 'KEEP_GOING']
 func on_finishhand(delay = 0.5):
 	#for card in cards_node_compare:
 		#card.visible = false
@@ -297,12 +303,12 @@ func on_finishhand(delay = 0.5):
 	var eval_str = ''
 	if is_win: 
 		var random_index = randi() % win_messages.size()
-		var win_message = win_messages[random_index]
+		var win_message = tr(win_messages[random_index])
 		_effect_evaluate(win_message)
 		# Random textwin ('Fantastic!, 'Well Done!....)
 	else:
 		var random_index = randi() % lose_msgs.size()
-		var lose_message = lose_msgs[random_index]
+		var lose_message = tr(lose_msgs[random_index])
 		_effect_evaluate(lose_message)
 	
 	
