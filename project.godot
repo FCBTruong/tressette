@@ -35,6 +35,7 @@ fba="*res://scripts/fba.gd"
 messaging="*res://scripts/messaging.gd"
 LoginMgr="*res://scripts/login_mgr.gd"
 StorageCache="*res://scripts/storage_cache.gd"
+SoundManager="*res://scripts/sound_manager.gd"
 
 [display]
 

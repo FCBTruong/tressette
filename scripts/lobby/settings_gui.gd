@@ -6,6 +6,8 @@ var default_pos: Vector2
 @onready var modern_card = find_child('ModernCardBtn')
 @onready var check_icon_class = classic_card.find_child('CheckIcon')
 @onready var check_icon_modern = modern_card.find_child('CheckIcon')
+@onready var music_checker = find_child("MusicBtn")
+@onready var sound_checker = find_child('SoundBtn')
 func _ready() -> void:
 	default_pos = $Panel.position
 	
@@ -20,6 +22,9 @@ func _ready() -> void:
 		0.3
 	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	_update_choosing_card()
+	
+	sound_checker.button_pressed = GameManager.enable_sound
+	music_checker.button_pressed = GameManager.enable_music
 
 func _hide_gui() -> void:
 	var tween = create_tween()
@@ -57,5 +62,12 @@ func _update_choosing_card():
 		check_icon_class.visible = false
 		check_icon_modern.visible = true
 
+func _click_sound():
+	GameManager.set_enable_sound(sound_checker.button_pressed)
+	pass
+	
+func _click_music():
+	GameManager.set_enable_music(music_checker.button_pressed)
+	pass
 		
 	

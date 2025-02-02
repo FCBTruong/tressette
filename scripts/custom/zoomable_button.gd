@@ -22,6 +22,7 @@ func _on_button_down():
 	tween.tween_property(self, "scale", zoom_scale, zoom_duration).set_trans(Tween.TRANS_LINEAR)
 
 func _on_button_up():
+	SoundManager.play_click()
 	# Zoom back to normal when released
 	tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1, 1), zoom_duration).set_trans(Tween.TRANS_LINEAR)

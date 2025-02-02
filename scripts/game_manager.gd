@@ -4,6 +4,7 @@ extends Node
 
 @export var timestamp_server_delta = 0
 @export var enable_sound = true
+@export var enable_music = false
 @export var enable_chat_ingame = true
 var card_style: int = 0 # classic, default, 1 is modern
 var table_list = []
@@ -12,9 +13,17 @@ var min_gold_play = 0
 func _ready() -> void:
 	TranslationServer.set_locale("it")
 	card_style = int(StorageCache.fetch('card_style', '0'))
+	enable_sound = StorageCache.fetch('enable_sound', '1') == '1'
+	enable_music = StorageCache.fetch('enable_music', '1') == '1'
 	pass # Replace with function body.
 
-
+func set_enable_music(e):
+	StorageCache.store('enable_music', '1' if e else '0')
+	enable_music = e
+	
+func set_enable_sound(e):
+	StorageCache.store('enable_sound', '1' if e else '0')
+	enable_sound = e
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
