@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bps2yem3pob4b"]
+[gd_scene load_steps=12 format=3 uid="uid://bps2yem3pob4b"]
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/choose_room_scene.gd" id="1_jurov"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_3t1ly"]
@@ -9,12 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://coalpvybk074r" path="res://scenes/lobby/rooms/TableNode.tscn" id="4_mh24x"]
 [ext_resource type="Texture2D" uid="uid://cd028ilkawb1x" path="res://assets/images/lobby/refresh_icon.png" id="7_qshgq"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ao2y"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqnom"]
 bg_color = Color(0.015, 0.015, 0.015, 0.306)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+expand_margin_left = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4a4e"]
 bg_color = Color(0.0365095, 0.503394, 0.0863587, 1)
@@ -73,8 +76,9 @@ offset_top = 41.0
 offset_right = -31.0
 offset_bottom = 86.0
 grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0ao2y")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nqnom")
-placeholder_text = " Search room by ID"
+placeholder_text = "SEARCH_ROOM_ID"
 right_icon = ExtResource("4_kxarc")
 
 [node name="TripleTableNode" type="HBoxContainer" parent="CanvasLayer/TextureRect"]
@@ -166,9 +170,10 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.76)
 theme_override_fonts/font = ExtResource("4_d4aau")
 theme_override_font_sizes/font_size = 20
-text = "CREATE TABLE"
+text = "CREATE_TABLE"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="RefreshBtn" type="Button" parent="CanvasLayer/TextureRect"]
 layout_mode = 1

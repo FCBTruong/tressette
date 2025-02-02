@@ -12,3 +12,9 @@ CARD_STYLE,Card Style,Phong cách thẻ,Stile della carta
 LOGOUT,Logout,Đăng xuất,Disconnettersi
 MUSIC,Music,Âm nhạc,Musica
 SOUND,Sound,Âm thanh,Suono
+PLEASE_DESCRIBE_ISSUE,Please describe the issue you're facing,Vui lòng mô tả vấn đề bạn đang gặp phải,Descrivi il problema che stai affrontando
+CUSTOMER_SUPPORT,Customer Support,Hỗ trợ khách hàng,Assistenza clienti
+CREATE_TABLE,Create table,tạo bàn,crea stanza
+SEARCH_ROOM_ID,Search room by ID,Tìm phòng theo ID,Cerca stanza per ID
+ENTER_YOUR_MESSAGE,Enter your message,Nhập tin nhắn của bạn,Inserisci il tuo messaggio
+SEND,Send,Gửi,Invia

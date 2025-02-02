@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cel5a5m54g6jo"]
+[gd_scene load_steps=19 format=3 uid="uid://cel5a5m54g6jo"]
 
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_scene.gd" id="1_eo0n0"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_vpk1r"]
@@ -29,12 +29,15 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_7uurd")
 
 [sub_resource type="Theme" id="Theme_a6p2n"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4u8mj"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tuse"]
 bg_color = Color(0, 0, 0, 0.253)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+expand_margin_left = 5.0
 
 [node name="FriendScene" type="Node2D"]
 script = ExtResource("1_eo0n0")
@@ -128,8 +131,9 @@ theme = SubResource("Theme_a6p2n")
 theme_override_fonts/font = ExtResource("7_t78v7")
 theme_override_font_sizes/font_size = 20
 theme_override_icons/clear = ExtResource("5_gto5b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4u8mj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1tuse")
-placeholder_text = " Enter user id"
+placeholder_text = "ENTER_USER_ID"
 right_icon = ExtResource("5_gto5b")
 
 [node name="RequestBtn" type="Button" parent="CanvasLayer/TopPn"]

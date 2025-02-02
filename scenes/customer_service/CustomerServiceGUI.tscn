@@ -90,6 +90,7 @@ offset_right = 200.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+placeholder_text = "PLEASE_DESCRIBE_ISSUE"
 
 [node name="Label" type="Label" parent="CanvasLayer/MainPn/LineEdit"]
 modulate = Color(1, 0.520541, 0.16131, 0.924)
@@ -104,7 +105,7 @@ offset_bottom = -35.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_1cn1o")
 theme_override_font_sizes/font_size = 25
-text = "Your Message"
+text = "CUSTOMER_SUPPORT"
 
 [node name="SendBtn" type="Button" parent="CanvasLayer/MainPn"]
 custom_minimum_size = Vector2(100, 50)
@@ -149,6 +150,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_jge5g")
 text = "SEND"
+uppercase = true
 
 [node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
 layout_mode = 0

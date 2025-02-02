@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvs3cl10d1nap"]
+[gd_scene load_steps=8 format=3 uid="uid://cvs3cl10d1nap"]
 
 [ext_resource type="Script" path="res://scripts/game/ingame_chat_gui.gd" id="1_45c2r"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_wkwjg"]
 [ext_resource type="Texture2D" uid="uid://yuqomgxpxw4w" path="res://assets/images/board/send_icon.png" id="3_82s7o"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_jsdfg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2roa"]
 bg_color = Color(0, 0, 0, 0.622)
@@ -13,6 +14,8 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_xbg3o"]
 default_font = ExtResource("2_wkwjg")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwea3"]
 
 [node name="InGameChatGui" type="Control"]
 layout_mode = 3
@@ -77,11 +80,14 @@ theme = SubResource("Theme_xbg3o")
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Enter your message"
+theme_override_fonts/font = ExtResource("2_wkwjg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fwea3")
+placeholder_text = "ENTER_YOUR_MESSAGE"
 
 [node name="SubmitBtn" type="Button" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+script = ExtResource("3_jsdfg")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/SubmitBtn"]
 modulate = Color(1, 1, 1, 0.777)
