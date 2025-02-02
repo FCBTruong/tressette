@@ -248,11 +248,13 @@ func play_my_card(id: int):
 	card.player_id = PlayerInfoMgr.my_user_data.uid
 	var player_node = get_player_node_by_uid(PlayerInfoMgr.my_user_data.uid)
 	_cur_focusing_card = null
-	
+	var rot_degrees = randf_range(3, 6) if randf() > 0.5 else randf_range(-10, -5)
+	var rot = deg_to_rad(rot_degrees)
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
 	tween.parallel().tween_property(card, "global_position",p_place_world, 0.3)
+	tween.parallel().tween_property(card, "rotation",rot, 0.3)
 	tween.parallel().tween_property(card, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
 	
@@ -473,7 +475,7 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
-	var rot_degrees = randf_range(5, 10) if randf() > 0.5 else randf_range(-10, -5)
+	var rot_degrees = randf_range(3, 6) if randf() > 0.5 else randf_range(-10, -5)
 	var rot = deg_to_rad(rot_degrees)
 	tween.parallel().tween_property(card_instance, "global_position",p_place_world, 0.3)
 	tween.parallel().tween_property(card_instance, "rotation", rot, 0.3)

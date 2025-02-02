@@ -53,3 +53,8 @@ const CMDs = {
 const PROTOBUF = {
 	PACKETS = preload("res://scripts/protobuf/packets.gd")
 }
+
+const CARD_STYLES = {
+	CLASSIC = 0,
+	MODERN = 1,
+}

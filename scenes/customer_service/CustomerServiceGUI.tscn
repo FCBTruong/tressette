@@ -150,6 +150,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_jge5g")
 text = "SEND"
+horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]

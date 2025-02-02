@@ -78,7 +78,12 @@ func _set_default_z_index(z):
 	self.z_index = z
 
 func turn_face_up():
-	var card_type = 'modern'
+	var card_type = 'classic'
+	if GameManager.card_style == GameConstants.CARD_STYLES.CLASSIC:
+		card_type = 'classic'
+	elif GameManager.card_style == GameConstants.CARD_STYLES.MODERN:
+		card_type = 'modern'
+		
 	var path = "res://assets/images/card_tressette/" + card_type + "/card_" + str(id) + ".png"
 	_load_texture(path)
 	

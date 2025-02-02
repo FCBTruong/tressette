@@ -46,16 +46,16 @@ func _logout() -> void:
 	GameClient.send_packet(GameConstants.CMDs.LOG_OUT, [])
 	
 func _choose_card_classic():
-	GameManager.change_card_style(0)
+	GameManager.change_card_style(GameConstants.CARD_STYLES.CLASSIC)
 	_update_choosing_card()
 	
 func _choose_card_modern():
-	GameManager.change_card_style(1)
+	GameManager.change_card_style(GameConstants.CARD_STYLES.MODERN)
 	_update_choosing_card()
 	
 func _update_choosing_card():
 	var p = null
-	if GameManager.card_style == 0:
+	if GameManager.card_style == GameConstants.CARD_STYLES.CLASSIC:
 		check_icon_class.visible = true
 		check_icon_modern.visible = false
 	else:

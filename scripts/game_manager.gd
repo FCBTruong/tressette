@@ -53,9 +53,9 @@ func get_token() -> String:
 	
 func send_quick_play() -> void:
 	if PlayerInfoMgr.my_user_data.gold < self.min_gold_play:
-		SceneManager.show_dialog('
-		Not enough gold to play, Want to buy more?
-		',
+		SceneManager.show_dialog(
+		tr('NOT_ENOUGH_GOLD_PLAY_BUY')
+		,
 		func ():
 			SceneManager.switch_scene(SceneManager.SHOP_SCENE)
 		)
