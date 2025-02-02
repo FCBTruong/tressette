@@ -9,9 +9,23 @@ extends Node
 var card_style: int = 0 # classic, default, 1 is modern
 var table_list = []
 var min_gold_play = 0
+var supported_langues = ['en', 'vi', 'it']
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	TranslationServer.set_locale("it")
+	var lang = 'en'
+	var choosed_lang = StorageCache.fetch('choose_language', 'null')
+	if choosed_lang == 'null':
+		# try to use device language
+		var current_locale = OS.get_locale()
+		lang = current_locale.split("_")[0]
+		print("device language", lang)
+		
+	if Config.CURRENT_MODE == Config.MODES.LOCAL:
+		lang = 'it'
+		
+	if lang not in supported_langues:
+		lang = 'en'
+	TranslationServer.set_locale(lang)
 	card_style = int(StorageCache.fetch('card_style', '0'))
 	enable_sound = StorageCache.fetch('enable_sound', '1') == '1'
 	enable_music = StorageCache.fetch('enable_music', '1') == '1'

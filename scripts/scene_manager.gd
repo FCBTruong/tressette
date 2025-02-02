@@ -60,3 +60,13 @@ func show_dialog(message: String, ok_callback: Callable = Callable(), close_call
 		
 	if close_callback.is_valid():
 		gui.connect("close_pressed", close_callback)
+
+func show_ok_dialog(message: String, ok_callback: Callable = Callable()):
+	var gui = await SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
+	if not gui:
+		return
+	gui.set_message(message)
+	if ok_callback.is_valid():
+		gui.connect("ok_pressed", ok_callback)
+		
+	gui.hide_close_cancel()

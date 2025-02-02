@@ -91,6 +91,7 @@ theme_override_font_sizes/font_size = 30
 text = "NOTIFICATION"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn"]
 layout_mode = 1
@@ -139,7 +140,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_pbit8")
 theme_override_font_sizes/font_size = 26
-text = "Cancel"
+text = "CANCEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -177,6 +178,7 @@ theme_override_font_sizes/font_size = 26
 text = "OK"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="MessageLb" type="Label" parent="CanvasLayer/MainPn"]
 modulate = Color(1, 1, 1, 0.898)

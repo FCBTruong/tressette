@@ -66,8 +66,8 @@ func _process(_delta):
 func _disconnect():
 	print("Disconnected from server.")
 	# show popup
-	SceneManager.show_dialog(
-		'You are disconnected, try to reconnect!',
+	SceneManager.show_ok_dialog(
+		tr('YOU_ARE_DISCONNECTED'),
 		func ():
 			SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
 			connect_to_server()

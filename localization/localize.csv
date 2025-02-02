@@ -18,3 +18,10 @@ CREATE_TABLE,Create table,tạo bàn,crea stanza
 SEARCH_ROOM_ID,Search room by ID,Tìm phòng theo ID,Cerca stanza per ID
 ENTER_YOUR_MESSAGE,Enter your message,Nhập tin nhắn của bạn,Inserisci il tuo messaggio
 SEND,Send,Gửi,Invia
+TOTAL_MATCH,Total matches:,Tổng trận đấu:,Partite totali:
+WIN_RATE,Win rate:,Tỷ lệ thắng:,Tasso di vittoria:
+NOTIFICATION,Notification,Thông báo,Notifica
+YOU_ARE_DISCONNECTED,"You are disconnected, try connecting again","Bạn đã bị ngắt kết nối, hãy thử kết nối lại","Sei disconnesso, prova a connetterti di nuovo"
+OK,Ok,Ok,Ok
+CANCEL,Cancel,Hủy,Annulla
+REQUESTS,Requests,Yêu cầu,Richieste

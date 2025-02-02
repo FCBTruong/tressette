@@ -79,6 +79,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.845)
 theme_override_fonts/font = ExtResource("2_hhyhp")
 theme_override_font_sizes/font_size = 30
 text = "REQUESTS"
+uppercase = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MainPn"]
 layout_mode = 1

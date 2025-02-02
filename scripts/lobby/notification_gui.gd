@@ -7,6 +7,7 @@ signal close_pressed
 @onready var message_label: Label = find_child('MessageLb')
 @onready var main_pn = find_child('MainPn')
 @onready var cancel_btn = find_child('CancelBtn')
+@onready var close_btn = find_child("CloseBtn")
 
 func _ready() -> void:
 	var tween = create_tween()
@@ -34,3 +35,6 @@ func set_show_cancel_btn(show_cancel_btn):
 		cancel_btn.visible = true
 	else:
 		cancel_btn.visible = false
+func hide_close_cancel():
+	self.close_btn.visible = false
+	cancel_btn.visible = false
