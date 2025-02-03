@@ -15,6 +15,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
 		GameConstants.CMDs.NEW_INGAME_CHAT_MESSAGE:
 			_handle_new_message(payload)
+		GameConstants.CMDs.CHAT_EMOTICON:
+			_handle_chat_emo(payload)
 			
 func _handle_new_message(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.InGameChatMessage.new()
@@ -23,3 +25,11 @@ func _handle_new_message(payload):
 	var uid = pkg.get_uid()
 	
 	SceneManager.INSTANCES.BOARD_SCENE.on_new_chat_message(uid, message)
+
+func _handle_chat_emo(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.InGameChatEmoticon.new()
+	var result_code = pkg.from_bytes(payload)
+	var emo = pkg.get_emoticon()
+	var uid = pkg.get_uid()
+	
+	SceneManager.INSTANCES.BOARD_SCENE.on_new_chat_emo(uid, emo)

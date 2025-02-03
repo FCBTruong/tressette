@@ -39,6 +39,7 @@ var cards_node_compare = []
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
+const CHAT_EMO_Z_INDEX = 200
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
@@ -54,6 +55,7 @@ func _ready() -> void:
 	countdown_start_lb.visible = false
 	evaluate_lb_default_pos = evaluate_lb.position
 	evaluate_lb.modulate.a = 0
+	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
 	_on_enter()
 	
 	#show_prepare_start()
@@ -623,6 +625,11 @@ func on_new_chat_message(uid, message):
 		
 	in_game_chat_gui.on_received_new_chat(uid, message)
 
+func on_new_chat_emo(uid, emo):
+	var p = get_player_node_by_uid(uid)
+	if p:
+		p.show_emotion(emo)
+	
 func _effect_evaluate(text = 'Fantastic!'):
 	evaluate_lb.text = text
 	var tween = create_tween()

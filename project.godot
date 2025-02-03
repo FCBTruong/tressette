@@ -39,7 +39,7 @@ SoundManager="*res://scripts/sound_manager.gd"
 
 [display]
 
-window/size/viewport_width=1300
+window/size/viewport_width=1200
 window/size/viewport_height=600
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
