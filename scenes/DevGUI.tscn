@@ -8,15 +8,16 @@ script = ExtResource("1_10d5g")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.635)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 29.0
-offset_top = -57.0
-offset_right = 85.0
-offset_bottom = -15.0
+offset_left = 12.0
+offset_top = -83.0
+offset_right = 68.0
+offset_bottom = -41.0
 grow_vertical = 0
-color = Color(0.846222, 0.846222, 0.846222, 0.826)
+color = Color(0.846, 0.846, 0.846, 0.875)
 
 [node name="FpsLb" type="Label" parent="CanvasLayer/ColorRect"]
 modulate = Color(0, 0, 0, 1)

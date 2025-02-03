@@ -282,6 +282,8 @@ func get_card_win_inhand():
 	return card_win_id
 	
 func _handle_endhand(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.EndHand.new()
 	var result_code = pkg.from_bytes(payload)
 	var win_uid = pkg.get_win_uid()
@@ -310,6 +312,8 @@ func _handle_newhand(payload: PackedByteArray):
 
 
 func _handle_draw_card(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.DrawCard.new()
 	var result_code = pkg.from_bytes(payload)
 	var cards = pkg.get_cards()
