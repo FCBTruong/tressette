@@ -410,6 +410,7 @@ grow_vertical = 0
 theme_override_constants/separation = 10
 
 [node name="MailBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 icon = ExtResource("6_5upxd")
@@ -445,3 +446,4 @@ expand_mode = 1
 [connection signal="pressed" from="Control/MainPn/Panel/CloseBtn" to="." method="_on_CloseButton_pressed"]
 [connection signal="pressed" from="Control/MainPn/CopyBtn" to="." method="_copy_uid"]
 [connection signal="pressed" from="Control/MainPn/TextureRect2/AvtEditBtn" to="." method="_open_pick_avatar"]
+[connection signal="pressed" from="Control/MainPn/ButtonPn/RequestFriendBtn" to="." method="_send_request_friend"]

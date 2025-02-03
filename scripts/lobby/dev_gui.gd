@@ -10,3 +10,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	fps_lb.text = str(Engine.get_frames_per_second())
 	pass
+
+
+func _input(event):
+	if Config.CURRENT_MODE != Config.MODES.LOCAL:
+		return
+		
+	if event is InputEventKey:
+		if event.pressed:
+			if event.keycode == KEY_T:
+				SceneManager.show_toast('hello everyone')
+				pass

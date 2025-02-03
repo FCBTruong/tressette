@@ -7,8 +7,10 @@ extends Node
 @onready var score_lb = find_child("ScoreLb")
 @onready var vortex = find_child("Vortex")
 @onready var avatar_img = find_child('AvatarImg')
+@onready var emo_icon = find_child('EmoIcon')
 func _ready() -> void:
 	#effect_add_score(5)
+	emo_icon.visible = false
 	pass
 
 # Properties
@@ -118,3 +120,19 @@ func effect_add_score(score):
 func _show_info():
 	SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
 	pass
+
+func show_emotion(emo_id):
+	var texture_path = "res://assets/animations/" + str(emo_id) + '.png'
+	emo_icon.texture = load(texture_path)
+	
+	emo_icon.visible = true
+	var tween = create_tween()
+	emo_icon.scale = Vector2(0, 0)
+	emo_icon.modulate.a = 1
+	tween.parallel().tween_property(
+		emo_icon, 'scale', Vector2(1, 1), 0.4
+	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.parallel().tween_property(
+		emo_icon, 'modulate:a', 0, 0.4
+	).set_delay(1)
+	

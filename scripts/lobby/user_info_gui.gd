@@ -31,3 +31,6 @@ func _copy_uid() -> void:
 	
 func _open_pick_avatar() -> void:
 	SceneManager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn', GameConstants.GUI_ZORDER.PICK_AVATAR)
+	
+func _send_request_friend():
+	pass

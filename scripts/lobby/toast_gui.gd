@@ -3,6 +3,7 @@ extends Node
 var pn
 var default_pos
 var tween  # Stores the tween object
+@onready var toast_lb = find_child('ToastLb')
 
 func _ready() -> void:
 	# Find the child node
@@ -10,7 +11,7 @@ func _ready() -> void:
 	default_pos = pn.position
 	
 	# Shift X so we can tween back to default at startup
-	pn.position.y -= 300
+	pn.position.y -= 100
 	
 	# Create a tween for the initial animation
 	tween = create_tween()
@@ -18,8 +19,8 @@ func _ready() -> void:
 		pn,
 		"position",
 		default_pos,
-		0.3
-	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		0.5
+	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 	# Start a timer to close after 3 seconds
 	var timer = Timer.new()
@@ -35,6 +36,9 @@ func _close_pn() -> void:
 	close_tween.tween_property(
 		pn,
 		"position",
-		default_pos - Vector2(0, 300),  # Move 300px to the right
-		0.3
-	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+		default_pos - Vector2(0, 100),  # Move 300px to the right
+		0.5
+	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+func set_toats_text(txt):
+	toast_lb.text = txt

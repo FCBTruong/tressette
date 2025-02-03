@@ -143,31 +143,6 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ClassicCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(70, 100)
-layout_mode = 2
-script = ExtResource("2_txiv8")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_ehi4e")
-expand_mode = 1
-
-[node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vthgo")
-
 [node name="ModernCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(70, 100)
 layout_mode = 2
@@ -184,6 +159,31 @@ texture = ExtResource("6_i81va")
 expand_mode = 1
 
 [node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vthgo")
+
+[node name="ClassicCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 100)
+layout_mode = 2
+script = ExtResource("2_txiv8")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ehi4e")
+expand_mode = 1
+
+[node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -212,5 +212,5 @@ text = "SETTINGS"
 [connection signal="pressed" from="CanvasLayer/Panel/Button" to="CanvasLayer" method="_logout"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MusicBtn" to="CanvasLayer" method="_click_music"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/SoundBtn" to="CanvasLayer" method="_click_sound"]
-[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn" to="CanvasLayer" method="_choose_card_classic"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn" to="CanvasLayer" method="_choose_card_modern"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn" to="CanvasLayer" method="_choose_card_classic"]

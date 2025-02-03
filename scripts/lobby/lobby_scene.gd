@@ -69,10 +69,13 @@ func _open_tables_scene():
 	SceneManager.switch_scene(SceneManager.TABLES_SCENE)
 	
 func _open_mail_gui():
-	SceneManager.open_gui("res://scenes/guis/ToastGUI.tscn")
+	SceneManager.show_toast(tr('FEATURE_COMING_SOON'))
 	
 func _open_customer_service_gui():
 	SceneManager.open_gui("res://scenes/customer_service/CustomerServiceGUI.tscn")
+
+func _click_mission_btn():
+	SceneManager.show_toast(tr('FEATURE_COMING_SOON'))
 	
 func open_shop():
 	SceneManager.switch_scene(SceneManager.SHOP_SCENE)

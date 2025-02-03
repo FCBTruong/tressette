@@ -498,6 +498,7 @@ layout_mode = 2
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/RoomsBtn" to="." method="_open_tables_scene"]
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/MissionBtn" to="." method="_click_mission_btn"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn" to="." method="_open_friend_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn" to="." method="open_shop"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3" to="." method="_open_mail_gui"]

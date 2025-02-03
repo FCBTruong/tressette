@@ -70,3 +70,7 @@ func show_ok_dialog(message: String, ok_callback: Callable = Callable()):
 		gui.connect("ok_pressed", ok_callback)
 		
 	gui.hide_close_cancel()
+
+func show_toast(msg = ''):
+	var gui = await SceneManager.open_gui("res://scenes/guis/ToastGUI.tscn")
+	gui.set_toats_text(msg)
