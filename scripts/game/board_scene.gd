@@ -184,8 +184,11 @@ func _process(delta: float) -> void:
 		self.waiting_other_lb.text = str
 	else:
 		self.waiting_other_lb.text = ''
-	if countdown_timer:
-		countdown_start_lb.text = str(ceil(countdown_timer.time_left))
+	if countdown_timer and countdown_start_lb.visible:
+		var time_left_str = str(ceil(countdown_timer.time_left))
+		#if countdown_start_lb.text != time_left_str:
+			## effect zoom and disppear
+		countdown_start_lb.text = time_left_str
 		if countdown_timer.time_left <= 0:
 			countdown_start_lb.visible = false
 
@@ -651,6 +654,8 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_W:
+				show_prepare_start()
+				return
 				#_effect_evaluate()
 				self.list_players[0].show_emotion(4)
 				print("W key pressed")
