@@ -35,6 +35,7 @@ var cards_node_compare = []
 @onready var chat_btn_reddot = chat_btn.find_child('RedDot')
 @onready var waiting_other_lb = find_child('WaitingOtherLb')
 @onready var evaluate_lb = find_child('EvaluateLb')
+@onready var back_btn = find_child("BackBtn")
 
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
@@ -192,8 +193,6 @@ func _process(delta: float) -> void:
 		if countdown_timer.time_left <= 0:
 			countdown_start_lb.visible = false
 
-func back_to_lobby() -> void:
-	GameManager.request_leave_game()
 
 func _update_my_card_positions(effect = false):
 	var list = []
@@ -667,3 +666,19 @@ func _input(event):
 		else:
 			if event.keycode == KEY_W:
 				print("W key released")
+
+func update_register_leave_state():
+	if GameConstants.game_logic.is_registered_leave:
+		back_btn.modulate = Color("f6353f67")
+		pass
+	else:
+		back_btn.modulate = Color("5ed85767")
+		pass
+		
+
+func _on_back_btn_pressed() -> void:
+	if GameConstants.game_logic.is_registered_leave:
+		# cancel
+		GameManager.send_deregister_leave_game()
+	else:
+		GameManager.send_register_leave_game()

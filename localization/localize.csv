@@ -39,3 +39,5 @@ FEATURE_COMING_SOON,This feature is coming soon! Stay tuned for updates!,Tính n
 LIRA,Lira,Lira,Lira
 COPY_OK,Copied,Đã sao chép!,Copiato!
 NOT_FOUND_FRIEND,Player not found,Không tìm thấy người chơi.,Giocatore non trovato
+REGISTER_LEAVE,You will leave the game when the match ends,Bạn sẽ rời game khi trận đấu kết thúc,Lascerai il gioco quando la partita finirà.
+CANCEL_REGISTER_LEAVE,Cancel leave registration,Hủy đăng ký rời game,Annulla la registrazione per lasciare il gioco

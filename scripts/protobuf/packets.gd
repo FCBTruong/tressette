@@ -1319,6 +1319,11 @@ class GameInfo:
 		service.field = _avatars
 		data[_avatars.tag] = service
 		
+		_is_registered_leave = PBField.new("is_registered_leave", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 16, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_registered_leave
+		data[_is_registered_leave.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1456,6 +1461,15 @@ class GameInfo:
 	func add_avatars(value : String) -> void:
 		_avatars.value.append(value)
 	
+	var _is_registered_leave: PBField
+	func get_is_registered_leave() -> bool:
+		return _is_registered_leave.value
+	func clear_is_registered_leave() -> void:
+		data[16].state = PB_SERVICE_STATE.UNFILLED
+		_is_registered_leave.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_registered_leave(value : bool) -> void:
+		_is_registered_leave.value = value
+	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
 		
@@ -1477,7 +1491,7 @@ class GameInfo:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
-class LeaveGame:
+class RegisterLeaveGame:
 	func _init():
 		var service
 		

@@ -70,6 +70,7 @@ func _disconnect():
 		tr('YOU_ARE_DISCONNECTED'),
 		func ():
 			SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
+			socket.close()
 			connect_to_server()
 	)
 	# Perform any cleanup operations if necessary

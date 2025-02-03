@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
-[ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_sor57"]
+[ext_resource type="Texture2D" uid="uid://bw4h3oyo8rlpb" path="res://assets/images/board/Red Tabletop-min.png" id="2_mp50u"]
 [ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_ncq5t"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_snlll"]
@@ -75,7 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_sor57")
+texture = ExtResource("2_mp50u")
 expand_mode = 1
 
 [node name="PlayGround" type="Control" parent="CanvasLayer"]
@@ -927,7 +927,7 @@ stream = ExtResource("8_62q6d")
 volume_db = 12.0
 
 [connection signal="pressed" from="CanvasLayer/PlayGround/ActionBtnPn/PlayBtn" to="." method="_on_click_btn_play_card"]
-[connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="back_to_lobby"]
+[connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
 [connection signal="pressed" from="CanvasLayer/BottomLeftPn/EmoBtn" to="CanvasLayer/EmoChat" method="_on_emo_btn_pressed"]

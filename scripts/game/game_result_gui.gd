@@ -43,5 +43,5 @@ func _click_continue_play():
 	pass
 	
 func _click_exit_game():
-	GameManager.request_leave_game()
+	GameManager.send_register_leave_game()
 	pass

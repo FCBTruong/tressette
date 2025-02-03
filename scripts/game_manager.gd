@@ -92,10 +92,16 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 		_:
 			GameConstants.game_logic.on_receive(cmd_id, payload)
 	
-func request_leave_game():
-	var pkg = GameConstants.PROTOBUF.PACKETS.LeaveGame.new()
-	GameClient.send_packet(GameConstants.CMDs.LEAVE_GAME, pkg.to_bytes())
-	
+func send_register_leave_game():
+	var pkg = GameConstants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
+	pkg.set_status(0)
+	GameClient.send_packet(GameConstants.CMDs.REGISTER_LEAVE_GAME, pkg.to_bytes())
+
+func send_deregister_leave_game():
+	var pkg = GameConstants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
+	pkg.set_status(1)
+	GameClient.send_packet(GameConstants.CMDs.REGISTER_LEAVE_GAME, pkg.to_bytes())
+		
 func get_timestamp_server():
 	return Time.get_unix_time_from_system() + timestamp_server_delta
 	

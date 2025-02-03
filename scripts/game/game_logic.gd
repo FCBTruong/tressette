@@ -7,6 +7,7 @@ var win_point_hand: int
 var hand_suit = -1 # current hand suit need to follow
 var my_idx = 0 # in list users
 var match_result = MatchData.MatchResult.new()
+var is_registered_leave = false
 
 func get_list_player() -> Array[UserData]:
 	return match_data.users
@@ -18,8 +19,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
 		GameConstants.CMDs.GAME_INFO:
 			_handle_game_info(payload)
-		GameConstants.CMDs.LEAVE_GAME:
-			_handle_leave_game(payload)
+		GameConstants.CMDs.REGISTER_LEAVE_GAME:
+			_handle_register_leave_game(payload)
 		GameConstants.CMDs.NEW_USER_JOIN_MATCH:
 			_handle_user_join_match(payload)
 		GameConstants.CMDs.USER_LEAVE_MATCH:
@@ -88,12 +89,19 @@ func _handle_user_join_match(payload: PackedByteArray):
 	var board_scene: BoardScene = SceneManager.INSTANCES.BOARD_SCENE
 	board_scene.on_update_players()
 		
-func _handle_leave_game(payload: PackedByteArray):
-	var pkg = GameConstants.PROTOBUF.PACKETS.LeaveGame.new()
+func _handle_register_leave_game(payload: PackedByteArray):
+	var pkg = GameConstants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var status_leave = pkg.get_status()
-	if status_leave == 0:
-		SceneManager.switch_scene("res://scenes/LobbyScene.tscn")
+	self.is_registered_leave = status_leave == 0 
+	
+	# Make toast
+	if self.is_registered_leave:
+		SceneManager.show_toast("REGISTER_LEAVE")
+	else:
+		SceneManager.show_toast("CANCEL_REGISTER_LEAVE")
+	
+	SceneManager.INSTANCES.BOARD_SCENE.update_register_leave_state()
 	
 func _handle_game_info(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.GameInfo.new()
@@ -106,6 +114,7 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.state = pkg.get_game_state()
 	match_data.current_turn = pkg.get_current_turn()
 	match_data.remain_cards = pkg.get_remain_cards()
+	self.is_registered_leave = pkg.get_is_registered_leave()
 	self.hand_suit = pkg.get_hand_suit()
 	
 	var compare = pkg.get_cards_compare()
