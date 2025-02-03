@@ -31,6 +31,7 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			PaymentMgr.on_receive(cmd_id, payload)
 			PlayerInfoMgr.on_receive(cmd_id, payload)
 			LoginMgr.on_receive(cmd_id, payload)
+			FriendManager.on_receive(cmd_id, payload)
 			pass
 		
 

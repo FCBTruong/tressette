@@ -51,15 +51,13 @@ func _on_start_game_button_pressed():
 	print('start game...')
 	GameManager.send_quick_play()
 
-var user_info_gui: PackedScene = preload("res://scenes/guis/UserInfoGUI.tscn")
-
 func _open_user_info_gui():
-	SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
-	
-func _hide_user_info_gui():
-	$UserInfoGUI.hide()
+	var gui = await SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
+	gui.set_info(PlayerInfoMgr.my_user_data)
 	
 func _open_friend_gui():
+	#SceneManager.show_toast(tr('FEATURE_COMING_SOON'))
+	#return
 	SceneManager.switch_scene("res://scenes/FriendScene.tscn")
 	
 func _open_setting_gui():

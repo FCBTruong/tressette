@@ -7,6 +7,7 @@
 script = ExtResource("1_yrqru")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
 
 [node name="Pn" type="ColorRect" parent="CanvasLayer"]
 self_modulate = Color(0.996, 0.902, 0.776, 0.878)

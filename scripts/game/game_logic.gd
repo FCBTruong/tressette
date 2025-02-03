@@ -109,6 +109,7 @@ func _handle_game_info(payload: PackedByteArray):
 	self.hand_suit = pkg.get_hand_suit()
 	
 	var compare = pkg.get_cards_compare()
+	print('comparesss', compare)
 	for c in compare:
 		match_data.cards_compare.append(c)
 	

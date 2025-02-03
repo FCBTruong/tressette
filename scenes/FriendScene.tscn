@@ -38,6 +38,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 expand_margin_left = 5.0
+expand_margin_right = 5.0
 
 [node name="FriendScene" type="Node2D"]
 script = ExtResource("1_eo0n0")
@@ -121,11 +122,17 @@ expand_mode = 1
 
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/TopPn"]
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 0
-offset_left = 848.0
-offset_top = 23.0
-offset_right = 1248.0
-offset_bottom = 73.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.978333
+anchor_top = 0.5
+anchor_right = 0.978333
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_a6p2n")
 theme_override_fonts/font = ExtResource("7_t78v7")
@@ -135,14 +142,22 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_4u8mj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1tuse")
 placeholder_text = "ENTER_USER_ID"
 right_icon = ExtResource("5_gto5b")
+metadata/_edit_use_anchors_ = true
 
 [node name="RequestBtn" type="Button" parent="CanvasLayer/TopPn"]
 custom_minimum_size = Vector2(70, 70)
-layout_mode = 0
-offset_left = 734.0
-offset_top = 12.0
-offset_right = 804.0
-offset_bottom = 82.0
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -528.0
+offset_top = -35.0
+offset_right = -458.0
+offset_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 2
 flat = true
 script = ExtResource("3_jpf4c")
 
@@ -193,4 +208,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/TopPn/BackBtn" to="." method="_back_to_lobby"]
+[connection signal="text_submitted" from="CanvasLayer/TopPn/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="CanvasLayer/TopPn/RequestBtn" to="." method="_open_requests"]

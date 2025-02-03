@@ -40,11 +40,7 @@ func set_user_data(user_dt: UserData) -> void:
 func update_points_display(effect_add = false):
 	pass
 	#score_lb.text = str(user_data.game_data.points)
-	
-var user_info_gui: PackedScene = preload("res://scenes/guis/UserInfoGUI.tscn")
 
-func _open_user_info_gui():
-	SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
 	
 var timer_duration: float = 10.0  # Total duration of the timer in seconds
 var elapsed_time: float = 0.0  # Tracks the elapsed time
@@ -118,8 +114,7 @@ func effect_add_score(score):
 
 
 func _show_info():
-	SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
-	pass
+	FriendManager.search_friend(user_data.uid)
 
 func show_emotion(emo_id):
 	var texture_path = "res://assets/animations/" + str(emo_id) + '.png'

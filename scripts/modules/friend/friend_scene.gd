@@ -38,3 +38,7 @@ func _back_to_lobby():
 
 func _open_requests():
 	SceneManager.open_gui("res://scenes/friend/FriendRequestsGUI.tscn")
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	var uid = int(new_text)
+	FriendManager.search_friend(uid)

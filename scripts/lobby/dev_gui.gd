@@ -19,5 +19,7 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_T:
-				SceneManager.show_toast('hello everyone')
+				print('search friend')
+				FriendManager.search_friend(1000002)
+				#SceneManager.show_toast('hello everyone')
 				pass

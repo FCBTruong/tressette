@@ -12,10 +12,10 @@ func _show_popup():
 @onready var gold_lb = find_child('GoldLb')
 @onready var main_pn = find_child('MainPn')
 @onready var uid_lb = find_child('UidLb')
+@onready var request_friend_btn = find_child('RequestFriendBtn')
+@onready var avt_edit_btn = find_child('AvtEditBtn')
+var _info = null
 func _ready() -> void:
-	user_name_lb.text = PlayerInfoMgr.my_user_data.name
-	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)
-	uid_lb.text = str(PlayerInfoMgr.my_user_data.uid)
 	var tween = create_tween()
 	main_pn.scale = Vector2(0, 0)
 	main_pn.modulate.a = 0.5
@@ -24,13 +24,28 @@ func _ready() -> void:
 		.set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.4)
 	
+func set_info(info: UserData):
+	_info = info
+	
+	if _info.uid == PlayerInfoMgr.my_user_data.uid:
+		request_friend_btn.visible = false
+		avt_edit_btn.visible = true
+	else:
+		avt_edit_btn.visible = false
+	
+	user_name_lb.text = _info.name
+	gold_lb.text = StringUtils.point_number(_info.gold)
+	uid_lb.text = str(_info.uid)
 	
 func _copy_uid() -> void:
-	DisplayServer.clipboard_set(str(PlayerInfoMgr.my_user_data.uid))
+	DisplayServer.clipboard_set(str(_info.uid))
+	
+	SceneManager.show_toast(str('COPY_OK'))
 	pass
 	
 func _open_pick_avatar() -> void:
 	SceneManager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn', GameConstants.GUI_ZORDER.PICK_AVATAR)
 	
 func _send_request_friend():
+	print('_send_request_friend', _info.uid)
 	pass
