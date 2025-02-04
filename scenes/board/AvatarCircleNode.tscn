@@ -45,6 +45,7 @@ offset_bottom = 40.0
 texture = ExtResource("2_trhkx")
 expand_mode = 1
 script = ExtResource("3_gprs8")
+is_me = false
 
 [node name="AvatarBorder" type="TextureRect" parent="."]
 self_modulate = Color(0.229215, 0.230597, 0.452479, 1)
