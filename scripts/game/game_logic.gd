@@ -86,8 +86,9 @@ func _handle_user_join_match(payload: PackedByteArray):
 		print('debug seat', user.game_data.seat_id)
 	
 	# reload
-	var board_scene: BoardScene = SceneManager.INSTANCES.BOARD_SCENE
-	board_scene.on_update_players()
+	var cur_scene = SceneManager.get_current_scene()
+	if cur_scene is BoardScene:
+		cur_scene.on_update_players()
 		
 func _handle_register_leave_game(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
@@ -101,7 +102,9 @@ func _handle_register_leave_game(payload: PackedByteArray):
 	else:
 		SceneManager.show_toast("CANCEL_REGISTER_LEAVE")
 	
-	SceneManager.INSTANCES.BOARD_SCENE.update_register_leave_state()
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.update_register_leave_state()
 	
 func _handle_game_info(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.GameInfo.new()
@@ -178,7 +181,9 @@ func _handle_deal_card(payload: PackedByteArray):
 			for c in cards:
 				player.game_data.cards.append(int(c))
 	print('_handle_deal_card', cards)
-	SceneManager.INSTANCES.BOARD_SCENE.deal_my_cards(self.get_my_cards())
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.deal_my_cards(self.get_my_cards())
 	
 func _handle_play_card(payload: PackedByteArray):
 	if not match_data:
@@ -189,8 +194,11 @@ func _handle_play_card(payload: PackedByteArray):
 	var card_id = pkg.get_card_id()
 	var auto = pkg.get_auto()
 	self.hand_suit = pkg.get_hand_suit()
+	print('current handsuit follow', self.hand_suit)
 	match_data.current_turn = pkg.get_current_turn()
-	SceneManager.INSTANCES.BOARD_SCENE.play_card(uid, card_id, auto)
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.play_card(uid, card_id, auto)
 	push_cards_compare(uid, card_id)
 
 func send_play_card(card_id: int):
@@ -307,7 +315,9 @@ func _handle_endhand(payload: PackedByteArray):
 		i += 1
 	
 	print('finish rounds...')
-	SceneManager.INSTANCES.BOARD_SCENE.on_finishhand()
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.on_finishhand()
 	reset_cards_compare()
 	
 func _handle_newhand(payload: PackedByteArray):
@@ -339,7 +349,9 @@ func _handle_draw_card(payload: PackedByteArray):
 		arr.append(obj)
 		i += 1
 	
-	SceneManager.INSTANCES.BOARD_SCENE.on_draw_cards(arr)
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.on_draw_cards(arr)
 	
 func _handle_end_game(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.EndGame.new()
@@ -366,8 +378,11 @@ func _handle_prepare_start(payload: PackedByteArray):
 	var result_code = pkg.from_bytes(payload)
 	var time_start = pkg.get_time_start()
 	await SceneManager.get_tree().create_timer(0.5).timeout
-	SceneManager.INSTANCES.BOARD_SCENE.show_prepare_start()
+	var cur_scene = SceneManager.get_current_scene()
 	match_data.state = MatchData.MATCH_STATE.PREPARING_START
+	if cur_scene is BoardScene:
+		cur_scene.show_prepare_start()
+
 	
 func get_my_team_score() -> int:
 	var c = 0	

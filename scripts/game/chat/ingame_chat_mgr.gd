@@ -24,7 +24,9 @@ func _handle_new_message(payload):
 	var message = pkg.get_chat_message()
 	var uid = pkg.get_uid()
 	
-	SceneManager.INSTANCES.BOARD_SCENE.on_new_chat_message(uid, message)
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.on_new_chat_message(uid, message)
 
 func _handle_chat_emo(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.InGameChatEmoticon.new()
@@ -32,4 +34,6 @@ func _handle_chat_emo(payload):
 	var emo = pkg.get_emoticon()
 	var uid = pkg.get_uid()
 	
-	SceneManager.INSTANCES.BOARD_SCENE.on_new_chat_emo(uid, emo)
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.on_new_chat_emo(uid, emo)

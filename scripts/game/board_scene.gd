@@ -112,6 +112,9 @@ func _on_enter():
 			on_finishhand()
 			
 	self.update_team_scores()
+
+func continue_play():
+	remove_all_current_cards()
 	
 func on_update_players():
 	var players_info = game_logic.get_list_player()
@@ -165,6 +168,7 @@ func _get_seat_position(mode_player: int, seat_id: int):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	game_logic.update()
+	#print('handsulttt', game_logic.hand_suit)
 	for c in list_my_cards:
 		c.update_state_can_play(true)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:

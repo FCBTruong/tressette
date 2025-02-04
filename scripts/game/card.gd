@@ -13,6 +13,7 @@ var tween: Tween
 var player_id = -1 # ref uid
 @onready var card_image = find_child('CardImage')
 @onready var main_pn = find_child('Main')
+@onready var card_btn = find_child('CardBtn')
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	is_played = false
@@ -122,8 +123,10 @@ func effect_win_card():
 
 func update_state_can_play(is_valid: bool):
 	if is_valid:
+		card_btn.visible = true
 		main_pn.modulate = Color(1, 1, 1)  # RGB values for red
 		pass
 	else:
+		card_btn.visible = false
 		main_pn.modulate = Color('585151')  # RGB values for red
 		pass

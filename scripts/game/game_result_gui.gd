@@ -40,6 +40,11 @@ func _update_player(p, data):
 	
 func _click_continue_play():
 	queue_free()
+	
+	# continue play
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.continue_play()
 	pass
 	
 func _click_exit_game():
