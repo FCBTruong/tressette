@@ -2,7 +2,7 @@ extends Node
 
 var my_user_data = UserData.new(0, '')
 func get_user_id():
-	return 0
+	return my_user_data.uid
 	
 func set_my_userdata(user_data: UserData):
 	my_user_data = user_data

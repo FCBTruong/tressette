@@ -5,7 +5,7 @@ var match_data: MatchData = null
 var card_win_id: int
 var win_point_hand: int
 var hand_suit = -1 # current hand suit need to follow
-var my_idx = 0 # in list users
+var my_idx: int = 0 # in list users
 var match_result = MatchData.MatchResult.new()
 var is_registered_leave = false
 
@@ -196,6 +196,10 @@ func _handle_play_card(payload: PackedByteArray):
 	self.hand_suit = pkg.get_hand_suit()
 	print('current handsuit follow', self.hand_suit)
 	match_data.current_turn = pkg.get_current_turn()
+	
+	if uid == PlayerInfoMgr.get_user_id():
+		match_data.users[my_idx].game_data.cards.erase(card_id)
+		
 	var scene = SceneManager.get_current_scene()
 	if scene is BoardScene:
 		scene.play_card(uid, card_id, auto)

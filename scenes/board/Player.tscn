@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvggiqkn2bjut"]
+[gd_scene load_steps=12 format=3 uid="uid://dvggiqkn2bjut"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_phee0"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_2fpyj"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_riqo0"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="3_tw46g"]
 [ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="5_6p0k0"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_tnwwa"]
 [ext_resource type="Texture2D" uid="uid://c7t46btjgrrjc" path="res://assets/images/board/user.png" id="6_l3lsr"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="6_lqmp5"]
 [ext_resource type="Texture2D" uid="uid://dspngqcofx1o0" path="res://assets/animations/1.png" id="8_7md6h"]
@@ -93,6 +94,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0nki0")
 flat = true
+script = ExtResource("5_tnwwa")
 
 [node name="TimeProgressBar" type="TextureProgressBar" parent="MainPn"]
 self_modulate = Color(1, 0.888832, 0, 1)
