@@ -235,7 +235,7 @@ func _get_my_card(id):
 			return c
 	return null
 	
-func play_my_card(id: int):
+func play_my_card(id: int, auto: bool = false):
 	print("play_a_card", id)
 	var valid_card = game_logic.check_valid_card_play(id)
 	if not valid_card:
@@ -263,7 +263,8 @@ func play_my_card(id: int):
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
 	
 	# send to server
-	game_logic.send_play_card(id)
+	if not auto:
+		game_logic.send_play_card(id)
 	cards_node_compare.append(card)
 	
 	list_my_cards.erase(card)
@@ -467,7 +468,7 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	print("user " + str(user_id) + "play_a_card", card_id)
 	if user_id == PlayerInfoMgr.my_user_data.uid:
 		if auto:
-			play_my_card(card_id)
+			play_my_card(card_id, auto)
 		return
 	if GameManager.enable_sound:
 		$AudioPlayCard.play()

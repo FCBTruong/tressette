@@ -7,11 +7,13 @@ var file_path: String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if is_me:
-		set_avatar(PlayerInfoMgr.my_user_data.avatar)
-		print('avatar....', PlayerInfoMgr.my_user_data.avatar)
-		SignalBus.connect_global('on_changed_avatar', Callable(self, "on_changed_my_avatar"))
+		set_me()
 	pass # Replace with function body.
 
+func set_me():
+	set_avatar(PlayerInfoMgr.my_user_data.avatar)
+	SignalBus.connect_global('on_changed_avatar', Callable(self, "on_changed_my_avatar"))
+	
 func _update_my_avatar():
 	set_avatar(PlayerInfoMgr.my_user_data.avatar)
 	print('avatar....', PlayerInfoMgr.my_user_data.avatar)

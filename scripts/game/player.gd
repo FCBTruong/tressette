@@ -34,6 +34,8 @@ func set_user_data(user_dt: UserData) -> void:
 	update_points_display()
 	# update avatar
 	print('userdatavat', user_data.avatar)
+	if user_data.uid == PlayerInfoMgr.my_user_data.uid:
+		avatar_img.set_me()
 	avatar_img.set_avatar(user_data.avatar)
 	
 

@@ -370,7 +370,7 @@ func _handle_prepare_start(payload: PackedByteArray):
 	match_data.state = MatchData.MATCH_STATE.PREPARING_START
 	
 func get_my_team_score() -> int:
-	var c = 0
+	var c = 0	
 	var my_team_id = match_data.users[my_idx].game_data.team_id
 	for u in match_data.users:
 		if u.game_data.team_id == my_team_id:
