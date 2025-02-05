@@ -114,6 +114,7 @@ func _on_enter():
 	self.update_team_scores()
 
 func continue_play():
+	cardback_node.visible = false
 	remove_all_current_cards()
 	
 func on_update_players():

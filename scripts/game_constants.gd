@@ -54,6 +54,7 @@ const CMDs = {
 	SEARCH_FRIEND = 5000,
 	
 	CHANGE_AVATAR = 6000,
+	CHEAT_GOLD_USER = 6001,
 }
 
 const PROTOBUF = {

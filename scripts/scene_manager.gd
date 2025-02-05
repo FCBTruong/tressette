@@ -71,6 +71,20 @@ func show_ok_dialog(message: String, ok_callback: Callable = Callable()):
 		
 	gui.hide_close_cancel()
 
-func show_toast(msg = ''):
+var gui_waiting = null
+func show_toast(msg = ''):		
 	var gui = await SceneManager.open_gui("res://scenes/guis/ToastGUI.tscn")
 	gui.set_toats_text(msg)
+	
+func add_loading(timeout = -1):
+	# check if gui waiting still active, remove it
+	if gui_waiting and is_instance_valid(gui_waiting):
+		gui_waiting.queue_free()
+	var gui = await SceneManager.open_gui("res://scenes/guis/WaitingGUI.tscn")
+	self.gui_waiting = gui
+	if timeout != -1:
+		gui.set_timeout(timeout)
+		
+func clear_loading():
+	if gui_waiting and is_instance_valid(gui_waiting):
+		gui_waiting.queue_free()

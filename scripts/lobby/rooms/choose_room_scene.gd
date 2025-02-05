@@ -36,6 +36,12 @@ func _process(delta: float) -> void:
 func open_create_table_gui():
 	SceneManager.open_gui('res://scenes/lobby/rooms/CreateTableGUI.tscn')
 
+var last_time_refresh = 0
 func _refresh_list():
-	GameManager.send_get_table_list()
+	if GameManager.get_timestamp_client() - last_time_refresh > 5:
+		print("_refresh_list...")
+		GameManager.send_get_table_list()
+		last_time_refresh = GameManager.get_timestamp_client()
+	else:
+		print('too much request....')
 	

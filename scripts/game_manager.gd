@@ -59,7 +59,7 @@ func send_quick_play() -> void:
 		func ():
 			SceneManager.switch_scene(SceneManager.SHOP_SCENE)
 		)
-		
+	SceneManager.add_loading(5)
 	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, [])
 	
 func on_game_start() -> void:
@@ -102,9 +102,13 @@ func send_deregister_leave_game():
 	pkg.set_status(1)
 	GameClient.send_packet(GameConstants.CMDs.REGISTER_LEAVE_GAME, pkg.to_bytes())
 		
+# SECONDS
 func get_timestamp_server():
 	return Time.get_unix_time_from_system() + timestamp_server_delta
-	
+
+func get_timestamp_client():
+	return Time.get_unix_time_from_system()
+		
 func set_timestamp_server_delta(del):
 	timestamp_server_delta = del # milliseconds
 	

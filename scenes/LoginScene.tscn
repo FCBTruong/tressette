@@ -78,18 +78,18 @@ script = ExtResource("3_16366")
 [node name="PnCheat" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 178.0
-offset_top = 365.0
-offset_right = 218.0
-offset_bottom = 405.0
+offset_left = 42.0
+offset_top = 257.0
+offset_right = 82.0
+offset_bottom = 297.0
 
-[node name="Button" type="Button" parent="CanvasLayer/PnCheat"]
+[node name="BtnQuickLogin" type="Button" parent="CanvasLayer/PnCheat"]
 layout_mode = 0
 offset_right = 111.0
 offset_bottom = 87.0
 text = "User A"
 
-[node name="Button" type="Button" parent="CanvasLayer/PnCheat/Button"]
+[node name="Button" type="Button" parent="CanvasLayer/PnCheat/BtnQuickLogin"]
 layout_mode = 0
 offset_left = 178.0
 offset_top = 2.0
@@ -100,5 +100,5 @@ text = "User B"
 [connection signal="pressed" from="CanvasLayer/GuestBtn" to="." method="_login_guest"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/GoogleBtn" to="." method="_login_google"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/FacebookBtn" to="." method="_login_facebook"]
-[connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_login_user_A"]
-[connection signal="pressed" from="CanvasLayer/PnCheat/Button/Button" to="." method="test_login_userB"]
+[connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin" to="." method="test_login_user_A"]
+[connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin/Button" to="." method="test_login_userB"]

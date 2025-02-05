@@ -9,6 +9,7 @@ func _ready() -> void:
 	Firebase.Auth.signup_failed.connect(on_signup_failed)
 	
 	LoginMgr.auto_login()	
+	find_child('BtnQuickLogin').visible = Config.CURRENT_MODE ==Config.MODES.LOCAL
 	pass # Replace with function body.
 
 func on_login_succeeded(auth):

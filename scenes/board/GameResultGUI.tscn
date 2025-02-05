@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bebfix1c1kukt"]
+[gd_scene load_steps=16 format=3 uid="uid://bebfix1c1kukt"]
 
 [ext_resource type="Script" path="res://scripts/game/game_result_gui.gd" id="1_fpth8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_2qycw"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_o1o8l"]
+[ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="2_jur3s"]
 [ext_resource type="PackedScene" uid="uid://d2dopof1ns88o" path="res://scenes/board/background_particles.tscn" id="2_t0g3t"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="3_2jrm1"]
 [ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="3_qcsoa"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="4_4p4bo"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_xsh0q"]
+[ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="7_tcbk3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hag70"]
 
@@ -36,6 +38,8 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+shadow_color = Color(0.235841, 0.27775, 0.564492, 1)
+shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7cos"]
 bg_color = Color(0.239936, 0.595041, 0.0764193, 1)
@@ -44,6 +48,8 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+shadow_color = Color(0.235294, 0.278431, 0.564706, 1)
+shadow_size = 2
 
 [node name="GameResultGui" type="Node2D"]
 script = ExtResource("1_fpth8")
@@ -64,11 +70,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -338.0
-offset_top = -254.0
+offset_top = -250.0
 offset_right = 338.0
-offset_bottom = 254.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(338, 250)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hag70")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/MainPn"]
@@ -102,8 +109,8 @@ offset_right = 191.0
 offset_bottom = 103.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.246653, 0.255158, 0.289552, 1)
-theme_override_fonts/font = ExtResource("2_2qycw")
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("2_jur3s")
+theme_override_font_sizes/font_size = 30
 text = "You Win"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -126,16 +133,20 @@ theme_override_constants/separation = 30
 [node name="BtnExit" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_o1o8l")
+theme_override_fonts/font = ExtResource("2_2qycw")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_bxyre")
 text = "Exit"
+script = ExtResource("4_xsh0q")
 
 [node name="BtnContinue" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_o1o8l")
+theme_override_fonts/font = ExtResource("2_2qycw")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_y7cos")
 text = "Continue"
+script = ExtResource("4_xsh0q")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/MainPn"]
 layout_mode = 1
@@ -154,11 +165,20 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn/HBoxContainer3"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="Control" type="Control" parent="CanvasLayer/MainPn/HBoxContainer3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_qcsoa")
+theme_override_font_sizes/font_size = 26
+text = "Total:"
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -166,7 +186,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qcsoa")
 theme_override_font_sizes/font_size = 26
 text = "Score Cards:"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/VBoxContainer"]
@@ -174,17 +193,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qcsoa")
 theme_override_font_sizes/font_size = 26
-text = "Last Trick"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_qcsoa")
-theme_override_font_sizes/font_size = 26
-text = "Total"
-horizontal_alignment = 1
+text = "Last Trick:"
 vertical_alignment = 1
 
 [node name="PlayerResult1" type="VBoxContainer" parent="CanvasLayer/MainPn/HBoxContainer3"]
@@ -205,6 +214,13 @@ offset_bottom = 50.0
 scale = Vector2(0.7, 0.7)
 pivot_offset = Vector2(50, 50)
 
+[node name="ScoreTotal" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/PlayerResult1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2jrm1")
+theme_override_font_sizes/font_size = 40
+text = "50"
+horizontal_alignment = 1
+
 [node name="ScoreCard" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/PlayerResult1"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -222,13 +238,6 @@ theme_override_font_sizes/font_size = 35
 text = "25"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ScoreTotal" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/PlayerResult1"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_2jrm1")
-theme_override_font_sizes/font_size = 40
-text = "50"
-horizontal_alignment = 1
 
 [node name="PlayerResult2" type="VBoxContainer" parent="CanvasLayer/MainPn/HBoxContainer3"]
 custom_minimum_size = Vector2(80, 0)
@@ -248,6 +257,22 @@ offset_bottom = 50.0
 scale = Vector2(0.7, 0.7)
 pivot_offset = Vector2(50, 50)
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer3/PlayerResult2/Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = -23.0
+offset_right = 60.0
+offset_bottom = 17.0
+texture = ExtResource("7_tcbk3")
+expand_mode = 1
+
+[node name="ScoreTotal" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/PlayerResult2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_2jrm1")
+theme_override_font_sizes/font_size = 40
+text = "50"
+horizontal_alignment = 1
+
 [node name="ScoreCard" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/PlayerResult2"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -265,13 +290,6 @@ theme_override_font_sizes/font_size = 35
 text = "25"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ScoreTotal" type="Label" parent="CanvasLayer/MainPn/HBoxContainer3/PlayerResult2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_2jrm1")
-theme_override_font_sizes/font_size = 40
-text = "50"
-horizontal_alignment = 1
 
 [node name="PlayerResult3" type="VBoxContainer" parent="CanvasLayer/MainPn/HBoxContainer3"]
 visible = false

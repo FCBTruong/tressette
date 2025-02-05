@@ -1,11 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://pnvlnkvi3no"]
+[gd_scene load_steps=4 format=3 uid="uid://pnvlnkvi3no"]
 
 [ext_resource type="Script" path="res://scripts/lobby/dev_gui.gd" id="1_10d5g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtdei"]
+bg_color = Color(0.649351, 0.231916, 0.00652578, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mr3y"]
 
 [node name="DevGui" type="Node2D"]
 script = ExtResource("1_10d5g")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainPn" type="ColorRect" parent="CanvasLayer"]
+self_modulate = Color(0.673111, 0.673111, 0.673111, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.570904, 0.5673, 0.605224, 0.724)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn"]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 338.0
+offset_bottom = 105.0
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MainPn/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Cheat GOLD:"
+horizontal_alignment = 2
+
+[node name="LineEditGold" type="LineEdit" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "gold"
+virtual_keyboard_type = 2
+
+[node name="CheatGoldBtn" type="Button" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_qtdei")
+text = "Cheat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Cheat EXP:"
+horizontal_alignment = 2
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "gold"
+virtual_keyboard_type = 2
+
+[node name="CheatExpBtn" type="Button" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_qtdei")
+text = "Cheat"
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.635)
@@ -36,3 +107,16 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 28
 text = "60"
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2mr3y")
+
+[connection signal="pressed" from="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2/CheatGoldBtn" to="." method="_click_cheat_goldbtn"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_click_btn"]

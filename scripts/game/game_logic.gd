@@ -107,6 +107,7 @@ func _handle_register_leave_game(payload: PackedByteArray):
 		scene.update_register_leave_state()
 	
 func _handle_game_info(payload: PackedByteArray):
+	SceneManager.clear_loading()
 	var pkg = GameConstants.PROTOBUF.PACKETS.GameInfo.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data = MatchData.new()

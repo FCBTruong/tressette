@@ -12,12 +12,13 @@ func _ready() -> void:
 	
 	MainPn.scale = Vector2(0, 0)
 	var tween = create_tween()
-	tween.tween_property(MainPn, 'scale', Vector2(1, 1), 0.5).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(MainPn, 'scale', Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	pass # Replace with function body.
 
 
 func update_result(data):
 	if data.is_win:
+		SoundManager.play_win_congrat_sound()
 		TitleLb.text = 'You Win'
 		TitleLb.add_theme_color_override("font_color", Color('ff9744'))  # RGB for red
 	else:
