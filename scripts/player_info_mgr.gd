@@ -35,6 +35,7 @@ func _on_update_money(bytes: PackedByteArray):
 	packet.from_bytes(bytes)
 	my_user_data.gold = packet.get_gold()
 	print('_on_update_money', my_user_data.gold)
+	SignalBus.emit_signal_global('on_update_money')
 	
 func on_update_avatar(avatar: String):
 	my_user_data.avatar = avatar

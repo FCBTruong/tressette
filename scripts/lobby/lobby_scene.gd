@@ -6,7 +6,7 @@ func _ready() -> void:
 	_do_effect()
 	on_update_gui()
 	update_lobby_friends()
-	
+	SignalBus.connect_global('on_update_money', Callable(self, "_on_update_money"))
 	pass # Replace with function body.
 
 @onready var left_panel = find_child('LeftPanel')
@@ -37,9 +37,11 @@ func _do_effect() -> void:
 	#bg.scale = Vector2(1.2, 1.2)
 	#tween2.tween_property(bg, "scale", original_scale, 0.3)
 	
+func _on_update_money():
+	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)
 
 func on_update_gui():
-	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)
+	_on_update_money()
 	name_lb.text = str(PlayerInfoMgr.my_user_data.name)
 	friend_img_hot.visible = len(FriendManager.requests) > 0
 
