@@ -50,5 +50,7 @@ func _open_pick_avatar() -> void:
 	SceneManager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn', GameConstants.GUI_ZORDER.PICK_AVATAR)
 	
 func _send_request_friend():
+	FriendManager.send_add_friend(self._info.uid)
 	print('_send_request_friend', _info.uid)
+
 	pass

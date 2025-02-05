@@ -7,3 +7,4 @@ extends RefCounted
 @export var avatar: String
 @export var gold: int
 @export var level: int
+@export var is_online: bool = false

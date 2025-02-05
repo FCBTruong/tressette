@@ -35,6 +35,7 @@ func _process(_delta):
 
 	if state == WebSocketPeer.STATE_OPEN:
 		if not is_connected:
+			SceneManager.clear_loading()
 			is_connected = true
 			# switch to LoginScene	
 			SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
@@ -69,8 +70,9 @@ func _disconnect():
 	SceneManager.show_ok_dialog(
 		tr('YOU_ARE_DISCONNECTED'),
 		func ():
-			SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
+			#SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
 			socket.close()
+			SceneManager.add_loading()
 			connect_to_server()
 	)
 	# Perform any cleanup operations if necessary

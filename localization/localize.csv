@@ -1,47 +1,50 @@
-key,en,vi,it
-WELCOM,Welcome,Xin chào,Benvenuto
-PROFILE,Profile,Hồ sơ,Profilo
-FRIENDS,Friends,Bạn bè,Amici
-PLAY_NOW,Play Now,Chơi ngay,Gioca ora
-ROOMS,Rooms,Phòng,Stanze
-WAITING_FOR_OTHERS,Waiting for other players,Đang chờ người chơi khác,In attesa degli altri giocatori
-ENTER_USER_ID,Enter user ID,Nhập ID người dùng,Inserisci ID utente
-STORE,STORE,CỬA HÀNG,NEGOZIO
-SETTINGS,SETTINGS,CÀI ĐẶT,IMPOSTAZIONI
-CARD_STYLE,Card Style,Phong cách thẻ,Stile della carta
-LOGOUT,Logout,Đăng xuất,Esci
-MUSIC,Music,Âm nhạc,Musica
-SOUND,Sound,Âm thanh,Suono
-PLEASE_DESCRIBE_ISSUE,Please describe the issue you're facing,Vui lòng mô tả vấn đề bạn đang gặp phải,Descrivi il problema che stai affrontando
-CUSTOMER_SUPPORT,Customer Support,Hỗ trợ khách hàng,Assistenza clienti
-CREATE_TABLE,Create table,tạo bàn,crea stanza
-SEARCH_ROOM_ID,Search room by ID,Tìm phòng theo ID,Cerca stanza per ID
-ENTER_YOUR_MESSAGE,Enter your message,Nhập tin nhắn của bạn,Inserisci il tuo messaggio
-SEND,Send,Gửi,Invia
-TOTAL_MATCH,Total matches:,Tổng trận đấu:,Partite totali:
-WIN_RATE,Win rate:,Tỷ lệ thắng:,Tasso di vittoria:
-NOTIFICATION,Notification,Thông báo,Notifica
-YOU_ARE_DISCONNECTED,"You are disconnected, try connecting again","Bạn đã bị ngắt kết nối, hãy thử kết nối lại","Sei disconnesso, prova a connetterti di nuovo"
-OK,Ok,Ok,Ok
-CANCEL,Cancel,Hủy,Annulla
-REQUESTS,Requests,Yêu cầu,Richieste
-NOT_ENOUGH_GOLD_PLAY_BUY,"Not enough Lira to play, do you want to buy more?","Không đủ Lira để chơi, bạn có muốn mua thêm không?","Non hai abbastanza Lira per giocare, vuoi comprarne di più?"
-FANTASTIC,Fantastic!,Tuyệt vời!,Fantastico!
-WELL_DONE,Well Done!,Làm tốt lắm!,Ben fatto!
-GREAT_JOB,Great Job!,Giỏi lắm!,Ottimo lavoro!
-CONGRATULATION,Congratulations!,Chúc mừng!,Congratulazioni!
-YOU_ARE_AMAZING,You're Amazing!,Bạn thật tuyệt!,Sei incredibile!
-BAD_LUCK,Bad luck!,Không may rồi!,Che sfortuna!
-TRY_AGAIN,Try again!,Thử lại nhé!,Riprova!
-DONT_GIVE_UP,Don't give up!,Đừng bỏ cuộc!,Non arrenderti!
-KEEP_GOING,Keep going!,Tiếp tục cố gắng!,Continua così!
-FEATURE_COMING_SOON,This feature is coming soon! Stay tuned for updates!,Tính năng này sẽ sớm ra mắt! Hãy chờ đón những cập nhật tiếp theo!,Questa funzione arriverà presto! Resta sintonizzato per gli aggiornamenti!
-LIRA,Lira,Lira,Lira
-COPY_OK,Copied,Đã sao chép!,Copiato!
-NOT_FOUND_FRIEND,Player not found,Không tìm thấy người chơi.,Giocatore non trovato
-REGISTER_LEAVE,You will leave the game when the match ends,Bạn sẽ rời game khi trận đấu kết thúc,Lascerai il gioco quando la partita finirà.
-CANCEL_REGISTER_LEAVE,Cancel leave registration,Hủy đăng ký rời game,Annulla la registrazione per lasciare il gioco
-LANGUAGE,Language,Ngôn ngữ,Lingua
-ENGLISH,English,Tiếng Anh,Inglese
-VIETNAMESE,Vietnamese,Tiếng Việt,Vietnamita
-ITALY,Italian,,Italiano
+key,en,it,vi,
+WELCOM,Welcome,Benvenuto,Xin chào,
+PROFILE,Profile,Profilo,Hồ sơ,
+FRIENDS,Friends,Amici,Bạn bè,
+PLAY_NOW,Play Now,Gioca ora,Chơi ngay,
+ROOMS,Rooms,Stanze,Phòng,
+WAITING_FOR_OTHERS,Waiting for other players,In attesa degli altri giocatori,Đang chờ người chơi khác,
+ENTER_USER_ID,Enter user ID,Inserisci ID utente,Nhập ID người dùng,
+STORE,STORE,NEGOZIO,CỬA HÀNG,
+SETTINGS,SETTINGS,IMPOSTAZIONI,CÀI ĐẶT,
+CARD_STYLE,Card Style,Stile della carta,Phong cách thẻ,
+LOGOUT,Logout,Esci,Đăng xuất,
+MUSIC,Music,Musica,Âm nhạc,
+SOUND,Sound,Suono,Âm thanh,
+PLEASE_DESCRIBE_ISSUE,Please describe the issue you're facing,Descrivi il problema che stai affrontando,Vui lòng mô tả vấn đề bạn đang gặp phải,
+CUSTOMER_SUPPORT,Customer Support,Assistenza clienti,Hỗ trợ khách hàng,
+CREATE_TABLE,Create table,crea stanza,tạo bàn,
+SEARCH_ROOM_ID,Search room by ID,Cerca stanza per ID,Tìm phòng theo ID,
+ENTER_YOUR_MESSAGE,Enter your message,Inserisci il tuo messaggio,Nhập tin nhắn của bạn,
+SEND,Send,Invia,Gửi,
+TOTAL_MATCH,Total matches:,Partite totali:,Tổng trận đấu:,
+WIN_RATE,Win rate:,Tasso di vittoria:,Tỷ lệ thắng:,
+NOTIFICATION,Notification,Notifica,Thông báo,
+YOU_ARE_DISCONNECTED,"You are disconnected, try connecting again","Sei disconnesso, prova a connetterti di nuovo","Bạn đã bị ngắt kết nối, hãy thử kết nối lại",
+OK,Ok,Ok,Ok,
+CANCEL,Cancel,Annulla,Hủy,
+REQUESTS,Requests,Richieste,Yêu cầu,
+NOT_ENOUGH_GOLD_PLAY_BUY,"Not enough Lira to play, do you want to buy more?","Non hai abbastanza Lira per giocare, vuoi comprarne di più?","Không đủ Lira để chơi, bạn có muốn mua thêm không?",
+FANTASTIC,Fantastic!,Fantastico!,Tuyệt vời!,
+WELL_DONE,Well Done!,Ben fatto!,Làm tốt lắm!,
+GREAT_JOB,Great Job!,Ottimo lavoro!,Giỏi lắm!,
+CONGRATULATION,Congratulations!,Congratulazioni!,Chúc mừng!,
+YOU_ARE_AMAZING,You're Amazing!,Sei incredibile!,Bạn thật tuyệt!,
+BAD_LUCK,Bad luck!,Che sfortuna!,Không may rồi!,
+TRY_AGAIN,Try again!,Riprova!,Thử lại nhé!,
+DONT_GIVE_UP,Don't give up!,Non arrenderti!,Đừng bỏ cuộc!,
+KEEP_GOING,Keep going!,Continua così!,Tiếp tục cố gắng!,
+FEATURE_COMING_SOON,This feature is coming soon! Stay tuned for updates!,Questa funzione arriverà presto! Resta sintonizzato per gli aggiornamenti!,Tính năng này sẽ sớm ra mắt! Hãy chờ đón những cập nhật tiếp theo!,
+LIRA,Lira,Lira,Lira,
+COPY_OK,Copied,Copiato!,Đã sao chép!,
+NOT_FOUND_FRIEND,Player not found,Giocatore non trovato,Không tìm thấy người chơi.,
+REGISTER_LEAVE,You will leave the game when the match ends,Lascerai il gioco quando la partita finirà.,Bạn sẽ rời game khi trận đấu kết thúc,
+CANCEL_REGISTER_LEAVE,Cancel leave registration,Annulla la registrazione per lasciare il gioco,Hủy đăng ký rời game,
+LANGUAGE,Language,Lingua,Ngôn ngữ,
+ENGLISH,English,Inglese,Tiếng Anh,
+VIETNAMESE,Vietnamese,Vietnamita,Tiếng Việt,
+ITALY,Italian,Italiano,,
+MAX_FRIENDS,You have reached the maximum limit of 100 friends. You cannot add more friends.,Hai raggiunto il limite massimo di 100 amici. Non puoi aggiungerne altri.,,
+SENT_FRIEND_REQUEST,Friend request sent!,Richiesta di amicizia inviata!,,
+CONFIRM_REMOVE_FRIEND,Confirm removal of @name from friends?,Confermi la rimozione di @name dagli amici?,,

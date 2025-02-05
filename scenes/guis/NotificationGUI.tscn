@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0r5ind8cn0yk"]
+[gd_scene load_steps=13 format=3 uid="uid://b0r5ind8cn0yk"]
 
 [ext_resource type="Script" path="res://scripts/lobby/notification_gui.gd" id="1_okwls"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_d540v"]
+[ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_ugctg"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_pbit8"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="4_4bybf"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_icld3"]
@@ -9,6 +10,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwd5"]
 bg_color = Color(0, 0, 0, 0.74)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7411"]
+shader = ExtResource("2_ugctg")
+shader_parameter/blur_amount = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm6ps"]
 corner_radius_top_left = 10
@@ -40,12 +45,21 @@ script = ExtResource("1_okwls")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Panel2" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eqwd5")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_r7411")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MainPn" type="Panel" parent="CanvasLayer"]
 clip_children = 1

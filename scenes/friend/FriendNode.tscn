@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwixv73ro3krf"]
+[gd_scene load_steps=11 format=3 uid="uid://bwixv73ro3krf"]
 
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="1_68n2p"]
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_node.gd" id="1_ii6gu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="3_2r7jm"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_sopwt"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_m7j3o"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_svbc0"]
 [ext_resource type="Texture2D" uid="uid://bh01p5nn4c6a5" path="res://assets/images/lobby/delete_icon.png" id="5_h58w4"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kam2u"]
 
@@ -60,7 +61,7 @@ grow_vertical = 2
 texture = ExtResource("3_2r7jm")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Avatar/TextureRect2"]
+[node name="AvatarImg" type="TextureRect" parent="Panel/HBoxContainer/Avatar/TextureRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,6 +70,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_68n2p")
 expand_mode = 1
+script = ExtResource("4_svbc0")
+is_me = false
 
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Avatar"]
 self_modulate = Color(0.264567, 0.260417, 0.442296, 1)
@@ -83,8 +86,20 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.1, 1.1)
+mouse_filter = 2
 texture = ExtResource("3_sopwt")
 expand_mode = 1
+
+[node name="InfoBtn" type="Button" parent="Panel/HBoxContainer/Avatar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("6_kam2u")
 
 [node name="Control2" type="Control" parent="Panel/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
@@ -166,4 +181,5 @@ expand_mode = 1
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
+[connection signal="pressed" from="Panel/HBoxContainer/Avatar/InfoBtn" to="." method="_click_info"]
 [connection signal="pressed" from="Panel/HBoxContainer/HBoxContainer/RemoveBtn" to="." method="_remove_friend"]

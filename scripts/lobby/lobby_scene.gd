@@ -7,6 +7,8 @@ func _ready() -> void:
 	on_update_gui()
 	update_lobby_friends()
 	SignalBus.connect_global('on_update_money', Callable(self, "_on_update_money"))
+	SignalBus.connect_global('update_friend_list', Callable(self, 'update_lobby_friends'))
+	SignalBus.connect_global('update_friend_requests', Callable(self, '_update_friend_requests'))
 	pass # Replace with function body.
 
 @onready var left_panel = find_child('LeftPanel')
@@ -43,7 +45,7 @@ func _on_update_money():
 func on_update_gui():
 	_on_update_money()
 	name_lb.text = str(PlayerInfoMgr.my_user_data.name)
-	friend_img_hot.visible = len(FriendManager.requests) > 0
+	_update_friend_requests()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -82,9 +84,15 @@ func open_shop():
 var friend_lobby_scene = preload("res://scenes/lobby/FriendLobbyNode.tscn")
 @onready var lobby_friend_list = find_child('LobbyFriendList')	
 func update_lobby_friends():
+	for c in lobby_friend_list.get_children():
+		c.queue_free()
 	for f in FriendManager.friends:
 		var n = friend_lobby_scene.instantiate()
 		lobby_friend_list.add_child(n)
 		n.set_info(f)
 		
+		
+func _update_friend_requests():
+	friend_img_hot.visible = len(FriendManager.requests) > 0
+	pass
 	

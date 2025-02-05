@@ -3,6 +3,7 @@ extends Node
 const LOGIN_GUEST: int = 0
 const LOGIN_GOOGLE: int = 1
 const LOGIN_FACEBOOK: int = 2
+const LOGIN_UID_CHEAT: int = 10
 var last_login_type: int = 0
 
 # Called when the node enters the scene tree for the first time.

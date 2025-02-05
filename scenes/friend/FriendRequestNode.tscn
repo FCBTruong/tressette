@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bufmkwwcovvdm"]
+[gd_scene load_steps=11 format=3 uid="uid://bufmkwwcovvdm"]
 
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_request_node.gd" id="1_daw0j"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="1_i6mhq"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_42fsm"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gvyii"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_fqgvw"]
 [ext_resource type="Texture2D" uid="uid://bq3rgtuk3jjpg" path="res://assets/images/lobby/check_icon.png" id="4_tfj5i"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_pu5sr"]
 [ext_resource type="Texture2D" uid="uid://cuodum7wf3mlx" path="res://assets/images/lobby/x_icon.png" id="5_tr680"]
@@ -52,7 +53,7 @@ grow_vertical = 2
 texture = ExtResource("1_i6mhq")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Avatar/TextureRect2"]
+[node name="AvatarImg" type="TextureRect" parent="Avatar/TextureRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,6 +62,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_42fsm")
 expand_mode = 1
+script = ExtResource("4_fqgvw")
+is_me = false
+
+[node name="InfoBtn" type="Button" parent="Avatar/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("5_pu5sr")
 
 [node name="TextureRect" type="TextureRect" parent="Avatar"]
 self_modulate = Color(0.143268, 0.130622, 0.367621, 1)
@@ -76,6 +89,7 @@ offset_right = 37.5
 offset_bottom = 37.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_gvyii")
 expand_mode = 1
 
@@ -145,7 +159,7 @@ grow_vertical = 2
 texture = ExtResource("5_tr680")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="NameLb" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -159,5 +173,6 @@ theme_override_fonts/font = ExtResource("6_0ie53")
 theme_override_font_sizes/font_size = 25
 text = "Nguyen Huy Truong"
 
+[connection signal="pressed" from="Avatar/TextureRect2/InfoBtn" to="." method="_click_view_info"]
 [connection signal="pressed" from="AcceptBtn" to="." method="_on_accept"]
 [connection signal="pressed" from="RejectBtn" to="." method="_on_reject"]

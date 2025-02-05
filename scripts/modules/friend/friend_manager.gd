@@ -33,6 +33,9 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			
 		GameConstants.CMDs.FRIEND_LIST:
 			_on_received_list_friend(payload)
+			
+		GameConstants.CMDs.FRIEND_REQUESTS:
+			_on_received_friend_requests(payload)
 
 func _on_received_search_friend(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.SearchFriendResponse.new()
@@ -64,6 +67,7 @@ func _on_received_list_friend(payload):
 	var friend_levels = pkg.get_levels()
 	var friend_golds = pkg.get_golds()
 	var friend_avatars = pkg.get_avatars()
+	var onlines = pkg.get_onlines()
 	
 	self.friends.clear()
 	for i in range(len(friend_ids)):
@@ -73,5 +77,101 @@ func _on_received_list_friend(payload):
 		f.avatar = friend_avatars[i]
 		f.gold = friend_golds[i]
 		f.level = friend_levels[i]
-		
+		f.is_online = onlines[i]
 		self.friends.append(f)
+	
+	self.friends.sort_custom(_compare_friend_sort)
+	# sort friends online first
+
+func _on_received_friend_requests(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.FriendRequests.new()
+	var result_code = pkg.from_bytes(payload)
+
+	var sent_uids = pkg.get_sent_uids()
+	self.requests.clear()
+	
+	var uids = pkg.get_uids()
+	var names = pkg.get_names()
+	var avatars = pkg.get_avatars()
+	var golds = pkg.get_golds()
+	var levels = pkg.get_levels()
+	
+	print('requests....', uids)
+	
+	for i in range(len(uids)):
+		var f = FriendModel.new()
+		f.uid = uids[i]
+		f.name = names[i]
+		f.avatar = avatars[i]
+		f.gold = golds[i]
+		f.level = levels[i]
+		
+		self.requests.append(f)
+		
+	SignalBus.emit_signal_global('update_friend_list')
+		
+	
+func send_add_friend(uid):
+	if len(self.friends) >= 100:
+		SceneManager.show_toast(tr("MAX_FRIENDS"))
+		return
+	SceneManager.show_toast(tr("SENT_FRIEND_REQUEST"))
+	var pkg = GameConstants.PROTOBUF.PACKETS.AddFriend.new()
+	pkg.set_uid(uid)
+	GameClient.send_packet(GameConstants.CMDs.ADD_FRIEND, pkg.to_bytes())
+
+
+func send_accept_friend_request(friend_uid):
+	var pkg = GameConstants.PROTOBUF.PACKETS.RequestFriendAccept.new()
+	pkg.set_uid(friend_uid)
+	pkg.set_action(FRIEND_ACCEPT_REQUEST)
+	GameClient.send_packet(GameConstants.CMDs.ACCEPT_FRIEND_REQUEST, pkg.to_bytes())
+	
+	# Handle logic luon
+	for a in self.requests:
+		if a.uid == friend_uid:
+			self.friends.append(a)
+			self.requests.erase(a)
+			break
+			
+	SignalBus.emit_signal_global('update_friend_list')
+	SignalBus.emit_signal_global('update_friend_requests')
+
+func send_reject_friend_request(friend_uid):
+	var pkg = GameConstants.PROTOBUF.PACKETS.RequestFriendAccept.new()
+	pkg.set_uid(friend_uid)
+	pkg.set_action(FRIEND_REJECT_REQUEST)
+	GameClient.send_packet(GameConstants.CMDs.ACCEPT_FRIEND_REQUEST, pkg.to_bytes())
+	
+	for a in self.requests:
+		if a.uid == friend_uid:
+			self.requests.erase(a)
+			break
+			
+	SignalBus.emit_signal_global('update_friend_requests')
+			
+func remove_friend(friend_uid):
+	var pkg = GameConstants.PROTOBUF.PACKETS.RemoveFriend.new()
+	pkg.set_uid(friend_uid)
+	GameClient.send_packet(GameConstants.CMDs.REMOVE_FRIEND, pkg.to_bytes())
+	
+	for a in self.friends:
+		if a.uid == friend_uid:
+			self.friends.erase(a)
+			break
+			
+	# update list
+	SignalBus.emit_signal_global('update_friend_list')
+
+
+# Comparator function to sort
+func _compare_friend_sort(a, b):
+	if a.is_online and not b.is_online:
+		return -1  # a comes first
+	elif not a.is_online and b.is_online:
+		return 1   # b comes first
+	else:
+		return 0   
+		
+const FRIEND_ACCEPT_REQUEST: int = 0
+const FRIEND_REJECT_REQUEST: int = 1

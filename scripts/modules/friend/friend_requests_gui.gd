@@ -16,6 +16,7 @@ func _ready() -> void:
 	for f in FriendManager.requests:
 		var instance = friend_node_scene.instantiate()
 		list_container.add_child(instance)
+		instance.set_info(f)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

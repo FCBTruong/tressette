@@ -17,6 +17,7 @@ func set_info(f: FriendModel) -> void:
 	friend_info = f
 	name_lb.text = f.name
 	avatar_img.set_avatar(f.avatar)
+	online_icon.visible = f.is_online
 	pass
 
 

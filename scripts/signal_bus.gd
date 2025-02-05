@@ -7,6 +7,8 @@ signal game_started
 signal on_picking_avatar
 signal on_changed_avatar
 signal on_update_money
+signal update_friend_list
+signal update_friend_requests
 
 # Emit a signal globally with arguments
 func emit_signal_global(signal_name: String, args: Array = []) -> void:

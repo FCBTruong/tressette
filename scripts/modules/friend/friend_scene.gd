@@ -20,14 +20,20 @@ func _ready() -> void:
 	list_container.modulate.a = 0
 	tween.parallel().tween_property(list_container, 'modulate:a', 1, 0.5)
 	
+	SignalBus.connect_global('update_friend_list', Callable(self, '_update_friends_list'))
+	SignalBus.connect_global('update_friend_requests', Callable(self, '_update_friends_requests'))
+	_update_friends_list()
+	_update_friends_requests()
+	pass # Replace with function body.
+
+func _update_friends_list():
+	for child in list_container.get_children():
+		child.queue_free()
+
 	for f in FriendManager.friends:
 		var instance = friend_node_scene.instantiate()
 		list_container.add_child(instance)
-	
-	request_dot.visible = len(FriendManager.requests) > 0
-	request_number_lb.text = str(len(FriendManager.requests))
-	pass # Replace with function body.
-
+		instance.set_info(f)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,3 +48,7 @@ func _open_requests():
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	var uid = int(new_text)
 	FriendManager.search_friend(uid)
+
+func _update_friends_requests():
+	request_dot.visible = len(FriendManager.requests) > 0
+	request_number_lb.text = str(len(FriendManager.requests))
