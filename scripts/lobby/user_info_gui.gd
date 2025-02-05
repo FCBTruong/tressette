@@ -14,6 +14,7 @@ func _show_popup():
 @onready var uid_lb = find_child('UidLb')
 @onready var request_friend_btn = find_child('RequestFriendBtn')
 @onready var avt_edit_btn = find_child('AvtEditBtn')
+@onready var avatar_img = find_child('AvatarImg')
 var _info = null
 func _ready() -> void:
 	var tween = create_tween()
@@ -30,8 +31,10 @@ func set_info(info: UserData):
 	if _info.uid == PlayerInfoMgr.my_user_data.uid:
 		request_friend_btn.visible = false
 		avt_edit_btn.visible = true
+		avatar_img.set_me()
 	else:
 		avt_edit_btn.visible = false
+		avatar_img.set_avatar(_info.avatar)
 	
 	user_name_lb.text = _info.name
 	gold_lb.text = StringUtils.point_number(_info.gold)

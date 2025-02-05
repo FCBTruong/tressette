@@ -14,6 +14,7 @@ var LanguageConf = {
 @onready var music_checker = find_child("MusicBtn")
 @onready var sound_checker = find_child('SoundBtn')
 @onready var option_language = find_child('OptionLanguage')
+@onready var logout_btn = find_child("LogoutBtn")
 func _ready() -> void:
 	default_pos = $Panel.position
 	
@@ -38,6 +39,10 @@ func _ready() -> void:
 	elif GameManager.language == 'it':
 		lang_idx = LanguageConf.get('it')
 	option_language.select(lang_idx)
+	
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		logout_btn.visible = false
 	
 
 func _hide_gui() -> void:

@@ -72,6 +72,7 @@ func send_quick_play() -> void:
 		func ():
 			SceneManager.switch_scene(SceneManager.SHOP_SCENE)
 		)
+		return
 	SceneManager.add_loading(5)
 	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, [])
 	

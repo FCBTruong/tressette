@@ -688,3 +688,7 @@ func _on_back_btn_pressed() -> void:
 		GameManager.send_deregister_leave_game()
 	else:
 		GameManager.send_register_leave_game()
+
+func _open_settings_gui() -> void:
+	SceneManager.open_gui("res://scenes/guis/SettingsGUI.tscn")
+	pass # Replace with function body.

@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=24 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
+[ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_ae4rd"]
 [ext_resource type="Texture2D" uid="uid://ceyy7y3k4olhi" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="3_f4vbo"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
@@ -16,8 +17,9 @@
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
 [ext_resource type="Texture2D" uid="uid://c1qpfhy0ay3r1" path="res://assets/images/lobby/edit_icon.png" id="13_f07n6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toijc"]
-bg_color = Color(0, 0, 0, 0.625)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yaus5"]
+shader = ExtResource("2_ae4rd")
+shader_parameter/blur_amount = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp3k3"]
 corner_radius_top_left = 15
@@ -68,14 +70,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_yaus5")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_toijc")
 
 [node name="MainPn" type="Control" parent="Control"]
 self_modulate = Color(1, 1, 1, 0)
@@ -389,6 +391,7 @@ grow_vertical = 2
 texture = ExtResource("4_umvqn")
 expand_mode = 1
 script = ExtResource("11_tjqgq")
+is_me = false
 
 [node name="AvtEditBtn" type="Button" parent="Control/MainPn/TextureRect2"]
 layout_mode = 0

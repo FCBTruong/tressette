@@ -551,7 +551,6 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="SettingBtn" type="Button" parent="CanvasLayer/RightTopPanel"]
-modulate = Color(0.634138, 0.768152, 0.656743, 1)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -565,16 +564,17 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/SettingBtn"]
+self_modulate = Color(1, 1, 1, 0.678)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_ujbxy")
@@ -927,6 +927,7 @@ stream = ExtResource("8_62q6d")
 volume_db = 12.0
 
 [connection signal="pressed" from="CanvasLayer/PlayGround/ActionBtnPn/PlayBtn" to="." method="_on_click_btn_play_card"]
+[connection signal="pressed" from="CanvasLayer/RightTopPanel/SettingBtn" to="." method="_open_settings_gui"]
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]

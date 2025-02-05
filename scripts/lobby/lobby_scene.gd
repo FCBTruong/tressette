@@ -85,5 +85,6 @@ func update_lobby_friends():
 	for f in FriendManager.friends:
 		var n = friend_lobby_scene.instantiate()
 		lobby_friend_list.add_child(n)
+		n.set_info(f)
 		
 	

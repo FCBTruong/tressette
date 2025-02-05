@@ -1,0 +1,24 @@
+extends Node
+
+
+@onready var name_lb = find_child('NameLb')
+@onready var avatar_img = find_child('AvatarImg')
+@onready var online_icon = find_child('OnlineIcon')
+var friend_info = null
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func set_info(f: FriendModel) -> void:
+	friend_info = f
+	name_lb.text = f.name
+	avatar_img.set_avatar(f.avatar)
+	pass
+
+
+func _click_info():
+	FriendManager.search_friend(friend_info.uid)

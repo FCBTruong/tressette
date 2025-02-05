@@ -5,21 +5,7 @@ var requests: Array[FriendModel] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	return
-	var a = FriendModel.new()
-	a.uid = 1000
-	a.name = 'Truong Nguyen'
 	
-	var b = FriendModel.new()
-	b.uid = 1001
-	b.name = 'Tomas Sheby'
-	
-	friends.append(a)
-	friends.append(b)
-	
-	requests.append(b)
-	requests.append(b)
-	
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,6 +30,9 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
 		GameConstants.CMDs.SEARCH_FRIEND:
 			_on_received_search_friend(payload)
+			
+		GameConstants.CMDs.FRIEND_LIST:
+			_on_received_list_friend(payload)
 
 func _on_received_search_friend(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.SearchFriendResponse.new()
@@ -64,3 +53,25 @@ func _on_received_search_friend(payload):
 	
 	var gui = await SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
 	gui.set_info(user_data)
+	
+	
+func _on_received_list_friend(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.FriendList.new()
+	var result_code = pkg.from_bytes(payload)
+	
+	var friend_ids = pkg.get_uids()
+	var friend_names = pkg.get_names()
+	var friend_levels = pkg.get_levels()
+	var friend_golds = pkg.get_golds()
+	var friend_avatars = pkg.get_avatars()
+	
+	self.friends.clear()
+	for i in range(len(friend_ids)):
+		var f = FriendModel.new()
+		f.uid = friend_ids[i]
+		f.name = friend_names[i]
+		f.avatar = friend_avatars[i]
+		f.gold = friend_golds[i]
+		f.level = friend_levels[i]
+		
+		self.friends.append(f)

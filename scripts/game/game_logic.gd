@@ -47,7 +47,9 @@ func _handle_user_leave_match(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
-	var board_scene: BoardScene = SceneManager.INSTANCES.BOARD_SCENE
+	var board_scene = SceneManager.get_current_scene()
+	if not board_scene is BoardScene:
+		return
 	if uid == PlayerInfoMgr.my_user_data.uid:
 		board_scene.exit_game()
 		return
