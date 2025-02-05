@@ -2,12 +2,18 @@ extends CanvasLayer
 
 var default_pos: Vector2
 
+var LanguageConf = {
+	'it': 1,
+	'en': 0  # Index not ID
+}
+
 @onready var classic_card = find_child('ClassicCardBtn')
 @onready var modern_card = find_child('ModernCardBtn')
 @onready var check_icon_class = classic_card.find_child('CheckIcon')
 @onready var check_icon_modern = modern_card.find_child('CheckIcon')
 @onready var music_checker = find_child("MusicBtn")
 @onready var sound_checker = find_child('SoundBtn')
+@onready var option_language = find_child('OptionLanguage')
 func _ready() -> void:
 	default_pos = $Panel.position
 	
@@ -25,6 +31,14 @@ func _ready() -> void:
 	
 	sound_checker.button_pressed = GameManager.enable_sound
 	music_checker.button_pressed = GameManager.enable_music
+	
+	var lang_idx = -1
+	if GameManager.language == 'en':
+		lang_idx = LanguageConf.get('en')
+	elif GameManager.language == 'it':
+		lang_idx = LanguageConf.get('it')
+	option_language.select(lang_idx)
+	
 
 func _hide_gui() -> void:
 	var tween = create_tween()
@@ -69,5 +83,11 @@ func _click_sound():
 func _click_music():
 	GameManager.set_enable_music(music_checker.button_pressed)
 	pass
-		
 	
+func _on_select_language_option(index):
+	if index == LanguageConf.get('it'):
+		# italy
+		GameManager.choose_language('it')
+	elif index == LanguageConf.get('en'):
+		GameManager.choose_language('en')
+		

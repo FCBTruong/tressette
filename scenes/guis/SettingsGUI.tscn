@@ -130,7 +130,29 @@ script = ExtResource("2_txiv8")
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="LanguageTitle" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j4bw7")
+theme_override_font_sizes/font_size = 25
+text = "LANGUAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="OptionLanguage" type="OptionButton" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "ENGLISH"
+popup/item_0/id = 1
+popup/item_1/text = "ITALY"
+script = ExtResource("2_txiv8")
+
+[node name="Control2" type="Control" parent="CanvasLayer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="CardStyleTitle" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_j4bw7")
 theme_override_font_sizes/font_size = 25
@@ -212,5 +234,6 @@ text = "SETTINGS"
 [connection signal="pressed" from="CanvasLayer/Panel/Button" to="CanvasLayer" method="_logout"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MusicBtn" to="CanvasLayer" method="_click_music"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/SoundBtn" to="CanvasLayer" method="_click_sound"]
+[connection signal="item_selected" from="CanvasLayer/Panel/VBoxContainer/OptionLanguage" to="CanvasLayer" method="_on_select_language_option"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn" to="CanvasLayer" method="_choose_card_modern"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn" to="CanvasLayer" method="_choose_card_classic"]

@@ -69,7 +69,7 @@ horizontal_alignment = 2
 [node name="LineEdit" type="LineEdit" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-placeholder_text = "gold"
+placeholder_text = "exp"
 virtual_keyboard_type = 2
 
 [node name="CheatExpBtn" type="Button" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
