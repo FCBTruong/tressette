@@ -36,6 +36,7 @@ messaging="*res://scripts/messaging.gd"
 LoginMgr="*res://scripts/login_mgr.gd"
 StorageCache="*res://scripts/storage_cache.gd"
 SoundManager="*res://scripts/sound_manager.gd"
+FirebaseMgr="*res://scripts/base/firebase_mgr.gd"
 
 [display]
 
@@ -46,7 +47,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg", "res://addons/nativelib-export/plugin.cfg", "res://addons/protobuf/plugin.cfg")
+enabled=PackedStringArray("res://addons/firebase_plugin/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/protobuf/plugin.cfg")
 
 [internationalization]
 

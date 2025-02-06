@@ -141,6 +141,7 @@ theme_override_icons/clear = ExtResource("5_gto5b")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4u8mj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1tuse")
 placeholder_text = "ENTER_USER_ID"
+virtual_keyboard_type = 2
 right_icon = ExtResource("5_gto5b")
 metadata/_edit_use_anchors_ = true
 

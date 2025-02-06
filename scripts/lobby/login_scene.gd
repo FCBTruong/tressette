@@ -55,6 +55,8 @@ func test_login_userB() -> void:
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 
 func _login_google() -> void:
+	FirebaseMgr.test()
+	return
 	var provider: AuthProvider = Firebase.Auth.get_GoogleProvider()
 	Firebase.Auth.get_auth_localhost(provider, 8060)
 	pass
