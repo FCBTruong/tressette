@@ -123,6 +123,7 @@ item_count = 2
 popup/item_0/text = "ENGLISH"
 popup/item_0/id = 1
 popup/item_1/text = "ITALY"
+popup/item_1/id = 1
 script = ExtResource("2_txiv8")
 
 [node name="Control2" type="Control" parent="CanvasLayer/Panel/VBoxContainer"]
