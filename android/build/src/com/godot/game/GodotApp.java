@@ -35,6 +35,8 @@ import org.godotengine.godot.GodotActivity;
 import android.os.Bundle;
 
 import androidx.core.splashscreen.SplashScreen;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Template activity for Godot Android builds.
@@ -45,5 +47,6 @@ public class GodotApp extends GodotActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		SplashScreen.installSplashScreen(this);
 		super.onCreate(savedInstanceState);
+		FirebaseApp.initializeApp(this);
 	}
 }

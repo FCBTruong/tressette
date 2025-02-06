@@ -2,6 +2,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id("com.google.gms.google-services") version "4.3.15"
 }
 
 apply from: 'config.gradle'
@@ -35,7 +36,9 @@ dependencies {
     implementation "androidx.core:core-splashscreen:$versions.splashscreenVersion"
     implementation 'com.android.billingclient:billing:6.0.1'
     implementation 'com.google.firebase:firebase-messaging:24.1.0' 
-    implementation 'com.google.firebase:firebase-auth:23.1.0'
+    implementation 'com.google.firebase:firebase-auth:22.3.1'
+    implementation 'com.google.android.gms:play-services-auth:20.7.0'
+    
 
     if (rootProject.findProject(":lib")) {
         implementation project(":lib")
