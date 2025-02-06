@@ -2,6 +2,7 @@ extends Node
 
 var friends: Array[FriendModel] = []
 var requests: Array[FriendModel] = []
+var recommend_friends: Array[FriendModel] = []
 var request_sent_uids = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,7 +44,9 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			
 		GameConstants.CMDs.NEW_FRIEND_ACCEPTED:
 			_handle_new_friend_accepted(payload)
-
+			
+		GameConstants.CMDs.RECOMMEND_FRIENDS:
+			_received_recommended_friends(payload)
 func _on_received_search_friend(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.SearchFriendResponse.new()
 	var result_code = pkg.from_bytes(payload)
@@ -63,6 +66,27 @@ func _on_received_search_friend(payload):
 	
 	var gui = await SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
 	gui.set_info(user_data)
+
+func _received_recommended_friends(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.RecommendFriends.new()
+	var result_code = pkg.from_bytes(payload)
+	var friend_ids = pkg.get_uids()
+	var friend_names = pkg.get_names()
+	var friend_levels = pkg.get_levels()
+	var friend_golds = pkg.get_golds()
+	var friend_avatars = pkg.get_avatars()
+	
+	self.recommend_friends.clear()
+	for i in range(len(friend_ids)):
+		var f = FriendModel.new()
+		f.uid = friend_ids[i]
+		f.name = friend_names[i]
+		f.avatar = friend_avatars[i]
+		f.gold = friend_golds[i]
+		f.level = friend_levels[i]
+		self.recommend_friends.append(f)
+		
+	print('list friends commended', len(self.recommend_friends))
 	
 	
 func _on_received_list_friend(payload):

@@ -34,6 +34,14 @@ func _update_friends_list():
 		var instance = friend_node_scene.instantiate()
 		list_container.add_child(instance)
 		instance.set_info(f)
+		
+	if len(FriendManager.friends) == 0:
+		# Add recommend
+		var recommmend_node_scene = preload("res://scenes/friend/FriendRecommendNode.tscn")
+		for f in FriendManager.recommend_friends:
+			var instance = recommmend_node_scene.instantiate()
+			list_container.add_child(instance)
+			instance.set_info(f)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
