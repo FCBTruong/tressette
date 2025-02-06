@@ -21,6 +21,7 @@ func _ready() -> void:
 @onready var avatar_img = find_child('Avatar')
 @onready var friend_btn = find_child('FriendBtn')
 @onready var friend_img_hot = friend_btn.find_child('ImgHot')
+@onready var nofriend_btn = find_child('NofriendBtn')
 func _do_effect() -> void:
 	var left_panel_defaultpos = left_panel.position
 	var play_container_defaultpos = play_container.position
@@ -82,18 +83,27 @@ func _click_mission_btn():
 	
 func open_shop():
 	SceneManager.switch_scene(SceneManager.SHOP_SCENE)
+
 var friend_lobby_scene = preload("res://scenes/lobby/FriendLobbyNode.tscn")
 @onready var lobby_friend_list = find_child('LobbyFriendList')	
 func update_lobby_friends():
 	for c in lobby_friend_list.get_children():
+		if c.name == 'NofriendBtn':
+			continue
 		c.queue_free()
 	for f in FriendManager.friends:
 		var n = friend_lobby_scene.instantiate()
 		lobby_friend_list.add_child(n)
 		n.set_info(f)
-		
+	if len(FriendManager.friends) == 0:
+		nofriend_btn.visible = true
+	else:
+		nofriend_btn.visible = false
 		
 func _update_friend_requests():
 	friend_img_hot.visible = len(FriendManager.requests) > 0
 	pass
 	
+
+func _click_nofriend_btn():
+	SceneManager.switch_scene("res://scenes/FriendScene.tscn")

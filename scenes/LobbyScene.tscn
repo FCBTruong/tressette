@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=27 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_esccj"]
@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="18_mdwpl"]
+[ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="19_orflg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
 bg_color = Color(0.0143579, 0.618802, 0.243289, 1)
@@ -58,6 +59,13 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6i40"]
 bg_color = Color(0.126624, 0.126624, 0.126624, 0.414)
 corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2vqb"]
+bg_color = Color(0.436, 0.417, 0.417, 0.27)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="LobbyScene" type="Node2D"]
 script = ExtResource("1_wigpx")
@@ -503,6 +511,56 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="NofriendBtn" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -40.0
+offset_right = 170.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("3_x7pan")
+zoom_scale = Vector2(0.9, 0.95)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x2vqb")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button"]
+self_modulate = Color(1, 1, 1, 0.401)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_orflg")
+expand_mode = 1
+
 [node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
@@ -516,3 +574,4 @@ layout_mode = 2
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn" to="." method="open_shop"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3" to="." method="_open_mail_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]
+[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button" to="." method="_click_nofriend_btn"]
