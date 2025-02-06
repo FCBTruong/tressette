@@ -776,7 +776,7 @@ class ChatMessage:
 		service.field = _level
 		data[_level.tag] = service
 		
-		_gold = PBField.new("gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _gold
 		data[_gold.tag] = service
@@ -825,7 +825,7 @@ class ChatMessage:
 		return _gold.value
 	func clear_gold() -> void:
 		data[4].state = PB_SERVICE_STATE.UNFILLED
-		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_gold(value : int) -> void:
 		_gold.value = value
 	
@@ -1541,7 +1541,7 @@ class NewUserJoinMatch:
 		service.field = _uid
 		data[_uid.tag] = service
 		
-		_gold = PBField.new("gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _gold
 		data[_gold.tag] = service
@@ -1582,7 +1582,7 @@ class NewUserJoinMatch:
 		return _gold.value
 	func clear_gold() -> void:
 		data[2].state = PB_SERVICE_STATE.UNFILLED
-		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_gold(value : int) -> void:
 		_gold.value = value
 	
@@ -2092,7 +2092,7 @@ class GeneralInfo:
 		service.field = _timestamp
 		data[_timestamp.tag] = service
 		
-		_min_gold_play = PBField.new("min_gold_play", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_min_gold_play = PBField.new("min_gold_play", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _min_gold_play
 		data[_min_gold_play.tag] = service
@@ -2113,7 +2113,7 @@ class GeneralInfo:
 		return _min_gold_play.value
 	func clear_min_gold_play() -> void:
 		data[2].state = PB_SERVICE_STATE.UNFILLED
-		_min_gold_play.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+		_min_gold_play.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_min_gold_play(value : int) -> void:
 		_min_gold_play.value = value
 	
@@ -2418,7 +2418,7 @@ class PaymentSuccess:
 	func _init():
 		var service
 		
-		_gold = PBField.new("gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _gold
 		data[_gold.tag] = service
@@ -2430,7 +2430,7 @@ class PaymentSuccess:
 		return _gold.value
 	func clear_gold() -> void:
 		data[1].state = PB_SERVICE_STATE.UNFILLED
-		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_gold(value : int) -> void:
 		_gold.value = value
 	
@@ -2459,7 +2459,7 @@ class UpdateMoney:
 	func _init():
 		var service
 		
-		_gold = PBField.new("gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _gold
 		data[_gold.tag] = service
@@ -2471,7 +2471,7 @@ class UpdateMoney:
 		return _gold.value
 	func clear_gold() -> void:
 		data[1].state = PB_SERVICE_STATE.UNFILLED
-		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_gold(value : int) -> void:
 		_gold.value = value
 	
@@ -2588,7 +2588,7 @@ class ShopConfig:
 		service.field = _pack_ids
 		data[_pack_ids.tag] = service
 		
-		_golds = PBField.new("golds", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 2, true, [])
+		_golds = PBField.new("golds", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 2, true, [])
 		service = PBServiceField.new()
 		service.field = _golds
 		data[_golds.tag] = service
@@ -2849,7 +2849,7 @@ class SearchFriendResponse:
 		service.field = _uid
 		data[_uid.tag] = service
 		
-		_gold = PBField.new("gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _gold
 		data[_gold.tag] = service
@@ -2900,7 +2900,7 @@ class SearchFriendResponse:
 		return _gold.value
 	func clear_gold() -> void:
 		data[2].state = PB_SERVICE_STATE.UNFILLED
-		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_gold(value : int) -> void:
 		_gold.value = value
 	
@@ -2983,7 +2983,7 @@ class CheatGoldUser:
 	func _init():
 		var service
 		
-		_gold = PBField.new("gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _gold
 		data[_gold.tag] = service
@@ -2995,7 +2995,7 @@ class CheatGoldUser:
 		return _gold.value
 	func clear_gold() -> void:
 		data[1].state = PB_SERVICE_STATE.UNFILLED
-		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_gold(value : int) -> void:
 		_gold.value = value
 	
@@ -3044,7 +3044,7 @@ class FriendList:
 		service.field = _levels
 		data[_levels.tag] = service
 		
-		_golds = PBField.new("golds", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 5, true, [])
+		_golds = PBField.new("golds", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 5, true, [])
 		service = PBServiceField.new()
 		service.field = _golds
 		data[_golds.tag] = service
@@ -3155,7 +3155,7 @@ class FriendRequests:
 		service.field = _levels
 		data[_levels.tag] = service
 		
-		_golds = PBField.new("golds", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 5, true, [])
+		_golds = PBField.new("golds", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 5, true, [])
 		service = PBServiceField.new()
 		service.field = _golds
 		data[_golds.tag] = service
@@ -3371,6 +3371,200 @@ class RemoveFriend:
 		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_uid(value : int) -> void:
 		_uid.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class NewFriendRequest:
+	func _init():
+		var service
+		
+		_uid = PBField.new("uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _uid
+		data[_uid.tag] = service
+		
+		_avatar = PBField.new("avatar", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _avatar
+		data[_avatar.tag] = service
+		
+		_name = PBField.new("name", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _name
+		data[_name.tag] = service
+		
+		_level = PBField.new("level", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _level
+		data[_level.tag] = service
+		
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		service = PBServiceField.new()
+		service.field = _gold
+		data[_gold.tag] = service
+		
+	var data = {}
+	
+	var _uid: PBField
+	func get_uid() -> int:
+		return _uid.value
+	func clear_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_uid(value : int) -> void:
+		_uid.value = value
+	
+	var _avatar: PBField
+	func get_avatar() -> String:
+		return _avatar.value
+	func clear_avatar() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_avatar.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_avatar(value : String) -> void:
+		_avatar.value = value
+	
+	var _name: PBField
+	func get_name() -> String:
+		return _name.value
+	func clear_name() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_name.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_name(value : String) -> void:
+		_name.value = value
+	
+	var _level: PBField
+	func get_level() -> int:
+		return _level.value
+	func clear_level() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_level.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_level(value : int) -> void:
+		_level.value = value
+	
+	var _gold: PBField
+	func get_gold() -> int:
+		return _gold.value
+	func clear_gold() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
+	func set_gold(value : int) -> void:
+		_gold.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class FriendRequestAccepted:
+	func _init():
+		var service
+		
+		_uid = PBField.new("uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _uid
+		data[_uid.tag] = service
+		
+		_name = PBField.new("name", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _name
+		data[_name.tag] = service
+		
+		_avatar = PBField.new("avatar", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _avatar
+		data[_avatar.tag] = service
+		
+		_level = PBField.new("level", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _level
+		data[_level.tag] = service
+		
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		service = PBServiceField.new()
+		service.field = _gold
+		data[_gold.tag] = service
+		
+	var data = {}
+	
+	var _uid: PBField
+	func get_uid() -> int:
+		return _uid.value
+	func clear_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_uid(value : int) -> void:
+		_uid.value = value
+	
+	var _name: PBField
+	func get_name() -> String:
+		return _name.value
+	func clear_name() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_name.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_name(value : String) -> void:
+		_name.value = value
+	
+	var _avatar: PBField
+	func get_avatar() -> String:
+		return _avatar.value
+	func clear_avatar() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_avatar.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_avatar(value : String) -> void:
+		_avatar.value = value
+	
+	var _level: PBField
+	func get_level() -> int:
+		return _level.value
+	func clear_level() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_level.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_level(value : int) -> void:
+		_level.value = value
+	
+	var _gold: PBField
+	func get_gold() -> int:
+		return _gold.value
+	func clear_gold() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
+	func set_gold(value : int) -> void:
+		_gold.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

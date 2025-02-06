@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=31 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_ae4rd"]
@@ -11,11 +11,13 @@
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="5_xl7qd"]
 [ext_resource type="Texture2D" uid="uid://dua5jqujlm0kh" path="res://assets/images/lobby/user_info_gui/email.png" id="6_5upxd"]
 [ext_resource type="Texture2D" uid="uid://cr5rxwy32nhwn" path="res://assets/images/lobby/copying_icon.png" id="7_sq5rc"]
-[ext_resource type="Texture2D" uid="uid://cvs720c5x14nn" path="res://assets/images/lobby/add_friend.png" id="7_w3o0j"]
 [ext_resource type="Texture2D" uid="uid://dkgkp6amt0wmb" path="res://assets/images/lobby/user_info_gui/dollar.png" id="8_47ubv"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
 [ext_resource type="Texture2D" uid="uid://c1qpfhy0ay3r1" path="res://assets/images/lobby/edit_icon.png" id="13_f07n6"]
+[ext_resource type="Texture2D" uid="uid://bsk36sewe4nhv" path="res://assets/images/lobby/add_friend_icon_small.png" id="16_ao60i"]
+[ext_resource type="Texture2D" uid="uid://bl5ci50kep8hk" path="res://assets/images/lobby/user_info_gui/friend_ok_icon.png" id="17_lnp64"]
+[ext_resource type="Texture2D" uid="uid://beksnb501alnd" path="res://assets/images/lobby/friend_reject_icon.png" id="18_jxtpp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaus5"]
 shader = ExtResource("2_ae4rd")
@@ -58,6 +60,51 @@ bg_color = Color(0.51525, 0.76071, 0.910714, 0.085)
 border_blend = true
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fk0a"]
+bg_color = Color(0, 0, 0, 0.404)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i00h"]
+bg_color = Color(0.676505, 0.422111, 0.2337, 0.365)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2epfd"]
+bg_color = Color(0, 0.391381, 0.0161197, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qev7t"]
+bg_color = Color(0.102752, 0.57807, 0.195591, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cin67"]
+bg_color = Color(0.635773, 0.15064, 0.15064, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
 
 [node name="UserInfoGui" type="CanvasLayer"]
 script = ExtResource("1_pd1jq")
@@ -151,6 +198,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("3_f4vbo")
 expand_mode = 1
 
@@ -169,6 +217,15 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v17p2")
 
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/Panel/GoldBg"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -2.0
+offset_right = 24.0
+offset_bottom = 38.0
+texture = ExtResource("8_47ubv")
+expand_mode = 1
+
 [node name="GoldLb" type="Label" parent="Control/MainPn/Panel/GoldBg"]
 layout_mode = 1
 anchors_preset = 8
@@ -182,20 +239,12 @@ offset_right = 74.0
 offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_b03ik")
 theme_override_font_sizes/font_size = 22
 text = "1.000.000
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/Panel/GoldBg"]
-layout_mode = 0
-offset_left = -16.0
-offset_top = -2.0
-offset_right = 24.0
-offset_bottom = 38.0
-texture = ExtResource("8_47ubv")
-expand_mode = 1
 
 [node name="UserNameLb" type="Label" parent="Control/MainPn"]
 modulate = Color(1, 1, 1, 0.928)
@@ -442,44 +491,83 @@ offset_right = 58.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 30
+alignment = 1
 
 [node name="MailBtn" type="Button" parent="Control/MainPn/ButtonPn"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 8
 icon = ExtResource("6_5upxd")
 flat = true
 script = ExtResource("11_eoxhy")
 
-[node name="Control" type="Control" parent="Control/MainPn/ButtonPn"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
 [node name="RequestFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
-flat = true
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_b03ik")
+theme_override_icons/icon = ExtResource("16_ao60i")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4fk0a")
+text = "ADD_FRIEND"
 script = ExtResource("11_eoxhy")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/ButtonPn/RequestFriendBtn"]
-self_modulate = Color(0.856405, 0.856405, 0.856405, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_w3o0j")
-expand_mode = 1
+[node name="FriendRequested" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("4_b03ik")
+theme_override_icons/icon = ExtResource("16_ao60i")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8i00h")
+text = "REQUESTED"
+
+[node name="FriendStatus" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("4_b03ik")
+theme_override_icons/icon = ExtResource("17_lnp64")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2epfd")
+text = "FRIENDS"
+
+[node name="AcceptFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_b03ik")
+theme_override_icons/icon = ExtResource("16_ao60i")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qev7t")
+text = "ACCEPT_FRIEND"
+script = ExtResource("11_eoxhy")
+
+[node name="RejectFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_b03ik")
+theme_override_icons/icon = ExtResource("18_jxtpp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cin67")
+script = ExtResource("11_eoxhy")
 
 [connection signal="pressed" from="Control/MainPn/Panel/CloseBtn" to="." method="_on_CloseButton_pressed"]
 [connection signal="pressed" from="Control/MainPn/HBoxContainer/CopyBtn" to="." method="_copy_uid"]
 [connection signal="pressed" from="Control/MainPn/TextureRect2/AvtEditBtn" to="." method="_open_pick_avatar"]
 [connection signal="pressed" from="Control/MainPn/ButtonPn/RequestFriendBtn" to="." method="_send_request_friend"]
+[connection signal="pressed" from="Control/MainPn/ButtonPn/AcceptFriendBtn" to="." method="_click_quick_accept_friend"]
+[connection signal="pressed" from="Control/MainPn/ButtonPn/RejectFriendBtn" to="." method="_click_quick_reject_friend"]

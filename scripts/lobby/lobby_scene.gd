@@ -6,6 +6,7 @@ func _ready() -> void:
 	_do_effect()
 	on_update_gui()
 	update_lobby_friends()
+	FriendManager.send_friend_list()
 	SignalBus.connect_global('on_update_money', Callable(self, "_on_update_money"))
 	SignalBus.connect_global('update_friend_list', Callable(self, 'update_lobby_friends'))
 	SignalBus.connect_global('update_friend_requests', Callable(self, '_update_friend_requests'))

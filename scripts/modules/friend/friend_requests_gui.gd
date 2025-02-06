@@ -12,7 +12,13 @@ func _ready() -> void:
 	tween.parallel().tween_property(main_pn, 'scale', Vector2(1, 1), 0.4).set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.4)
+	
+	_update_requests_list()
+	SignalBus.connect_global('update_friend_requests', Callable(self, '_update_requests_list'))
 
+func _update_requests_list():
+	for c in list_container.get_children():
+		c.queue_free()
 	for f in FriendManager.requests:
 		var instance = friend_node_scene.instantiate()
 		list_container.add_child(instance)

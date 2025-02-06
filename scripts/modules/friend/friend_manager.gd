@@ -2,6 +2,7 @@ extends Node
 
 var friends: Array[FriendModel] = []
 var requests: Array[FriendModel] = []
+var request_sent_uids = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	return
@@ -36,6 +37,12 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			
 		GameConstants.CMDs.FRIEND_REQUESTS:
 			_on_received_friend_requests(payload)
+			
+		GameConstants.CMDs.NEW_FRIEND_REQUEST:
+			_handle_new_friend_request(payload)
+			
+		GameConstants.CMDs.NEW_FRIEND_ACCEPTED:
+			_handle_new_friend_accepted(payload)
 
 func _on_received_search_friend(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.SearchFriendResponse.new()
@@ -82,12 +89,13 @@ func _on_received_list_friend(payload):
 	
 	self.friends.sort_custom(_compare_friend_sort)
 	# sort friends online first
+	SignalBus.emit_signal_global('update_friend_list')
 
 func _on_received_friend_requests(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.FriendRequests.new()
 	var result_code = pkg.from_bytes(payload)
 
-	var sent_uids = pkg.get_sent_uids()
+	self.request_sent_uids = pkg.get_sent_uids()
 	self.requests.clear()
 	
 	var uids = pkg.get_uids()
@@ -108,7 +116,7 @@ func _on_received_friend_requests(payload):
 		
 		self.requests.append(f)
 		
-	SignalBus.emit_signal_global('update_friend_list')
+	SignalBus.emit_signal_global('update_friend_requests')
 		
 	
 func send_add_friend(uid):
@@ -119,7 +127,8 @@ func send_add_friend(uid):
 	var pkg = GameConstants.PROTOBUF.PACKETS.AddFriend.new()
 	pkg.set_uid(uid)
 	GameClient.send_packet(GameConstants.CMDs.ADD_FRIEND, pkg.to_bytes())
-
+	
+	self.request_sent_uids.append(uid)
 
 func send_accept_friend_request(friend_uid):
 	var pkg = GameConstants.PROTOBUF.PACKETS.RequestFriendAccept.new()
@@ -173,5 +182,58 @@ func _compare_friend_sort(a, b):
 	else:
 		return 0   
 		
+func send_friend_list():
+	GameClient.send_packet(GameConstants.CMDs.FRIEND_LIST, [])
+	
+func _handle_new_friend_request(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.NewFriendRequest.new()
+	var result_code = pkg.from_bytes(payload)
+	var f = FriendModel.new()
+	f.uid = pkg.get_uid()
+	f.avatar = pkg.get_avatar()
+	f.name = pkg.get_name()
+	f.gold = pkg.get_gold()
+	f.level = pkg.get_level()
+	
+	self.requests.append(f)
+	SignalBus.emit_signal_global('update_friend_requests')
+	var txt = tr("NEW_FRIEND_REQUEST")
+	txt = txt.replace("@name", f.name)
+	SceneManager.show_toast(txt)
+	
+func _handle_new_friend_accepted(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.FriendRequestAccepted.new()
+	var result_code = pkg.from_bytes(payload)
+	var f = FriendModel.new()
+	f.uid = pkg.get_uid()
+	f.avatar = pkg.get_avatar()
+	f.name = pkg.get_name()
+	f.gold = pkg.get_gold()
+	f.level = pkg.get_level()
+	f.is_online = true # realtime -> always online
+	
+	self.friends.append(f)
+	SignalBus.emit_signal_global('update_friend_list')
+	var txt = tr("NEW_FRIEND_ACCEPTED")
+	txt = txt.replace("@name", f.name)
+	SceneManager.show_toast(txt)
+	
+func is_my_friend(friend_uid):
+	for f in self.friends:
+		if f.uid == friend_uid:
+			return true
+	return false	
+	
+func is_sent_requested(friend_uid):
+	if friend_uid in self.request_sent_uids:
+		return true
+	return false
+	
+func is_pending_accepted(friend_uid):
+	for f in self.requests:
+		if f.uid == friend_uid:
+			return true
+	return false	
+	
 const FRIEND_ACCEPT_REQUEST: int = 0
 const FRIEND_REJECT_REQUEST: int = 1

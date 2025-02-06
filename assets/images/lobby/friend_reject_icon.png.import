@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfvc0em4rmmq5"
-path="res://.godot/imported/delete_icon.png-6a7f8e1b9eb0a09d9c4403672902c913.ctex"
+uid="uid://beksnb501alnd"
+path="res://.godot/imported/friend_reject_icon.png-4b60fafc1758d9aac34df4c724ca2778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/lobby/delete_icon.png"
-dest_files=["res://.godot/imported/delete_icon.png-6a7f8e1b9eb0a09d9c4403672902c913.ctex"]
+source_file="res://assets/images/lobby/friend_reject_icon.png"
+dest_files=["res://.godot/imported/friend_reject_icon.png-4b60fafc1758d9aac34df4c724ca2778.ctex"]
 
 [params]
 
