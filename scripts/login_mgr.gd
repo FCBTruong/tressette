@@ -4,7 +4,7 @@ const LOGIN_GUEST: int = 0
 const LOGIN_GOOGLE: int = 1
 const LOGIN_FACEBOOK: int = 2
 const LOGIN_UID_CHEAT: int = 10
-var last_login_type: int = 0
+var last_login_type: int = GameConstants.LOGIN_TYPE.GUEST
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,25 +33,25 @@ func _on_received_firebase_acc(payload):
 	var token = pkg.get_login_token()
 	save_login_token(token)
 	# call login
-	StorageCache.store('last_login_type', 1) # use token
+	StorageCache.store('last_login_type', GameConstants.LOGIN_TYPE.FIREBASE) # use token
 	auto_login()
 
 func auto_login():
-	last_login_type = StorageCache.fetch('last_login_type', -1)
-	if last_login_type == -1:
+	last_login_type = StorageCache.fetch('last_login_type', GameConstants.LOGIN_TYPE.NONE)
+	if last_login_type == GameConstants.LOGIN_TYPE.NONE:
 		return
-	if last_login_type == 1: # use token
+	if last_login_type == GameConstants.LOGIN_TYPE.FIREBASE: # use token
 		var login_token = load_login_token()
 		print('login_token')
 		var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
 		pkg.set_type(LOGIN_GOOGLE)	
 		pkg.set_token(login_token)
 		GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
-	elif  last_login_type == 0: # guest
+	elif  last_login_type == GameConstants.LOGIN_TYPE.GUEST: # guest
 		login_guest()
 	
 func login_guest():
-	StorageCache.store('last_login_type', 0)
+	StorageCache.store('last_login_type', GameConstants.LOGIN_TYPE.GUEST)
 	var guest_id = load_guest_id()
 	print('load guest', guest_id)
 	#return

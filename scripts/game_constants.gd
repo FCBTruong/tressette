@@ -78,3 +78,9 @@ const CARD_STYLES = {
 const GUI_ZORDER = {
 	PICK_AVATAR = 10
 }
+
+const LOGIN_TYPE = {
+	NONE = -1,
+	GUEST = 0,
+	FIREBASE = 1
+}
