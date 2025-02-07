@@ -34,6 +34,15 @@
             android:name="org.godotengine.editor.version"
             android:value="${godotEditorVersion}" />
 
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="fb00672c34f84c8b4e9c0dfaf4293e78" />
+
+
         <activity
             android:name=".GodotApp"
             android:label="@string/godot_project_name_string"

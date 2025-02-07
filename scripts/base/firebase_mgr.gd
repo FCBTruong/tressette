@@ -56,3 +56,6 @@ func login_with_google():
 
 func on_test_signal(msg):
 	print('tessssst', msg)
+
+func login_with_facebook():
+	firebase_plugin.signInWithFacebook()
