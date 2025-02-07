@@ -19,15 +19,12 @@ func _exit_tree() -> void:
 class AndroidExportPlugin extends EditorExportPlugin:
 	var plugin_name = "FirebasePlugin"
 	func _supports_platform(platform: EditorExportPlatform) -> bool:
-		print("okkdddk")
 		if platform is EditorExportPlatformAndroid:
 			return true
 		return false
 	
 	func _get_android_libraries(platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
-		print('AndroidExportPlugin ddss', debug)
 		if debug:
-			print('firebase: _get_android_libraries')
 			return PackedStringArray(['firebase_plugin/app-debug.aar'])
 		else:
 			return PackedStringArray(['firebase_plugin/app-debug.aar'])

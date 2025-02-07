@@ -4,10 +4,7 @@ extends Node
 @onready var input_uid_cheat = find_child('InputUIDCheat')
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Firebase.Auth.login_succeeded.connect(on_login_succeeded)
-	Firebase.Auth.signup_succeeded.connect(on_signup_succeeded)
-	Firebase.Auth.login_failed.connect(on_login_failed)
-	Firebase.Auth.signup_failed.connect(on_signup_failed)
+	Firebase.Auth.login_succeeded.connect(on_login_local_firebase_succeeed)
 	
 	LoginMgr.auto_login()	
 	if Config.CURRENT_MODE != Config.MODES.LIVE:
@@ -17,23 +14,12 @@ func _ready() -> void:
 		pn_cheat.visible = false
 	pass # Replace with function body.
 
-func on_login_succeeded(auth):
+func on_login_local_firebase_succeeed(auth):
+	# For computer testing, outdated
 	print('login succeeded')
 	print(auth)
 	LoginMgr.send_login_firebase(auth.get('idtoken'))
 
-func on_signup_succeeded(auth):
-	print(auth)
-	Firebase.Auth.save_auth(auth)
-	
-func on_login_failed(error_code, message):
-	print(error_code)
-	print(message)
-	
-	
-func on_signup_failed(error_code, message):
-	print(error_code)
-	print(message)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -55,11 +41,13 @@ func test_login_userB() -> void:
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 
 func _login_google() -> void:
-	FirebaseMgr.test()
-	return
-	var provider: AuthProvider = Firebase.Auth.get_GoogleProvider()
-	Firebase.Auth.get_auth_localhost(provider, 8060)
-	pass
+	FirebaseMgr.login_with_google()
+	
+	# outdated
+	#return
+	#var provider: AuthProvider = Firebase.Auth.get_GoogleProvider()
+	#Firebase.Auth.get_auth_localhost(provider, 8060)
+	#pass
 
 func _login_facebook() -> void:
 	var provider: AuthProvider = Firebase.Auth.get_FacebookProvider()

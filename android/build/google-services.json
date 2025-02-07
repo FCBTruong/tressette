@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "100921837562-psk4ae2g4mc0nkdln33mbe1d686vaul3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clareentertainment.tressette",
+            "certificate_hash": "ec61caeb286e119befe50e3a0cf0fce0b9226018"
+          }
+        },
+        {
           "client_id": "100921837562-l00s38etbs3lgq1gi2suhihl8a9hn03o.apps.googleusercontent.com",
           "client_type": 3
         }
