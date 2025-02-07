@@ -574,14 +574,25 @@ func _effect_draw_card(uid, card_id):
 	var card_suit = card_id % 4
 	# Find suitable position
 	var des_i = l
+	
+	var on_suit_ray = false
 	for i in range(len(list_my_cards)):
-		var x = len(list_my_cards) - i - 1
-		var c = list_my_cards[x]
+		var c = list_my_cards[i]
 		var suit = c.id % 4
-		print('debugggsuit', suit)
 		if suit == card_suit:
-			des_i = x + 1
+			on_suit_ray = true
+		
+		if on_suit_ray and suit != card_suit:
+			# Mean that not any cards same suit after, get position here
+			des_i = i
 			break
+		if on_suit_ray:
+			if game_logic.get_rank_card(card_id) > game_logic.get_rank_card(c.id):
+				continue
+			else:
+				# this is exactly position we should place the card
+				des_i = i
+				break
 			
 	var new_pos_arr = _calculate_world_card_positions(next_size)
 	var new_rotates = _get_card_rotates(next_size)

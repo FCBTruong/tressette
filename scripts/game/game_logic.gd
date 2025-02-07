@@ -286,22 +286,37 @@ func _update_my_cards(card_ids):
 			player.game_data.cards = card_ids
 
 func _card_sorter(a: int, b: int) -> bool:
-	var suit_a = a % 4  # Suit of card a
-	var suit_b = b % 4  # Suit of card b
+	var suit_a = a % 4  # Extract suit
+	var suit_b = b % 4  
 
-	# First, compare by suit (mod 4)
-	if suit_a < suit_b:
-		return false
-	elif suit_a > suit_b:
-		return true
+	# First, sort by suit
+	if suit_a != suit_b:
+		return suit_a > suit_b  # Higher suit comes first
 
-	# If suits are the same, compare by card ID (optional)
-	if a < b:
-		return false
-	elif a > b:
-		return true
+	# Correct Tressette ranking: 3 > 2 > A > K > Q > J > 7 > 6 > 5 > 4
+	var rank_map = {
+		2: 10, 1: 9, 0: 8, # 3,2,A
+		9: 7, 8: 6, 7: 5, # K, Q, J
+		6: 4, 5: 3, 4: 2, 3: 1 # 7, 6, 5, 4
+	}
 
-	return false
+	# Extract card value (assuming cards are numbered sequentially)
+	var rank_a = get_rank_card(a)
+	var rank_b = get_rank_card(b)
+
+	# Sort by rank within the suit
+	return rank_a < rank_b 
+	
+var rank_map = {
+		2: 10, 1: 9, 0: 8, # 3,2,A
+		9: 7, 8: 6, 7: 5, # K, Q, J
+		6: 4, 5: 3, 4: 2, 3: 1 # 7, 6, 5, 4
+}
+func get_rank_card(a: int) -> int:
+	# Extract card value (assuming cards are numbered sequentially)
+	var rank_a = rank_map[(a / 4) % 13]  
+	return rank_a
+	
 	
 func get_card_win_inhand():
 	return card_win_id
