@@ -17,7 +17,7 @@ func _exit_tree() -> void:
 	pass
 
 class AndroidExportPlugin extends EditorExportPlugin:
-	var plugin_name = "FirebasePlugin"
+	var plugin_name = "FirebasePluginAndroid"
 	func _supports_platform(platform: EditorExportPlatform) -> bool:
 		if platform is EditorExportPlatformAndroid:
 			return true
@@ -35,5 +35,32 @@ class AndroidExportPlugin extends EditorExportPlugin:
 		else:
 			return PackedStringArray([])
 			
+	func _get_name():
+		return plugin_name
+		
+		
+	# iOS Export Plugin
+class IOSExportPlugin extends EditorExportPlugin:
+	var plugin_name = "FirebasePluginiOS"
+
+	func _supports_platform(platform: EditorExportPlatform) -> bool:
+		return platform is EditorExportPlatformIOS
+
+	func _get_ios_frameworks(platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
+		return PackedStringArray([
+			"FirebaseCore",
+			"FirebaseAuth",
+			"GoogleSignIn"
+		])
+
+	func _get_ios_plist_modifications(platform: EditorExportPlatform, debug: bool) -> Dictionary:
+		return {
+			"CFBundleURLTypes": [
+				{
+					"CFBundleURLSchemes": ["com.googleusercontent.apps.YOUR_CLIENT_ID"]
+				}
+			]
+		}
+
 	func _get_name():
 		return plugin_name
