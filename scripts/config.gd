@@ -13,6 +13,8 @@ func _ready():
 	if CURRENT_MODE == MODES.LOCAL:
 		if OS.get_name() == "Android":
 			CURRENT_MODE = MODES.PRIVATE		
+		elif  OS.get_name() == "iOS":
+			CURRENT_MODE = MODES.PRIVATE
 	if CURRENT_MODE == MODES.PRIVATE:
 			WEBSOCKET_URL = "ws://game-dev-bl-1488570784.ap-southeast-1.elb.amazonaws.com/ws"
 	elif CURRENT_MODE == MODES.LOCAL:
