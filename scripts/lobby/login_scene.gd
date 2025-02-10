@@ -66,3 +66,7 @@ func _login_by_uid_cheat(text) -> void:
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 	StorageCache.store('login_uid_cheat', text)
 	pass
+
+func _login_with_apple() -> void:
+	FirebaseMgr.login_with_apple()
+	pass

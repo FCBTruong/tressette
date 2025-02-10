@@ -4,16 +4,29 @@ var firebase_plugin
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if Engine.has_singleton("FirebasePlugin"):
-		firebase_plugin = Engine.get_singleton("FirebasePlugin")
-		
-		# Connect signals to their respective handlers
-		firebase_plugin.on_firebase_auth_success.connect(on_firebase_auth_success)
-		firebase_plugin.on_firebase_auth_failed.connect(_on_firebase_auth_failed)
-		firebase_plugin.on_firebase_sign_out.connect(on_firebase_sign_out)
-		firebase_plugin.test_signal.connect(on_test_signal)
-	else:
-		print("Cannot find FirebasePlugin!")
+	if OS.get_name() == 'Android':
+		if Engine.has_singleton("FirebasePlugin"):
+			firebase_plugin = Engine.get_singleton("FirebasePlugin")
+			
+			# Connect signals to their respective handlers
+			firebase_plugin.on_firebase_auth_success.connect(on_firebase_auth_success)
+			firebase_plugin.on_firebase_auth_failed.connect(_on_firebase_auth_failed)
+			firebase_plugin.on_firebase_sign_out.connect(on_firebase_sign_out)
+			firebase_plugin.test_signal.connect(on_test_signal)
+		else:
+			print("Cannot find Android FirebasePlugin!")
+	elif OS.get_name() == 'iOS':
+		print("Firebase IOS check")
+		if Engine.has_singleton("FirebaseIosPlugin"):
+			print('has ios plugin')
+			firebase_plugin = Engine.get_singleton("FirebaseIosPlugin")
+			firebase_plugin.addition_result.connect(_addition_result_test)
+			firebase_plugin.add()
+			firebase_plugin.on_firebase_auth_success.connect(on_firebase_auth_success)
+			firebase_plugin.on_firebase_auth_failed.connect(_on_firebase_auth_failed)
+			firebase_plugin.on_firebase_sign_out.connect(on_firebase_sign_out)
+		else:
+			print("not found ios firebase plugin")
 
 # Function to test the Firebase plugin
 func test():
@@ -24,13 +37,12 @@ func test():
 		print("Firebase plugin not initialized!")
 
 # Callback when authentication succeeds
-func on_firebase_auth_success(user_id: String, user_name: String, user_email: String, id_token: String, provider_id: String):
+func on_firebase_auth_success(user_id, user_name, user_email, id_token, provider_id):
 	print("Firebase login success!")
 	print("User ID: ", user_id)
 	print("User Name: ", user_name)
 	print("User Email: ", user_email)
 	print("Provider ID: ", provider_id)
-	print("ID Token: ", id_token)
 	
 	# You can use this ID token to authenticate with your game server if needed
 	LoginMgr.send_login_firebase(id_token)
@@ -59,3 +71,11 @@ func on_test_signal(msg):
 
 func login_with_facebook():
 	firebase_plugin.signInWithFacebook()
+
+func _addition_result_test(a, b):
+	print('ddhdhsjsj', a)
+	print('ddhddddhsjsj', b)
+
+func login_with_apple():
+	print('login with apple')
+	firebase_plugin.signInWithApple()

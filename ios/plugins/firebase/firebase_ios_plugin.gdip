@@ -1,0 +1,17 @@
+[config]
+name="FirebaseIosPlugin"
+binary="firebase_ios_plugin.a"
+
+
+initialization="register_firebase_ios_plugin_types"
+deinitialization="deregister_firebase_ios_plugin_types"
+
+[dependencies]
+linked=[]
+embedded=[]
+system=[]
+
+capabilities=[]
+files=[]
+
+[plist]
