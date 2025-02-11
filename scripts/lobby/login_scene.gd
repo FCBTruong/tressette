@@ -2,6 +2,7 @@ extends Node
 
 @onready var pn_cheat = find_child('PnCheat')
 @onready var input_uid_cheat = find_child('InputUIDCheat')
+@onready var apple_btn = find_child("AppleBtn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Firebase.Auth.login_succeeded.connect(on_login_local_firebase_succeeed)
@@ -12,7 +13,11 @@ func _ready() -> void:
 		input_uid_cheat.text = StorageCache.fetch('login_uid_cheat', '')
 	else:
 		pn_cheat.visible = false
-	pass # Replace with function body.
+	
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		apple_btn.visible = true
+	else:
+		apple_btn.visible = false
 
 func on_login_local_firebase_succeeed(auth):
 	# For computer testing, outdated

@@ -3684,4 +3684,59 @@ class RecommendFriends:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class PaymentAppleConsume:
+	func _init():
+		var service
+		
+		_pack_id = PBField.new("pack_id", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _pack_id
+		data[_pack_id.tag] = service
+		
+		_receipt_data = PBField.new("receipt_data", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _receipt_data
+		data[_receipt_data.tag] = service
+		
+	var data = {}
+	
+	var _pack_id: PBField
+	func get_pack_id() -> String:
+		return _pack_id.value
+	func clear_pack_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_pack_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_pack_id(value : String) -> void:
+		_pack_id.value = value
+	
+	var _receipt_data: PBField
+	func get_receipt_data() -> String:
+		return _receipt_data.value
+	func clear_receipt_data() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_receipt_data.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_receipt_data(value : String) -> void:
+		_receipt_data.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

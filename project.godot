@@ -35,7 +35,6 @@ LoginMgr="*res://scripts/login_mgr.gd"
 StorageCache="*res://scripts/storage_cache.gd"
 SoundManager="*res://scripts/sound_manager.gd"
 FirebaseMgr="*res://scripts/base/firebase_mgr.gd"
-ApplePayment="*res://scripts/modules/payment/apple_payment.gd"
 
 [display]
 

@@ -49,6 +49,7 @@ const CMDs = {
 	
 	PAYMENT_GOOGLE_CONSUME = 4000,
 	PAYMENT_SUCCESS = 4001,
+	PAYMENT_APPLE_CONSUME = 4002,
 	SHOP_CONFIG = 4100,
 	
 	SEARCH_FRIEND = 5000,
@@ -84,3 +85,5 @@ const LOGIN_TYPE = {
 	GUEST = 0,
 	FIREBASE = 1
 }
+
+const DELETE_ACCOUNT_URL = 'https://www.canva.com/design/DAGct5CYCrQ/LWjqx5vT9_GRSVmrmW8Mig/view?utm_content=DAGct5CYCrQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha22c9ec0b3'

@@ -96,3 +96,6 @@ func _on_select_language_option(index):
 	elif index == LanguageConf.get('en'):
 		GameManager.choose_language('en')
 		
+func _remove_account():
+	OS.shell_open(GameConstants.DELETE_ACCOUNT_URL)
+		

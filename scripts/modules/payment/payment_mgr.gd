@@ -2,18 +2,26 @@ extends Node
 
 
 var google_payment: GooglePayment
+var apple_payment: ApplePayment
 var shop_packs = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print('Payment Mgr ready')
-	_init_payment()
+	_init_payment_goggle()
+	_init_payment_apple()
 
 # Payment should init after login success
-func _init_payment():
+func _init_payment_goggle():
 	if Config.get_platform() == Config.PLATFORMS.ANDROID or \
 		Config.CURRENT_MODE == Config.MODES.LOCAL:
 			google_payment = GooglePayment.new()
 			google_payment.init_connection()
+			
+func _init_payment_apple():
+	if Config.get_platform() == Config.PLATFORMS.IOS or \
+		Config.CURRENT_MODE == Config.MODES.LOCAL:
+			apple_payment = ApplePayment.new()
+			apple_payment.init_connection()
 
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
@@ -40,6 +48,9 @@ func _handle_payment_success(payload):
 func _on_billing_resume():
 	if Config.get_platform() == Config.PLATFORMS.ANDROID:
 		google_payment._on_billing_resume()
+	elif Config.get_platform() == Config.PLATFORMS.IOS:
+		apple_payment._on_billing_resume()
+		
 			
 func test_google_pay():
 	var purchase_data = {
@@ -61,10 +72,13 @@ func on_user_login():
 	if Config.get_platform() == Config.PLATFORMS.ANDROID:
 		if not google_payment.payment:
 			# init again
-			_init_payment()
+			_init_payment_goggle()
+			
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		pass
 		
 		# continue resume
-		_on_billing_resume()
+	_on_billing_resume()
 
 func get_price_pack(pack_id):
 	var price_str = ''
@@ -72,6 +86,11 @@ func get_price_pack(pack_id):
 		var price_gg = google_payment.get_price_pack(pack_id)
 		if price_gg:
 			price_str = price_gg
+			
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		var price_apple = apple_payment.get_price_pack(pack_id)
+		if price_apple:
+			price_str = price_apple
 	
 	if price_str == '':
 		for p in shop_packs:
@@ -88,6 +107,8 @@ func buy_pack(pack_id):
 		
 	if Config.get_platform() == Config.PLATFORMS.ANDROID:
 		google_payment.purchase_pack(pack_id)
+	elif Config.get_platform() == Config.PLATFORMS.IOS:
+		apple_payment.purchase_pack(pack_id)
 
 func _handle_shop_config(payload):
 	print('_handle_shop_config')

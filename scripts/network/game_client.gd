@@ -18,6 +18,7 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			var error = pkg.get_error()
 			if error != 0:
 				print('error login')
+				SceneManager.show_dialog("LOGIN_ERROR_" + str(error))
 				GameManager.logout()
 				return
 			var uid = pkg.get_uid()

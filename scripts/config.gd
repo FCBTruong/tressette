@@ -5,7 +5,7 @@ extends Node
 
 enum MODES { LOCAL, PRIVATE, LIVE }
 
-@export var CURRENT_MODE: int = MODES.LOCAL
+@export var CURRENT_MODE: int = MODES.PRIVATE
 
 var WEBSOCKET_URL: String
 
@@ -33,6 +33,7 @@ enum PLATFORMS {
 	UNKNOWN
 }
 func get_platform():
+	return PLATFORMS.IOS
 	if platform == "Android":
 		return PLATFORMS.ANDROID
 	elif platform == 'iOS':
