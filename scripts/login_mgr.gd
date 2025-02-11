@@ -45,7 +45,7 @@ func auto_login():
 		var login_token = load_login_token()
 		print('login_token')
 		var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
-		pkg.set_type(LOGIN_GOOGLE)	
+		pkg.set_type(LOGIN_TOKEN)	
 		pkg.set_token(login_token)
 		GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 	elif  last_login_type == GameConstants.LOGIN_TYPE.GUEST: # guest

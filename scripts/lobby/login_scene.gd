@@ -23,7 +23,7 @@ func on_login_local_firebase_succeeed(auth):
 	# For computer testing, outdated
 	print('login succeeded')
 	print(auth)
-	LoginMgr.send_login_firebase(auth.get('idtoken'))
+	LoginMgr.send_login_firebase(auth.get('idtoken'), 0)
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
