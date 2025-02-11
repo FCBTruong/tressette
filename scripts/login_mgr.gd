@@ -3,6 +3,7 @@ extends Node
 const LOGIN_GUEST: int = 0
 const LOGIN_GOOGLE: int = 1
 const LOGIN_FACEBOOK: int = 2
+const LOGIN_TOKEN: int = 3
 const LOGIN_UID_CHEAT: int = 10
 var last_login_type: int = GameConstants.LOGIN_TYPE.GUEST
 
@@ -101,8 +102,9 @@ func save_login_token(token: String) -> void:
 		file.store_string(token)
 		file.close()
 
-func send_login_firebase(token: String) -> void:
+func send_login_firebase(token: String, sub_type) -> void:
 	var pkg = GameConstants.PROTOBUF.PACKETS.LoginFirebase.new()
 	pkg.set_login_token(token)
+	pkg.set_sub_type(sub_type)
 	GameClient.send_packet(GameConstants.CMDs.LOGIN_FIREBASE, pkg.to_bytes())
 	

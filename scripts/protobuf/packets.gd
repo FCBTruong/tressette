@@ -954,18 +954,32 @@ class LoginFirebase:
 	func _init():
 		var service
 		
-		_login_token = PBField.new("login_token", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		_sub_type = PBField.new("sub_type", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _sub_type
+		data[_sub_type.tag] = service
+		
+		_login_token = PBField.new("login_token", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
 		service = PBServiceField.new()
 		service.field = _login_token
 		data[_login_token.tag] = service
 		
 	var data = {}
 	
+	var _sub_type: PBField
+	func get_sub_type() -> int:
+		return _sub_type.value
+	func clear_sub_type() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_sub_type.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_sub_type(value : int) -> void:
+		_sub_type.value = value
+	
 	var _login_token: PBField
 	func get_login_token() -> String:
 		return _login_token.value
 	func clear_login_token() -> void:
-		data[3].state = PB_SERVICE_STATE.UNFILLED
+		data[2].state = PB_SERVICE_STATE.UNFILLED
 		_login_token.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_login_token(value : String) -> void:
 		_login_token.value = value

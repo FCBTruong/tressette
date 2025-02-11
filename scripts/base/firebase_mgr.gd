@@ -43,9 +43,20 @@ func on_firebase_auth_success(user_id, user_name, user_email, id_token, provider
 	print("User Name: ", user_name)
 	print("User Email: ", user_email)
 	print("Provider ID: ", provider_id)
+
+	var sub_type = 0 # Exactly Firebase token, 1 is Google Token
 	
-	# You can use this ID token to authenticate with your game server if needed
-	LoginMgr.send_login_firebase(id_token)
+	# FOR iOS, we need to customize a little bit
+	# Due to ERROR with Firebase Auth -> can not login firebase directly
+	# So need server login to firebase
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		if provider_id == "google":
+			sub_type = 1 # GOOGLE TOKEN
+		elif provider_id == "apple":
+			sub_type = 3
+		elif provider_id == "facebook":
+			sub_type = 2
+	LoginMgr.send_login_firebase(id_token, sub_type)
 	
 # Callback when authentication fails
 func _on_firebase_auth_failed(error_message):
