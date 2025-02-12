@@ -127,12 +127,17 @@ func set_timestamp_server_delta(del):
 	timestamp_server_delta = del # milliseconds
 	
 func logout():
+	_token = "default"
 	var last_login_type = StorageCache.fetch('last_login_type')
 	if last_login_type == GameConstants.LOGIN_TYPE.FIREBASE:
 		FirebaseMgr.sign_out()
 	StorageCache.store('last_login_type', GameConstants.LOGIN_TYPE.NONE)
 	SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
 	
+func is_logged_in():
+	if _token and _token != 'default':
+		return true
+	return false
 func send_get_table_list():
 	GameClient.send_packet(GameConstants.CMDs.TABLE_LIST, [])
 	

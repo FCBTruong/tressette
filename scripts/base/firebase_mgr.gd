@@ -88,5 +88,7 @@ func _addition_result_test(a, b):
 	print('ddhddddhsjsj', b)
 
 func login_with_apple():
+	if not firebase_plugin:
+		return
 	print('login with apple')
 	firebase_plugin.signInWithApple()

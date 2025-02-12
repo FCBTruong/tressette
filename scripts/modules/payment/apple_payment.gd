@@ -8,6 +8,8 @@ var packs = [
 	'pack_04',
 	'pack_05'
 ]
+var packages:Array = []
+var pending_purchases:Array = []
 #
 #func _on_Restore_button_down(): # such button is required by Apple for non-consumable products
 	#var result = _appstore.restore_purchases()
@@ -34,34 +36,50 @@ func update(delta):
 	
 func _on_billing_resume():
 	print("Apple: resume billing")
+	
+	for n in pending_purchases:
+		_process_purchase(n.pack_id, n.receipt_ret)
+	# After login
 	pass
 
 func check_events():
 	if not _appstore:
 		return
-	print("Check event apple pay")
+
 	while _appstore.get_pending_event_count() > 0:
-		print("Pending event count", _appstore.get_pending_event_count())
 		var event = _appstore.pop_pending_event()
-		print("eventt", event.type)
+		print("eventt: ", event.type)
 		if event.type == "purchase":
 			_handle_purchase_result(event)
 		elif event.type == "restore":
 			pass
 		elif event.type == "product_info":
 			if event.result == "ok":
+				packages.clear()
 				var titles = event.titles
 				var descriptions = event.descriptions
 				var prices = event.prices
 				var ids = event.ids
 				var localized_prices = event.localized_prices
 				var currency_codes = event.currency_codes
+				
+				for i in range(len(ids)):
+					packages.append({
+						'title': titles[i],
+						'price': prices[i],
+						'pack_id': ids[i],
+						'localized_prices': localized_prices[i],
+						'currency_code': currency_codes[i]
+					})
 			else:
 				print("get product info failed")
 
 	
 func get_price_pack(pack_id):
-	return ""
+	for p in packages:
+		if p.pack_id == pack_id:
+			return p.localized_prices #+ ' ' + p.currency_code
+	return null
 	
 func purchase_pack(pack_id):
 	var result = _appstore.purchase({'product_id': pack_id})
@@ -71,15 +89,24 @@ func purchase_pack(pack_id):
 		SceneManager.show_dialog(tr("ERROR_PAY_APPLE") + ', Error: ' + result)
 	
 func request_product_info():
+	if not _appstore:
+		return
 	var result = _appstore.request_product_info({ "product_ids": packs })
 	print('request_product_info', result)
 	
-func _process_purchase(pack_id, receipt):
-	print('apple payment: _process_purchase', pack_id)
+func _process_purchase(pack_id, receipt_ret):
+	print('apple payment: _process_purchase ', pack_id)
 	LogsMgr.log_dev("packkk: " + pack_id)
-	LogsMgr.log_dev("Receipt apple" + receipt)
-
 	
+	# sdk, receipt
+	var receipt = receipt_ret.receipt
+	LogsMgr.log_dev("Receipt apple" + receipt)
+	
+	# check if login or not
+	if not GameManager.is_logged_in():
+		# save to pending
+		_add_pending_purchase(pack_id, receipt_ret)
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentAppleConsume.new()
 	pkg.set_pack_id(pack_id)
 	pkg.set_receipt_data(receipt)
@@ -87,6 +114,18 @@ func _process_purchase(pack_id, receipt):
 	
 	# SEND TO SERVER TO VERIFY
 
+func _add_pending_purchase(pack_id, receipt_ret):
+	# Check if a pending purchase with the same pack_id already exists
+	for purchase in pending_purchases:
+		if purchase["pack_id"] == pack_id:
+			return  # Exit if already exists
+
+	# Add the new purchase
+	pending_purchases.append({
+		"pack_id": pack_id,
+		"receipt_ret": receipt_ret
+	})
+	
 func test():
 	if not _appstore:
 		return
@@ -105,3 +144,8 @@ func _handle_purchase_result(event):
 	elif event.result == "progress":
 		print("pay on progress")
 		
+		
+func finsish_transaction(pack_id):
+	print('finsish_transaction')
+	if _appstore:
+		_appstore.finish_transaction(pack_id)

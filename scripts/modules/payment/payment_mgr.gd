@@ -33,7 +33,16 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_payment_success(payload)
 		GameConstants.CMDs.SHOP_CONFIG:
 			_handle_shop_config(payload)
+		GameConstants.CMDs.PAYMENT_APPLE_FINISHED_TRANSACTION:
+			_handle_finished_apple_transaction(payload)
 
+func _handle_finished_apple_transaction(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentFinishedAppleTransaction.new()
+	var result_code = pkg.from_bytes(payload)
+	var pack_id = pkg.get_pack_id()
+	print('_handle_finished_apple_transaction: ', pack_id)
+	apple_payment.finsish_transaction(pack_id)
+	
 func _handle_payment_success(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentSuccess.new()
 	var result_code = pkg.from_bytes(payload)
