@@ -35,6 +35,7 @@ LoginMgr="*res://scripts/login_mgr.gd"
 StorageCache="*res://scripts/storage_cache.gd"
 SoundManager="*res://scripts/sound_manager.gd"
 FirebaseMgr="*res://scripts/base/firebase_mgr.gd"
+LogsMgr="*res://scripts/logs_mgr.gd"
 
 [display]
 

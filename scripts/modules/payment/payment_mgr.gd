@@ -10,6 +10,10 @@ func _ready() -> void:
 	_init_payment_goggle()
 	_init_payment_apple()
 
+func _process(delta: float) -> void:
+	if apple_payment:
+		apple_payment.update(delta)
+
 # Payment should init after login success
 func _init_payment_goggle():
 	if Config.get_platform() == Config.PLATFORMS.ANDROID or \
@@ -75,8 +79,7 @@ func on_user_login():
 			_init_payment_goggle()
 			
 	if Config.get_platform() == Config.PLATFORMS.IOS:
-		apple_payment.test()
-		pass
+		apple_payment.request_product_info()
 		
 		# continue resume
 	_on_billing_resume()

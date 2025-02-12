@@ -31,7 +31,7 @@ func set_info(f: FriendModel):
 	_info = f
 	name_lb.text = f.name
 	avatar_img.set_avatar(f.avatar)
-	gold_lb.text = StringUtils.point_number(f.gold) + ' ₤'
+	gold_lb.text = StringUtils.point_number(f.gold) #+ ' ₤'
 	online_icon.visible = f.is_online
 	
 func _click_info():
