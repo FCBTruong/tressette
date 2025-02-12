@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=33 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://bw4h3oyo8rlpb" path="res://assets/images/board/Red Tabletop-min.png" id="2_mp50u"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
 [ext_resource type="AudioStream" uid="uid://c2xavtkvg1e1f" path="res://assets/sounds/shuffle_dealcard.mp3" id="9_5p4s2"]
+[ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_078t0"]
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="9_g7ymd"]
 [ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="9_ujbxy"]
@@ -550,20 +551,30 @@ horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="SettingBtn" type="Button" parent="CanvasLayer/RightTopPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/RightTopPanel"]
+custom_minimum_size = Vector2(150, 60)
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = 6
 anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-offset_left = -101.0
-offset_top = 25.0
-offset_right = -51.0
-offset_bottom = 75.0
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -30.0
+offset_right = -23.0
+offset_bottom = 30.0
 grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 2
+
+[node name="GuideBtn" type="Button" parent="CanvasLayer/RightTopPanel/HBoxContainer"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/SettingBtn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn"]
 self_modulate = Color(1, 1, 1, 0.678)
 layout_mode = 1
 anchors_preset = 8
@@ -575,6 +586,29 @@ offset_left = -25.0
 offset_top = -25.0
 offset_right = 25.0
 offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_078t0")
+expand_mode = 1
+
+[node name="SettingBtn" type="Button" parent="CanvasLayer/RightTopPanel/HBoxContainer"]
+custom_minimum_size = Vector2(60, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn"]
+self_modulate = Color(1, 1, 1, 0.678)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_ujbxy")
@@ -607,7 +641,7 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
 [node name="BackBtn" type="Button" parent="CanvasLayer/LeftTopPn"]
-modulate = Color(0.368, 0.846, 0.34, 0.405)
+modulate = Color(1, 1, 1, 0.829)
 layout_mode = 0
 offset_left = 50.0
 offset_top = 30.0
@@ -675,7 +709,7 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/EmoBtn"]
-modulate = Color(0.0701528, 0.788518, 0.358068, 0.757)
+modulate = Color(1, 1, 1, 0.757)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -695,7 +729,7 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
-modulate = Color(0.0701528, 0.788518, 0.358068, 0.757)
+modulate = Color(1, 1, 1, 0.757)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -927,7 +961,8 @@ stream = ExtResource("8_62q6d")
 volume_db = 12.0
 
 [connection signal="pressed" from="CanvasLayer/PlayGround/ActionBtnPn/PlayBtn" to="." method="_on_click_btn_play_card"]
-[connection signal="pressed" from="CanvasLayer/RightTopPanel/SettingBtn" to="." method="_open_settings_gui"]
+[connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
+[connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]

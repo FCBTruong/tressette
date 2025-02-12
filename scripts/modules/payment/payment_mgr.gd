@@ -75,6 +75,7 @@ func on_user_login():
 			_init_payment_goggle()
 			
 	if Config.get_platform() == Config.PLATFORMS.IOS:
+		apple_payment.test()
 		pass
 		
 		# continue resume

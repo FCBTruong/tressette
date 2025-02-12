@@ -702,4 +702,6 @@ func _on_back_btn_pressed() -> void:
 
 func _open_settings_gui() -> void:
 	SceneManager.open_gui("res://scenes/guis/SettingsGUI.tscn")
-	pass # Replace with function body.
+
+func _open_guide_gui() -> void:
+	SceneManager.open_gui("res://scenes/guis/GuideGUI.tscn")

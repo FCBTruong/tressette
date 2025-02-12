@@ -1,11 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0s371vj6s5od"]
+[gd_scene load_steps=11 format=3 uid="uid://b0s371vj6s5od"]
 
 [ext_resource type="Script" path="res://scripts/lobby/login_scene.gd" id="1_xqlge"]
-[ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="2_cmw77"]
+[ext_resource type="Texture2D" uid="uid://dt4lvi0caf8q7" path="res://assets/images/waiting_light_dark.png" id="2_3ejq2"]
 [ext_resource type="Texture2D" uid="uid://clam73q7sj7cp" path="res://assets/images/login/google_icon.png" id="3_2w4au"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_16366"]
 [ext_resource type="Texture2D" uid="uid://bhi14nillkotg" path="res://assets/images/login/facebook.png" id="4_egrs7"]
+[ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="6_pr75e"]
 [ext_resource type="Texture2D" uid="uid://dvkbr2jw0gmib" path="res://assets/images/login/apple_icon.png" id="6_rp1b3"]
+[ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="9_4swjg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm302"]
+bg_color = Color(0.996, 0.996, 0.996, 0.707)
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7cpd"]
+bg_color = Color(0.761363, 0.313866, 0.0201693, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="LoginScene" type="Node2D"]
 script = ExtResource("1_xqlge")
@@ -18,94 +32,264 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_cmw77")
+texture = ExtResource("2_3ejq2")
 expand_mode = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-custom_minimum_size = Vector2(0, 150)
-anchors_preset = 12
-anchor_top = 1.0
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = -400.0
 offset_top = -150.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_bottom = 110.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qm302")
 
-[node name="GuestBtn" type="Button" parent="CanvasLayer"]
+[node name="ColorRect" type="Control" parent="CanvasLayer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 11.0
+offset_right = 46.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_pr75e")
+theme_override_font_sizes/font_size = 25
+text = "Login with"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuestBtn" type="Button" parent="CanvasLayer/Panel2/ColorRect"]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -73.5
-offset_top = -40.0
-offset_right = 73.5
+offset_left = -73.0
+offset_top = -45.0
+offset_right = 74.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Continue as guest"
 flat = true
 script = ExtResource("3_16366")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel2/ColorRect/GuestBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h7cpd")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect/GuestBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -11.5
+offset_right = 23.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Guest"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel2/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = 48.0
+offset_right = 55.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_pr75e")
+theme_override_font_sizes/font_size = 20
+text = "Or"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel2/ColorRect"]
 custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -356.0
+offset_top = -64.0
+offset_right = 356.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="GoogleBtn" type="Button" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+flat = true
+alignment = 0
+script = ExtResource("3_16366")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/GoogleBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/GoogleBtn/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_2w4au")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/GoogleBtn/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_pr75e")
+theme_override_font_sizes/font_size = 18
+text = "Google"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FacebookBtn" type="Button" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+flat = true
+script = ExtResource("3_16366")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/FacebookBtn"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -178.0
-offset_top = -146.0
-offset_right = 303.0
-offset_bottom = -48.0
+offset_left = -36.5
+offset_top = -200.0
+offset_right = 36.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 20
+alignment = 2
 
-[node name="GoogleBtn" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/FacebookBtn/VBoxContainer"]
 layout_mode = 2
-text = "Login with Google"
-icon = ExtResource("3_2w4au")
-flat = true
-alignment = 0
-script = ExtResource("3_16366")
+texture = ExtResource("4_egrs7")
 
-[node name="FacebookBtn" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/FacebookBtn/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-text = "Login with Facebook"
-icon = ExtResource("4_egrs7")
-flat = true
-script = ExtResource("3_16366")
+theme_override_fonts/font = ExtResource("6_pr75e")
+theme_override_font_sizes/font_size = 18
+text = "Facebook"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="AppleBtn" type="Button" parent="CanvasLayer/HBoxContainer"]
+[node name="AppleBtn" type="Button" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-text = "Login with Apple"
-icon = ExtResource("6_rp1b3")
 flat = true
 script = ExtResource("3_16366")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/AppleBtn"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.5
+offset_top = -200.0
+offset_right = 42.5
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/AppleBtn/VBoxContainer"]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture = ExtResource("6_rp1b3")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/AppleBtn/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_pr75e")
+theme_override_font_sizes/font_size = 18
+text = "Apple"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PnCheat" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 42.0
-offset_top = 257.0
-offset_right = 82.0
-offset_bottom = 297.0
+offset_left = 48.0
+offset_top = 160.0
+offset_right = 88.0
+offset_bottom = 200.0
 
 [node name="BtnQuickLogin" type="Button" parent="CanvasLayer/PnCheat"]
+modulate = Color(1, 1, 1, 0.645)
 layout_mode = 0
-offset_right = 111.0
-offset_bottom = 87.0
+offset_right = 59.0
+offset_bottom = 50.0
 text = "User A"
 
 [node name="Button" type="Button" parent="CanvasLayer/PnCheat/BtnQuickLogin"]
 layout_mode = 0
-offset_left = 178.0
+offset_left = 83.0
 offset_top = 2.0
-offset_right = 289.0
-offset_bottom = 89.0
+offset_right = 142.0
+offset_bottom = 52.0
 text = "User B"
 
 [node name="InputUIDCheat" type="LineEdit" parent="CanvasLayer/PnCheat"]
+self_modulate = Color(1, 1, 1, 0.638)
 layout_mode = 0
 offset_left = 3.0
 offset_top = -50.0
@@ -114,10 +298,23 @@ offset_bottom = -19.0
 placeholder_text = "UID"
 virtual_keyboard_type = 2
 
-[connection signal="pressed" from="CanvasLayer/GuestBtn" to="." method="_login_guest"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/GoogleBtn" to="." method="_login_google"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/FacebookBtn" to="." method="_login_facebook"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/AppleBtn" to="." method="_login_with_apple"]
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 354.0
+offset_top = 70.0
+offset_right = 857.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0.866588, 0.855529, 0.843631, 1)
+theme_override_colors/font_outline_color = Color(0.364227, 0.253974, 0.253974, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("9_4swjg")
+theme_override_font_sizes/font_size = 30
+text = "Welcom to Tressette"
+
+[connection signal="pressed" from="CanvasLayer/Panel2/ColorRect/GuestBtn" to="." method="_login_guest"]
+[connection signal="pressed" from="CanvasLayer/Panel2/ColorRect/HBoxContainer/GoogleBtn" to="." method="_login_google"]
+[connection signal="pressed" from="CanvasLayer/Panel2/ColorRect/HBoxContainer/FacebookBtn" to="." method="_login_facebook"]
+[connection signal="pressed" from="CanvasLayer/Panel2/ColorRect/HBoxContainer/AppleBtn" to="." method="_login_with_apple"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin" to="." method="test_login_user_A"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin/Button" to="." method="test_login_userB"]
 [connection signal="text_submitted" from="CanvasLayer/PnCheat/InputUIDCheat" to="." method="_login_by_uid_cheat"]

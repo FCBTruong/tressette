@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://fsqk1323rim"]
+
+[ext_resource type="Script" path="res://scripts/lobby/guide_gui.gd" id="1_1mjrk"]
+[ext_resource type="Texture2D" uid="uid://cnnw63fx5jq3n" path="res://assets/images/lobby/guide/guide_content.png" id="2_y3gd7"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_gvjlj"]
+[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="4_20swo"]
+
+[node name="GuideGui" type="Node2D"]
+script = ExtResource("1_1mjrk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.76)
+
+[node name="MainPn" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -300.0
+offset_right = 600.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(600, 300)
+texture = ExtResource("2_y3gd7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+custom_minimum_size = Vector2(50, 50)
+offset_left = 1074.0
+offset_top = 10.0
+offset_right = 1124.0
+offset_bottom = 60.0
+flat = true
+script = ExtResource("3_gvjlj")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+self_modulate = Color(0.80549, 0.0955006, 0.0955006, 1)
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("4_20swo")
+expand_mode = 1
+
+[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="on_close"]

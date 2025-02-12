@@ -107,3 +107,6 @@ func _update_friend_requests():
 
 func _click_nofriend_btn():
 	SceneManager.switch_scene("res://scenes/FriendScene.tscn")
+	
+func _click_guide_btn():
+	SceneManager.open_gui("res://scenes/guis/GuideGUI.tscn")

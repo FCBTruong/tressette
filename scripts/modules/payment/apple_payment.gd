@@ -5,14 +5,17 @@ func check_events():
 	pass
 
 var packs = [
+	'pack10',
+	'com.clareentertainment.tressette.pack_01',
 	'pack_01',
+	'pack_02'
 ]
 #
 #func _on_Restore_button_down(): # such button is required by Apple for non-consumable products
 	#var result = _appstore.restore_purchases()
 	
 func init_connection():
-	print('debug ios appp')
+	print('debug ios appp2')
 	if Engine.has_singleton("InAppStore"):
 		print('has app store....')
 		_appstore = Engine.get_singleton('InAppStore')
@@ -54,3 +57,8 @@ func _process_purchase(purchase):
 	GameClient.send_packet(GameConstants.CMDs.PAYMENT_GOOGLE_CONSUME, pkg.to_bytes())
 	
 	# SEND TO SERVER TO VERIFY
+
+func test():
+	if not _appstore:
+		return
+	var result = _appstore.request_product_info( { "product_ids": packs } )

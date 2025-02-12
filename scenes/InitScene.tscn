@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://hxhcl2lvd7qj"]
+[gd_scene load_steps=2 format=3 uid="uid://hxhcl2lvd7qj"]
+
+[ext_resource type="Texture2D" uid="uid://dt4lvi0caf8q7" path="res://assets/images/waiting_light_dark.png" id="1_gyhtw"]
 
 [node name="InitScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gyhtw")
+expand_mode = 1
