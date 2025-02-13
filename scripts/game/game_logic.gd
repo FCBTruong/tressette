@@ -378,20 +378,28 @@ func _handle_draw_card(payload: PackedByteArray):
 func _handle_end_game(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.EndGame.new()
 	var result_code = pkg.from_bytes(payload)
-	var win_uids = pkg.get_win_uids()
+	var uids = pkg.get_uids()
+	var win_team_id = pkg.get_win_team_id()
 	var score_cards = pkg.get_score_cards()
 	var score_last_tricks = pkg.get_score_last_tricks()
 	var score_totals = pkg.get_score_totals()
 	match_result = MatchData.MatchResult.new()
-	match_result.is_win = PlayerInfoMgr.my_user_data.uid in win_uids
+	match_result.gold_change = 9828282
+	match_result.win_team_id = win_team_id
+	match_result.is_win = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id \
+		== win_team_id
+	match_result.my_team_id = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id
 	
-	match_result.scores = []
+	match_result.players.clear()
 	for i in range(len(match_data.users)):
-		var score_data = MatchData.MatchResultScore.new()
+		var score_data = MatchData.MatchResultPlayer.new()
+		score_data.uid = match_data.users[i].uid
+		score_data.team_id = match_data.users[i].game_data.team_id
+		score_data.avatar = match_data.users[i].avatar
 		score_data.score_card = score_cards[i]
 		score_data.score_last_trick = score_last_tricks[i]
 		score_data.score_total = score_totals[i]
-		match_result.scores.append(score_data)
+		match_result.players.append(score_data)
 		
 	SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')
 

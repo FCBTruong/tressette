@@ -2156,10 +2156,15 @@ class EndGame:
 	func _init():
 		var service
 		
-		_win_uids = PBField.new("win_uids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 1, true, [])
+		_uids = PBField.new("uids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 1, true, [])
 		service = PBServiceField.new()
-		service.field = _win_uids
-		data[_win_uids.tag] = service
+		service.field = _uids
+		data[_uids.tag] = service
+		
+		_win_team_id = PBField.new("win_team_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_team_id
+		data[_win_team_id.tag] = service
 		
 		_score_cards = PBField.new("score_cards", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 2, true, [])
 		service = PBServiceField.new()
@@ -2178,14 +2183,23 @@ class EndGame:
 		
 	var data = {}
 	
-	var _win_uids: PBField
-	func get_win_uids() -> Array:
-		return _win_uids.value
-	func clear_win_uids() -> void:
+	var _uids: PBField
+	func get_uids() -> Array:
+		return _uids.value
+	func clear_uids() -> void:
 		data[1].state = PB_SERVICE_STATE.UNFILLED
-		_win_uids.value = []
-	func add_win_uids(value : int) -> void:
-		_win_uids.value.append(value)
+		_uids.value = []
+	func add_uids(value : int) -> void:
+		_uids.value.append(value)
+	
+	var _win_team_id: PBField
+	func get_win_team_id() -> int:
+		return _win_team_id.value
+	func clear_win_team_id() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_win_team_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_team_id(value : int) -> void:
+		_win_team_id.value = value
 	
 	var _score_cards: PBField
 	func get_score_cards() -> Array:

@@ -24,12 +24,17 @@ func print_info():
 
 class MatchResult:
 	var is_win: bool = false
-	var scores = [
-		MatchResultScore.new(),
-		MatchResultScore.new()
+	var win_team_id: int
+	var my_team_id: int
+	var gold_change: int
+	var players: Array[MatchResultPlayer] = [
+		
 	]
 
-class MatchResultScore:
+class MatchResultPlayer:
+	var uid
+	var team_id
+	var avatar
 	var score_card = 1
 	var score_last_trick = 0
 	var score_total = 0

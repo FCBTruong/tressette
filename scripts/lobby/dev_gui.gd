@@ -35,6 +35,19 @@ func _input(event):
 				#SceneManager.show_toast('hello everyone')
 				pass
 			if event.keycode == KEY_W:
+				GameConstants.game_logic = GameLogic.new()
+				var a = MatchData.MatchResultPlayer.new()
+				a.avatar = "1"
+				a.team_id = 0
+				var b = MatchData.MatchResultPlayer.new()
+				b.avatar = "1"
+				b.team_id = 1
+				GameConstants.game_logic.match_result.gold_change = 992822
+				GameConstants.game_logic.match_result.is_win = true
+				GameConstants.game_logic.match_result.players.append(a)
+				GameConstants.game_logic.match_result.players.append(b)
+				SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')
+				pass
 				SceneManager.clear_loading()
 				#print('search friend')
 				#FriendManager.search_friend(1000002)
