@@ -144,3 +144,6 @@ func send_get_table_list():
 func change_card_style(p_card_style):
 	card_style = p_card_style
 	StorageCache.store('card_style', card_style)
+	
+	# dispatch event for all cards to update texture
+	SignalBus.emit_signal_global("update_card_style")

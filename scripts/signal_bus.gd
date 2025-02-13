@@ -9,6 +9,7 @@ signal on_changed_avatar
 signal on_update_money
 signal update_friend_list
 signal update_friend_requests
+signal update_card_style
 
 # Emit a signal globally with arguments
 func emit_signal_global(signal_name: String, args: Array = []) -> void:

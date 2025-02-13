@@ -87,4 +87,9 @@ const LOGIN_TYPE = {
 	FIREBASE = 1
 }
 
+const CARD_FACE_STATE = {
+	UP = 0,
+	DOWN = 1
+}
+
 const DELETE_ACCOUNT_URL = 'https://www.canva.com/design/DAGct5CYCrQ/LWjqx5vT9_GRSVmrmW8Mig/view?utm_content=DAGct5CYCrQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha22c9ec0b3'

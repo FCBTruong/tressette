@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://biau5pku6dmtu"]
 
 [ext_resource type="Script" path="res://scripts/lobby/loading_scene.gd" id="1_64x5r"]
-[ext_resource type="Texture2D" uid="uid://d0im8hwx3bqay" path="res://assets/images/waiting_light_bg.png" id="2_2ow2u"]
+[ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="2_bgxl0"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_rbbgn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uokon"]
@@ -39,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_2ow2u")
+texture = ExtResource("2_bgxl0")
 expand_mode = 1
 
 [node name="LoadBar" type="ProgressBar" parent="CanvasLayer"]

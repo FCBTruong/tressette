@@ -10,11 +10,11 @@
 [ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="9_4swjg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm302"]
-bg_color = Color(0.996, 0.996, 0.996, 0.806)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7cpd"]
 bg_color = Color(0.761363, 0.313866, 0.0201693, 1)
@@ -91,9 +91,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -73.0
-offset_top = -45.0
+offset_top = -35.0
 offset_right = 74.0
-offset_bottom = -5.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Continue as guest"

@@ -14,11 +14,14 @@ var player_id = -1 # ref uid
 @onready var card_image = find_child('CardImage')
 @onready var main_pn = find_child('Main')
 @onready var card_btn = find_child('CardBtn')
+var face_state = GameConstants.CARD_FACE_STATE.DOWN
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	is_played = false
 	pos_card = card_image.position
 	main_pn.z_index = 1
+	SignalBus.connect_global("update_card_style", Callable(self, "_on_update_card_style"))
 	
 func _on_touch_card() -> void:
 	if not GameConstants.game_logic.is_my_turn():
@@ -61,6 +64,7 @@ func set_card(card_id: int):
 	id = card_id
 	
 func turn_face_down():
+	face_state = GameConstants.CARD_FACE_STATE.DOWN
 	var path = "res://assets/images/card_tressette/card_back.png"
 	_load_texture(path)
 	
@@ -79,6 +83,10 @@ func _set_default_z_index(z):
 	self.z_index = z
 
 func turn_face_up():
+	face_state = GameConstants.CARD_FACE_STATE.UP
+	_load_texture_card()
+
+func _load_texture_card():
 	var card_type = 'classic'
 	if GameManager.card_style == GameConstants.CARD_STYLES.CLASSIC:
 		card_type = 'classic'
@@ -130,3 +138,9 @@ func update_state_can_play(is_valid: bool):
 		card_btn.visible = false
 		main_pn.modulate = Color('585151')  # RGB values for red
 		pass
+		
+func _on_update_card_style():
+	if face_state != GameConstants.CARD_FACE_STATE.UP:
+		return
+	_load_texture_card()
+	
