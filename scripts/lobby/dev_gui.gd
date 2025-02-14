@@ -53,6 +53,15 @@ func _input(event):
 				#FriendManager.search_friend(1000002)
 				#SceneManager.show_toast('hello everyone')
 				pass
+			if event.keycode == KEY_Q:
+				EffectMgr.effect_fly_object(
+					"res://assets/images/lobby/lira_icon.png",
+					5,
+					Vector2(0, 0),
+					Vector2(520, 590),
+					1
+				)
+				pass
 
 func _click_cheat_goldbtn():
 	var gold = int(line_edit_gold.text)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvggiqkn2bjut"]
+[gd_scene load_steps=13 format=3 uid="uid://dvggiqkn2bjut"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_phee0"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_2fpyj"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_riqo0"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="3_tw46g"]
+[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="4_oc1ex"]
 [ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="5_6p0k0"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_tnwwa"]
 [ext_resource type="Texture2D" uid="uid://c7t46btjgrrjc" path="res://assets/images/board/user.png" id="6_l3lsr"]
@@ -28,7 +29,7 @@ offset_left = -75.0
 offset_top = -75.0
 offset_right = 75.0
 offset_bottom = 75.0
-color = Color(0.157628, 0.785124, 0.290129, 1)
+color = Color(1, 0.444462, 0, 1)
 
 [node name="MainPn" type="Control" parent="."]
 layout_mode = 3
@@ -61,16 +62,38 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjdqh")
 
-[node name="NameLb" type="Label" parent="MainPn/Panel"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/Panel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -18.0
+offset_right = -92.0
+offset_bottom = 17.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_oc1ex")
+expand_mode = 1
+
+[node name="GoldLb" type="Label" parent="MainPn/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -14.0
+offset_right = 55.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_riqo0")
 theme_override_font_sizes/font_size = 18
-text = "Truong"
+text = "1.00000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -136,7 +159,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect2" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.171699, 0.442296, 0.281232, 1)
+modulate = Color(0.391381, 0.196978, 0.228037, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -163,7 +186,7 @@ grow_vertical = 2
 texture = ExtResource("6_l3lsr")
 
 [node name="TextureRect3" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.0946986, 0.612013, 0.489388, 1)
+modulate = Color(0.350649, 0.186855, 0.191513, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -174,6 +197,7 @@ texture = ExtResource("5_6p0k0")
 expand_mode = 1
 
 [node name="EmoIcon" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

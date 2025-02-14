@@ -1343,6 +1343,11 @@ class GameInfo:
 		service.field = _bet
 		data[_bet.tag] = service
 		
+		_pot_value = PBField.new("pot_value", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 18, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		service = PBServiceField.new()
+		service.field = _pot_value
+		data[_pot_value.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1497,6 +1502,15 @@ class GameInfo:
 		_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_bet(value : int) -> void:
 		_bet.value = value
+	
+	var _pot_value: PBField
+	func get_pot_value() -> int:
+		return _pot_value.value
+	func clear_pot_value() -> void:
+		data[18].state = PB_SERVICE_STATE.UNFILLED
+		_pot_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
+	func set_pot_value(value : int) -> void:
+		_pot_value.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2125,6 +2139,11 @@ class GeneralInfo:
 		service.field = _min_gold_play
 		data[_min_gold_play.tag] = service
 		
+		_time_thinking_in_turn = PBField.new("time_thinking_in_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _time_thinking_in_turn
+		data[_time_thinking_in_turn.tag] = service
+		
 	var data = {}
 	
 	var _timestamp: PBField
@@ -2144,6 +2163,15 @@ class GeneralInfo:
 		_min_gold_play.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_min_gold_play(value : int) -> void:
 		_min_gold_play.value = value
+	
+	var _time_thinking_in_turn: PBField
+	func get_time_thinking_in_turn() -> int:
+		return _time_thinking_in_turn.value
+	func clear_time_thinking_in_turn() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_time_thinking_in_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_time_thinking_in_turn(value : int) -> void:
+		_time_thinking_in_turn.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

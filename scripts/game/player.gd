@@ -8,6 +8,7 @@ extends Node
 @onready var vortex = find_child("Vortex")
 @onready var avatar_img = find_child('AvatarImg')
 @onready var emo_icon = find_child('EmoIcon')
+@onready var gold_lb = find_child("GoldLb")
 func _ready() -> void:
 	#effect_add_score(5)
 	emo_icon.visible = false
@@ -28,9 +29,9 @@ func set_user_data(user_dt: UserData) -> void:
 	main_pn.visible = true
 	empty_slot.visible = false
 	
-	var name_label = find_child('NameLb')  # Access the RichTextLabel
-	if name_label:
-		name_label.text = StringUtils.sub_string(user_data.name, 9)
+	
+	#name_label.text = StringUtils.sub_string(user_data.name, 9)
+	gold_lb.text = StringUtils.point_number(user_data.gold)
 	update_points_display()
 	# update avatar
 	print('userdatavat', user_data.avatar)
@@ -43,8 +44,7 @@ func update_points_display(effect_add = false):
 	pass
 	#score_lb.text = str(user_data.game_data.points)
 
-	
-var timer_duration: float = 10.0  # Total duration of the timer in seconds
+
 var elapsed_time: float = 0.0  # Tracks the elapsed time
 var running: bool = false
 
@@ -72,9 +72,10 @@ func _process(delta: float):
 		
 	if running:
 		elapsed_time += delta
-		if elapsed_time < timer_duration:
+		if elapsed_time < GameServerConfig.time_thinking_in_turn:
 			# Update progress bar value based on elapsed time
-			time_progress_bar.value = (timer_duration - elapsed_time) / timer_duration * 100
+			time_progress_bar.value = (GameServerConfig.time_thinking_in_turn - elapsed_time) \
+				/ GameServerConfig.time_thinking_in_turn * 100
 		else:
 			# Ensure progress bar is full and end the timer
 			time_progress_bar.value = 100

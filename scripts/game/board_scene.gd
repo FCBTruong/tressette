@@ -37,6 +37,7 @@ var cards_node_compare = []
 @onready var evaluate_lb = find_child('EvaluateLb')
 @onready var back_btn = find_child("BackBtn")
 @onready var bet_lb = find_child("BetLb")
+@onready var pot_value_lb = find_child("PotValueLb")
 
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
@@ -57,6 +58,7 @@ func _ready() -> void:
 	countdown_start_lb.visible = false
 	evaluate_lb_default_pos = evaluate_lb.position
 	evaluate_lb.modulate.a = 0
+	evaluate_lb.visible = true
 	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
 	_on_enter()
 	
@@ -114,11 +116,16 @@ func _on_enter():
 			
 	self.update_team_scores()
 	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
-	
+	pot_value_lb.text = StringUtils.point_number(game_logic.match_data.pot_value)
 
 func continue_play():
 	cardback_node.visible = false
 	remove_all_current_cards()
+	opponent_score_lb.text = '0'
+	my_score_lb.text = '0'
+	opponent_score_sub.visible = false
+	my_score_sub.visible = false
+	pot_value_lb.text = '0'
 	
 func on_update_players():
 	var players_info = game_logic.get_list_player()
@@ -708,3 +715,6 @@ func _open_settings_gui() -> void:
 
 func _open_guide_gui() -> void:
 	SceneManager.open_gui("res://scenes/guis/GuideGUI.tscn")
+	
+func _effect_pot_contribute():
+	pass

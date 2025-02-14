@@ -69,6 +69,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 	var name = pkg.get_name()
 	var team_id = pkg.get_team_id()
 	var avatar = pkg.get_avatar()
+	var gold = pkg.get_gold()
 	print('seat server', seat_server)
 	var seat_id = seat_server - match_data.seat_delta
 	if seat_id < 0:
@@ -83,6 +84,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 			user.name = name
 			user.game_data.team_id = team_id
 			user.avatar = avatar
+			user.gold = gold
 			
 	for user in match_data.users:
 		print('debug seat', user.game_data.seat_id)
@@ -121,6 +123,7 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.state = pkg.get_game_state()
 	match_data.current_turn = pkg.get_current_turn()
 	match_data.remain_cards = pkg.get_remain_cards()
+	match_data.pot_value = pkg.get_pot_value()
 	self.is_registered_leave = pkg.get_is_registered_leave()
 	self.hand_suit = pkg.get_hand_suit()
 	
@@ -146,6 +149,7 @@ func _handle_game_info(payload: PackedByteArray):
 		userdata.game_data.points = user_points[i]
 		userdata.game_data.team_id = team_ids[i]
 		userdata.avatar = avatars[i]
+		userdata.gold = golds[i]
 		users.append(userdata)
 		if uid == PlayerInfoMgr.my_user_data.uid:
 			my_idx = i

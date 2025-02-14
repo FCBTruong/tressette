@@ -89,6 +89,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			var delta = timestamp_server - Time.get_unix_time_from_system()
 			print('delta timestamp server-client', delta)
 			GameManager.set_timestamp_server_delta(delta)
+			GameServerConfig.time_thinking_in_turn = pkg.get_time_thinking_in_turn()
 		GameConstants.CMDs.TABLE_LIST:
 			var pkg = GameConstants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)
