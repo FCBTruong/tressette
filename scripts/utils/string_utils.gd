@@ -22,6 +22,16 @@ func point_number(number: int) -> String:
 			formatted = "." + formatted
 	return formatted
 
+func symbol_number(num: int) -> String:
+	if num >= 1_000_000_000:
+		return str(floor(num / 1_000_000_000.0)) + "B"
+	elif num >= 1_000_000:
+		return str(floor(num / 1_000_000.0)) + "M"
+	elif num >= 1_000:
+		return str(floor(num / 1_000.0)) + "K"
+	else:
+		return str(num)
+		
 func sub_string(str: String, size: int) -> String:
 	if str.length() > size:
 		return str.substr(0, size) + "..."

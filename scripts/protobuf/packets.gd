@@ -1338,6 +1338,11 @@ class GameInfo:
 		service.field = _is_registered_leave
 		data[_is_registered_leave.tag] = service
 		
+		_bet = PBField.new("bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 17, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _bet
+		data[_bet.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1483,6 +1488,15 @@ class GameInfo:
 		_is_registered_leave.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
 	func set_is_registered_leave(value : bool) -> void:
 		_is_registered_leave.value = value
+	
+	var _bet: PBField
+	func get_bet() -> int:
+		return _bet.value
+	func clear_bet() -> void:
+		data[17].state = PB_SERVICE_STATE.UNFILLED
+		_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_bet(value : int) -> void:
+		_bet.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

@@ -55,6 +55,10 @@ func _login_google() -> void:
 	#pass
 
 func _login_facebook() -> void:
+	if Config.CURRENT_MODE == Config.MODES.LOCAL:
+		var provider: AuthProvider = Firebase.Auth.get_FacebookProvider()
+		Firebase.Auth.get_auth_localhost(provider, 8060)
+		return
 	FirebaseMgr.login_with_facebook()
 	pass
 

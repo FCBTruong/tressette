@@ -33,7 +33,6 @@ enum PLATFORMS {
 	UNKNOWN
 }
 func get_platform():
-	return PLATFORMS.IOS
 	if platform == "Android":
 		return PLATFORMS.ANDROID
 	elif platform == 'iOS':

@@ -48,7 +48,7 @@ func _handle_payment_success(payload):
 	var result_code = pkg.from_bytes(payload)
 	var gold = pkg.get_gold()
 	
-	SceneManager.show_dialog(tr("YOU_RECEIVED") + StringUtils.point_number(gold) \
+	SceneManager.show_dialog(tr("YOU_RECEIVED") + ' ' + StringUtils.point_number(gold) \
 		+ " " + tr("LIRA"), 
 		func():
 			print('click ok'),

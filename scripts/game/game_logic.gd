@@ -113,6 +113,7 @@ func _handle_game_info(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.GameInfo.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data = MatchData.new()
+	match_data.bet = pkg.get_bet()
 	match_data.match_id = pkg.get_match_id()
 	match_data.game_mode = pkg.get_game_mode()
 	match_data.player_mode = pkg.get_player_mode()
@@ -232,6 +233,8 @@ func get_my_cards():
 	return []
 	
 func _start_game(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.StartGame.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.state = MatchData.MATCH_STATE.PLAYING

@@ -36,6 +36,7 @@ var cards_node_compare = []
 @onready var waiting_other_lb = find_child('WaitingOtherLb')
 @onready var evaluate_lb = find_child('EvaluateLb')
 @onready var back_btn = find_child("BackBtn")
+@onready var bet_lb = find_child("BetLb")
 
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
@@ -77,7 +78,7 @@ func _on_enter():
 	chat_btn.visible = GameManager.enable_chat_ingame
 	chat_btn_reddot.visible = false
 	pn_cheat.visible = false #Config.CURRENT_MODE != Config.MODES.LIVE
-	room_id_lb.text = 'ROOM ID: ' + str(game_logic.match_data.match_id)
+	room_id_lb.text = tr("ROOM_ID") + ': ' + str(game_logic.match_data.match_id)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		# case reconnect
 		# update cards compare
@@ -112,6 +113,8 @@ func _on_enter():
 			on_finishhand()
 			
 	self.update_team_scores()
+	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
+	
 
 func continue_play():
 	cardback_node.visible = false
