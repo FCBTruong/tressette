@@ -307,7 +307,7 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+[node name="PotPn" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.333333
@@ -319,7 +319,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ucf2k")
 
-[node name="Label2" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/Panel"]
+[node name="Label2" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -338,7 +338,7 @@ text = "POT:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PotValueLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/Panel"]
+[node name="PotValueLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
 self_modulate = Color(1, 1, 1, 0.95)
 layout_mode = 1
 anchors_preset = 8
@@ -358,7 +358,7 @@ text = "1999999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/Panel"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -586,7 +586,7 @@ theme_override_colors/font_outline_color = Color(0.0117647, 0.415686, 0.211765, 
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("7_riexb")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 35
 text = "GAME_START"
 horizontal_alignment = 1
 vertical_alignment = 1

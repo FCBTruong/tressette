@@ -177,6 +177,9 @@ func on_game_start():
 	
 	_update_current_round()
 	
+func on_new_round():
+	_effect_pot_contribute()
+	
 func on_update_players():
 	var players_info = game_logic.get_list_player()
 	var i = 0

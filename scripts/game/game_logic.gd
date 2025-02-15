@@ -41,6 +41,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_end_game(payload)
 		GameConstants.CMDs.PREPARE_START_GAME:
 			_handle_prepare_start(payload)
+		GameConstants.CMDs.NEW_ROUND:
+			_handle_new_round(payload)
 
 
 func _handle_user_leave_match(payload: PackedByteArray):
@@ -428,6 +430,24 @@ func _handle_prepare_start(payload: PackedByteArray):
 	if cur_scene is BoardScene:
 		cur_scene.show_prepare_start()
 
+func _handle_new_round(payload: PackedByteArray):
+	if not match_data:
+		return
+		
+	var pkg = GameConstants.PROTOBUF.PACKETS.NewRound.new()
+	var result_code = pkg.from_bytes(payload)
+	match_data.current_round = pkg.get_current_round()
+	match_data.pot_value = pkg.get_pot_value()
+	
+	# when new round start, need to rounded score
+	for player in match_data.users:
+		var redunt = player.game_data.points % 3
+		player.game_data.points -= redunt
+	
+	var cur_scene = SceneManager.get_current_scene()
+	if cur_scene is BoardScene:
+		cur_scene.on_new_round()
+		cur_scene.update_team_scores()
 	
 func get_my_team_score() -> int:
 	var c = 0	

@@ -1,7 +1,7 @@
 extends Node
 
 # Our WebSocketPeer instance
-var socket: WebSocketPeer = WebSocketPeer.new()
+var socket: WebSocketPeer
 # Timer to track the time since the last ping
 var ping_timeout: float = 30.0  # Timeout duration in seconds
 var time_since_last_ping: float = 0.0  # Tracks time since last ping
@@ -14,6 +14,7 @@ func _ready():
 	connect_to_server()
 	
 func connect_to_server():
+	socket = WebSocketPeer.new()
 	is_connected = false
 	
 	var websocket_url = Config.WEBSOCKET_URL
