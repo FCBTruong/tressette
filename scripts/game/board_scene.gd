@@ -669,6 +669,7 @@ func _effect_draw_card(uid, card_id):
 	var new_pos_arr = _calculate_world_card_positions(next_size)
 	var new_rotates = _get_card_rotates(next_size)
 	final_pos = new_pos_arr[des_i]
+	list_my_cards.insert(des_i, instance)
 	
 	var rot_radians: float = new_rotates[des_i]
 
@@ -678,10 +679,23 @@ func _effect_draw_card(uid, card_id):
 	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
 	tween.parallel().tween_property(instance, "scale", Vector2(1, 1), 0.3).set_delay(delay)
 	tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
-
+	
+	var c_idx = 0
+	for c in list_my_cards:
+		if c_idx == des_i:
+			continue
+		
+		var c_tween = create_tween()
+		c_tween.tween_property(
+			c, "global_position", 
+			new_pos_arr[c_idx],
+			0.3
+		).set_delay(delay)
+		
+		c_idx += 1
+		
 	tween.chain().tween_callback(
 		func():
-			list_my_cards.insert(des_i, instance)
 			_update_my_card_positions(true)
 	)
 func _on_received_draw_card():
