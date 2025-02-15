@@ -38,6 +38,7 @@ FirebaseMgr="*res://scripts/base/firebase_mgr.gd"
 LogsMgr="*res://scripts/logs_mgr.gd"
 GameServerConfig="*res://scripts/game_server_config.gd"
 EffectMgr="*res://scripts/effect_mgr.gd"
+NodeUtils="*res://scripts/utils/node_utils.gd"
 
 [display]
 

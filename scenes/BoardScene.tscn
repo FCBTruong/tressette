@@ -186,6 +186,7 @@ offset_right = 300.0
 offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PlayerPos3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
@@ -566,6 +567,30 @@ vertical_alignment = 1
 wait_time = 3.0
 one_shot = true
 
+[node name="GameStartLb" type="Label" parent="CanvasLayer/PlayGround"]
+modulate = Color(0.985389, 0.754896, 0.291801, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.0
+offset_top = -86.0
+offset_right = 179.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.00392157, 0.419608, 0.215686, 1)
+theme_override_colors/font_outline_color = Color(0.0117647, 0.415686, 0.211765, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_riexb")
+theme_override_font_sizes/font_size = 45
+text = "GAME_START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CountdownStartLb" type="Label" parent="CanvasLayer/PlayGround"]
 modulate = Color(0.985389, 0.754896, 0.291801, 1)
 layout_mode = 1
@@ -703,6 +728,24 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_ujbxy")
 expand_mode = 1
+
+[node name="RoundLb" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 50)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -430.0
+offset_top = 16.0
+offset_right = -30.0
+offset_bottom = 66.0
+grow_horizontal = 2
+pivot_offset = Vector2(200, 25)
+theme_override_colors/font_color = Color(1, 1, 1, 0.829)
+theme_override_fonts/font = ExtResource("6_foh0g")
+theme_override_font_sizes/font_size = 30
+text = "ROUND: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EvaluateLb" type="Label" parent="CanvasLayer"]
 visible = false

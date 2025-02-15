@@ -9,6 +9,8 @@ var last_ping_time: float = 0.0  # The time when the last ping was received
 
 var is_connected = false
 func _ready():
+	if Config.CURRENT_MODE == Config.MODES.LOCAL and Config.EDIT_MODE:
+		return
 	connect_to_server()
 	
 func connect_to_server():
@@ -30,6 +32,9 @@ func connect_to_server():
 		set_process(true)
 
 func _process(_delta):
+	if Config.CURRENT_MODE == Config.MODES.LOCAL and Config.EDIT_MODE:
+		return
+		
 	socket.poll()
 	var state = socket.get_ready_state()
 

@@ -54,13 +54,6 @@ func _input(event):
 				#SceneManager.show_toast('hello everyone')
 				pass
 			if event.keycode == KEY_Q:
-				EffectMgr.effect_fly_object(
-					"res://assets/images/lobby/lira_icon.png",
-					5,
-					Vector2(0, 0),
-					Vector2(520, 590),
-					1
-				)
 				pass
 
 func _click_cheat_goldbtn():

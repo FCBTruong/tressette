@@ -1348,6 +1348,11 @@ class GameInfo:
 		service.field = _pot_value
 		data[_pot_value.tag] = service
 		
+		_current_round = PBField.new("current_round", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 19, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _current_round
+		data[_current_round.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1511,6 +1516,15 @@ class GameInfo:
 		_pot_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_pot_value(value : int) -> void:
 		_pot_value.value = value
+	
+	var _current_round: PBField
+	func get_current_round() -> int:
+		return _current_round.value
+	func clear_current_round() -> void:
+		data[19].state = PB_SERVICE_STATE.UNFILLED
+		_current_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_current_round(value : int) -> void:
+		_current_round.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1882,7 +1896,21 @@ class StartGame:
 	func _init():
 		var service
 		
+		_pot_value = PBField.new("pot_value", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _pot_value
+		data[_pot_value.tag] = service
+		
 	var data = {}
+	
+	var _pot_value: PBField
+	func get_pot_value() -> int:
+		return _pot_value.value
+	func clear_pot_value() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_pot_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_pot_value(value : int) -> void:
+		_pot_value.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

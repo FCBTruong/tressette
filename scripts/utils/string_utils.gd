@@ -36,3 +36,9 @@ func sub_string(str: String, size: int) -> String:
 	if str.length() > size:
 		return str.substr(0, size) + "..."
 	return str
+	
+func convert_point_string_to_int(point_str: String) -> int:
+	# Remove all periods from the string
+	var cleaned_str = point_str.replace(".", "")
+	# Convert the cleaned string to an integer
+	return cleaned_str.to_int()

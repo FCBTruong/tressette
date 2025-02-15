@@ -37,7 +37,10 @@ var cards_node_compare = []
 @onready var evaluate_lb = find_child('EvaluateLb')
 @onready var back_btn = find_child("BackBtn")
 @onready var bet_lb = find_child("BetLb")
-@onready var pot_value_lb = find_child("PotValueLb")
+@onready var pot_value_lb:Label = find_child("PotValueLb")
+@onready var center_play_pn_pos
+@onready var game_start_lb = find_child("GameStartLb")
+@onready var round_lb = find_child("RoundLb")
 
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
@@ -50,7 +53,9 @@ var SCALE_CARD_COMPARE = 0.8
 var SCALE_CARD_DEAL_INIT = 0.8	
 var base_text = tr('WAITING_FOR_OTHERS')
 var evaluate_lb_default_pos
+var game_start_lb_default_pos
 func _ready() -> void:	
+	game_start_lb_default_pos = game_start_lb.position
 	SceneManager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
 	play_ground = find_child('PlayGround')
@@ -61,6 +66,7 @@ func _ready() -> void:
 	evaluate_lb.visible = true
 	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
 	_on_enter()
+	
 	
 	#show_prepare_start()
 func _get_card_rotates(n):
@@ -74,6 +80,7 @@ func _get_card_rotates(n):
 	return arr
 		
 func _on_enter():
+	game_start_lb.visible = false
 	on_update_players()
 	update_remain_cards()
 	in_game_chat_gui.visible = false
@@ -126,6 +133,49 @@ func continue_play():
 	opponent_score_sub.visible = false
 	my_score_sub.visible = false
 	pot_value_lb.text = '0'
+
+func _update_current_round():
+	round_lb.text = "ROUND: " + str(game_logic.match_data.current_round)
+func on_game_start():
+	# effect start game
+	game_start_lb.visible = true
+	game_start_lb.position = game_start_lb_default_pos
+	game_start_lb.position.x -= 200
+	game_start_lb.modulate.a = 0
+	var start_eff_tween = create_tween()
+	start_eff_tween.parallel().tween_property(
+		game_start_lb,
+		"position",
+		game_start_lb_default_pos,
+		0.3
+	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	start_eff_tween.parallel().tween_property(
+		game_start_lb,
+		"modulate:a",
+		1,
+		0.3
+	)
+	
+	var p2 = game_start_lb_default_pos
+	p2.x += 200
+	start_eff_tween.tween_interval(0)
+	start_eff_tween.parallel().tween_callback(
+		self._effect_pot_contribute
+	).set_delay(0.2)
+	start_eff_tween.parallel().tween_property(
+		game_start_lb,
+		"position",
+		p2,
+		0.3
+	).set_delay(0.5)
+	start_eff_tween.parallel().tween_property(
+		game_start_lb,
+		"modulate:a",
+		0,
+		0.3
+	).set_delay(0.5)
+	
+	_update_current_round()
 	
 func on_update_players():
 	var players_info = game_logic.get_list_player()
@@ -689,6 +739,10 @@ func _input(event):
 				test_play_playercard()
 				print("S key pressed")
 			elif event.keycode == KEY_1:
+				on_game_start()
+				return
+				_effect_pot_contribute()
+				return
 				deal_my_cards([2,3,4,5,6,8,9,33])
 		else:
 			if event.keycode == KEY_W:
@@ -717,4 +771,36 @@ func _open_guide_gui() -> void:
 	SceneManager.open_gui("res://scenes/guis/GuideGUI.tscn")
 	
 func _effect_pot_contribute():
+	center_play_pn_pos = NodeUtils.get_center_position(center_play_pn)
+	var i = 0
+	for player in list_players:
+		var pos = player.global_position
+		var des_p = Vector2(center_play_pn_pos.x, center_play_pn_pos.y)
+
+		EffectMgr.effect_fly_coin_bet_table(
+			"res://assets/images/lobby/lira_icon.png",
+			5,
+			pos,
+			des_p,
+			0.6,
+			0.11,
+			self,
+			i == 0
+		)
+		i = i + 1
 	pass
+	
+func on_finish_effect_contribute_pot():
+	var cur_pot_value =  StringUtils.convert_point_string_to_int(pot_value_lb.text)
+	print('curreent pot', cur_pot_value)
+	var new_pot_value =  game_logic.match_data.pot_value
+	
+	
+	var pot_tween = create_tween()
+	pot_tween.tween_method(_set_int_to_text.bind(pot_value_lb, false), cur_pot_value, new_pot_value, 0.4)
+
+func _set_int_to_text(value: int, label, add: bool = false) -> void:
+	var str = StringUtils.point_number(value)
+	if add:
+		str = '+' + str
+	label.text = str

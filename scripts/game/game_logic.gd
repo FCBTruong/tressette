@@ -124,6 +124,7 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.current_turn = pkg.get_current_turn()
 	match_data.remain_cards = pkg.get_remain_cards()
 	match_data.pot_value = pkg.get_pot_value()
+	match_data.current_round = pkg.get_current_round()
 	self.is_registered_leave = pkg.get_is_registered_leave()
 	self.hand_suit = pkg.get_hand_suit()
 	
@@ -241,8 +242,15 @@ func _start_game(payload: PackedByteArray):
 		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.StartGame.new()
 	var result_code = pkg.from_bytes(payload)
+	match_data.pot_value = pkg.get_pot_value()
 	match_data.state = MatchData.MATCH_STATE.PLAYING
 	reset_cards_compare()
+	
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.on_game_start()
+	
+	
 
 func check_finishhand():
 	print('cards compares', match_data.cards_compare)
