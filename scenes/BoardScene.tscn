@@ -320,6 +320,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ucf2k")
 
 [node name="Label2" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
+modulate = Color(1, 1, 1, 0.776)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -735,14 +736,14 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -430.0
-offset_top = 16.0
+offset_top = 8.0
 offset_right = -30.0
-offset_bottom = 66.0
+offset_bottom = 58.0
 grow_horizontal = 2
 pivot_offset = Vector2(200, 25)
-theme_override_colors/font_color = Color(1, 1, 1, 0.829)
+theme_override_colors/font_color = Color(1, 1, 1, 0.76)
 theme_override_fonts/font = ExtResource("6_foh0g")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "ROUND: 0"
 horizontal_alignment = 1
 vertical_alignment = 1

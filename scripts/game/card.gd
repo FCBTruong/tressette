@@ -120,6 +120,26 @@ func show_card(effect_flip: bool = false):
 		# Second part: Scale X back to 1 (flip card back)
 		tween.tween_property(card_image, "scale:x", 1, halfway_time).set_ease(Tween.EASE_OUT)
 
+func hide_card():
+	# Ensure no other tween is running
+	if tween and tween.is_running():
+		tween.kill()
+	
+	# Create a new tween
+	tween = create_tween()
+
+	var time_flip = 0.5
+	var halfway_time = time_flip / 2
+
+	# First part: Scale X to 0 (flip card to its edge)
+	tween.tween_property(card_image, "scale:x", 0, halfway_time).set_ease(Tween.EASE_IN)
+
+	# Change the card face in the middle of the flip
+	tween.tween_callback(func():
+		turn_face_down()
+	)
+	# Second part: Scale X back to 1 (flip card back)
+	tween.tween_property(card_image, "scale:x", 1, halfway_time).set_ease(Tween.EASE_OUT)
 
 var light_scene = preload("res://scenes/board/EffectLightCard.tscn")
 func effect_win_card():

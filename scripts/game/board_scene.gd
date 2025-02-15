@@ -46,6 +46,7 @@ const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
 const CHAT_EMO_Z_INDEX = 200
+const TIME_VIEW_CARD = 1.1
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
@@ -81,6 +82,7 @@ func _get_card_rotates(n):
 		
 func _on_enter():
 	game_start_lb.visible = false
+	_update_current_round()
 	on_update_players()
 	update_remain_cards()
 	in_game_chat_gui.visible = false
@@ -135,7 +137,8 @@ func continue_play():
 	pot_value_lb.text = '0'
 
 func _update_current_round():
-	round_lb.text = "ROUND: " + str(game_logic.match_data.current_round)
+	round_lb.text = tr("ROUND") + ": " + str(game_logic.match_data.current_round)
+
 func on_game_start():
 	# effect start game
 	game_start_lb.visible = true
@@ -625,7 +628,13 @@ func _effect_draw_card(uid, card_id):
 	if uid != PlayerInfoMgr.my_user_data.uid:
 		var player_node = get_player_node_by_uid(uid)
 		final_pos = player_node.global_position
-		tween.tween_property(instance, "global_position", final_pos, 0.3).set_delay(1)
+		tween.parallel().tween_callback(
+			func():
+				instance.hide_card()
+		).set_delay(TIME_VIEW_CARD)
+		tween.parallel().tween_property(instance, "global_position", final_pos, 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
+		tween.parallel().tween_property(instance, "scale", Vector2(0.5, 0.5), 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
+		tween.tween_interval(0)
 		tween.tween_callback(
 			func():
 				instance.queue_free()
@@ -662,10 +671,9 @@ func _effect_draw_card(uid, card_id):
 	final_pos = new_pos_arr[des_i]
 	
 	var rot_radians: float = new_rotates[des_i]
-	print(rot_radians)
 
 	# Animate pos
-	var delay = 1
+	var delay = TIME_VIEW_CARD
 
 	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
 	tween.parallel().tween_property(instance, "scale", Vector2(1, 1), 0.3).set_delay(delay)
