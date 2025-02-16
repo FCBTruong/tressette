@@ -259,23 +259,62 @@ position = Vector2(40, 75)
 [node name="PlaceCard0" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 position = Vector2(40, 195)
 
-[node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+[node name="CardbackPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+anchors_preset = 0
+offset_left = 66.0
+offset_top = 21.0
+offset_right = 156.0
+offset_bottom = 151.0
+mouse_filter = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+visible = false
+offset_left = 7.0
+offset_top = 29.0
+offset_right = 97.0
+offset_bottom = 159.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ncq5t")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+visible = false
+offset_left = 7.0
+offset_top = 25.0
+offset_right = 97.0
+offset_bottom = 155.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ncq5t")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 21.0
+offset_right = 97.0
+offset_bottom = 151.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ncq5t")
+expand_mode = 1
+
+[node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.28224
 anchor_top = 0.222593
 anchor_right = 0.359163
 anchor_bottom = 0.454075
-offset_left = -95.3438
-offset_top = -28.7778
-offset_right = -51.4976
-offset_bottom = 31.7776
+offset_left = -17.4015
+offset_top = -11.937
+offset_right = 65.6754
+offset_bottom = 87.9703
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_ncq5t")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardBack"]
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn/CardBack"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -287,7 +326,7 @@ offset_bottom = 16.25
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2wdn7")
 
-[node name="RemainCardsLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardBack/Panel"]
+[node name="RemainCardsLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn/CardBack/Panel"]
 modulate = Color(0.944657, 0.832392, 0.515816, 1)
 layout_mode = 1
 anchors_preset = 8

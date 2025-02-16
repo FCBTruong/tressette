@@ -2251,6 +2251,11 @@ class EndGame:
 		service.field = _score_totals
 		data[_score_totals.tag] = service
 		
+		_gold_changes = PBField.new("gold_changes", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 6, true, [])
+		service = PBServiceField.new()
+		service.field = _gold_changes
+		data[_gold_changes.tag] = service
+		
 	var data = {}
 	
 	var _uids: PBField
@@ -2297,6 +2302,15 @@ class EndGame:
 		_score_totals.value = []
 	func add_score_totals(value : int) -> void:
 		_score_totals.value.append(value)
+	
+	var _gold_changes: PBField
+	func get_gold_changes() -> Array:
+		return _gold_changes.value
+	func clear_gold_changes() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_gold_changes.value = []
+	func add_gold_changes(value : int) -> void:
+		_gold_changes.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

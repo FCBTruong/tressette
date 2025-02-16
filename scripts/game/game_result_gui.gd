@@ -79,9 +79,9 @@ func set_int_to_text(value: int, label, add: bool = false) -> void:
 func _update_player(p, data: MatchData.MatchResultPlayer):
 	print('update player...')
 	p.visible = true
-	p.find_child('ScoreCard').text = str(data.score_card)
-	p.find_child('ScoreLastTrick').text = str(data.score_last_trick)
-	p.find_child('ScoreTotal').text = str(data.score_total)
+	p.find_child('ScoreCard').text = str(int(data.score_card / 3))
+	p.find_child('ScoreLastTrick').text = str(int(data.score_last_trick / 3))
+	p.find_child('ScoreTotal').text = str(int(data.score_total / 3))
 	var avt = p.find_child("AvatarCircle")
 	var avt_img = p.find_child("AvatarImg")
 	var avt_border = p.find_child("AvtBorder")

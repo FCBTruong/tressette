@@ -135,11 +135,19 @@ func continue_play():
 	opponent_score_sub.visible = false
 	my_score_sub.visible = false
 	pot_value_lb.text = '0'
+	round_lb.text = ''
 
 func _update_current_round():
+	if game_logic.match_data.current_round == 0:
+		return
 	round_lb.text = tr("ROUND") + ": " + str(game_logic.match_data.current_round)
 
 func on_game_start():
+	game_start_lb.text = tr("GAME_START")
+	_eff_text_middle()
+	_update_current_round()
+	
+func _eff_text_middle():
 	# effect start game
 	game_start_lb.visible = true
 	game_start_lb.position = game_start_lb_default_pos
@@ -178,10 +186,10 @@ func on_game_start():
 		0.3
 	).set_delay(0.5)
 	
-	_update_current_round()
-	
 func on_new_round():
-	_effect_pot_contribute()
+	game_start_lb.text = tr("ROUND") + " " + str(game_logic.match_data.current_round)
+	_eff_text_middle()
+	_update_current_round()
 	
 func on_update_players():
 	var players_info = game_logic.get_list_player()

@@ -248,6 +248,8 @@ func _start_game(payload: PackedByteArray):
 	match_data.state = MatchData.MATCH_STATE.PLAYING
 	reset_cards_compare()
 	
+	match_data.current_round = 1
+	
 	var scene = SceneManager.get_current_scene()
 	if scene is BoardScene:
 		scene.on_game_start()
@@ -400,8 +402,9 @@ func _handle_end_game(payload: PackedByteArray):
 	var score_cards = pkg.get_score_cards()
 	var score_last_tricks = pkg.get_score_last_tricks()
 	var score_totals = pkg.get_score_totals()
+	var gold_changes = pkg.get_gold_changes()
 	match_result = MatchData.MatchResult.new()
-	match_result.gold_change = 9828282
+	match_result.gold_change = gold_changes[my_idx]
 	match_result.win_team_id = win_team_id
 	match_result.is_win = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id \
 		== win_team_id

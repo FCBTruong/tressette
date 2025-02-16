@@ -34,3 +34,10 @@ func play_lose_sound():
 		return
 	audio_player.stream = lose_sound
 	audio_player.play()
+	
+var coin_hit_sound = preload('res://assets/sounds/coin_hit_sound.wav')
+func play_coin_hit_sound():
+	if not GameManager.enable_sound:
+		return
+	audio_player.stream = coin_hit_sound
+	audio_player.play()

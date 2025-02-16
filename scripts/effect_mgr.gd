@@ -49,6 +49,11 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 		, 0.0, 1.0, fly_time).set_delay(delay) \
 		.set_trans(Tween.TRANS_SINE)
 		
+		tween.parallel().tween_callback(
+			func():
+				SoundManager.play_coin_hit_sound()
+		).set_delay(delay)
+		
 		tween.parallel().tween_property(
 			node,
 			'scale',
