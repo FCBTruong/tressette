@@ -34,6 +34,7 @@ func switch_scene(new_scene_path: String) -> void:
 			current_scene.add_child(popup_instance)
 		
 func open_gui(gui_path: String, z_order = 1):
+	print('open gui: ....', gui_path)
 	var current_scene = get_tree().get_current_scene()
 	await get_tree().process_frame
 	if current_scene:
@@ -68,6 +69,7 @@ func show_ok_dialog(message: String, ok_callback: Callable = Callable()):
 	gui.set_message(message)
 	if ok_callback.is_valid():
 		gui.connect("ok_pressed", ok_callback)
+		gui.connect("close_pressed", ok_callback)
 		
 	gui.hide_close_cancel()
 

@@ -125,6 +125,7 @@ theme_override_constants/separation = 40
 alignment = 1
 
 [node name="CancelBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 flat = true

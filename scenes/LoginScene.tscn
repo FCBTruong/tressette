@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0s371vj6s5od"]
+[gd_scene load_steps=14 format=3 uid="uid://b0s371vj6s5od"]
 
 [ext_resource type="Script" path="res://scripts/lobby/login_scene.gd" id="1_xqlge"]
 [ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="2_cmw77"]
 [ext_resource type="Texture2D" uid="uid://clam73q7sj7cp" path="res://assets/images/login/google_icon.png" id="3_2w4au"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_7l41h"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_16366"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_ru5fx"]
 [ext_resource type="Texture2D" uid="uid://bhi14nillkotg" path="res://assets/images/login/facebook.png" id="4_egrs7"]
@@ -11,18 +12,37 @@
 [ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="9_4swjg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm302"]
-bg_color = Color(0.853, 0.853, 0.853, 0.908)
+bg_color = Color(0, 0, 0, 0.382)
+border_blend = true
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+shadow_color = Color(0.38, 0.176, 0.082, 0)
+shadow_size = 5
+shadow_offset = Vector2(3, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7cpd"]
-bg_color = Color(0.761363, 0.313866, 0.0201693, 1)
+bg_color = Color(0.944657, 0.020043, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(0.816, 0.648, 0.453, 0.48)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_premm"]
+bg_color = Color(1, 1, 1, 0.9)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+shadow_color = Color(0.873376, 0.686172, 0.468279, 1)
+shadow_size = 2
 
 [node name="LoginScene" type="Node2D"]
 script = ExtResource("1_xqlge")
@@ -35,24 +55,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_cmw77")
 expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
-[node name="Panel2" type="Panel" parent="CanvasLayer"]
+[node name="LoginPn" type="Panel" parent="CanvasLayer"]
 custom_minimum_size = Vector2(400, 300)
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -300.0
+offset_top = -150.0
 offset_right = 200.0
+offset_bottom = 150.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qm302")
 
-[node name="ColorRect" type="Control" parent="CanvasLayer/Panel2"]
+[node name="ColorRect" type="Control" parent="CanvasLayer/LoginPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,7 +91,7 @@ offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect"]
+[node name="Label" type="Label" parent="CanvasLayer/LoginPn/ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -76,14 +101,14 @@ offset_top = -9.0
 offset_right = 56.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.137, 0.137, 0.137, 0.763)
+theme_override_colors/font_color = Color(1, 1, 1, 0.763)
 theme_override_fonts/font = ExtResource("3_ru5fx")
 theme_override_font_sizes/font_size = 25
 text = "LOGIN WITH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GuestBtn" type="Button" parent="CanvasLayer/Panel2/ColorRect"]
+[node name="GuestBtn" type="Button" parent="CanvasLayer/LoginPn/ColorRect"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -100,7 +125,7 @@ text = "Continue as guest"
 flat = true
 script = ExtResource("3_16366")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Panel2/ColorRect/GuestBtn"]
+[node name="Panel" type="Panel" parent="CanvasLayer/LoginPn/ColorRect/GuestBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +135,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h7cpd")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect/GuestBtn"]
+[node name="Label" type="Label" parent="CanvasLayer/LoginPn/ColorRect/GuestBtn"]
+self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,9 +149,11 @@ offset_right = 23.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_7l41h")
 text = "Guest"
 
-[node name="Label2" type="Label" parent="CanvasLayer/Panel2/ColorRect"]
+[node name="Label2" type="Label" parent="CanvasLayer/LoginPn/ColorRect"]
+modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -138,29 +166,29 @@ offset_right = 55.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_pr75e")
 theme_override_font_sizes/font_size = 20
 text = "Or"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Panel2/ColorRect/Label2"]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/LoginPn/ColorRect/Label2"]
 offset_left = 71.0
 offset_top = 16.0
 offset_right = 171.0
 offset_bottom = 17.0
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.8)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel2/ColorRect/Label2"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/LoginPn/ColorRect/Label2"]
 layout_mode = 0
 offset_left = -63.0
 offset_top = 15.0
 offset_right = 37.0
 offset_bottom = 16.0
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.8)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel2/ColorRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LoginPn/ColorRect"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -177,14 +205,23 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="GoogleBtn" type="Button" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer"]
+[node name="GoogleBtn" type="Button" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 flat = true
 alignment = 0
 script = ExtResource("3_16366")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/GoogleBtn"]
+[node name="Panel" type="Panel" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/GoogleBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_premm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/GoogleBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -199,12 +236,12 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/GoogleBtn/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/GoogleBtn/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_2w4au")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/GoogleBtn/VBoxContainer"]
-self_modulate = Color(0, 0, 0, 0.7)
+[node name="Label" type="Label" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/GoogleBtn/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_pr75e")
 theme_override_font_sizes/font_size = 18
@@ -212,14 +249,14 @@ text = "Google"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FacebookBtn" type="Button" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer"]
+[node name="FacebookBtn" type="Button" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_16366")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/FacebookBtn"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/FacebookBtn"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 7
@@ -234,12 +271,11 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/FacebookBtn/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/FacebookBtn/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_egrs7")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/FacebookBtn/VBoxContainer"]
-self_modulate = Color(0, 0, 0, 1)
+[node name="Label" type="Label" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/FacebookBtn/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_pr75e")
 theme_override_font_sizes/font_size = 18
@@ -247,13 +283,22 @@ text = "Facebook"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AppleBtn" type="Button" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer"]
+[node name="AppleBtn" type="Button" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_16366")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/AppleBtn"]
+[node name="Panel" type="Panel" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/AppleBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_premm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/AppleBtn"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 7
@@ -268,15 +313,15 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/AppleBtn/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/AppleBtn/VBoxContainer"]
 custom_minimum_size = Vector2(85, 85)
 layout_mode = 2
 texture = ExtResource("6_rp1b3")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel2/ColorRect/HBoxContainer/AppleBtn/VBoxContainer"]
-self_modulate = Color(0, 0, 0, 0.7)
+[node name="Label" type="Label" parent="CanvasLayer/LoginPn/ColorRect/HBoxContainer/AppleBtn/VBoxContainer"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_pr75e")
 theme_override_font_sizes/font_size = 18
@@ -330,10 +375,10 @@ theme_override_fonts/font = ExtResource("9_4swjg")
 theme_override_font_sizes/font_size = 30
 text = "Welcom to Tressette"
 
-[connection signal="pressed" from="CanvasLayer/Panel2/ColorRect/GuestBtn" to="." method="_login_guest"]
-[connection signal="pressed" from="CanvasLayer/Panel2/ColorRect/HBoxContainer/GoogleBtn" to="." method="_login_google"]
-[connection signal="pressed" from="CanvasLayer/Panel2/ColorRect/HBoxContainer/FacebookBtn" to="." method="_login_facebook"]
-[connection signal="pressed" from="CanvasLayer/Panel2/ColorRect/HBoxContainer/AppleBtn" to="." method="_login_with_apple"]
+[connection signal="pressed" from="CanvasLayer/LoginPn/ColorRect/GuestBtn" to="." method="_login_guest"]
+[connection signal="pressed" from="CanvasLayer/LoginPn/ColorRect/HBoxContainer/GoogleBtn" to="." method="_login_google"]
+[connection signal="pressed" from="CanvasLayer/LoginPn/ColorRect/HBoxContainer/FacebookBtn" to="." method="_login_facebook"]
+[connection signal="pressed" from="CanvasLayer/LoginPn/ColorRect/HBoxContainer/AppleBtn" to="." method="_login_with_apple"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin" to="." method="test_login_user_A"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin/Button" to="." method="test_login_userB"]
 [connection signal="text_submitted" from="CanvasLayer/PnCheat/InputUIDCheat" to="." method="_login_by_uid_cheat"]

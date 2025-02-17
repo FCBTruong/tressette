@@ -3,6 +3,8 @@ extends Node
 @onready var pn_cheat = find_child('PnCheat')
 @onready var input_uid_cheat = find_child('InputUIDCheat')
 @onready var apple_btn = find_child("AppleBtn")
+@onready var login_pn = find_child("LoginPn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Firebase.Auth.login_succeeded.connect(on_login_local_firebase_succeeed)
@@ -18,6 +20,18 @@ func _ready() -> void:
 		apple_btn.visible = true
 	else:
 		apple_btn.visible = false
+		
+	var tween = create_tween()
+	var default_pos = login_pn.position
+	
+	login_pn.modulate.a = 0
+	login_pn.position.y -= 300
+	
+	tween.parallel().tween_property(login_pn,
+		"position", default_pos, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(login_pn,
+		"modulate:a", 1, 0.4)
+		
 
 func on_login_local_firebase_succeeed(auth):
 	# For computer testing, outdated

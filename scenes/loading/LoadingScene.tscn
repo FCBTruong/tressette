@@ -41,6 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_bgxl0")
 expand_mode = 1
+stretch_mode = 6
 
 [node name="LoadBar" type="ProgressBar" parent="CanvasLayer"]
 custom_minimum_size = Vector2(0, 10)
