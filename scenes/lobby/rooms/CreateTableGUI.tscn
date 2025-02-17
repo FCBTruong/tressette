@@ -128,5 +128,120 @@ text = "CREATE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -100.0
+offset_right = 170.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Control2" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Classic"
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 29.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y8xbq")
+theme_override_font_sizes/font_size = 28
+text = "GAME_MODE"
+vertical_alignment = 1
+
+[node name="Control3" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "1vs1"
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control3"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 29.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y8xbq")
+theme_override_font_sizes/font_size = 28
+text = "PLAYER_MODE"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="OptionBet" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+selected = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 29.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y8xbq")
+theme_override_font_sizes/font_size = 28
+text = "BET"
+vertical_alignment = 1
+
 [connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
 [connection signal="pressed" from="CanvasLayer/MainPn/CreateBtn" to="." method="_on_create_table"]

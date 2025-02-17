@@ -82,17 +82,14 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -150.0
+offset_top = 74.0
 offset_right = 100.0
-offset_bottom = 50.0
+offset_bottom = 425.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="MusicBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer"]
@@ -111,7 +108,7 @@ text = "SOUND"
 script = ExtResource("2_txiv8")
 
 [node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="LanguageTitle" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
@@ -134,7 +131,6 @@ popup/item_1/id = 1
 script = ExtResource("2_txiv8")
 
 [node name="Control2" type="Control" parent="CanvasLayer/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="CardStyleTitle" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
@@ -215,43 +211,64 @@ theme_override_fonts/font = ExtResource("3_j4bw7")
 theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 
-[node name="RemoveAccBtn" type="Button" parent="CanvasLayer/Panel"]
-custom_minimum_size = Vector2(100, 0)
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -71.0
-offset_top = -141.0
-offset_right = 66.0
-offset_bottom = -101.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="RemoveAccBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -20.0
+offset_right = 75.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/align_to_largest_stylebox = 40
 theme_override_fonts/font = ExtResource("3_j4bw7")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/hover = SubResource("StyleBoxFlat_xsjki")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_xsjki")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xsjki")
-text = "Remove Account"
+text = "REMOVE_ACC"
 script = ExtResource("2_txiv8")
 
-[node name="LogoutBtn" type="Button" parent="CanvasLayer/Panel"]
+[node name="Control2" type="Control" parent="CanvasLayer/Panel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="LogoutBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/Control2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -51.0
-offset_top = -85.0
-offset_right = 49.0
-offset_bottom = -45.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -20.0
+offset_right = 75.0
+offset_bottom = 20.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/align_to_largest_stylebox = 40
 theme_override_fonts/font = ExtResource("3_j4bw7")
 theme_override_font_sizes/font_size = 18
@@ -261,11 +278,101 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_1pm8r")
 text = "LOGOUT"
 script = ExtResource("2_txiv8")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PrivacyBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+flat = true
+script = ExtResource("2_txiv8")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/PrivacyBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -11.5
+offset_right = 64.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wld6o")
+theme_override_font_sizes/font_size = 14
+text = "PRIVACY_POLICY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/PrivacyBtn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -1.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 0.72)
+
+[node name="TermsBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+flat = true
+script = ExtResource("2_txiv8")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/TermsBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -11.5
+offset_right = 64.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wld6o")
+theme_override_font_sizes/font_size = 14
+text = "TERMS_OF_SERVICE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/TermsBtn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -1.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1, 1, 1, 0.72)
+
+[node name="Control3" type="Control" parent="CanvasLayer/Panel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_hide_gui"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MusicBtn" to="CanvasLayer" method="_click_music"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/SoundBtn" to="CanvasLayer" method="_click_sound"]
 [connection signal="item_selected" from="CanvasLayer/Panel/VBoxContainer/OptionLanguage" to="CanvasLayer" method="_on_select_language_option"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn" to="CanvasLayer" method="_choose_card_modern"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn" to="CanvasLayer" method="_choose_card_classic"]
-[connection signal="pressed" from="CanvasLayer/Panel/RemoveAccBtn" to="CanvasLayer" method="_remove_account"]
-[connection signal="pressed" from="CanvasLayer/Panel/LogoutBtn" to="CanvasLayer" method="_logout"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer2/Control/RemoveAccBtn" to="CanvasLayer" method="_remove_account"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer2/Control2/LogoutBtn" to="CanvasLayer" method="_logout"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/PrivacyBtn" to="CanvasLayer" method="_click_privacy_policy"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/TermsBtn" to="CanvasLayer" method="_click_terms_of_service"]

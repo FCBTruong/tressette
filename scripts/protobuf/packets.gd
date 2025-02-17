@@ -2172,6 +2172,11 @@ class GeneralInfo:
 		service.field = _time_thinking_in_turn
 		data[_time_thinking_in_turn.tag] = service
 		
+		_tressette_bets = PBField.new("tressette_bets", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 4, true, [])
+		service = PBServiceField.new()
+		service.field = _tressette_bets
+		data[_tressette_bets.tag] = service
+		
 	var data = {}
 	
 	var _timestamp: PBField
@@ -2200,6 +2205,15 @@ class GeneralInfo:
 		_time_thinking_in_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_time_thinking_in_turn(value : int) -> void:
 		_time_thinking_in_turn.value = value
+	
+	var _tressette_bets: PBField
+	func get_tressette_bets() -> Array:
+		return _tressette_bets.value
+	func clear_tressette_bets() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_tressette_bets.value = []
+	func add_tressette_bets(value : int) -> void:
+		_tressette_bets.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3925,6 +3939,47 @@ class NewRound:
 		_pot_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_pot_value(value : int) -> void:
 		_pot_value.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class CreateTable:
+	func _init():
+		var service
+		
+		_bet = PBField.new("bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _bet
+		data[_bet.tag] = service
+		
+	var data = {}
+	
+	var _bet: PBField
+	func get_bet() -> int:
+		return _bet.value
+	func clear_bet() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_bet(value : int) -> void:
+		_bet.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

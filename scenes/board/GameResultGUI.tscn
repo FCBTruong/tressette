@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bebfix1c1kukt"]
+[gd_scene load_steps=18 format=3 uid="uid://bebfix1c1kukt"]
 
 [ext_resource type="Script" path="res://scripts/game/game_result_gui.gd" id="1_fpth8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_2qycw"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="3_qcsoa"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_xsh0q"]
 [ext_resource type="PackedScene" uid="uid://bbs0hjtshga4s" path="res://scenes/board/PlayerResultNode.tscn" id="6_abg8r"]
+[ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="7_tcbk3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1xll"]
@@ -167,6 +168,53 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_y7cos")
 text = "CONTINUE"
 script = ExtResource("4_xsh0q")
 
+[node name="ContinueTimer" type="Timer" parent="CanvasLayer/MainPn/HBoxContainer/BtnContinue"]
+wait_time = 6.0
+one_shot = true
+
+[node name="ContinueTimeNode" type="TextureProgressBar" parent="CanvasLayer/MainPn/HBoxContainer/BtnContinue"]
+self_modulate = Color(1, 0.888832, 0, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -19.0
+offset_right = 75.0
+offset_bottom = 51.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.55, 0.55)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+step = 0.001
+value = 100.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("6_hnshh")
+
+[node name="ContinueTimeLb" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/BtnContinue/ContinueTimeNode"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.2727
+offset_top = -11.3636
+offset_right = 17.7273
+offset_bottom = 21.6364
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jur3s")
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -184,7 +232,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qcsoa")
 theme_override_font_sizes/font_size = 26
-text = "Total:"
+text = "TOTAL"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
@@ -192,7 +240,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qcsoa")
 theme_override_font_sizes/font_size = 26
-text = "Score Cards:"
+text = "SCORE_CARDS"
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
@@ -200,7 +248,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_qcsoa")
 theme_override_font_sizes/font_size = 26
-text = "Last Trick:"
+text = "LAST_TRICK"
 vertical_alignment = 1
 
 [node name="PlayersPn" type="HBoxContainer" parent="CanvasLayer/MainPn"]

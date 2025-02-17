@@ -28,7 +28,7 @@ func _ready() -> void:
 	login_pn.position.y -= 300
 	
 	tween.parallel().tween_property(login_pn,
-		"position", default_pos, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		"position", default_pos, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT) 
 	tween.parallel().tween_property(login_pn,
 		"modulate:a", 1, 0.4)
 		

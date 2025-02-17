@@ -11,6 +11,7 @@ var table_list = []
 var min_gold_play = 0
 var supported_langues = ['en', 'it']
 var language = 'en'
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var lang = 'en'
@@ -90,6 +91,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			print('delta timestamp server-client', delta)
 			GameManager.set_timestamp_server_delta(delta)
 			GameServerConfig.time_thinking_in_turn = pkg.get_time_thinking_in_turn()
+			GameServerConfig.tressette_bets = pkg.get_tressette_bets()
+			
 		GameConstants.CMDs.TABLE_LIST:
 			var pkg = GameConstants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)

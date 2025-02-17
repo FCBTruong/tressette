@@ -99,3 +99,8 @@ func _on_select_language_option(index):
 func _remove_account():
 	OS.shell_open(GameConstants.DELETE_ACCOUNT_URL)
 		
+func _click_privacy_policy():
+	OS.shell_open(GameConstants.PRIVACY_POLICY_URL)
+
+func _click_terms_of_service():
+	OS.shell_open(GameConstants.TERMS_OF_SERVICE_URL)

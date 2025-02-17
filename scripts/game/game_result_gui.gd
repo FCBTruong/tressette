@@ -10,6 +10,9 @@ var my_team_id
 @onready var crown_icon = find_child('CrownIcon')
 @onready var gold_result_lb = find_child("GoldResult")
 @onready var player_result_node_scene = preload("res://scenes/board/PlayerResultNode.tscn")
+@onready var continue_timer = find_child("ContinueTimer")
+@onready var continue_time_lb = find_child("ContinueTimeLb")
+@onready var continue_time_node = find_child("ContinueTimeNode")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_result(GameConstants.game_logic.match_result)
@@ -25,9 +28,21 @@ func _ready() -> void:
 	TitleLb.modulate.a = 0
 	tween.parallel().tween_property(TitleLb, 'modulate:a', 1, 0.5) \
 		.set_delay(0.5)
+	
+	continue_time_node.visible = false
+	tween.parallel().tween_callback(
+		func ():
+			continue_time_node.visible = true
+			continue_timer.connect("timeout", Callable(self, "_click_continue_play"))
+			continue_timer.start()
+			
+	).set_delay(2)
+	
 	pass # Replace with function body.
 
-
+func _process(delta: float) -> void:
+	self.continue_time_lb.text = str(int(continue_timer.time_left))
+	
 func update_result(data: MatchData.MatchResult):
 	win_team_id = data.win_team_id
 	my_team_id = data.my_team_id

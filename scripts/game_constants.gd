@@ -44,6 +44,7 @@ const CMDs = {
 	PREPARE_START_GAME = 2012,
 	TABLE_LIST = 2013,
 	NEW_ROUND = 2014,
+	CREATE_TABLE = 2015,
 	
 	NEW_INGAME_CHAT_MESSAGE = 3000,
 	CHAT_EMOTICON = 3001,
@@ -92,5 +93,8 @@ const CARD_FACE_STATE = {
 	UP = 0,
 	DOWN = 1
 }
+const LIRA_TEXT = "₤"
 
-const DELETE_ACCOUNT_URL = 'https://www.canva.com/design/DAGct5CYCrQ/LWjqx5vT9_GRSVmrmW8Mig/view?utm_content=DAGct5CYCrQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha22c9ec0b3'
+const DELETE_ACCOUNT_URL = 'https://clareentertainment.my.canva.site/tressette-delete-account'
+const PRIVACY_POLICY_URL = 'https://clareentertainment.my.canva.site/tressette-policy'
+const TERMS_OF_SERVICE_URL = 'https://clareentertainment.my.canva.site/term-of-services'

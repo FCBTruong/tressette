@@ -74,7 +74,8 @@ func on_firebase_sign_out():
 	print("User signed out from Firebase!")
 	
 func login_with_google():
-	firebase_plugin.signInWithGoogle()
+	if firebase_plugin:
+		firebase_plugin.signInWithGoogle()
 
 
 func on_test_signal(msg):

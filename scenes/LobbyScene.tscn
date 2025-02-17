@@ -42,27 +42,27 @@ shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22e1k"]
-bg_color = Color(0.101961, 0.101961, 0.121569, 0.701961)
+bg_color = Color(0.282353, 0.176471, 0.105882, 0.705882)
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqssi"]
-bg_color = Color(0.102475, 0.102922, 0.119835, 0.7)
+bg_color = Color(0.282763, 0.175366, 0.10419, 0.707)
 corner_radius_bottom_right = 20
 corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv6aw"]
-bg_color = Color(0.093, 0.128, 0.208, 0.572)
+bg_color = Color(0.282353, 0.176471, 0.105882, 0.705882)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6i40"]
-bg_color = Color(0.126624, 0.126624, 0.126624, 0.414)
+bg_color = Color(0.354044, 0.23702, 0.154902, 0.414)
 corner_radius_top_right = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2vqb"]
-bg_color = Color(0.436, 0.417, 0.417, 0.27)
+bg_color = Color(0.343861, 0.279801, 0.253341, 0.5)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -232,14 +232,13 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="SettingBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
-modulate = Color(0.737255, 0.74902, 0.780392, 1)
+modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn"]
-modulate = Color(0.737255, 0.74902, 0.780392, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -256,13 +255,13 @@ texture = ExtResource("6_vby4e")
 expand_mode = 1
 
 [node name="SupportBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn"]
-modulate = Color(0.737255, 0.74902, 0.780392, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -278,13 +277,13 @@ grow_vertical = 2
 texture = ExtResource("7_48niu")
 
 [node name="GuideBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/GuideBtn"]
-modulate = Color(0.737255, 0.74902, 0.780392, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -323,7 +322,7 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="MissionBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
-modulate = Color(0.737255, 0.74902, 0.780392, 1)
+modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
@@ -345,13 +344,13 @@ grow_vertical = 2
 texture = ExtResource("8_p6t30")
 
 [node name="FriendBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
-self_modulate = Color(0.737255, 0.74902, 0.780392, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -377,7 +376,7 @@ texture = ExtResource("11_pgu6f")
 expand_mode = 1
 
 [node name="ShopBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
-modulate = Color(0.737886, 0.750155, 0.781729, 1)
+modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 flat = true
