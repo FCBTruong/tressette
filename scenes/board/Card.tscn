@@ -22,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CardImage" type="TextureRect" parent="Main"]
+self_modulate = Color(1, 0.908425, 0.792655, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

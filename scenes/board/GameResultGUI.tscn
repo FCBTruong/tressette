@@ -210,10 +210,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -268.0
-offset_top = -69.0
-offset_right = 268.0
-offset_bottom = 173.0
+offset_left = -237.0
+offset_top = -68.0
+offset_right = 299.0
+offset_bottom = 174.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
@@ -221,6 +221,36 @@ alignment = 1
 
 [node name="PlayerResultNode" parent="CanvasLayer/MainPn/PlayersPn" instance=ExtResource("6_abg8r")]
 layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = 99.0
+offset_right = 131.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.543)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = 46.0
+offset_right = 131.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.543)
 
 [node name="BackgroundParticles" parent="CanvasLayer/MainPn" instance=ExtResource("2_t0g3t")]
 position = Vector2(365, 258)
@@ -234,36 +264,6 @@ offset_right = 466.0
 offset_bottom = 127.0
 texture = ExtResource("7_tcbk3")
 expand_mode = 1
-
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainPn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 98.0
-offset_right = 100.0
-offset_bottom = 99.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.543)
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 45.0
-offset_right = 100.0
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.543)
 
 [connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/BtnExit" to="." method="_click_exit_game"]
 [connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/BtnContinue" to="." method="_click_continue_play"]

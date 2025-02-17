@@ -68,6 +68,8 @@ func turn_face_down():
 	var path = "res://assets/images/card_tressette/card_back.png"
 	_load_texture(path)
 	
+	self.card_image.self_modulate = Color("#ffffff")
+	
 func _load_texture(path):
 	var new_texture = load(path)
 	if new_texture is Texture2D:
@@ -85,6 +87,13 @@ func _set_default_z_index(z):
 func turn_face_up():
 	face_state = GameConstants.CARD_FACE_STATE.UP
 	_load_texture_card()
+	
+	if (GameConstants.game_logic.is_strong_card(self.id)):
+		self.card_image.self_modulate = Color("ffe8ca")
+	else:
+		self.card_image.self_modulate = Color("#ffffff")
+	
+	# set special colour for strong card
 
 func _load_texture_card():
 	var card_type = 'classic'

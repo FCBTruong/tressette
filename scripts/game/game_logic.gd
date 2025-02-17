@@ -491,6 +491,12 @@ func update():
 	# handle logic every frame
 	if match_data.state == MatchData.MATCH_STATE.PLAYING:
 		pass
+		
+func is_strong_card(id: int) -> bool:
+	if id < 12:
+		return true
+	else:
+		return false
 	
 
 	
