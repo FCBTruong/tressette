@@ -67,12 +67,7 @@ func get_token() -> String:
 	
 func send_quick_play() -> void:
 	if PlayerInfoMgr.my_user_data.gold < self.min_gold_play:
-		SceneManager.show_dialog(
-		tr('NOT_ENOUGH_GOLD_PLAY_BUY')
-		,
-		func ():
-			SceneManager.switch_scene(SceneManager.SHOP_SCENE)
-		)
+		GameManager.show_not_gold_recommend_shop()
 		return
 	SceneManager.add_loading(5)
 	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, [])
@@ -92,19 +87,24 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			GameManager.set_timestamp_server_delta(delta)
 			GameServerConfig.time_thinking_in_turn = pkg.get_time_thinking_in_turn()
 			GameServerConfig.tressette_bets = pkg.get_tressette_bets()
-			
+			GameServerConfig.bet_multiplier_min = pkg.get_bet_multiplier_min()
 		GameConstants.CMDs.TABLE_LIST:
 			var pkg = GameConstants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)
 			var table_ids = pkg.get_table_ids()
 			var bets = pkg.get_bets()
+			var num_players = pkg.get_num_players()
+			var player_modes = pkg.get_player_modes()
 			table_list = []
 			
 			for i in range(len(table_ids)):
 				var table = TableInfo.new()
 				table.match_id = table_ids[i]
+				table.bet = bets[i]
+				table.num_player = num_players[i]
+				table.player_mode = player_modes[i]
 				table_list.append(table)
-			print('emit signalllll', len(table_list))
+				
 			SignalBus.emit_signal_global("update_table_list")
 
 		_:
@@ -151,3 +151,14 @@ func change_card_style(p_card_style):
 	
 	# dispatch event for all cards to update texture
 	SignalBus.emit_signal_global("update_card_style")
+	
+func show_not_gold_recommend_shop():
+	SceneManager.show_dialog(
+		tr('NOT_ENOUGH_GOLD_PLAY_BUY')
+		,
+		func ():
+			SceneManager.switch_scene(SceneManager.SHOP_SCENE),
+		func ():
+			pass,
+		true
+		)

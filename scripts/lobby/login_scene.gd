@@ -4,6 +4,8 @@ extends Node
 @onready var input_uid_cheat = find_child('InputUIDCheat')
 @onready var apple_btn = find_child("AppleBtn")
 @onready var login_pn = find_child("LoginPn")
+@onready var select_uid_cheat = find_child("SelectUIDCheat")
+var uids_cheat = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +14,12 @@ func _ready() -> void:
 	LoginMgr.auto_login()	
 	if Config.CURRENT_MODE != Config.MODES.LIVE:
 		pn_cheat.visible = true
+		
+		self.uids_cheat = [1000003,
+		1000004, 1000005, 1000006, 1000007]
+		for x in uids_cheat:
+			select_uid_cheat.add_item(str(x))
+			
 		input_uid_cheat.text = StorageCache.fetch('login_uid_cheat', '')
 	else:
 		pn_cheat.visible = false
@@ -93,3 +101,8 @@ func _login_by_uid_cheat(text) -> void:
 func _login_with_apple() -> void:
 	FirebaseMgr.login_with_apple()
 	pass
+
+
+func _cheat_select_uid():
+	var a = select_uid_cheat.get_selected_id()
+	_login_by_uid_cheat(str(self.uids_cheat[a]))

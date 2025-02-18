@@ -375,6 +375,20 @@ offset_bottom = -19.0
 placeholder_text = "UID"
 virtual_keyboard_type = 2
 
+[node name="SelectUIDCheat" type="OptionButton" parent="CanvasLayer/PnCheat"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -101.0
+offset_right = 203.0
+offset_bottom = -61.0
+
+[node name="UIDSelectBtn" type="Button" parent="CanvasLayer/PnCheat/SelectUIDCheat"]
+offset_left = 216.0
+offset_top = -6.0
+offset_right = 275.0
+offset_bottom = 44.0
+text = "Send"
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
 offset_left = 354.0
@@ -395,3 +409,4 @@ text = "Welcom to Tressette"
 [connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin" to="." method="test_login_user_A"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin/Button" to="." method="test_login_userB"]
 [connection signal="text_submitted" from="CanvasLayer/PnCheat/InputUIDCheat" to="." method="_login_by_uid_cheat"]
+[connection signal="pressed" from="CanvasLayer/PnCheat/SelectUIDCheat/UIDSelectBtn" to="." method="_cheat_select_uid"]

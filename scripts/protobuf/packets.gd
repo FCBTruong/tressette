@@ -2177,6 +2177,11 @@ class GeneralInfo:
 		service.field = _tressette_bets
 		data[_tressette_bets.tag] = service
 		
+		_bet_multiplier_min = PBField.new("bet_multiplier_min", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _bet_multiplier_min
+		data[_bet_multiplier_min.tag] = service
+		
 	var data = {}
 	
 	var _timestamp: PBField
@@ -2214,6 +2219,15 @@ class GeneralInfo:
 		_tressette_bets.value = []
 	func add_tressette_bets(value : int) -> void:
 		_tressette_bets.value.append(value)
+	
+	var _bet_multiplier_min: PBField
+	func get_bet_multiplier_min() -> int:
+		return _bet_multiplier_min.value
+	func clear_bet_multiplier_min() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_bet_multiplier_min.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_bet_multiplier_min(value : int) -> void:
+		_bet_multiplier_min.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2636,15 +2650,15 @@ class TableList:
 		service.field = _bets
 		data[_bets.tag] = service
 		
-		_cur_player = PBField.new("cur_player", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
+		_num_players = PBField.new("num_players", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
 		service = PBServiceField.new()
-		service.field = _cur_player
-		data[_cur_player.tag] = service
+		service.field = _num_players
+		data[_num_players.tag] = service
 		
-		_max_player = PBField.new("max_player", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 4, true, [])
+		_player_modes = PBField.new("player_modes", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 4, true, [])
 		service = PBServiceField.new()
-		service.field = _max_player
-		data[_max_player.tag] = service
+		service.field = _player_modes
+		data[_player_modes.tag] = service
 		
 	var data = {}
 	
@@ -2666,23 +2680,23 @@ class TableList:
 	func add_bets(value : int) -> void:
 		_bets.value.append(value)
 	
-	var _cur_player: PBField
-	func get_cur_player() -> Array:
-		return _cur_player.value
-	func clear_cur_player() -> void:
+	var _num_players: PBField
+	func get_num_players() -> Array:
+		return _num_players.value
+	func clear_num_players() -> void:
 		data[3].state = PB_SERVICE_STATE.UNFILLED
-		_cur_player.value = []
-	func add_cur_player(value : int) -> void:
-		_cur_player.value.append(value)
+		_num_players.value = []
+	func add_num_players(value : int) -> void:
+		_num_players.value.append(value)
 	
-	var _max_player: PBField
-	func get_max_player() -> Array:
-		return _max_player.value
-	func clear_max_player() -> void:
+	var _player_modes: PBField
+	func get_player_modes() -> Array:
+		return _player_modes.value
+	func clear_player_modes() -> void:
 		data[4].state = PB_SERVICE_STATE.UNFILLED
-		_max_player.value = []
-	func add_max_player(value : int) -> void:
-		_max_player.value.append(value)
+		_player_modes.value = []
+	func add_player_modes(value : int) -> void:
+		_player_modes.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3980,6 +3994,47 @@ class CreateTable:
 		_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_bet(value : int) -> void:
 		_bet.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class JoinTableById:
+	func _init():
+		var service
+		
+		_match_id = PBField.new("match_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _match_id
+		data[_match_id.tag] = service
+		
+	var data = {}
+	
+	var _match_id: PBField
+	func get_match_id() -> int:
+		return _match_id.value
+	func clear_match_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_match_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_match_id(value : int) -> void:
+		_match_id.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

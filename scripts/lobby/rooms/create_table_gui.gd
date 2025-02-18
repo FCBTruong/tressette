@@ -44,16 +44,8 @@ func _on_create_table():
 	print("create table with bet id", a)
 	var bet = bets[a]
 	
-	if bet * 3 > PlayerInfoMgr.my_user_data.gold:
-		SceneManager.show_dialog(
-		tr('NOT_ENOUGH_GOLD_PLAY_BUY')
-		,
-		func ():
-			SceneManager.switch_scene(SceneManager.SHOP_SCENE),
-		func ():
-			pass,
-		true
-		)
+	if bet * GameServerConfig.bet_multiplier_min > PlayerInfoMgr.my_user_data.gold:
+		GameManager.show_not_gold_recommend_shop()
 		return
 	
 	var pkg = GameConstants.PROTOBUF.PACKETS.CreateTable.new()

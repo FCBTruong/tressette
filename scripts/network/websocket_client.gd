@@ -94,6 +94,7 @@ func send_packet(cmd_id: int, payload: PackedByteArray):
 		socket.put_packet(serialized_packet)
 	else:
 		print("Cannot send packet. WebSocket is not open.")
+		_disconnect()
 
 func receive_packet(data: PackedByteArray):
 	var received_packet = GameConstants.PROTOBUF.PACKETS.Packet.new()

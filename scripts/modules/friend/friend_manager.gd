@@ -200,11 +200,11 @@ func remove_friend(friend_uid):
 # Comparator function to sort
 func _compare_friend_sort(a, b):
 	if a.is_online and not b.is_online:
-		return -1  # a comes first
+		return true  # a comes first
 	elif not a.is_online and b.is_online:
-		return 1   # b comes first
+		return false  # b comes first
 	else:
-		return 0   
+		return true   
 		
 func send_friend_list():
 	GameClient.send_packet(GameConstants.CMDs.FRIEND_LIST, [])

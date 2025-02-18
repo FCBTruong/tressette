@@ -27,6 +27,7 @@ func _update_table_list():
 			table_pn.add_child(triple_bar)
 	
 		triple_bar.add_child(table_node_inst)
+		table_node_inst.set_info(table)
 func _back_to_lobby():
 	SceneManager.switch_scene(SceneManager.LOBBY_SCENE)
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://coalpvybk074r"]
+[gd_scene load_steps=10 format=3 uid="uid://coalpvybk074r"]
 
+[ext_resource type="Script" path="res://scripts/lobby/rooms/table_node.gd" id="1_d11nj"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_hp4ed"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="2_3wqxv"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_c3fu3"]
@@ -28,9 +29,11 @@ offset_top = 240.0
 offset_right = 441.0
 offset_bottom = 240.0
 mouse_filter = 2
+script = ExtResource("1_d11nj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -427.0
 offset_top = -163.0
 offset_right = 773.0
@@ -116,7 +119,7 @@ layout_mode = 2
 texture = ExtResource("3_wpwhv")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+[node name="PlayerLb" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_3wqxv")
 theme_override_font_sizes/font_size = 22
@@ -141,3 +144,5 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("5_qhwvw")
 theme_override_font_sizes/font_size = 22
 text = "10.000$"
+
+[connection signal="pressed" from="Panel/PlayBtn" to="." method="_click_play"]
