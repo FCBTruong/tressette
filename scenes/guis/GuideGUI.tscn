@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://fsqk1323rim"]
+[gd_scene load_steps=6 format=3 uid="uid://fsqk1323rim"]
 
 [ext_resource type="Script" path="res://scripts/lobby/guide_gui.gd" id="1_1mjrk"]
 [ext_resource type="Texture2D" uid="uid://cnnw63fx5jq3n" path="res://assets/images/lobby/guide/guide_content.png" id="2_y3gd7"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_gvjlj"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="4_20swo"]
+[ext_resource type="Texture2D" uid="uid://slup34rxbxws" path="res://assets/images/lobby/guide/arrow_icon.png" id="4_n0hxl"]
 
 [node name="GuideGui" type="Node2D"]
 script = ExtResource("1_1mjrk")
@@ -24,32 +25,95 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -300.0
-offset_right = 600.0
-offset_bottom = 300.0
+offset_left = -465.0
+offset_top = -260.0
+offset_right = 465.0
+offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(600, 300)
 texture = ExtResource("2_y3gd7")
 expand_mode = 1
-stretch_mode = 5
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
-custom_minimum_size = Vector2(50, 50)
-offset_left = 1074.0
-offset_top = 10.0
-offset_right = 1124.0
-offset_bottom = 60.0
+[node name="PreviousBtn" type="Button" parent="CanvasLayer/MainPn"]
+custom_minimum_size = Vector2(60, 60)
+offset_left = -69.0
+offset_top = 224.0
+offset_right = -9.0
+offset_bottom = 284.0
 flat = true
 script = ExtResource("3_gvjlj")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/PreviousBtn"]
+self_modulate = Color(0, 0.934474, 0.273379, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(25, 25)
+texture = ExtResource("4_n0hxl")
+expand_mode = 1
+
+[node name="NextBtn" type="Button" parent="CanvasLayer/MainPn"]
+custom_minimum_size = Vector2(60, 60)
+offset_left = 939.0
+offset_top = 222.0
+offset_right = 999.0
+offset_bottom = 282.0
+flat = true
+script = ExtResource("3_gvjlj")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/NextBtn"]
+self_modulate = Color(0, 0.934474, 0.273379, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_n0hxl")
+expand_mode = 1
+
+[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+custom_minimum_size = Vector2(50, 50)
+offset_left = 904.0
+offset_top = -27.0
+offset_right = 954.0
+offset_bottom = 23.0
+flat = true
+script = ExtResource("3_gvjlj")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn/CloseBtn"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 41.0
+offset_bottom = 40.0
+color = Color(1, 0.829902, 0.572342, 1)
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
-self_modulate = Color(0.80549, 0.0955006, 0.0955006, 1)
+self_modulate = Color(0.761363, 0.230468, 0.230468, 1)
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 50.0
 texture = ExtResource("4_20swo")
 expand_mode = 1
 
+[connection signal="pressed" from="CanvasLayer/MainPn/PreviousBtn" to="." method="_click_previous_page"]
+[connection signal="pressed" from="CanvasLayer/MainPn/NextBtn" to="." method="_click_next_page"]
 [connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="on_close"]

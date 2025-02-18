@@ -395,6 +395,7 @@ func _handle_draw_card(payload: PackedByteArray):
 		scene.on_draw_cards(arr)
 	
 func _handle_end_game(payload: PackedByteArray):
+	match_data.state = MatchData.MATCH_STATE.ENDING
 	var pkg = GameConstants.PROTOBUF.PACKETS.EndGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var uids = pkg.get_uids()
