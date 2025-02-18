@@ -47,6 +47,9 @@ func auto_login():
 		var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
 		pkg.set_type(LOGIN_TOKEN)	
 		pkg.set_token(login_token)
+		
+		_set_device_info(pkg)
+	
 		GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 	elif  last_login_type == GameConstants.LOGIN_TYPE.GUEST: # guest
 		login_guest()
@@ -66,6 +69,7 @@ func _send_login_guest(guest_id):
 	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
 	pkg.set_type(LOGIN_GUEST)	
 	pkg.set_token(guest_id)
+	_set_device_info(pkg)
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 
 func _create_guest_account():
@@ -108,3 +112,13 @@ func send_login_firebase(token: String, sub_type) -> void:
 	pkg.set_sub_type(sub_type)
 	GameClient.send_packet(GameConstants.CMDs.LOGIN_FIREBASE, pkg.to_bytes())
 	
+func _set_device_info(pkg):
+	var device_model = OS.get_model_name()
+	var platform = ''
+	
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		platform = 'ios'
+	else:
+		platform = 'android'
+	pkg.set_device_model(device_model)
+	pkg.set_platform(platform)

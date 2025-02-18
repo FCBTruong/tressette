@@ -31,7 +31,7 @@ func set_user_data(user_dt: UserData) -> void:
 	
 	
 	#name_label.text = StringUtils.sub_string(user_data.name, 9)
-	gold_lb.text = StringUtils.point_number(user_data.gold)
+	gold_lb.text = _get_gold_str(user_data.gold)
 	update_points_display()
 	# update avatar
 	print('userdatavat', user_data.avatar)
@@ -137,4 +137,10 @@ func show_emotion(emo_id):
 	
 	
 func _on_update_money():
-	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)
+	gold_lb.text = _get_gold_str(PlayerInfoMgr.my_user_data.gold)
+
+func _get_gold_str(gold) -> String:
+	var str = StringUtils.point_number(gold)
+	if gold > 100000000:
+		str = StringUtils.symbol_number(gold)
+	return str

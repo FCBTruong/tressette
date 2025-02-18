@@ -69,6 +69,7 @@ const CMDs = {
 	
 	CHANGE_AVATAR = 6000,
 	CHEAT_GOLD_USER = 6001,
+	CLAM_SUPPORT = 6002,
 }
 
 const PROTOBUF = {

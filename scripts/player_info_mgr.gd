@@ -1,6 +1,7 @@
 extends Node
 
 var my_user_data = UserData.new(0, '')
+var support_num = 0
 func get_user_id():
 	return my_user_data.uid
 	
@@ -22,6 +23,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	my_user_data.gold = packet.get_gold()
 	my_user_data.avatar = packet.get_avatar()
 	my_user_data.avatar_third_party = packet.get_avatar_third_party()
+	support_num = packet.get_support_num()
 	var scores = packet.get_scores()
 	var names = packet.get_names()
 	var ac = packet.get_abc()
@@ -40,3 +42,5 @@ func _on_update_money(bytes: PackedByteArray):
 func on_update_avatar(avatar: String):
 	my_user_data.avatar = avatar
 	SignalBus.emit_signal_global('on_changed_avatar')
+	
+	

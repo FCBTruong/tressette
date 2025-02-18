@@ -8,7 +8,6 @@ extends Node
 @export var enable_chat_ingame = true
 var card_style: int = 0 # classic, default, 1 is modern
 var table_list = []
-var min_gold_play = 0
 var supported_langues = ['en', 'it']
 var language = 'en'
 
@@ -66,7 +65,7 @@ func get_token() -> String:
 	return _token
 	
 func send_quick_play() -> void:
-	if PlayerInfoMgr.my_user_data.gold < self.min_gold_play:
+	if PlayerInfoMgr.my_user_data.gold < GameServerConfig.min_gold_play:
 		GameManager.show_not_gold_recommend_shop()
 		return
 	SceneManager.add_loading(5)
@@ -80,7 +79,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 		GameConstants.CMDs.GENERAL_INFO:
 			var pkg = GameConstants.PROTOBUF.PACKETS.GeneralInfo.new()
 			var result_code = pkg.from_bytes(payload)
-			self.min_gold_play = pkg.get_min_gold_play()
+			GameServerConfig.min_gold_play = pkg.get_min_gold_play()
 			var timestamp_server = pkg.get_timestamp()
 			var delta = timestamp_server - Time.get_unix_time_from_system()
 			print('delta timestamp server-client', delta)
@@ -106,7 +105,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				table_list.append(table)
 				
 			SignalBus.emit_signal_global("update_table_list")
-
+		GameConstants.CMDs.CLAM_SUPPORT:
+			_received_claim_support(payload)
 		_:
 			GameConstants.game_logic.on_receive(cmd_id, payload)
 	
@@ -162,3 +162,21 @@ func show_not_gold_recommend_shop():
 			pass,
 		true
 		)
+
+func send_claim_support():
+	print('send claim support')
+	GameClient.send_packet(GameConstants.CMDs.CLAM_SUPPORT, [])
+	
+func _received_claim_support(payload):
+	print('received claim support')
+	var pkg = GameConstants.PROTOBUF.PACKETS.ClaimSupport.new()
+	var result_code = pkg.from_bytes(payload)
+	var gold = pkg.get_support_amount()
+	var txt = tr("DAILY_SUPPORT")
+	txt = txt.replace("@num", StringUtils.point_number(gold))
+	SceneManager.show_dialog(txt,
+		func():
+			print('click ok'),
+		func():
+			print('click close')
+	)

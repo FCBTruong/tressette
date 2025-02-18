@@ -909,6 +909,16 @@ class Login:
 		service.field = _token
 		data[_token.tag] = service
 		
+		_device_model = PBField.new("device_model", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _device_model
+		data[_device_model.tag] = service
+		
+		_platform = PBField.new("platform", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _platform
+		data[_platform.tag] = service
+		
 	var data = {}
 	
 	var _type: PBField
@@ -928,6 +938,24 @@ class Login:
 		_token.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_token(value : String) -> void:
 		_token.value = value
+	
+	var _device_model: PBField
+	func get_device_model() -> String:
+		return _device_model.value
+	func clear_device_model() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_device_model.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_device_model(value : String) -> void:
+		_device_model.value = value
+	
+	var _platform: PBField
+	func get_platform() -> String:
+		return _platform.value
+	func clear_platform() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_platform.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_platform(value : String) -> void:
+		_platform.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1150,6 +1178,11 @@ class UserInfo:
 		service.field = _level
 		data[_level.tag] = service
 		
+		_support_num = PBField.new("support_num", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 10, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _support_num
+		data[_support_num.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1232,6 +1265,15 @@ class UserInfo:
 		_level.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_level(value : int) -> void:
 		_level.value = value
+	
+	var _support_num: PBField
+	func get_support_num() -> int:
+		return _support_num.value
+	func clear_support_num() -> void:
+		data[10].state = PB_SERVICE_STATE.UNFILLED
+		_support_num.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_support_num(value : int) -> void:
+		_support_num.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4035,6 +4077,47 @@ class JoinTableById:
 		_match_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_match_id(value : int) -> void:
 		_match_id.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class ClaimSupport:
+	func _init():
+		var service
+		
+		_support_amount = PBField.new("support_amount", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _support_amount
+		data[_support_amount.tag] = service
+		
+	var data = {}
+	
+	var _support_amount: PBField
+	func get_support_amount() -> int:
+		return _support_amount.value
+	func clear_support_amount() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_support_amount.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_support_amount(value : int) -> void:
+		_support_amount.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

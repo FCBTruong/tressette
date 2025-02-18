@@ -128,15 +128,16 @@ func _on_enter():
 	pot_value_lb.text = StringUtils.point_number(game_logic.match_data.pot_value)
 
 func continue_play():
-	if game_logic.match_data.state == MatchData.MATCH_STATE.WAITING:
-		cardback_node.visible = false
-		remove_all_current_cards()
-		opponent_score_lb.text = '0'
-		my_score_lb.text = '0'
-		opponent_score_sub.visible = false
-		my_score_sub.visible = false
-		pot_value_lb.text = '0'
-		round_lb.text = ''
+	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
+		return
+	cardback_node.visible = false
+	remove_all_current_cards()
+	opponent_score_lb.text = '0'
+	my_score_lb.text = '0'
+	opponent_score_sub.visible = false
+	my_score_sub.visible = false
+	pot_value_lb.text = '0'
+	round_lb.text = ''
 
 func _update_current_round():
 	if game_logic.match_data.current_round == 0:

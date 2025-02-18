@@ -52,19 +52,18 @@ func on_login_local_firebase_succeeed(auth):
 func _process(delta: float) -> void:
 	pass
 
-func _login() -> void:
-	GameClient.send_packet(GameConstants.CMDs.LOGIN, [])
-
 func test_login_user_A() -> void:
 	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
 	pkg.set_token('fb4e942c-ea07-437f-a56a-e12a8bb08709')
 	pkg.set_type(LoginMgr.LOGIN_GUEST)
+	LoginMgr._set_device_info(pkg)
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 
 func test_login_userB() -> void:
 	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
 	pkg.set_token('625fd7af-f734-41a1-877d-2cdef81df36a')
 	pkg.set_type(LoginMgr.LOGIN_GUEST)
+	LoginMgr._set_device_info(pkg)
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 
 func _login_google() -> void:
@@ -94,6 +93,7 @@ func _login_by_uid_cheat(text) -> void:
 	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
 	pkg.set_token(text)
 	pkg.set_type(LoginMgr.LOGIN_UID_CHEAT)
+	LoginMgr._set_device_info(pkg)
 	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 	StorageCache.store('login_uid_cheat', text)
 	pass

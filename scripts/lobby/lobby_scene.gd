@@ -10,7 +10,11 @@ func _ready() -> void:
 	SignalBus.connect_global('on_update_money', Callable(self, "_on_update_money"))
 	SignalBus.connect_global('update_friend_list', Callable(self, 'update_lobby_friends'))
 	SignalBus.connect_global('update_friend_requests', Callable(self, '_update_friend_requests'))
-	pass # Replace with function body.
+	
+	# check claim support
+	if PlayerInfoMgr.my_user_data.gold < \
+		GameServerConfig.min_gold_play and PlayerInfoMgr.support_num > 0:
+			GameManager.send_claim_support()
 
 @onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')
