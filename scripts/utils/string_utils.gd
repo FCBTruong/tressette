@@ -15,12 +15,25 @@ func point_number(number: int) -> String:
 	var number_str = str(number)
 	var formatted = ""
 	var count = 0
+
+	# Check if the number is negative
+	var is_negative = number < 0
+	if is_negative:
+		number_str = number_str.substr(1)  # Remove the negative sign for formatting
+
+	# Format the number
 	for i in range(number_str.length() - 1, -1, -1):
 		formatted = number_str[i] + formatted
 		count += 1
 		if count % 3 == 0 and i != 0:
 			formatted = "." + formatted
+
+	# Re-add the negative sign if the number is negative
+	if is_negative:
+		formatted = "-" + formatted
+
 	return formatted
+
 
 func symbol_number(num: int) -> String:
 	if num >= 1_000_000_000:
