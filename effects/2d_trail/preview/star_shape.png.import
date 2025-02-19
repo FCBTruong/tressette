@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2w5a1ssk768s"
-path="res://.godot/imported/shopping_card.png-7c811a5dad31a2fd945fb7cfa6d5331c.ctex"
+uid="uid://cevos3vbvstx5"
+path="res://.godot/imported/star_shape.png-1becf1a7a1204751a1fbf576ac9dd77b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/lobby/shopping_card.png"
-dest_files=["res://.godot/imported/shopping_card.png-7c811a5dad31a2fd945fb7cfa6d5331c.ctex"]
+source_file="res://effects/2d_trail/preview/star_shape.png"
+dest_files=["res://.godot/imported/star_shape.png-1becf1a7a1204751a1fbf576ac9dd77b.ctex"]
 
 [params]
 

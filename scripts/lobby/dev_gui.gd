@@ -54,6 +54,16 @@ func _input(event):
 				#SceneManager.show_toast('hello everyone')
 				pass
 			if event.keycode == KEY_Q:
+				EffectMgr.effect_fly_coin_bet_table(
+					"res://assets/images/lobby/lira_icon.png",
+					5,
+					Vector2(240, 500),
+					Vector2(600, 400),
+					0.6,
+					0.11,
+					null,
+					false
+				)
 				pass
 
 func _click_cheat_goldbtn():

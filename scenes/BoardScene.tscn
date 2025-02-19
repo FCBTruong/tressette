@@ -270,6 +270,7 @@ mouse_filter = 2
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 29.0
 offset_right = 97.0
@@ -280,6 +281,7 @@ expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
 visible = false
+layout_mode = 0
 offset_left = 7.0
 offset_top = 25.0
 offset_right = 97.0

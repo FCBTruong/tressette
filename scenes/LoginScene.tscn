@@ -383,6 +383,7 @@ offset_right = 203.0
 offset_bottom = -61.0
 
 [node name="UIDSelectBtn" type="Button" parent="CanvasLayer/PnCheat/SelectUIDCheat"]
+layout_mode = 0
 offset_left = 216.0
 offset_top = -6.0
 offset_right = 275.0

@@ -1,20 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn3qxwfq53i4f"]
+[gd_scene load_steps=2 format=3 uid="uid://dn3qxwfq53i4f"]
 
-[ext_resource type="Script" path="res://scripts/effects/trail_node.gd" id="1_ehuri"]
-
-[sub_resource type="Curve" id="Curve_ako6k"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_rcr3b"]
-colors = PackedColorArray(1, 0.930066, 0.677566, 1, 1, 1, 1, 1)
+[ext_resource type="PackedScene" uid="uid://caewflltiu630" path="res://effects/2d_trail/preview/boid/boid_2d.tscn" id="2_4jnqk"]
 
 [node name="TrailNode" type="Node2D"]
 
-[node name="Line2D" type="Line2D" parent="."]
-width = 20.0
-width_curve = SubResource("Curve_ako6k")
-default_color = Color(1, 0.181425, 0, 0.721)
-gradient = SubResource("Gradient_rcr3b")
-script = ExtResource("1_ehuri")
-MAX_LENGTH = 20
+[node name="Boid2D" parent="." instance=ExtResource("2_4jnqk")]

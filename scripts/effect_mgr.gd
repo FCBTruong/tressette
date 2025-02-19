@@ -29,7 +29,8 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 		
 		var trail_node = trail_scene.instantiate()
 		canvas_layer.add_child(trail_node)
-		trail_node.find_child("Line2D").target = node
+		trail_node.find_child('Boid2D').target = node
+		trail_node.global_position = start_pos
 
 	
 		var mid_pos = (start_pos + des_pos) * 0.5
@@ -71,7 +72,9 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 			'modulate:a', 1, 0.01
 		).set_delay((delay))
 		
-		var pot_pos = NodeUtils.get_center_position(board_scene.pot_value_lb)
+		var pot_pos = Vector2(0, 0)
+		if board_scene:
+			pot_pos = NodeUtils.get_center_position(board_scene.pot_value_lb)
 		tween.tween_interval(0)
 		tween.parallel().tween_property(
 			node,
