@@ -10,6 +10,7 @@ var card_style: int = 0 # classic, default, 1 is modern
 var table_list = []
 var supported_langues = ['en', 'it']
 var language = 'en'
+var LAST_GAME_IS_WIN = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

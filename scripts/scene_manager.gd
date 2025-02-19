@@ -10,15 +10,18 @@ const LOADING_SCENE = 'res://scenes/loading/LoadingScene.tscn'
 static var INSTANCES = {
 	BOARD_SCENE: null
 }
-
+var last_scene = null
+var cur_scene = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Loaded lobby scene")
 
 # Function to switch scenes
 func switch_scene(new_scene_path: String) -> void:
+	if cur_scene:
+		last_scene = cur_scene
+	cur_scene = new_scene_path
 	var result = get_tree().change_scene_to_file(new_scene_path)
-	
 	if result != OK:
 		print("Failed to load scene:", new_scene_path)
 	else:
@@ -62,7 +65,7 @@ func show_dialog(message: String, ok_callback: Callable = Callable(), close_call
 	if close_callback.is_valid():
 		gui.connect("close_pressed", close_callback)
 
-func show_ok_dialog(message: String, ok_callback: Callable = Callable()):
+func show_ok_dialog(message: String, ok_callback: Callable = Callable(), can_close = false):
 	var gui = await SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
 	if not gui:
 		return
@@ -70,8 +73,8 @@ func show_ok_dialog(message: String, ok_callback: Callable = Callable()):
 	if ok_callback.is_valid():
 		gui.connect("ok_pressed", ok_callback)
 		gui.connect("close_pressed", ok_callback)
-		
-	gui.hide_close_cancel()
+	if not can_close:	
+		gui.hide_close_cancel()
 
 var gui_waiting = null
 func show_toast(msg = ''):		
@@ -90,3 +93,8 @@ func add_loading(timeout = -1):
 func clear_loading():
 	if gui_waiting and is_instance_valid(gui_waiting):
 		gui_waiting.queue_free()
+
+func is_back_from_board():
+	if last_scene and last_scene == BOARD_SCENE:
+		return true
+	return false

@@ -1193,7 +1193,7 @@ class UserInfo:
 		service.field = _game_count
 		data[_game_count.tag] = service
 		
-		_exp = PBField.new("exp", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 14, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		_exp = PBField.new("exp", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 13, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _exp
 		data[_exp.tag] = service
@@ -1312,7 +1312,7 @@ class UserInfo:
 	func get_exp() -> int:
 		return _exp.value
 	func clear_exp() -> void:
-		data[14].state = PB_SERVICE_STATE.UNFILLED
+		data[13].state = PB_SERVICE_STATE.UNFILLED
 		_exp.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_exp(value : int) -> void:
 		_exp.value = value
@@ -4160,6 +4160,117 @@ class ClaimSupport:
 		_support_amount.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_support_amount(value : int) -> void:
 		_support_amount.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class AppCodeVersion:
+	func _init():
+		var service
+		
+		_android_version = PBField.new("android_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _android_version
+		data[_android_version.tag] = service
+		
+		_android_forced_update_version = PBField.new("android_forced_update_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _android_forced_update_version
+		data[_android_forced_update_version.tag] = service
+		
+		_android_remind_update_version = PBField.new("android_remind_update_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _android_remind_update_version
+		data[_android_remind_update_version.tag] = service
+		
+		_ios_version = PBField.new("ios_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _ios_version
+		data[_ios_version.tag] = service
+		
+		_ios_forced_update_version = PBField.new("ios_forced_update_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _ios_forced_update_version
+		data[_ios_forced_update_version.tag] = service
+		
+		_ios_remind_update_version = PBField.new("ios_remind_update_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _ios_remind_update_version
+		data[_ios_remind_update_version.tag] = service
+		
+	var data = {}
+	
+	var _android_version: PBField
+	func get_android_version() -> int:
+		return _android_version.value
+	func clear_android_version() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_android_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_android_version(value : int) -> void:
+		_android_version.value = value
+	
+	var _android_forced_update_version: PBField
+	func get_android_forced_update_version() -> int:
+		return _android_forced_update_version.value
+	func clear_android_forced_update_version() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_android_forced_update_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_android_forced_update_version(value : int) -> void:
+		_android_forced_update_version.value = value
+	
+	var _android_remind_update_version: PBField
+	func get_android_remind_update_version() -> int:
+		return _android_remind_update_version.value
+	func clear_android_remind_update_version() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_android_remind_update_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_android_remind_update_version(value : int) -> void:
+		_android_remind_update_version.value = value
+	
+	var _ios_version: PBField
+	func get_ios_version() -> int:
+		return _ios_version.value
+	func clear_ios_version() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_ios_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_ios_version(value : int) -> void:
+		_ios_version.value = value
+	
+	var _ios_forced_update_version: PBField
+	func get_ios_forced_update_version() -> int:
+		return _ios_forced_update_version.value
+	func clear_ios_forced_update_version() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_ios_forced_update_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_ios_forced_update_version(value : int) -> void:
+		_ios_forced_update_version.value = value
+	
+	var _ios_remind_update_version: PBField
+	func get_ios_remind_update_version() -> int:
+		return _ios_remind_update_version.value
+	func clear_ios_remind_update_version() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_ios_remind_update_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_ios_remind_update_version(value : int) -> void:
+		_ios_remind_update_version.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

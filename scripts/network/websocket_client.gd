@@ -43,8 +43,6 @@ func _process(_delta):
 		if not is_connected:
 			SceneManager.clear_loading()
 			is_connected = true
-			# switch to LoginScene	
-			SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
 			
 		while socket.get_available_packet_count() > 0:
 			var packet = socket.get_packet()
@@ -111,6 +109,8 @@ func receive_packet(data: PackedByteArray):
 		var pkg = GameConstants.PROTOBUF.PACKETS.PingPong.new()
 		send_packet(GameConstants.CMDs.PING_PONG, pkg.to_bytes())
 		time_since_last_ping = 0.0
+	elif cmd_id == GameConstants.CMDs.APP_VERSION:
+		AppVersion.handle_version_and_open_login(received_packet.get_payload())	
 	else:
 		print('receive cmd_id: ', cmd_id)
 		var payload = received_packet.get_payload()

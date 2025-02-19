@@ -30,7 +30,6 @@ InGameChatMgr="*res://scripts/game/chat/ingame_chat_mgr.gd"
 StringUtils="*res://scripts/utils/string_utils.gd"
 PaymentMgr="*res://scripts/modules/payment/payment_mgr.gd"
 FriendManager="*res://scripts/modules/friend/friend_manager.gd"
-Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 LoginMgr="*res://scripts/login_mgr.gd"
 StorageCache="*res://scripts/storage_cache.gd"
 SoundManager="*res://scripts/sound_manager.gd"
@@ -39,6 +38,9 @@ LogsMgr="*res://scripts/logs_mgr.gd"
 GameServerConfig="*res://scripts/game_server_config.gd"
 EffectMgr="*res://scripts/effect_mgr.gd"
 NodeUtils="*res://scripts/utils/node_utils.gd"
+AppVersion="*res://scripts/base/app_version.gd"
+NativeMgr="*res://scripts/base/native_mgr.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
 [display]
 
@@ -49,7 +51,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/firebase_plugin/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/protobuf/plugin.cfg")
+enabled=PackedStringArray("res://addons/custom_native/plugin.cfg", "res://addons/firebase_plugin/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/protobuf/plugin.cfg")
 
 [internationalization]
 

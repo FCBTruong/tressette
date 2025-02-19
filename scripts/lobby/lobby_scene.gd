@@ -15,6 +15,15 @@ func _ready() -> void:
 	if PlayerInfoMgr.my_user_data.gold < \
 		GameServerConfig.min_gold_play and PlayerInfoMgr.support_num > 0:
 			GameManager.send_claim_support()
+			
+	var store_rate = StorageCache.fetch("store_rating", 0)
+	if store_rate == 0:
+		if Config.get_platform() == Config.PLATFORMS.ANDROID:
+			if SceneManager.is_back_from_board() \
+				and GameManager.LAST_GAME_IS_WIN \
+				and PlayerInfoMgr.my_user_data.game_count > 5:
+				NativeMgr.rate_app()
+				StorageCache.store("store_rating", 1)
 
 @onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')

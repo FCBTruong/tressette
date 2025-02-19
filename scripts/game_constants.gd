@@ -4,7 +4,7 @@ static var game_logic = GameLogic.new()
 
 func say_hello():
 	print("hello")
-
+const PACKAGE_NAME = 'com.clareentertainment.tressette'
 const GAME_MODE = {
 	TRESSETTE = 0,
 	BRISCOLA = 1,
@@ -24,6 +24,7 @@ const CMDs = {
 	LOGIN = 1,
 	CREATE_GUEST_ACCOUNT = 2,
 	LOGIN_FIREBASE = 3,
+	APP_VERSION = 5,
 	TEST_MESSAGE = 100,
 	GENERAL_INFO = 1000,
 	USER_INFO = 1001,
