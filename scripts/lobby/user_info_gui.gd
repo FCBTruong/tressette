@@ -20,8 +20,11 @@ func _show_popup():
 @onready var accept_friend_btn = find_child("AcceptFriendBtn")
 @onready var reject_friend_btn = find_child("RejectFriendBtn")
 @onready var mail_btn = find_child("MailBtn")
+@onready var game_count_lb = find_child("GameCountLb")
+@onready var win_rate_lb = find_child("WinRateLb")
+@onready var exp_lb = find_child("ExpLb")
 var is_me: bool = false
-var _info = null
+var _info:UserData = null
 func _ready() -> void:
 	mail_btn.visible = false
 	var tween = create_tween()
@@ -50,6 +53,15 @@ func set_info(info: UserData):
 	gold_lb.text = StringUtils.point_number(_info.gold)
 	uid_lb.text = str(_info.uid)
 	_update_status_friend()
+	
+	game_count_lb.text = StringUtils.point_number(_info.game_count)
+	var win_rate = '-'
+	if _info.game_count > 0:
+		var win_rate_val = round((_info.win_count / _info.game_count) * 10) * 100 / 10.0
+		win_rate = str(win_rate_val) + '%'
+		
+	win_rate_lb.text = win_rate
+	exp_lb.text = StringUtils.point_number(_info.exp)
 	
 func _copy_uid() -> void:
 	DisplayServer.clipboard_set(str(_info.uid))

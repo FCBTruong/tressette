@@ -1183,6 +1183,21 @@ class UserInfo:
 		service.field = _support_num
 		data[_support_num.tag] = service
 		
+		_win_count = PBField.new("win_count", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 11, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_count
+		data[_win_count.tag] = service
+		
+		_game_count = PBField.new("game_count", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 12, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _game_count
+		data[_game_count.tag] = service
+		
+		_exp = PBField.new("exp", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 14, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		service = PBServiceField.new()
+		service.field = _exp
+		data[_exp.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1274,6 +1289,33 @@ class UserInfo:
 		_support_num.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_support_num(value : int) -> void:
 		_support_num.value = value
+	
+	var _win_count: PBField
+	func get_win_count() -> int:
+		return _win_count.value
+	func clear_win_count() -> void:
+		data[11].state = PB_SERVICE_STATE.UNFILLED
+		_win_count.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_count(value : int) -> void:
+		_win_count.value = value
+	
+	var _game_count: PBField
+	func get_game_count() -> int:
+		return _game_count.value
+	func clear_game_count() -> void:
+		data[12].state = PB_SERVICE_STATE.UNFILLED
+		_game_count.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_game_count(value : int) -> void:
+		_game_count.value = value
+	
+	var _exp: PBField
+	func get_exp() -> int:
+		return _exp.value
+	func clear_exp() -> void:
+		data[14].state = PB_SERVICE_STATE.UNFILLED
+		_exp.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
+	func set_exp(value : int) -> void:
+		_exp.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

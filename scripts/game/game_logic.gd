@@ -411,6 +411,11 @@ func _handle_end_game(payload: PackedByteArray):
 		== win_team_id
 	match_result.my_team_id = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id
 	
+	# update my user info
+	if match_result.is_win:
+		PlayerInfoMgr.my_user_data.win_count += 1
+	PlayerInfoMgr.my_user_data.game_count += 1
+	
 	match_result.players.clear()
 	for i in range(len(match_data.users)):
 		var score_data = MatchData.MatchResultPlayer.new()
