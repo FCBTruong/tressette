@@ -68,7 +68,7 @@ scale_curve = SubResource("CurveTexture_dy2b4")
 color = Color(1, 0.991328, 0.953779, 1)
 color_ramp = SubResource("GradientTexture1D_4c1i1")
 
-[node name="Boid2D" type="Node2D" groups=["boid_2d"]]
+[node name="Boid2D" type="Node2D"]
 script = ExtResource("1_hylip")
 
 [node name="VisualRoot" type="Node2D" parent="."]

@@ -2,16 +2,18 @@ extends Line2D
 @export var follow_node : Node2D
 @export var points_count = 8 : set = set_point_count
 var points_local : PackedVector2Array = []
-
+var count = 0
 func set_point_count(value : int):
 	points_count = value
 	points_local.resize(value)
-	points_local.fill(Vector2.ZERO)
+	print("ppododds", follow_node.global_position.x)
+	points_local.fill(follow_node.global_position)
 
 func _ready():
 	if !follow_node: follow_node = owner
 	set_point_count(points_count)
 	top_level = true
+	
 	
 func _physics_process(delta):
 	var global_pos = follow_node.global_position

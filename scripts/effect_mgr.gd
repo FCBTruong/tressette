@@ -29,8 +29,8 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 		
 		var trail_node = trail_scene.instantiate()
 		trail_node.global_position = start_pos
-		trail_node.find_child('Boid2D').target = node
 		canvas_layer.add_child(trail_node)
+		trail_node.find_child('Boid2D').target = node
 
 	
 		var mid_pos = (start_pos + des_pos) * 0.5

@@ -2,6 +2,7 @@ extends Node
 
 @onready var bet_lb = find_child("BetLb")
 @onready var player_lb = find_child("PlayerLb")
+@onready var player_icon = find_child('PlayerIcon')
 var _info: TableInfo
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +21,10 @@ func set_info(table: TableInfo):
 	var str = ""
 	str += str(table.num_player) + '/' + str(table.player_mode)
 	player_lb.text = str
-		
+	
+	if table.num_player == table.player_mode:
+		#player_icon.modulate = Color('a61616')
+		pass
 	
 
 func _click_play():

@@ -9,7 +9,12 @@
 [ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="5_qhwvw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aig1"]
-bg_color = Color(0.154, 0.176, 0.412, 0.776)
+bg_color = Color(0.266322, 0.379154, 0.462662, 0.868)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0352941, 0.403922, 0.615686, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -90,7 +95,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_3wqxv")
 theme_override_font_sizes/font_size = 22
-text = "Play"
+text = "PLAY"
+uppercase = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(0, 100)
@@ -112,8 +118,9 @@ alignment = 1
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer2"]
+[node name="PlayerIcon" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 texture = ExtResource("3_wpwhv")
@@ -132,6 +139,7 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)

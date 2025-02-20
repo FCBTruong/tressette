@@ -13,6 +13,8 @@ var my_team_id
 @onready var continue_timer = find_child("ContinueTimer")
 @onready var continue_time_lb = find_child("ContinueTimeLb")
 @onready var continue_time_node = find_child("ContinueTimeNode")
+@onready var win_pn = find_child("WinPn")
+@onready var lose_pn = find_child("LosePn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_result(GameConstants.game_logic.match_result)
@@ -47,10 +49,16 @@ func update_result(data: MatchData.MatchResult):
 	win_team_id = data.win_team_id
 	my_team_id = data.my_team_id
 	if data.is_win:
+		# Set green border
+		win_pn.visible = true
+		lose_pn.visible = false
 		SoundManager.play_win_congrat_sound()
 		TitleLb.text = tr("YOU_WIN")
-		TitleLb.add_theme_color_override("font_color", Color('ff9744'))  # RGB for red
+		TitleLb.add_theme_color_override("font_color", Color('f8e0a9'))  # RGB for red
 	else:
+		# Set green border
+		win_pn.visible = false
+		lose_pn.visible = true
 		TitleLb.add_theme_color_override("font_color", Color('b3b3b3'))  # RGB for red
 		TitleLb.text = tr("YOU_LOSE")
 		
@@ -101,10 +109,8 @@ func _update_player(p, data: MatchData.MatchResultPlayer):
 	var avt_img = p.find_child("AvatarImg")
 	var avt_border = p.find_child("AvtBorder")
 	if avt_border and data.team_id == my_team_id:
-		# Set green border
 		avt_border.self_modulate = Color('17a03a')  # Green (R, G, B format)
 	elif avt_border:
-		# Set red border
 		avt_border.self_modulate = Color('dc2b3a')  # Red (R, G, B format)
 
 		

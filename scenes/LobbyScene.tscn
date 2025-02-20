@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_fym06"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_pgu6f"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="12_q3rst"]
+[ext_resource type="Material" uid="uid://qrgqnpq1flde" path="res://effects/2d_trail/preview/material/main_trail_mat.tres" id="13_0gjqh"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
@@ -63,19 +64,6 @@ corner_radius_bottom_left = 10
 bg_color = Color(0, 0, 0, 0.3)
 corner_radius_bottom_right = 20
 corner_detail = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_du8j7"]
-bg_color = Color(0.329412, 0.372549, 0.458824, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.747786, 0.730341, 0.723059, 1)
-border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv6aw"]
 bg_color = Color(0.001, 0.001, 0.001, 0.3)
@@ -486,7 +474,7 @@ layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -499,10 +487,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_du8j7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
 self_modulate = Color(1, 0.986236, 0.828826, 1)
+material = ExtResource("13_0gjqh")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

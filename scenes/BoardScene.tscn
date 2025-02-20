@@ -648,12 +648,6 @@ text = "GAME_START"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LevelLbHead" type="Label" parent="CanvasLayer/PlayGround/GameStartLb"]
-theme_override_fonts/font = ExtResource("4_cv557")
-text = "LEVEL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CountdownStartLb" type="Label" parent="CanvasLayer/PlayGround"]
 modulate = Color(0.985389, 0.754896, 0.291801, 1)
 layout_mode = 1

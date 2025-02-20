@@ -12,6 +12,7 @@ extends Node
 func _ready() -> void:
 	#effect_add_score(5)
 	emo_icon.visible = false
+	time_progress_bar.visible = false
 	pass
 
 # Properties
