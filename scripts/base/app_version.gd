@@ -56,6 +56,7 @@ func handle_version_and_open_login(payload) -> void:
 
 func _open_app_store():
 	if Config.get_platform() == Config.PLATFORMS.IOS:
+		OS.shell_open("https://apps.apple.com/app/id" + GameConstants.APPLE_APP_ID)
 		pass
 	elif Config.get_platform() == Config.PLATFORMS.ANDROID:
 		NativeMgr.open_app_store()

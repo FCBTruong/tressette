@@ -1,13 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=31 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
-[ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="2_j77gk"]
+[ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_x7pan"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Texture2D" uid="uid://2tvqotkvdx50" path="res://assets/images/img_01.png" id="6_7tuic"]
 [ext_resource type="Texture2D" uid="uid://b2w5a1ssk768s" path="res://assets/images/lobby/shopping_card.png" id="6_ccwgc"]
 [ext_resource type="Texture2D" uid="uid://dv83dxl1rc5g4" path="res://assets/images/lobby/settings.png" id="6_vby4e"]
-[ext_resource type="Texture2D" uid="uid://7x753n1i4ch7" path="res://assets/images/lobby/customer-service.png" id="7_48niu"]
+[ext_resource type="Texture2D" uid="uid://dutxuwb4adufu" path="res://assets/images/lobby/customer-service.png" id="7_48niu"]
 [ext_resource type="Texture2D" uid="uid://dys3frx0yshwh" path="res://assets/images/poker-table.png" id="7_en482"]
 [ext_resource type="Texture2D" uid="uid://c28lqqxrgu2eg" path="res://assets/images/lobby/friends.png" id="7_l35oy"]
 [ext_resource type="Texture2D" uid="uid://cxkmagcclh5x6" path="res://assets/images/lobby/clipboard.png" id="8_p6t30"]
@@ -19,6 +19,7 @@
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="18_mdwpl"]
+[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="18_wn24e"]
 [ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="19_orflg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
@@ -42,27 +43,53 @@ shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22e1k"]
-bg_color = Color(0.282353, 0.176471, 0.105882, 0.705882)
+bg_color = Color(0, 0, 0, 0.3)
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjmth"]
+bg_color = Color(0.329307, 0.371959, 0.459268, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0196078, 0.2, 0.364706, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqssi"]
-bg_color = Color(0.282763, 0.175366, 0.10419, 0.707)
+bg_color = Color(0, 0, 0, 0.3)
 corner_radius_bottom_right = 20
 corner_detail = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_du8j7"]
+bg_color = Color(0.329412, 0.372549, 0.458824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.747786, 0.730341, 0.723059, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv6aw"]
-bg_color = Color(0.282353, 0.176471, 0.105882, 0.705882)
+bg_color = Color(0.001, 0.001, 0.001, 0.3)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6i40"]
-bg_color = Color(0.354044, 0.23702, 0.154902, 0.414)
+bg_color = Color(0, 0, 0, 0.3)
 corner_radius_top_right = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2vqb"]
-bg_color = Color(0.343861, 0.279801, 0.253341, 0.5)
+bg_color = Color(0.292946, 0.292946, 0.292946, 0.5)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -94,7 +121,7 @@ pivot_offset = Vector2(575, 324)
 size_flags_horizontal = 6
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("2_j77gk")
+texture = ExtResource("2_4au8t")
 expand_mode = 1
 stretch_mode = 6
 
@@ -232,13 +259,28 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="SettingBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
-modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn"]
+self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -255,13 +297,28 @@ texture = ExtResource("6_vby4e")
 expand_mode = 1
 
 [node name="SupportBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
-modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn"]
+self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -275,25 +332,41 @@ offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_48niu")
+expand_mode = 1
 
 [node name="GuideBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
-modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/GuideBtn"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/GuideBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/GuideBtn"]
+self_modulate = Color(1, 1, 1, 0.9)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_fym06")
@@ -322,13 +395,28 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 
 [node name="MissionBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/MissionBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/MissionBtn"]
+self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -342,15 +430,31 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_p6t30")
+expand_mode = 1
 
 [node name="FriendBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
+self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -364,6 +468,7 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_l35oy")
+expand_mode = 1
 
 [node name="ImgHot" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
 self_modulate = Color(1, 0.233651, 0.233651, 1)
@@ -376,13 +481,28 @@ texture = ExtResource("11_pgu6f")
 expand_mode = 1
 
 [node name="ShopBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_du8j7")
+
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
+self_modulate = Color(1, 0.986236, 0.828826, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -405,6 +525,7 @@ layout_mode = 2
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3"]
+self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -442,9 +563,27 @@ offset_bottom = 100.0
 [node name="AvatarBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Avatar" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -43.0
+offset_right = 43.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_pgu6f")
+expand_mode = 1
+
+[node name="Avatar" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -454,6 +593,23 @@ grow_vertical = 2
 texture = ExtResource("4_cni6g")
 expand_mode = 1
 script = ExtResource("15_yoog2")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
+self_modulate = Color(0.108917, 0.165708, 0.435508, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_wn24e")
+expand_mode = 1
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
 custom_minimum_size = Vector2(10, 0)
