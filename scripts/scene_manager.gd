@@ -10,35 +10,52 @@ const LOADING_SCENE = 'res://scenes/loading/LoadingScene.tscn'
 static var INSTANCES = {
 	BOARD_SCENE: null
 }
-var last_scene = null
-var cur_scene = null
+var last_scene_name = null
+var cur_scene_name = null
+var effect_layer = null
+var _cur_scene = null
+
+var preload_lobby_scene = preload(LOBBY_SCENE)
+var preload_board_scene = preload(BOARD_SCENE)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Loaded lobby scene")
+	
 
 # Function to switch scenes
 func switch_scene(new_scene_path: String) -> void:
-	if cur_scene:
-		last_scene = cur_scene
-	cur_scene = new_scene_path
-	var result = get_tree().change_scene_to_file(new_scene_path)
-	if result != OK:
-		print("Failed to load scene:", new_scene_path)
+	if cur_scene_name:
+		last_scene_name = cur_scene_name
+	cur_scene_name = last_scene_name
+	
+	var scene = null
+	if new_scene_path == LOBBY_SCENE:
+		scene = preload_lobby_scene
+	elif new_scene_path == BOARD_SCENE:
+		scene = preload_board_scene
 	else:
-		print("Loaded scene:", new_scene_path)
+		scene = load(new_scene_path)
+		
+	if is_instance_valid(_cur_scene):
+		_cur_scene.queue_free()
+	_cur_scene = scene.instantiate()
+	get_tree().root.add_child(_cur_scene)
+	print("Loaded scene:", new_scene_path)
 		
 	if Config.CURRENT_MODE != Config.MODES.LIVE:
-		# Wait for the scene to be ready
-		await get_tree().process_frame
-		var current_scene = get_tree().get_current_scene()
+		var current_scene = self.get_current_scene()
 		if current_scene:
 			var gui = load('res://scenes/DevGUI.tscn')
 			var popup_instance = gui.instantiate()
 			current_scene.add_child(popup_instance)
+		else:
+			print('current scene is null')
+		
 		
 func open_gui(gui_path: String, z_order = 1):
 	print('open gui: ....', gui_path)
-	var current_scene = get_tree().get_current_scene()
+	var current_scene = self.get_current_scene()
 	await get_tree().process_frame
 	if current_scene:
 		var gui = load(gui_path)
@@ -50,8 +67,7 @@ func open_gui(gui_path: String, z_order = 1):
 	return null
 
 func get_current_scene():
-	var current_scene = get_tree().get_current_scene()
-	return current_scene
+	return _cur_scene
 	
 func show_dialog(message: String, ok_callback: Callable = Callable(), close_callback: Callable = Callable(), show_cancel_btn = false):
 	var gui = await SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
@@ -95,6 +111,13 @@ func clear_loading():
 		gui_waiting.queue_free()
 
 func is_back_from_board():
-	if last_scene and last_scene == BOARD_SCENE:
+	if last_scene_name and last_scene_name == BOARD_SCENE:
 		return true
 	return false
+
+func get_effect_layer():
+	if not effect_layer or not is_instance_valid(effect_layer):
+		effect_layer = CanvasLayer.new()
+		SceneManager.get_current_scene().add_child(effect_layer)
+		effect_layer.layer = 200 
+	return effect_layer

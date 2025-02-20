@@ -7,16 +7,16 @@ func _ready() -> void:
 
 var trail_scene = preload('res://scenes/effects/TrailNode.tscn')
 func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_pos: Vector2, fly_time: float, scale, board_scene: BoardScene, should_call: bool):
-	var canvas_layer = CanvasLayer.new()
-	SceneManager.get_current_scene().add_child(canvas_layer)
-	canvas_layer.layer = 200  # Higher layer value means it will be drawn above lower values
+	var canvas_layer = SceneManager.get_effect_layer()
 	var ax = randf_range(200,500)
+	
+	print('effect fly coin bet')
 	for i in range(num):
 		var node = Node2D.new()
 		canvas_layer.add_child(node)
 		node.scale = Vector2(0.6, 0.6)
 		var sprite = Sprite2D.new()
-		node.position = start_pos
+		node.global_position = start_pos
 		node.modulate.a = 0
 		
 		sprite.texture = load(img)
@@ -28,9 +28,9 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 		des_pos.y += randf_range(-30, 30)
 		
 		var trail_node = trail_scene.instantiate()
-		canvas_layer.add_child(trail_node)
-		trail_node.find_child('Boid2D').target = node
 		trail_node.global_position = start_pos
+		trail_node.find_child('Boid2D').target = node
+		canvas_layer.add_child(trail_node)
 
 	
 		var mid_pos = (start_pos + des_pos) * 0.5
@@ -85,7 +85,12 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 			'scale', Vector2(0.8, 0.8), 0.3
 		).set_delay(0.3)
 		tween.tween_interval(0)
-		tween.tween_callback(node.queue_free)
+		tween.tween_callback(
+			func():
+				if node:
+					node.queue_free
+					SoundManager.play_coin_hit_sound()
+				)
 		
 		if should_call and i == num - 1:
 			tween.tween_callback(board_scene.on_finish_effect_contribute_pot)

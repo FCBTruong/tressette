@@ -63,7 +63,7 @@ func set_info(info: UserData):
 	game_count_lb.text = StringUtils.point_number(_info.game_count)
 	var win_rate = '-'
 	if _info.game_count > 0:
-		var win_rate_val = round((_info.win_count / _info.game_count) * 10) * 100 / 10.0
+		var win_rate_val = round((_info.win_count * 1.0 / _info.game_count) * 10) * 100 / 10.0
 		win_rate = str(win_rate_val) + '%'
 		
 	win_rate_lb.text = win_rate

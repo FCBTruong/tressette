@@ -771,6 +771,8 @@ func _input(event):
 				self.list_players[0].show_emotion(4)
 				print("W key pressed")
 			elif event.keycode == KEY_S:
+				_effect_evaluate("win_messageall")
+				return
 				test_play_playercard()
 				print("S key pressed")
 			elif event.keycode == KEY_1:
