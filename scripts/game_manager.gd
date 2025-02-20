@@ -88,6 +88,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			GameServerConfig.time_thinking_in_turn = pkg.get_time_thinking_in_turn()
 			GameServerConfig.tressette_bets = pkg.get_tressette_bets()
 			GameServerConfig.bet_multiplier_min = pkg.get_bet_multiplier_min()
+			GameServerConfig.exp_levels = pkg.get_exp_levels()
 		GameConstants.CMDs.TABLE_LIST:
 			var pkg = GameConstants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)

@@ -2266,6 +2266,11 @@ class GeneralInfo:
 		service.field = _bet_multiplier_min
 		data[_bet_multiplier_min.tag] = service
 		
+		_exp_levels = PBField.new("exp_levels", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 6, true, [])
+		service = PBServiceField.new()
+		service.field = _exp_levels
+		data[_exp_levels.tag] = service
+		
 	var data = {}
 	
 	var _timestamp: PBField
@@ -2312,6 +2317,15 @@ class GeneralInfo:
 		_bet_multiplier_min.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_bet_multiplier_min(value : int) -> void:
 		_bet_multiplier_min.value = value
+	
+	var _exp_levels: PBField
+	func get_exp_levels() -> Array:
+		return _exp_levels.value
+	func clear_exp_levels() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_exp_levels.value = []
+	func add_exp_levels(value : int) -> void:
+		_exp_levels.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3093,10 +3107,10 @@ class SearchFriendResponse:
 		service.field = _win_count
 		data[_win_count.tag] = service
 		
-		_win_rate = PBField.new("win_rate", PB_DATA_TYPE.DOUBLE, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.DOUBLE])
+		_game_count = PBField.new("game_count", PB_DATA_TYPE.DOUBLE, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.DOUBLE])
 		service = PBServiceField.new()
-		service.field = _win_rate
-		data[_win_rate.tag] = service
+		service.field = _game_count
+		data[_game_count.tag] = service
 		
 		_error = PBField.new("error", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 7, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
@@ -3107,6 +3121,11 @@ class SearchFriendResponse:
 		service = PBServiceField.new()
 		service.field = _level
 		data[_level.tag] = service
+		
+		_exp = PBField.new("exp", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 9, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		service = PBServiceField.new()
+		service.field = _exp
+		data[_exp.tag] = service
 		
 	var data = {}
 	
@@ -3155,14 +3174,14 @@ class SearchFriendResponse:
 	func set_win_count(value : int) -> void:
 		_win_count.value = value
 	
-	var _win_rate: PBField
-	func get_win_rate() -> float:
-		return _win_rate.value
-	func clear_win_rate() -> void:
+	var _game_count: PBField
+	func get_game_count() -> float:
+		return _game_count.value
+	func clear_game_count() -> void:
 		data[6].state = PB_SERVICE_STATE.UNFILLED
-		_win_rate.value = DEFAULT_VALUES_3[PB_DATA_TYPE.DOUBLE]
-	func set_win_rate(value : float) -> void:
-		_win_rate.value = value
+		_game_count.value = DEFAULT_VALUES_3[PB_DATA_TYPE.DOUBLE]
+	func set_game_count(value : float) -> void:
+		_game_count.value = value
 	
 	var _error: PBField
 	func get_error() -> int:
@@ -3181,6 +3200,15 @@ class SearchFriendResponse:
 		_level.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_level(value : int) -> void:
 		_level.value = value
+	
+	var _exp: PBField
+	func get_exp() -> int:
+		return _exp.value
+	func clear_exp() -> void:
+		data[9].state = PB_SERVICE_STATE.UNFILLED
+		_exp.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
+	func set_exp(value : int) -> void:
+		_exp.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

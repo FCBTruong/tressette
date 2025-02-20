@@ -23,6 +23,9 @@ func _show_popup():
 @onready var game_count_lb = find_child("GameCountLb")
 @onready var win_rate_lb = find_child("WinRateLb")
 @onready var exp_lb = find_child("ExpLb")
+@onready var level_lb = find_child("LevelLb")
+@onready var exp_bar = find_child("ExpBar")
+@onready var head_pn = find_child("HeadPn")
 var is_me: bool = false
 var _info:UserData = null
 func _ready() -> void:
@@ -44,10 +47,13 @@ func set_info(info: UserData):
 		avt_edit_btn.visible = true
 		avatar_img.set_me()
 		is_me = true
+		
+		head_pn.self_modulate = Color('#429648ca')
 	else:
 		avt_edit_btn.visible = false
 		avatar_img.set_avatar(_info.avatar)
 		is_me = false
+		head_pn.self_modulate = Color('#0b000056')
 	
 	user_name_lb.text = _info.name
 	gold_lb.text = StringUtils.point_number(_info.gold)
@@ -62,6 +68,18 @@ func set_info(info: UserData):
 		
 	win_rate_lb.text = win_rate
 	exp_lb.text = StringUtils.point_number(_info.exp)
+	var level = GameServerConfig.convert_exp_to_level(_info.exp)
+	if GameServerConfig.is_max_level(level):
+		exp_lb.text = tr("MAX")
+		exp_bar.value = 100
+	else:
+		var a = GameServerConfig.exp_levels[level - 1]
+		var b = GameServerConfig.exp_levels[level]
+		var cur = _info.exp - a
+		var des = b - a
+		exp_bar.value = cur * 1.0 / des * 100
+		exp_lb.text = str(cur) + '/' + str(des)
+	self.level_lb.text = str(level)
 	
 func _copy_uid() -> void:
 	DisplayServer.clipboard_set(str(_info.uid))

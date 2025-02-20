@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_2i772"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu0cq"]
-bg_color = Color(0.435294, 0.423529, 0.415686, 0.356863)
+bg_color = Color(0.418536, 0.418536, 0.418536, 0.356863)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -19,7 +19,7 @@ corner_radius_bottom_left = 5
 load_path = "res://.godot/imported/avatar_3.png-e5ac5722e6de0f96cd81bdc0216b4f4f.ctex"
 
 [node name="FriendlobbyNode" type="Panel"]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(250, 60)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uu0cq")
 script = ExtResource("1_gw2x1")

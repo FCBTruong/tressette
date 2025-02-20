@@ -59,10 +59,16 @@ func _on_received_search_friend(payload):
 	var name = pkg.get_name()
 	var level = pkg.get_level()
 	var gold = pkg.get_gold()
+	var exp = pkg.get_exp()
+	var game_count = pkg.get_game_count()
+	var win_count = pkg.get_win_count()
 	
 	var user_data = UserData.new(uid, name)
 	user_data.avatar = avatar
 	user_data.gold = gold
+	user_data.exp = exp
+	user_data.win_count = win_count
+	user_data.game_count = game_count
 	
 	var gui = await SceneManager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
 	gui.set_info(user_data)
