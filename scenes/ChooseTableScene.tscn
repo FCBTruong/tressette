@@ -78,7 +78,7 @@ offset_bottom = 86.0
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0ao2y")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nqnom")
-placeholder_text = "SEARCH_ROOM_ID"
+placeholder_text = "JOIN_ROOM_BY_ID"
 virtual_keyboard_type = 2
 right_icon = ExtResource("4_kxarc")
 
@@ -210,5 +210,6 @@ texture = ExtResource("7_qshgq")
 expand_mode = 1
 
 [connection signal="pressed" from="CanvasLayer/TextureRect/BackBtn" to="." method="_back_to_lobby"]
+[connection signal="text_submitted" from="CanvasLayer/TextureRect/LineEdit" to="." method="_click_join_room_by_id"]
 [connection signal="pressed" from="CanvasLayer/TextureRect/CreateTableBtn" to="." method="open_create_table_gui"]
 [connection signal="pressed" from="CanvasLayer/TextureRect/RefreshBtn" to="." method="_refresh_list"]

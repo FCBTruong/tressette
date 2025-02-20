@@ -107,6 +107,13 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				table_list.append(table)
 				
 			SignalBus.emit_signal_global("update_table_list")
+		GameConstants.CMDs.JOIN_TABLE_BY_ID:
+			var pkg = GameConstants.PROTOBUF.PACKETS.JoinTableResponse.new()
+			var result_code = pkg.from_bytes(payload)
+			var error_join = pkg.get_error()
+			if error_join != 0:
+				var str_err_join = tr('ERROR_JOIN_TABLE_' + str(error_join))
+				SceneManager.show_ok_dialog(str_err_join)
 		GameConstants.CMDs.CLAM_SUPPORT:
 			_received_claim_support(payload)
 		_:
@@ -182,3 +189,8 @@ func _received_claim_support(payload):
 		func():
 			print('click close')
 	)
+
+func join_game_by_id(id):
+	var pkg = GameConstants.PROTOBUF.PACKETS.JoinTableById.new()
+	pkg.set_match_id(id)
+	GameClient.send_packet(GameConstants.CMDs.JOIN_TABLE_BY_ID, pkg.to_bytes())

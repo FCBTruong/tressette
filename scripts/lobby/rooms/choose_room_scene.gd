@@ -46,3 +46,7 @@ func _refresh_list():
 	else:
 		print('too much request....')
 	
+func _click_join_room_by_id(text):
+	print('join table', text)
+	var room_id = int(text)
+	GameManager.join_game_by_id(room_id)

@@ -34,7 +34,4 @@ func _click_play():
 		PlayerInfoMgr.my_user_data.gold:
 		GameManager.show_not_gold_recommend_shop()
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.JoinTableById.new()
-	pkg.set_match_id(self._info.match_id)
-	print('User want to join table', self._info.match_id)
-	GameClient.send_packet(GameConstants.CMDs.JOIN_TABLE_BY_ID, pkg.to_bytes())
+	GameManager.join_game_by_id(self._info.match_id)
