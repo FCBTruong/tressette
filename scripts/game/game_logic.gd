@@ -408,11 +408,14 @@ func _handle_end_game(payload: PackedByteArray):
 	var score_last_tricks = pkg.get_score_last_tricks()
 	var score_totals = pkg.get_score_totals()
 	var gold_changes = pkg.get_gold_changes()
+	var gold_wins = pkg.get_gold_wins()
 	match_result = MatchData.MatchResult.new()
 	match_result.gold_change = gold_changes[my_idx]
-	match_result.win_team_id = win_team_id
 	match_result.is_win = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id \
 		== win_team_id
+	if match_result.is_win:
+		match_result.gold_change = gold_wins[my_idx]
+	match_result.win_team_id = win_team_id
 	match_result.my_team_id = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id
 	
 	# update my user info

@@ -89,3 +89,4 @@ ERROR_JOIN_TABLE_3,You do not have enough Lire to join this room,Non hai abbasta
 ERROR_JOIN_TABLE_4,You are already in a match.,Sei già in una partita,,
 ERROR_JOIN_TABLE_5,Match not found.,Partita non trovata.,,
 PLAY,Play,GIOCA,,
+PRIVATE,Private,Privato,,
