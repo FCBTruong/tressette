@@ -65,6 +65,8 @@ func _input(event):
 					false
 				)
 				pass
+			if event.keycode == KEY_ESCAPE:
+				self.queue_free()
 
 func _click_cheat_goldbtn():
 	var gold = int(line_edit_gold.text)
