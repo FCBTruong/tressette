@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhgkntha63vqu"]
+[gd_scene load_steps=5 format=3 uid="uid://dhgkntha63vqu"]
 
 [ext_resource type="Script" path="res://scripts/game/card.gd" id="1_1xv6o"]
+[ext_resource type="Shader" path="res://shaders/gold.gdshader" id="2_dkwry"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="2_sddhp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ww22k"]
+shader = ExtResource("2_dkwry")
+shader_parameter/influence = 0.5
+shader_parameter/offset = null
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_1xv6o")
@@ -22,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CardImage" type="TextureRect" parent="Main"]
-self_modulate = Color(1, 0.908425, 0.792655, 1)
+material = SubResource("ShaderMaterial_ww22k")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

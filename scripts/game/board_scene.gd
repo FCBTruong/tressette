@@ -86,6 +86,7 @@ func _on_enter():
 	on_update_players()
 	update_remain_cards()
 	in_game_chat_gui.visible = false
+	in_game_chat_gui.z_index = 200
 	chat_btn.visible = GameManager.enable_chat_ingame
 	chat_btn_reddot.visible = false
 	pn_cheat.visible = false #Config.CURRENT_MODE != Config.MODES.LIVE

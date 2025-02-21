@@ -1,10 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=34 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
+[ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_ae4rd"]
 [ext_resource type="Texture2D" uid="uid://ceyy7y3k4olhi" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
-[ext_resource type="Shader" path="res://shaders/blur2.gdshader" id="2_t0cn2"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="3_f4vbo"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
+[ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="3_l1m8d"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_b03ik"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_umvqn"]
@@ -21,16 +22,17 @@
 [ext_resource type="Texture2D" uid="uid://beksnb501alnd" path="res://assets/images/lobby/friend_reject_icon.png" id="18_jxtpp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaus5"]
-shader = ExtResource("2_t0cn2")
-shader_parameter/strength = 5.0
-shader_parameter/sample_power = 4
-shader_parameter/is_canvas_group = true
+shader = ExtResource("2_ae4rd")
+shader_parameter/blur_amount = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp3k3"]
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqbnk"]
+shader = ExtResource("3_l1m8d")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh3o1"]
 bg_color = Color(1, 1, 1, 1)
@@ -166,6 +168,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_mmkv0")
 expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/MainPn/Panel2"]
+material = SubResource("ShaderMaterial_dqbnk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HeadPn" type="Panel" parent="Control/MainPn"]
 layout_mode = 1

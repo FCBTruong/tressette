@@ -180,6 +180,8 @@ func _handle_game_info(payload: PackedByteArray):
 	SceneManager.switch_scene("res://scenes/BoardScene.tscn")
 
 func _handle_deal_card(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.DealCard.new()
 	var result_code = pkg.from_bytes(payload)
 	var cards = pkg.get_cards()
@@ -293,6 +295,8 @@ func is_my_turn():
 		return false
 		
 func get_uid_in_turn():
+	if not match_data:
+		return -1
 	if match_data.current_turn == -1:
 		return -1
 	return match_data.users[match_data.current_turn].uid
@@ -505,6 +509,9 @@ func is_strong_card(id: int) -> bool:
 		return true
 	else:
 		return false
+		
+func is_most_value_card(id: int) -> bool:
+	return id < 4
 	
 
 	

@@ -69,6 +69,7 @@ func turn_face_down():
 	_load_texture(path)
 	
 	self.card_image.self_modulate = Color("#ffffff")
+	self.card_image.material = null
 	
 func _load_texture(path):
 	var new_texture = load(path)
@@ -84,14 +85,23 @@ func _set_default_z_index(z):
 	_default_z_index = z
 	self.z_index = z
 
+var shader = preload("res://shaders/gold.gdshader")
+var material = ShaderMaterial.new()
+	
 func turn_face_up():
 	face_state = GameConstants.CARD_FACE_STATE.UP
 	_load_texture_card()
 	
-	if (GameConstants.game_logic.is_strong_card(self.id)):
-		self.card_image.self_modulate = Color("ffe8ca")
+	if GameConstants.game_logic.is_most_value_card(self.id):
+		material.shader = shader
+		self.card_image.material = material
 	else:
-		self.card_image.self_modulate = Color("#ffffff")
+		self.card_image.material = null
+	
+	#if (GameConstants.game_logic.is_strong_card(self.id)):
+		#self.card_image.self_modulate = Color("ffe8ca")
+	#else:
+		#self.card_image.self_modulate = Color("#ffffff")
 	
 	# set special colour for strong card
 

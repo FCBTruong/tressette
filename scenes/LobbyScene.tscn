@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=33 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
+[ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="3_m4n3y"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_x7pan"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Texture2D" uid="uid://2tvqotkvdx50" path="res://assets/images/img_01.png" id="6_7tuic"]
@@ -22,9 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="18_mdwpl"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="18_wn24e"]
 [ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="19_orflg"]
-[ext_resource type="Shader" path="res://shaders/sprite_perspective_correction.gdshader" id="23_d3ntq"]
-[ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="24_h4xv2"]
-[ext_resource type="PackedScene" uid="uid://dhgkntha63vqu" path="res://scenes/board/Card.tscn" id="25_4jatr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpsps"]
+shader = ExtResource("3_m4n3y")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
 bg_color = Color(0.0143579, 0.618802, 0.243289, 1)
@@ -86,12 +87,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_da7ux"]
-shader = ExtResource("23_d3ntq")
-shader_parameter/width = 64.0
-shader_parameter/height = 64.0
-shader_parameter/mouse_position = Vector2(0, 0)
-
 [node name="LobbyScene" type="Node2D"]
 script = ExtResource("1_wigpx")
 
@@ -121,6 +116,16 @@ size_flags_stretch_ratio = 0.0
 texture = ExtResource("2_4au8t")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Background"]
+material = SubResource("ShaderMaterial_gpsps")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="PlayContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -744,16 +749,6 @@ expand_mode = 1
 [node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_da7ux")
-offset_left = 488.0
-offset_top = 198.0
-offset_right = 588.0
-offset_bottom = 298.0
-texture = ExtResource("24_h4xv2")
-
-[node name="Card" parent="CanvasLayer/TextureRect" instance=ExtResource("25_4jatr")]
 
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/PlayContainer/RoomsBtn" to="." method="_open_tables_scene"]

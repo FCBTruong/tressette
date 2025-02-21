@@ -98,6 +98,7 @@ script = ExtResource("1_th5x2")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Background" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(0.859799, 0.859799, 0.859799, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -889,16 +890,15 @@ offset_bottom = 31.0
 text = "Test Deal"
 
 [node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
-visible = false
 custom_minimum_size = Vector2(333, 250)
 anchors_preset = 4
 anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5
 offset_left = 27.0
-offset_top = -187.0
-offset_right = 360.0
-offset_bottom = 63.0
+offset_top = -253.0
+offset_right = 527.0
+offset_bottom = 147.0
 grow_horizontal = 1
 
 [node name="BottomLeftPn" type="Control" parent="CanvasLayer"]
