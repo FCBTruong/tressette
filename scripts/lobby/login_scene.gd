@@ -9,7 +9,7 @@ var uids_cheat = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	LoginMgr.auto_login()	
+	var auto = LoginMgr.auto_login()	
 	if Config.CURRENT_MODE != Config.MODES.LIVE:
 		pn_cheat.visible = true
 		
@@ -32,11 +32,13 @@ func _ready() -> void:
 	
 	login_pn.modulate.a = 0
 	login_pn.position.y -= 300
+	var delay = 2 if auto else 0
 	
 	tween.parallel().tween_property(login_pn,
-		"position", default_pos, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT) 
+		"position", default_pos, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT) \
+			.set_delay(delay) 
 	tween.parallel().tween_property(login_pn,
-		"modulate:a", 1, 0.4)
+		"modulate:a", 1, 0.4).set_delay(delay) 
 		
 
 func on_login_local_firebase_succeeed(auth):

@@ -40,7 +40,7 @@ func _on_received_firebase_acc(payload):
 func auto_login():
 	last_login_type = StorageCache.fetch('last_login_type', GameConstants.LOGIN_TYPE.NONE)
 	if last_login_type == GameConstants.LOGIN_TYPE.NONE:
-		return
+		return false
 	if last_login_type == GameConstants.LOGIN_TYPE.FIREBASE: # use token
 		var login_token = load_login_token()
 		print('login_token')
@@ -53,6 +53,7 @@ func auto_login():
 		GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
 	elif  last_login_type == GameConstants.LOGIN_TYPE.GUEST: # guest
 		login_guest()
+	return true
 	
 func login_guest():
 	StorageCache.store('last_login_type', GameConstants.LOGIN_TYPE.GUEST)
