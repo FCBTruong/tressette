@@ -8,9 +8,7 @@ extends Node
 var uids_cheat = []
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	Firebase.Auth.login_succeeded.connect(on_login_local_firebase_succeeed)
-	
+func _ready() -> void:	
 	LoginMgr.auto_login()	
 	if Config.CURRENT_MODE != Config.MODES.LIVE:
 		pn_cheat.visible = true
@@ -68,18 +66,8 @@ func test_login_userB() -> void:
 
 func _login_google() -> void:
 	FirebaseMgr.login_with_google()
-	
-	# outdated
-	#return
-	#var provider: AuthProvider = Firebase.Auth.get_GoogleProvider()
-	#Firebase.Auth.get_auth_localhost(provider, 8060)
-	#pass
 
 func _login_facebook() -> void:
-	if Config.CURRENT_MODE == Config.MODES.LOCAL:
-		var provider: AuthProvider = Firebase.Auth.get_FacebookProvider()
-		Firebase.Auth.get_auth_localhost(provider, 8060)
-		return
 	FirebaseMgr.login_with_facebook()
 	pass
 

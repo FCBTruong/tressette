@@ -94,6 +94,7 @@ text = "Cheat"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn"]
 material = SubResource("ShaderMaterial_ofocf")
+layout_mode = 0
 offset_left = 20.0
 offset_top = 190.0
 offset_right = 120.0
