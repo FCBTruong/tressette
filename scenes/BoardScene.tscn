@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="7_qu8fh"]
 [ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="7_riexb"]
-[ext_resource type="FontFile" uid="uid://rst2163jgwxb" path="res://assets/fonts/ARIALBD 1.TTF" id="8_40uv3"]
+[ext_resource type="FontFile" path="res://assets/fonts/ARIALBD 1.TTF" id="8_40uv3"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="8_afrgf"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
