@@ -285,6 +285,8 @@ func reset_cards_compare():
 		match_data.cards_compare.append(-1)
 
 func is_my_turn():
+	if not match_data:
+		return false
 	#print('is_my_turn ', match_data.current_turn)
 	if match_data.current_turn == -1:
 		return false

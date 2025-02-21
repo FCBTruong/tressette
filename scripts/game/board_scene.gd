@@ -41,7 +41,7 @@ var cards_node_compare = []
 @onready var center_play_pn_pos
 @onready var game_start_lb = find_child("GameStartLb")
 @onready var round_lb = find_child("RoundLb")
-
+@onready var evaluate_ipad_pos_node = find_child('EvaluateIpadPos')
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -62,7 +62,7 @@ func _ready() -> void:
 	play_ground = find_child('PlayGround')
 	place_card_node = find_child('PlaceCard1')
 	countdown_start_lb.visible = false
-	evaluate_lb_default_pos = evaluate_lb.position
+	evaluate_lb_default_pos = evaluate_lb.global_position
 	evaluate_lb.modulate.a = 0
 	evaluate_lb.visible = true
 	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
@@ -746,10 +746,14 @@ func on_new_chat_emo(uid, emo):
 		p.show_emotion(emo)
 	
 func _effect_evaluate(text = 'Fantastic!'):
+	var screen_size = DisplayServer.window_get_size()
+	if screen_size.x / screen_size.y < 1.4:
+		evaluate_lb_default_pos = evaluate_ipad_pos_node.position
+		evaluate_lb_default_pos -= evaluate_lb.size * evaluate_lb.scale / 2
 	evaluate_lb.text = text
 	var tween = create_tween()
 	evaluate_lb.modulate.a = 1
-	evaluate_lb.position = evaluate_lb_default_pos
+	evaluate_lb.global_position = evaluate_lb_default_pos
 	evaluate_lb.scale = Vector2(0, 0)
 	tween.tween_property(self.evaluate_lb, 'scale', Vector2(1, 1), 0.4)
 	# delay 1 second
