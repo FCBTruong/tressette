@@ -12,6 +12,9 @@ bg_color = Color(0.649351, 0.231916, 0.00652578, 1)
 shader = ExtResource("2_bvjld")
 shader_parameter/influence = 0.3
 shader_parameter/offset = 0.0
+shader_parameter/brightness = 1.2
+shader_parameter/contrast = 1.5
+shader_parameter/noise_intensity = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6um5f"]
 shader = ExtResource("4_eiqqj")

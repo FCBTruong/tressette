@@ -8,6 +8,9 @@
 shader = ExtResource("2_dkwry")
 shader_parameter/influence = 0.5
 shader_parameter/offset = null
+shader_parameter/brightness = 1.2
+shader_parameter/contrast = 1.5
+shader_parameter/noise_intensity = 0.2
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_1xv6o")
