@@ -4096,6 +4096,16 @@ class CreateTable:
 		service.field = _bet
 		data[_bet.tag] = service
 		
+		_player_mode = PBField.new("player_mode", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _player_mode
+		data[_player_mode.tag] = service
+		
+		_is_private = PBField.new("is_private", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_private
+		data[_is_private.tag] = service
+		
 	var data = {}
 	
 	var _bet: PBField
@@ -4106,6 +4116,24 @@ class CreateTable:
 		_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_bet(value : int) -> void:
 		_bet.value = value
+	
+	var _player_mode: PBField
+	func get_player_mode() -> int:
+		return _player_mode.value
+	func clear_player_mode() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_player_mode.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_player_mode(value : int) -> void:
+		_player_mode.value = value
+	
+	var _is_private: PBField
+	func get_is_private() -> bool:
+		return _is_private.value
+	func clear_is_private() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_is_private.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_private(value : bool) -> void:
+		_is_private.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

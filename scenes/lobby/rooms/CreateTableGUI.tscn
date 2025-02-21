@@ -181,7 +181,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control3"]
+[node name="OptionPlayer" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control3"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -194,8 +194,10 @@ offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 selected = 0
-item_count = 1
+item_count = 2
 popup/item_0/text = "1vs1"
+popup/item_1/text = "2v2"
+popup/item_1/id = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control3"]
 layout_mode = 1
@@ -241,6 +243,41 @@ theme_override_fonts/font = ExtResource("3_y8xbq")
 theme_override_font_sizes/font_size = 28
 text = "BET"
 vertical_alignment = 1
+
+[node name="Control4" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control4"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 29.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_y8xbq")
+theme_override_font_sizes/font_size = 28
+text = "PRIVATE"
+vertical_alignment = 1
+
+[node name="PrivateCheck" type="CheckBox" parent="CanvasLayer/MainPn/VBoxContainer/Control4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -23.0
+offset_right = -15.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+flat = true
+icon_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
 [connection signal="pressed" from="CanvasLayer/MainPn/CreateBtn" to="." method="_on_create_table"]

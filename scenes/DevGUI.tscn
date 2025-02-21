@@ -104,10 +104,10 @@ expand_mode = 1
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn"]
 material = SubResource("ShaderMaterial_6um5f")
 layout_mode = 0
-offset_left = 156.0
-offset_top = 100.0
-offset_right = 456.0
-offset_bottom = 400.0
+offset_left = 163.0
+offset_top = 156.0
+offset_right = 463.0
+offset_bottom = 456.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.635)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=31 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
-[ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="3_m4n3y"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_x7pan"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Texture2D" uid="uid://2tvqotkvdx50" path="res://assets/images/img_01.png" id="6_7tuic"]
@@ -23,9 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="18_mdwpl"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="18_wn24e"]
 [ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="19_orflg"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpsps"]
-shader = ExtResource("3_m4n3y")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
 bg_color = Color(0.0143579, 0.618802, 0.243289, 1)
@@ -116,16 +112,6 @@ size_flags_stretch_ratio = 0.0
 texture = ExtResource("2_4au8t")
 expand_mode = 1
 stretch_mode = 6
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Background"]
-material = SubResource("ShaderMaterial_gpsps")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="PlayContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1

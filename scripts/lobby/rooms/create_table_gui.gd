@@ -3,6 +3,8 @@ extends Node
 
 @onready var main_pn = find_child('MainPn')
 @onready var option_bet = find_child("OptionBet")
+@onready var option_player = find_child("OptionPlayer")
+@onready var private_check = find_child("PrivateCheck")
 
 var bets = [10000]
 func _ready() -> void:
@@ -50,6 +52,13 @@ func _on_create_table():
 	
 	var pkg = GameConstants.PROTOBUF.PACKETS.CreateTable.new()
 	pkg.set_bet(bet)
+	
+	var player_mode = GameConstants.PLAYER_MODE.SOLO
+	if option_player.get_selected_id() == 1:
+		player_mode = GameConstants.PLAYER_MODE.TEAM
+	pkg.set_player_mode(player_mode)
+	var is_private = private_check.is_pressed()
+	pkg.set_is_private(is_private)
 	GameClient.send_packet(GameConstants.CMDs.CREATE_TABLE, pkg.to_bytes())
 	
 	SceneManager.add_loading(4)
