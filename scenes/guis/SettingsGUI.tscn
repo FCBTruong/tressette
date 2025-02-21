@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_wld6o"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_j4bw7"]
 [ext_resource type="Texture2D" uid="uid://dclctdoan3m25" path="res://assets/images/card_tressette/classic/card_2.png" id="4_ehi4e"]
-[ext_resource type="Texture2D" uid="uid://cl1c861s5dvmy" path="res://assets/images/cards_modern/card_0.png" id="6_i81va"]
+[ext_resource type="Texture2D" uid="uid://0ohtbsqbkssg" path="res://assets/images/card_tressette/modern/card_0.png" id="5_5y25g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1m567"]
 bg_color = Color(0.105462, 0.213894, 0.364227, 0.987)
@@ -158,7 +158,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_i81va")
+texture = ExtResource("5_5y25g")
 expand_mode = 1
 
 [node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn"]
