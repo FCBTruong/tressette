@@ -559,3 +559,21 @@ func _handle_cheat_view_card_bot(payload):
 	var cur_scene = SceneManager.get_current_scene()
 	if cur_scene is BoardScene:
 		cur_scene._show_cheat_cards_bot(cards)
+
+func check_has_napoli() -> bool:
+	var my_cards = match_data.users[my_idx].game_data.cards
+	var napo_sets = find_napoli(my_cards)
+	return len(napo_sets) > 0
+	
+func find_napoli(hand):
+	var napoli_sets = []
+	
+	# Check for Napoli in each suit
+	for suit in range(4):
+		var ace = suit
+		var two = suit + 4
+		var three = suit + 8
+		
+		if ace in hand and two in hand and three in hand:
+			napoli_sets.append([ace, two, three])
+	return napoli_sets

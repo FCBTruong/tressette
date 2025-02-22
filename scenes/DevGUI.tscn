@@ -4,22 +4,27 @@
 [ext_resource type="Shader" path="res://shaders/test.gdshader" id="2_3fbci"]
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="3_jlv1p"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="3_s0e4l"]
-[ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="4_eiqqj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtdei"]
 bg_color = Color(0.649351, 0.231916, 0.00652578, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l6plr"]
-shader = ExtResource("2_3fbci")
-shader_parameter/outline_width = null
-shader_parameter/lower_limit = null
-shader_parameter/upper_limit = null
-shader_parameter/color = null
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ofocf"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1beng"]
+seed = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kr2ir"]
+noise = SubResource("FastNoiseLite_1beng")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6um5f"]
-shader = ExtResource("4_eiqqj")
+shader = ExtResource("2_3fbci")
+shader_parameter/bottom_color = Color(0, 0.7, 1, 1)
+shader_parameter/middle_color = Color(1, 0.5, 0, 1)
+shader_parameter/top_color = Color(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0.2, 1.5)
+shader_parameter/fire_aperture = 0.461
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_kr2ir")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mr3y"]
 
@@ -95,7 +100,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qtdei")
 text = "Cheat"
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainPn"]
-material = SubResource("ShaderMaterial_l6plr")
 offset_left = 473.0
 offset_top = 201.0
 offset_right = 573.0
@@ -117,8 +121,8 @@ material = SubResource("ShaderMaterial_6um5f")
 layout_mode = 0
 offset_left = 163.0
 offset_top = 156.0
-offset_right = 463.0
-offset_bottom = 456.0
+offset_right = 375.0
+offset_bottom = 388.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.635)

@@ -30,7 +30,7 @@ func _physics_process(delta: float):
 	if not target:
 		is_live = false
 		var tween = create_tween()
-		tween.tween_callback(self.queue_free).set_delay(1)
+		tween.tween_callback(self.queue_free).set_delay(0.5)
 		# remove self after 1 second
 		return
 	global_position = target.global_position

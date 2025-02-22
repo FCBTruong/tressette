@@ -67,6 +67,7 @@ func _process(delta: float):
 	if GameConstants.game_logic.get_uid_in_turn() == self.user_data.uid:
 		if not running: 
 			start_timer()
+			SceneManager.INSTANCES.BOARD_SCENE.on_user_turn()
 	else:
 		time_progress_bar.visible = false
 		vortex.visible = false

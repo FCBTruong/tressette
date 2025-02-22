@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://ceyy7y3k4olhi" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="3_f4vbo"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
-[ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="3_l1m8d"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_b03ik"]
+[ext_resource type="Shader" path="res://shaders/background.gdshader" id="4_ghde2"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_umvqn"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="5_xl7qd"]
 [ext_resource type="Texture2D" uid="uid://dua5jqujlm0kh" path="res://assets/images/lobby/user_info_gui/email.png" id="6_5upxd"]
@@ -32,7 +32,21 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dqbnk"]
-shader = ExtResource("3_l1m8d")
+shader = ExtResource("4_ghde2")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 3.0
+shader_parameter/spin_rotation = 1.0
+shader_parameter/spin_speed = 5.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.184314, 0.45098, 0.933333, 1)
+shader_parameter/colour_2 = Color(0.0666667, 0.109804, 0.133333, 1)
+shader_parameter/colour_3 = Color(0, 0, 0, 0)
+shader_parameter/contrast = 1.5
+shader_parameter/lighting = 0.0
+shader_parameter/spin_amount = 0.1
+shader_parameter/pixel_filter = 756.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh3o1"]
 bg_color = Color(1, 1, 1, 1)

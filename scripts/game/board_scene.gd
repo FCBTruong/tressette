@@ -43,6 +43,7 @@ var cards_node_compare = []
 @onready var round_lb = find_child("RoundLb")
 @onready var evaluate_ipad_pos_node = find_child('EvaluateIpadPos')
 @onready var cheat_bot_card_pn = find_child("CheatBotCardPn")
+@onready var napoli_btn = find_child("NapoliBtn")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -57,6 +58,7 @@ var base_text = tr('WAITING_FOR_OTHERS')
 var evaluate_lb_default_pos
 var game_start_lb_default_pos
 func _ready() -> void:	
+	napoli_btn.visible = false 
 	game_start_lb_default_pos = game_start_lb.position
 	SceneManager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
@@ -527,8 +529,8 @@ func deal_my_cards(cards) -> void:
 		
 		# -(instance.size / 2.0) to center the card
 		var final_pos: Vector2 = list_pos_des[i]
-		# offset to the right everything has we are going to place cards to the left
-		final_pos.x += ((card_offset_x * (number-1)) / 2.0)
+		## offset to the right everything has we are going to place cards to the left
+		#final_pos.x += ((card_offset_x * (number-1)) / 2.0)
 		
 		#print("Offset: ", float(i)/float(number-1))
 		var rot_radians: float = 0
@@ -785,10 +787,10 @@ func _input(event):
 				test_play_playercard()
 				print("S key pressed")
 			elif event.keycode == KEY_1:
-				on_game_start()
-				return
-				_effect_pot_contribute()
-				return
+				#on_game_start()
+				#return
+				#_effect_pot_contribute()
+				#return
 				deal_my_cards([2,3,4,5,6,8,9,33])
 		else:
 			if event.keycode == KEY_W:
@@ -869,3 +871,14 @@ func _show_cheat_cards_bot(card_ids):
 		instance.scale = Vector2(0.7, 0.7)
 		instance.position = Vector2(start_x + idx * spacing, cp.y)  # Spread from center
 		idx += 1
+
+func _click_napoli_btn() -> void:
+	napoli_btn.visible = false
+	pass # Replace with function body.
+
+func on_user_turn():
+	napoli_btn.visible = false
+	if GameConstants.game_logic.get_uid_in_turn() == PlayerInfoMgr.get_user_id():
+		if game_logic.check_has_napoli():
+			napoli_btn.visible = true
+		pass
