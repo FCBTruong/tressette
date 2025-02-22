@@ -8,6 +8,7 @@ var hand_suit = -1 # current hand suit need to follow
 var my_idx: int = 0 # in list users
 var match_result = MatchData.MatchResult.new()
 var is_registered_leave = false
+var my_team_id: int
 
 func get_list_player() -> Array[UserData]:
 	return match_data.users
@@ -45,6 +46,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_new_round(payload)
 		GameConstants.CMDs.PLAY_CARD_RESPONSE:
 			_handle_play_card_error(payload)
+		GameConstants.CMDs.CHEAT_VIEW_CARD_BOT:
+			_handle_cheat_view_card_bot(payload)
 
 
 func _handle_user_leave_match(payload: PackedByteArray):
@@ -160,6 +163,7 @@ func _handle_game_info(payload: PackedByteArray):
 			my_idx = i
 			userdata.game_data.seat_id = 0
 			match_data.seat_delta = i
+			my_team_id = userdata.game_data.team_id
 		
 	# Assign seat IDs
 	if my_idx != -1:
@@ -370,6 +374,14 @@ func _handle_endhand(payload: PackedByteArray):
 		scene.on_finishhand()
 	reset_cards_compare()
 	
+func is_my_team(uid) -> bool:
+	if uid == PlayerInfoMgr.get_user_id():
+		return true
+	var u = get_user(uid)
+	if u.game_data.team_id == my_team_id:
+		return true
+	return false
+	
 func _handle_newhand(payload: PackedByteArray):
 	if not match_data:
 		return
@@ -532,3 +544,18 @@ func _handle_play_card_error(payload):
 	if cur_scene is BoardScene:
 		cur_scene.update_cards_on_table()
 	
+
+func _handle_cheat_view_card_bot(payload):
+	if Config.CURRENT_MODE == Config.MODES.LIVE:
+		print("Error urgent view bot !!!")
+		return
+	if Config.CURRENT_MODE != Config.MODES.LOCAL:
+		return	
+	if not Config.SHOW_CARD_BOT:
+		return
+	var pkg = GameConstants.PROTOBUF.PACKETS.CheatViewCardBot.new()
+	var result_code = pkg.from_bytes(payload)
+	var cards = pkg.get_cards()
+	var cur_scene = SceneManager.get_current_scene()
+	if cur_scene is BoardScene:
+		cur_scene._show_cheat_cards_bot(cards)

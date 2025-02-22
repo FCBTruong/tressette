@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=43 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://c3mfntti532pl" path="res://assets/images/board/red_bg.png" id="2_3jfp3"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://wss3dy5md7ag" path="res://assets/animations/3.png" id="16_uybu8"]
 [ext_resource type="Texture2D" uid="uid://d1ptlxc1n2pje" path="res://assets/animations/5.png" id="17_r8ldj"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="18_37hrg"]
 [ext_resource type="Texture2D" uid="uid://bdwytocp27vlf" path="res://assets/animations/4.png" id="18_hnxf0"]
 [ext_resource type="Texture2D" uid="uid://dspngqcofx1o0" path="res://assets/animations/1.png" id="19_avqff"]
 
@@ -82,8 +83,21 @@ bg_color = Color(0, 0, 0, 0.493)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlx11"]
-bg_color = Color(0.130018, 0.127001, 0.127001, 0.698)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyhfc"]
+shader = ExtResource("18_37hrg")
+shader_parameter/color = Color(0.483028, 0.287575, 0.287575, 1)
+shader_parameter/width = 2.235
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6sle4"]
+shader = ExtResource("18_37hrg")
+shader_parameter/color = Color(0.482353, 0.286275, 0.286275, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mewnw"]
 bg_color = Color(0.137, 0.137, 0.137, 0.662)
@@ -147,6 +161,17 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 
+[node name="CheatBotCardPn" type="Control" parent="CanvasLayer/PlayGround"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_right = 360.0
+offset_bottom = 160.0
+grow_horizontal = 2
+mouse_filter = 2
+
 [node name="MyCardPanel" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
 anchors_preset = 7
@@ -159,6 +184,7 @@ offset_top = -160.0
 offset_right = 360.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="CenterPlayPn" type="Control" parent="CanvasLayer/PlayGround"]
@@ -236,9 +262,9 @@ grow_horizontal = 0
 layout_mode = 1
 anchors_preset = 0
 offset_left = 38.0
-offset_top = 18.0
+offset_top = 33.0
 offset_right = 78.0
-offset_bottom = 58.0
+offset_bottom = 73.0
 
 [node name="PlayerPos0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
@@ -903,6 +929,7 @@ offset_bottom = 31.0
 text = "Test Deal"
 
 [node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
+visible = false
 custom_minimum_size = Vector2(333, 250)
 anchors_preset = 4
 anchor_top = 0.5
@@ -936,6 +963,7 @@ script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/EmoBtn"]
 modulate = Color(1, 1, 1, 0.757)
+material = SubResource("ShaderMaterial_cyhfc")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -956,6 +984,7 @@ script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
 modulate = Color(1, 1, 1, 0.757)
+material = SubResource("ShaderMaterial_6sle4")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -981,42 +1010,6 @@ offset_bottom = 19.0
 texture = ExtResource("11_lcke6")
 expand_mode = 1
 
-[node name="SettingsGUI" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/SettingsGUI"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rlx11")
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SettingsGUI/Panel"]
-layout_mode = 0
-offset_left = 46.0
-offset_top = 148.0
-offset_right = 143.0
-offset_bottom = 214.0
-
-[node name="MusicCheck" type="CheckButton" parent="CanvasLayer/SettingsGUI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Sound"
-
-[node name="SoundCheck" type="CheckButton" parent="CanvasLayer/SettingsGUI/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Sound"
-
 [node name="BottomCenter" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 7
@@ -1029,6 +1022,7 @@ offset_top = -40.0
 offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="WaitingOtherLb" type="Label" parent="CanvasLayer/BottomCenter"]
 modulate = Color(1, 1, 1, 0.592)

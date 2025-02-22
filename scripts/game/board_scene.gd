@@ -42,6 +42,7 @@ var cards_node_compare = []
 @onready var game_start_lb = find_child("GameStartLb")
 @onready var round_lb = find_child("RoundLb")
 @onready var evaluate_ipad_pos_node = find_child('EvaluateIpadPos')
+@onready var cheat_bot_card_pn = find_child("CheatBotCardPn")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -385,11 +386,11 @@ func on_finishhand(delay = 0.5):
 			
 	if not player_win_id:
 		return
-	var is_win = false
-	if player_win_id == PlayerInfoMgr.my_user_data.uid:
+	var is_win = game_logic.is_my_team(player_win_id)
+	if is_win:
 		if GameManager.enable_sound:
 			$AudioWinTurn.play()
-		is_win = true
+			
 	var eval_str = ''
 	if is_win: 
 		var random_index = randi() % win_messages.size()
@@ -849,3 +850,22 @@ func _set_int_to_text(value: int, label, add: bool = false) -> void:
 	if add:
 		str = '+' + str
 	label.text = str
+
+func _show_cheat_cards_bot(card_ids):
+	for c in cheat_bot_card_pn.get_children():
+		c.queue_free()
+	
+	var idx = 0
+	var cp = NodeUtils.get_center_position(self.cheat_bot_card_pn)
+	var total_cards = card_ids.size()
+	var spacing = 70  # Adjust as needed
+	var start_x = -200 + cp.x - ((total_cards - 1) * spacing) / 2  # Centered starting position
+
+	for card_id in card_ids:
+		var instance = card_scene.instantiate()
+		cheat_bot_card_pn.add_child(instance)
+		instance.set_card(card_id)
+		instance.turn_face_up()
+		instance.scale = Vector2(0.7, 0.7)
+		instance.position = Vector2(start_x + idx * spacing, cp.y)  # Spread from center
+		idx += 1

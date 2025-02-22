@@ -1,16 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhgkntha63vqu"]
+[gd_scene load_steps=4 format=3 uid="uid://dhgkntha63vqu"]
 
 [ext_resource type="Script" path="res://scripts/game/card.gd" id="1_1xv6o"]
-[ext_resource type="Shader" path="res://shaders/gold.gdshader" id="2_dkwry"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="2_sddhp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ww22k"]
-shader = ExtResource("2_dkwry")
-shader_parameter/influence = 0.5
-shader_parameter/offset = null
-shader_parameter/brightness = 1.2
-shader_parameter/contrast = 1.5
-shader_parameter/noise_intensity = 0.2
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_1xv6o")

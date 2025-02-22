@@ -6,7 +6,7 @@ extends Node
 enum MODES { LOCAL, PRIVATE, LIVE }
 
 @export var CURRENT_MODE: int = MODES.LOCAL
-
+@export var SHOW_CARD_BOT: bool = false
 var WEBSOCKET_URL: String
 var EDIT_MODE = false
 

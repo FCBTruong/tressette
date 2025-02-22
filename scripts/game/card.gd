@@ -87,6 +87,8 @@ func _set_default_z_index(z):
 
 var shader = preload("res://shaders/gold.gdshader")
 var material = ShaderMaterial.new()
+
+var shader1 = preload('res://shaders/rimline_2d.gdshader')
 	
 func turn_face_up():
 	face_state = GameConstants.CARD_FACE_STATE.UP
@@ -95,6 +97,10 @@ func turn_face_up():
 	if GameConstants.game_logic.is_most_value_card(self.id):
 		material.shader = shader
 		self.card_image.material = material
+	elif (GameConstants.game_logic.is_strong_card(self.id)):
+		#material.shader = shader1
+		#self.card_image.material = material
+		self.card_image.material = null
 	else:
 		self.card_image.material = null
 	
