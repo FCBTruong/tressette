@@ -15,6 +15,7 @@ var LanguageConf = {
 @onready var sound_checker = find_child('SoundBtn')
 @onready var option_language = find_child('OptionLanguage')
 @onready var logout_btn = find_child("LogoutBtn")
+@onready var remove_acc_btn = find_child("RemoveAccBtn")
 func _ready() -> void:
 	default_pos = $Panel.position
 	
@@ -42,7 +43,9 @@ func _ready() -> void:
 	
 	var scene = SceneManager.get_current_scene()
 	if scene is BoardScene:
+		remove_acc_btn.visible = false
 		logout_btn.visible = false
+		
 	
 
 func _hide_gui() -> void:

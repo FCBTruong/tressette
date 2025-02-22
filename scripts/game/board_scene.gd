@@ -52,7 +52,7 @@ const TIME_VIEW_CARD = 1.1
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
-var SCALE_CARD_COMPARE = 0.8
+var SCALE_CARD_COMPARE = 0.7
 var SCALE_CARD_DEAL_INIT = 0.8	
 var base_text = tr('WAITING_FOR_OTHERS')
 var evaluate_lb_default_pos
@@ -504,10 +504,10 @@ func update_remain_cards():
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
 	
 func deal_my_cards(cards) -> void:	
-	update_remain_cards()
+	cardback_node.visible = false
 	if GameManager.enable_sound:
 		$AudioShuffleDealCard.play()
-	var from_pos = cardback_node.global_position
+	var from_pos = NodeUtils.get_center_position(cardback_node)
 	remove_all_current_cards()
 	list_my_cards = []
 	var number = len(cards)
@@ -519,11 +519,13 @@ func deal_my_cards(cards) -> void:
 	var rotates = _get_card_rotates(number) 
 	for i in range(number):
 		var instance = card_scene.instantiate()
-		print('debug----01')
 		play_ground.add_child(instance)
 		instance.set_card(cards[i])
+		instance.scale = Vector2(0.6, 0.6)
 		instance.turn_face_down()
-		instance.z_index = DEFAULT_CARD_Z_INDEX + i
+		var z_des = DEFAULT_CARD_Z_INDEX + i
+		var z_now = DEFAULT_CARD_Z_INDEX + number - i 
+		instance.z_index = z_now
 		list_my_cards.append(instance)
 		instance.global_position = from_pos
 		
@@ -539,15 +541,23 @@ func deal_my_cards(cards) -> void:
 		#print("Rot: ", rot_radians)
 		#print("Card %d: , size: %s, pivot: %s" % [i, str(instance.size), str(instance.pivot_offset)])
 		
+		var delay = i * 0.1
 		# Animate pos
-		tween.parallel().tween_property(instance, "position", final_pos, 0.3 + (i * 0.075))
-		tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3 + (i * 0.075))
-		
+		if i == number - 1:
+			tween.parallel().tween_callback(
+				func():
+					update_remain_cards()
+					pass
+			).set_delay(delay)
+		tween.parallel().tween_property(instance, "position", final_pos, 0.3).set_delay(delay)
+		tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
+		tween.parallel().tween_property(instance, "scale", Vector2(1,1), 0.3).set_delay(delay)
 		# cal instance.show_card(true) after arrived
 			# Schedule card flip after animation finishes
 		tween.parallel().tween_callback(func():
+			instance.z_index = z_des
 			instance.show_card(true)
-		).set_delay(0.3 + (i * 0.075))
+		).set_delay(0.3 + delay)
 	
 	tween.tween_callback(set_process.bind(true))
 	tween.tween_property(self, "sine_offset_mult", anim_offset_y, 1.5).from(0.0)
@@ -635,7 +645,8 @@ func _effect_draw_card(uid, card_id):
 	var instance = card_scene.instantiate()
 	play_ground.add_child(instance)
 	instance.set_card(card_id)
-	instance.scale = Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT)
+	instance.scale = Vector2(0.6, 0.6)
+	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.3)
 	instance.turn_face_down()
 	instance.show_card(true)
 	instance.z_index = DEFAULT_CARD_Z_INDEX
