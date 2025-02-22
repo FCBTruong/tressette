@@ -92,41 +92,44 @@ func _on_enter():
 	pn_cheat.visible = false #Config.CURRENT_MODE != Config.MODES.LIVE
 	room_id_lb.text = tr("ROOM_ID") + ': ' + str(game_logic.match_data.match_id)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
-		# case reconnect
-		# update cards compare
-		var idx = 0
-		for card_id in game_logic.match_data.cards_compare:
-			var user = game_logic.match_data.users[idx]
-			idx += 1
-			if card_id != -1:
-				var instance = card_scene.instantiate()
-				play_ground.add_child(instance)
-				instance.set_card(card_id)
-				instance.turn_face_up()
-				instance.z_index = COMPARE_CARD_Z_INDEX
-				instance.scale = Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE)
-				instance.player_id = user.uid
-				instance.global_position = get_place_pos_card(user.game_data.seat_id)
-				cards_node_compare.append(instance)
-				
-		# update current cards
-		var cards = game_logic.get_my_cards()
-		var number = len(cards)
-		var rotates = _get_card_rotates(number)
-		for i in range(number):
-			var instance = card_scene.instantiate()
-			play_ground.add_child(instance)
-			instance.set_card(cards[i])
-			instance.turn_face_up()
-			list_my_cards.append(instance)
-			
-		_update_my_card_positions()
+		update_cards_on_table()
 		if game_logic.check_finishhand():
 			on_finishhand()
 			
 	self.update_team_scores()
 	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
 	pot_value_lb.text = StringUtils.point_number(game_logic.match_data.pot_value)
+
+func update_cards_on_table():
+	remove_all_current_cards()
+	# update cards compare
+	var idx = 0
+	for card_id in game_logic.match_data.cards_compare:
+		var user = game_logic.match_data.users[idx]
+		idx += 1
+		if card_id != -1:
+			var instance = card_scene.instantiate()
+			play_ground.add_child(instance)
+			instance.set_card(card_id)
+			instance.turn_face_up()
+			instance.z_index = COMPARE_CARD_Z_INDEX
+			instance.scale = Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE)
+			instance.player_id = user.uid
+			instance.global_position = get_place_pos_card(user.game_data.seat_id)
+			cards_node_compare.append(instance)
+			
+	# update current cards
+	var cards = game_logic.get_my_cards()
+	var number = len(cards)
+	var rotates = _get_card_rotates(number)
+	for i in range(number):
+		var instance = card_scene.instantiate()
+		play_ground.add_child(instance)
+		instance.set_card(cards[i])
+		instance.turn_face_up()
+		list_my_cards.append(instance)
+		
+	_update_my_card_positions()
 
 func continue_play():
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:

@@ -43,6 +43,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_prepare_start(payload)
 		GameConstants.CMDs.NEW_ROUND:
 			_handle_new_round(payload)
+		GameConstants.CMDs.PLAY_CARD_RESPONSE:
+			_handle_play_card_error(payload)
 
 
 func _handle_user_leave_match(payload: PackedByteArray):
@@ -227,7 +229,8 @@ func send_play_card(card_id: int):
 	var idx = get_index_by_uid(PlayerInfoMgr.my_user_data.uid)
 	
 	# remove this card 
-	match_data.users[idx].game_data.cards.erase(card_id)
+	#only remove after received success from server
+	#match_data.users[idx].game_data.cards.erase(card_id)
 	
 	push_cards_compare(PlayerInfoMgr.my_user_data.uid, card_id)
 	
@@ -518,5 +521,14 @@ func is_strong_card(id: int) -> bool:
 func is_most_value_card(id: int) -> bool:
 	return id < 4
 	
-
+func _handle_play_card_error(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCardResponse.new()
+	var result_code = pkg.from_bytes(payload)
+	var error = pkg.get_status()
+	if error != 0:
+		SceneManager.show_toast('ERROR_PLAY_CARD' + str(error))
+	# revert to old cards
+	var cur_scene = SceneManager.get_current_scene()
+	if cur_scene is BoardScene:
+		cur_scene.update_cards_on_table()
 	
