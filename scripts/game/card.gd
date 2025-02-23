@@ -69,7 +69,9 @@ func turn_face_down():
 	_load_texture(path)
 	
 	self.card_image.self_modulate = Color("#ffffff")
-	self.card_image.material = null
+	#self.card_image.material = null
+	material.shader = shader1
+	self.card_image.material = material
 	
 func _load_texture(path):
 	var new_texture = load(path)
@@ -88,7 +90,7 @@ func _set_default_z_index(z):
 var shader = preload("res://shaders/gold.gdshader")
 var material = ShaderMaterial.new()
 
-var shader1 = preload('res://shaders/rimline_2d.gdshader')
+var shader1 = preload('res://shaders/gradient.gdshader')
 	
 func turn_face_up():
 	face_state = GameConstants.CARD_FACE_STATE.UP

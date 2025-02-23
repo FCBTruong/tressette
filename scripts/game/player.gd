@@ -9,10 +9,15 @@ extends Node
 @onready var avatar_img = find_child('AvatarImg')
 @onready var emo_icon = find_child('EmoIcon')
 @onready var gold_lb = find_child("GoldLb")
+@onready var bonus_info_pn = find_child("BonusInfo")
+@onready var bonus_txt_lb = find_child("BonusTxtLb")
+var default_pos_bonus
 func _ready() -> void:
 	#effect_add_score(5)
 	emo_icon.visible = false
 	time_progress_bar.visible = false
+	self.bonus_info_pn.visible = false
+	default_pos_bonus = self.bonus_info_pn.global_position
 	pass
 
 # Properties
@@ -149,4 +154,28 @@ func _get_gold_str(gold) -> String:
 
 func _click_open_invite_gui() -> void:
 	SceneManager.open_gui("res://scenes/board/FriendInviteGUI.tscn")
+	pass
+	
+var tw_bonus
+func show_bonus(txt):
+	var p = self.global_position
+	var screen_size = DisplayServer.window_get_size()
+	if p.x > screen_size.x / 2:
+		# player in the left
+		pass
+	if tw_bonus and tw_bonus.is_running():
+		tw_bonus.kill()
+	tw_bonus = create_tween()
+	self.bonus_info_pn.visible = true
+	self.bonus_info_pn.modulate.a = 0
+	self.bonus_info_pn.scale = Vector2(0, 0)
+	bonus_txt_lb.text = txt
+	tw_bonus.parallel().tween_property(self.bonus_info_pn, 'modulate:a', 1, 0.3)
+	tw_bonus.parallel().tween_property(self.bonus_info_pn, 'scale', Vector2(1, 1), 0.3)
+	tw_bonus.tween_interval(0)
+	tw_bonus.parallel().tween_property(self.bonus_info_pn, 'modulate:a', 0, 0.3).set_delay(2)
+	tw_bonus.tween_callback(
+		func():
+			self.bonus_info_pn.visible = false
+	).set_delay(2)
 	pass

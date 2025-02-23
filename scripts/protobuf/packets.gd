@@ -2137,6 +2137,11 @@ class EndHand:
 		service.field = _win_point
 		data[_win_point.tag] = service
 		
+		_is_end_round = PBField.new("is_end_round", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_end_round
+		data[_is_end_round.tag] = service
+		
 	var data = {}
 	
 	var _win_uid: PBField
@@ -2174,6 +2179,15 @@ class EndHand:
 		_win_point.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_win_point(value : int) -> void:
 		_win_point.value = value
+	
+	var _is_end_round: PBField
+	func get_is_end_round() -> bool:
+		return _is_end_round.value
+	func clear_is_end_round() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_is_end_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_end_round(value : bool) -> void:
+		_is_end_round.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4519,6 +4533,61 @@ class InviteFriendPlay:
 		_room_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_room_id(value : int) -> void:
 		_room_id.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class GameActionNapoli:
+	func _init():
+		var service
+		
+		_uid = PBField.new("uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _uid
+		data[_uid.tag] = service
+		
+		_point_add = PBField.new("point_add", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _point_add
+		data[_point_add.tag] = service
+		
+	var data = {}
+	
+	var _uid: PBField
+	func get_uid() -> int:
+		return _uid.value
+	func clear_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_uid(value : int) -> void:
+		_uid.value = value
+	
+	var _point_add: PBField
+	func get_point_add() -> int:
+		return _point_add.value
+	func clear_point_add() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_point_add.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_point_add(value : int) -> void:
+		_point_add.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

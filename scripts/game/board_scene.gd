@@ -44,6 +44,7 @@ var cards_node_compare = []
 @onready var evaluate_ipad_pos_node = find_child('EvaluateIpadPos')
 @onready var cheat_bot_card_pn = find_child("CheatBotCardPn")
 @onready var napoli_btn = find_child("NapoliBtn")
+@onready var action_btn_pn = find_child("ActionBtnPn")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -70,6 +71,7 @@ func _ready() -> void:
 	evaluate_lb.visible = true
 	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
 	_on_enter()
+	action_btn_pn.z_index = 200
 	
 	
 	#show_prepare_start()
@@ -97,7 +99,7 @@ func _on_enter():
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		update_cards_on_table()
 		if game_logic.check_finishhand():
-			on_finishhand()
+			on_finishhand(0.5)
 			
 	self.update_team_scores()
 	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
@@ -366,7 +368,7 @@ var win_messages = [
 		'YOU_ARE_AMAZING'
 	]
 var lose_msgs = ['BAD_LUCK', 'TRY_AGAIN', 'DONT_GIVE_UP', 'KEEP_GOING']
-func on_finishhand(delay = 0.5):
+func on_finishhand(delay = 0.5, is_end_round = false):
 	#for card in cards_node_compare:
 		#card.visible = false
 	var card_win_id = game_logic.get_card_win_inhand()
@@ -434,6 +436,10 @@ func on_finishhand(delay = 0.5):
 	await get_tree().create_timer(0.5).timeout
 	player_node.effect_add_score(win_hand_point)
 	self.update_team_scores()
+	
+	if is_end_round:
+		# effect win last trick
+		player_node.show_bonus('+1 Last trick')
 		
 func update_team_scores():
 	var my_score = game_logic.get_my_team_score()
@@ -802,7 +808,8 @@ func _input(event):
 				#return
 				#_effect_pot_contribute()
 				#return
-				deal_my_cards([2,3,4,5,6,8,9,33])
+				#deal_my_cards([2,3,4,5,6,8,9,33])
+				self.list_players[0].show_bonus("+1 Last Trick")
 		else:
 			if event.keycode == KEY_W:
 				print("W key released")
@@ -885,6 +892,7 @@ func _show_cheat_cards_bot(card_ids):
 
 func _click_napoli_btn() -> void:
 	napoli_btn.visible = false
+	game_logic.send_action_napoli()
 	pass # Replace with function body.
 
 func on_user_turn():
@@ -893,3 +901,9 @@ func on_user_turn():
 		if game_logic.check_has_napoli():
 			napoli_btn.visible = true
 		pass
+
+func _on_user_napoli(uid, point_add):
+	var p = get_player_node_by_uid(uid)
+	if p:
+		var s = "+" + str(int(point_add / 3)) + " NAPOLI"
+		p.show_bonus(s)

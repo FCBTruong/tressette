@@ -48,6 +48,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_play_card_error(payload)
 		GameConstants.CMDs.CHEAT_VIEW_CARD_BOT:
 			_handle_cheat_view_card_bot(payload)
+		GameConstants.CMDs.GAME_ACTION_NAPOLI:
+			_handle_receive_napoli(payload)
 
 
 func _handle_user_leave_match(payload: PackedByteArray):
@@ -362,6 +364,7 @@ func _handle_endhand(payload: PackedByteArray):
 	win_point_hand = pkg.get_win_point()
 	card_win_id = pkg.get_win_card()
 	var points = pkg.get_user_points()
+	var is_end_round = pkg.get_is_end_round()
 	
 	var i = 0
 	for user in match_data.users:
@@ -371,7 +374,7 @@ func _handle_endhand(payload: PackedByteArray):
 	print('finish rounds...')
 	var scene = SceneManager.get_current_scene()
 	if scene is BoardScene:
-		scene.on_finishhand()
+		scene.on_finishhand(0.5, is_end_round)
 	reset_cards_compare()
 	
 func is_my_team(uid) -> bool:
@@ -577,3 +580,16 @@ func find_napoli(hand):
 		if ace in hand and two in hand and three in hand:
 			napoli_sets.append([ace, two, three])
 	return napoli_sets
+	
+func _handle_receive_napoli(payload):
+	var pkg = GameConstants.PROTOBUF.PACKETS.GameActionNapoli.new()
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	var point_add = pkg.get_point_add()
+	var cur_scene = SceneManager.get_current_scene()
+	if cur_scene is BoardScene:
+		cur_scene._on_user_napoli(uid, point_add)
+		
+func send_action_napoli():
+	var pkg = GameConstants.PROTOBUF.PACKETS.GameActionNapoli.new()
+	GameClient.send_packet(GameConstants.CMDs.GAME_ACTION_NAPOLI, pkg.to_bytes())

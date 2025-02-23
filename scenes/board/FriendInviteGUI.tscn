@@ -1,11 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv5qf8ahb43qj"]
+[gd_scene load_steps=10 format=3 uid="uid://cv5qf8ahb43qj"]
 
 [ext_resource type="Script" path="res://scripts/game/friend_invite_gui.gd" id="1_oor5a"]
 [ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="1_v284x"]
+[ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_11yv1"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_vqu75"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_3qvo6"]
 [ext_resource type="PackedScene" uid="uid://ini8ko5c6tti" path="res://scenes/board/FriendInviteNode.tscn" id="5_f332w"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="7_7gve4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7rbj"]
+shader = ExtResource("2_11yv1")
+shader_parameter/blur_amount = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lch56"]
 shader = ExtResource("1_v284x")
@@ -14,6 +19,14 @@ shader = ExtResource("1_v284x")
 script = ExtResource("1_oor5a")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fog" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_e7rbj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 custom_minimum_size = Vector2(600, 400)

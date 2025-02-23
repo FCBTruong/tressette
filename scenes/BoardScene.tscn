@@ -702,8 +702,8 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ActionBtnPn" type="Control" parent="CanvasLayer/PlayGround"]
-layout_mode = 1
+[node name="ActionBtnPn" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -716,7 +716,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="NapoliBtn" type="Button" parent="CanvasLayer/PlayGround/ActionBtnPn"]
+[node name="NapoliBtn" type="Button" parent="CanvasLayer/ActionBtnPn"]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -733,8 +733,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/ActionBtnPn/NapoliBtn"]
-clip_children = 1
+[node name="Panel" type="Panel" parent="CanvasLayer/ActionBtnPn/NapoliBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -744,7 +743,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jn1ms")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/ActionBtnPn/NapoliBtn/Panel"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ActionBtnPn/NapoliBtn/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -754,7 +753,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_rkk7c")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/PlayGround/ActionBtnPn/NapoliBtn/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/ActionBtnPn/NapoliBtn/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1231,7 +1230,7 @@ volume_db = 1.0
 stream = ExtResource("8_62q6d")
 volume_db = 12.0
 
-[connection signal="pressed" from="CanvasLayer/PlayGround/ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
+[connection signal="pressed" from="CanvasLayer/ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
