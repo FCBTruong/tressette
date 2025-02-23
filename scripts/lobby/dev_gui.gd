@@ -79,3 +79,7 @@ func _click_cheat_goldbtn():
 	
 func _cheat_gold(gold: int):
 	pass
+
+func _click_add_bot():
+	GameClient.send_packet(GameConstants.CMDs.CHEAT_ADD_BOT, [])
+	pass

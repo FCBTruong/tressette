@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c2sg4foah440r" path="res://assets/images/search_icon_small.png" id="5_gto5b"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="7_t78v7"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="8_kp8m7"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="9_82xie"]
 [ext_resource type="Texture2D" uid="uid://cvs720c5x14nn" path="res://assets/images/lobby/add_friend.png" id="12_1onhq"]
-[ext_resource type="FontFile" uid="uid://rst2163jgwxb" path="res://assets/fonts/ARIALBD 1.TTF" id="13_1848i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2gyw5"]
 
@@ -202,7 +202,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("13_1848i")
+theme_override_fonts/font = ExtResource("9_82xie")
 theme_override_font_sizes/font_size = 15
 text = "1"
 horizontal_alignment = 1

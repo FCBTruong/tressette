@@ -196,6 +196,16 @@ grow_vertical = 2
 texture = ExtResource("5_6p0k0")
 expand_mode = 1
 
+[node name="InviteBtn" type="Button" parent="EmptySlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("5_tnwwa")
+
 [node name="EmoIcon" type="TextureRect" parent="."]
 visible = false
 anchors_preset = 8
@@ -215,3 +225,4 @@ texture = ExtResource("8_7md6h")
 expand_mode = 1
 
 [connection signal="pressed" from="MainPn/AvatarCircle/InfoBtn" to="." method="_show_info"]
+[connection signal="pressed" from="EmptySlot/InviteBtn" to="." method="_click_open_invite_gui"]

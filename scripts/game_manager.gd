@@ -116,6 +116,9 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				SceneManager.show_ok_dialog(str_err_join)
 		GameConstants.CMDs.CLAM_SUPPORT:
 			_received_claim_support(payload)
+			
+		GameConstants.CMDs.INVITE_FRIEND_PLAY:
+			receive_play_invite(payload)
 		_:
 			GameConstants.game_logic.on_receive(cmd_id, payload)
 	
@@ -194,3 +197,30 @@ func join_game_by_id(id):
 	var pkg = GameConstants.PROTOBUF.PACKETS.JoinTableById.new()
 	pkg.set_match_id(id)
 	GameClient.send_packet(GameConstants.CMDs.JOIN_TABLE_BY_ID, pkg.to_bytes())
+
+
+func send_invite_friend_play(uid):
+	var pkg = GameConstants.PROTOBUF.PACKETS.InviteFriendPlay.new()
+	pkg.set_uid(uid)
+	GameClient.send_packet(GameConstants.CMDs.INVITE_FRIEND_PLAY, pkg.to_bytes())
+
+
+func receive_play_invite(payload):
+	print("receive play invite")
+	
+	var cur_scene = SceneManager.get_current_scene()
+	if cur_scene is BoardScene:
+		return
+		
+	var pkg = GameConstants.PROTOBUF.PACKETS.InviteFriendPlay.new()
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	var room_id = pkg.get_room_id()
+	var str = tr('INVITE_PLAY')
+	str = str.replace("@name", str(uid))
+	SceneManager.show_dialog(
+		str,
+		func():
+			join_game_by_id(room_id)
+	)
+	

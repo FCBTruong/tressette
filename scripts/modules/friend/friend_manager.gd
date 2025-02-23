@@ -265,5 +265,13 @@ func is_pending_accepted(friend_uid):
 			return true
 	return false	
 	
+func get_online_friends():
+	var arr = []
+	for f in friends:
+		if f.is_online:
+			arr.append(f)
+			
+	return arr
+	
 const FRIEND_ACCEPT_REQUEST: int = 0
 const FRIEND_REJECT_REQUEST: int = 1

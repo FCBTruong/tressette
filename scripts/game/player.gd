@@ -146,3 +146,7 @@ func _get_gold_str(gold) -> String:
 	if gold > 100000000:
 		str = StringUtils.symbol_number(gold)
 	return str
+
+func _click_open_invite_gui() -> void:
+	SceneManager.open_gui("res://scenes/board/FriendInviteGUI.tscn")
+	pass
