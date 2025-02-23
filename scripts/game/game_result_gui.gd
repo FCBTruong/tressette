@@ -56,6 +56,7 @@ func update_result(data: MatchData.MatchResult):
 		TitleLb.text = tr("YOU_WIN")
 		TitleLb.add_theme_color_override("font_color", Color('f8e0a9'))  # RGB for red
 	else:
+		SoundManager.play_lose_sound()
 		# Set green border
 		win_pn.visible = false
 		lose_pn.visible = true
