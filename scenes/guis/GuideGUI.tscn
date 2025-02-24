@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://fsqk1323rim"]
+[gd_scene load_steps=5 format=3 uid="uid://fsqk1323rim"]
 
 [ext_resource type="Script" path="res://scripts/lobby/guide_gui.gd" id="1_1mjrk"]
-[ext_resource type="Texture2D" uid="uid://cnnw63fx5jq3n" path="res://assets/images/lobby/guide/guide_content.png" id="2_y3gd7"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_gvjlj"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="4_20swo"]
 [ext_resource type="Texture2D" uid="uid://slup34rxbxws" path="res://assets/images/lobby/guide/arrow_icon.png" id="4_n0hxl"]
@@ -20,6 +19,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.76)
 
 [node name="MainPn" type="TextureRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(930, 520)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -32,7 +32,6 @@ offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(600, 300)
-texture = ExtResource("2_y3gd7")
 expand_mode = 1
 
 [node name="PreviousBtn" type="Button" parent="CanvasLayer/MainPn"]

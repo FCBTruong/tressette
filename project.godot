@@ -13,7 +13,6 @@ config_version=5
 config/name="Tressette Clash"
 run/main_scene="res://scenes/InitScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.png"
 
 [autoload]
 
