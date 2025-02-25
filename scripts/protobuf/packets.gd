@@ -1198,6 +1198,11 @@ class UserInfo:
 		service.field = _exp
 		data[_exp.tag] = service
 		
+		_startup_gold = PBField.new("startup_gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 14, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _startup_gold
+		data[_startup_gold.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1316,6 +1321,15 @@ class UserInfo:
 		_exp.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_exp(value : int) -> void:
 		_exp.value = value
+	
+	var _startup_gold: PBField
+	func get_startup_gold() -> int:
+		return _startup_gold.value
+	func clear_startup_gold() -> void:
+		data[14].state = PB_SERVICE_STATE.UNFILLED
+		_startup_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_startup_gold(value : int) -> void:
+		_startup_gold.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1441,6 +1455,11 @@ class GameInfo:
 		service = PBServiceField.new()
 		service.field = _hand_in_round
 		data[_hand_in_round.tag] = service
+		
+		_point_to_win = PBField.new("point_to_win", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 21, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _point_to_win
+		data[_point_to_win.tag] = service
 		
 	var data = {}
 	
@@ -1623,6 +1642,15 @@ class GameInfo:
 		_hand_in_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_hand_in_round(value : int) -> void:
 		_hand_in_round.value = value
+	
+	var _point_to_win: PBField
+	func get_point_to_win() -> int:
+		return _point_to_win.value
+	func clear_point_to_win() -> void:
+		data[21].state = PB_SERVICE_STATE.UNFILLED
+		_point_to_win.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_point_to_win(value : int) -> void:
+		_point_to_win.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

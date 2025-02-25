@@ -69,10 +69,15 @@ func open_gui(gui_path: String, z_order = 1):
 func get_current_scene():
 	return _cur_scene
 	
-func show_dialog(message: String, ok_callback: Callable = Callable(), close_callback: Callable = Callable(), show_cancel_btn = false):
+func show_dialog(message: String, ok_callback: Callable = Callable(), close_callback: Callable = Callable(), show_cancel_btn = false,
+	custom_ok_txt = null):
 	var gui = await SceneManager.open_gui("res://scenes/guis/NotificationGUI.tscn")
 	if not gui:
 		return
+		
+	if custom_ok_txt:
+		gui.ok_txt_lb.text = custom_ok_txt
+
 	gui.set_message(message)
 	gui.set_show_cancel_btn(show_cancel_btn)
 	if ok_callback.is_valid():

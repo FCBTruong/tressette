@@ -727,8 +727,7 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="PanelNapoliBtn" parent="CanvasLayer/ActionBtnPn/NapoliBtn" instance=ExtResource("13_6bu1m")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
 
 [node name="RightTopPanel" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -868,16 +867,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 54.0
-offset_top = -285.0
-offset_right = 454.0
-offset_bottom = -235.0
+offset_left = 34.0
+offset_top = -214.0
+offset_right = 434.0
+offset_bottom = -164.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(200, 25)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_afrgf")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 text = "Fantastic!"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -915,6 +914,17 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_gov4p")
+
+[node name="ReachPointWinLb" type="Label" parent="CanvasLayer/LeftTopPn"]
+modulate = Color(1, 1, 1, 0.316)
+layout_mode = 0
+offset_left = 206.0
+offset_top = 15.0
+offset_right = 408.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("7_qu8fh")
+theme_override_font_sizes/font_size = 22
+text = "REACH_POINT_TO_WIN"
 
 [node name="PnCheat" type="Control" parent="CanvasLayer"]
 visible = false

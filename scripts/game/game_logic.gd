@@ -135,6 +135,7 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.pot_value = pkg.get_pot_value()
 	match_data.current_round = pkg.get_current_round()
 	match_data.hand_in_round = pkg.get_hand_in_round()
+	match_data.point_to_win = pkg.get_point_to_win()
 	self.is_registered_leave = pkg.get_is_registered_leave()
 	self.hand_suit = pkg.get_hand_suit()
 	

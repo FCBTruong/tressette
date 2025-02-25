@@ -21,6 +21,7 @@ enum MATCH_STATE {
 @export var pot_value: int = 0
 @export var current_round: int = 0
 @export var hand_in_round: int = -1
+@export var point_to_win: int = 0
 	
 func print_info():
 	pass

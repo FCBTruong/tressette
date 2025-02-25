@@ -125,8 +125,7 @@ theme_override_constants/separation = 40
 alignment = 1
 
 [node name="CancelBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(120, 50)
+custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("4_icld3")
@@ -161,7 +160,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OkBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(120, 50)
+custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("4_icld3")
@@ -176,7 +175,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2c7d7")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/OkBtn"]
+[node name="OkTxtLb" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -194,7 +193,6 @@ theme_override_font_sizes/font_size = 26
 text = "OK"
 horizontal_alignment = 1
 vertical_alignment = 1
-uppercase = true
 
 [node name="MessageLb" type="Label" parent="CanvasLayer/MainPn"]
 modulate = Color(1, 1, 1, 0.898)

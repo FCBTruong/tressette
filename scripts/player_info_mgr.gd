@@ -2,6 +2,7 @@ extends Node
 
 var my_user_data = UserData.new(0, '')
 var support_num = 0
+var startup_gold = 0
 func get_user_id():
 	return my_user_data.uid
 	
@@ -27,6 +28,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	my_user_data.exp = packet.get_exp()
 	my_user_data.avatar_third_party = packet.get_avatar_third_party()
 	support_num = packet.get_support_num()
+	startup_gold = packet.get_startup_gold()
 	
 	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.win_count)
 

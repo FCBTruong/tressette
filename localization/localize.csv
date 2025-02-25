@@ -111,3 +111,5 @@ GAME_FLOW_STEP_4,4. The player who wins a trick leads the next one,4. Il giocato
 GAME_FLOW_STEP_5,5. The team that wins the final trick gets +1 point,5. La squadra che vince l'ultima presa ottiene +1 punto.,,
 GOAL_CONTENT,Win by reaching 11 or 21 points (depending on game mode).,Vinci raggiungendo 11 o 21 punti (a seconda della modalità di gioco).,,
 NAPOLI_TIP,"A set of 3, 2, and Ace of the same suit, claim only first trick","Un set di 3, 2 e Asso dello stesso seme, dichiarabile solo alla prima presa.",,
+REACH_POINT_TO_WIN,Reach #point to win,Raggiungi #point per vincere,,
+STARTUP_GOLD,You’ve been granted @num gold to kickstart your journey. Enjoy the game!,Hai ricevuto @num oro per iniziare la tua avventura. Divertiti con il gioco!,,

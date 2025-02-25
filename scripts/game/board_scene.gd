@@ -45,6 +45,7 @@ var cards_node_compare = []
 @onready var cheat_bot_card_pn = find_child("CheatBotCardPn")
 @onready var napoli_btn = find_child("NapoliBtn")
 @onready var action_btn_pn = find_child("ActionBtnPn")
+@onready var reach_point_win_lb = find_child("ReachPointWinLb")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -72,6 +73,10 @@ func _ready() -> void:
 	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
 	_on_enter()
 	action_btn_pn.z_index = 200
+	
+	# Check and show GUIDE GUI for new user
+	if PlayerInfoMgr.my_user_data.game_count == 0:
+		self._open_guide_gui()
 	
 	
 	#show_prepare_start()
@@ -104,7 +109,11 @@ func _on_enter():
 	self.update_team_scores()
 	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
 	pot_value_lb.text = StringUtils.point_number(game_logic.match_data.pot_value)
-
+	
+	var str_reach_win = tr("REACH_POINT_TO_WIN")
+	str_reach_win = str_reach_win.replace("#point", str(game_logic.match_data.point_to_win / 3))
+	self.reach_point_win_lb.text = str_reach_win
+	
 func update_cards_on_table():
 	remove_all_current_cards()
 	# update cards compare
@@ -906,7 +915,6 @@ func on_user_turn():
 		if GameConstants.game_logic.get_uid_in_turn() == PlayerInfoMgr.get_user_id():
 			if game_logic.check_has_napoli():
 				napoli_btn.visible = true
-			pass
 
 func _on_user_napoli(uid, point_add, suits):
 	var p = get_player_node_by_uid(uid)

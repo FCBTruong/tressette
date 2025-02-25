@@ -8,6 +8,7 @@ signal close_pressed
 @onready var main_pn = find_child('MainPn')
 @onready var cancel_btn = find_child('CancelBtn')
 @onready var close_btn = find_child("CloseBtn")
+@onready var ok_txt_lb = find_child("OkTxtLb")
 
 func _ready() -> void:
 	var tween = create_tween()

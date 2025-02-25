@@ -24,6 +24,21 @@ func _ready() -> void:
 				and PlayerInfoMgr.my_user_data.game_count > 5:
 				NativeMgr.rate_app()
 				StorageCache.store("store_rating", 1)
+				
+	if PlayerInfoMgr.startup_gold > 0:
+		# popup received gold startup
+		var str_startup = tr("STARTUP_GOLD")
+		str_startup = str_startup.replace("@num", StringUtils.point_number(PlayerInfoMgr.startup_gold))
+		SceneManager.show_dialog(
+			str_startup,
+			func ():
+				GameManager.send_quick_play(),
+			func ():
+				pass,
+			true,
+			tr("PLAY_NOW")
+		)
+		PlayerInfoMgr.startup_gold = 0
 
 @onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')

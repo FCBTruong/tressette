@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cv5qf8ahb43qj"]
+[gd_scene load_steps=8 format=3 uid="uid://cv5qf8ahb43qj"]
 
 [ext_resource type="Script" path="res://scripts/game/friend_invite_gui.gd" id="1_oor5a"]
-[ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="1_v284x"]
 [ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_11yv1"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_vqu75"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_3qvo6"]
@@ -11,9 +10,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e7rbj"]
 shader = ExtResource("2_11yv1")
 shader_parameter/blur_amount = 3.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lch56"]
-shader = ExtResource("1_v284x")
 
 [node name="FriendInviteGui" type="Node2D"]
 script = ExtResource("1_oor5a")
@@ -41,17 +37,7 @@ offset_right = 300.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.160884, 0.419337, 0.669716, 1)
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ColorRect"]
-material = SubResource("ShaderMaterial_lch56")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+color = Color(0.249824, 0.331137, 0.52376, 1)
 
 [node name="CloseBtn" type="Button" parent="CanvasLayer/ColorRect"]
 custom_minimum_size = Vector2(50, 50)

@@ -3,7 +3,8 @@ extends Node
 const LOGIN_GUEST: int = 0
 const LOGIN_GOOGLE: int = 1
 const LOGIN_FACEBOOK: int = 2
-const LOGIN_TOKEN: int = 3
+const LOGIN_APPLE: int = 3
+const LOGIN_TOKEN: int = 20
 const LOGIN_UID_CHEAT: int = 10
 var last_login_type: int = GameConstants.LOGIN_TYPE.GUEST
 
