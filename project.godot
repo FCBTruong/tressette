@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Tressette Clash"
-run/main_scene="res://scenes/InitScene.tscn"
+config/name="Tressette Royal"
+run/main_scene="res://scenes/LoginScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.png"
 
