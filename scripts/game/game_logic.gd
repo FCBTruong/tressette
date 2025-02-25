@@ -134,6 +134,7 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.remain_cards = pkg.get_remain_cards()
 	match_data.pot_value = pkg.get_pot_value()
 	match_data.current_round = pkg.get_current_round()
+	match_data.hand_in_round = pkg.get_hand_in_round()
 	self.is_registered_leave = pkg.get_is_registered_leave()
 	self.hand_suit = pkg.get_hand_suit()
 	
@@ -388,6 +389,7 @@ func is_my_team(uid) -> bool:
 func _handle_newhand(payload: PackedByteArray):
 	if not match_data:
 		return
+	match_data.hand_in_round += 1
 	var pkg = GameConstants.PROTOBUF.PACKETS.NewHand.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.current_turn = pkg.get_current_turn()
@@ -471,6 +473,7 @@ func _handle_prepare_start(payload: PackedByteArray):
 func _handle_new_round(payload: PackedByteArray):
 	if not match_data:
 		return
+	match_data.hand_in_round = -1
 		
 	var pkg = GameConstants.PROTOBUF.PACKETS.NewRound.new()
 	var result_code = pkg.from_bytes(payload)
@@ -586,9 +589,14 @@ func _handle_receive_napoli(payload):
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var point_add = pkg.get_point_add()
+	
+	# add score point to this user
+	var u = get_user(uid)
+	u.game_data.points += point_add
 	var cur_scene = SceneManager.get_current_scene()
 	if cur_scene is BoardScene:
 		cur_scene._on_user_napoli(uid, point_add)
+		cur_scene.update_team_scores()
 		
 func send_action_napoli():
 	var pkg = GameConstants.PROTOBUF.PACKETS.GameActionNapoli.new()

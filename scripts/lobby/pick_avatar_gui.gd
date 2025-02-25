@@ -19,7 +19,7 @@ func _ready() -> void:
 		a.visible = false
 	
 	var idx = 0
-	var MAX_AVATAR_ID = 10
+	var MAX_AVATAR_ID = 8
 	for i in range(MAX_AVATAR_ID + 1):
 		var a = avatars[i]
 		var avt = a.find_child('AvatarImg')

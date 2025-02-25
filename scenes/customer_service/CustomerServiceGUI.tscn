@@ -75,87 +75,6 @@ grow_vertical = 2
 texture = ExtResource("2_5ljjh")
 expand_mode = 1
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/MainPn"]
-custom_minimum_size = Vector2(550, 200)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-placeholder_text = "PLEASE_DESCRIBE_ISSUE"
-
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/LineEdit"]
-modulate = Color(1, 0.639, 0.368, 0.97)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -131.0
-offset_top = -75.0
-offset_right = 132.0
-offset_bottom = -41.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_jge5g")
-theme_override_font_sizes/font_size = 27
-text = "CUSTOMER_SUPPORT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SendBtn" type="Button" parent="CanvasLayer/MainPn"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -63.0
-offset_right = 50.0
-offset_bottom = -13.0
-grow_horizontal = 2
-grow_vertical = 0
-flat = true
-script = ExtResource("4_pj2rb")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/SendBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_oi6kh")
-
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/SendBtn/Panel"]
-modulate = Color(1, 1, 1, 0.783)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -21.5
-offset_top = -11.5
-offset_right = 21.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_jge5g")
-theme_override_font_sizes/font_size = 22
-text = "SEND"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
 [node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
 layout_mode = 0
 offset_left = 9.0
@@ -182,7 +101,81 @@ grow_vertical = 2
 texture = ExtResource("5_uxelo")
 expand_mode = 1
 
-[node name="ReceivedLb" type="Label" parent="CanvasLayer/MainPn"]
+[node name="Content" type="Control" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/Content"]
+modulate = Color(1, 0.639, 0.368, 0.97)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.0
+offset_top = 25.0
+offset_right = 132.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_jge5g")
+theme_override_font_sizes/font_size = 27
+text = "CUSTOMER_SUPPORT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SendBtn" type="Button" parent="CanvasLayer/MainPn/Content"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -63.0
+offset_right = 50.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+flat = true
+script = ExtResource("4_pj2rb")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/Content/SendBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oi6kh")
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/Content/SendBtn/Panel"]
+modulate = Color(1, 1, 1, 0.783)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 21.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jge5g")
+theme_override_font_sizes/font_size = 22
+text = "SEND"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ReceivedLb" type="Label" parent="CanvasLayer/MainPn/Content"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -204,4 +197,50 @@ We’ve received your message and will work on it soon"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/MainPn/Content"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -100.0
+offset_right = 275.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "PLEASE_DESCRIBE_ISSUE"
+wrap_mode = 1
+
+[node name="SentPn" type="Control" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/SentPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -150.0
+offset_right = 225.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jge5g")
+theme_override_font_sizes/font_size = 20
+text = "CUSTOMER_SERVICE_SENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="CanvasLayer/MainPn/Content/SendBtn" to="." method="_click_send"]

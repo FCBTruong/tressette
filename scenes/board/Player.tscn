@@ -216,7 +216,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect2" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.391381, 0.196978, 0.228037, 1)
+modulate = Color(0.172842, 0.357438, 0.226998, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -243,7 +243,7 @@ grow_vertical = 2
 texture = ExtResource("6_l3lsr")
 
 [node name="TextureRect3" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.350649, 0.186855, 0.191513, 1)
+modulate = Color(0.199313, 0.466057, 0.21021, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -809,7 +809,9 @@ func _input(event):
 				#_effect_pot_contribute()
 				#return
 				#deal_my_cards([2,3,4,5,6,8,9,33])
-				self.list_players[0].show_bonus("+1 Last Trick")
+				
+				for p in list_players:
+					p.show_bonus("+1 Last Trick")
 		else:
 			if event.keycode == KEY_W:
 				print("W key released")
@@ -819,7 +821,7 @@ func update_register_leave_state():
 		back_btn.modulate = Color("f6353f67")
 		pass
 	else:
-		back_btn.modulate = Color("5ed85767")
+		back_btn.modulate = Color("ffffffd3")
 		pass
 		
 
@@ -849,7 +851,7 @@ func _effect_pot_contribute():
 			pos,
 			des_p,
 			0.6,
-			0.11,
+			1,
 			self,
 			i == 0
 		)
@@ -897,10 +899,11 @@ func _click_napoli_btn() -> void:
 
 func on_user_turn():
 	napoli_btn.visible = false
-	if GameConstants.game_logic.get_uid_in_turn() == PlayerInfoMgr.get_user_id():
-		if game_logic.check_has_napoli():
-			napoli_btn.visible = true
-		pass
+	if game_logic.match_data.hand_in_round == 0:
+		if GameConstants.game_logic.get_uid_in_turn() == PlayerInfoMgr.get_user_id():
+			if game_logic.check_has_napoli():
+				napoli_btn.visible = true
+			pass
 
 func _on_user_napoli(uid, point_add):
 	var p = get_player_node_by_uid(uid)

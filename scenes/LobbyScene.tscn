@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=38 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_fym06"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_pgu6f"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="12_q3rst"]
-[ext_resource type="Material" uid="uid://qrgqnpq1flde" path="res://effects/2d_trail/preview/material/main_trail_mat.tres" id="13_0gjqh"]
+[ext_resource type="Shader" path="res://effects/2d_trail/preview/material/star_trail.gdshader" id="13_a6psf"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
@@ -64,6 +64,35 @@ corner_radius_bottom_left = 10
 bg_color = Color(0, 0, 0, 0.3)
 corner_radius_bottom_right = 20
 corner_detail = 20
+
+[sub_resource type="Curve" id="Curve_5ig3f"]
+_data = [Vector2(0, 0), 0.0, 5.25263, 0, 1, Vector2(0.190381, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.41939, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4vhl0"]
+texture_mode = 1
+curve = SubResource("Curve_5ig3f")
+
+[sub_resource type="Curve" id="Curve_js6ha"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.421239, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 1.29926, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wd6un"]
+texture_mode = 1
+curve = SubResource("Curve_js6ha")
+
+[sub_resource type="Gradient" id="Gradient_irstq"]
+colors = PackedColorArray(0.870588, 0.540119, 0.235294, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ld20n"]
+gradient = SubResource("Gradient_irstq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_of3oq"]
+shader = ExtResource("13_a6psf")
+shader_parameter/deformation = 0.4
+shader_parameter/alpha_curve = SubResource("CurveTexture_4vhl0")
+shader_parameter/base_color = SubResource("GradientTexture1D_ld20n")
+shader_parameter/band_gradient = SubResource("CurveTexture_wd6un")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv6aw"]
 bg_color = Color(0.001, 0.001, 0.001, 0.3)
@@ -351,10 +380,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_fym06")
@@ -491,7 +520,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
 self_modulate = Color(1, 0.986236, 0.828826, 1)
-material = ExtResource("13_0gjqh")
+material = SubResource("ShaderMaterial_of3oq")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

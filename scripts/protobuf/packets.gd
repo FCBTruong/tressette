@@ -1437,6 +1437,11 @@ class GameInfo:
 		service.field = _current_round
 		data[_current_round.tag] = service
 		
+		_hand_in_round = PBField.new("hand_in_round", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 20, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _hand_in_round
+		data[_hand_in_round.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1609,6 +1614,15 @@ class GameInfo:
 		_current_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_current_round(value : int) -> void:
 		_current_round.value = value
+	
+	var _hand_in_round: PBField
+	func get_hand_in_round() -> int:
+		return _hand_in_round.value
+	func clear_hand_in_round() -> void:
+		data[20].state = PB_SERVICE_STATE.UNFILLED
+		_hand_in_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_hand_in_round(value : int) -> void:
+		_hand_in_round.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4588,6 +4602,61 @@ class GameActionNapoli:
 		_point_add.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_point_add(value : int) -> void:
 		_point_add.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class CustomerServiceReport:
+	func _init():
+		var service
+		
+		_report_type = PBField.new("report_type", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _report_type
+		data[_report_type.tag] = service
+		
+		_report_content = PBField.new("report_content", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _report_content
+		data[_report_content.tag] = service
+		
+	var data = {}
+	
+	var _report_type: PBField
+	func get_report_type() -> int:
+		return _report_type.value
+	func clear_report_type() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_report_type.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_report_type(value : int) -> void:
+		_report_type.value = value
+	
+	var _report_content: PBField
+	func get_report_content() -> String:
+		return _report_content.value
+	func clear_report_content() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_report_content.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_report_content(value : String) -> void:
+		_report_content.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

@@ -162,7 +162,11 @@ func show_bonus(txt):
 	var screen_size = DisplayServer.window_get_size()
 	if p.x > screen_size.x / 2:
 		# player in the left
-		pass
+		self.bonus_info_pn.global_position.x = default_pos_bonus.x - 130
+		self.bonus_info_pn.pivot_offset = Vector2(bonus_info_pn.size.x, 0)
+	else:
+		self.bonus_info_pn.pivot_offset = Vector2(0, 0)
+		self.bonus_info_pn.global_position = default_pos_bonus
 	if tw_bonus and tw_bonus.is_running():
 		tw_bonus.kill()
 	tw_bonus = create_tween()
