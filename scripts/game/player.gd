@@ -52,7 +52,7 @@ func set_user_data(user_dt: UserData) -> void:
 		# add red noti for if not yet click avatar pick
 		
 		if PlayerInfoMgr.my_user_data.game_count < 10:
-			var is_clicked_pick_avatar = StorageCache.fetch("open_picking_avatar_gui", 0) != 1
+			var is_clicked_pick_avatar = StorageCache.fetch("open_picking_avatar_gui", '0') == '1'
 			if not is_clicked_pick_avatar:
 				red_dot.visible = true
 				

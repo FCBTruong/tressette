@@ -40,7 +40,7 @@ func _ready() -> void:
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.4)
 	SignalBus.connect_global('update_friend_list', Callable(self, '_update_status_friend'))
 	SignalBus.connect_global('update_friend_requests', Callable(self, '_update_status_friend'))
-	
+	red_dot_avt.visible = false
 func set_info(info: UserData):
 	_info = info
 	red_dot_avt.visible = false
@@ -49,7 +49,7 @@ func set_info(info: UserData):
 		avatar_img.set_me()
 		is_me = true
 		
-		var is_clicked_pick_avatar = StorageCache.fetch("open_picking_avatar_gui", 0) != 1
+		var is_clicked_pick_avatar = StorageCache.fetch("open_picking_avatar_gui", '0') == '1'
 		if not is_clicked_pick_avatar:
 			red_dot_avt.visible = true
 		

@@ -7,7 +7,7 @@ var current_id: int = -1
 var SIZE_LIST = 15
 @onready var vbox_cont = find_child("VBoxContainer")
 func _ready() -> void:
-	StorageCache.store("open_picking_avatar_gui", 1)
+	StorageCache.store("open_picking_avatar_gui", '1')
 	var my_avt = PlayerInfoMgr.my_user_data.avatar
 	var avt_third_party = PlayerInfoMgr.my_user_data.avatar_third_party
 	if my_avt.begins_with("https://"):
