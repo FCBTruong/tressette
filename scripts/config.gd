@@ -16,12 +16,12 @@ func _ready():
 			CURRENT_MODE = MODES.LIVE		
 		elif  OS.get_name() == "iOS":
 			CURRENT_MODE = MODES.PRIVATE
-	if CURRENT_MODE == MODES.PRIVATE:
+	if CURRENT_MODE == MODES.PRIVATE:	
 		WEBSOCKET_URL = "wss://tressette-dev.clareentertainment.com/ws"
 	elif CURRENT_MODE == MODES.LOCAL:
 		WEBSOCKET_URL = "ws://%s:%s/ws" % [SERVER_IP, SERVER_PORT]
 	else:
-		WEBSOCKET_URL = "ws://tressette-dev.clareentertainment.com/ws"
+		WEBSOCKET_URL = "wss://tressette-dev.clareentertainment.com/ws"
 
 	print("WebSocket URL: %s" % WEBSOCKET_URL)
 

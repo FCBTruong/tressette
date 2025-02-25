@@ -183,6 +183,7 @@ func show_bonus(txt, type=0): # last trick
 		# napoli
 	var p = self.global_position
 	var screen_size_width = get_viewport().size.x / 2
+	print('p.xxxx', p.x, screen_size_width)
 	if p.x > screen_size_width / 2:
 		# player in the left
 		self.bonus_info_pn.position.x = default_pos_bonus.x - 230

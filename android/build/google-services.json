@@ -37,6 +37,13 @@
             {
               "client_id": "100921837562-l00s38etbs3lgq1gi2suhihl8a9hn03o.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "100921837562-qcoblhgvoe6o6a08f2fb0lkbehrjdbc0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.clareentertainment.tressette"
+              }
             }
           ]
         }
