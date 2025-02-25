@@ -12,6 +12,7 @@ extends Node
 @onready var bonus_info_pn = find_child("BonusInfo")
 @onready var bonus_txt_lb = find_child("BonusTxtLb")
 @onready var red_dot = find_child("RedDot")
+@onready var bonus_info_colour = find_child("BonusInfoColour")
 var default_pos_bonus
 var is_me: bool = false
 func _ready() -> void:
@@ -174,7 +175,12 @@ func _click_open_invite_gui() -> void:
 	pass
 	
 var tw_bonus
-func show_bonus(txt):
+func show_bonus(txt, type=0): # last trick
+	if type == 0:
+		self.bonus_info_colour.color = Color('288019')
+	else:
+		self.bonus_info_colour.color = Color('1d7fff')
+		# napoli
 	var p = self.global_position
 	var screen_size = DisplayServer.window_get_size()
 	if p.x > screen_size.x / 2:
@@ -203,7 +209,7 @@ func show_bonus(txt):
 
 
 func show_napoli(s, suits):
-	self.show_bonus(s)
+	self.show_bonus(s, 1)
 	var arr_pos = []
 	if len(suits) == 1:
 		arr_pos = [Vector2(0, 0)]

@@ -73,7 +73,7 @@ offset_bottom = 45.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3xqwo")
 
-[node name="BonusInfo" type="ColorRect" parent="MainPn/BonusInfo"]
+[node name="BonusInfoColour" type="ColorRect" parent="MainPn/BonusInfo"]
 material = SubResource("ShaderMaterial_ourub")
 layout_mode = 1
 anchors_preset = 15
@@ -82,9 +82,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.156767, 0.5, 0.0987402, 1)
+color = Color(0.115274, 0.496194, 1, 1)
 
-[node name="BonusTxtLb" type="Label" parent="MainPn/BonusInfo/BonusInfo"]
+[node name="BonusTxtLb" type="Label" parent="MainPn/BonusInfo/BonusInfoColour"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
