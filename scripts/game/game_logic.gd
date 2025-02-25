@@ -589,13 +589,14 @@ func _handle_receive_napoli(payload):
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var point_add = pkg.get_point_add()
+	var suits = pkg.get_suits()
 	
 	# add score point to this user
 	var u = get_user(uid)
 	u.game_data.points += point_add
 	var cur_scene = SceneManager.get_current_scene()
 	if cur_scene is BoardScene:
-		cur_scene._on_user_napoli(uid, point_add)
+		cur_scene._on_user_napoli(uid, point_add, suits)
 		cur_scene.update_team_scores()
 		
 func send_action_napoli():

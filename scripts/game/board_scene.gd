@@ -812,6 +812,9 @@ func _input(event):
 				
 				for p in list_players:
 					p.show_bonus("+1 " + tr("LAST_TRICK"))
+			elif event.keycode == KEY_2:
+				for p in list_players:
+					p.show_napoli("Napoli", [1,2,3])
 		else:
 			if event.keycode == KEY_W:
 				print("W key released")
@@ -905,8 +908,8 @@ func on_user_turn():
 				napoli_btn.visible = true
 			pass
 
-func _on_user_napoli(uid, point_add):
+func _on_user_napoli(uid, point_add, suits):
 	var p = get_player_node_by_uid(uid)
 	if p:
 		var s = "+" + str(int(point_add / 3)) + " NAPOLI"
-		p.show_bonus(s)
+		p.show_napoli(s, suits)

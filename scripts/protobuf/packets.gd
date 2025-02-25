@@ -4583,6 +4583,11 @@ class GameActionNapoli:
 		service.field = _point_add
 		data[_point_add.tag] = service
 		
+		_suits = PBField.new("suits", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _suits
+		data[_suits.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -4602,6 +4607,15 @@ class GameActionNapoli:
 		_point_add.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_point_add(value : int) -> void:
 		_point_add.value = value
+	
+	var _suits: PBField
+	func get_suits() -> Array:
+		return _suits.value
+	func clear_suits() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_suits.value = []
+	func add_suits(value : int) -> void:
+		_suits.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

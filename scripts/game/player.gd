@@ -200,3 +200,30 @@ func show_bonus(txt):
 			self.bonus_info_pn.visible = false
 	).set_delay(2)
 	pass
+
+
+func show_napoli(s, suits):
+	self.show_bonus(s)
+	var arr_pos = []
+	if len(suits) == 1:
+		arr_pos = [Vector2(0, 0)]
+	elif len(suits) == 2:
+		arr_pos = [Vector2(-25, 0), Vector2(25, 0)]
+	else:
+		arr_pos = [Vector2(-50, 0), Vector2(0, 0), Vector2(50, 0)]
+	var i = 0
+	for n in suits:
+		var card = SceneManager.INSTANCES.BOARD_SCENE.card_scene.instantiate()
+		card.scale = Vector2(0, 0)
+		card.position = arr_pos[i]
+		card.set_card(n)
+		self.add_child(card)
+		
+		var tw = create_tween()
+		tw.tween_property(card, 'scale', Vector2(0.6, 0.6), 0.2)
+		tw.tween_property(card, 'modulate:a', 0, 0.2).set_delay(1.5)
+		tw.tween_callback(
+			func():
+				card.queue_free()
+		)
+		i += 1

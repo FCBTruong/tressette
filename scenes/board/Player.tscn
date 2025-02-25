@@ -101,6 +101,8 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_a5ijh")
 theme_override_font_sizes/font_size = 20
 text = "+1 Last Trick"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="MainPn"]
 layout_mode = 1
