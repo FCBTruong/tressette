@@ -10,6 +10,7 @@ const GAME_MODE = {
 	TRESSETTE = 0,
 	BRISCOLA = 1,
 }
+const MAX_AVATAR_ID = 13
 
 const PLAYER_MODE = {
 	SOLO = 2,

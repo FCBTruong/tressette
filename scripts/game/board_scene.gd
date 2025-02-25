@@ -439,7 +439,7 @@ func on_finishhand(delay = 0.5, is_end_round = false):
 	
 	if is_end_round:
 		# effect win last trick
-		player_node.show_bonus('+1 Last trick')
+		player_node.show_bonus('+1 ' + tr("LAST_TRICK"))
 		
 func update_team_scores():
 	var my_score = game_logic.get_my_team_score()
@@ -811,7 +811,7 @@ func _input(event):
 				#deal_my_cards([2,3,4,5,6,8,9,33])
 				
 				for p in list_players:
-					p.show_bonus("+1 Last Trick")
+					p.show_bonus("+1 " + tr("LAST_TRICK"))
 		else:
 			if event.keycode == KEY_W:
 				print("W key released")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=35 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_ae4rd"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
 [ext_resource type="Texture2D" uid="uid://c1qpfhy0ay3r1" path="res://assets/images/lobby/edit_icon.png" id="13_f07n6"]
 [ext_resource type="Texture2D" uid="uid://bsk36sewe4nhv" path="res://assets/images/lobby/add_friend_icon_small.png" id="16_ao60i"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="17_65462"]
 [ext_resource type="Texture2D" uid="uid://bl5ci50kep8hk" path="res://assets/images/lobby/user_info_gui/friend_ok_icon.png" id="17_lnp64"]
 [ext_resource type="Texture2D" uid="uid://beksnb501alnd" path="res://assets/images/lobby/friend_reject_icon.png" id="18_jxtpp"]
 
@@ -193,6 +194,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HeadPn" type="Panel" parent="Control/MainPn"]
+self_modulate = Color(0.299735, 0.209004, 0.209004, 1)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -589,6 +591,16 @@ offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_f07n6")
+expand_mode = 1
+
+[node name="RedDotAvt" type="TextureRect" parent="Control/MainPn/TextureRect2/AvtEditBtn"]
+self_modulate = Color(0.95484, 0, 0, 1)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 12.0
+texture = ExtResource("17_65462")
 expand_mode = 1
 
 [node name="ButtonPn" type="HBoxContainer" parent="Control/MainPn"]

@@ -1,14 +1,16 @@
-[gd_scene load_steps=38 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=43 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_x7pan"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
-[ext_resource type="Texture2D" uid="uid://2tvqotkvdx50" path="res://assets/images/img_01.png" id="6_7tuic"]
+[ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="5_pl242"]
+[ext_resource type="Texture2D" uid="uid://dfdy8h44wmrd" path="res://assets/images/card_tressette/classic/card_4.png" id="6_514yr"]
 [ext_resource type="Texture2D" uid="uid://b2w5a1ssk768s" path="res://assets/images/lobby/shopping_card.png" id="6_ccwgc"]
 [ext_resource type="Texture2D" uid="uid://dv83dxl1rc5g4" path="res://assets/images/lobby/settings.png" id="6_vby4e"]
 [ext_resource type="Texture2D" uid="uid://dutxuwb4adufu" path="res://assets/images/lobby/customer-service.png" id="7_48niu"]
 [ext_resource type="Texture2D" uid="uid://dys3frx0yshwh" path="res://assets/images/poker-table.png" id="7_en482"]
+[ext_resource type="Texture2D" uid="uid://dld5udpcu0sov" path="res://assets/images/card_tressette/classic/card_8.png" id="7_fjgxk"]
 [ext_resource type="Texture2D" uid="uid://c28lqqxrgu2eg" path="res://assets/images/lobby/friends.png" id="7_l35oy"]
 [ext_resource type="Texture2D" uid="uid://cxkmagcclh5x6" path="res://assets/images/lobby/clipboard.png" id="8_p6t30"]
 [ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
@@ -32,6 +34,91 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0, 0, 0, 0.51)
 shadow_size = 1
 shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Animation" id="Animation_jbqx2"]
+resource_name = "play_now_icon"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, -0.5),
+"update": 0,
+"values": [Vector2(-4, 0), Vector2(-4, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, -0.5),
+"update": 0,
+"values": [Vector2(24, -15), Vector2(25, -20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, -0.5),
+"update": 0,
+"values": [Vector2(-25, -24), Vector2(-30, -29)]
+}
+
+[sub_resource type="Animation" id="Animation_hects"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-25, -24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(24, -15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ysekw"]
+_data = {
+"RESET": SubResource("Animation_hects"),
+"play_now_icon": SubResource("Animation_jbqx2")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reuhb"]
 bg_color = Color(0.771546, 0.449481, 0.261458, 0.872)
@@ -191,11 +278,73 @@ text = "PLAY_NOW"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
-modulate = Color(1, 1, 1, 0.925)
-position = Vector2(159, 32)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("6_7tuic")
+[node name="Control2" type="Control" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 128.0
+offset_top = -22.0
+offset_right = 128.0
+offset_bottom = -22.0
+mouse_filter = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/StartBtn/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5549
+offset_top = -26.5549
+offset_right = 42.4451
+offset_bottom = 73.4451
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.589485
+pivot_offset = Vector2(70, 100)
+texture = ExtResource("6_514yr")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/StartBtn/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 24.511
+offset_top = -17.5549
+offset_right = 94.511
+offset_bottom = 82.4451
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.540785
+pivot_offset = Vector2(0, 100)
+texture = ExtResource("7_fjgxk")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/StartBtn/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -2.55486
+offset_right = 66.0
+offset_bottom = 97.4451
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.00634568
+pivot_offset = Vector2(35, 100)
+texture = ExtResource("5_pl242")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/PlayContainer/StartBtn/Control2"]
+libraries = {
+"": SubResource("AnimationLibrary_ysekw")
+}
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/PlayContainer"]
 custom_minimum_size = Vector2(0, 30)
@@ -440,10 +589,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_p6t30")
@@ -527,10 +676,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -35.0
-offset_right = 35.0
-offset_bottom = 35.0
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_ccwgc")

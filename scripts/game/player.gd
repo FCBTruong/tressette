@@ -11,14 +11,16 @@ extends Node
 @onready var gold_lb = find_child("GoldLb")
 @onready var bonus_info_pn = find_child("BonusInfo")
 @onready var bonus_txt_lb = find_child("BonusTxtLb")
+@onready var red_dot = find_child("RedDot")
 var default_pos_bonus
+var is_me: bool = false
 func _ready() -> void:
 	#effect_add_score(5)
 	emo_icon.visible = false
 	time_progress_bar.visible = false
 	self.bonus_info_pn.visible = false
-	default_pos_bonus = self.bonus_info_pn.global_position
-	pass
+	default_pos_bonus = self.bonus_info_pn.position
+	red_dot.visible = false
 
 # Properties
 var user_data: UserData
@@ -31,6 +33,7 @@ func set_user_data(user_dt: UserData) -> void:
 		main_pn.visible = false
 		empty_slot.visible = true
 		return
+	red_dot.visible = false
 
 	main_pn.visible = true
 	empty_slot.visible = false
@@ -42,8 +45,20 @@ func set_user_data(user_dt: UserData) -> void:
 	# update avatar
 	print('userdatavat', user_data.avatar)
 	if user_data.uid == PlayerInfoMgr.my_user_data.uid:
+		is_me = true
 		SignalBus.connect_global('on_update_money', Callable(self, "_on_update_money"))
 		avatar_img.set_me()
+		
+		# add red noti for if not yet click avatar pick
+		
+		if PlayerInfoMgr.my_user_data.game_count < 10:
+			var is_clicked_pick_avatar = StorageCache.fetch("open_picking_avatar_gui", 0) != 1
+			if not is_clicked_pick_avatar:
+				red_dot.visible = true
+				
+	else:
+		is_me = false
+			
 	avatar_img.set_avatar(user_data.avatar)
 	
 
@@ -125,6 +140,8 @@ func effect_add_score(score):
 
 
 func _show_info():
+	if is_me:
+		red_dot.visible = false
 	FriendManager.search_friend(user_data.uid)
 
 func show_emotion(emo_id):
@@ -162,11 +179,11 @@ func show_bonus(txt):
 	var screen_size = DisplayServer.window_get_size()
 	if p.x > screen_size.x / 2:
 		# player in the left
-		self.bonus_info_pn.global_position.x = default_pos_bonus.x - 130
+		self.bonus_info_pn.position.x = default_pos_bonus.x - 230
 		self.bonus_info_pn.pivot_offset = Vector2(bonus_info_pn.size.x, 0)
 	else:
 		self.bonus_info_pn.pivot_offset = Vector2(0, 0)
-		self.bonus_info_pn.global_position = default_pos_bonus
+		self.bonus_info_pn.position = default_pos_bonus
 	if tw_bonus and tw_bonus.is_running():
 		tw_bonus.kill()
 	tw_bonus = create_tween()

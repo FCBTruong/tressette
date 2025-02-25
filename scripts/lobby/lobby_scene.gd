@@ -35,6 +35,7 @@ func _ready() -> void:
 @onready var friend_btn = find_child('FriendBtn')
 @onready var friend_img_hot = friend_btn.find_child('ImgHot')
 @onready var nofriend_btn = find_child('NofriendBtn')
+@onready var animation_player = find_child("AnimationPlayer")
 func _do_effect() -> void:
 	var left_panel_defaultpos = left_panel.position
 	var play_container_defaultpos = play_container.position
@@ -53,6 +54,8 @@ func _do_effect() -> void:
 	#var original_scale = bg.scale
 	#bg.scale = Vector2(1.2, 1.2)
 	#tween2.tween_property(bg, "scale", original_scale, 0.3)
+	
+	animation_player.play("play_now_icon")
 	
 func _on_update_money():
 	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)

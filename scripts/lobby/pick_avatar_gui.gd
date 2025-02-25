@@ -4,8 +4,10 @@ extends Node
 # Called when the node enters the scene tree for the first
 var avatars = []
 var current_id: int = -1
-var SIZE_LIST = 12
+var SIZE_LIST = 15
+@onready var vbox_cont = find_child("VBoxContainer")
 func _ready() -> void:
+	StorageCache.store("open_picking_avatar_gui", 1)
 	var my_avt = PlayerInfoMgr.my_user_data.avatar
 	var avt_third_party = PlayerInfoMgr.my_user_data.avatar_third_party
 	if my_avt.begins_with("https://"):
@@ -13,13 +15,12 @@ func _ready() -> void:
 	else:
 		current_id = int(PlayerInfoMgr.my_user_data.avatar)
 
-	for i in range(SIZE_LIST):
-		var a = find_child('Avatar' + str(i))
-		avatars.append(a)
+	avatars = get_all_avatar_children(self.vbox_cont)
+	for a in avatars:
 		a.visible = false
 	
 	var idx = 0
-	var MAX_AVATAR_ID = 8
+	var MAX_AVATAR_ID = GameConstants.MAX_AVATAR_ID
 	for i in range(MAX_AVATAR_ID + 1):
 		var a = avatars[i]
 		var avt = a.find_child('AvatarImg')
@@ -38,6 +39,20 @@ func _ready() -> void:
 	_update_picking_state()
 	
 	SignalBus.connect_global('on_picking_avatar', Callable(self, "_received_pick_avatar"))
+
+
+func get_all_avatar_children(node: Node) -> Array:
+	var avatar_children = []
+	
+	for child in node.get_children():
+		if child.name.begins_with("Avatar"):
+			avatar_children.append(child)
+		else:
+			# Recursively check sub-children
+			avatar_children.append_array(get_all_avatar_children(child))
+	
+	return avatar_children
+
 
 func _received_pick_avatar(id):
 	if id == current_id:

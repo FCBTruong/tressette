@@ -26,6 +26,7 @@ func _show_popup():
 @onready var level_lb = find_child("LevelLb")
 @onready var exp_bar = find_child("ExpBar")
 @onready var head_pn = find_child("HeadPn")
+@onready var red_dot_avt = find_child("RedDotAvt")
 var is_me: bool = false
 var _info:UserData = null
 func _ready() -> void:
@@ -42,11 +43,15 @@ func _ready() -> void:
 	
 func set_info(info: UserData):
 	_info = info
-	
+	red_dot_avt.visible = false
 	if _info.uid == PlayerInfoMgr.my_user_data.uid:
 		avt_edit_btn.visible = true
 		avatar_img.set_me()
 		is_me = true
+		
+		var is_clicked_pick_avatar = StorageCache.fetch("open_picking_avatar_gui", 0) != 1
+		if not is_clicked_pick_avatar:
+			red_dot_avt.visible = true
 		
 		head_pn.self_modulate = Color('#429648ca')
 	else:
@@ -88,6 +93,7 @@ func _copy_uid() -> void:
 	pass
 	
 func _open_pick_avatar() -> void:
+	red_dot_avt.visible = false
 	SceneManager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn', GameConstants.GUI_ZORDER.PICK_AVATAR)
 	
 func _send_request_friend():

@@ -776,6 +776,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_cv557")
 theme_override_font_sizes/font_size = 20
 text = "NAPOLI"
+uppercase = true
 
 [node name="RightTopPanel" type="Control" parent="CanvasLayer"]
 layout_mode = 3

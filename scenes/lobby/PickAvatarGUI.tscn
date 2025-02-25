@@ -51,10 +51,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -155.0
-offset_right = 250.0
-offset_bottom = 195.0
+offset_left = -300.0
+offset_top = -148.0
+offset_right = 300.0
+offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -62,6 +62,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="Row1" type="HBoxContainer" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -80,6 +81,9 @@ layout_mode = 2
 [node name="Avatar3" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
+[node name="Avatar4" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
+layout_mode = 2
+
 [node name="Row2" type="HBoxContainer" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
@@ -92,6 +96,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Avatar6" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
+layout_mode = 2
+
+[node name="Avatar8" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
 [node name="Avatar7" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
@@ -111,15 +118,18 @@ layout_mode = 2
 [node name="Avatar10" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
+[node name="Avatar12" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+layout_mode = 2
+
 [node name="Avatar11" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
 [node name="CloseBtn" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 54.0
-offset_bottom = 53.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 51.0
+offset_bottom = 49.0
 flat = true
 script = ExtResource("1_h8bdd")
 
