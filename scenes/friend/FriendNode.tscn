@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_svbc0"]
 [ext_resource type="Texture2D" uid="uid://dfvc0em4rmmq5" path="res://assets/images/lobby/delete_icon.png" id="5_h58w4"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kam2u"]
-[ext_resource type="Texture2D" uid="uid://d20y5rki2t4bf" path="res://assets/images/lobby/lira_currency_icon.png" id="9_etcle"]
+[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="9_xujkd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs4mr"]
 bg_color = Color(0.164, 0.164, 0.164, 0.52)
@@ -164,7 +164,7 @@ offset_right = 21.0
 offset_bottom = 9.5
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("9_etcle")
+texture = ExtResource("9_xujkd")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer"]

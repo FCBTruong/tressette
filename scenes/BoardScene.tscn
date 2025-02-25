@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=45 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="11_mpmvk"]
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="12_b6jtg"]
 [ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="12_cc6ty"]
+[ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_6bu1m"]
 [ext_resource type="Texture2D" uid="uid://bxpqmo0rscimi" path="res://assets/animations/2.png" id="15_fulpj"]
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://wss3dy5md7ag" path="res://assets/animations/3.png" id="16_uybu8"]
@@ -87,21 +88,6 @@ shader_parameter/vertical_gradient = SubResource("GradientTexture2D_mcuel")
 bg_color = Color(0, 0, 0, 0.493)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn1ms"]
-bg_color = Color(0.499483, 0.560203, 0.998967, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0, 0.2)
-shadow_size = 5
-
-[sub_resource type="Gradient" id="Gradient_333yp"]
-colors = PackedColorArray(0.21721, 0.267847, 1, 1, 0.338875, 0.709869, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkk7c"]
-gradient = SubResource("Gradient_333yp")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyhfc"]
 shader = ExtResource("18_37hrg")
@@ -740,43 +726,9 @@ grow_vertical = 2
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/ActionBtnPn/NapoliBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jn1ms")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ActionBtnPn/NapoliBtn/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_rkk7c")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/ActionBtnPn/NapoliBtn/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.5
-offset_top = -12.5
-offset_right = 34.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_cv557")
-theme_override_font_sizes/font_size = 20
-text = "NAPOLI"
-uppercase = true
+[node name="PanelNapoliBtn" parent="CanvasLayer/ActionBtnPn/NapoliBtn" instance=ExtResource("13_6bu1m")]
+layout_mode = 0
+anchors_preset = 0
 
 [node name="RightTopPanel" type="Control" parent="CanvasLayer"]
 layout_mode = 3

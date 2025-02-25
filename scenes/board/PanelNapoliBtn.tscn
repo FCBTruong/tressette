@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwlkcma7c0pa3"]
+
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="1_htjrv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn1ms"]
+bg_color = Color(0.499483, 0.560203, 0.998967, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 5
+
+[sub_resource type="Gradient" id="Gradient_333yp"]
+colors = PackedColorArray(0.21721, 0.267847, 1, 1, 0.338875, 0.709869, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkk7c"]
+gradient = SubResource("Gradient_333yp")
+
+[node name="PanelNapoliBtn" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jn1ms")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_rkk7c")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -12.5
+offset_right = 34.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_htjrv")
+theme_override_font_sizes/font_size = 20
+text = "NAPOLI"
+uppercase = true
