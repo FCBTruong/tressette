@@ -48,7 +48,6 @@ func set_user_data(user_dt: UserData) -> void:
 	print('userdatavat', user_data.avatar)
 	if user_data.uid == PlayerInfoMgr.my_user_data.uid:
 		is_me = true
-		SignalBus.connect_global('on_update_money', Callable(self, "_on_update_my_money"))
 		avatar_img.set_me()
 	
 		# add red noti for if not yet click avatar pick
@@ -163,10 +162,6 @@ func show_emotion(emo_id):
 		emo_icon, 'modulate:a', 0, 0.4
 	).set_delay(1)
 	
-	
-func _on_update_my_money():
-	if user_data.uid == PlayerInfoMgr.get_user_id():
-		gold_lb.text = _get_gold_str(PlayerInfoMgr.my_user_data.gold)
 
 func _get_gold_str(gold) -> String:
 	var str = StringUtils.point_number(gold)

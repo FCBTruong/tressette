@@ -42,8 +42,9 @@ func _input(event):
 				var b = MatchData.MatchResultPlayer.new()
 				b.avatar = "1"
 				b.team_id = 1
-				GameConstants.game_logic.match_result.gold_change = 992822
-				GameConstants.game_logic.match_result.is_win = true
+				GameConstants.game_logic.match_result.gold_win = 992822
+				GameConstants.game_logic.match_result.gold_lose = -992822
+				GameConstants.game_logic.match_result.is_win = false
 				GameConstants.game_logic.match_result.players.append(a)
 				GameConstants.game_logic.match_result.players.append(b)
 				SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')

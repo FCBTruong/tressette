@@ -1,39 +1,21 @@
-[gd_scene load_steps=22 format=3 uid="uid://bebfix1c1kukt"]
+[gd_scene load_steps=19 format=3 uid="uid://bebfix1c1kukt"]
 
 [ext_resource type="Script" path="res://scripts/game/game_result_gui.gd" id="1_fpth8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_2qycw"]
-[ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="2_jur3s"]
 [ext_resource type="PackedScene" uid="uid://d2dopof1ns88o" path="res://scenes/board/background_particles.tscn" id="2_t0g3t"]
 [ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="2_wfunv"]
-[ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="3_petvk"]
-[ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="3_qcsoa"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_xsh0q"]
-[ext_resource type="PackedScene" uid="uid://bbs0hjtshga4s" path="res://scenes/board/PlayerResultNode.tscn" id="6_abg8r"]
+[ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="5_iqu72"]
+[ext_resource type="FontFile" uid="uid://cb1bj1k60uj4u" path="res://assets/fonts/Reglisse_Fill.otf" id="5_yowoj"]
+[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="6_f6xgj"]
 [ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="7_11gwx"]
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="7_tcbk3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1xll"]
-bg_color = Color(0, 0, 0, 0.737)
+bg_color = Color(0, 0, 0, 0.451)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hag70"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgm3j"]
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="Gradient" id="Gradient_ov1gc"]
-colors = PackedColorArray(0.539459, 0.582607, 1, 1, 0.489817, 0.489817, 0.489817, 1)
-metadata/_snap_enabled = true
-metadata/_snap_count = 14
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fribq"]
-gradient = SubResource("Gradient_ov1gc")
-fill = 2
-fill_from = Vector2(1, 0.4)
-fill_to = Vector2(0, 1)
-metadata/_snap_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jiyt7"]
 shader = ExtResource("2_wfunv")
@@ -80,21 +62,92 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y1xll")
 
 [node name="MainPn" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 250)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hag70")
+
+[node name="LosePn" type="Control" parent="CanvasLayer/MainPn"]
+light_mask = 7
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainPn/LosePn"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.525504, 0.52364, 0.550915, 1)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn/LosePn"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.794647, 0.802068, 0.836039, 1)
+
+[node name="GoldResultLose" type="Label" parent="CanvasLayer/MainPn/LosePn"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -338.0
-offset_top = -225.0
-offset_right = 338.0
-offset_bottom = 225.0
+offset_left = -343.0
+offset_top = -43.0
+offset_right = 343.0
+offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(338, 250)
-theme_override_styles/panel = SubResource("StyleBoxEmpty_hag70")
+theme_override_constants/outline_size = 11
+theme_override_fonts/font = ExtResource("5_iqu72")
+theme_override_font_sizes/font_size = 60
+text = "100000"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LosePn" type="Panel" parent="CanvasLayer/MainPn"]
+[node name="TitleLbLose" type="Label" parent="CanvasLayer/MainPn/LosePn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -90.0
+offset_right = 200.0
+offset_bottom = 22.0
+grow_horizontal = 2
+pivot_offset = Vector2(190, 56)
+theme_override_colors/font_color = Color(0.85301, 0.838393, 0.785535, 1)
+theme_override_colors/font_outline_color = Color(0.262397, 0.2323, 0.221795, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_yowoj")
+theme_override_font_sizes/font_size = 80
+text = "YOU_LOSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinPn" type="Control" parent="CanvasLayer/MainPn"]
+visible = false
 clip_children = 2
 light_mask = 7
 layout_mode = 1
@@ -103,27 +156,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgm3j")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/LosePn"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn/WinPn"]
+custom_minimum_size = Vector2(0, 270)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_fribq")
-
-[node name="WinPn" type="Panel" parent="CanvasLayer/MainPn"]
-clip_children = 2
-light_mask = 7
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jgm3j")
+color = Color(0.910714, 0.723064, 0.509261, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/WinPn"]
 material = SubResource("ShaderMaterial_jiyt7")
@@ -135,45 +178,60 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_il20s")
 
-[node name="TitleLb" type="Label" parent="CanvasLayer/MainPn"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_top = -51.0
-offset_right = 200.0
-offset_bottom = 61.0
-grow_horizontal = 2
-pivot_offset = Vector2(190, 56)
-theme_override_colors/font_color = Color(1, 0.959358, 0.812384, 1)
-theme_override_colors/font_outline_color = Color(0.615407, 0.225313, 0.089153, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("2_jur3s")
-theme_override_font_sizes/font_size = 40
-text = "You Win"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GoldResult" type="RichTextLabel" parent="CanvasLayer/MainPn"]
+[node name="GoldResultWin" type="Label" parent="CanvasLayer/MainPn/WinPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -177.0
-offset_right = 200.0
-offset_bottom = -97.0
+offset_left = -207.0
+offset_top = -83.0
+offset_right = 208.0
+offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(1, 0.888309, 0.151445, 1)
-theme_override_fonts/normal_font = ExtResource("3_petvk")
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[center]1000000[img=5,5]res://assets/images/lobby/lira_currency_icon.png[/img][/center]"
-fit_content = true
+theme_override_colors/font_color = Color(1, 0.960162, 0.779502, 1)
+theme_override_fonts/font = ExtResource("5_iqu72")
+theme_override_font_sizes/font_size = 80
+text = "+100000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/WinPn/GoldResultWin"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -36.0
+offset_right = 46.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_f6xgj")
+
+[node name="TitleLb" type="Label" parent="CanvasLayer/MainPn/WinPn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -126.0
+offset_right = 200.0
+offset_bottom = 14.0
+grow_horizontal = 2
+pivot_offset = Vector2(190, 56)
+theme_override_colors/font_color = Color(1, 0.959358, 0.812384, 1)
+theme_override_colors/font_outline_color = Color(0.615407, 0.225313, 0.089153, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_yowoj")
+theme_override_font_sizes/font_size = 80
+text = "YOU_WIN"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn"]
 layout_mode = 1
@@ -182,51 +240,64 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -115.0
-offset_top = -61.0
-offset_right = 115.0
-offset_bottom = -21.0
+offset_left = -150.0
+offset_top = 37.0
+offset_right = 150.0
+offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 30
+theme_override_constants/separation = 10
+alignment = 1
 
 [node name="BtnExit" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_2qycw")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_bxyre")
 text = "EXIT"
 script = ExtResource("4_xsh0q")
 
-[node name="BtnContinue" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Control" type="Control" parent="CanvasLayer/MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_2qycw")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_y7cos")
-text = "CONTINUE"
-script = ExtResource("4_xsh0q")
 
-[node name="ContinueTimer" type="Timer" parent="CanvasLayer/MainPn/HBoxContainer/BtnContinue"]
+[node name="ContinueTimer" type="Timer" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
 wait_time = 6.0
 one_shot = true
 
-[node name="ContinueTimeNode" type="TextureProgressBar" parent="CanvasLayer/MainPn/HBoxContainer/BtnContinue"]
-self_modulate = Color(1, 0.888832, 0, 1)
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+self_modulate = Color(0.408353, 0.408353, 0.408353, 1)
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 5.0
-offset_top = -19.0
-offset_right = 75.0
-offset_bottom = 51.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.55, 0.55)
+texture = ExtResource("6_hnshh")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+self_modulate = Color(0.140201, 0.116202, 0.116202, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_11gwx")
+expand_mode = 1
+
+[node name="ContinueTimeNode" type="TextureProgressBar" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+self_modulate = Color(0.890348, 0.6586, 0.0148031, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
@@ -236,109 +307,48 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("6_hnshh")
 
-[node name="ContinueTimeLb" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/BtnContinue/ContinueTimeNode"]
+[node name="ContinueTimeLb" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/Control/ContinueTimeNode"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.4545
-offset_top = -29.5455
-offset_right = 19.5455
-offset_bottom = 32.4545
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_2qycw")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 30
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn"]
-custom_minimum_size = Vector2(200, 0)
+[node name="BtnContinue" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-offset_left = 47.0
-offset_top = 120.0
-offset_right = 247.0
-offset_bottom = 362.0
+theme_override_fonts/font = ExtResource("2_2qycw")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_y7cos")
+script = ExtResource("4_xsh0q")
 
-[node name="Control" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-
-[node name="Label4" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_qcsoa")
-theme_override_font_sizes/font_size = 26
-text = "TOTAL"
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_qcsoa")
-theme_override_font_sizes/font_size = 26
-text = "SCORE_CARDS"
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_qcsoa")
-theme_override_font_sizes/font_size = 26
-text = "LAST_TRICK"
-vertical_alignment = 1
-
-[node name="PlayersPn" type="HBoxContainer" parent="CanvasLayer/MainPn"]
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/BtnContinue"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -214.0
-offset_top = -84.0
-offset_right = 322.0
-offset_bottom = 158.0
+offset_left = -41.5
+offset_top = -11.5
+offset_right = 41.5
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="PlayerResultNode" parent="CanvasLayer/MainPn/PlayersPn" instance=ExtResource("6_abg8r")]
-layout_mode = 2
-
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainPn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = 83.0
-offset_right = 154.0
-offset_bottom = 84.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.543)
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = 30.0
-offset_right = 154.0
-offset_bottom = 31.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.543)
+text = "CONTINUE"
+horizontal_alignment = 1
 
 [node name="BackgroundParticles" parent="CanvasLayer/MainPn" instance=ExtResource("2_t0g3t")]
 position = Vector2(365, 258)

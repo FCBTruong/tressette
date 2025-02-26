@@ -31,7 +31,8 @@ class MatchResult:
 	var is_win: bool = false
 	var win_team_id: int
 	var my_team_id: int
-	var gold_change: int
+	var gold_lose: int
+	var gold_win: int
 	var players: Array[MatchResultPlayer] = [
 		
 	]
