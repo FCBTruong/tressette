@@ -83,3 +83,6 @@ func _cheat_gold(gold: int):
 func _click_add_bot():
 	GameClient.send_packet(GameConstants.CMDs.CHEAT_ADD_BOT, [])
 	pass
+	
+func _test_share_app():
+	NativeMgr.share_app("Hello everyone")

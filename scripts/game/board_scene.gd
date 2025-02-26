@@ -75,8 +75,10 @@ func _ready() -> void:
 	action_btn_pn.z_index = 200
 	
 	# Check and show GUIDE GUI for new user
-	if PlayerInfoMgr.my_user_data.game_count == 0:
+	if PlayerInfoMgr.my_user_data.game_count == 0 and not \
+		GameManager.did_show_guide_new_user:
 		self._open_guide_gui()
+		GameManager.did_show_guide_new_user = true
 	
 	
 	#show_prepare_start()

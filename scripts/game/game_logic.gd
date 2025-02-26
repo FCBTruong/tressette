@@ -261,6 +261,15 @@ func _start_game(payload: PackedByteArray):
 	match_data.state = MatchData.MATCH_STATE.PLAYING
 	reset_cards_compare()
 	
+	var players_gold = pkg.get_players_gold()
+	var i = 0
+	for p in match_data.users:
+		p.gold = players_gold[i]
+		i += 1
+		
+		SignalBus.emit_signal_global("ingame_update_player_money", [p.uid])
+	
+	
 	match_data.current_round = 1
 	
 	var scene = SceneManager.get_current_scene()
@@ -432,6 +441,8 @@ func _handle_end_game(payload: PackedByteArray):
 	var score_totals = pkg.get_score_totals()
 	var gold_changes = pkg.get_gold_changes()
 	var gold_wins = pkg.get_gold_wins()
+	var players_gold = pkg.get_players_gold()
+	
 	match_result = MatchData.MatchResult.new()
 	match_result.gold_change = gold_changes[my_idx]
 	match_result.is_win = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id \
@@ -458,6 +469,8 @@ func _handle_end_game(payload: PackedByteArray):
 		score_data.score_last_trick = score_last_tricks[i]
 		score_data.score_total = score_totals[i]
 		match_result.players.append(score_data)
+		match_data.users[i].gold = players_gold[i]
+		SignalBus.emit_signal_global("ingame_update_player_money", [match_data.users[i].uid])
 		
 	SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')
 
@@ -481,6 +494,15 @@ func _handle_new_round(payload: PackedByteArray):
 	match_data.current_round = pkg.get_current_round()
 	match_data.pot_value = pkg.get_pot_value()
 	
+	var players_gold = pkg.get_players_gold()
+	# update players gold
+	var i = 0
+	for p in match_data.users:
+		p.gold = players_gold[i]
+		i += 1
+		
+		SignalBus.emit_signal_global("ingame_update_player_money", [p.uid])
+	
 	# when new round start, need to rounded score
 	for player in match_data.users:
 		var redunt = player.game_data.points % 3
@@ -490,6 +512,7 @@ func _handle_new_round(payload: PackedByteArray):
 	if cur_scene is BoardScene:
 		cur_scene.on_new_round()
 		cur_scene.update_team_scores()
+		
 	
 func get_my_team_score() -> int:
 	var c = 0	

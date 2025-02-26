@@ -11,6 +11,7 @@ var table_list = []
 var supported_langues = ['en', 'it']
 var language = 'en'
 var LAST_GAME_IS_WIN = false
+var did_show_guide_new_user = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

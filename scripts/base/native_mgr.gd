@@ -17,3 +17,8 @@ func rate_app():
 	print('rate app')
 	if native_plugin && Config.get_platform() == Config.PLATFORMS.ANDROID:
 		native_plugin.requestAppReview()
+
+func share_app(text: String):
+	if native_plugin:
+		if Config.get_platform() == Config.PLATFORMS.ANDROID:
+			native_plugin.shareApp(GameConstants.PACKAGE_NAME, text)

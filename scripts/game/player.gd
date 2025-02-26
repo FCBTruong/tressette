@@ -22,6 +22,8 @@ func _ready() -> void:
 	self.bonus_info_pn.visible = false
 	default_pos_bonus = self.bonus_info_pn.position
 	red_dot.visible = false
+	
+	SignalBus.connect_global('ingame_update_player_money', Callable(self, "_ingame_update_player_money"))
 
 # Properties
 var user_data: UserData
@@ -40,16 +42,15 @@ func set_user_data(user_dt: UserData) -> void:
 	empty_slot.visible = false
 	
 	
-	#name_label.text = StringUtils.sub_string(user_data.name, 9)
-	gold_lb.text = _get_gold_str(user_data.gold)
+	_update_gold()
 	update_points_display()
 	# update avatar
 	print('userdatavat', user_data.avatar)
 	if user_data.uid == PlayerInfoMgr.my_user_data.uid:
 		is_me = true
-		SignalBus.connect_global('on_update_money', Callable(self, "_on_update_money"))
+		SignalBus.connect_global('on_update_money', Callable(self, "_on_update_my_money"))
 		avatar_img.set_me()
-		
+	
 		# add red noti for if not yet click avatar pick
 		
 		if PlayerInfoMgr.my_user_data.game_count < 10:
@@ -61,7 +62,9 @@ func set_user_data(user_dt: UserData) -> void:
 		is_me = false
 			
 	avatar_img.set_avatar(user_data.avatar)
-	
+
+func _update_gold():
+	gold_lb.text = _get_gold_str(user_data.gold)
 
 func update_points_display(effect_add = false):
 	pass
@@ -161,8 +164,9 @@ func show_emotion(emo_id):
 	).set_delay(1)
 	
 	
-func _on_update_money():
-	gold_lb.text = _get_gold_str(PlayerInfoMgr.my_user_data.gold)
+func _on_update_my_money():
+	if user_data.uid == PlayerInfoMgr.get_user_id():
+		gold_lb.text = _get_gold_str(PlayerInfoMgr.my_user_data.gold)
 
 func _get_gold_str(gold) -> String:
 	var str = StringUtils.point_number(gold)
@@ -234,3 +238,10 @@ func show_napoli(s, suits):
 				card.queue_free()
 		)
 		i += 1
+
+
+func _ingame_update_player_money(uid):
+	if uid == user_data.uid:
+		print('user ' + str(uid) + 'update money')
+		_update_gold()
+	pass

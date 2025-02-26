@@ -2027,6 +2027,11 @@ class StartGame:
 		service.field = _pot_value
 		data[_pot_value.tag] = service
 		
+		_players_gold = PBField.new("players_gold", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 2, true, [])
+		service = PBServiceField.new()
+		service.field = _players_gold
+		data[_players_gold.tag] = service
+		
 	var data = {}
 	
 	var _pot_value: PBField
@@ -2037,6 +2042,15 @@ class StartGame:
 		_pot_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_pot_value(value : int) -> void:
 		_pot_value.value = value
+	
+	var _players_gold: PBField
+	func get_players_gold() -> Array:
+		return _players_gold.value
+	func clear_players_gold() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_players_gold.value = []
+	func add_players_gold(value : int) -> void:
+		_players_gold.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2443,6 +2457,11 @@ class EndGame:
 		service.field = _gold_wins
 		data[_gold_wins.tag] = service
 		
+		_players_gold = PBField.new("players_gold", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 8, true, [])
+		service = PBServiceField.new()
+		service.field = _players_gold
+		data[_players_gold.tag] = service
+		
 	var data = {}
 	
 	var _uids: PBField
@@ -2507,6 +2526,15 @@ class EndGame:
 		_gold_wins.value = []
 	func add_gold_wins(value : int) -> void:
 		_gold_wins.value.append(value)
+	
+	var _players_gold: PBField
+	func get_players_gold() -> Array:
+		return _players_gold.value
+	func clear_players_gold() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_players_gold.value = []
+	func add_players_gold(value : int) -> void:
+		_players_gold.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4116,6 +4144,11 @@ class NewRound:
 		service.field = _pot_value
 		data[_pot_value.tag] = service
 		
+		_players_gold = PBField.new("players_gold", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _players_gold
+		data[_players_gold.tag] = service
+		
 	var data = {}
 	
 	var _current_round: PBField
@@ -4135,6 +4168,15 @@ class NewRound:
 		_pot_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_pot_value(value : int) -> void:
 		_pot_value.value = value
+	
+	var _players_gold: PBField
+	func get_players_gold() -> Array:
+		return _players_gold.value
+	func clear_players_gold() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_players_gold.value = []
+	func add_players_gold(value : int) -> void:
+		_players_gold.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

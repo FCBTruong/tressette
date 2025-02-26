@@ -5,7 +5,7 @@ extends Node
 
 enum MODES { LOCAL, PRIVATE, LIVE }
 
-@export var CURRENT_MODE: int = MODES.LIVE
+@export var CURRENT_MODE: int = MODES.LOCAL
 @export var SHOW_CARD_BOT: bool = false
 var WEBSOCKET_URL: String
 var EDIT_MODE = false
@@ -13,7 +13,7 @@ var EDIT_MODE = false
 func _ready():
 	if CURRENT_MODE == MODES.LOCAL:
 		if OS.get_name() == "Android":
-			CURRENT_MODE = MODES.LIVE		
+			CURRENT_MODE = MODES.PRIVATE		
 		elif  OS.get_name() == "iOS":
 			CURRENT_MODE = MODES.PRIVATE
 	if CURRENT_MODE == MODES.PRIVATE:	

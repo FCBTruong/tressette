@@ -126,6 +126,14 @@ offset_right = 496.0
 offset_bottom = 52.0
 text = "ADD BOT"
 
+[node name="Button2" type="Button" parent="CanvasLayer/MainPn"]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 342.0
+offset_right = 559.0
+offset_bottom = 382.0
+text = "Test1"
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.635)
 anchors_preset = 2
@@ -168,4 +176,5 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_2mr3y")
 
 [connection signal="pressed" from="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2/CheatGoldBtn" to="." method="_click_cheat_goldbtn"]
 [connection signal="pressed" from="CanvasLayer/MainPn/Button" to="." method="_click_add_bot"]
+[connection signal="pressed" from="CanvasLayer/MainPn/Button2" to="." method="_test_share_app"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_click_btn"]
