@@ -100,6 +100,9 @@ const LOGIN_TYPE = {
 	FIREBASE = 1
 }
 
+const REASON_KICK_GAMES = {
+	NOT_ENOUGH_GOLD = 1
+}
 const CARD_FACE_STATE = {
 	UP = 0,
 	DOWN = 1

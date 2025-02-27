@@ -181,15 +181,16 @@ func show_bonus(txt, type=0): # last trick
 		self.bonus_info_colour.color = Color('1d7fff')
 		# napoli
 	var p = self.global_position
-	var screen_size_width = get_viewport().size.x / 2
-
-	if p.x > screen_size_width:
+	var screen_size_width = get_viewport().get_visible_rect().size.x
+	
+	self.bonus_info_pn.pivot_offset = Vector2(0, 0)
+	if p.x > screen_size_width / 2:
 		# player in the left
 		self.bonus_info_pn.position.x = default_pos_bonus.x - 230
 		self.bonus_info_pn.pivot_offset = Vector2(bonus_info_pn.size.x, 0)
 	else:
-		self.bonus_info_pn.pivot_offset = Vector2(0, 0)
 		self.bonus_info_pn.position = default_pos_bonus
+
 	if tw_bonus and tw_bonus.is_running():
 		tw_bonus.kill()
 	tw_bonus = create_tween()

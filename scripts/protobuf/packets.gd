@@ -1461,6 +1461,11 @@ class GameInfo:
 		service.field = _point_to_win
 		data[_point_to_win.tag] = service
 		
+		_enable_bet_win_score = PBField.new("enable_bet_win_score", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 22, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _enable_bet_win_score
+		data[_enable_bet_win_score.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1652,6 +1657,15 @@ class GameInfo:
 	func set_point_to_win(value : int) -> void:
 		_point_to_win.value = value
 	
+	var _enable_bet_win_score: PBField
+	func get_enable_bet_win_score() -> bool:
+		return _enable_bet_win_score.value
+	func clear_enable_bet_win_score() -> void:
+		data[22].state = PB_SERVICE_STATE.UNFILLED
+		_enable_bet_win_score.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_enable_bet_win_score(value : bool) -> void:
+		_enable_bet_win_score.value = value
+	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
 		
@@ -1834,6 +1848,11 @@ class UserLeaveMatch:
 		service.field = _uid
 		data[_uid.tag] = service
 		
+		_reason = PBField.new("reason", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _reason
+		data[_reason.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1844,6 +1863,15 @@ class UserLeaveMatch:
 		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_uid(value : int) -> void:
 		_uid.value = value
+	
+	var _reason: PBField
+	func get_reason() -> int:
+		return _reason.value
+	func clear_reason() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_reason.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_reason(value : int) -> void:
+		_reason.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2316,27 +2344,22 @@ class GeneralInfo:
 		service.field = _timestamp
 		data[_timestamp.tag] = service
 		
-		_min_gold_play = PBField.new("min_gold_play", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
-		service = PBServiceField.new()
-		service.field = _min_gold_play
-		data[_min_gold_play.tag] = service
-		
-		_time_thinking_in_turn = PBField.new("time_thinking_in_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_time_thinking_in_turn = PBField.new("time_thinking_in_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
 		service.field = _time_thinking_in_turn
 		data[_time_thinking_in_turn.tag] = service
 		
-		_tressette_bets = PBField.new("tressette_bets", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 4, true, [])
+		_tressette_bets = PBField.new("tressette_bets", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
 		service = PBServiceField.new()
 		service.field = _tressette_bets
 		data[_tressette_bets.tag] = service
 		
-		_bet_multiplier_min = PBField.new("bet_multiplier_min", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_bet_multiplier_min = PBField.new("bet_multiplier_min", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
 		service.field = _bet_multiplier_min
 		data[_bet_multiplier_min.tag] = service
 		
-		_exp_levels = PBField.new("exp_levels", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 6, true, [])
+		_exp_levels = PBField.new("exp_levels", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 5, true, [])
 		service = PBServiceField.new()
 		service.field = _exp_levels
 		data[_exp_levels.tag] = service
@@ -2352,20 +2375,11 @@ class GeneralInfo:
 	func set_timestamp(value : int) -> void:
 		_timestamp.value = value
 	
-	var _min_gold_play: PBField
-	func get_min_gold_play() -> int:
-		return _min_gold_play.value
-	func clear_min_gold_play() -> void:
-		data[2].state = PB_SERVICE_STATE.UNFILLED
-		_min_gold_play.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
-	func set_min_gold_play(value : int) -> void:
-		_min_gold_play.value = value
-	
 	var _time_thinking_in_turn: PBField
 	func get_time_thinking_in_turn() -> int:
 		return _time_thinking_in_turn.value
 	func clear_time_thinking_in_turn() -> void:
-		data[3].state = PB_SERVICE_STATE.UNFILLED
+		data[2].state = PB_SERVICE_STATE.UNFILLED
 		_time_thinking_in_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_time_thinking_in_turn(value : int) -> void:
 		_time_thinking_in_turn.value = value
@@ -2374,7 +2388,7 @@ class GeneralInfo:
 	func get_tressette_bets() -> Array:
 		return _tressette_bets.value
 	func clear_tressette_bets() -> void:
-		data[4].state = PB_SERVICE_STATE.UNFILLED
+		data[3].state = PB_SERVICE_STATE.UNFILLED
 		_tressette_bets.value = []
 	func add_tressette_bets(value : int) -> void:
 		_tressette_bets.value.append(value)
@@ -2383,7 +2397,7 @@ class GeneralInfo:
 	func get_bet_multiplier_min() -> int:
 		return _bet_multiplier_min.value
 	func clear_bet_multiplier_min() -> void:
-		data[5].state = PB_SERVICE_STATE.UNFILLED
+		data[4].state = PB_SERVICE_STATE.UNFILLED
 		_bet_multiplier_min.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_bet_multiplier_min(value : int) -> void:
 		_bet_multiplier_min.value = value
@@ -2392,7 +2406,7 @@ class GeneralInfo:
 	func get_exp_levels() -> Array:
 		return _exp_levels.value
 	func clear_exp_levels() -> void:
-		data[6].state = PB_SERVICE_STATE.UNFILLED
+		data[5].state = PB_SERVICE_STATE.UNFILLED
 		_exp_levels.value = []
 	func add_exp_levels(value : int) -> void:
 		_exp_levels.value.append(value)
@@ -2452,15 +2466,15 @@ class EndGame:
 		service.field = _gold_changes
 		data[_gold_changes.tag] = service
 		
-		_gold_wins = PBField.new("gold_wins", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 7, true, [])
-		service = PBServiceField.new()
-		service.field = _gold_wins
-		data[_gold_wins.tag] = service
-		
-		_players_gold = PBField.new("players_gold", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 8, true, [])
+		_players_gold = PBField.new("players_gold", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 7, true, [])
 		service = PBServiceField.new()
 		service.field = _players_gold
 		data[_players_gold.tag] = service
+		
+		_gold_win_score = PBField.new("gold_win_score", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		service = PBServiceField.new()
+		service.field = _gold_win_score
+		data[_gold_win_score.tag] = service
 		
 	var data = {}
 	
@@ -2518,23 +2532,23 @@ class EndGame:
 	func add_gold_changes(value : int) -> void:
 		_gold_changes.value.append(value)
 	
-	var _gold_wins: PBField
-	func get_gold_wins() -> Array:
-		return _gold_wins.value
-	func clear_gold_wins() -> void:
-		data[7].state = PB_SERVICE_STATE.UNFILLED
-		_gold_wins.value = []
-	func add_gold_wins(value : int) -> void:
-		_gold_wins.value.append(value)
-	
 	var _players_gold: PBField
 	func get_players_gold() -> Array:
 		return _players_gold.value
 	func clear_players_gold() -> void:
-		data[8].state = PB_SERVICE_STATE.UNFILLED
+		data[7].state = PB_SERVICE_STATE.UNFILLED
 		_players_gold.value = []
 	func add_players_gold(value : int) -> void:
 		_players_gold.value.append(value)
+	
+	var _gold_win_score: PBField
+	func get_gold_win_score() -> int:
+		return _gold_win_score.value
+	func clear_gold_win_score() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_gold_win_score.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
+	func set_gold_win_score(value : int) -> void:
+		_gold_win_score.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

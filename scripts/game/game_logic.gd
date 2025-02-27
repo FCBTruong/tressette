@@ -56,11 +56,23 @@ func _handle_user_leave_match(payload: PackedByteArray):
 	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
+	var reason = pkg.get_reason()
 	var board_scene = SceneManager.get_current_scene()
 	if not board_scene is BoardScene:
 		return
 	if uid == PlayerInfoMgr.my_user_data.uid:
-		board_scene.exit_game()
+		if reason == GameConstants.REASON_KICK_GAMES.NOT_ENOUGH_GOLD:
+			SceneManager.show_dialog(
+				tr('NOT_ENOUGH_GOLD_PLAY_BUY')
+				,
+				func ():
+					SceneManager.switch_scene(SceneManager.SHOP_SCENE),
+				func ():
+					board_scene.exit_game(),
+				true
+			)
+		else:
+			board_scene.exit_game()
 		return
 	for user in match_data.users:
 		if user.uid == uid:
@@ -71,6 +83,8 @@ func _handle_user_leave_match(payload: PackedByteArray):
 	board_scene.on_update_players()
 	
 func _handle_user_join_match(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.NewUserJoinMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
@@ -136,6 +150,7 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.current_round = pkg.get_current_round()
 	match_data.hand_in_round = pkg.get_hand_in_round()
 	match_data.point_to_win = pkg.get_point_to_win()
+	match_data.enable_bet_win_score = pkg.get_enable_bet_win_score()
 	self.is_registered_leave = pkg.get_is_registered_leave()
 	self.hand_suit = pkg.get_hand_suit()
 	
@@ -431,6 +446,8 @@ func _handle_draw_card(payload: PackedByteArray):
 		scene.on_draw_cards(arr)
 	
 func _handle_end_game(payload: PackedByteArray):
+	if not match_data:
+		return
 	match_data.state = MatchData.MATCH_STATE.ENDING
 	var pkg = GameConstants.PROTOBUF.PACKETS.EndGame.new()
 	var result_code = pkg.from_bytes(payload)
@@ -441,13 +458,13 @@ func _handle_end_game(payload: PackedByteArray):
 	var score_totals = pkg.get_score_totals()
 	var gold_changes = pkg.get_gold_changes()
 	var players_gold = pkg.get_players_gold()
+	var gold_win_score = pkg.get_gold_win_score()
 	
 	match_result = MatchData.MatchResult.new()
 	match_result.is_win = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id \
 		== win_team_id
 	if match_result.is_win:
-		match_result.gold_win = match_data.pot_value / (match_data.player_mode / 2)
-		
+		match_result.gold_win = match_data.pot_value / (match_data.player_mode / 2) + gold_win_score
 	else:
 		match_result.gold_lose = gold_changes[my_idx]
 	match_result.win_team_id = win_team_id
@@ -476,6 +493,8 @@ func _handle_end_game(payload: PackedByteArray):
 	SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')
 
 func _handle_prepare_start(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = GameConstants.PROTOBUF.PACKETS.PrepareStartGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var time_start = pkg.get_time_start()

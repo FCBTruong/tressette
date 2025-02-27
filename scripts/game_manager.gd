@@ -68,7 +68,18 @@ func get_token() -> String:
 	
 func send_quick_play() -> void:
 	if PlayerInfoMgr.my_user_data.gold < GameServerConfig.min_gold_play:
-		GameManager.show_not_gold_recommend_shop()
+		var str_noti = tr('NOT_ENOUGH_MIN_GOLD_PLAY_BUY')
+		str_noti = str_noti.replace("@num", StringUtils.point_number(GameServerConfig.min_gold_play))
+		SceneManager.show_dialog(
+				str_noti
+				,
+				func ():
+					SceneManager.switch_scene(SceneManager.SHOP_SCENE),
+				func ():
+					pass,
+				true
+			)
+			
 		return
 	SceneManager.add_loading(5)
 	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, [])
@@ -81,7 +92,6 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 		GameConstants.CMDs.GENERAL_INFO:
 			var pkg = GameConstants.PROTOBUF.PACKETS.GeneralInfo.new()
 			var result_code = pkg.from_bytes(payload)
-			GameServerConfig.min_gold_play = pkg.get_min_gold_play()
 			var timestamp_server = pkg.get_timestamp()
 			var delta = timestamp_server - Time.get_unix_time_from_system()
 			print('delta timestamp server-client', delta)
@@ -90,6 +100,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			GameServerConfig.tressette_bets = pkg.get_tressette_bets()
 			GameServerConfig.bet_multiplier_min = pkg.get_bet_multiplier_min()
 			GameServerConfig.exp_levels = pkg.get_exp_levels()
+			
+			GameServerConfig.min_gold_play = GameServerConfig.tressette_bets[0] * GameServerConfig.bet_multiplier_min
 		GameConstants.CMDs.TABLE_LIST:
 			var pkg = GameConstants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)

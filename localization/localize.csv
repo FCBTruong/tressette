@@ -113,3 +113,4 @@ GOAL_CONTENT,Win by reaching 11 or 21 points (depending on game mode).,Vinci rag
 NAPOLI_TIP,"A set of 3, 2, and Ace of the same suit, claim only first trick","Un set di 3, 2 e Asso dello stesso seme, dichiarabile solo alla prima presa.",,
 REACH_POINT_TO_WIN,Reach #point to win,Raggiungi #point per vincere,,
 STARTUP_GOLD,You’ve been granted @num gold to kickstart your journey. Enjoy the game!,Hai ricevuto @num oro per iniziare la tua avventura. Divertiti con il gioco!,,
+NOT_ENOUGH_MIN_GOLD_PLAY_BUY,You need at least @num gold to play. Would you like to purchase more now?,Hai bisogno di almeno @num oro per giocare. Vuoi acquistarne di più ora?,,
