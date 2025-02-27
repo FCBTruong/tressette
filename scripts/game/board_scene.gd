@@ -923,3 +923,7 @@ func _on_user_napoli(uid, point_add, suits):
 	if p:
 		var s = "+" + str(int(point_add / 3)) + " NAPOLI"
 		p.show_napoli(s, suits)
+
+
+func _click_show_info_bet() -> void:
+	SceneManager.open_gui("res://scenes/board/BetDetailGUI.tscn")

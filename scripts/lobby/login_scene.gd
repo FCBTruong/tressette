@@ -96,3 +96,9 @@ func _login_with_apple() -> void:
 func _cheat_select_uid():
 	var a = select_uid_cheat.get_selected_id()
 	_login_by_uid_cheat(str(self.uids_cheat[a]))
+
+func _click_privacy_policy():
+	OS.shell_open(GameConstants.PRIVACY_POLICY_URL)
+
+func _click_terms_of_service():
+	OS.shell_open(GameConstants.TERMS_OF_SERVICE_URL)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=46 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="12_b6jtg"]
 [ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="12_cc6ty"]
 [ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_6bu1m"]
+[ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_4pw0j"]
 [ext_resource type="Texture2D" uid="uid://bxpqmo0rscimi" path="res://assets/animations/2.png" id="15_fulpj"]
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://wss3dy5md7ag" path="res://assets/animations/3.png" id="16_uybu8"]
@@ -135,6 +136,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CheatBotCardPn" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
@@ -252,7 +254,7 @@ offset_right = 27.0
 offset_bottom = -115.0
 grow_vertical = 0
 
-[node name="CardComparePn" type="ColorRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+[node name="CardComparePn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -266,7 +268,6 @@ offset_bottom = 137.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0)
 
 [node name="PlaceCard3" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 position = Vector2(180, 195)
@@ -740,18 +741,44 @@ grow_horizontal = 0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="BetLb" type="Label" parent="CanvasLayer/RightTopPanel"]
-modulate = Color(1, 1, 1, 0.809)
+[node name="BetHbox" type="HBoxContainer" parent="CanvasLayer/RightTopPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 171.0
+offset_top = 125.0
+offset_right = 371.0
+offset_bottom = 157.0
+mouse_filter = 2
+alignment = 2
+
+[node name="InfoBetBtn" type="Button" parent="CanvasLayer/RightTopPanel/BetHbox"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+flat = true
+script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/BetHbox/InfoBetBtn"]
+self_modulate = Color(1, 1, 1, 0.586)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.0101625
-anchor_top = 0.808
-anchor_right = 0.297338
-anchor_bottom = 0.898
-offset_left = 214.065
-offset_top = 41.2
-offset_right = 254.065
-offset_bottom = 64.2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -16.0
+offset_right = 7.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_4pw0j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BetLb" type="Label" parent="CanvasLayer/RightTopPanel/BetHbox"]
+modulate = Color(1, 1, 1, 0.809)
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.865)
 theme_override_font_sizes/font_size = 23
 text = "BET: 100K"
@@ -792,6 +819,7 @@ offset_right = -23.0
 offset_bottom = 30.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 20
 alignment = 2
 
@@ -932,6 +960,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Button" type="Button" parent="CanvasLayer/PnCheat"]
 layout_mode = 0
@@ -1201,6 +1230,7 @@ stream = ExtResource("8_62q6d")
 volume_db = 12.0
 
 [connection signal="pressed" from="CanvasLayer/ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
+[connection signal="pressed" from="CanvasLayer/RightTopPanel/BetHbox/InfoBetBtn" to="." method="_click_show_info_bet"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]

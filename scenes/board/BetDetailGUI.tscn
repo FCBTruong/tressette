@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhf4of5mkrdho"]
+
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="1_84qm5"]
+[ext_resource type="Script" path="res://scripts/game/bet_detail_gui.gd" id="1_hek8f"]
+[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="2_o2vl8"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_3wv1l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx2ms"]
+bg_color = Color(0.160262, 0.175383, 0.269186, 1)
+
+[node name="BetDetailGui" type="Node2D"]
+script = ExtResource("1_hek8f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(700, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -200.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.75118, 0.526548, 0.234796, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+self_modulate = Color(0.544126, 0.202283, 0.202283, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = 8.0
+offset_right = 59.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_84qm5")
+theme_override_font_sizes/font_size = 30
+text = "POT & BET"
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+custom_minimum_size = Vector2(380, 160)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -98.0
+offset_right = 300.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.842)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o2vl8")
+theme_override_font_sizes/font_size = 20
+text = "BET_EXPLAIN_1"
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.842)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o2vl8")
+theme_override_font_sizes/font_size = 20
+text = "BET_EXPLAIN_2"
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.842)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o2vl8")
+theme_override_font_sizes/font_size = 20
+text = "BET_EXPLAIN_3"
+autowrap_mode = 3
+
+[node name="CloseBtn" type="Button" parent="CanvasLayer/ColorRect"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -54.0
+offset_right = 50.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+flat = true
+script = ExtResource("4_3wv1l")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ColorRect/CloseBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fx2ms")
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect/CloseBtn/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_84qm5")
+theme_override_font_sizes/font_size = 20
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/ColorRect/CloseBtn" to="." method="_on_close"]
