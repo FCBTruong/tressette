@@ -406,6 +406,7 @@ offset_bottom = 372.0
 
 [node name="Napoli" type="Label" parent="CanvasLayer/MainPn/Page2/Napoli2"]
 self_modulate = Color(1, 0.913725, 0.403922, 1)
+layout_mode = 0
 offset_left = 42.0
 offset_right = 414.0
 offset_bottom = 36.0

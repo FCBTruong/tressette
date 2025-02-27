@@ -87,6 +87,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qtdei")
 text = "Cheat"
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainPn"]
+layout_mode = 0
 offset_left = 473.0
 offset_top = 201.0
 offset_right = 573.0
@@ -105,6 +106,7 @@ expand_mode = 1
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainPn"]
 material = SubResource("ShaderMaterial_6um5f")
+layout_mode = 0
 offset_left = 326.0
 offset_top = 312.0
 offset_right = 538.0

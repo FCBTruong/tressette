@@ -21,7 +21,8 @@ var preload_board_scene = preload(BOARD_SCENE)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Loaded lobby scene")
-	
+	_cur_scene = get_tree().current_scene
+	pass
 
 # Function to switch scenes
 func switch_scene(new_scene_path: String) -> void:
@@ -52,7 +53,7 @@ func switch_scene(new_scene_path: String) -> void:
 		else:
 			print('current scene is null')
 		
-		
+	
 func open_gui(gui_path: String, z_order = 1):
 	print('open gui: ....', gui_path)
 	var current_scene = self.get_current_scene()
@@ -63,10 +64,12 @@ func open_gui(gui_path: String, z_order = 1):
 		current_scene.add_child(popup_instance, z_order)
 		return popup_instance
 	else:
-		print("Current GUI is null", gui_path)
+		print("Current Scene is null ", gui_path)
 	return null
 
 func get_current_scene():
+	if not _cur_scene:
+		return get_tree().current_scene
 	return _cur_scene
 	
 func show_dialog(message: String, ok_callback: Callable = Callable(), close_callback: Callable = Callable(), show_cancel_btn = false,
