@@ -96,7 +96,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			var delta = timestamp_server - Time.get_unix_time_from_system()
 			print('delta timestamp server-client', delta)
 			GameManager.set_timestamp_server_delta(delta)
-			GameServerConfig.time_thinking_in_turn = pkg.get_time_thinking_in_turn()
+			GameServerConfig.time_thinking_in_turn = pkg.get_time_thinking_in_turn() - 0.5 # client must play before that time
 			GameServerConfig.tressette_bets = pkg.get_tressette_bets()
 			GameServerConfig.bet_multiplier_min = pkg.get_bet_multiplier_min()
 			GameServerConfig.exp_levels = pkg.get_exp_levels()

@@ -98,24 +98,30 @@ func _process(delta: float):
 		
 	if running:
 		elapsed_time += delta
+		
 		if elapsed_time < GameServerConfig.time_thinking_in_turn:
 			# Update progress bar value based on elapsed time
 			time_progress_bar.value = (GameServerConfig.time_thinking_in_turn - elapsed_time) \
 				/ GameServerConfig.time_thinking_in_turn * 100
+			
+			if user_data.uid == PlayerInfoMgr.get_user_id():
+				if SceneManager.INSTANCES.BOARD_SCENE.is_auto_play:
+					if elapsed_time > 3:
+						SceneManager.INSTANCES.BOARD_SCENE.game_logic.auto_play_card()
+						end_timer()
 		else:
-			# Ensure progress bar is full and end the timer
-			time_progress_bar.value = 100
-			running = false
-			end_timer()
+			end_timer(true)
 
 func get_user_data() -> UserData:
 	return user_data
 	
-func end_timer():
+func end_timer(out_time=false):
+	running = false
+	if user_data.uid == PlayerInfoMgr.get_user_id() and out_time:
+		SceneManager.INSTANCES.BOARD_SCENE.user_not_play_turn()
 	time_progress_bar.visible = false
 	vortex.visible = false
 	await get_tree().create_timer(1).timeout
-	running = false
 	print("Timer complete!")
 
 var effect_add_score_scene = preload('res://scenes/board/AddScoreEffect.tscn')

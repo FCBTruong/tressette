@@ -46,6 +46,7 @@ var cards_node_compare = []
 @onready var napoli_btn = find_child("NapoliBtn")
 @onready var action_btn_pn = find_child("ActionBtnPn")
 @onready var reach_point_win_lb = find_child("ReachPointWinLb")
+@onready var auto_play_pn = find_child("AutoPlayPn")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -59,8 +60,10 @@ var SCALE_CARD_DEAL_INIT = 0.8
 var base_text = tr('WAITING_FOR_OTHERS')
 var evaluate_lb_default_pos
 var game_start_lb_default_pos
+var is_auto_play = false
 func _ready() -> void:	
 	napoli_btn.visible = false 
+	is_auto_play = false
 	game_start_lb_default_pos = game_start_lb.position
 	SceneManager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
@@ -73,6 +76,7 @@ func _ready() -> void:
 	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
 	_on_enter()
 	action_btn_pn.z_index = 200
+	auto_play_pn.z_index = 300
 	
 	# Check and show GUIDE GUI for new user
 	if PlayerInfoMgr.my_user_data.game_count == 0 and not \
@@ -94,6 +98,7 @@ func _get_card_rotates(n):
 		
 func _on_enter():
 	game_start_lb.visible = false
+	auto_play_pn.visible = false
 	_update_current_round()
 	on_update_players()
 	update_remain_cards()
@@ -150,6 +155,10 @@ func update_cards_on_table():
 func continue_play():
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		return
+		
+	if self.is_auto_play:
+		# quit
+		GameManager.send_register_leave_game()
 	cardback_node.visible = false
 	remove_all_current_cards()
 	opponent_score_lb.text = '0'
@@ -927,3 +936,12 @@ func _on_user_napoli(uid, point_add, suits):
 
 func _click_show_info_bet() -> void:
 	SceneManager.open_gui("res://scenes/board/BetDetailGUI.tscn")
+
+func user_not_play_turn():
+	is_auto_play = true
+	self.auto_play_pn.visible = true
+	
+func _click_return_table() -> void:
+	is_auto_play = false
+	self.auto_play_pn.visible = false
+	GameClient.send_packet(GameConstants.CMDs.USER_RETURN_TO_TABLE, [])

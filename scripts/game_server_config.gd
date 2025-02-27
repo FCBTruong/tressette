@@ -1,7 +1,7 @@
 extends Node
 
 
-var time_thinking_in_turn: int = 5
+var time_thinking_in_turn: float = 5
 var tressette_bets = []
 var exp_levels = []
 var bet_multiplier_min = 1

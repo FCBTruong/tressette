@@ -646,3 +646,12 @@ func _handle_receive_napoli(payload):
 func send_action_napoli():
 	var pkg = GameConstants.PROTOBUF.PACKETS.GameActionNapoli.new()
 	GameClient.send_packet(GameConstants.CMDs.GAME_ACTION_NAPOLI, pkg.to_bytes())
+
+func auto_play_card():
+	var cards = match_data.users[my_idx].game_data.cards
+	for c in cards:
+		if check_valid_card_play(c):
+			var cur_scene = SceneManager.get_current_scene()
+			if cur_scene is BoardScene:
+				cur_scene.play_my_card(c)
+			return

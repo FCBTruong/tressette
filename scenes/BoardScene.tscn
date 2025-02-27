@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=47 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
@@ -112,6 +112,13 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78fhh"]
+bg_color = Color(0.883559, 0.272847, 0.0146903, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="BoardScene" type="Node2D"]
 script = ExtResource("1_th5x2")
@@ -1211,6 +1218,60 @@ grow_vertical = 2
 texture = ExtResource("19_avqff")
 expand_mode = 1
 
+[node name="AutoPlayPn" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ReturnTableBtn" type="Button" parent="CanvasLayer/AutoPlayPn"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -30.0
+offset_right = 100.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("7_gov4p")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/AutoPlayPn/ReturnTableBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_78fhh")
+
+[node name="Label" type="Label" parent="CanvasLayer/AutoPlayPn/ReturnTableBtn/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -11.5
+offset_right = 57.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 20
+text = "RETURN TABLE"
+horizontal_alignment = 1
+
 [node name="AudioDrawCard" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_gg0m3")
 
@@ -1243,3 +1304,4 @@ volume_db = 12.0
 [connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn3" to="CanvasLayer/EmoChat" method="_on_emo_btn_3_pressed"]
 [connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn2" to="CanvasLayer/EmoChat" method="_on_emo_btn_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn1" to="CanvasLayer/EmoChat" method="_on_emo_btn_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/AutoPlayPn/ReturnTableBtn" to="." method="_click_return_table"]
