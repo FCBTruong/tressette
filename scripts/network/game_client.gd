@@ -12,6 +12,12 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 	match cmd_id:
 		GameConstants.CMDs.TEST_MESSAGE:
 			return
+		GameConstants.CMDs.ADMIN_BROADCAST:
+			var pkg = GameConstants.PROTOBUF.PACKETS.AdminBroadcast.new()
+			var result_code = pkg.from_bytes(payload)
+			
+			var msg = pkg.get_mes()
+			SceneManager.show_ok_dialog(msg)
 		GameConstants.CMDs.LOGIN:
 			var pkg = GameConstants.PROTOBUF.PACKETS.LoginResponse.new()
 			var result_code = pkg.from_bytes(payload)

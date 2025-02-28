@@ -349,6 +349,11 @@ func _get_my_card(id):
 	return null
 	
 func play_my_card(id: int, auto: bool = false):
+	if len(list_napoli_highlights) > 0:
+		for n in list_napoli_highlights:
+			n.queue_free()
+		list_napoli_highlights.clear()
+		
 	print("play_a_card", id)
 	var valid_card = game_logic.check_valid_card_play(id)
 	if not valid_card:

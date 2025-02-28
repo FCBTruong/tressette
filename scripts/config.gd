@@ -14,7 +14,7 @@ func _ready():
 	if CURRENT_MODE == MODES.LOCAL:
 		if OS.get_name() == "Android":
 			CURRENT_MODE = MODES.PRIVATE		
-		elif  OS.get_name() == "iOS":
+		elif OS.get_name() == "iOS":
 			CURRENT_MODE = MODES.PRIVATE
 	if CURRENT_MODE == MODES.PRIVATE:	
 		WEBSOCKET_URL = "wss://tressette-dev.clareentertainment.com/ws"
