@@ -47,11 +47,13 @@ var cards_node_compare = []
 @onready var action_btn_pn = find_child("ActionBtnPn")
 @onready var reach_point_win_lb = find_child("ReachPointWinLb")
 @onready var auto_play_pn = find_child("AutoPlayPn")
+@onready var pn_highlight_napoli = find_child("PnHighlightNapoli")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
 const CHAT_EMO_Z_INDEX = 200
 const TIME_VIEW_CARD = 1.1
+const CARD_DISTANCE_BETWEEN = 90
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
@@ -61,6 +63,7 @@ var base_text = tr('WAITING_FOR_OTHERS')
 var evaluate_lb_default_pos
 var game_start_lb_default_pos
 var is_auto_play = false
+var list_napoli_highlights = []
 func _ready() -> void:	
 	napoli_btn.visible = false 
 	is_auto_play = false
@@ -321,10 +324,10 @@ func _update_my_card_positions(effect = false):
 		var desired_rot = rotates[i]
 		if not effect:
 			card.global_position = desired_pos
-			card.rotation = desired_rot
+			#card.rotation = desired_rot
 		else:
 			tween.parallel().tween_property(card, 'global_position', desired_pos, 0.3)
-			tween.parallel().tween_property(card, 'rotation', desired_rot, 0.3)
+			#tween.parallel().tween_property(card, 'rotation', desired_rot, 0.3)
 		
 func on_focus_card(card_id: int) -> void:
 	var card = _get_my_card(card_id)
@@ -368,7 +371,7 @@ func play_my_card(id: int, auto: bool = false):
 	var tween = create_tween()
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
 	tween.parallel().tween_property(card, "global_position",p_place_world, 0.3)
-	tween.parallel().tween_property(card, "rotation",rot, 0.3)
+	#tween.parallel().tween_property(card, "rotation",rot, 0.3)
 	tween.parallel().tween_property(card, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
 	
@@ -496,7 +499,7 @@ func _update_display_score(is_myteam, score: int) -> void:
 func _calculate_world_card_positions(number: int):
 	var list_pos = []
 	var p_center = Vector2(my_card_panel.size.x / 2, my_card_panel.size.y / 2)
-	var distance = 90
+	var distance = CARD_DISTANCE_BETWEEN
 	
 	# Calculate positions for each not-played card, centering around p_center
 	var index = 0
@@ -576,7 +579,7 @@ func deal_my_cards(cards) -> void:
 					pass
 			).set_delay(delay)
 		tween.parallel().tween_property(instance, "position", final_pos, 0.3).set_delay(delay)
-		tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
+		#tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
 		tween.parallel().tween_property(instance, "scale", Vector2(1,1), 0.3).set_delay(delay)
 		# cal instance.show_card(true) after arrived
 			# Schedule card flip after animation finishes
@@ -613,7 +616,7 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	var rot_degrees = randf_range(3, 6) if randf() > 0.5 else randf_range(-10, -5)
 	var rot = deg_to_rad(rot_degrees)
 	tween.parallel().tween_property(card_instance, "global_position",p_place_world, 0.3)
-	tween.parallel().tween_property(card_instance, "rotation", rot, 0.3)
+	#tween.parallel().tween_property(card_instance, "rotation", rot, 0.3)
 	tween.parallel().tween_property(card_instance, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
 	_update_my_card_positions()
@@ -732,7 +735,7 @@ func _effect_draw_card(uid, card_id):
 
 	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
 	tween.parallel().tween_property(instance, "scale", Vector2(1, 1), 0.3).set_delay(delay)
-	tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
+	#tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
 	
 	var c_idx = 0
 	for c in list_my_cards:
@@ -922,11 +925,38 @@ func _click_napoli_btn() -> void:
 
 func on_user_turn():
 	napoli_btn.visible = false
+	if len(list_napoli_highlights) > 0:
+		for n in list_napoli_highlights:
+			n.queue_free()
+		list_napoli_highlights.clear()
 	if game_logic.match_data.hand_in_round == 0:
 		if GameConstants.game_logic.get_uid_in_turn() == PlayerInfoMgr.get_user_id():
-			if game_logic.check_has_napoli():
+			var nap_sets = game_logic.find_napoli()
+			if len(nap_sets) > 0:
 				napoli_btn.visible = true
+				for nap in nap_sets:
+					_hight_light_napoli_set(nap)
+					pass
 
+func _hight_light_napoli_set(nap):
+	var h = pn_highlight_napoli.duplicate()
+	var z = 0
+	pn_highlight_napoli.get_parent().add_child(h)
+	
+	var center_pos = Vector2(0, 0)
+	for c in list_my_cards:
+		if c.id in nap:
+			center_pos += c.global_position
+			if c.z_index > z:
+				z = c.z_index
+				
+	h.z_index = z + 1
+	var w = 100 + (len(nap) - 1) * CARD_DISTANCE_BETWEEN
+	center_pos = center_pos / len(nap)
+	
+	h.global_position = Vector2(center_pos.x - w / 2, center_pos.y - 75)
+	h.size = Vector2(w, 150)
+	list_napoli_highlights.append(h)
 func _on_user_napoli(uid, point_add, suits):
 	var p = get_player_node_by_uid(uid)
 	if p:

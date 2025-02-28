@@ -87,3 +87,7 @@ func _click_add_bot():
 	
 func _test_share_app():
 	NativeMgr.share_app("Hello everyone")
+
+func _click_reset_guest():
+	LoginMgr.save_guest_id('')
+	pass

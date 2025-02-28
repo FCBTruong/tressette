@@ -1,11 +1,12 @@
 extends Node
 
+# from server, do not edit here
 var server_app_version = 0
 var server_forced_version = 0
 var server_remind_version = 0
 
-# INCREASE WHEN BUILD
-const ANDROID_CODE_VERSION: int = 1
+# INCREASE WHEN BUILD, should edit when upload new build
+const ANDROID_CODE_VERSION: int = 2
 const IOS_CODE_VERSION: int = 1
 
 func _ready() -> void:

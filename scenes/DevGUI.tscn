@@ -1,17 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://pnvlnkvi3no"]
+[gd_scene load_steps=11 format=3 uid="uid://pnvlnkvi3no"]
 
 [ext_resource type="Script" path="res://scripts/lobby/dev_gui.gd" id="1_10d5g"]
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="3_jlv1p"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="3_s0e4l"]
 [ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="4_eiqqj"]
+[ext_resource type="Shader" path="res://shaders/test.gdshader" id="5_nckot"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtdei"]
 bg_color = Color(0.649351, 0.231916, 0.00652578, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofocf"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6um5f"]
 shader = ExtResource("4_eiqqj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsdjt"]
+shader = ExtResource("5_nckot")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8oral"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.220498, 1, 0.271116, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mr3y"]
 
@@ -95,7 +115,6 @@ offset_bottom = 331.0
 texture = ExtResource("3_jlv1p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn"]
-material = SubResource("ShaderMaterial_ofocf")
 layout_mode = 0
 offset_left = 20.0
 offset_top = 190.0
@@ -113,12 +132,13 @@ offset_right = 538.0
 offset_bottom = 544.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn"]
-material = SubResource("ShaderMaterial_6um5f")
+material = SubResource("ShaderMaterial_fsdjt")
 layout_mode = 0
 offset_left = 163.0
 offset_top = 156.0
 offset_right = 375.0
 offset_bottom = 388.0
+color = Color(0.666322, 0.666322, 0.666322, 1)
 
 [node name="Button" type="Button" parent="CanvasLayer/MainPn"]
 layout_mode = 0
@@ -135,6 +155,24 @@ offset_top = 342.0
 offset_right = 559.0
 offset_bottom = 382.0
 text = "Test1"
+
+[node name="Button3" type="Button" parent="CanvasLayer/MainPn"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 0
+offset_left = 414.0
+offset_top = 73.0
+offset_right = 512.0
+offset_bottom = 104.0
+text = "Reset guest"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MainPn"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 281.0
+offset_right = 452.0
+offset_bottom = 381.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8oral")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.635)
@@ -179,4 +217,5 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_2mr3y")
 [connection signal="pressed" from="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2/CheatGoldBtn" to="." method="_click_cheat_goldbtn"]
 [connection signal="pressed" from="CanvasLayer/MainPn/Button" to="." method="_click_add_bot"]
 [connection signal="pressed" from="CanvasLayer/MainPn/Button2" to="." method="_test_share_app"]
+[connection signal="pressed" from="CanvasLayer/MainPn/Button3" to="." method="_click_reset_guest"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_click_btn"]

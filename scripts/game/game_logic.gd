@@ -611,11 +611,11 @@ func _handle_cheat_view_card_bot(payload):
 		cur_scene._show_cheat_cards_bot(cards)
 
 func check_has_napoli() -> bool:
-	var my_cards = match_data.users[my_idx].game_data.cards
-	var napo_sets = find_napoli(my_cards)
+	var napo_sets = find_napoli()
 	return len(napo_sets) > 0
 	
-func find_napoli(hand):
+func find_napoli():
+	var hand = match_data.users[my_idx].game_data.cards
 	var napoli_sets = []
 	
 	# Check for Napoli in each suit

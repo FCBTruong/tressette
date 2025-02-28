@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=48 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
@@ -114,11 +114,26 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78fhh"]
-bg_color = Color(0.883559, 0.272847, 0.0146903, 1)
+bg_color = Color(0.521569, 0.0588235, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(0.489817, 0.29806, 0.29806, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t6yy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.220498, 1, 0.271116, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="BoardScene" type="Node2D"]
 script = ExtResource("1_th5x2")
@@ -725,10 +740,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -146.0
-offset_right = 50.0
-offset_bottom = -106.0
+offset_left = -60.0
+offset_top = -166.0
+offset_right = 60.0
+offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
@@ -1269,8 +1284,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_cv557")
 theme_override_font_sizes/font_size = 20
-text = "RETURN TABLE"
+text = "RETURN_TO_TABLE"
 horizontal_alignment = 1
+
+[node name="PnHighlightNapoli" type="Panel" parent="CanvasLayer"]
+offset_left = 1587.0
+offset_top = 748.0
+offset_right = 1887.0
+offset_bottom = 898.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7t6yy")
 
 [node name="AudioDrawCard" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_gg0m3")

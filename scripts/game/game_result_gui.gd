@@ -37,7 +37,7 @@ func _ready() -> void:
 	tween.parallel().tween_callback(
 		func ():
 			continue_time_node.visible = true
-			continue_timer.connect("timeout", Callable(self, "_click_continue_play"))
+			continue_timer.connect("timeout", Callable(self, "_process_continue"))
 			continue_timer.start()
 			
 	)
@@ -107,14 +107,21 @@ func _update_player(p, data: MatchData.MatchResultPlayer):
 	avt_img.set_avatar(data.avatar)
 	
 func _click_continue_play():
+	var scene = SceneManager.get_current_scene()
+	if scene is BoardScene:
+		scene.is_auto_play = false
+		
+	self._process_continue()
+
+	
+func _process_continue():
 	queue_free()
 	
 	# continue play
 	var scene = SceneManager.get_current_scene()
 	if scene is BoardScene:
 		scene.continue_play()
-	pass
-	
+		
 func _click_exit_game():
 	GameManager.send_register_leave_game()
 	pass

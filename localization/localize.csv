@@ -117,3 +117,4 @@ NOT_ENOUGH_MIN_GOLD_PLAY_BUY,You need at least @num gold to play. Would you like
 BET_EXPLAIN_3,"3. Additionally, the winner earns (Score Difference × BET) from the losing players","3. Inoltre, il vincitore guadagna (Differenza di punteggio × puntata) dai giocatori perdenti.",,
 BET_EXPLAIN_1,1. Each player places 1 BET into the POT at the start of the round.,"1. All'inizio del round, ogni giocatore piazza 1 puntata nel piatto.",,
 BET_EXPLAIN_2,"2. At the end of the round, the winner takes the entire POT.","2. Alla fine del round, il vincitore prende l'intero piatto.",,
+RETURN_TO_TABLE,Return to table,Ritorna al tavolo,,
