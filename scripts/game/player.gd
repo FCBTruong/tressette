@@ -231,6 +231,7 @@ func show_napoli(s, suits):
 		card.position = arr_pos[i]
 		card.set_card(n)
 		self.add_child(card)
+		card.turn_face_up()
 		
 		var tw = create_tween()
 		tw.tween_property(card, 'scale', Vector2(0.6, 0.6), 0.2)
