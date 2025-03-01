@@ -237,3 +237,17 @@ func receive_play_invite(payload):
 			join_game_by_id(room_id)
 	)
 	
+	
+func get_country():
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request_completed.connect(_on_request_completed)
+	http_request.request(GameConstants.GEO_API_URL)
+
+func _on_request_completed(result, response_code, headers, body):
+	if response_code == 200:
+		var json = JSON.new()
+		if json.parse(body.get_string_from_utf8()) == OK:
+			var data = json.data
+			var country_code = data.get("country_code", "Unknown")
+			print("User is from:", country_code)

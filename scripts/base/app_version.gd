@@ -6,7 +6,7 @@ var server_forced_version = 0
 var server_remind_version = 0
 
 # INCREASE WHEN BUILD, should edit when upload new build
-const ANDROID_CODE_VERSION: int = 2
+const ANDROID_CODE_VERSION: int = 3
 const IOS_CODE_VERSION: int = 1
 
 func _ready() -> void:

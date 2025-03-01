@@ -19,6 +19,8 @@ func _ready() -> void:
 		friends_container.add_child(n)
 		n.set_info(f)
 		
+	FriendManager.send_friend_list()
+		
 		
 	
 

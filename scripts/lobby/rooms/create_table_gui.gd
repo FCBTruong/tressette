@@ -29,7 +29,7 @@ func find_largest_suitable_bet(my_gold: int) -> int:
 	var largest_bet = -1
 
 	for i in range(bets.size()):
-		if 3 * bets[i] <= my_gold and bets[i] > largest_bet:
+		if GameServerConfig.bet_multiplier_min * bets[i] <= my_gold and bets[i] > largest_bet:
 			largest_bet = bets[i]
 			best_idx = i
 	return best_idx  

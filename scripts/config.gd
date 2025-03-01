@@ -13,9 +13,9 @@ var EDIT_MODE = false
 func _ready():
 	if CURRENT_MODE == MODES.LOCAL:
 		if OS.get_name() == "Android":
-			CURRENT_MODE = MODES.PRIVATE		
+			CURRENT_MODE = MODES.LIVE		
 		elif OS.get_name() == "iOS":
-			CURRENT_MODE = MODES.PRIVATE
+			CURRENT_MODE = MODES.LIVE
 	if CURRENT_MODE == MODES.PRIVATE:	
 		WEBSOCKET_URL = "wss://tressette-dev.clareentertainment.com/ws"
 	elif CURRENT_MODE == MODES.LOCAL:

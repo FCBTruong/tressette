@@ -114,3 +114,6 @@ const LIRA_TEXT = "₤"
 const DELETE_ACCOUNT_URL = 'https://clareentertainment.my.canva.site/tressette-delete-account'
 const PRIVACY_POLICY_URL = 'https://clareentertainment.my.canva.site/tressette-policy'
 const TERMS_OF_SERVICE_URL = 'https://clareentertainment.my.canva.site/term-of-services'
+
+
+const GEO_API_URL = "https://ipwhois.app/json/"
