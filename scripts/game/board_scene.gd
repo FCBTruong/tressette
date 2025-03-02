@@ -964,6 +964,11 @@ func _hight_light_napoli_set(nap):
 	list_napoli_highlights.append(h)
 func _on_user_napoli(uid, point_add, suits):
 	var p = get_player_node_by_uid(uid)
+	if uid == PlayerInfoMgr.get_user_id():
+		if len(list_napoli_highlights) > 0:
+			for n in list_napoli_highlights:
+				n.queue_free()
+			list_napoli_highlights.clear()
 	if p:
 		var s = "+" + str(int(point_add / 3)) + " NAPOLI"
 		p.show_napoli(s, suits)
