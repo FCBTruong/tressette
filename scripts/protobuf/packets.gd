@@ -919,6 +919,11 @@ class Login:
 		service.field = _platform
 		data[_platform.tag] = service
 		
+		_device_country = PBField.new("device_country", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _device_country
+		data[_device_country.tag] = service
+		
 	var data = {}
 	
 	var _type: PBField
@@ -956,6 +961,15 @@ class Login:
 		_platform.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_platform(value : String) -> void:
 		_platform.value = value
+	
+	var _device_country: PBField
+	func get_device_country() -> String:
+		return _device_country.value
+	func clear_device_country() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_device_country.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_device_country(value : String) -> void:
+		_device_country.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

@@ -124,3 +124,7 @@ func _set_device_info(pkg):
 		platform = 'android'
 	pkg.set_device_model(device_model)
 	pkg.set_platform(platform)
+	
+	var current_locale = OS.get_locale()
+	var country = current_locale.split("_")[-1]
+	pkg.set_device_country(country)
