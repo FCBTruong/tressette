@@ -12,6 +12,7 @@ var supported_langues = ['en', 'it']
 var language = 'en'
 var LAST_GAME_IS_WIN = false
 var did_show_guide_new_user = false
+var type_delete_login
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -129,6 +130,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				SceneManager.show_ok_dialog(str_err_join)
 		GameConstants.CMDs.CLAM_SUPPORT:
 			_received_claim_support(payload)
+		GameConstants.CMDs.DELETE_ACCOUNT:
+			_received_delete_account()
 			
 		GameConstants.CMDs.INVITE_FRIEND_PLAY:
 			receive_play_invite(payload)
@@ -253,4 +256,9 @@ func _on_request_completed(result, response_code, headers, body):
 			print("User is from:", country_code)
 
 func request_delete_account():
+	type_delete_login = StorageCache.fetch('last_login_type', GameConstants.LOGIN_TYPE.NONE)
 	GameClient.send_packet(GameConstants.CMDs.DELETE_ACCOUNT, [])
+
+func _received_delete_account():
+	if type_delete_login == GameConstants.LOGIN_TYPE.GUEST:
+		LoginMgr.save_guest_id('')
