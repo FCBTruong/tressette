@@ -100,7 +100,7 @@ func _on_select_language_option(index):
 		GameManager.choose_language('en')
 		
 func _remove_account():
-	OS.shell_open(GameConstants.DELETE_ACCOUNT_URL)
+	SceneManager.open_gui("res://scenes/guis/AccountDeletion.tscn")
 		
 func _click_privacy_policy():
 	OS.shell_open(GameConstants.PRIVACY_POLICY_URL)

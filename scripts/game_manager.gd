@@ -251,3 +251,6 @@ func _on_request_completed(result, response_code, headers, body):
 			var data = json.data
 			var country_code = data.get("country_code", "Unknown")
 			print("User is from:", country_code)
+
+func request_delete_account():
+	GameClient.send_packet(GameConstants.CMDs.DELETE_ACCOUNT, [])
