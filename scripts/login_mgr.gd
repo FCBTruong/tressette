@@ -120,6 +120,8 @@ func _set_device_info(pkg):
 	
 	if Config.get_platform() == Config.PLATFORMS.IOS:
 		platform = 'ios'
+	elif Config.get_platform() == Config.PLATFORMS.WEB:
+		platform = 'web'
 	else:
 		platform = 'android'
 	pkg.set_device_model(device_model)

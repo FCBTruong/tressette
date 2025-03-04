@@ -5,11 +5,13 @@ extends Node
 @onready var price_lb = find_child('PriceLb')
 @onready var apple_icon = find_child('AppleIcon')
 @onready var chplay_icon = find_child("ChplayIcon")
+@onready var paypal_icon = find_child("PaypalIcon")
 var info: PackInfo
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	apple_icon.visible = Config.get_platform() == Config.PLATFORMS.IOS
-	chplay_icon.visible = Config.get_platform() != Config.PLATFORMS.IOS
+	chplay_icon.visible = Config.get_platform() == Config.PLATFORMS.ANDROID
+	paypal_icon.visible = Config.get_platform() == Config.PLATFORMS.WEB
 	pass # Replace with function body.
 
 

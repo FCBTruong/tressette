@@ -32,17 +32,21 @@ var platform = OS.get_name()
 enum PLATFORMS {
 	ANDROID,
 	IOS,
+	WEB,
 	MAC_OS,
 	WINDOWS,
 	UNKNOWN
 }
 func get_platform():
+	return PLATFORMS.WEB
 	if platform == "Android":
 		return PLATFORMS.ANDROID
 	elif platform == 'iOS':
 		return PLATFORMS.IOS
 	elif platform == "MacOS":
 		return PLATFORMS.MAC_OS
-	elif  platform == "Windows":
+	elif platform == "Windows":
 		return PLATFORMS.WINDOWS
+	elif platform == "Web":
+		return PLATFORMS.WEB
 	return PLATFORMS.UNKNOWN

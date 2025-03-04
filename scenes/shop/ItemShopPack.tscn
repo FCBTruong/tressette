@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://doyshtw1etx6n"]
+[gd_scene load_steps=13 format=3 uid="uid://doyshtw1etx6n"]
 
 [ext_resource type="Script" path="res://scripts/modules/shop/shop_item_node.gd" id="1_ffhj8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="1_gjltu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="5_n3q8i"]
 [ext_resource type="Texture2D" uid="uid://doxr31gm6ex1a" path="res://assets/images/lobby/chplay_icon.png" id="6_guew6"]
 [ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="6_ws3r3"]
+[ext_resource type="Texture2D" uid="uid://bfb3pvm5odphn" path="res://assets/images/lobby/paypal_icon.png" id="7_i8nk8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1it3v"]
 bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
@@ -131,6 +132,19 @@ offset_right = 35.0
 offset_bottom = 13.0
 grow_vertical = 2
 texture = ExtResource("5_hrp46")
+expand_mode = 1
+
+[node name="PaypalIcon" type="TextureRect" parent="Main/BuyBtn/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -15.0
+offset_right = 41.0
+offset_bottom = 15.0
+grow_vertical = 2
+texture = ExtResource("7_i8nk8")
 expand_mode = 1
 
 [node name="ChplayIcon" type="TextureRect" parent="Main/BuyBtn/Panel"]

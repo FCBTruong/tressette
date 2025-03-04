@@ -3,12 +3,14 @@ extends Node
 
 var google_payment: GooglePayment
 var apple_payment: ApplePayment
+var paypal_payment: PaypalPayment
 var shop_packs = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print('Payment Mgr ready')
 	_init_payment_goggle()
 	_init_payment_apple()
+	_init_payment_paypal()
 
 func _process(delta: float) -> void:
 	if apple_payment:
@@ -26,6 +28,10 @@ func _init_payment_apple():
 		Config.CURRENT_MODE == Config.MODES.LOCAL:
 			apple_payment = ApplePayment.new()
 			apple_payment.init_connection()
+			
+func _init_payment_paypal():
+	if Config.get_platform() == Config.PLATFORMS.WEB:
+			paypal_payment = PaypalPayment.new()
 
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
@@ -35,6 +41,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_shop_config(payload)
 		GameConstants.CMDs.PAYMENT_APPLE_FINISHED_TRANSACTION:
 			_handle_finished_apple_transaction(payload)
+		GameConstants.CMDs.PAYMENT_PAYPAL_REQUEST_ORDER:
+			paypal_payment._received_order_url(payload)
 
 func _handle_finished_apple_transaction(payload):
 	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentFinishedAppleTransaction.new()
@@ -123,6 +131,8 @@ func buy_pack(pack_id):
 		google_payment.purchase_pack(pack_id)
 	elif Config.get_platform() == Config.PLATFORMS.IOS:
 		apple_payment.purchase_pack(pack_id)
+	elif Config.get_platform() == Config.PLATFORMS.WEB:
+		paypal_payment.purchase_pack(pack_id)
 
 func _handle_shop_config(payload):
 	print('_handle_shop_config')
