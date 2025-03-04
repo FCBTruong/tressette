@@ -3,20 +3,33 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 @onready var table_pn = find_child('TablePn')
+@onready var create_table_btn = find_child("CreateTableBtn")
 @onready var triple_table_node = find_child('TripleTableNode')
+@onready var lb_empty = find_child("LabelEmpty")
 var table_node_scene = preload("res://scenes/lobby/rooms/TableNode.tscn")  # Load player scene
 signal update_table_list
 func _ready() -> void:
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		if GameServerConfig.is_in_ios_review:
+			create_table_btn.visible = false
+			return
+			
 	SignalBus.connect_global('update_table_list',Callable(self, "_update_table_list"))
 	GameManager.send_get_table_list()
 	SignalBus.emit_signal_global('update_table_list')
 	pass # Replace with function body.
 
 func _update_table_list():
+	lb_empty.visible = true
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		if GameServerConfig.is_in_ios_review:
+			return
+			
 	print('_update_table_list')
 	for child in table_pn.get_children():
 			child.queue_free()
 	var triple_bar	
+	lb_empty.visible = len(GameManager.table_list) == 0
 	for i in range(len(GameManager.table_list)):
 		var table = GameManager.table_list[i]
 		var table_node_inst = table_node_scene.instantiate()  # Create a new player instance

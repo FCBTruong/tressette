@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bps2yem3pob4b"]
+[gd_scene load_steps=13 format=3 uid="uid://bps2yem3pob4b"]
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/choose_room_scene.gd" id="1_jurov"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_3t1ly"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c2sg4foah440r" path="res://assets/images/search_icon_small.png" id="4_kxarc"]
 [ext_resource type="PackedScene" uid="uid://coalpvybk074r" path="res://scenes/lobby/rooms/TableNode.tscn" id="4_mh24x"]
 [ext_resource type="Texture2D" uid="uid://cd028ilkawb1x" path="res://assets/images/lobby/refresh_icon.png" id="7_qshgq"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="9_jobxs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ao2y"]
 
@@ -208,6 +209,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_qshgq")
 expand_mode = 1
+
+[node name="LabelEmpty" type="Label" parent="CanvasLayer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -11.5
+offset_right = 44.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_jobxs")
+theme_override_font_sizes/font_size = 23
+text = "NO_TABLES"
 
 [connection signal="pressed" from="CanvasLayer/TextureRect/BackBtn" to="." method="_back_to_lobby"]
 [connection signal="text_submitted" from="CanvasLayer/TextureRect/LineEdit" to="." method="_click_join_room_by_id"]
