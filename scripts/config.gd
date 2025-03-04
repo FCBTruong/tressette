@@ -17,7 +17,8 @@ func _ready():
 		elif OS.get_name() == "iOS":
 			CURRENT_MODE = MODES.LIVE
 		elif OS.get_name() == "Web":
-				CURRENT_MODE = MODES.LIVE
+			CURRENT_MODE = MODES.LIVE
+			pass
 
 	if CURRENT_MODE == MODES.PRIVATE:	
 		WEBSOCKET_URL = "wss://tressette-dev.clareentertainment.com/ws"

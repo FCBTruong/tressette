@@ -1,6 +1,7 @@
 extends Node
 
 var firebase_plugin
+var web_google_sign
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,12 +22,15 @@ func _ready() -> void:
 			print('has ios plugin')
 			firebase_plugin = Engine.get_singleton("FirebaseIosPlugin")
 			firebase_plugin.addition_result.connect(_addition_result_test)
-			firebase_plugin.add()
 			firebase_plugin.on_firebase_auth_success.connect(on_firebase_auth_success)
 			firebase_plugin.on_firebase_auth_failed.connect(_on_firebase_auth_failed)
 			firebase_plugin.on_firebase_sign_out.connect(on_firebase_sign_out)
 		else:
 			print("not found ios firebase plugin")
+	elif OS.get_name() == 'Web':
+		print("Web init firebase")
+		web_google_sign = WebGoogleSignIn.new()
+		web_google_sign.init_siginin()
 
 # Function to test the Firebase plugin
 func test():
@@ -56,6 +60,7 @@ func on_firebase_auth_success(user_id, user_name, user_email, id_token, provider
 			sub_type = 3
 		elif provider_id == "facebook":
 			sub_type = 2
+	
 	LoginMgr.send_login_firebase(id_token, sub_type)
 	
 # Callback when authentication fails
@@ -74,6 +79,9 @@ func on_firebase_sign_out():
 	print("User signed out from Firebase!")
 	
 func login_with_google():
+	if OS.get_name() == "Web":
+		web_google_sign.login_google()
+		return
 	if firebase_plugin:
 		firebase_plugin.signInWithGoogle()
 
