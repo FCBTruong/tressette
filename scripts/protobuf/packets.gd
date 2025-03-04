@@ -2378,6 +2378,11 @@ class GeneralInfo:
 		service.field = _exp_levels
 		data[_exp_levels.tag] = service
 		
+		_is_in_ios_review = PBField.new("is_in_ios_review", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_in_ios_review
+		data[_is_in_ios_review.tag] = service
+		
 	var data = {}
 	
 	var _timestamp: PBField
@@ -2424,6 +2429,15 @@ class GeneralInfo:
 		_exp_levels.value = []
 	func add_exp_levels(value : int) -> void:
 		_exp_levels.value.append(value)
+	
+	var _is_in_ios_review: PBField
+	func get_is_in_ios_review() -> bool:
+		return _is_in_ios_review.value
+	func clear_is_in_ios_review() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_is_in_ios_review.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_in_ios_review(value : bool) -> void:
+		_is_in_ios_review.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

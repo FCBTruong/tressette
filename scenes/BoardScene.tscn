@@ -763,7 +763,7 @@ grow_horizontal = 0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="BetHbox" type="HBoxContainer" parent="CanvasLayer/RightTopPanel"]
+[node name="BetInfoPn" type="HBoxContainer" parent="CanvasLayer/RightTopPanel"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = 171.0
@@ -773,13 +773,13 @@ offset_bottom = 157.0
 mouse_filter = 2
 alignment = 2
 
-[node name="InfoBetBtn" type="Button" parent="CanvasLayer/RightTopPanel/BetHbox"]
+[node name="InfoBetBtn" type="Button" parent="CanvasLayer/RightTopPanel/BetInfoPn"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/BetHbox/InfoBetBtn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/BetInfoPn/InfoBetBtn"]
 self_modulate = Color(1, 1, 1, 0.586)
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 1
@@ -798,7 +798,7 @@ texture = ExtResource("14_4pw0j")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="BetLb" type="Label" parent="CanvasLayer/RightTopPanel/BetHbox"]
+[node name="BetLb" type="Label" parent="CanvasLayer/RightTopPanel/BetInfoPn"]
 modulate = Color(1, 1, 1, 0.809)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.865)
@@ -1314,7 +1314,7 @@ stream = ExtResource("8_62q6d")
 volume_db = 12.0
 
 [connection signal="pressed" from="CanvasLayer/ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
-[connection signal="pressed" from="CanvasLayer/RightTopPanel/BetHbox/InfoBetBtn" to="." method="_click_show_info_bet"]
+[connection signal="pressed" from="CanvasLayer/RightTopPanel/BetInfoPn/InfoBetBtn" to="." method="_click_show_info_bet"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]

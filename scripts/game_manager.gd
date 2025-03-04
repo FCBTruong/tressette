@@ -101,6 +101,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			GameServerConfig.tressette_bets = pkg.get_tressette_bets()
 			GameServerConfig.bet_multiplier_min = pkg.get_bet_multiplier_min()
 			GameServerConfig.exp_levels = pkg.get_exp_levels()
+			GameServerConfig.is_in_ios_review = pkg.get_is_in_ios_review()
 			
 			GameServerConfig.min_gold_play = GameServerConfig.tressette_bets[0] * GameServerConfig.bet_multiplier_min
 		GameConstants.CMDs.TABLE_LIST:

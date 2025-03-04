@@ -6,6 +6,7 @@ var tressette_bets = []
 var exp_levels = []
 var bet_multiplier_min = 1
 var min_gold_play: int
+var is_in_ios_review: bool = false
 
 func convert_exp_to_level(exp) -> int:
 	var level = 1  # Default to level 1 if exp is below the first threshold

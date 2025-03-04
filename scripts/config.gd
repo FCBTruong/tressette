@@ -39,7 +39,8 @@ enum PLATFORMS {
 	UNKNOWN
 }
 func get_platform():
-	return PLATFORMS.WEB
+	if Config.CURRENT_MODE == Config.MODES.LOCAL:
+		return PLATFORMS.IOS
 	if platform == "Android":
 		return PLATFORMS.ANDROID
 	elif platform == 'iOS':

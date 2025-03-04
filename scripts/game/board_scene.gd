@@ -48,6 +48,7 @@ var cards_node_compare = []
 @onready var reach_point_win_lb = find_child("ReachPointWinLb")
 @onready var auto_play_pn = find_child("AutoPlayPn")
 @onready var pn_highlight_napoli = find_child("PnHighlightNapoli")
+@onready var bet_info_pn = find_child("BetInfoPn")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -87,7 +88,9 @@ func _ready() -> void:
 		self._open_guide_gui()
 		GameManager.did_show_guide_new_user = true
 	
-	
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		if GameServerConfig.is_in_ios_review:
+			self.bet_info_pn.visible = false
 	#show_prepare_start()
 func _get_card_rotates(n):
 	if n == 1:
