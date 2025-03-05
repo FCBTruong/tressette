@@ -49,6 +49,7 @@ var cards_node_compare = []
 @onready var auto_play_pn = find_child("AutoPlayPn")
 @onready var pn_highlight_napoli = find_child("PnHighlightNapoli")
 @onready var bet_info_pn = find_child("BetInfoPn")
+@onready var pot_pn = find_child("PotPn")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -66,6 +67,8 @@ var game_start_lb_default_pos
 var is_auto_play = false
 var list_napoli_highlights = []
 func _ready() -> void:	
+	if AppVersion.is_in_review():
+		pot_pn.visible = false
 	napoli_btn.visible = false 
 	is_auto_play = false
 	game_start_lb_default_pos = game_start_lb.position
@@ -89,7 +92,7 @@ func _ready() -> void:
 		GameManager.did_show_guide_new_user = true
 	
 	if Config.get_platform() == Config.PLATFORMS.IOS:
-		if GameServerConfig.is_in_ios_review:
+		if AppVersion.is_in_review():
 			self.bet_info_pn.visible = false
 	#show_prepare_start()
 func _get_card_rotates(n):
@@ -801,7 +804,8 @@ func on_new_chat_emo(uid, emo):
 	
 func _effect_evaluate(text = 'Fantastic!'):
 	var screen_size = DisplayServer.window_get_size()
-	if screen_size.x / screen_size.y < 1.4:
+	if screen_size.x / screen_size.y < 1.4 or AppVersion.is_in_review():
+		# because if in review, pot will be invisible
 		evaluate_lb_default_pos = evaluate_ipad_pos_node.position
 		evaluate_lb_default_pos -= evaluate_lb.size * evaluate_lb.scale / 2
 	evaluate_lb.text = text
@@ -873,6 +877,8 @@ func _open_guide_gui() -> void:
 	SceneManager.open_gui("res://scenes/guis/GuideGUI.tscn")
 	
 func _effect_pot_contribute():
+	if AppVersion.is_in_review():
+		return
 	center_play_pn_pos = NodeUtils.get_center_position(center_play_pn)
 	var i = 0
 	for player in list_players:

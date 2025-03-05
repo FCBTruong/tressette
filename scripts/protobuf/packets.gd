@@ -924,6 +924,11 @@ class Login:
 		service.field = _device_country
 		data[_device_country.tag] = service
 		
+		_app_version_code = PBField.new("app_version_code", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _app_version_code
+		data[_app_version_code.tag] = service
+		
 	var data = {}
 	
 	var _type: PBField
@@ -970,6 +975,15 @@ class Login:
 		_device_country.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_device_country(value : String) -> void:
 		_device_country.value = value
+	
+	var _app_version_code: PBField
+	func get_app_version_code() -> int:
+		return _app_version_code.value
+	func clear_app_version_code() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_app_version_code.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_app_version_code(value : int) -> void:
+		_app_version_code.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2378,10 +2392,10 @@ class GeneralInfo:
 		service.field = _exp_levels
 		data[_exp_levels.tag] = service
 		
-		_is_in_ios_review = PBField.new("is_in_ios_review", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		_fee_mode_no_bet = PBField.new("fee_mode_no_bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
-		service.field = _is_in_ios_review
-		data[_is_in_ios_review.tag] = service
+		service.field = _fee_mode_no_bet
+		data[_fee_mode_no_bet.tag] = service
 		
 	var data = {}
 	
@@ -2430,14 +2444,14 @@ class GeneralInfo:
 	func add_exp_levels(value : int) -> void:
 		_exp_levels.value.append(value)
 	
-	var _is_in_ios_review: PBField
-	func get_is_in_ios_review() -> bool:
-		return _is_in_ios_review.value
-	func clear_is_in_ios_review() -> void:
+	var _fee_mode_no_bet: PBField
+	func get_fee_mode_no_bet() -> int:
+		return _fee_mode_no_bet.value
+	func clear_fee_mode_no_bet() -> void:
 		data[6].state = PB_SERVICE_STATE.UNFILLED
-		_is_in_ios_review.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
-	func set_is_in_ios_review(value : bool) -> void:
-		_is_in_ios_review.value = value
+		_fee_mode_no_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_fee_mode_no_bet(value : int) -> void:
+		_fee_mode_no_bet.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4260,6 +4274,16 @@ class CreateTable:
 		service.field = _is_private
 		data[_is_private.tag] = service
 		
+		_point_mode = PBField.new("point_mode", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _point_mode
+		data[_point_mode.tag] = service
+		
+		_bet_mode = PBField.new("bet_mode", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _bet_mode
+		data[_bet_mode.tag] = service
+		
 	var data = {}
 	
 	var _bet: PBField
@@ -4288,6 +4312,24 @@ class CreateTable:
 		_is_private.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
 	func set_is_private(value : bool) -> void:
 		_is_private.value = value
+	
+	var _point_mode: PBField
+	func get_point_mode() -> int:
+		return _point_mode.value
+	func clear_point_mode() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_point_mode.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_point_mode(value : int) -> void:
+		_point_mode.value = value
+	
+	var _bet_mode: PBField
+	func get_bet_mode() -> bool:
+		return _bet_mode.value
+	func clear_bet_mode() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_bet_mode.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_bet_mode(value : bool) -> void:
+		_bet_mode.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4467,6 +4509,11 @@ class AppCodeVersion:
 		service.field = _ios_remind_update_version
 		data[_ios_remind_update_version.tag] = service
 		
+		_ios_reviewing_version = PBField.new("ios_reviewing_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 7, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _ios_reviewing_version
+		data[_ios_reviewing_version.tag] = service
+		
 	var data = {}
 	
 	var _android_version: PBField
@@ -4522,6 +4569,15 @@ class AppCodeVersion:
 		_ios_remind_update_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_ios_remind_update_version(value : int) -> void:
 		_ios_remind_update_version.value = value
+	
+	var _ios_reviewing_version: PBField
+	func get_ios_reviewing_version() -> int:
+		return _ios_reviewing_version.value
+	func clear_ios_reviewing_version() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_ios_reviewing_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_ios_reviewing_version(value : int) -> void:
+		_ios_reviewing_version.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4906,6 +4962,33 @@ class PaymentPaypalOrder:
 		_order_url.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_order_url(value : String) -> void:
 		_order_url.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class QuickPlay:
+	func _init():
+		var service
+		
+	var data = {}
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

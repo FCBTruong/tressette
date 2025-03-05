@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkr5aeblxolhf"]
+[gd_scene load_steps=15 format=3 uid="uid://dkr5aeblxolhf"]
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/create_table_gui.gd" id="1_div3u"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_371lk"]
+[ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_l5y7b"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_50y8s"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_y8xbq"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="6_tvaur"]
+[ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="7_cl0y5"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_mmcj6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkm7t"]
 bg_color = Color(0.409856, 0.556132, 0.798701, 1)
@@ -23,6 +27,10 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8ai4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1q1s"]
+
 [node name="CreateTableGui" type="Node2D"]
 script = ExtResource("1_div3u")
 
@@ -36,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MainPn" type="Panel" parent="CanvasLayer"]
+clip_children = 1
 custom_minimum_size = Vector2(600, 400)
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,6 +59,16 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(300, 200)
 theme_override_styles/panel = SubResource("StyleBoxFlat_bkm7t")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l5y7b")
+expand_mode = 1
 
 [node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
 custom_minimum_size = Vector2(50, 50)
@@ -87,9 +106,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -50.0
-offset_top = -59.0
+offset_top = -60.0
 offset_right = 50.0
-offset_bottom = -9.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_blkqw")
@@ -136,12 +155,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -170.0
-offset_top = -100.0
+offset_top = -137.0
 offset_right = 170.0
-offset_bottom = 100.0
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
 
 [node name="Control2" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
@@ -172,9 +191,45 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_y8xbq")
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_font_sizes/font_size = 23
 text = "GAME_MODE"
+vertical_alignment = 1
+
+[node name="Control5" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="OptionPoints" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control5"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "11"
+popup/item_1/text = "21"
+popup/item_1/id = 1
+
+[node name="POINT_MODE" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control5"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 29.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_font_sizes/font_size = 23
+text = "POINT_MODE"
 vertical_alignment = 1
 
 [node name="Control3" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
@@ -208,16 +263,16 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_y8xbq")
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_font_sizes/font_size = 23
 text = "PLAYER_MODE"
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="BetPn" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="OptionBet" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control"]
+[node name="OptionBet" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/BetPn"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -230,7 +285,7 @@ offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control"]
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/BetPn"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -239,8 +294,8 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_y8xbq")
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_font_sizes/font_size = 23
 text = "BET"
 vertical_alignment = 1
 
@@ -257,8 +312,8 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_y8xbq")
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_font_sizes/font_size = 23
 text = "PRIVATE"
 vertical_alignment = 1
 
@@ -269,15 +324,49 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -23.0
-offset_right = -15.0
-offset_bottom = 1.0
+offset_left = -30.0
+offset_top = -12.0
+offset_right = -6.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o8ai4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_b1q1s")
 flat = true
 icon_alignment = 1
+script = ExtResource("3_50y8s")
+
+[node name="FeeLb" type="Label" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -98.0
+offset_right = 46.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_cl0y5")
+text = "FEE_CREATE"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/FeeLb"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -17.5
+offset_right = 32.0
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("8_mmcj6")
+expand_mode = 1
 
 [connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
 [connection signal="pressed" from="CanvasLayer/MainPn/CreateBtn" to="." method="_on_create_table"]

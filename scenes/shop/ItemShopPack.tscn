@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/modules/shop/shop_item_node.gd" id="1_ffhj8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="1_gjltu"]
-[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="3_5c7wm"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_eb3ac"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="3_hrwo0"]
 [ext_resource type="Texture2D" uid="uid://dvkbr2jw0gmib" path="res://assets/images/login/apple_icon.png" id="5_hrp46"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="5_n3q8i"]
 [ext_resource type="Texture2D" uid="uid://doxr31gm6ex1a" path="res://assets/images/lobby/chplay_icon.png" id="6_guew6"]
@@ -87,7 +87,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("3_5c7wm")
+texture = ExtResource("3_hrwo0")
 expand_mode = 1
 stretch_mode = 4
 

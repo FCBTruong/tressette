@@ -286,6 +286,7 @@ func _start_game(payload: PackedByteArray):
 	
 	
 	match_data.current_round = 1
+	match_data.hand_in_round = -1
 	
 	var scene = SceneManager.get_current_scene()
 	if scene is BoardScene:

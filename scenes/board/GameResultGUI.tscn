@@ -6,8 +6,8 @@
 [ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="2_wfunv"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_xsh0q"]
 [ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="5_iqu72"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="5_oq6y8"]
 [ext_resource type="FontFile" uid="uid://cb1bj1k60uj4u" path="res://assets/fonts/Reglisse_Fill.otf" id="5_yowoj"]
-[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="6_f6xgj"]
 [ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="7_11gwx"]
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="7_tcbk3"]
@@ -147,7 +147,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WinPn" type="Control" parent="CanvasLayer/MainPn"]
-visible = false
 clip_children = 2
 light_mask = 7
 layout_mode = 1
@@ -211,7 +210,8 @@ offset_right = 46.0
 offset_bottom = 44.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("6_f6xgj")
+texture = ExtResource("5_oq6y8")
+expand_mode = 1
 
 [node name="TitleLb" type="Label" parent="CanvasLayer/MainPn/WinPn"]
 layout_mode = 1

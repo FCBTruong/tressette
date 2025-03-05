@@ -19,6 +19,11 @@ var my_team_id
 var gold_result_lb = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if AppVersion.is_in_review():
+		gold_result_lb_lose.visible = false
+		gold_result_lb_win.visible = false
+		find_child("TitleLbLose").position.y += 170
+		find_child("TitleLb").position.y += 170
 	update_result(GameConstants.game_logic.match_result)
 	
 	MainPn.scale = Vector2(0, 0)

@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_umvqn"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="5_xl7qd"]
 [ext_resource type="Texture2D" uid="uid://dua5jqujlm0kh" path="res://assets/images/lobby/user_info_gui/email.png" id="6_5upxd"]
-[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="6_h3bnd"]
 [ext_resource type="Texture2D" uid="uid://cr5rxwy32nhwn" path="res://assets/images/lobby/copying_icon.png" id="7_sq5rc"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="7_vm0bd"]
 [ext_resource type="Texture2D" uid="uid://c5xihlabuct6y" path="res://assets/images/lobby/user_info_gui/level_icon.png" id="8_5e8xp"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
@@ -254,7 +254,7 @@ offset_left = -16.0
 offset_top = -2.0
 offset_right = 24.0
 offset_bottom = 38.0
-texture = ExtResource("6_h3bnd")
+texture = ExtResource("7_vm0bd")
 expand_mode = 1
 
 [node name="GoldLb" type="Label" parent="Control/MainPn/HeadPn/GoldBg"]

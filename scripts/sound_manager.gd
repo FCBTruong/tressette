@@ -1,10 +1,14 @@
 extends Node
 
 var audio_player: AudioStreamPlayer
+var music_player: AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	audio_player = AudioStreamPlayer.new()
 	add_child(audio_player)
+	
+	music_player = AudioStreamPlayer.new()  # Create an AudioStreamPlayer node
+	add_child(music_player)  # Add to scene
 
 var click_sound = preload("res://assets/sounds/touch_sound.mp3")
 func play_click():
@@ -41,3 +45,22 @@ func play_coin_hit_sound():
 		return
 	audio_player.stream = coin_hit_sound
 	audio_player.play()
+
+var lobby_music = preload("res://assets/musics/lobby_music.mp3")
+
+var is_playing_music_lobby = false
+func play_music_lobby():
+	if not GameManager.enable_music:
+		return
+	if is_playing_music_lobby:
+		return
+	is_playing_music_lobby = true
+	music_player.stop()
+	music_player.stream = lobby_music
+	music_player.stream.loop = true
+	music_player.play()
+	
+func stop_music():
+	is_playing_music_lobby = false
+	music_player.stop()
+		

@@ -50,6 +50,12 @@ func choose_language(lang):
 func set_enable_music(e):
 	StorageCache.store('enable_music', '1' if e else '0')
 	enable_music = e
+	if not enable_music:
+		SoundManager.stop_music()
+	else:
+		var scene = SceneManager.get_current_scene()
+		if scene is not BoardScene:
+			SoundManager.play_music_lobby()
 	
 func set_enable_sound(e):
 	StorageCache.store('enable_sound', '1' if e else '0')
@@ -68,6 +74,9 @@ func get_token() -> String:
 	return _token
 	
 func send_quick_play() -> void:
+	if AppVersion.is_in_review():
+		SceneManager.open_gui('res://scenes/lobby/rooms/CreateTableGUI.tscn')
+		return
 	if PlayerInfoMgr.my_user_data.gold < GameServerConfig.min_gold_play:
 		var str_noti = tr('NOT_ENOUGH_MIN_GOLD_PLAY_BUY')
 		str_noti = str_noti.replace("@num", StringUtils.point_number(GameServerConfig.min_gold_play))
@@ -83,8 +92,10 @@ func send_quick_play() -> void:
 			
 		return
 	SceneManager.add_loading(5)
-	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, [])
+	var pkg = GameConstants.PROTOBUF.PACKETS.QuickPlay.new()
+	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, pkg.to_bytes())
 	
+
 func on_game_start() -> void:
 	SceneManager.switch_scene("res://scenes/BoardScene.tscn")
 	
@@ -101,10 +112,11 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			GameServerConfig.tressette_bets = pkg.get_tressette_bets()
 			GameServerConfig.bet_multiplier_min = pkg.get_bet_multiplier_min()
 			GameServerConfig.exp_levels = pkg.get_exp_levels()
-			GameServerConfig.is_in_ios_review = pkg.get_is_in_ios_review()
-			
+			GameServerConfig.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
 			GameServerConfig.min_gold_play = GameServerConfig.tressette_bets[0] * GameServerConfig.bet_multiplier_min
 		GameConstants.CMDs.TABLE_LIST:
+			if AppVersion.is_in_review():
+				return 
 			var pkg = GameConstants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)
 			var table_ids = pkg.get_table_ids()

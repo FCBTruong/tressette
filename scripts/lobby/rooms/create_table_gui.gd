@@ -5,9 +5,20 @@ extends Node
 @onready var option_bet = find_child("OptionBet")
 @onready var option_player = find_child("OptionPlayer")
 @onready var private_check = find_child("PrivateCheck")
-
+@onready var bet_pn = find_child("BetPn")
+@onready var option_point = find_child("OptionPoints")
+@onready var fee_lb = find_child("FeeLb")
 var bets = [10000]
 func _ready() -> void:
+	if AppVersion.is_in_review():
+		bet_pn.visible = false
+		fee_lb.visible = true
+		var str = tr("FEE_CREATE")
+		str = str.replace("@num", StringUtils.symbol_number(GameServerConfig.fee_mode_no_bet))
+		fee_lb.text = str
+	else:
+		fee_lb.visible = false
+		
 	self.bets = GameServerConfig.tressette_bets
 	var tween = create_tween()
 	main_pn.scale = Vector2(0, 0)
@@ -42,6 +53,11 @@ func _on_close():
 	self.get_parent().remove_child(self)
 
 func _on_create_table():
+	if AppVersion.is_in_review():
+		if PlayerInfoMgr.my_user_data.gold < GameServerConfig.fee_mode_no_bet:
+			GameManager.show_not_gold_recommend_shop()
+			return
+			
 	var a = option_bet.get_selected_id()
 	print("create table with bet id", a)
 	var bet = bets[a]
@@ -59,6 +75,16 @@ func _on_create_table():
 	pkg.set_player_mode(player_mode)
 	var is_private = private_check.is_pressed()
 	pkg.set_is_private(is_private)
-	GameClient.send_packet(GameConstants.CMDs.CREATE_TABLE, pkg.to_bytes())
+	
+	if AppVersion.is_in_review():
+		pkg.set_bet_mode(false)
+	else:
+		pkg.set_bet_mode(true)
+	var point_mode = 11
+	if option_point.get_selected_id() == 1:
+		point_mode = 21
+	pkg.set_point_mode(point_mode)
+		
+	GameClient.send_packet(GameConstants.CMDs.CREATE_TABLE, pkg.to_bytes())	
 	
 	SceneManager.add_loading(4)

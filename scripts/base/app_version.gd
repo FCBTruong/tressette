@@ -4,10 +4,12 @@ extends Node
 var server_app_version = 0
 var server_forced_version = 0
 var server_remind_version = 0
+var reviewing_version = 0
 
 # INCREASE WHEN BUILD, should edit when upload new build
 const ANDROID_CODE_VERSION: int = 3
 const IOS_CODE_VERSION: int = 1
+var my_code_version
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -20,18 +22,19 @@ func _process(delta: float) -> void:
 func handle_version_and_open_login(payload) -> void:
 	var pkg = GameConstants.PROTOBUF.PACKETS.AppCodeVersion.new()
 	var result_code = pkg.from_bytes(payload)
-	var my_code_version
+	
 	if Config.get_platform() == Config.PLATFORMS.IOS:
 		my_code_version = IOS_CODE_VERSION
 		server_app_version = pkg.get_ios_version()
 		server_forced_version = pkg.get_ios_forced_update_version()
 		server_remind_version = pkg.get_ios_remind_update_version()
+		reviewing_version = pkg.get_ios_reviewing_version()
 	else:
 		my_code_version = ANDROID_CODE_VERSION
 		server_app_version = pkg.get_android_version()
 		server_forced_version = pkg.get_android_forced_update_version()
 		server_remind_version = pkg.get_android_remind_update_version()
-	
+		reviewing_version = -1
 	
 	if my_code_version >= server_app_version:
 		# Version OK
@@ -63,3 +66,8 @@ func _open_app_store():
 		NativeMgr.open_app_store()
 		return
 	OS.shell_open("https://play.google.com/store/apps/details?id=" + GameConstants.PACKAGE_NAME)
+
+func is_in_review():
+	if Config.get_platform() == Config.PLATFORMS.WEB:
+		return false
+	return reviewing_version == my_code_version

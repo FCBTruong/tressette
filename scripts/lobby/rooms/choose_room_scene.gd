@@ -9,10 +9,9 @@ extends Node
 var table_node_scene = preload("res://scenes/lobby/rooms/TableNode.tscn")  # Load player scene
 signal update_table_list
 func _ready() -> void:
-	if Config.get_platform() == Config.PLATFORMS.IOS:
-		if GameServerConfig.is_in_ios_review:
-			create_table_btn.visible = false
-			return
+	if AppVersion.is_in_review():
+		create_table_btn.visible = false
+		return
 			
 	SignalBus.connect_global('update_table_list',Callable(self, "_update_table_list"))
 	GameManager.send_get_table_list()
@@ -22,7 +21,7 @@ func _ready() -> void:
 func _update_table_list():
 	lb_empty.visible = true
 	if Config.get_platform() == Config.PLATFORMS.IOS:
-		if GameServerConfig.is_in_ios_review:
+		if AppVersion.is_in_review():
 			return
 			
 	print('_update_table_list')

@@ -13,9 +13,18 @@ extends Node
 @onready var bonus_txt_lb = find_child("BonusTxtLb")
 @onready var red_dot = find_child("RedDot")
 @onready var bonus_info_colour = find_child("BonusInfoColour")
+@onready var gold_pn = find_child("GoldPn")
+@onready var name_pn = find_child("NamePn")
+@onready var name_lb = find_child("NameLb")
 var default_pos_bonus
 var is_me: bool = false
 func _ready() -> void:
+	if AppVersion.is_in_review():
+		gold_pn.visible = false
+		name_pn.visible = true
+	else:
+		gold_pn.visible = true
+		name_pn.visible = false
 	#effect_add_score(5)
 	emo_icon.visible = false
 	time_progress_bar.visible = false
@@ -40,6 +49,9 @@ func set_user_data(user_dt: UserData) -> void:
 
 	main_pn.visible = true
 	empty_slot.visible = false
+	
+	if name_lb.visible:
+		name_lb.text = StringUtils.sub_string(user_data.name, 15)
 	
 	
 	_update_gold()

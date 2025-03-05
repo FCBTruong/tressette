@@ -8,7 +8,6 @@
 [ext_resource type="Shader" path="res://shaders/gradient.gdshader" id="4_xmo0b"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
 [ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="6_foh0g"]
-[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="7_2nohb"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="7_qu8fh"]
 [ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="7_riexb"]
@@ -16,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="8_afrgf"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_vkglh"]
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_078t0"]
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="9_g7ymd"]
@@ -440,7 +440,7 @@ offset_top = -23.0
 offset_right = 39.0
 offset_bottom = 22.0
 grow_vertical = 2
-texture = ExtResource("7_2nohb")
+texture = ExtResource("8_vkglh")
 expand_mode = 1
 
 [node name="PotValueLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
@@ -934,15 +934,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="EvaluateIpadPos" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -231.0
-offset_bottom = -231.0
+offset_top = 113.0
+offset_bottom = 113.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="LeftTopPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
