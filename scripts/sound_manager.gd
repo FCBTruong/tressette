@@ -56,6 +56,7 @@ func play_music_lobby():
 		return
 	is_playing_music_lobby = true
 	music_player.stop()
+	music_player.volume_db = -10
 	music_player.stream = lobby_music
 	music_player.stream.loop = true
 	music_player.play()

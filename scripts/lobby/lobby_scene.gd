@@ -52,6 +52,7 @@ func _ready() -> void:
 @onready var friend_img_hot = friend_btn.find_child('ImgHot')
 @onready var nofriend_btn = find_child('NofriendBtn')
 @onready var animation_player = find_child("AnimationPlayer")
+@onready var mobile_web_pn = find_child("MobileWebPn")
 func _do_effect() -> void:
 	var left_panel_defaultpos = left_panel.position
 	var play_container_defaultpos = play_container.position
@@ -72,6 +73,7 @@ func _do_effect() -> void:
 	#tween2.tween_property(bg, "scale", original_scale, 0.3)
 	
 	animation_player.play("play_now_icon")
+	mobile_web_pn.visible = Config.get_platform() == Config.PLATFORMS.WEB
 	
 func _on_update_money():
 	gold_lb.text = StringUtils.point_number(PlayerInfoMgr.my_user_data.gold)
@@ -142,3 +144,12 @@ func _click_nofriend_btn():
 	
 func _click_guide_btn():
 	SceneManager.open_gui("res://scenes/guis/GuideGUI.tscn")
+
+
+func _click_open_appstore():
+	OS.shell_open('https://apps.apple.com/us/app/tressette-royal/id6741761784')
+	pass
+
+func _click_open_chplay():
+	OS.shell_open('https://play.google.com/store/apps/details?id=com.clareentertainment.tressette')
+	pass
