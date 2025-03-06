@@ -11,6 +11,7 @@ var place_card_node = null
 var tween: Tween
 var tween_animate: Tween
 var cards_node_compare = []
+var is_portrait = false
 @onready var players_pn = find_child("PlayersPn")
 @onready var center_play_pn = find_child('CenterPlayPn')
 @onready var cardback_node = find_child('CardBack')
@@ -50,6 +51,7 @@ var cards_node_compare = []
 @onready var pn_highlight_napoli = find_child("PnHighlightNapoli")
 @onready var bet_info_pn = find_child("BetInfoPn")
 @onready var pot_pn = find_child("PotPn")
+@onready var score_pn = find_child("ScorePn")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -61,14 +63,22 @@ var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = GameConstants.game_logic
 var SCALE_CARD_COMPARE = 0.7
 var SCALE_CARD_DEAL_INIT = 0.8	
+var SCALE_CARD_DRAW = 0.6
+var SCALE_CARD_NORMAL = 1
 var base_text = tr('WAITING_FOR_OTHERS')
 var evaluate_lb_default_pos
 var game_start_lb_default_pos
 var is_auto_play = false
 var list_napoli_highlights = []
+var center_play_pn_default_pos
 func _ready() -> void:	
+	get_tree().get_root().connect("size_changed", _on_screen_resized)
+	_on_screen_resized()
+	center_play_pn_default_pos = center_play_pn.position
+	
 	if AppVersion.is_in_review():
 		pot_pn.visible = false
+		
 	napoli_btn.visible = false 
 	is_auto_play = false
 	game_start_lb_default_pos = game_start_lb.position
@@ -159,6 +169,7 @@ func update_cards_on_table():
 		play_ground.add_child(instance)
 		instance.set_card(cards[i])
 		instance.turn_face_up()
+		instance.scale = Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL)
 		list_my_cards.append(instance)
 		
 	_update_my_card_positions()
@@ -508,8 +519,34 @@ func _update_display_score(is_myteam, score: int) -> void:
 			my_score_sub.visible = false
 		else:
 			opponent_score_sub.visible = false
-			
+
+func _cal_portrait_world_card_positions(number):
+	var list_pos = []
+	
+	var second_line = 5
+	second_line = min(number, 5)  
+	var first_line = number - second_line       
+
+	var p_center = Vector2(my_card_panel.size.x / 2, 0)
+	var spacing = 170  # Adjust spacing between cards
+
+	for i in range(first_line):
+		var x_offset = (i - (first_line - 1) / 2.0) * spacing
+		var pos = p_center + Vector2(x_offset, -250)
+		pos = my_card_panel.get_global_transform().origin + pos
+		list_pos.append(pos)
+ 
+	for i in range(second_line):
+		var x_offset = (i - (second_line - 1) / 2.0) * spacing
+		var pos = p_center + Vector2(x_offset, 0)
+		pos = my_card_panel.get_global_transform().origin + pos
+		list_pos.append(pos)
+
+	return list_pos
+
 func _calculate_world_card_positions(number: int):
+	if is_portrait:
+		return _cal_portrait_world_card_positions(number)
 	var list_pos = []
 	var p_center = Vector2(my_card_panel.size.x / 2, my_card_panel.size.y / 2)
 	var distance = CARD_DISTANCE_BETWEEN
@@ -563,7 +600,7 @@ func deal_my_cards(cards) -> void:
 		var instance = card_scene.instantiate()
 		play_ground.add_child(instance)
 		instance.set_card(cards[i])
-		instance.scale = Vector2(0.6, 0.6)
+		instance.scale = Vector2(SCALE_CARD_DRAW, SCALE_CARD_DRAW)
 		instance.turn_face_down()
 		var z_des = DEFAULT_CARD_Z_INDEX + i
 		var z_now = DEFAULT_CARD_Z_INDEX + number - i 
@@ -593,7 +630,7 @@ func deal_my_cards(cards) -> void:
 			).set_delay(delay)
 		tween.parallel().tween_property(instance, "position", final_pos, 0.3).set_delay(delay)
 		#tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
-		tween.parallel().tween_property(instance, "scale", Vector2(1,1), 0.3).set_delay(delay)
+		tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay)
 		# cal instance.show_card(true) after arrived
 			# Schedule card flip after animation finishes
 		tween.parallel().tween_callback(func():
@@ -703,7 +740,7 @@ func _effect_draw_card(uid, card_id):
 				instance.hide_card()
 		).set_delay(TIME_VIEW_CARD)
 		tween.parallel().tween_property(instance, "global_position", final_pos, 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
-		tween.parallel().tween_property(instance, "scale", Vector2(0.5, 0.5), 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
+		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
 		tween.tween_interval(0)
 		tween.tween_callback(
 			func():
@@ -747,7 +784,7 @@ func _effect_draw_card(uid, card_id):
 	var delay = TIME_VIEW_CARD
 
 	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
-	tween.parallel().tween_property(instance, "scale", Vector2(1, 1), 0.3).set_delay(delay)
+	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay)
 	#tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
 	
 	var c_idx = 0
@@ -841,14 +878,15 @@ func _input(event):
 				test_play_playercard()
 				print("S key pressed")
 			elif event.keycode == KEY_1:
+				deal_my_cards([2,3,4,5,6,8,9,33])
 				#on_game_start()
 				#return
 				#_effect_pot_contribute()
 				#return
 				#deal_my_cards([2,3,4,5,6,8,9,33])
 				
-				for p in list_players:
-					p.show_bonus("+1 " + tr("LAST_TRICK"))
+				#for p in list_players:
+					#p.show_bonus("+1 " + tr("LAST_TRICK"))
 			elif event.keycode == KEY_2:
 				for p in list_players:
 					p.show_napoli("Napoli", [1,2,3])
@@ -996,3 +1034,17 @@ func _click_return_table() -> void:
 	is_auto_play = false
 	self.auto_play_pn.visible = false
 	GameClient.send_packet(GameConstants.CMDs.USER_RETURN_TO_TABLE, [])
+
+func _on_screen_resized():
+	var screen_size = DisplayServer.window_get_size()
+	if screen_size.y > screen_size.x * 1.5:
+		var r = 1.9
+		is_portrait = true
+		center_play_pn.scale = Vector2(1.5, 1.5)
+		SCALE_CARD_COMPARE = 0.7 * r
+		SCALE_CARD_DEAL_INIT = 0.8 * r
+		SCALE_CARD_DRAW = 0.6 * r
+		SCALE_CARD_NORMAL = 1 * r
+		score_pn.scale = Vector2(2, 2)
+	
+	
