@@ -47,6 +47,7 @@ func play_coin_hit_sound():
 	audio_player.play()
 
 var lobby_music = preload("res://assets/musics/lobby_music.mp3")
+var board_music = preload("res://assets/musics/board_music.mp3")
 
 var is_playing_music_lobby = false
 func play_music_lobby():
@@ -58,6 +59,15 @@ func play_music_lobby():
 	music_player.stop()
 	music_player.volume_db = -10
 	music_player.stream = lobby_music
+	music_player.stream.loop = true
+	music_player.play()
+	
+func play_music_board():
+	if not GameManager.enable_music:
+		return
+	stop_music()
+	music_player.volume_db = -10
+	music_player.stream = board_music
 	music_player.stream.loop = true
 	music_player.play()
 	

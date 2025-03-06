@@ -94,6 +94,8 @@ func _ready() -> void:
 	if Config.get_platform() == Config.PLATFORMS.IOS:
 		if AppVersion.is_in_review():
 			self.bet_info_pn.visible = false
+			
+	SoundManager.play_music_board()
 	#show_prepare_start()
 func _get_card_rotates(n):
 	if n == 1:

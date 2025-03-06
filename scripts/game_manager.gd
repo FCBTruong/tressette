@@ -56,6 +56,8 @@ func set_enable_music(e):
 		var scene = SceneManager.get_current_scene()
 		if scene is not BoardScene:
 			SoundManager.play_music_lobby()
+		else:
+			SoundManager.play_music_board()
 	
 func set_enable_sound(e):
 	StorageCache.store('enable_sound', '1' if e else '0')

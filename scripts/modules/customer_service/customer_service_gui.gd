@@ -48,3 +48,6 @@ func _click_send():
 	pkg.set_report_content(str)
 	GameClient.send_packet(GameConstants.CMDs.CUSTOMER_SERVICE_REPORT, pkg.to_bytes())
 	pass
+
+func click_fb_fanpage():
+	OS.shell_open("https://www.facebook.com/profile.php?id=61573779305884")
