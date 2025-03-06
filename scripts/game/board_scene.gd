@@ -72,9 +72,10 @@ var is_auto_play = false
 var list_napoli_highlights = []
 var center_play_pn_default_pos
 func _ready() -> void:	
+	evaluate_lb_default_pos = evaluate_lb.global_position
+	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
 	_on_screen_resized()
-	center_play_pn_default_pos = center_play_pn.position
 	
 	if AppVersion.is_in_review():
 		pot_pn.visible = false
@@ -87,7 +88,6 @@ func _ready() -> void:
 	play_ground = find_child('PlayGround')
 	place_card_node = find_child('PlaceCard1')
 	countdown_start_lb.visible = false
-	evaluate_lb_default_pos = evaluate_lb.global_position
 	evaluate_lb.modulate.a = 0
 	evaluate_lb.visible = true
 	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
@@ -629,10 +629,7 @@ func deal_my_cards(cards) -> void:
 					pass
 			).set_delay(delay)
 		tween.parallel().tween_property(instance, "position", final_pos, 0.3).set_delay(delay)
-		#tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
 		tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay)
-		# cal instance.show_card(true) after arrived
-			# Schedule card flip after animation finishes
 		tween.parallel().tween_callback(func():
 			instance.z_index = z_des
 			instance.show_card(true)
@@ -724,7 +721,7 @@ func _effect_draw_card(uid, card_id):
 	var instance = card_scene.instantiate()
 	play_ground.add_child(instance)
 	instance.set_card(card_id)
-	instance.scale = Vector2(0.6, 0.6)
+	instance.scale = Vector2(0.6 * SCALE_CARD_NORMAL, 0.6 * SCALE_CARD_NORMAL)
 	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.3)
 	instance.turn_face_down()
 	instance.show_card(true)
@@ -785,7 +782,6 @@ func _effect_draw_card(uid, card_id):
 
 	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
 	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay)
-	#tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
 	
 	var c_idx = 0
 	for c in list_my_cards:
@@ -1005,11 +1001,11 @@ func _hight_light_napoli_set(nap):
 				z = c.z_index
 				
 	h.z_index = z + 1
-	var w = 100 + (len(nap) - 1) * CARD_DISTANCE_BETWEEN
+	var w = 100 + (len(nap) - 1) * CARD_DISTANCE_BETWEEN * SCALE_CARD_NORMAL
 	center_pos = center_pos / len(nap)
 	
 	h.global_position = Vector2(center_pos.x - w / 2, center_pos.y - 75)
-	h.size = Vector2(w, 150)
+	h.size = Vector2(w, 150 * SCALE_CARD_NORMAL)
 	list_napoli_highlights.append(h)
 func _on_user_napoli(uid, point_add, suits):
 	var p = get_player_node_by_uid(uid)
@@ -1036,15 +1032,21 @@ func _click_return_table() -> void:
 	GameClient.send_packet(GameConstants.CMDs.USER_RETURN_TO_TABLE, [])
 
 func _on_screen_resized():
+	if is_portrait:
+		return
 	var screen_size = DisplayServer.window_get_size()
-	if screen_size.y > screen_size.x * 1.5:
+	if screen_size.y > screen_size.x * 1.4:
 		var r = 1.9
 		is_portrait = true
 		center_play_pn.scale = Vector2(1.5, 1.5)
+		evaluate_ipad_pos_node.position.y += 200
+		evaluate_lb.add_theme_font_size_override("font_size", 50)
 		SCALE_CARD_COMPARE = 0.7 * r
 		SCALE_CARD_DEAL_INIT = 0.8 * r
 		SCALE_CARD_DRAW = 0.6 * r
 		SCALE_CARD_NORMAL = 1 * r
 		score_pn.scale = Vector2(2, 2)
+		auto_play_pn.size.y = 600
+		auto_play_pn.position.y += 300
 	
 	
