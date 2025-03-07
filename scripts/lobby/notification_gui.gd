@@ -10,12 +10,17 @@ signal close_pressed
 @onready var close_btn = find_child("CloseBtn")
 @onready var ok_txt_lb = find_child("OkTxtLb")
 
+var SCALE_DES = 1
 func _ready() -> void:
+	var screen_size = DisplayServer.window_get_size()
+	if screen_size.y > screen_size.x * 1.4:
+		SCALE_DES = 1.6
+		
 	var tween = create_tween()
 	main_pn.scale = Vector2(0, 0)
 	main_pn.modulate.a = 0
 	
-	tween.parallel().tween_property(main_pn, 'scale', Vector2(1, 1), 0.5).set_trans(Tween.TRANS_BACK) \
+	tween.parallel().tween_property(main_pn, 'scale', Vector2(SCALE_DES, SCALE_DES), 0.5).set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.5)
 

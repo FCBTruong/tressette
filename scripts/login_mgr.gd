@@ -41,6 +41,13 @@ func _on_received_firebase_acc(payload):
 func auto_login():
 	last_login_type = StorageCache.fetch('last_login_type', GameConstants.LOGIN_TYPE.NONE)
 	if last_login_type == GameConstants.LOGIN_TYPE.NONE:
+		# For web and is first time open game, auto login guest
+		if Config.get_platform() == Config.PLATFORMS.WEB:
+			var loginned = StorageCache.fetch('loginned', 0)
+			if loginned == 0:
+				login_guest()
+				StorageCache.store('loginned', 1)
+		
 		return false
 	if last_login_type == GameConstants.LOGIN_TYPE.FIREBASE: # use token
 		var login_token = load_login_token()
