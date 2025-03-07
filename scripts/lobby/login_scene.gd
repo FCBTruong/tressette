@@ -40,6 +40,10 @@ func _ready() -> void:
 	tween.parallel().tween_property(login_pn,
 		"modulate:a", 1, 0.4).set_delay(delay) 
 		
+	var screen_size = DisplayServer.window_get_size()
+	if screen_size.y > screen_size.x * 1.4:
+		login_pn.scale = Vector2(2.5, 2.5)
+		
 
 func on_login_local_firebase_succeeed(auth):
 	# For computer testing, outdated

@@ -3,6 +3,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var screen_size = DisplayServer.window_get_size()
+	if screen_size.y > screen_size.x * 1.4:
+		mobile_web_pn.scale = Vector2(3, 3)
+		play_container.scale = Vector2(2, 2)
 	SoundManager.play_music_lobby()
 	_do_effect()
 	on_update_gui()

@@ -1257,6 +1257,7 @@ offset_right = 100.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(100, 30)
 flat = true
 script = ExtResource("7_gov4p")
 

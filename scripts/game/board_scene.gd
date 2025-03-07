@@ -1047,6 +1047,7 @@ func _on_screen_resized():
 		SCALE_CARD_NORMAL = 1 * r
 		score_pn.scale = Vector2(2, 2)
 		auto_play_pn.size.y = 600
-		auto_play_pn.position.y += 300
+		auto_play_pn.position.y = get_viewport().get_visible_rect().size.y - auto_play_pn.size.y
+		auto_play_pn.find_child("ReturnTableBtn").scale = Vector2(2, 2)
 	
 	
