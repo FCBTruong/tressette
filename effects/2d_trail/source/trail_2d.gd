@@ -6,7 +6,6 @@ var count = 0
 func set_point_count(value : int):
 	points_count = value
 	points_local.resize(value)
-	print("ppododds", follow_node.global_position.x)
 	points_local.fill(follow_node.global_position)
 
 func _ready():

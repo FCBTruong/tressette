@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hxhcl2lvd7qj"]
 
-[ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="1_t8h7q"]
+[ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_wsetf"]
 
 [node name="InitScene" type="Node2D"]
 
@@ -12,6 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_t8h7q")
+texture = ExtResource("1_wsetf")
 expand_mode = 1
 stretch_mode = 6
