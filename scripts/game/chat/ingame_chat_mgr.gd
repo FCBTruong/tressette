@@ -25,7 +25,7 @@ func _handle_new_message(payload):
 	var uid = pkg.get_uid()
 	
 	var scene = SceneManager.get_current_scene()
-	if scene is BoardScene:
+	if scene is BaseBoardScene:
 		scene.on_new_chat_message(uid, message)
 
 func _handle_chat_emo(payload):
@@ -35,5 +35,5 @@ func _handle_chat_emo(payload):
 	var uid = pkg.get_uid()
 	
 	var scene = SceneManager.get_current_scene()
-	if scene is BoardScene:
+	if scene is BaseBoardScene:
 		scene.on_new_chat_emo(uid, emo)

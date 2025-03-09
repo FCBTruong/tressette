@@ -79,6 +79,7 @@ func _ready() -> void:
 	
 	if AppVersion.is_in_review():
 		pot_pn.visible = false
+		self.bet_info_pn.visible = false
 		
 	napoli_btn.visible = false 
 	is_auto_play = false
@@ -100,10 +101,6 @@ func _ready() -> void:
 		GameManager.did_show_guide_new_user:
 		self._open_guide_gui()
 		GameManager.did_show_guide_new_user = true
-	
-	if Config.get_platform() == Config.PLATFORMS.IOS:
-		if AppVersion.is_in_review():
-			self.bet_info_pn.visible = false
 			
 	SoundManager.play_music_board()
 	#show_prepare_start()

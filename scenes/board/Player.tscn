@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="4_oc1ex"]
 [ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="5_6p0k0"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_tnwwa"]
-[ext_resource type="Texture2D" uid="uid://c7t46btjgrrjc" path="res://assets/images/board/user.png" id="6_l3lsr"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="6_lqmp5"]
 [ext_resource type="Texture2D" uid="uid://dspngqcofx1o0" path="res://assets/animations/1.png" id="8_7md6h"]
+[ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="11_7d5ia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjdqh"]
 bg_color = Color(0.0994691, 0.0788446, 0.0788446, 0.797)
@@ -71,9 +71,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -65.0
-offset_top = 42.0
+offset_top = 31.0
 offset_right = 65.0
-offset_bottom = 72.0
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
@@ -141,7 +141,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GoldPn" type="Panel" parent="MainPn"]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -149,9 +148,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -54.0
-offset_top = 39.0
+offset_top = 31.0
 offset_right = 54.0
-offset_bottom = 69.0
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
@@ -223,14 +222,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -89.0
-offset_top = -89.0
-offset_right = 111.0
-offset_bottom = 111.0
+offset_left = -90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.55, 0.55)
-pivot_offset = Vector2(75, 75)
+pivot_offset = Vector2(90, 90)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
@@ -247,15 +246,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -45.0
-offset_right = 45.0
-offset_bottom = 45.0
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect2" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.172842, 0.357438, 0.226998, 1)
+modulate = Color(0.076, 0.076, 0.076, 0.533)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -266,23 +265,24 @@ texture = ExtResource("6_lqmp5")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.934474, 0.934474, 0.934474, 0.651)
+modulate = Color(0.086, 0.573, 1, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_l3lsr")
+texture = ExtResource("11_7d5ia")
+expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.199313, 0.466057, 0.21021, 1)
+modulate = Color(0.257996, 0.61543, 0.944657, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

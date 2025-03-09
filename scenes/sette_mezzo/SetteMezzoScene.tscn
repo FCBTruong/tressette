@@ -1,58 +1,36 @@
-[gd_scene load_steps=48 format=3 uid="uid://bjbyaluspvll3"]
+[gd_scene load_steps=37 format=3 uid="uid://bjbyaluspvll3"]
 
-[ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_fdqvu"]
-[ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6ils0"]
-[ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_hjsqm"]
-[ext_resource type="Shader" path="res://shaders/gradient.gdshader" id="4_5hqre"]
-[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="5_sqj6k"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="6_827cg"]
-[ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="7_oh8s0"]
-[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_fbyvq"]
-[ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="9_r05uy"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="10_5h31i"]
-[ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="11_napf2"]
-[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="12_bufu6"]
-[ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_lm8os"]
-[ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_3v2t3"]
-[ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="15_cdhi2"]
-[ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="16_2pshc"]
-[ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="17_xjaim"]
-[ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="18_6l3ba"]
-[ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="19_k1cso"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="20_5dift"]
-[ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="21_hlcfe"]
-[ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="22_21uw0"]
-[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="23_gmyn0"]
-[ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="24_dc8rw"]
-[ext_resource type="Texture2D" uid="uid://d1ptlxc1n2pje" path="res://assets/animations/5.png" id="25_2irlb"]
-[ext_resource type="Texture2D" uid="uid://bdwytocp27vlf" path="res://assets/animations/4.png" id="26_nuipy"]
-[ext_resource type="Texture2D" uid="uid://wss3dy5md7ag" path="res://assets/animations/3.png" id="27_eehxh"]
-[ext_resource type="Texture2D" uid="uid://bxpqmo0rscimi" path="res://assets/animations/2.png" id="28_2bqxb"]
-[ext_resource type="Texture2D" uid="uid://dspngqcofx1o0" path="res://assets/animations/1.png" id="29_jatmx"]
-[ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="30_3tbt8"]
-[ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="31_830dc"]
-[ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="32_ssaeb"]
-[ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="33_s2wxq"]
-[ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="34_so8io"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjq8g"]
-bg_color = Color(0.008, 0.373, 0.188, 0.316)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0.235, 0.129, 0.339)
-border_blend = true
-corner_radius_top_left = 60
-corner_radius_top_right = 60
-corner_radius_bottom_right = 60
-corner_radius_bottom_left = 60
-shadow_offset = Vector2(1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kcpnr"]
-shader = ExtResource("4_5hqre")
-shader_parameter/influence = 0.5
-shader_parameter/offset = null
+[ext_resource type="Script" path="res://scripts/modules/sette_mezzo/sette_mezzo_scene.gd" id="1_gx0u6"]
+[ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_sxb23"]
+[ext_resource type="Texture2D" uid="uid://b161g5v12vysn" path="res://assets/images/board/sette_mezzo/table.png" id="3_c2lih"]
+[ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_sl4e7"]
+[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="5_sgf2r"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="6_3v5sw"]
+[ext_resource type="Texture2D" uid="uid://bkeih7on4lkfa" path="res://assets/images/board/sette_mezzo/dealer.png" id="6_mcr3g"]
+[ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="7_btnom"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="10_t82fj"]
+[ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="11_5xbix"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="12_hjpec"]
+[ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_x0s8b"]
+[ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="15_uhsqq"]
+[ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="16_mb7bk"]
+[ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="18_bu1pi"]
+[ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="19_vx6l7"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="20_gg3j5"]
+[ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="21_ajh0x"]
+[ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="22_nt0kc"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="23_tveyi"]
+[ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="24_sy8gg"]
+[ext_resource type="Texture2D" uid="uid://d1ptlxc1n2pje" path="res://assets/animations/5.png" id="25_tg33p"]
+[ext_resource type="Texture2D" uid="uid://bdwytocp27vlf" path="res://assets/animations/4.png" id="26_r7oog"]
+[ext_resource type="Texture2D" uid="uid://wss3dy5md7ag" path="res://assets/animations/3.png" id="27_qfutk"]
+[ext_resource type="Texture2D" uid="uid://bxpqmo0rscimi" path="res://assets/animations/2.png" id="28_52ydl"]
+[ext_resource type="Texture2D" uid="uid://dspngqcofx1o0" path="res://assets/animations/1.png" id="29_6slng"]
+[ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="30_61i65"]
+[ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="31_0oam1"]
+[ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="32_e8pgo"]
+[ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="33_683u7"]
+[ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="34_h1l13"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wdn7"]
 bg_color = Color(0.690082, 0.398423, 0.197545, 1)
@@ -62,36 +40,8 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucf2k"]
-bg_color = Color(0.27258, 0.10223, 0.10223, 0.632)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="Gradient" id="Gradient_2rqsr"]
-colors = PackedColorArray(1, 0.852079, 0.552612, 1, 1, 0.946208, 0.756484, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mcuel"]
-gradient = SubResource("Gradient_2rqsr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfrck"]
-shader = ExtResource("7_oh8s0")
-shader_parameter/size_effect = 0.7
-shader_parameter/speed = 1.0
-shader_parameter/highlight_strength = 0.9
-shader_parameter/color_mode_toggle = false
-shader_parameter/is_horizontal = true
-shader_parameter/delay = 8.0
-shader_parameter/vertical_gradient = SubResource("GradientTexture2D_mcuel")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th6m6"]
-bg_color = Color(0, 0, 0, 0.493)
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyhfc"]
-shader = ExtResource("20_5dift")
+shader = ExtResource("20_gg3j5")
 shader_parameter/color = Color(0.483028, 0.287575, 0.287575, 1)
 shader_parameter/width = 2.235
 shader_parameter/pattern = 0
@@ -99,7 +49,7 @@ shader_parameter/inside = false
 shader_parameter/add_margins = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6sle4"]
-shader = ExtResource("20_5dift")
+shader = ExtResource("20_gg3j5")
 shader_parameter/color = Color(0.482353, 0.286275, 0.286275, 1)
 shader_parameter/width = 1.0
 shader_parameter/pattern = 0
@@ -122,21 +72,8 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.489817, 0.29806, 0.29806, 0.6)
 shadow_size = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t6yy"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.220498, 1, 0.271116, 1)
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [node name="BoardScene" type="Node2D"]
-script = ExtResource("1_fdqvu")
+script = ExtResource("1_gx0u6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -147,7 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6ils0")
+texture = ExtResource("2_sxb23")
 expand_mode = 1
 stretch_mode = 6
 
@@ -158,17 +95,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-
-[node name="CheatBotCardPn" type="Control" parent="CanvasLayer/PlayGround"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -360.0
-offset_right = 360.0
-offset_bottom = 160.0
-grow_horizontal = 2
 mouse_filter = 2
 
 [node name="MyCardPanel" type="Control" parent="CanvasLayer/PlayGround"]
@@ -202,21 +128,68 @@ grow_vertical = 2
 pivot_offset = Vector2(300, 200)
 mouse_filter = 2
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -150.0
-offset_right = 250.0
-offset_bottom = 150.0
+offset_left = -360.0
+offset_top = -205.0
+offset_right = 360.0
+offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kjq8g")
+texture = ExtResource("3_c2lih")
+expand_mode = 1
+
+[node name="CardContainer0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+anchors_preset = 0
+offset_left = 60.0
+offset_top = 220.0
+offset_right = 360.0
+offset_bottom = 290.0
+mouse_filter = 1
+
+[node name="CardContainer1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 220.0
+offset_right = 540.0
+offset_bottom = 290.0
+pivot_offset = Vector2(300, 0)
+mouse_filter = 1
+
+[node name="CardContainer2" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 90.0
+offset_right = 540.0
+offset_bottom = 160.0
+pivot_offset = Vector2(300, 0)
+mouse_filter = 1
+
+[node name="CardContainer3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 60.0
+offset_top = 90.0
+offset_right = 360.0
+offset_bottom = 160.0
+mouse_filter = 1
+
+[node name="CardContainerDealer" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 153.0
+offset_top = 31.0
+offset_right = 453.0
+offset_bottom = 101.0
+pivot_offset = Vector2(150, 0)
+mouse_filter = 1
 
 [node name="PlayersPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
@@ -240,10 +213,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -112.0
-offset_right = -30.0
-offset_bottom = -112.0
+offset_left = -617.0
+offset_top = -291.0
+offset_right = -617.0
+offset_bottom = -291.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -252,118 +225,106 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -37.0
-offset_top = 33.0
-offset_right = -37.0
-offset_bottom = 33.0
+offset_left = 28.0
+offset_top = 11.0
+offset_right = 28.0
+offset_bottom = 11.0
 grow_horizontal = 0
 
 [node name="PlayerPos1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 38.0
-offset_top = 33.0
-offset_right = 78.0
-offset_bottom = 73.0
+offset_left = 628.0
+offset_top = 237.0
+offset_right = 668.0
+offset_bottom = 277.0
 
 [node name="PlayerPos0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 27.0
-offset_top = -115.0
-offset_right = 27.0
-offset_bottom = -115.0
+offset_left = -24.0
+offset_top = -59.0
+offset_right = -24.0
+offset_bottom = -59.0
 grow_vertical = 0
 
-[node name="CardComparePn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -133.0
-offset_right = 110.0
-offset_bottom = 137.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="PlaceCard3" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(180, 195)
-
-[node name="PlaceCard2" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(180, 75)
-
-[node name="PlaceCard1" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(40, 75)
-
-[node name="PlaceCard0" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(40, 195)
-
 [node name="CardbackPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+visible = false
 anchors_preset = 0
-offset_left = 66.0
-offset_top = 13.0
-offset_right = 156.0
-offset_bottom = 143.0
+offset_left = 40.0
+offset_top = 4.0
+offset_right = 130.0
+offset_bottom = 134.0
 mouse_filter = 2
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-visible = false
-layout_mode = 0
-offset_left = 7.0
-offset_top = 29.0
-offset_right = 97.0
-offset_bottom = 159.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_hjsqm")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-visible = false
-layout_mode = 0
-offset_left = 7.0
-offset_top = 25.0
-offset_right = 97.0
-offset_bottom = 155.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_hjsqm")
-expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-visible = false
-layout_mode = 0
-offset_left = 7.0
-offset_top = 21.0
-offset_right = 97.0
-offset_bottom = 151.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_hjsqm")
-expand_mode = 1
-
-[node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-material = SubResource("ShaderMaterial_kcpnr")
-custom_minimum_size = Vector2(65, 90)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.5
+offset_left = -30.0
 offset_top = -45.0
-offset_right = 32.5
+offset_right = 30.0
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_hjsqm")
+texture = ExtResource("3_sl4e7")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -45.0
+offset_right = 30.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_sl4e7")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -45.0
+offset_right = 30.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_sl4e7")
+expand_mode = 1
+
+[node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -45.0
+offset_right = 30.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_sl4e7")
 expand_mode = 1
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn/CardBack"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -389,284 +350,24 @@ offset_right = 20.0
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_sqj6k")
+theme_override_fonts/font = ExtResource("5_sgf2r")
 theme_override_font_sizes/font_size = 20
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PotPn" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+[node name="Dealer" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.333333
-anchor_top = -0.17
-anchor_right = 0.666667
-anchor_bottom = -0.0366667
-offset_left = 0.000213623
-offset_top = 2.0
-offset_right = 0.000213623
-offset_bottom = 2.0
-grow_horizontal = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ucf2k")
-
-[node name="Label2" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
-modulate = Color(1, 1, 1, 0.776)
-layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -185.0
-offset_top = -16.0
-offset_right = -90.0
-offset_bottom = 16.0
+offset_left = -60.0
+offset_top = -149.0
+offset_right = 60.0
+offset_bottom = -29.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_827cg")
-theme_override_font_sizes/font_size = 25
-text = "POT:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
-material = SubResource("ShaderMaterial_wfrck")
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -23.0
-offset_right = 39.0
-offset_bottom = 22.0
-grow_vertical = 2
-texture = ExtResource("8_fbyvq")
+texture = ExtResource("6_mcr3g")
 expand_mode = 1
-
-[node name="PotValueLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
-self_modulate = Color(1, 1, 1, 0.95)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = -16.0
-offset_right = 58.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("9_r05uy")
-theme_override_font_sizes/font_size = 28
-text = "1999999"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_right = 100.0
-offset_bottom = 70.0
-grow_horizontal = 2
-pivot_offset = Vector2(100, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_th6m6")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -40.0
-offset_right = 100.0
-offset_bottom = 40.0
-grow_vertical = 2
-alignment = 2
-
-[node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.122525, 0.744392, 0.281657, 1)
-theme_override_fonts/font = ExtResource("6_827cg")
-theme_override_font_sizes/font_size = 40
-text = "10"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="MyScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.9)
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-
-[node name="Sub2" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.633333
-anchor_top = 1.0
-anchor_right = 0.633333
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -47.0
-offset_right = 13.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.121569, 0.745098, 0.286275, 1)
-theme_override_fonts/font = ExtResource("6_827cg")
-theme_override_font_sizes/font_size = 30
-text = "3
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Sub1" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.633333
-anchor_right = 0.633333
-offset_left = -24.0
-offset_top = 10.0
-offset_right = 8.0
-offset_bottom = 48.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.121569, 0.745098, 0.286275, 1)
-theme_override_fonts/font = ExtResource("6_827cg")
-theme_override_font_sizes/font_size = 30
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.633333
-anchor_top = 0.5
-anchor_right = 0.633333
-anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = 5.0
-offset_right = 11.0
-offset_bottom = 7.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.698132
-color = Color(0.121569, 0.745098, 0.286275, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Control" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-
-[node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
-theme_override_fonts/font = ExtResource("6_827cg")
-theme_override_font_sizes/font_size = 40
-text = "10"
-
-[node name="Control3" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 2
-
-[node name="OpponentScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
-modulate = Color(1, 1, 1, 0.9)
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="Sub2" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -47.0
-offset_right = 13.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
-theme_override_fonts/font = ExtResource("6_827cg")
-theme_override_font_sizes/font_size = 30
-text = "3
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Sub1" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -24.0
-offset_top = 10.0
-offset_right = 8.0
-offset_bottom = 48.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
-theme_override_fonts/font = ExtResource("6_827cg")
-theme_override_font_sizes/font_size = 30
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = 5.0
-offset_right = 11.0
-offset_bottom = 7.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.698132
-color = Color(0.780392, 0.164706, 0.164706, 1)
-
-[node name="Label" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -27.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("10_5h31i")
-theme_override_font_sizes/font_size = 40
-text = ":"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="CountdownTimer" type="Timer" parent="CanvasLayer/PlayGround"]
 wait_time = 3.0
@@ -690,8 +391,8 @@ theme_override_colors/font_shadow_color = Color(1, 0.536171, 0.557066, 1)
 theme_override_colors/font_outline_color = Color(0.612013, 0.37438, 0.0564619, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("11_napf2")
-theme_override_font_sizes/font_size = 35
+theme_override_fonts/font = ExtResource("7_btnom")
+theme_override_font_sizes/font_size = 40
 text = "GAME_START"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -714,7 +415,7 @@ theme_override_colors/font_shadow_color = Color(0.00392157, 0.419608, 0.215686, 
 theme_override_colors/font_outline_color = Color(0.0117647, 0.415686, 0.211765, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("11_napf2")
+theme_override_fonts/font = ExtResource("11_5xbix")
 theme_override_font_sizes/font_size = 60
 text = "3"
 horizontal_alignment = 1
@@ -722,37 +423,30 @@ vertical_alignment = 1
 
 [node name="ActionBtnPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.0
+offset_left = -200.0
 offset_top = -100.0
-offset_right = 100.0
-grow_horizontal = 2
+grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="NapoliBtn" type="Button" parent="CanvasLayer/ActionBtnPn"]
-custom_minimum_size = Vector2(120, 50)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -166.0
-offset_right = 60.0
-offset_bottom = -116.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-script = ExtResource("12_bufu6")
+[node name="Button2" type="Button" parent="CanvasLayer/ActionBtnPn"]
+custom_minimum_size = Vector2(100, 50)
+offset_left = 26.0
+offset_right = 126.0
+offset_bottom = 50.0
+text = "STAND"
 
-[node name="PanelNapoliBtn" parent="CanvasLayer/ActionBtnPn/NapoliBtn" instance=ExtResource("13_lm8os")]
-layout_mode = 1
+[node name="Button" type="Button" parent="CanvasLayer/ActionBtnPn"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = -100.0
+offset_bottom = 50.0
+text = "HIT"
 
 [node name="RightTopPanel" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -779,7 +473,7 @@ alignment = 2
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/BetInfoPn/InfoBetBtn"]
 self_modulate = Color(1, 1, 1, 0.586)
@@ -796,7 +490,7 @@ offset_right = 7.5
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("14_3v2t3")
+texture = ExtResource("14_x0s8b")
 expand_mode = 1
 stretch_mode = 5
 
@@ -851,7 +545,7 @@ alignment = 2
 custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn"]
 self_modulate = Color(1, 1, 1, 0.678)
@@ -867,14 +561,14 @@ offset_right = 25.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_cdhi2")
+texture = ExtResource("15_uhsqq")
 expand_mode = 1
 
 [node name="SettingBtn" type="Button" parent="CanvasLayer/RightTopPanel/HBoxContainer"]
 custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn"]
 self_modulate = Color(1, 1, 1, 0.678)
@@ -890,7 +584,7 @@ offset_right = 30.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("16_2pshc")
+texture = ExtResource("16_mb7bk")
 expand_mode = 1
 
 [node name="RoundLb" type="Label" parent="CanvasLayer"]
@@ -906,42 +600,11 @@ offset_bottom = 58.0
 grow_horizontal = 2
 pivot_offset = Vector2(200, 25)
 theme_override_colors/font_color = Color(1, 1, 1, 0.76)
-theme_override_fonts/font = ExtResource("6_827cg")
+theme_override_fonts/font = ExtResource("6_3v5sw")
 theme_override_font_sizes/font_size = 25
 text = "ROUND: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="EvaluateLb" type="Label" parent="CanvasLayer"]
-custom_minimum_size = Vector2(400, 50)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 34.0
-offset_top = -214.0
-offset_right = 434.0
-offset_bottom = -164.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(200, 25)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("17_xjaim")
-theme_override_font_sizes/font_size = 26
-text = "Fantastic!"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="EvaluateIpadPos" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 113.0
-offset_bottom = 113.0
-grow_horizontal = 2
 
 [node name="LeftTopPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -958,11 +621,11 @@ offset_left = 50.0
 offset_top = 30.0
 offset_right = 142.0
 offset_bottom = 105.0
-icon = ExtResource("18_6l3ba")
+icon = ExtResource("18_bu1pi")
 flat = true
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="ReachPointWinLb" type="Label" parent="CanvasLayer/LeftTopPn"]
 modulate = Color(1, 1, 1, 0.316)
@@ -971,7 +634,7 @@ offset_left = 206.0
 offset_top = 15.0
 offset_right = 408.0
 offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("10_5h31i")
+theme_override_fonts/font = ExtResource("10_t82fj")
 theme_override_font_sizes/font_size = 22
 text = "REACH_POINT_TO_WIN"
 
@@ -998,7 +661,7 @@ offset_right = 201.0
 offset_bottom = 31.0
 text = "Test Deal"
 
-[node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("19_k1cso")]
+[node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("19_vx6l7")]
 visible = false
 custom_minimum_size = Vector2(333, 250)
 anchors_preset = 4
@@ -1029,7 +692,7 @@ offset_top = -42.0
 offset_right = 184.0
 offset_bottom = 18.0
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/EmoBtn"]
 modulate = Color(1, 1, 1, 0.757)
@@ -1040,7 +703,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("21_hlcfe")
+texture = ExtResource("21_ajh0x")
 expand_mode = 1
 
 [node name="ChatBtn" type="Button" parent="CanvasLayer/BottomLeftPn"]
@@ -1050,7 +713,7 @@ offset_top = -42.0
 offset_right = 110.0
 offset_bottom = 18.0
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
 modulate = Color(1, 1, 1, 0.757)
@@ -1067,7 +730,7 @@ offset_right = 30.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("22_21uw0")
+texture = ExtResource("22_nt0kc")
 expand_mode = 1
 
 [node name="RedDot" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
@@ -1077,10 +740,11 @@ offset_left = 43.0
 offset_top = 4.0
 offset_right = 58.0
 offset_bottom = 19.0
-texture = ExtResource("23_gmyn0")
+texture = ExtResource("23_tveyi")
 expand_mode = 1
 
 [node name="BottomCenter" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -1105,13 +769,14 @@ offset_top = -44.0
 offset_right = 200.0
 offset_bottom = -12.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_sqj6k")
+theme_override_fonts/font = ExtResource("5_sgf2r")
 theme_override_font_sizes/font_size = 25
 text = "Waiting for other players ..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EmoChat" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -1124,7 +789,7 @@ offset_right = 250.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-script = ExtResource("24_dc8rw")
+script = ExtResource("24_sy8gg")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/EmoChat"]
 layout_mode = 1
@@ -1156,7 +821,7 @@ alignment = 1
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn5"]
 layout_mode = 1
@@ -1165,14 +830,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("25_2irlb")
+texture = ExtResource("25_tg33p")
 expand_mode = 1
 
 [node name="EmoBtn4" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn4"]
 layout_mode = 1
@@ -1181,14 +846,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("26_nuipy")
+texture = ExtResource("26_r7oog")
 expand_mode = 1
 
 [node name="EmoBtn3" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn3"]
 layout_mode = 1
@@ -1197,14 +862,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("27_eehxh")
+texture = ExtResource("27_qfutk")
 expand_mode = 1
 
 [node name="EmoBtn2" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn2"]
 layout_mode = 1
@@ -1213,14 +878,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("28_2bqxb")
+texture = ExtResource("28_52ydl")
 expand_mode = 1
 
 [node name="EmoBtn1" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn1"]
 layout_mode = 1
@@ -1229,10 +894,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("29_jatmx")
+texture = ExtResource("29_6slng")
 expand_mode = 1
 
 [node name="AutoPlayPn" type="Panel" parent="CanvasLayer"]
+visible = false
 custom_minimum_size = Vector2(0, 300)
 anchors_preset = -1
 anchor_top = 0.5
@@ -1259,7 +925,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(100, 30)
 flat = true
-script = ExtResource("12_bufu6")
+script = ExtResource("12_hjpec")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/AutoPlayPn/ReturnTableBtn"]
 layout_mode = 1
@@ -1284,38 +950,29 @@ offset_right = 57.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_827cg")
+theme_override_fonts/font = ExtResource("6_3v5sw")
 theme_override_font_sizes/font_size = 20
 text = "RETURN_TO_TABLE"
 horizontal_alignment = 1
 
-[node name="PnHighlightNapoli" type="Panel" parent="CanvasLayer"]
-offset_left = 1587.0
-offset_top = 748.0
-offset_right = 1887.0
-offset_bottom = 898.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7t6yy")
-
 [node name="AudioDrawCard" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("30_3tbt8")
+stream = ExtResource("30_61i65")
 
 [node name="AudioShuffleDealCard" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("31_830dc")
+stream = ExtResource("31_0oam1")
 
 [node name="AudioYourTurn" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("32_ssaeb")
+stream = ExtResource("32_e8pgo")
 volume_db = 5.0
 
 [node name="AudioWinTurn" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("33_s2wxq")
+stream = ExtResource("33_683u7")
 volume_db = 1.0
 
 [node name="AudioPlayCard" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("34_so8io")
+stream = ExtResource("34_h1l13")
 volume_db = 12.0
 
-[connection signal="pressed" from="CanvasLayer/ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/BetInfoPn/InfoBetBtn" to="." method="_click_show_info_bet"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]

@@ -55,14 +55,18 @@ func add_message(uid, user_name, text):
 	chat_log.text += '\n'
 	
 func on_received_new_chat(uid, message):
-	var user_name = str(uid)
-	var user = GameConstants.game_logic.get_user(uid)
-	if user:
-		user_name = user.name
-	add_message(uid, user_name, message)
+	var cur_scene = SceneManager.get_current_scene()
+	if cur_scene is BaseBoardScene:
+		var user_name = str(uid)
+		var user = cur_scene.game_logic.get_user(uid)
+		if user:
+			user_name = user.name
+		add_message(uid, user_name, message)
 	
 func _get_group_index(uid):
-	var user = GameConstants.game_logic.get_user(uid)
-	if user:
-		return user.game_data.seat_id
+	var cur_scene = SceneManager.get_current_scene()
+	if cur_scene is BaseBoardScene:
+		var user = cur_scene.game_logic.get_user(uid)
+		if user:
+			return user.game_data.seat_id
 	return 0

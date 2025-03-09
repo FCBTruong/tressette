@@ -69,9 +69,11 @@ func turn_face_down():
 	_load_texture(path)
 	
 	self.card_image.self_modulate = Color("#ffffff")
-	#self.card_image.material = null
-	material.shader = shader1
-	self.card_image.material = material
+	
+	if GameManager.CURRENT_GAME_PLAY == 0:
+		#self.card_image.material = null
+		material.shader = shader1
+		self.card_image.material = material
 	
 func _load_texture(path):
 	var new_texture = load(path)
@@ -96,15 +98,16 @@ func turn_face_up():
 	face_state = GameConstants.CARD_FACE_STATE.UP
 	_load_texture_card()
 	
-	if GameConstants.game_logic.is_most_value_card(self.id):
-		material.shader = shader
-		self.card_image.material = material
-	elif (GameConstants.game_logic.is_strong_card(self.id)):
-		#material.shader = shader1
-		#self.card_image.material = material
-		self.card_image.material = null
-	else:
-		self.card_image.material = null
+	if GameManager.CURRENT_GAME_PLAY == 0:
+		if GameConstants.game_logic.is_most_value_card(self.id):
+			material.shader = shader
+			self.card_image.material = material
+		elif (GameConstants.game_logic.is_strong_card(self.id)):
+			#material.shader = shader1
+			#self.card_image.material = material
+			self.card_image.material = null
+		else:
+			self.card_image.material = null
 	
 	#if (GameConstants.game_logic.is_strong_card(self.id)):
 		#self.card_image.self_modulate = Color("ffe8ca")

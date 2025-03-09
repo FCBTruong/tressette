@@ -70,4 +70,9 @@ func _open_app_store():
 func is_in_review():
 	if Config.get_platform() == Config.PLATFORMS.WEB:
 		return false
+	if Config.get_platform() == Config.PLATFORMS.IOS:
+		if PlayerInfoMgr.my_user_data:
+			if PlayerInfoMgr.my_user_data.game_count < 5:
+				return true
+				
 	return reviewing_version == my_code_version

@@ -13,6 +13,7 @@ var language = 'en'
 var LAST_GAME_IS_WIN = false
 var did_show_guide_new_user = false
 var type_delete_login
+var CURRENT_GAME_PLAY = 0 # tressette, 1 is sette mezzo
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -42,6 +42,7 @@ EffectMgr="*res://scripts/effect_mgr.gd"
 NodeUtils="*res://scripts/utils/node_utils.gd"
 AppVersion="*res://scripts/base/app_version.gd"
 NativeMgr="*res://scripts/base/native_mgr.gd"
+SetteMezzoMgr="*res://scripts/modules/sette_mezzo/sette_mezzo_mgr.gd"
 
 [display]
 

@@ -31,6 +31,7 @@ func _ready() -> void:
 	self.bonus_info_pn.visible = false
 	default_pos_bonus = self.bonus_info_pn.position
 	red_dot.visible = false
+	vortex.visible = false
 	
 	SignalBus.connect_global('ingame_update_player_money', Callable(self, "_ingame_update_player_money"))
 
@@ -88,6 +89,8 @@ var running: bool = false
 func start_timer():
 	if self.user_data.uid == PlayerInfoMgr.my_user_data.uid:
 		SceneManager.INSTANCES.BOARD_SCENE.play_sound_my_turn()
+	else:
+		return
 	time_progress_bar.visible = true
 	elapsed_time = 0.0
 	running = true
@@ -95,6 +98,8 @@ func start_timer():
 	vortex.visible = true
 
 func _process(delta: float):
+	if not self.user_data:
+		return
 	if self.user_data.uid == -1:
 		time_progress_bar.visible = false
 		vortex.visible = false
