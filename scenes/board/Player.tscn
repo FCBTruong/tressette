@@ -265,7 +265,7 @@ texture = ExtResource("6_lqmp5")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.086, 0.573, 1, 1)
+modulate = Color(0.148022, 0.642562, 0.195855, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -282,7 +282,7 @@ texture = ExtResource("11_7d5ia")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.257996, 0.61543, 0.944657, 1)
+modulate = Color(0.148022, 0.642562, 0.195855, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
