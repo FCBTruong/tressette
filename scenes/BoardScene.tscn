@@ -10,7 +10,6 @@
 [ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="6_foh0g"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="7_qu8fh"]
-[ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="7_riexb"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="8_afrgf"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
@@ -20,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="9_g7ymd"]
 [ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="9_ujbxy"]
+[ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="11_8cjom"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_lcke6"]
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="11_mpmvk"]
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="12_b6jtg"]
@@ -690,8 +690,8 @@ theme_override_colors/font_shadow_color = Color(1, 0.536171, 0.557066, 1)
 theme_override_colors/font_outline_color = Color(0.612013, 0.37438, 0.0564619, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("7_riexb")
-theme_override_font_sizes/font_size = 35
+theme_override_fonts/font = ExtResource("11_8cjom")
+theme_override_font_sizes/font_size = 40
 text = "GAME_START"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -705,17 +705,17 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -30.0
-offset_top = -52.0
+offset_top = -68.0
 offset_right = 30.0
-offset_bottom = 72.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0.00392157, 0.419608, 0.215686, 1)
 theme_override_colors/font_outline_color = Color(0.0117647, 0.415686, 0.211765, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("7_riexb")
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("11_8cjom")
+theme_override_font_sizes/font_size = 80
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1

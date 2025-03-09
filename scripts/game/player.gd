@@ -89,8 +89,7 @@ var running: bool = false
 func start_timer():
 	if self.user_data.uid == PlayerInfoMgr.my_user_data.uid:
 		SceneManager.INSTANCES.BOARD_SCENE.play_sound_my_turn()
-	else:
-		return
+	
 	time_progress_bar.visible = true
 	elapsed_time = 0.0
 	running = true
