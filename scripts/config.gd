@@ -46,7 +46,7 @@ func get_platform():
 		return PLATFORMS.ANDROID
 	elif platform == 'iOS':
 		return PLATFORMS.IOS
-	elif platform == "MacOS":
+	elif platform == "macOS":
 		return PLATFORMS.MAC_OS
 	elif platform == "Windows":
 		return PLATFORMS.WINDOWS

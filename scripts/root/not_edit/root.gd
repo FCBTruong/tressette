@@ -9,7 +9,12 @@ var game_init
 var is_downloading = false
 var progress_bar
 var version = 1
+var is_local = false
 func _init():
+	if OS.get_name() == "macOS":
+		is_local = true
+		return
+	
 	var cache_version = load_version()
 	if cache_version != -1:
 		version = cache_version
@@ -19,10 +24,22 @@ func _init():
 		ProjectSettings.load_resource_pack(save_path)
 
 func _ready() -> void:
+	if has_internet():
+		get_tree().current_scene.find_child("NoInternet").visible = false
+		print("Internet is available!")
+	else:
+		get_tree().current_scene.find_child("NoInternet").visible = true
+		print("No internet connection!")
+
+
 	get_tree().current_scene.find_child("DownloadPn").visible = false
 	add_child(http_request)
 	print("root game....")
 	await get_tree().process_frame
+	
+	if is_local:
+		_init_game()
+		return
 	var need_update = false
 	
 	if OS.get_name() != "Web":
@@ -37,15 +54,20 @@ func _init_game():
 	var game_init = load("res://scripts/root/game_init.gd").new()	
 	get_tree().root.add_child(game_init)
 
+var last_update_time = 0.0
 func _process(delta: float) -> void:
 	if is_downloading:
-		var bodySize = http_request.get_body_size()
-		var downloadedBytes = http_request.get_downloaded_bytes()
+		last_update_time += delta
+		if last_update_time >= 0.5:  # Update every 0.5 seconds
+			last_update_time = 0  # Reset timer
+
+			var bodySize = http_request.get_body_size()
+			var downloadedBytes = http_request.get_downloaded_bytes()
 			
-		var percent = int(downloadedBytes*100/bodySize)
-		print(str(percent) + " downloaded")
-		progress_bar.value = percent
-		pass
+			if bodySize > 0:
+				var percent = int((downloadedBytes * 100) / bodySize)
+				print(str(percent) + "% downloaded")
+				progress_bar.value = percent
 
 
 @onready var http_request = HTTPRequest.new()
@@ -92,19 +114,25 @@ func apply_update():
 		
 		
 func load_version() -> int:
-	var file = FileAccess.open("user://version.txt", FileAccess.READ)
+	var path = "user://version.txt"
+	if not FileAccess.file_exists(path):
+		return -1  # File doesn't exist, return default version
+
+	var file = FileAccess.open(path, FileAccess.READ)
 	if file:
 		var v = file.get_as_text().strip_edges()
 		file.close()
-		return int(v)
+		return int(v) if v.is_valid_int() else -1  # Avoid errors if file is empty or corrupted
 	return -1
-	
-func save_version(version: int) -> void:
-	var file = FileAccess.open("user://version.txt", FileAccess.WRITE)
+
+func save_version(v: int) -> void:
+	var path = "user://version.txt"
+	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file:
-		print('save guest', version)
-		file.store_32(version)
+		print("Saving version:", v)
+		file.store_string(str(v))  # Store as text, not binary
 		file.close()
+
 
 
 func check_version():
@@ -134,8 +162,12 @@ func _on_request_complete_version(result: int, response_code: int, headers: Pack
 		print("Failed to download JSON, response code:", response_code)
 
 func _handle_update_version(remote_version):
-	if remote_version < version:
+	if remote_version > version:
 		version = remote_version
 		download_cdn()
 	else:
 		_init_game()
+
+
+func has_internet() -> bool:
+	return !IP.resolve_hostname("www.google.com").is_empty()
