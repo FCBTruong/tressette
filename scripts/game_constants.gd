@@ -1,4 +1,5 @@
-extends Node
+extends RefCounted
+class_name GameConstants
 
 static var game_logic = GameLogic.new()
 

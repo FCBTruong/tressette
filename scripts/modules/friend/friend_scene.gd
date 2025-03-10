@@ -20,8 +20,8 @@ func _ready() -> void:
 	list_container.modulate.a = 0
 	tween.parallel().tween_property(list_container, 'modulate:a', 1, 0.5)
 	
-	SignalBus.connect_global('update_friend_list', Callable(self, '_update_friends_list'))
-	SignalBus.connect_global('update_friend_requests', Callable(self, '_update_friends_requests'))
+	g.v.signal_bus.connect_global('update_friend_list', Callable(self, '_update_friends_list'))
+	g.v.signal_bus.connect_global('update_friend_requests', Callable(self, '_update_friends_requests'))
 	_update_friends_list()
 	_update_friends_requests()
 	pass # Replace with function body.
@@ -30,15 +30,15 @@ func _update_friends_list():
 	for child in list_container.get_children():
 		child.queue_free()
 
-	for f in FriendManager.friends:
+	for f in g.v.friend_mgr.friends:
 		var instance = friend_node_scene.instantiate()
 		list_container.add_child(instance)
 		instance.set_info(f)
 		
-	if len(FriendManager.friends) == 0:
+	if len(g.v.friend_mgr.friends) == 0:
 		# Add recommend
 		var recommmend_node_scene = preload("res://scenes/friend/FriendRecommendNode.tscn")
-		for f in FriendManager.recommend_friends:
+		for f in g.v.friend_mgr.recommend_friends:
 			var instance = recommmend_node_scene.instantiate()
 			list_container.add_child(instance)
 			instance.set_info(f)
@@ -48,15 +48,15 @@ func _process(delta: float) -> void:
 	pass
 
 func _back_to_lobby():
-	SceneManager.switch_scene(SceneManager.LOBBY_SCENE)
+	g.v.scene_manager.switch_scene(g.v.scene_manager.LOBBY_SCENE)
 
 func _open_requests():
-	SceneManager.open_gui("res://scenes/friend/FriendRequestsGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/friend/FriendRequestsGUI.tscn")
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	var uid = int(new_text)
-	FriendManager.search_friend(uid)
+	g.v.friend_mgr.search_friend(uid)
 
 func _update_friends_requests():
-	request_dot.visible = len(FriendManager.requests) > 0
-	request_number_lb.text = str(len(FriendManager.requests))
+	request_dot.visible = len(g.v.friend_mgr.requests) > 0
+	request_number_lb.text = str(len(g.v.friend_mgr.requests))

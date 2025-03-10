@@ -1,4 +1,5 @@
 extends Node
+class_name WebsocketClient
 
 # Our WebSocketPeer instance
 var socket: WebSocketPeer
@@ -9,7 +10,7 @@ var last_ping_time: float = 0.0  # The time when the last ping was received
 
 var is_connected = false
 func _ready():
-	if Config.CURRENT_MODE == Config.MODES.LOCAL and Config.EDIT_MODE:
+	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL and g.v.config.EDIT_MODE:
 		return
 	connect_to_server()
 	
@@ -17,13 +18,13 @@ func connect_to_server():
 	socket = WebSocketPeer.new()
 	is_connected = false
 	
-	var websocket_url = Config.WEBSOCKET_URL
+	var websocket_url = g.v.config.WEBSOCKET_URL
 	# Initiate connection to the given URL
 	var err = socket.connect_to_url(websocket_url)
 	if err != OK:
 		print("Unable to connect: ", err)
 		set_process(false)  # Stop processing if connection fails
-		SceneManager.show_dialog(
+		g.v.scene_manager.show_dialog(
 			'Can not connect to server, try again.',
 			func ():
 				self.connect_to_server()
@@ -33,7 +34,7 @@ func connect_to_server():
 		set_process(true)
 
 func _process(_delta):
-	if Config.CURRENT_MODE == Config.MODES.LOCAL and Config.EDIT_MODE:
+	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL and g.v.config.EDIT_MODE:
 		return
 		
 	socket.poll()
@@ -41,7 +42,7 @@ func _process(_delta):
 
 	if state == WebSocketPeer.STATE_OPEN:
 		if not is_connected:
-			SceneManager.clear_loading()
+			g.v.scene_manager.clear_loading()
 			is_connected = true
 			
 		while socket.get_available_packet_count() > 0:
@@ -71,12 +72,12 @@ func _process(_delta):
 func _disconnect():
 	print("Disconnected from server.")
 	# show popup
-	SceneManager.show_ok_dialog(
+	g.v.scene_manager.show_ok_dialog(
 		tr('YOU_ARE_DISCONNECTED'),
 		func ():
-			#SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
+			#g.v.scene_manager.switch_scene(g.v.scene_manager.LOGIN_SCENE)
 			socket.close()
-			SceneManager.add_loading(2)
+			g.v.scene_manager.add_loading(2)
 			connect_to_server()
 	)
 	# Perform any cleanup operations if necessary
@@ -84,9 +85,9 @@ func _disconnect():
 func send_packet(cmd_id: int, payload: PackedByteArray):
 	# Send a packet to the WebSocket server
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
-		var packet = GameConstants.PROTOBUF.PACKETS.Packet.new()
+		var packet = g.v.game_constants.PROTOBUF.PACKETS.Packet.new()
 		packet.set_cmd_id(cmd_id)
-		packet.set_token(GameManager.get_token())
+		packet.set_token(g.v.game_manager.get_token())
 		packet.set_payload(payload)
 		var serialized_packet = packet.to_bytes()
 		socket.put_packet(serialized_packet)
@@ -95,23 +96,23 @@ func send_packet(cmd_id: int, payload: PackedByteArray):
 		_disconnect()
 
 func receive_packet(data: PackedByteArray):
-	var received_packet = GameConstants.PROTOBUF.PACKETS.Packet.new()
+	var received_packet = g.v.game_constants.PROTOBUF.PACKETS.Packet.new()
 	var result_code = received_packet.from_bytes(data)
 	
-	if result_code == GameConstants.PROTOBUF.PACKETS.PB_ERR.NO_ERRORS:
+	if result_code == g.v.game_constants.PROTOBUF.PACKETS.PB_ERR.NO_ERRORS:
 		pass
 	else:
 		print('error package parse')
 		return
 	var cmd_id = received_packet.get_cmd_id()
 
-	if cmd_id == GameConstants.CMDs.PING_PONG:
-		var pkg = GameConstants.PROTOBUF.PACKETS.PingPong.new()
-		send_packet(GameConstants.CMDs.PING_PONG, pkg.to_bytes())
+	if cmd_id == g.v.game_constants.CMDs.PING_PONG:
+		var pkg = g.v.game_constants.PROTOBUF.PACKETS.PingPong.new()
+		send_packet(g.v.game_constants.CMDs.PING_PONG, pkg.to_bytes())
 		time_since_last_ping = 0.0
-	elif cmd_id == GameConstants.CMDs.APP_VERSION:
-		AppVersion.handle_version_and_open_login(received_packet.get_payload())	
+	elif cmd_id == g.v.game_constants.CMDs.APP_VERSION:
+		g.v.app_version.handle_version_and_open_login(received_packet.get_payload())	
 	else:
 		print('receive cmd_id: ', cmd_id)
 		var payload = received_packet.get_payload()
-		GameClient.on_receive_packet(cmd_id, payload)
+		g.v.game_client.on_receive_packet(cmd_id, payload)

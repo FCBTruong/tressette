@@ -22,7 +22,7 @@ func _on_close():
 	
 func _delete_account():
 	if not check_confirm.is_pressed():
-		SceneManager.show_toast("PLEASE_CONFIRM_DELETE")
+		g.v.scene_manager.show_toast("PLEASE_CONFIRM_DELETE")
 		return
-	GameManager.request_delete_account()
-	SceneManager.add_loading(5)
+	g.v.game_manager.request_delete_account()
+	g.v.scene_manager.add_loading(5)

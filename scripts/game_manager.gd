@@ -1,11 +1,12 @@
 extends Node
+class_name GameManager
 
-@export var _token:String = 'default' # note, protobuf string can not be empty, otherwise will error not sent
+var _token:String = 'default' # note, protobuf string can not be empty, otherwise will error not sent
 
-@export var timestamp_server_delta = 0
-@export var enable_sound = true
-@export var enable_music = false
-@export var enable_chat_ingame = true
+var timestamp_server_delta = 0
+var enable_sound = true
+var enable_music = false
+var enable_chat_ingame = true
 var card_style: int = 0 # classic, default, 1 is modern
 var table_list = []
 var supported_langues = ['en', 'it']
@@ -17,15 +18,16 @@ var CURRENT_GAME_PLAY = 0 # tressette, 1 is sette mezzo
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("GameManagerReady")
 	var lang = 'en'
-	var choosed_lang = StorageCache.fetch('choose_language', 'null')
+	var choosed_lang = g.v.storage_cache.fetch('choose_language', 'null')
 	if choosed_lang == 'null':
 		# try to use device language
 		var current_locale = OS.get_locale()
 		lang = current_locale.split("_")[0]
 		print("device language", lang)
 		
-	if Config.CURRENT_MODE == Config.MODES.LOCAL:
+	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
 		lang = 'it'
 		
 	if lang not in supported_langues:
@@ -33,10 +35,10 @@ func _ready() -> void:
 		
 	self.language = lang
 	TranslationServer.set_locale(lang)
-	card_style = int(StorageCache.fetch('card_style', '0'))
-	enable_sound = StorageCache.fetch('enable_sound', '1') == '1'
-	enable_music = StorageCache.fetch('enable_music', '1') == '1'
-	pass # Replace with function body.
+	card_style = int(g.v.storage_cache.fetch('card_style', '0'))
+	enable_sound = g.v.storage_cache.fetch('enable_sound', '1') == '1'
+	enable_music = g.v.storage_cache.fetch('enable_music', '1') == '1'
+
 
 func choose_language(lang):
 	if lang not in supported_langues:
@@ -44,24 +46,24 @@ func choose_language(lang):
 		return 
 		
 	self.language = lang
-	StorageCache.store('choose_language', self.language)
+	g.v.storage_cache.store('choose_language', self.language)
 	TranslationServer.set_locale(lang)
 
 	
 func set_enable_music(e):
-	StorageCache.store('enable_music', '1' if e else '0')
+	g.v.storage_cache.store('enable_music', '1' if e else '0')
 	enable_music = e
 	if not enable_music:
-		SoundManager.stop_music()
+		g.v.sound_manager.stop_music()
 	else:
-		var scene = SceneManager.get_current_scene()
+		var scene = g.v.scene_manager.get_current_scene()
 		if scene is not BoardScene:
-			SoundManager.play_music_lobby()
+			g.v.sound_manager.play_music_lobby()
 		else:
-			SoundManager.play_music_board()
+			g.v.sound_manager.play_music_board()
 	
 func set_enable_sound(e):
-	StorageCache.store('enable_sound', '1' if e else '0')
+	g.v.storage_cache.store('enable_sound', '1' if e else '0')
 	enable_sound = e
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -70,57 +72,57 @@ func _process(delta: float) -> void:
 
 func login_success(uid: int, token: String):
 	_token = token
-	PaymentMgr.on_user_login()
-	SceneManager.switch_scene(SceneManager.LOADING_SCENE)
+	g.v.payment_mgr.on_user_login()
+	g.v.scene_manager.switch_scene(g.v.scene_manager.LOADING_SCENE)
 	
 func get_token() -> String:
 	return _token
 	
 func send_quick_play() -> void:
-	if AppVersion.is_in_review():
-		SceneManager.open_gui('res://scenes/lobby/rooms/CreateTableGUI.tscn')
+	if g.v.app_version.is_in_review():
+		g.v.scene_manager.open_gui('res://scenes/lobby/rooms/CreateTableGUI.tscn')
 		return
-	if PlayerInfoMgr.my_user_data.gold < GameServerConfig.min_gold_play:
+	if g.v.player_info_mgr.my_user_data.gold < g.v.game_server_config.min_gold_play:
 		var str_noti = tr('NOT_ENOUGH_MIN_GOLD_PLAY_BUY')
-		str_noti = str_noti.replace("@num", StringUtils.point_number(GameServerConfig.min_gold_play))
-		SceneManager.show_dialog(
+		str_noti = str_noti.replace("@num", StringUtils.point_number(g.v.game_server_config.min_gold_play))
+		g.v.scene_manager.show_dialog(
 				str_noti
 				,
 				func ():
-					SceneManager.switch_scene(SceneManager.SHOP_SCENE),
+					g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
 				func ():
 					pass,
 				true
 			)
 			
 		return
-	SceneManager.add_loading(5)
-	var pkg = GameConstants.PROTOBUF.PACKETS.QuickPlay.new()
-	GameClient.send_packet(GameConstants.CMDs.QUICK_PLAY, pkg.to_bytes())
+	g.v.scene_manager.add_loading(5)
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.QuickPlay.new()
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.QUICK_PLAY, pkg.to_bytes())
 	
 
 func on_game_start() -> void:
-	SceneManager.switch_scene("res://scenes/BoardScene.tscn")
+	g.v.scene_manager.switch_scene("res://scenes/BoardScene.tscn")
 	
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
-		GameConstants.CMDs.GENERAL_INFO:
-			var pkg = GameConstants.PROTOBUF.PACKETS.GeneralInfo.new()
+		g.v.game_constants.CMDs.GENERAL_INFO:
+			var pkg = g.v.game_constants.PROTOBUF.PACKETS.GeneralInfo.new()
 			var result_code = pkg.from_bytes(payload)
 			var timestamp_server = pkg.get_timestamp()
 			var delta = timestamp_server - Time.get_unix_time_from_system()
 			print('delta timestamp server-client', delta)
-			GameManager.set_timestamp_server_delta(delta)
-			GameServerConfig.time_thinking_in_turn = pkg.get_time_thinking_in_turn() - 0.5 # client must play before that time
-			GameServerConfig.tressette_bets = pkg.get_tressette_bets()
-			GameServerConfig.bet_multiplier_min = pkg.get_bet_multiplier_min()
-			GameServerConfig.exp_levels = pkg.get_exp_levels()
-			GameServerConfig.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
-			GameServerConfig.min_gold_play = GameServerConfig.tressette_bets[0] * GameServerConfig.bet_multiplier_min
-		GameConstants.CMDs.TABLE_LIST:
-			if AppVersion.is_in_review():
+			g.v.game_manager.set_timestamp_server_delta(delta)
+			g.v.game_server_config.time_thinking_in_turn = pkg.get_time_thinking_in_turn() - 0.5 # client must play before that time
+			g.v.game_server_config.tressette_bets = pkg.get_tressette_bets()
+			g.v.game_server_config.bet_multiplier_min = pkg.get_bet_multiplier_min()
+			g.v.game_server_config.exp_levels = pkg.get_exp_levels()
+			g.v.game_server_config.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
+			g.v.game_server_config.min_gold_play = g.v.game_server_config.tressette_bets[0] * g.v.game_server_config.bet_multiplier_min
+		g.v.game_constants.CMDs.TABLE_LIST:
+			if g.v.app_version.is_in_review():
 				return 
-			var pkg = GameConstants.PROTOBUF.PACKETS.TableList.new()
+			var pkg = g.v.game_constants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)
 			var table_ids = pkg.get_table_ids()
 			var bets = pkg.get_bets()
@@ -136,33 +138,33 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				table.player_mode = player_modes[i]
 				table_list.append(table)
 				
-			SignalBus.emit_signal_global("update_table_list")
-		GameConstants.CMDs.JOIN_TABLE_BY_ID:
-			var pkg = GameConstants.PROTOBUF.PACKETS.JoinTableResponse.new()
+			g.v.signal_bus.emit_signal_global("update_table_list")
+		g.v.game_constants.CMDs.JOIN_TABLE_BY_ID:
+			var pkg = g.v.game_constants.PROTOBUF.PACKETS.JoinTableResponse.new()
 			var result_code = pkg.from_bytes(payload)
 			var error_join = pkg.get_error()
 			if error_join != 0:
 				var str_err_join = tr('ERROR_JOIN_TABLE_' + str(error_join))
-				SceneManager.show_ok_dialog(str_err_join)
-		GameConstants.CMDs.CLAM_SUPPORT:
+				g.v.scene_manager.show_ok_dialog(str_err_join)
+		g.v.game_constants.CMDs.CLAM_SUPPORT:
 			_received_claim_support(payload)
-		GameConstants.CMDs.DELETE_ACCOUNT:
+		g.v.game_constants.CMDs.DELETE_ACCOUNT:
 			_received_delete_account()
 			
-		GameConstants.CMDs.INVITE_FRIEND_PLAY:
+		g.v.game_constants.CMDs.INVITE_FRIEND_PLAY:
 			receive_play_invite(payload)
 		_:
-			GameConstants.game_logic.on_receive(cmd_id, payload)
+			g.v.game_constants.game_logic.on_receive(cmd_id, payload)
 	
 func send_register_leave_game():
-	var pkg = GameConstants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
 	pkg.set_status(0)
-	GameClient.send_packet(GameConstants.CMDs.REGISTER_LEAVE_GAME, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.REGISTER_LEAVE_GAME, pkg.to_bytes())
 
 func send_deregister_leave_game():
-	var pkg = GameConstants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
 	pkg.set_status(1)
-	GameClient.send_packet(GameConstants.CMDs.REGISTER_LEAVE_GAME, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.REGISTER_LEAVE_GAME, pkg.to_bytes())
 		
 # SECONDS
 func get_timestamp_server():
@@ -176,32 +178,32 @@ func set_timestamp_server_delta(del):
 	
 func logout():
 	_token = "default"
-	var last_login_type = StorageCache.fetch('last_login_type')
-	if last_login_type == GameConstants.LOGIN_TYPE.FIREBASE:
-		FirebaseMgr.sign_out()
-	StorageCache.store('last_login_type', GameConstants.LOGIN_TYPE.NONE)
-	SceneManager.switch_scene(SceneManager.LOGIN_SCENE)
+	var last_login_type = g.v.storage_cache.fetch('last_login_type')
+	if last_login_type == g.v.game_constants.LOGIN_TYPE.FIREBASE:
+		g.v.firebase_mgr.sign_out()
+	g.v.storage_cache.store('last_login_type', g.v.game_constants.LOGIN_TYPE.NONE)
+	g.v.scene_manager.switch_scene(g.v.scene_manager.LOGIN_SCENE)
 	
 func is_logged_in():
 	if _token and _token != 'default':
 		return true
 	return false
 func send_get_table_list():
-	GameClient.send_packet(GameConstants.CMDs.TABLE_LIST, [])
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.TABLE_LIST, [])
 	
 func change_card_style(p_card_style):
 	card_style = p_card_style
-	StorageCache.store('card_style', card_style)
+	g.v.storage_cache.store('card_style', card_style)
 	
 	# dispatch event for all cards to update texture
-	SignalBus.emit_signal_global("update_card_style")
+	g.v.signal_bus.emit_signal_global("update_card_style")
 	
 func show_not_gold_recommend_shop():
-	SceneManager.show_dialog(
+	g.v.scene_manager.show_dialog(
 		tr('NOT_ENOUGH_GOLD_PLAY_BUY')
 		,
 		func ():
-			SceneManager.switch_scene(SceneManager.SHOP_SCENE),
+			g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
 		func ():
 			pass,
 		true
@@ -209,16 +211,16 @@ func show_not_gold_recommend_shop():
 
 func send_claim_support():
 	print('send claim support')
-	GameClient.send_packet(GameConstants.CMDs.CLAM_SUPPORT, [])
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CLAM_SUPPORT, [])
 	
 func _received_claim_support(payload):
 	print('received claim support')
-	var pkg = GameConstants.PROTOBUF.PACKETS.ClaimSupport.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ClaimSupport.new()
 	var result_code = pkg.from_bytes(payload)
 	var gold = pkg.get_support_amount()
 	var txt = tr("DAILY_SUPPORT")
 	txt = txt.replace("@num", StringUtils.point_number(gold))
-	SceneManager.show_dialog(txt,
+	g.v.scene_manager.show_dialog(txt,
 		func():
 			print('click ok'),
 		func():
@@ -226,31 +228,31 @@ func _received_claim_support(payload):
 	)
 
 func join_game_by_id(id):
-	var pkg = GameConstants.PROTOBUF.PACKETS.JoinTableById.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.JoinTableById.new()
 	pkg.set_match_id(id)
-	GameClient.send_packet(GameConstants.CMDs.JOIN_TABLE_BY_ID, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.JOIN_TABLE_BY_ID, pkg.to_bytes())
 
 
 func send_invite_friend_play(uid):
-	var pkg = GameConstants.PROTOBUF.PACKETS.InviteFriendPlay.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.InviteFriendPlay.new()
 	pkg.set_uid(uid)
-	GameClient.send_packet(GameConstants.CMDs.INVITE_FRIEND_PLAY, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.INVITE_FRIEND_PLAY, pkg.to_bytes())
 
 
 func receive_play_invite(payload):
 	print("receive play invite")
 	
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BoardScene:
 		return
 		
-	var pkg = GameConstants.PROTOBUF.PACKETS.InviteFriendPlay.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.InviteFriendPlay.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var room_id = pkg.get_room_id()
 	var str = tr('INVITE_PLAY')
 	str = str.replace("@name", str(uid))
-	SceneManager.show_dialog(
+	g.v.scene_manager.show_dialog(
 		str,
 		func():
 			join_game_by_id(room_id)
@@ -258,10 +260,11 @@ func receive_play_invite(payload):
 	
 	
 func get_country():
-	var http_request = HTTPRequest.new()
-	add_child(http_request)
-	http_request.request_completed.connect(_on_request_completed)
-	http_request.request(GameConstants.GEO_API_URL)
+	pass
+	#var http_request = HTTPRequest.new()
+	#add_child(http_request)
+	#http_request.request_completed.connect(_on_request_completed)
+	#http_request.request(g.v.game_constants.GEO_API_URL)
 
 func _on_request_completed(result, response_code, headers, body):
 	if response_code == 200:
@@ -272,9 +275,9 @@ func _on_request_completed(result, response_code, headers, body):
 			print("User is from:", country_code)
 
 func request_delete_account():
-	type_delete_login = StorageCache.fetch('last_login_type', GameConstants.LOGIN_TYPE.NONE)
-	GameClient.send_packet(GameConstants.CMDs.DELETE_ACCOUNT, [])
+	type_delete_login = g.v.storage_cache.fetch('last_login_type', g.v.game_constants.LOGIN_TYPE.NONE)
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.DELETE_ACCOUNT, [])
 
 func _received_delete_account():
-	if type_delete_login == GameConstants.LOGIN_TYPE.GUEST:
-		LoginMgr.save_guest_id('')
+	if type_delete_login == g.v.game_constants.LOGIN_TYPE.GUEST:
+		g.v.login_mgr.save_guest_id('')

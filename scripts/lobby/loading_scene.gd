@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @onready var load_bar: ProgressBar = find_child('LoadBar')  # Ensure your loading bar node is named 'LoadBar'
 @onready var loading_timer: Timer = Timer.new()  # Timer to simulate loading progress
@@ -33,7 +33,7 @@ func _finish_loading() -> void:
 	# Optional: Add a delay before transitioning to the next scene
 	#await get_tree().create_timer(1.0).timeout  # Wait 1 second before transitioning
 
-	SceneManager.switch_scene(SceneManager.LOBBY_SCENE)
+	g.v.scene_manager.switch_scene(g.v.scene_manager.LOBBY_SCENE)
 
 func _process(delta: float) -> void:
 	# Optional: Add any additional logic you want to run during loading

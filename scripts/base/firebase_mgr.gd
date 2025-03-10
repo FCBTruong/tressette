@@ -1,4 +1,5 @@
 extends Node
+class_name FirebaseMgr
 
 var firebase_plugin
 var web_google_sign
@@ -53,7 +54,7 @@ func on_firebase_auth_success(user_id, user_name, user_email, id_token, provider
 	# FOR iOS, we need to customize a little bit
 	# Due to ERROR with Firebase Auth -> can not login firebase directly
 	# So need server login to firebase
-	if Config.get_platform() == Config.PLATFORMS.IOS:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
 		if provider_id == "google":
 			sub_type = 1 # GOOGLE TOKEN
 		elif provider_id == "apple":
@@ -61,7 +62,7 @@ func on_firebase_auth_success(user_id, user_name, user_email, id_token, provider
 		elif provider_id == "facebook":
 			sub_type = 2
 	
-	LoginMgr.send_login_firebase(id_token, sub_type)
+	g.v.login_mgr.send_login_firebase(id_token, sub_type)
 	
 # Callback when authentication fails
 func _on_firebase_auth_failed(error_message):

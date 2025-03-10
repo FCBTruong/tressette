@@ -1,4 +1,5 @@
-extends Node
+extends RefCounted
+class_name Config
 
 @export var SERVER_IP: String = "127.0.0.1"
 @export var SERVER_PORT: String = "8000"
@@ -10,7 +11,7 @@ enum MODES { LOCAL, PRIVATE, LIVE }
 var WEBSOCKET_URL: String
 var EDIT_MODE = false
 
-func _ready():
+func on_ready():
 	if CURRENT_MODE == MODES.LOCAL:
 		if OS.get_name() == "Android":
 			CURRENT_MODE = MODES.LIVE		
@@ -27,7 +28,7 @@ func _ready():
 	else:
 		WEBSOCKET_URL = "wss://tressette-dev.clareentertainment.com/ws"
 
-	print("WebSocket URL: %s" % WEBSOCKET_URL)
+	print("WebSocket xxxxxURL: %s" % WEBSOCKET_URL)
 
 var platform = OS.get_name()
 enum PLATFORMS {
@@ -39,7 +40,7 @@ enum PLATFORMS {
 	UNKNOWN
 }
 func get_platform():
-	#if Config.CURRENT_MODE == Config.MODES.LOCAL:
+	#if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
 		#return PLATFORMS.WEB
 	if platform == "Android":
 		return PLATFORMS.ANDROID

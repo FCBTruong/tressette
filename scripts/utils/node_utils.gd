@@ -1,7 +1,8 @@
 extends Node
+class_name NodeUtils
 
 
-func get_center_position(node) -> Vector2:
+static func get_center_position(node) -> Vector2:
 	var global_position = node.global_position
 
 	if node is Control:

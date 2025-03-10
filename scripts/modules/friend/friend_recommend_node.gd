@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _click_add_friend():
-	FriendManager.send_add_friend(_info.uid)
+	g.v.friend_mgr.send_add_friend(_info.uid)
 	self.queue_free()
 
 func set_info(f: FriendModel):
@@ -24,9 +24,9 @@ func set_info(f: FriendModel):
 	avatar_img.set_avatar(f.avatar)
 	gold_lb.text = StringUtils.point_number(f.gold) + ' ₤'
 	
-	var is_sent = FriendManager.is_sent_requested(_info.uid)
+	var is_sent = g.v.friend_mgr.is_sent_requested(_info.uid)
 	self.visible = !is_sent
 func _click_info():
-	FriendManager.search_friend(self._info.uid)
+	g.v.friend_mgr.search_friend(self._info.uid)
 	
 	

@@ -22,4 +22,4 @@ func set_info(f: FriendModel) -> void:
 
 
 func _click_info():
-	FriendManager.search_friend(friend_info.uid)
+	g.v.friend_mgr.search_friend(friend_info.uid)

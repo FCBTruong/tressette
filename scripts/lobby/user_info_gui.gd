@@ -38,18 +38,18 @@ func _ready() -> void:
 	tween.parallel().tween_property(main_pn, 'scale', Vector2(1, 1), 0.4).set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.4)
-	SignalBus.connect_global('update_friend_list', Callable(self, '_update_status_friend'))
-	SignalBus.connect_global('update_friend_requests', Callable(self, '_update_status_friend'))
+	g.v.signal_bus.connect_global('update_friend_list', Callable(self, '_update_status_friend'))
+	g.v.signal_bus.connect_global('update_friend_requests', Callable(self, '_update_status_friend'))
 	red_dot_avt.visible = false
 func set_info(info: UserData):
 	_info = info
 	red_dot_avt.visible = false
-	if _info.uid == PlayerInfoMgr.my_user_data.uid:
+	if _info.uid == g.v.player_info_mgr.my_user_data.uid:
 		avt_edit_btn.visible = true
 		avatar_img.set_me()
 		is_me = true
 		
-		var is_clicked_pick_avatar = StorageCache.fetch("open_picking_avatar_gui", '0') == '1'
+		var is_clicked_pick_avatar = g.v.storage_cache.fetch("open_picking_avatar_gui", '0') == '1'
 		if not is_clicked_pick_avatar:
 			red_dot_avt.visible = true
 		
@@ -73,13 +73,13 @@ func set_info(info: UserData):
 		
 	win_rate_lb.text = win_rate
 	exp_lb.text = StringUtils.point_number(_info.exp)
-	var level = GameServerConfig.convert_exp_to_level(_info.exp)
-	if GameServerConfig.is_max_level(level):
+	var level = g.v.game_server_config.convert_exp_to_level(_info.exp)
+	if g.v.game_server_config.is_max_level(level):
 		exp_lb.text = tr("MAX")
 		exp_bar.value = 100
 	else:
-		var a = GameServerConfig.exp_levels[level - 1]
-		var b = GameServerConfig.exp_levels[level]
+		var a = g.v.game_server_config.exp_levels[level - 1]
+		var b = g.v.game_server_config.exp_levels[level]
 		var cur = _info.exp - a
 		var des = b - a
 		exp_bar.value = cur * 1.0 / des * 100
@@ -89,15 +89,15 @@ func set_info(info: UserData):
 func _copy_uid() -> void:
 	DisplayServer.clipboard_set(str(_info.uid))
 	
-	SceneManager.show_toast(str('COPY_OK'))
+	g.v.scene_manager.show_toast(str('COPY_OK'))
 	pass
 	
 func _open_pick_avatar() -> void:
 	red_dot_avt.visible = false
-	SceneManager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn', GameConstants.GUI_ZORDER.PICK_AVATAR)
+	g.v.scene_manager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn', g.v.game_constants.GUI_ZORDER.PICK_AVATAR)
 	
 func _send_request_friend():
-	FriendManager.send_add_friend(self._info.uid)
+	g.v.friend_mgr.send_add_friend(self._info.uid)
 	print('_send_request_friend', _info.uid)
 	_update_status_friend()
 
@@ -108,15 +108,15 @@ func _update_status_friend():
 	reject_friend_btn.visible = false
 	accept_friend_btn.visible = false
 	if not is_me:
-		var is_friend = FriendManager.is_my_friend(_info.uid)
+		var is_friend = g.v.friend_mgr.is_my_friend(_info.uid)
 		if is_friend:
 			friend_status.visible = true	
 			return
-		var is_sent = FriendManager.is_sent_requested(_info.uid)
+		var is_sent = g.v.friend_mgr.is_sent_requested(_info.uid)
 		if is_sent:
 			friend_requested.visible = true
 			return
-		var is_pending_accepted = FriendManager.is_pending_accepted(_info.uid)
+		var is_pending_accepted = g.v.friend_mgr.is_pending_accepted(_info.uid)
 		if is_pending_accepted:
 			reject_friend_btn.visible = true
 			accept_friend_btn.visible = true
@@ -127,9 +127,9 @@ func _update_status_friend():
 			
 			
 func _click_quick_accept_friend():
-	FriendManager.send_accept_friend_request(_info.uid)
+	g.v.friend_mgr.send_accept_friend_request(_info.uid)
 	pass
 	
 func _click_quick_reject_friend():
-	FriendManager.send_reject_friend_request(_info.uid)
+	g.v.friend_mgr.send_reject_friend_request(_info.uid)
 	pass

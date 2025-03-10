@@ -1,17 +1,8 @@
-extends Node
+extends RefCounted
+class_name StringUtils
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func point_number(number: int) -> String:
+static func point_number(number: int) -> String:
 	var number_str = str(number)
 	var formatted = ""
 	var count = 0
@@ -35,7 +26,7 @@ func point_number(number: int) -> String:
 	return formatted
 
 
-func symbol_number(num: int) -> String:
+static func symbol_number(num: int) -> String:
 	if num >= 1_000_000_000:
 		return str(floor(num / 1_000_000_000.0)) + "B"
 	elif num >= 1_000_000:
@@ -45,12 +36,12 @@ func symbol_number(num: int) -> String:
 	else:
 		return str(num)
 		
-func sub_string(str: String, size: int) -> String:
+static func sub_string(str: String, size: int) -> String:
 	if str.length() > size:
 		return str.substr(0, size) + "..."
 	return str
 	
-func convert_point_string_to_int(point_str: String) -> int:
+static func convert_point_string_to_int(point_str: String) -> int:
 	# Remove all periods from the string
 	var cleaned_str = point_str.replace(".", "")
 	# Convert the cleaned string to an integer

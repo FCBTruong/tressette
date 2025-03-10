@@ -4514,6 +4514,11 @@ class AppCodeVersion:
 		service.field = _ios_reviewing_version
 		data[_ios_reviewing_version.tag] = service
 		
+		_cdn_version = PBField.new("cdn_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _cdn_version
+		data[_cdn_version.tag] = service
+		
 	var data = {}
 	
 	var _android_version: PBField
@@ -4578,6 +4583,15 @@ class AppCodeVersion:
 		_ios_reviewing_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_ios_reviewing_version(value : int) -> void:
 		_ios_reviewing_version.value = value
+	
+	var _cdn_version: PBField
+	func get_cdn_version() -> int:
+		return _cdn_version.value
+	func clear_cdn_version() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_cdn_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_cdn_version(value : int) -> void:
+		_cdn_version.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

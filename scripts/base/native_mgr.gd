@@ -1,4 +1,5 @@
 extends Node
+class_name NativeMgr
 
 var native_plugin = null
 func _ready() -> void:
@@ -10,15 +11,15 @@ func _ready() -> void:
 			
 func open_app_store():
 	if native_plugin:
-		native_plugin.openAppStore(GameConstants.PACKAGE_NAME)
+		native_plugin.openAppStore(g.v.game_constants.PACKAGE_NAME)
 	# Google, Apple Store
 
 func rate_app():
 	print('rate app')
-	if native_plugin && Config.get_platform() == Config.PLATFORMS.ANDROID:
+	if native_plugin && g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID:
 		native_plugin.requestAppReview()
 
 func share_app(text: String):
 	if native_plugin:
-		if Config.get_platform() == Config.PLATFORMS.ANDROID:
-			native_plugin.shareApp(GameConstants.PACKAGE_NAME, text)
+		if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID:
+			native_plugin.shareApp(g.v.game_constants.PACKAGE_NAME, text)

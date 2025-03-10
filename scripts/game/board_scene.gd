@@ -60,7 +60,7 @@ const TIME_VIEW_CARD = 1.1
 const CARD_DISTANCE_BETWEEN = 90
 
 var card_scene = preload("res://scenes/board/Card.tscn")
-var game_logic: GameLogic = GameConstants.game_logic
+var game_logic: GameLogic = g.v.game_constants.game_logic
 var SCALE_CARD_COMPARE = 0.7
 var SCALE_CARD_DEAL_INIT = 0.8	
 var SCALE_CARD_DRAW = 0.6
@@ -77,14 +77,14 @@ func _ready() -> void:
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
 	_on_screen_resized()
 	
-	if AppVersion.is_in_review():
+	if g.v.app_version.is_in_review():
 		pot_pn.visible = false
 		self.bet_info_pn.visible = false
 		
 	napoli_btn.visible = false 
 	is_auto_play = false
 	game_start_lb_default_pos = game_start_lb.position
-	SceneManager.INSTANCES.BOARD_SCENE = self
+	g.v.scene_manager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
 	play_ground = find_child('PlayGround')
 	place_card_node = find_child('PlaceCard1')
@@ -97,12 +97,12 @@ func _ready() -> void:
 	auto_play_pn.z_index = 300
 	
 	# Check and show GUIDE GUI for new user
-	if PlayerInfoMgr.my_user_data.game_count == 0 and not \
-		GameManager.did_show_guide_new_user:
+	if g.v.player_info_mgr.my_user_data.game_count == 0 and not \
+		g.v.game_manager.did_show_guide_new_user:
 		self._open_guide_gui()
-		GameManager.did_show_guide_new_user = true
+		g.v.game_manager.did_show_guide_new_user = true
 			
-	SoundManager.play_music_board()
+	g.v.sound_manager.play_music_board()
 	#show_prepare_start()
 func _get_card_rotates(n):
 	if n == 1:
@@ -122,9 +122,9 @@ func _on_enter():
 	update_remain_cards()
 	in_game_chat_gui.visible = false
 	in_game_chat_gui.z_index = 200
-	chat_btn.visible = GameManager.enable_chat_ingame
+	chat_btn.visible = g.v.game_manager.enable_chat_ingame
 	chat_btn_reddot.visible = false
-	pn_cheat.visible = false #Config.CURRENT_MODE != Config.MODES.LIVE
+	pn_cheat.visible = false #g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE
 	room_id_lb.text = tr("ROOM_ID") + ': ' + str(game_logic.match_data.match_id)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		update_cards_on_table()
@@ -177,7 +177,7 @@ func continue_play():
 		
 	if self.is_auto_play:
 		# quit
-		GameManager.send_register_leave_game()
+		g.v.game_manager.send_register_leave_game()
 	cardback_node.visible = false
 	remove_all_current_cards()
 	opponent_score_lb.text = '0'
@@ -268,11 +268,11 @@ func _create_players(player_count: int) -> void:
 func update_player_seat():
 	for player in list_players:
 		var seat_id = player.user_data.game_data.seat_id
-		var pos = _get_seat_position(GameConstants.game_logic.match_data.player_mode, seat_id)
+		var pos = _get_seat_position(g.v.game_constants.game_logic.match_data.player_mode, seat_id)
 		player.global_position = pos
 		
 func _get_seat_position(mode_player: int, seat_id: int):
-	if mode_player == GameConstants.PLAYER_MODE.SOLO:
+	if mode_player == g.v.game_constants.PLAYER_MODE.SOLO:
 		match seat_id:
 			0: 
 				return seat_pos0.global_position
@@ -379,12 +379,12 @@ func play_my_card(id: int, auto: bool = false):
 	if not card:
 		print('not found card')
 		return
-	if GameManager.enable_sound:
+	if g.v.game_manager.enable_sound:
 		$AudioPlayCard.play()
 	card.is_played = true
 	card.z_index = COMPARE_CARD_Z_INDEX
-	card.player_id = PlayerInfoMgr.my_user_data.uid
-	var player_node = get_player_node_by_uid(PlayerInfoMgr.my_user_data.uid)
+	card.player_id = g.v.player_info_mgr.my_user_data.uid
+	var player_node = get_player_node_by_uid(g.v.player_info_mgr.my_user_data.uid)
 	_cur_focusing_card = null
 	var rot_degrees = randf_range(3, 6) if randf() > 0.5 else randf_range(-10, -5)
 	var rot = deg_to_rad(rot_degrees)
@@ -436,7 +436,7 @@ func on_finishhand(delay = 0.5, is_end_round = false):
 		return
 	var is_win = game_logic.is_my_team(player_win_id)
 	if is_win:
-		if GameManager.enable_sound:
+		if g.v.game_manager.enable_sound:
 			$AudioWinTurn.play()
 			
 	var eval_str = ''
@@ -581,7 +581,7 @@ func update_remain_cards():
 	
 func deal_my_cards(cards) -> void:	
 	cardback_node.visible = false
-	if GameManager.enable_sound:
+	if g.v.game_manager.enable_sound:
 		$AudioShuffleDealCard.play()
 	var from_pos = NodeUtils.get_center_position(cardback_node)
 	remove_all_current_cards()
@@ -637,11 +637,11 @@ func deal_my_cards(cards) -> void:
 
 func play_card(user_id: int, card_id: int, auto: bool = false):
 	print("user " + str(user_id) + "play_a_card", card_id)
-	if user_id == PlayerInfoMgr.my_user_data.uid:
+	if user_id == g.v.player_info_mgr.my_user_data.uid:
 		if auto:
 			play_my_card(card_id, auto)
 		return
-	if GameManager.enable_sound:
+	if g.v.game_manager.enable_sound:
 		$AudioPlayCard.play()
 
 	var card_instance = card_scene.instantiate()
@@ -667,7 +667,7 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	cards_node_compare.append(card_instance)
 #	
 func get_place_pos_card(seat_id: int) -> Vector2:
-	if game_logic.match_data.player_mode == GameConstants.PLAYER_MODE.SOLO:
+	if game_logic.match_data.player_mode == g.v.game_constants.PLAYER_MODE.SOLO:
 		if seat_id == 0:
 			return place_card0.global_position
 		else:
@@ -708,11 +708,11 @@ func on_draw_cards(arr):
 		await get_tree().create_timer(1.75).timeout
 
 func play_sound_my_turn():
-	if GameManager.enable_sound:
+	if g.v.game_manager.enable_sound:
 		$AudioYourTurn.play()
 			
 func _effect_draw_card(uid, card_id):
-	if GameManager.enable_sound:
+	if g.v.game_manager.enable_sound:
 		$AudioDrawCard.play()
 	var tween = create_tween()
 	var instance = card_scene.instantiate()
@@ -726,7 +726,7 @@ func _effect_draw_card(uid, card_id):
 	var from_pos = get_center(cardback_node)
 	instance.global_position = from_pos
 	var final_pos
-	if uid != PlayerInfoMgr.my_user_data.uid:
+	if uid != g.v.player_info_mgr.my_user_data.uid:
 		var player_node = get_player_node_by_uid(uid)
 		final_pos = player_node.global_position
 		tween.parallel().tween_callback(
@@ -816,7 +816,7 @@ func show_prepare_start():
 	pass
 
 func exit_game():
-	SceneManager.switch_scene("res://scenes/LobbyScene.tscn")
+	g.v.scene_manager.switch_scene("res://scenes/LobbyScene.tscn")
 
 func on_show_chat_gui():
 	in_game_chat_gui.visible = !in_game_chat_gui.visible
@@ -824,7 +824,7 @@ func on_show_chat_gui():
 
 func on_new_chat_message(uid, message):
 	if not in_game_chat_gui.visible:
-		SoundManager.play_notification_alert()
+		g.v.sound_manager.play_notification_alert()
 		chat_btn_reddot.visible = true
 		
 	in_game_chat_gui.on_received_new_chat(uid, message)
@@ -836,7 +836,7 @@ func on_new_chat_emo(uid, emo):
 	
 func _effect_evaluate(text = 'Fantastic!'):
 	var screen_size = DisplayServer.window_get_size()
-	if screen_size.x / screen_size.y < 1.4 or AppVersion.is_in_review():
+	if screen_size.x / screen_size.y < 1.4 or g.v.app_version.is_in_review():
 		# because if in review, pot will be invisible
 		evaluate_lb_default_pos = evaluate_ipad_pos_node.position
 		evaluate_lb_default_pos -= evaluate_lb.size * evaluate_lb.scale / 2
@@ -855,7 +855,7 @@ func _effect_evaluate(text = 'Fantastic!'):
 	pass
 
 func _input(event):
-	if Config.CURRENT_MODE != Config.MODES.LOCAL:
+	if g.v.config.CURRENT_MODE != g.v.config.MODES.LOCAL:
 		return
 	if event is InputEventKey:
 		if event.pressed:
@@ -888,7 +888,7 @@ func _input(event):
 				print("W key released")
 
 func update_register_leave_state():
-	if GameConstants.game_logic.is_registered_leave:
+	if g.v.game_constants.game_logic.is_registered_leave:
 		back_btn.modulate = Color("f6353f67")
 		pass
 	else:
@@ -897,20 +897,20 @@ func update_register_leave_state():
 		
 
 func _on_back_btn_pressed() -> void:
-	if GameConstants.game_logic.is_registered_leave:
+	if g.v.game_constants.game_logic.is_registered_leave:
 		# cancel
-		GameManager.send_deregister_leave_game()
+		g.v.game_manager.send_deregister_leave_game()
 	else:
-		GameManager.send_register_leave_game()
+		g.v.game_manager.send_register_leave_game()
 
 func _open_settings_gui() -> void:
-	SceneManager.open_gui("res://scenes/guis/SettingsGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn")
 
 func _open_guide_gui() -> void:
-	SceneManager.open_gui("res://scenes/guis/GuideGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn")
 	
 func _effect_pot_contribute():
-	if AppVersion.is_in_review():
+	if g.v.app_version.is_in_review():
 		return
 	center_play_pn_pos = NodeUtils.get_center_position(center_play_pn)
 	var i = 0
@@ -918,7 +918,7 @@ func _effect_pot_contribute():
 		var pos = player.global_position
 		var des_p = Vector2(center_play_pn_pos.x, center_play_pn_pos.y)
 
-		EffectMgr.effect_fly_coin_bet_table(
+		g.v.effect_mgr.effect_fly_coin_bet_table(
 			"res://assets/images/lobby/lira_icon.png",
 			5,
 			pos,
@@ -977,7 +977,7 @@ func on_user_turn():
 			n.queue_free()
 		list_napoli_highlights.clear()
 	if game_logic.match_data.hand_in_round == 0:
-		if GameConstants.game_logic.get_uid_in_turn() == PlayerInfoMgr.get_user_id():
+		if g.v.game_constants.game_logic.get_uid_in_turn() == g.v.player_info_mgr.get_user_id():
 			var nap_sets = game_logic.find_napoli()
 			if len(nap_sets) > 0:
 				napoli_btn.visible = true
@@ -1006,7 +1006,7 @@ func _hight_light_napoli_set(nap):
 	list_napoli_highlights.append(h)
 func _on_user_napoli(uid, point_add, suits):
 	var p = get_player_node_by_uid(uid)
-	if uid == PlayerInfoMgr.get_user_id():
+	if uid == g.v.player_info_mgr.get_user_id():
 		if len(list_napoli_highlights) > 0:
 			for n in list_napoli_highlights:
 				n.queue_free()
@@ -1017,7 +1017,7 @@ func _on_user_napoli(uid, point_add, suits):
 
 
 func _click_show_info_bet() -> void:
-	SceneManager.open_gui("res://scenes/board/BetDetailGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/board/BetDetailGUI.tscn")
 
 func user_not_play_turn():
 	is_auto_play = true
@@ -1026,7 +1026,7 @@ func user_not_play_turn():
 func _click_return_table() -> void:
 	is_auto_play = false
 	self.auto_play_pn.visible = false
-	GameClient.send_packet(GameConstants.CMDs.USER_RETURN_TO_TABLE, [])
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.USER_RETURN_TO_TABLE, [])
 
 func _on_screen_resized():
 	if is_portrait:

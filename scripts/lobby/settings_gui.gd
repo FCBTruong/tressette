@@ -31,17 +31,17 @@ func _ready() -> void:
 	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	_update_choosing_card()
 	
-	sound_checker.button_pressed = GameManager.enable_sound
-	music_checker.button_pressed = GameManager.enable_music
+	sound_checker.button_pressed = g.v.game_manager.enable_sound
+	music_checker.button_pressed = g.v.game_manager.enable_music
 	
 	var lang_idx = -1
-	if GameManager.language == 'en':
+	if g.v.game_manager.language == 'en':
 		lang_idx = LanguageConf.get('en')
-	elif GameManager.language == 'it':
+	elif g.v.game_manager.language == 'it':
 		lang_idx = LanguageConf.get('it')
 	option_language.select(lang_idx)
 	
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		remove_acc_btn.visible = false
 		logout_btn.visible = false
@@ -65,19 +65,19 @@ func _on_close_tween_finished() -> void:
 	$Panel.position = default_pos
 
 func _logout() -> void:
-	GameClient.send_packet(GameConstants.CMDs.LOG_OUT, [])
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.LOG_OUT, [])
 	
 func _choose_card_classic():
-	GameManager.change_card_style(GameConstants.CARD_STYLES.CLASSIC)
+	g.v.game_manager.change_card_style(g.v.game_constants.CARD_STYLES.CLASSIC)
 	_update_choosing_card()
 	
 func _choose_card_modern():
-	GameManager.change_card_style(GameConstants.CARD_STYLES.MODERN)
+	g.v.game_manager.change_card_style(g.v.game_constants.CARD_STYLES.MODERN)
 	_update_choosing_card()
 	
 func _update_choosing_card():
 	var p = null
-	if GameManager.card_style == GameConstants.CARD_STYLES.CLASSIC:
+	if g.v.game_manager.card_style == g.v.game_constants.CARD_STYLES.CLASSIC:
 		check_icon_class.visible = true
 		check_icon_modern.visible = false
 	else:
@@ -85,28 +85,28 @@ func _update_choosing_card():
 		check_icon_modern.visible = true
 
 func _click_sound():
-	GameManager.set_enable_sound(sound_checker.button_pressed)
+	g.v.game_manager.set_enable_sound(sound_checker.button_pressed)
 	pass
 	
 func _click_music():
-	GameManager.set_enable_music(music_checker.button_pressed)
+	g.v.game_manager.set_enable_music(music_checker.button_pressed)
 	pass
 	
 func _on_select_language_option(index):
 	if index == LanguageConf.get('it'):
 		# italy
-		GameManager.choose_language('it')
+		g.v.game_manager.choose_language('it')
 	elif index == LanguageConf.get('en'):
-		GameManager.choose_language('en')
+		g.v.game_manager.choose_language('en')
 		
 func _remove_account():
-	if Config.get_platform() == Config.PLATFORMS.IOS:
-		SceneManager.open_gui("res://scenes/guis/AccountDeletion.tscn")
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
+		g.v.scene_manager.open_gui("res://scenes/guis/AccountDeletion.tscn")
 	else:
-		OS.shell_open(GameConstants.DELETE_ACCOUNT_URL)
+		OS.shell_open(g.v.game_constants.DELETE_ACCOUNT_URL)
 		
 func _click_privacy_policy():
-	OS.shell_open(GameConstants.PRIVACY_POLICY_URL)
+	OS.shell_open(g.v.game_constants.PRIVACY_POLICY_URL)
 
 func _click_terms_of_service():
-	OS.shell_open(GameConstants.TERMS_OF_SERVICE_URL)
+	OS.shell_open(g.v.game_constants.TERMS_OF_SERVICE_URL)

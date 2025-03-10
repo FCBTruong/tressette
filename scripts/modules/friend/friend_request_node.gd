@@ -15,10 +15,10 @@ func _process(delta: float) -> void:
 
 func _on_accept():
 	print('accept friend')
-	FriendManager.send_accept_friend_request(_info.uid)
+	g.v.friend_mgr.send_accept_friend_request(_info.uid)
 	self.get_parent().remove_child(self)
 func _on_reject():
-	FriendManager.send_reject_friend_request(_info.uid)
+	g.v.friend_mgr.send_reject_friend_request(_info.uid)
 	print('on reject')
 	self.get_parent().remove_child(self)
 
@@ -30,4 +30,4 @@ func set_info(f: FriendModel):
 	pass
 
 func _click_view_info():
-	FriendManager.search_friend(_info.uid)
+	g.v.friend_mgr.search_friend(_info.uid)

@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 func set_info(table: TableInfo):
 	self._info = table
 	self.bet_lb.text = StringUtils.point_number(table.bet) \
-		 + ' ' + GameConstants.LIRA_TEXT
+		 + ' ' + g.v.game_constants.LIRA_TEXT
 		
 	var str = ""
 	str += str(table.num_player) + '/' + str(table.player_mode)
@@ -29,13 +29,13 @@ func set_info(table: TableInfo):
 
 func _click_play():
 	if self._info.num_player == self._info.player_mode:
-		SceneManager.show_dialog(
+		g.v.scene_manager.show_dialog(
 			tr("ROOM_IS_FULL")
 		)
 		return
 	# check if enough gold
-	if self._info.bet * GameServerConfig.bet_multiplier_min > \
-		PlayerInfoMgr.my_user_data.gold:
-		GameManager.show_not_gold_recommend_shop()
+	if self._info.bet * g.v.game_server_config.bet_multiplier_min > \
+		g.v.player_info_mgr.my_user_data.gold:
+		g.v.game_manager.show_not_gold_recommend_shop()
 		return
-	GameManager.join_game_by_id(self._info.match_id)
+	g.v.game_manager.join_game_by_id(self._info.match_id)

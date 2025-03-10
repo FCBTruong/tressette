@@ -1,50 +1,46 @@
-extends Node
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+extends RefCounted
+class_name GameClient
 
 
 func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 	print('on_receive_packet', cmd_id)
 
 	match cmd_id:
-		GameConstants.CMDs.TEST_MESSAGE:
+		g.v.game_constants.CMDs.TEST_MESSAGE:
 			return
-		GameConstants.CMDs.ADMIN_BROADCAST:
-			var pkg = GameConstants.PROTOBUF.PACKETS.AdminBroadcast.new()
+		g.v.game_constants.CMDs.ADMIN_BROADCAST:
+			var pkg = g.v.game_constants.PROTOBUF.PACKETS.AdminBroadcast.new()
 			var result_code = pkg.from_bytes(payload)
 			
 			var msg = pkg.get_mes()
-			SceneManager.show_ok_dialog(msg)
-		GameConstants.CMDs.LOGIN:
-			var pkg = GameConstants.PROTOBUF.PACKETS.LoginResponse.new()
+			g.v.scene_manager.show_ok_dialog(msg)
+		g.v.game_constants.CMDs.LOGIN:
+			var pkg = g.v.game_constants.PROTOBUF.PACKETS.LoginResponse.new()
 			var result_code = pkg.from_bytes(payload)
 			var error = pkg.get_error()
 			if error != 0:
 				print('error login')
-				SceneManager.show_ok_dialog("LOGIN_ERROR_" + str(error),
+				g.v.scene_manager.show_ok_dialog("LOGIN_ERROR_" + str(error),
 					func ():
-						GameManager.logout()
+						g.v.game_manager.logout()
 				)
 				
 				return
 			var uid = pkg.get_uid()
 			var token = pkg.get_token()
-			GameManager.login_success(uid, token)
-		GameConstants.CMDs.LOG_OUT:
-			GameManager.logout()
+			g.v.game_manager.login_success(uid, token)
+		g.v.game_constants.CMDs.LOG_OUT:
+			g.v.game_manager.logout()
 		_:
-			GameManager.on_receive(cmd_id, payload)
-			InGameChatMgr.on_receive(cmd_id, payload)
-			PaymentMgr.on_receive(cmd_id, payload)
-			PlayerInfoMgr.on_receive(cmd_id, payload)
-			LoginMgr.on_receive(cmd_id, payload)
-			FriendManager.on_receive(cmd_id, payload)
-			SetteMezzoMgr.on_receive(cmd_id, payload)
+			g.v.game_manager.on_receive(cmd_id, payload)
+			g.v.ingame_chat_mgr.on_receive(cmd_id, payload)
+			g.v.payment_mgr.on_receive(cmd_id, payload)
+			g.v.player_info_mgr.on_receive(cmd_id, payload)
+			g.v.login_mgr.on_receive(cmd_id, payload)
+			g.v.friend_mgr.on_receive(cmd_id, payload)
+			#SetteMezzoMgr.on_receive(cmd_id, payload)
 			pass
 		
 
 func send_packet(cmd_id: int, payload: PackedByteArray):
-	WebsocketClient.send_packet(cmd_id, payload)
+	g.v.websocket_client.send_packet(cmd_id, payload)

@@ -1,4 +1,5 @@
 extends Node
+class_name LoginMgr
 
 const LOGIN_GUEST: int = 0
 const LOGIN_GOOGLE: int = 1
@@ -6,23 +7,21 @@ const LOGIN_FACEBOOK: int = 2
 const LOGIN_APPLE: int = 3
 const LOGIN_TOKEN: int = 20
 const LOGIN_UID_CHEAT: int = 10
-var last_login_type: int = GameConstants.LOGIN_TYPE.GUEST
+var last_login_type: int = g.v.game_constants.LOGIN_TYPE.GUEST
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+
 
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
-		GameConstants.CMDs.CREATE_GUEST_ACCOUNT:
+		g.v.game_constants.CMDs.CREATE_GUEST_ACCOUNT:
 			_on_received_guest_acc(payload)
 			pass
-		GameConstants.CMDs.LOGIN_FIREBASE:
+		g.v.game_constants.CMDs.LOGIN_FIREBASE:
 			_on_received_firebase_acc(payload)
 			pass
 			
 func _on_received_guest_acc(payload):
-	var pkg = GameConstants.PROTOBUF.PACKETS.GuestAccount.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.GuestAccount.new()
 	var result_code = pkg.from_bytes(payload)
 	var guest_id = pkg.get_guest_id()
 	_send_login_guest(guest_id)
@@ -30,41 +29,41 @@ func _on_received_guest_acc(payload):
 	save_guest_id(guest_id)
 	
 func _on_received_firebase_acc(payload):
-	var pkg = GameConstants.PROTOBUF.PACKETS.LoginFirebase.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.LoginFirebase.new()
 	var result_code = pkg.from_bytes(payload)
 	var token = pkg.get_login_token()
 	save_login_token(token)
 	# call login
-	StorageCache.store('last_login_type', GameConstants.LOGIN_TYPE.FIREBASE) # use token
+	g.v.storage_cache.store('last_login_type', g.v.game_constants.LOGIN_TYPE.FIREBASE) # use token
 	auto_login()
 
 func auto_login():
-	last_login_type = StorageCache.fetch('last_login_type', GameConstants.LOGIN_TYPE.NONE)
-	if last_login_type == GameConstants.LOGIN_TYPE.NONE:
+	last_login_type = g.v.storage_cache.fetch('last_login_type', g.v.game_constants.LOGIN_TYPE.NONE)
+	if last_login_type == g.v.game_constants.LOGIN_TYPE.NONE:
 		# For web and is first time open game, auto login guest
-		if Config.get_platform() == Config.PLATFORMS.WEB:
-			var loginned = StorageCache.fetch('loginned', 0)
+		if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
+			var loginned = g.v.storage_cache.fetch('loginned', 0)
 			if loginned == 0:
 				login_guest()
-				StorageCache.store('loginned', 1)
+				g.v.storage_cache.store('loginned', 1)
 		
 		return false
-	if last_login_type == GameConstants.LOGIN_TYPE.FIREBASE: # use token
+	if last_login_type == g.v.game_constants.LOGIN_TYPE.FIREBASE: # use token
 		var login_token = load_login_token()
 		print('login_token')
-		var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
+		var pkg = g.v.game_constants.PROTOBUF.PACKETS.Login.new()
 		pkg.set_type(LOGIN_TOKEN)	
 		pkg.set_token(login_token)
 		
 		_set_device_info(pkg)
 	
-		GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
-	elif  last_login_type == GameConstants.LOGIN_TYPE.GUEST: # guest
+		g.v.game_client.send_packet(g.v.game_constants.CMDs.LOGIN, pkg.to_bytes())
+	elif  last_login_type == g.v.game_constants.LOGIN_TYPE.GUEST: # guest
 		login_guest()
 	return true
 	
 func login_guest():
-	StorageCache.store('last_login_type', GameConstants.LOGIN_TYPE.GUEST)
+	g.v.storage_cache.store('last_login_type', g.v.game_constants.LOGIN_TYPE.GUEST)
 	var guest_id = load_guest_id()
 	print('load guest', guest_id)
 	#return
@@ -75,14 +74,14 @@ func login_guest():
 		print('guest id', guest_id)
 
 func _send_login_guest(guest_id):
-	var pkg = GameConstants.PROTOBUF.PACKETS.Login.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.Login.new()
 	pkg.set_type(LOGIN_GUEST)	
 	pkg.set_token(guest_id)
 	_set_device_info(pkg)
-	GameClient.send_packet(GameConstants.CMDs.LOGIN, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.LOGIN, pkg.to_bytes())
 
 func _create_guest_account():
-	GameClient.send_packet(GameConstants.CMDs.CREATE_GUEST_ACCOUNT, [])
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CREATE_GUEST_ACCOUNT, [])
 
 	
 func load_guest_id() -> String:
@@ -116,24 +115,24 @@ func save_login_token(token: String) -> void:
 		file.close()
 
 func send_login_firebase(token: String, sub_type) -> void:
-	var pkg = GameConstants.PROTOBUF.PACKETS.LoginFirebase.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.LoginFirebase.new()
 	pkg.set_login_token(token)
 	pkg.set_sub_type(sub_type)
-	GameClient.send_packet(GameConstants.CMDs.LOGIN_FIREBASE, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.LOGIN_FIREBASE, pkg.to_bytes())
 	
 func _set_device_info(pkg):
 	var device_model = OS.get_model_name()
 	var platform = ''
 	
-	if Config.get_platform() == Config.PLATFORMS.IOS:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
 		platform = 'ios'
-	elif Config.get_platform() == Config.PLATFORMS.WEB:
+	elif g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 		platform = 'web'
 	else:
 		platform = 'android'
 	pkg.set_device_model(device_model)
 	pkg.set_platform(platform)
-	pkg.set_app_version_code(AppVersion.my_code_version)
+	pkg.set_app_version_code(g.v.app_version.my_code_version)
 	
 	var current_locale = OS.get_locale()
 	var country = current_locale.split("_")[-1]

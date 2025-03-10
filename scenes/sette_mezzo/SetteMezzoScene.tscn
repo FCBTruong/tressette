@@ -74,6 +74,9 @@ shadow_size = 3
 
 [node name="BoardScene" type="Node2D"]
 script = ExtResource("1_gx0u6")
+card_offset_x = null
+rot_max = null
+anim_offset_y = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

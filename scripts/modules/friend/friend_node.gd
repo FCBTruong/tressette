@@ -18,9 +18,9 @@ func _remove_friend():
 	var txt = tr("CONFIRM_REMOVE_FRIEND")
 	# replace @name by _info.name
 	txt = txt.replace("@name", _info.name)
-	SceneManager.show_dialog(txt,
+	g.v.scene_manager.show_dialog(txt,
 		func ():
-			FriendManager.remove_friend(_info.uid),
+			g.v.friend_mgr.remove_friend(_info.uid),
 		func ():
 			pass,
 		true 
@@ -35,6 +35,6 @@ func set_info(f: FriendModel):
 	online_icon.visible = f.is_online
 	
 func _click_info():
-	FriendManager.search_friend(self._info.uid)
+	g.v.friend_mgr.search_friend(self._info.uid)
 	
 	

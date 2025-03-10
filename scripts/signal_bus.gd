@@ -1,4 +1,5 @@
 extends Node
+class_name SignalBus
 
 # Declare global signals
 signal update_table_list
@@ -27,11 +28,11 @@ func emit_signal_global(signal_name: String, args: Array = []) -> void:
 			_:
 				push_error("Too many arguments for signal '%s'." % signal_name)
 	else:
-		push_error("Signal '%s' does not exist in SignalBus." % signal_name)
+		push_error("Signal '%s' does not exist in g.v.signal_bus." % signal_name)
 
 # Connect to a global signal using Callable
 func connect_global(signal_name: String, callable: Callable) -> void:
 	if has_signal(signal_name):
 		connect(signal_name, callable)
 	else:
-		push_error("Signal '%s' does not exist in SignalBus." % signal_name)
+		push_error("Signal '%s' does not exist in g.v.signal_bus." % signal_name)

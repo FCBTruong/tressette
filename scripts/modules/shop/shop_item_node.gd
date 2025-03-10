@@ -9,9 +9,9 @@ extends Node
 var info: PackInfo
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	apple_icon.visible = Config.get_platform() == Config.PLATFORMS.IOS
-	chplay_icon.visible = Config.get_platform() == Config.PLATFORMS.ANDROID
-	paypal_icon.visible = Config.get_platform() == Config.PLATFORMS.WEB
+	apple_icon.visible = g.v.config.get_platform() == g.v.config.PLATFORMS.IOS
+	chplay_icon.visible = g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID
+	paypal_icon.visible = g.v.config.get_platform() == g.v.config.PLATFORMS.WEB
 	pass # Replace with function body.
 
 
@@ -32,9 +32,9 @@ func set_info(p_info):
 	info.pack_id = p_info['pack_id']
 	info.gold = p_info['gold']
 	print('set info pack', info.pack_id)
-	var price = PaymentMgr.get_price_pack(info.pack_id)
+	var price = g.v.payment_mgr.get_price_pack(info.pack_id)
 	price_lb.text = price
 	gold_lb.text = StringUtils.point_number(info.gold)
 	
 func _click_buy():
-	PaymentMgr.buy_pack(info.pack_id)
+	g.v.payment_mgr.buy_pack(info.pack_id)

@@ -39,11 +39,11 @@ func text_submitted(text):
 		
 	print(text)
 	input_field.text = ''
-	user_name = PlayerInfoMgr.my_user_data.name
-	add_message(PlayerInfoMgr.my_user_data.uid, user_name, text)
-	var pkg = GameConstants.PROTOBUF.PACKETS.InGameChatMessage.new()
+	user_name = g.v.player_info_mgr.my_user_data.name
+	add_message(g.v.player_info_mgr.my_user_data.uid, user_name, text)
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.InGameChatMessage.new()
 	pkg.set_chat_message(text)
-	GameClient.send_packet(GameConstants.CMDs.NEW_INGAME_CHAT_MESSAGE, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.NEW_INGAME_CHAT_MESSAGE, pkg.to_bytes())
 	
 func add_message(uid, user_name, text):
 	var group_index = _get_group_index(uid)
@@ -55,7 +55,7 @@ func add_message(uid, user_name, text):
 	chat_log.text += '\n'
 	
 func on_received_new_chat(uid, message):
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BaseBoardScene:
 		var user_name = str(uid)
 		var user = cur_scene.game_logic.get_user(uid)
@@ -64,7 +64,7 @@ func on_received_new_chat(uid, message):
 		add_message(uid, user_name, message)
 	
 func _get_group_index(uid):
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BaseBoardScene:
 		var user = cur_scene.game_logic.get_user(uid)
 		if user:

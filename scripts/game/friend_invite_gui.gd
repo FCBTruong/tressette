@@ -14,7 +14,7 @@ func _ready() -> void:
 		.set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.5)
 	
-	var friends = FriendManager.get_online_friends()
+	var friends = g.v.friend_mgr.get_online_friends()
 	
 	if len(friends) == 0:
 		no_friend_lb.visible = true
@@ -28,7 +28,7 @@ func _ready() -> void:
 		friends_container.add_child(n)
 		n.set_info(f)
 		
-	FriendManager.send_friend_list()
+	g.v.friend_mgr.send_friend_list()
 		
 		
 	

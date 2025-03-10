@@ -1,13 +1,10 @@
 extends Node
+class_name EffectMgr
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 var trail_scene = preload('res://scenes/effects/TrailNode.tscn')
 func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_pos: Vector2, fly_time: float, scale, board_scene: BoardScene, should_call: bool):
-	var canvas_layer = SceneManager.get_effect_layer()
+	var canvas_layer = g.v.scene_manager.get_effect_layer()
 	var ax = randf_range(200,500)
 	
 	print('effect fly coin bet')
@@ -52,7 +49,7 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 		
 		tween.parallel().tween_callback(
 			func():
-				SoundManager.play_coin_hit_sound()
+				g.v.sound_manager.play_coin_hit_sound()
 		).set_delay(delay)
 		
 		tween.parallel().tween_property(
@@ -89,7 +86,7 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 			func():
 				if node:
 					node.queue_free
-					SoundManager.play_coin_hit_sound()
+					g.v.sound_manager.play_coin_hit_sound()
 				)
 		
 		if should_call and i == num - 1:
@@ -99,7 +96,7 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 		
 func effect_fly_object(img: String, num: int, start_pos: Vector2, des_pos: Vector2, fly_time: float, scale = 1):
 	var canvas_layer = CanvasLayer.new()
-	SceneManager.get_current_scene().add_child(canvas_layer)
+	g.v.scene_manager.get_current_scene().add_child(canvas_layer)
 	canvas_layer.layer = 200  # Higher layer value means it will be drawn above lower values
 	var ax = randf_range(200,500)
 	for i in range(num):

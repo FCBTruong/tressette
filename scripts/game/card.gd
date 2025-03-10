@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 var pos_card = null
@@ -14,20 +14,20 @@ var player_id = -1 # ref uid
 @onready var card_image = find_child('CardImage')
 @onready var main_pn = find_child('Main')
 @onready var card_btn = find_child('CardBtn')
-var face_state = GameConstants.CARD_FACE_STATE.DOWN
+var face_state = g.v.game_constants.CARD_FACE_STATE.DOWN
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	is_played = false
 	pos_card = card_image.position
 	main_pn.z_index = 1
-	SignalBus.connect_global("update_card_style", Callable(self, "_on_update_card_style"))
+	g.v.signal_bus.connect_global("update_card_style", Callable(self, "_on_update_card_style"))
 	
 func _on_touch_card() -> void:
-	if not GameConstants.game_logic.is_my_turn():
+	if not g.v.game_constants.game_logic.is_my_turn():
 		print('not your turn')
 		return
-	SceneManager.INSTANCES.BOARD_SCENE.play_my_card(id)
+	g.v.scene_manager.INSTANCES.BOARD_SCENE.play_my_card(id)
 	
 func set_state_focusing(focus = false) -> void:
 	if focus:
@@ -64,16 +64,16 @@ func set_card(card_id: int):
 	id = card_id
 	
 func turn_face_down():
-	face_state = GameConstants.CARD_FACE_STATE.DOWN
+	face_state = g.v.game_constants.CARD_FACE_STATE.DOWN
 	var path = "res://assets/images/card_tressette/card_back.png"
 	_load_texture(path)
 	
 	self.card_image.self_modulate = Color("#ffffff")
 	
-	if GameManager.CURRENT_GAME_PLAY == 0:
+	if g.v.game_manager.CURRENT_GAME_PLAY == 0:
 		#self.card_image.material = null
-		material.shader = shader1
-		self.card_image.material = material
+		card_mat.shader = shader1
+		self.card_image.material = card_mat
 	
 func _load_texture(path):
 	var new_texture = load(path)
@@ -90,26 +90,26 @@ func _set_default_z_index(z):
 	self.z_index = z
 
 var shader = preload("res://shaders/gold.gdshader")
-var material = ShaderMaterial.new()
+var card_mat = ShaderMaterial.new()
 
 var shader1 = preload('res://shaders/gradient.gdshader')
 	
 func turn_face_up():
-	face_state = GameConstants.CARD_FACE_STATE.UP
+	face_state = g.v.game_constants.CARD_FACE_STATE.UP
 	_load_texture_card()
 	
-	if GameManager.CURRENT_GAME_PLAY == 0:
-		if GameConstants.game_logic.is_most_value_card(self.id):
-			material.shader = shader
-			self.card_image.material = material
-		elif (GameConstants.game_logic.is_strong_card(self.id)):
-			#material.shader = shader1
-			#self.card_image.material = material
+	if g.v.game_manager.CURRENT_GAME_PLAY == 0:
+		if g.v.game_constants.game_logic.is_most_value_card(self.id):
+			card_mat.shader = shader
+			self.card_image.material = card_mat
+		elif (g.v.game_constants.game_logic.is_strong_card(self.id)):
+			#card_mat.shader = shader1
+			#self.card_image.material = card_mat
 			self.card_image.material = null
 		else:
 			self.card_image.material = null
 	
-	#if (GameConstants.game_logic.is_strong_card(self.id)):
+	#if (g.v.game_constants.game_logic.is_strong_card(self.id)):
 		#self.card_image.self_modulate = Color("ffe8ca")
 	#else:
 		#self.card_image.self_modulate = Color("#ffffff")
@@ -118,9 +118,9 @@ func turn_face_up():
 
 func _load_texture_card():
 	var card_type = 'classic'
-	if GameManager.card_style == GameConstants.CARD_STYLES.CLASSIC:
+	if g.v.game_manager.card_style == g.v.game_constants.CARD_STYLES.CLASSIC:
 		card_type = 'classic'
-	elif GameManager.card_style == GameConstants.CARD_STYLES.MODERN:
+	elif g.v.game_manager.card_style == g.v.game_constants.CARD_STYLES.MODERN:
 		card_type = 'modern'
 		
 	var path = "res://assets/images/card_tressette/" + card_type + "/card_" + str(id) + ".png"
@@ -190,7 +190,7 @@ func update_state_can_play(is_valid: bool):
 		pass
 		
 func _on_update_card_style():
-	if face_state != GameConstants.CARD_FACE_STATE.UP:
+	if face_state != g.v.game_constants.CARD_FACE_STATE.UP:
 		return
 	_load_texture_card()
 	

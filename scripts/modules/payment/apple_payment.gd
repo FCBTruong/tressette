@@ -86,7 +86,7 @@ func purchase_pack(pack_id):
 	print('resulttt apple pay', result)
 	
 	if result != pack_id:
-		SceneManager.show_dialog(tr("ERROR_PAY_APPLE") + ', Error: ' + result)
+		g.v.scene_manager.show_dialog(tr("ERROR_PAY_APPLE") + ', Error: ' + result)
 	
 func request_product_info():
 	if not _appstore:
@@ -96,21 +96,21 @@ func request_product_info():
 	
 func _process_purchase(pack_id, receipt_ret):
 	print('apple payment: _process_purchase ', pack_id)
-	LogsMgr.log_dev("packkk: " + pack_id)
+	g.v.logs_mgr.log_dev("packkk: " + pack_id)
 	
 	# sdk, receipt
 	var receipt = receipt_ret.receipt
-	LogsMgr.log_dev("Receipt apple" + receipt)
+	g.v.logs_mgr.log_dev("Receipt apple" + receipt)
 	
 	# check if login or not
-	if not GameManager.is_logged_in():
+	if not g.v.game_manager.is_logged_in():
 		# save to pending
 		_add_pending_purchase(pack_id, receipt_ret)
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentAppleConsume.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PaymentAppleConsume.new()
 	pkg.set_pack_id(pack_id)
 	pkg.set_receipt_data(receipt)
-	GameClient.send_packet(GameConstants.CMDs.PAYMENT_APPLE_CONSUME, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.PAYMENT_APPLE_CONSUME, pkg.to_bytes())
 	
 	# SEND TO SERVER TO VERIFY
 
@@ -139,7 +139,7 @@ func _handle_purchase_result(event):
 		_process_purchase(pack_id, receipt)
 		pass
 	elif event.result == "unhandled":
-		SceneManager.show_dialog(tr("TRANSACTION_IS_UNHANDLED") + ', Error: ' + event.result)
+		g.v.scene_manager.show_dialog(tr("TRANSACTION_IS_UNHANDLED") + ', Error: ' + event.result)
 		pass
 	elif event.result == "progress":
 		print("pay on progress")

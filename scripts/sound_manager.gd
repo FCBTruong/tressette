@@ -1,4 +1,5 @@
 extends Node
+class_name SoundManager
 
 var audio_player: AudioStreamPlayer
 var music_player: AudioStreamPlayer
@@ -12,14 +13,14 @@ func _ready() -> void:
 
 var click_sound = preload("res://assets/sounds/touch_sound.mp3")
 func play_click():
-	if not GameManager.enable_sound:
+	if not g.v.game_manager.enable_sound:
 		return
 	audio_player.stream = click_sound
 	audio_player.play()
 
 var notification_alert_sound = preload('res://assets/sounds/notification_alert_sound.mp3')
 func play_notification_alert():
-	if not GameManager.enable_sound:
+	if not g.v.game_manager.enable_sound:
 		return
 	audio_player.stream = notification_alert_sound
 	audio_player.play()
@@ -27,21 +28,21 @@ func play_notification_alert():
 
 var win_congrat_sound = preload('res://assets/sounds/win_congrat_sound.mp3')
 func play_win_congrat_sound():
-	if not GameManager.enable_sound:
+	if not g.v.game_manager.enable_sound:
 		return
 	audio_player.stream = win_congrat_sound
 	audio_player.play()
 	
 var lose_sound = preload('res://assets/sounds/lose_sound.mp3')
 func play_lose_sound():
-	if not GameManager.enable_sound:
+	if not g.v.game_manager.enable_sound:
 		return
 	audio_player.stream = lose_sound
 	audio_player.play()
 	
 var coin_hit_sound = preload('res://assets/sounds/coin_hit_sound.wav')
 func play_coin_hit_sound():
-	if not GameManager.enable_sound:
+	if not g.v.game_manager.enable_sound:
 		return
 	audio_player.stream = coin_hit_sound
 	audio_player.play()
@@ -51,7 +52,7 @@ var board_music = preload("res://assets/musics/board_music.mp3")
 
 var is_playing_music_lobby = false
 func play_music_lobby():
-	if not GameManager.enable_music:
+	if not g.v.game_manager.enable_music:
 		return
 	if is_playing_music_lobby:
 		return
@@ -63,7 +64,7 @@ func play_music_lobby():
 	music_player.play()
 	
 func play_music_board():
-	if not GameManager.enable_music:
+	if not g.v.game_manager.enable_music:
 		return
 	stop_music()
 	music_player.volume_db = -10

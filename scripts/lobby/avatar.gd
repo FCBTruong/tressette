@@ -11,12 +11,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func set_me():
-	set_avatar(PlayerInfoMgr.my_user_data.avatar)
-	SignalBus.connect_global('on_changed_avatar', Callable(self, "on_changed_my_avatar"))
+	set_avatar(g.v.player_info_mgr.my_user_data.avatar)
+	g.v.signal_bus.connect_global('on_changed_avatar', Callable(self, "on_changed_my_avatar"))
 	
 func _update_my_avatar():
-	set_avatar(PlayerInfoMgr.my_user_data.avatar)
-	print('avatar....', PlayerInfoMgr.my_user_data.avatar)
+	set_avatar(g.v.player_info_mgr.my_user_data.avatar)
+	print('avatar....', g.v.player_info_mgr.my_user_data.avatar)
 
 func on_changed_my_avatar():
 	_update_my_avatar()

@@ -15,5 +15,5 @@ func on_hightlight(high):
 	highlight.visible = high
 
 func on_click():
-	SignalBus.emit_signal_global('on_picking_avatar', [id])
+	g.v.signal_bus.emit_signal_global('on_picking_avatar', [id])
 	pass

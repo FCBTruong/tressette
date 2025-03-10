@@ -22,5 +22,5 @@ func on_google_login_success(args):
 	var sub_type = 1 # google 
 	print(typeof(token))  # Should print TYPE_STRING (4)
 	token = token.replace('"', "")
-	LoginMgr.send_login_firebase(token, sub_type)
+	g.v.login_mgr.send_login_firebase(token, sub_type)
 	print("Google login successful! Token:", token)

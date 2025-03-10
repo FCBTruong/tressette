@@ -131,18 +131,18 @@ func _on_query_purchases_response(query_result):
 
 func _process_purchase(purchase):
 	print('payment: _process_purchase')
-	if Config.CURRENT_MODE != Config.MODES.LIVE:
+	if g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE:
 		for key in purchase.keys():
 			print("%s: %s" % [key, purchase[key]])
 	# get all keys and log
 	# Send to server to consume
 	
-	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentGoogleConsume.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PaymentGoogleConsume.new()
 	pkg.set_purchase_token(purchase['purchase_token'])
 	pkg.set_quantity(purchase['quantity'])
 	pkg.set_sku(purchase['sku'])
 	pkg.set_signature(purchase['signature'])
-	GameClient.send_packet(GameConstants.CMDs.PAYMENT_GOOGLE_CONSUME, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.PAYMENT_GOOGLE_CONSUME, pkg.to_bytes())
 		#payment.consumePurchase(purchase.purchase_token)
 
 	

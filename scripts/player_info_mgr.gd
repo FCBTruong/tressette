@@ -1,4 +1,5 @@
-extends Node
+extends RefCounted
+class_name PlayerInfoMgr
 
 var my_user_data = UserData.new(0, '')
 var support_num = 0
@@ -11,13 +12,13 @@ func set_my_userdata(user_data: UserData):
 
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
-		GameConstants.CMDs.USER_INFO:
+		g.v.game_constants.CMDs.USER_INFO:
 			_on_receive_info(payload)
-		GameConstants.CMDs.UPDATE_MONEY:
+		g.v.game_constants.CMDs.UPDATE_MONEY:
 			_on_update_money(payload)
 			
 func _on_receive_info(bytes: PackedByteArray):
-	var packet = GameConstants.PROTOBUF.PACKETS.UserInfo.new()
+	var packet = g.v.game_constants.PROTOBUF.PACKETS.UserInfo.new()
 	packet.from_bytes(bytes)
 	my_user_data.uid = packet.get_uid()
 	my_user_data.name = packet.get_name()
@@ -34,14 +35,14 @@ func _on_receive_info(bytes: PackedByteArray):
 
 
 func _on_update_money(bytes: PackedByteArray):
-	var packet = GameConstants.PROTOBUF.PACKETS.UpdateMoney.new()
+	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateMoney.new()
 	packet.from_bytes(bytes)
 	my_user_data.gold = packet.get_gold()
 	print('_on_update_money', my_user_data.gold)
-	SignalBus.emit_signal_global('on_update_money')
+	g.v.signal_bus.emit_signal_global('on_update_money')
 	
 func on_update_avatar(avatar: String):
 	my_user_data.avatar = avatar
-	SignalBus.emit_signal_global('on_changed_avatar')
+	g.v.signal_bus.emit_signal_global('on_changed_avatar')
 	
 	

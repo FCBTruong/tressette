@@ -43,10 +43,10 @@ func _click_send():
 	str = StringUtils.sub_string(str, 500)
 	content_edit.text = str
 	
-	var pkg = GameConstants.PROTOBUF.PACKETS.CustomerServiceReport.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.CustomerServiceReport.new()
 	pkg.set_report_type(0)
 	pkg.set_report_content(str)
-	GameClient.send_packet(GameConstants.CMDs.CUSTOMER_SERVICE_REPORT, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CUSTOMER_SERVICE_REPORT, pkg.to_bytes())
 	pass
 
 func click_fb_fanpage():

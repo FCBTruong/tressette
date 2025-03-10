@@ -74,7 +74,7 @@ func _ready() -> void:
 
 	is_auto_play = false
 	game_start_lb_default_pos = game_start_lb.position
-	SceneManager.INSTANCES.BOARD_SCENE = self
+	g.v.scene_manager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
 	play_ground = find_child('PlayGround')
 	place_card_node = find_child('PlaceCard1')
@@ -86,7 +86,7 @@ func _ready() -> void:
 	action_btn_pn.z_index = 200
 	auto_play_pn.z_index = 300
 			
-	SoundManager.play_music_board()
+	g.v.sound_manager.play_music_board()
 	#show_prepare_start()
 func _get_card_rotates(n):
 	if n == 1:
@@ -105,9 +105,9 @@ func _on_enter():
 	update_remain_cards()
 	in_game_chat_gui.visible = false
 	in_game_chat_gui.z_index = 200
-	chat_btn.visible = GameManager.enable_chat_ingame
+	chat_btn.visible = g.v.game_manager.enable_chat_ingame
 	chat_btn_reddot.visible = false
-	pn_cheat.visible = false #Config.CURRENT_MODE != Config.MODES.LIVE
+	pn_cheat.visible = false #g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE
 	room_id_lb.text = tr("ROOM_ID") + ': ' + str(game_logic.match_data.match_id)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		update_cards_on_table()
@@ -210,7 +210,7 @@ func continue_play():
 		
 	if self.is_auto_play:
 		# quit
-		GameManager.send_register_leave_game()
+		g.v.game_manager.send_register_leave_game()
 	cardback_node.visible = false
 	remove_all_current_cards()
 
@@ -428,7 +428,7 @@ func update_remain_cards():
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
 	
 func deal_cards(cards, delay = 0) -> void:	
-	if GameManager.enable_sound:
+	if g.v.game_manager.enable_sound:
 		$AudioShuffleDealCard.play()
 	var from_pos = NodeUtils.get_center_position(cardback_node)
 	
@@ -505,11 +505,11 @@ func on_draw_cards(arr):
 		await get_tree().create_timer(1.75).timeout
 
 func play_sound_my_turn():
-	if GameManager.enable_sound:
+	if g.v.game_manager.enable_sound:
 		$AudioYourTurn.play()
 			
 func _effect_draw_card(uid, card_id):
-	if GameManager.enable_sound:
+	if g.v.game_manager.enable_sound:
 		$AudioDrawCard.play()
 	var tween = create_tween()
 	var instance = card_scene.instantiate()
@@ -523,7 +523,7 @@ func _effect_draw_card(uid, card_id):
 	var from_pos = get_center(cardback_node)
 	instance.global_position = from_pos
 	var final_pos
-	if uid != PlayerInfoMgr.my_user_data.uid:
+	if uid != g.v.player_info_mgr.my_user_data.uid:
 		var player_node = get_player_node_by_uid(uid)
 		final_pos = player_node.global_position
 		tween.parallel().tween_callback(
@@ -613,7 +613,7 @@ func show_prepare_start():
 	pass
 
 func exit_game():
-	SceneManager.switch_scene("res://scenes/LobbyScene.tscn")
+	g.v.scene_manager.switch_scene("res://scenes/LobbyScene.tscn")
 
 func on_show_chat_gui():
 	in_game_chat_gui.visible = !in_game_chat_gui.visible
@@ -621,7 +621,7 @@ func on_show_chat_gui():
 
 func on_new_chat_message(uid, message):
 	if not in_game_chat_gui.visible:
-		SoundManager.play_notification_alert()
+		g.v.sound_manager.play_notification_alert()
 		chat_btn_reddot.visible = true
 		
 	in_game_chat_gui.on_received_new_chat(uid, message)
@@ -632,7 +632,7 @@ func on_new_chat_emo(uid, emo):
 		p.show_emotion(emo)
 	
 func _input(event):
-	if Config.CURRENT_MODE != Config.MODES.LOCAL:
+	if g.v.config.CURRENT_MODE != g.v.config.MODES.LOCAL:
 		return
 	if event is InputEventKey:
 		if event.pressed:
@@ -642,7 +642,7 @@ func _input(event):
 			
 
 func update_register_leave_state():
-	if GameConstants.game_logic.is_registered_leave:
+	if g.v.game_constants.game_logic.is_registered_leave:
 		back_btn.modulate = Color("f6353f67")
 		pass
 	else:
@@ -651,17 +651,17 @@ func update_register_leave_state():
 		
 
 func _on_back_btn_pressed() -> void:
-	if GameConstants.game_logic.is_registered_leave:
+	if g.v.game_constants.game_logic.is_registered_leave:
 		# cancel
-		GameManager.send_deregister_leave_game()
+		g.v.game_manager.send_deregister_leave_game()
 	else:
-		GameManager.send_register_leave_game()
+		g.v.game_manager.send_register_leave_game()
 
 func _open_settings_gui() -> void:
-	SceneManager.open_gui("res://scenes/guis/SettingsGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn")
 
 func _open_guide_gui() -> void:
-	SceneManager.open_gui("res://scenes/guis/GuideGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn")
 	
 func on_finish_effect_contribute_pot():
 	var cur_pot_value =  StringUtils.convert_point_string_to_int(pot_value_lb.text)
@@ -685,7 +685,7 @@ func on_user_turn():
 	pass
 
 func _click_show_info_bet() -> void:
-	SceneManager.open_gui("res://scenes/board/BetDetailGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/board/BetDetailGUI.tscn")
 
 func user_not_play_turn():
 	is_auto_play = true
@@ -694,7 +694,7 @@ func user_not_play_turn():
 func _click_return_table() -> void:
 	is_auto_play = false
 	self.auto_play_pn.visible = false
-	GameClient.send_packet(GameConstants.CMDs.USER_RETURN_TO_TABLE, [])
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.USER_RETURN_TO_TABLE, [])
 
 func _on_screen_resized():
 	if is_portrait:

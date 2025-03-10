@@ -7,20 +7,20 @@ var current_id: int = -1
 var SIZE_LIST = 15
 @onready var vbox_cont = find_child("VBoxContainer")
 func _ready() -> void:
-	StorageCache.store("open_picking_avatar_gui", '1')
-	var my_avt = PlayerInfoMgr.my_user_data.avatar
-	var avt_third_party = PlayerInfoMgr.my_user_data.avatar_third_party
+	g.v.storage_cache.store("open_picking_avatar_gui", '1')
+	var my_avt = g.v.player_info_mgr.my_user_data.avatar
+	var avt_third_party = g.v.player_info_mgr.my_user_data.avatar_third_party
 	if my_avt.begins_with("https://"):
 		current_id = -1
 	else:
-		current_id = int(PlayerInfoMgr.my_user_data.avatar)
+		current_id = int(g.v.player_info_mgr.my_user_data.avatar)
 
 	avatars = get_all_avatar_children(self.vbox_cont)
 	for a in avatars:
 		a.visible = false
 	
 	var idx = 0
-	var MAX_AVATAR_ID = GameConstants.MAX_AVATAR_ID
+	var MAX_AVATAR_ID = g.v.game_constants.MAX_AVATAR_ID
 	for i in range(MAX_AVATAR_ID + 1):
 		var a = avatars[i]
 		var avt = a.find_child('AvatarImg')
@@ -38,7 +38,7 @@ func _ready() -> void:
 		
 	_update_picking_state()
 	
-	SignalBus.connect_global('on_picking_avatar', Callable(self, "_received_pick_avatar"))
+	g.v.signal_bus.connect_global('on_picking_avatar', Callable(self, "_received_pick_avatar"))
 
 
 func get_all_avatar_children(node: Node) -> Array:
@@ -62,12 +62,12 @@ func _received_pick_avatar(id):
 	
 	var avatar = str(current_id)
 	if current_id == -1:
-		avatar = PlayerInfoMgr.my_user_data.avatar_third_party
-	PlayerInfoMgr.on_update_avatar(avatar)
+		avatar = g.v.player_info_mgr.my_user_data.avatar_third_party
+	g.v.player_info_mgr.on_update_avatar(avatar)
 	# send to server to update change
-	var pkg = GameConstants.PROTOBUF.PACKETS.ChangeAvatar.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ChangeAvatar.new()
 	pkg.set_avatar_id(current_id)
-	GameClient.send_packet(GameConstants.CMDs.CHANGE_AVATAR, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CHANGE_AVATAR, pkg.to_bytes())
 	
 func _update_picking_state():
 	for i in range(SIZE_LIST):

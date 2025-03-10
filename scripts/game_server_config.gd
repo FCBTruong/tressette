@@ -1,4 +1,5 @@
-extends Node
+extends RefCounted
+class_name GameServerConfig
 
 
 var time_thinking_in_turn: float = 5

@@ -11,8 +11,8 @@ enum MATCH_STATE {
 @export var match_id: int = 0
 @export var state: int = MATCH_STATE.WAITING
 @export var users: Array[UserData] = []
-@export var game_mode: int = GameConstants.GAME_MODE.TRESSETTE
-@export var player_mode:int = GameConstants.PLAYER_MODE.SOLO
+@export var game_mode: int = g.v.game_constants.GAME_MODE.TRESSETTE
+@export var player_mode:int = g.v.game_constants.PLAYER_MODE.SOLO
 @export var seat_delta: int = 0
 @export var current_turn: int = 0
 @export var remain_cards: int = 0

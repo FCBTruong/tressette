@@ -21,4 +21,4 @@ func set_info(inf: FriendModel):
 	
 func _click_invite():
 	invite_btn.visible = false
-	GameManager.send_invite_friend_play(_info.uid)
+	g.v.game_manager.send_invite_friend_play(_info.uid)

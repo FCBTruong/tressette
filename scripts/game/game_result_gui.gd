@@ -19,12 +19,12 @@ var my_team_id
 var gold_result_lb = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if AppVersion.is_in_review():
+	if g.v.app_version.is_in_review():
 		gold_result_lb_lose.visible = false
 		gold_result_lb_win.visible = false
 		find_child("TitleLbLose").position.y += 170
 		find_child("TitleLb").position.y += 170
-	update_result(GameConstants.game_logic.match_result)
+	update_result(g.v.game_constants.game_logic.match_result)
 	
 	MainPn.scale = Vector2(0, 0)
 	var tween = create_tween()
@@ -63,11 +63,11 @@ func update_result(data: MatchData.MatchResult):
 		# Set green border
 		win_pn.visible = true
 		lose_pn.visible = false
-		SoundManager.play_win_congrat_sound()
+		g.v.sound_manager.play_win_congrat_sound()
 	else:
 		gold_result_lb = gold_result_lb_lose
 		gold_change = data.gold_lose
-		SoundManager.play_lose_sound()
+		g.v.sound_manager.play_lose_sound()
 		# Set green border
 		win_pn.visible = false
 		lose_pn.visible = true
@@ -112,7 +112,7 @@ func _update_player(p, data: MatchData.MatchResultPlayer):
 	avt_img.set_avatar(data.avatar)
 	
 func _click_continue_play():
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.is_auto_play = false
 		
@@ -123,10 +123,10 @@ func _process_continue():
 	queue_free()
 	
 	# continue play
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.continue_play()
 		
 func _click_exit_game():
-	GameManager.send_register_leave_game()
+	g.v.game_manager.send_register_leave_game()
 	pass

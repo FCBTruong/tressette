@@ -5,7 +5,7 @@ extends Node
 var packs_node = []
 var item_scene = preload("res://scenes/shop/ItemShopPack.tscn")
 func _ready() -> void:	
-	var packs = PaymentMgr.shop_packs
+	var packs = g.v.payment_mgr.shop_packs
 	
 	for i in range(len(packs)):
 		var instance = item_scene.instantiate()
@@ -26,4 +26,4 @@ func _process(delta: float) -> void:
 	pass
 	
 func _back_to_lobby():
-	SceneManager.switch_scene(SceneManager.LOBBY_SCENE)
+	g.v.scene_manager.switch_scene(g.v.scene_manager.LOBBY_SCENE)

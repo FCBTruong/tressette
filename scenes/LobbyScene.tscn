@@ -301,10 +301,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.5549
-offset_top = -26.5549
-offset_right = 42.4451
-offset_bottom = 73.4451
+offset_left = -25.0
+offset_top = -24.0
+offset_right = 45.0
+offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.589485
@@ -319,10 +319,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 24.511
-offset_top = -17.5549
-offset_right = 94.511
-offset_bottom = 82.4451
+offset_left = 24.0
+offset_top = -15.0
+offset_right = 94.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.540785
@@ -338,9 +338,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -4.0
-offset_top = -2.55486
 offset_right = 66.0
-offset_bottom = 97.4451
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.00634568
@@ -408,6 +407,20 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_en482")
 expand_mode = 1
+
+[node name="CardContainer3" type="Control" parent="CanvasLayer/Control/PlayContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="CardContainer3" type="Control" parent="CanvasLayer/Control/PlayContainer/CardContainer3"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 36.0
+offset_top = 29.0
+offset_right = 106.0
+offset_bottom = 329.0
+pivot_offset = Vector2(70, 0)
+mouse_filter = 1
 
 [node name="RightTopPanel" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 1

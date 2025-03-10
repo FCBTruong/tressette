@@ -10,26 +10,26 @@ class SetteDealCard:
 	
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
-		GameConstants.CMDs.SETTE_MEZZO_GAME_INFO:
+		g.v.game_constants.CMDs.SETTE_MEZZO_GAME_INFO:
 			_handle_game_info(payload)
 			
-		GameConstants.CMDs.SETTE_MEZZO_USER_LEAVE_MATCH:
+		g.v.game_constants.CMDs.SETTE_MEZZO_USER_LEAVE_MATCH:
 			_handle_user_leave_match(payload)
 			
-		GameConstants.CMDs.SETTE_MEZZO_START_GAME:
+		g.v.game_constants.CMDs.SETTE_MEZZO_START_GAME:
 			_start_game(payload)
 			
-		GameConstants.CMDs.SETTE_MEZZO_PREPARE_START_GAME:
+		g.v.game_constants.CMDs.SETTE_MEZZO_PREPARE_START_GAME:
 			_handle_prepare_start(payload)
 			
-		GameConstants.CMDs.SETTE_MEZZO_NEW_USER_JOIN_MATCH:
+		g.v.game_constants.CMDs.SETTE_MEZZO_NEW_USER_JOIN_MATCH:
 			_handle_user_join_match(payload)
 	
 
 func _handle_game_info(payload):
-	GameManager.CURRENT_GAME_PLAY = 1
-	SceneManager.clear_loading()
-	var pkg = GameConstants.PROTOBUF.PACKETS.SetteMezzoGameInfo.new()
+	g.v.game_manager.CURRENT_GAME_PLAY = 1
+	g.v.scene_manager.clear_loading()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoGameInfo.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data = SetteMezzoMatchData.new()
 	match_data.bet = pkg.get_bet()
@@ -61,7 +61,7 @@ func _handle_game_info(payload):
 		userdata.avatar = avatars[i]
 		userdata.gold = golds[i]
 		users.append(userdata)
-		if uid == PlayerInfoMgr.my_user_data.uid:
+		if uid == g.v.player_info_mgr.my_user_data.uid:
 			my_idx = i
 			userdata.game_data.seat_id = 0
 			match_data.seat_delta = i
@@ -82,12 +82,12 @@ func _handle_game_info(payload):
 	match_data.users = users
 	
 	
-	SceneManager.switch_scene("res://scenes/sette_mezzo/SetteMezzoScene.tscn")
+	g.v.scene_manager.switch_scene("res://scenes/sette_mezzo/SetteMezzoScene.tscn")
 
 
 
 func quick_play():
-	GameClient.send_packet(GameConstants.CMDs.SETTE_MEZZO_QUICK_PLAY, [])
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.SETTE_MEZZO_QUICK_PLAY, [])
 	pass
 
 
@@ -95,20 +95,20 @@ func get_list_player() -> Array[UserData]:
 	return match_data.users
 	
 func _handle_user_leave_match(payload: PackedByteArray):
-	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.UserLeaveMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var reason = pkg.get_reason()
-	var board_scene = SceneManager.get_current_scene()
+	var board_scene = g.v.scene_manager.get_current_scene()
 	if not board_scene is SetteMezzoScene:
 		return
-	if uid == PlayerInfoMgr.my_user_data.uid:
-		if reason == GameConstants.REASON_KICK_GAMES.NOT_ENOUGH_GOLD:
-			SceneManager.show_dialog(
+	if uid == g.v.player_info_mgr.my_user_data.uid:
+		if reason == g.v.game_constants.REASON_KICK_GAMES.NOT_ENOUGH_GOLD:
+			g.v.scene_manager.show_dialog(
 				tr('NOT_ENOUGH_GOLD_PLAY_BUY')
 				,
 				func ():
-					SceneManager.switch_scene(SceneManager.SHOP_SCENE),
+					g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
 				func ():
 					board_scene.exit_game(),
 				true
@@ -138,7 +138,7 @@ func get_my_cards():
 func _start_game(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.SetteMezzoStartGame.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoStartGame.new()
 	var result_code = pkg.from_bytes(payload)
 
 	match_data.state = MatchData.MATCH_STATE.PLAYING
@@ -149,7 +149,7 @@ func _start_game(payload: PackedByteArray):
 		#p.gold = players_gold[i]
 		#i += 1
 		#
-		#SignalBus.emit_signal_global("ingame_update_player_money", [p.uid])
+		#g.v.signal_bus.emit_signal_global("ingame_update_player_money", [p.uid])
 	#
 	
 	var uids = pkg.get_uids()
@@ -169,7 +169,7 @@ func _start_game(payload: PackedByteArray):
 		var p = get_user(uid)
 		p.game_data.cards = [cards[i]]
 		i += 1
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:
 		scene.on_game_start()
 		await get_tree().create_timer(1).timeout
@@ -179,11 +179,11 @@ func _start_game(payload: PackedByteArray):
 func _handle_prepare_start(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.PrepareStartGame.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PrepareStartGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var time_start = pkg.get_time_start()
-	await SceneManager.get_tree().create_timer(0.5).timeout
-	var cur_scene = SceneManager.get_current_scene()
+	await g.v.scene_manager.get_tree().create_timer(0.5).timeout
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	match_data.state = MatchData.MATCH_STATE.PREPARING_START
 	if cur_scene is SetteMezzoScene:
 		cur_scene.show_prepare_start()	
@@ -192,7 +192,7 @@ func _handle_prepare_start(payload: PackedByteArray):
 func _handle_user_join_match(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.NewUserJoinMatch.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.NewUserJoinMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var seat_server = pkg.get_seat_server()
@@ -220,7 +220,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 		print('debug seat', user.game_data.seat_id)
 	
 	# reload
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is SetteMezzoScene:
 		cur_scene.on_update_players()
 	

@@ -18,55 +18,55 @@ func on_user_leave_game():
 
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
-		GameConstants.CMDs.GAME_INFO:
+		g.v.game_constants.CMDs.GAME_INFO:
 			_handle_game_info(payload)
-		GameConstants.CMDs.REGISTER_LEAVE_GAME:
+		g.v.game_constants.CMDs.REGISTER_LEAVE_GAME:
 			_handle_register_leave_game(payload)
-		GameConstants.CMDs.NEW_USER_JOIN_MATCH:
+		g.v.game_constants.CMDs.NEW_USER_JOIN_MATCH:
 			_handle_user_join_match(payload)
-		GameConstants.CMDs.USER_LEAVE_MATCH:
+		g.v.game_constants.CMDs.USER_LEAVE_MATCH:
 			_handle_user_leave_match(payload)
-		GameConstants.CMDs.DEAL_CARD:
+		g.v.game_constants.CMDs.DEAL_CARD:
 			_handle_deal_card(payload)
-		GameConstants.CMDs.PLAY_CARD:
+		g.v.game_constants.CMDs.PLAY_CARD:
 			_handle_play_card(payload)
-		GameConstants.CMDs.START_GAME:
+		g.v.game_constants.CMDs.START_GAME:
 			_start_game(payload)
-		GameConstants.CMDs.END_HAND:
+		g.v.game_constants.CMDs.END_HAND:
 			_handle_endhand(payload)
-		GameConstants.CMDs.NEW_HAND:
+		g.v.game_constants.CMDs.NEW_HAND:
 			_handle_newhand(payload)
-		GameConstants.CMDs.DRAW_CARD:
+		g.v.game_constants.CMDs.DRAW_CARD:
 			_handle_draw_card(payload)
-		GameConstants.CMDs.END_GAME:
+		g.v.game_constants.CMDs.END_GAME:
 			_handle_end_game(payload)
-		GameConstants.CMDs.PREPARE_START_GAME:
+		g.v.game_constants.CMDs.PREPARE_START_GAME:
 			_handle_prepare_start(payload)
-		GameConstants.CMDs.NEW_ROUND:
+		g.v.game_constants.CMDs.NEW_ROUND:
 			_handle_new_round(payload)
-		GameConstants.CMDs.PLAY_CARD_RESPONSE:
+		g.v.game_constants.CMDs.PLAY_CARD_RESPONSE:
 			_handle_play_card_error(payload)
-		GameConstants.CMDs.CHEAT_VIEW_CARD_BOT:
+		g.v.game_constants.CMDs.CHEAT_VIEW_CARD_BOT:
 			_handle_cheat_view_card_bot(payload)
-		GameConstants.CMDs.GAME_ACTION_NAPOLI:
+		g.v.game_constants.CMDs.GAME_ACTION_NAPOLI:
 			_handle_receive_napoli(payload)
 
 
 func _handle_user_leave_match(payload: PackedByteArray):
-	var pkg = GameConstants.PROTOBUF.PACKETS.UserLeaveMatch.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.UserLeaveMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var reason = pkg.get_reason()
-	var board_scene = SceneManager.get_current_scene()
+	var board_scene = g.v.scene_manager.get_current_scene()
 	if not board_scene is BoardScene:
 		return
-	if uid == PlayerInfoMgr.my_user_data.uid:
-		if reason == GameConstants.REASON_KICK_GAMES.NOT_ENOUGH_GOLD:
-			SceneManager.show_dialog(
+	if uid == g.v.player_info_mgr.my_user_data.uid:
+		if reason == g.v.game_constants.REASON_KICK_GAMES.NOT_ENOUGH_GOLD:
+			g.v.scene_manager.show_dialog(
 				tr('NOT_ENOUGH_GOLD_PLAY_BUY')
 				,
 				func ():
-					SceneManager.switch_scene(SceneManager.SHOP_SCENE),
+					g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
 				func ():
 					board_scene.exit_game(),
 				true
@@ -85,7 +85,7 @@ func _handle_user_leave_match(payload: PackedByteArray):
 func _handle_user_join_match(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.NewUserJoinMatch.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.NewUserJoinMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var seat_server = pkg.get_seat_server()
@@ -113,30 +113,30 @@ func _handle_user_join_match(payload: PackedByteArray):
 		print('debug seat', user.game_data.seat_id)
 	
 	# reload
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BoardScene:
 		cur_scene.on_update_players()
 		
 func _handle_register_leave_game(payload: PackedByteArray):
-	var pkg = GameConstants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var status_leave = pkg.get_status()
 	self.is_registered_leave = status_leave == 0 
 	
 	# Make toast
 	if self.is_registered_leave:
-		SceneManager.show_toast("REGISTER_LEAVE")
+		g.v.scene_manager.show_toast("REGISTER_LEAVE")
 	else:
-		SceneManager.show_toast("CANCEL_REGISTER_LEAVE")
+		g.v.scene_manager.show_toast("CANCEL_REGISTER_LEAVE")
 	
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.update_register_leave_state()
 	
 func _handle_game_info(payload: PackedByteArray):
-	GameManager.CURRENT_GAME_PLAY = 0
-	SceneManager.clear_loading()
-	var pkg = GameConstants.PROTOBUF.PACKETS.GameInfo.new()
+	g.v.game_manager.CURRENT_GAME_PLAY = 0
+	g.v.scene_manager.clear_loading()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.GameInfo.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data = MatchData.new()
 	match_data.bet = pkg.get_bet()
@@ -179,7 +179,7 @@ func _handle_game_info(payload: PackedByteArray):
 		userdata.avatar = avatars[i]
 		userdata.gold = golds[i]
 		users.append(userdata)
-		if uid == PlayerInfoMgr.my_user_data.uid:
+		if uid == g.v.player_info_mgr.my_user_data.uid:
 			my_idx = i
 			userdata.game_data.seat_id = 0
 			match_data.seat_delta = i
@@ -203,31 +203,31 @@ func _handle_game_info(payload: PackedByteArray):
 	var my_cards = pkg.get_my_cards()
 	_update_my_cards(my_cards)
 	
-	SceneManager.switch_scene("res://scenes/BoardScene.tscn")
+	g.v.scene_manager.switch_scene("res://scenes/BoardScene.tscn")
 
 func _handle_deal_card(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.DealCard.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.DealCard.new()
 	var result_code = pkg.from_bytes(payload)
 	var cards = pkg.get_cards()
 	cards.sort_custom(_card_sorter)
 	match_data.remain_cards = pkg.get_remain_cards()
 	
 	for player in match_data.users:
-		if player.uid == PlayerInfoMgr.my_user_data.uid:
+		if player.uid == g.v.player_info_mgr.my_user_data.uid:
 			player.game_data.cards = []
 			for c in cards:
 				player.game_data.cards.append(int(c))
 	print('_handle_deal_card', cards)
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.deal_my_cards(self.get_my_cards())
 	
 func _handle_play_card(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCard.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PlayCard.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var card_id = pkg.get_card_id()
@@ -236,27 +236,27 @@ func _handle_play_card(payload: PackedByteArray):
 	print('current handsuit follow', self.hand_suit)
 	match_data.current_turn = pkg.get_current_turn()
 	
-	if uid == PlayerInfoMgr.get_user_id():
+	if uid == g.v.player_info_mgr.get_user_id():
 		match_data.users[my_idx].game_data.cards.erase(card_id)
 		
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.play_card(uid, card_id, auto)
 	push_cards_compare(uid, card_id)
 
 func send_play_card(card_id: int):
 	match_data.current_turn = -1
-	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCard.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PlayCard.new()
 	pkg.set_card_id(card_id)
-	GameClient.send_packet(GameConstants.CMDs.PLAY_CARD, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.PLAY_CARD, pkg.to_bytes())
 	
-	var idx = get_index_by_uid(PlayerInfoMgr.my_user_data.uid)
+	var idx = get_index_by_uid(g.v.player_info_mgr.my_user_data.uid)
 	
 	# remove this card 
 	#only remove after received success from server
 	#match_data.users[idx].game_data.cards.erase(card_id)
 	
-	push_cards_compare(PlayerInfoMgr.my_user_data.uid, card_id)
+	push_cards_compare(g.v.player_info_mgr.my_user_data.uid, card_id)
 	
 func push_cards_compare(uid, card_id):
 	var idx = get_index_by_uid(uid)
@@ -264,14 +264,14 @@ func push_cards_compare(uid, card_id):
 	
 func get_my_cards():
 	for user in match_data.users:
-		if user.uid == PlayerInfoMgr.my_user_data.uid:
+		if user.uid == g.v.player_info_mgr.my_user_data.uid:
 			return user.game_data.cards
 	return []
 	
 func _start_game(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.StartGame.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.StartGame.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.pot_value = pkg.get_pot_value()
 	match_data.state = MatchData.MATCH_STATE.PLAYING
@@ -283,13 +283,13 @@ func _start_game(payload: PackedByteArray):
 		p.gold = players_gold[i]
 		i += 1
 		
-		SignalBus.emit_signal_global("ingame_update_player_money", [p.uid])
+		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [p.uid])
 	
 	
 	match_data.current_round = 1
 	match_data.hand_in_round = -1
 	
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.on_game_start()
 	
@@ -328,7 +328,7 @@ func is_my_turn():
 	if match_data.current_turn == -1:
 		return false
 	var uid_inturn = match_data.users[match_data.current_turn].uid
-	if uid_inturn == PlayerInfoMgr.my_user_data.uid:
+	if uid_inturn == g.v.player_info_mgr.my_user_data.uid:
 		return true
 	else:
 		return false
@@ -344,7 +344,7 @@ func _update_my_cards(card_ids):
 	card_ids.sort_custom(_card_sorter)
 	# sort card ids by suits and rank tressette
 	for player in match_data.users:
-		if player.uid == PlayerInfoMgr.my_user_data.uid:
+		if player.uid == g.v.player_info_mgr.my_user_data.uid:
 			player.game_data.cards = card_ids
 
 func _card_sorter(a: int, b: int) -> bool:
@@ -386,7 +386,7 @@ func get_card_win_inhand():
 func _handle_endhand(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.EndHand.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.EndHand.new()
 	var result_code = pkg.from_bytes(payload)
 	var win_uid = pkg.get_win_uid()
 	win_point_hand = pkg.get_win_point()
@@ -400,13 +400,13 @@ func _handle_endhand(payload: PackedByteArray):
 		i += 1
 	
 	print('finish rounds...')
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.on_finishhand(0.5, is_end_round)
 	reset_cards_compare()
 	
 func is_my_team(uid) -> bool:
-	if uid == PlayerInfoMgr.get_user_id():
+	if uid == g.v.player_info_mgr.get_user_id():
 		return true
 	var u = get_user(uid)
 	if u.game_data.team_id == my_team_id:
@@ -417,7 +417,7 @@ func _handle_newhand(payload: PackedByteArray):
 	if not match_data:
 		return
 	match_data.hand_in_round += 1
-	var pkg = GameConstants.PROTOBUF.PACKETS.NewHand.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.NewHand.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.current_turn = pkg.get_current_turn()
 	print('new hand: ', match_data.current_turn)
@@ -428,7 +428,7 @@ func _handle_newhand(payload: PackedByteArray):
 func _handle_draw_card(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.DrawCard.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.DrawCard.new()
 	var result_code = pkg.from_bytes(payload)
 	var cards = pkg.get_cards()
 	var i = 0
@@ -443,7 +443,7 @@ func _handle_draw_card(payload: PackedByteArray):
 		arr.append(obj)
 		i += 1
 	
-	var scene = SceneManager.get_current_scene()
+	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.on_draw_cards(arr)
 	
@@ -451,7 +451,7 @@ func _handle_end_game(payload: PackedByteArray):
 	if not match_data:
 		return
 	match_data.state = MatchData.MATCH_STATE.ENDING
-	var pkg = GameConstants.PROTOBUF.PACKETS.EndGame.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.EndGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var uids = pkg.get_uids()
 	var win_team_id = pkg.get_win_team_id()
@@ -463,21 +463,21 @@ func _handle_end_game(payload: PackedByteArray):
 	var gold_win_score = pkg.get_gold_win_score()
 	
 	match_result = MatchData.MatchResult.new()
-	match_result.is_win = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id \
+	match_result.is_win = get_user(g.v.player_info_mgr.my_user_data.uid).game_data.team_id \
 		== win_team_id
 	if match_result.is_win:
 		match_result.gold_win = match_data.pot_value / (match_data.player_mode / 2) + gold_win_score
 	else:
 		match_result.gold_lose = gold_changes[my_idx]
 	match_result.win_team_id = win_team_id
-	match_result.my_team_id = get_user(PlayerInfoMgr.my_user_data.uid).game_data.team_id
+	match_result.my_team_id = get_user(g.v.player_info_mgr.my_user_data.uid).game_data.team_id
 	
 	# update my user info
-	GameManager.LAST_GAME_IS_WIN = false
+	g.v.game_manager.LAST_GAME_IS_WIN = false
 	if match_result.is_win:
-		PlayerInfoMgr.my_user_data.win_count += 1
-		GameManager.LAST_GAME_IS_WIN = true
-	PlayerInfoMgr.my_user_data.game_count += 1
+		g.v.player_info_mgr.my_user_data.win_count += 1
+		g.v.game_manager.LAST_GAME_IS_WIN = true
+	g.v.player_info_mgr.my_user_data.game_count += 1
 	
 	match_result.players.clear()
 	for i in range(len(match_data.users)):
@@ -490,18 +490,18 @@ func _handle_end_game(payload: PackedByteArray):
 		score_data.score_total = score_totals[i]
 		match_result.players.append(score_data)
 		match_data.users[i].gold = players_gold[i]
-		SignalBus.emit_signal_global("ingame_update_player_money", [match_data.users[i].uid])
+		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [match_data.users[i].uid])
 		
-	SceneManager.open_gui('res://scenes/board/GameResultGUI.tscn')
+	g.v.scene_manager.open_gui('res://scenes/board/GameResultGUI.tscn')
 
 func _handle_prepare_start(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.PrepareStartGame.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PrepareStartGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var time_start = pkg.get_time_start()
-	await SceneManager.get_tree().create_timer(0.5).timeout
-	var cur_scene = SceneManager.get_current_scene()
+	await ROOT.get_tree().create_timer(0.5).timeout
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	match_data.state = MatchData.MATCH_STATE.PREPARING_START
 	if cur_scene is BoardScene:
 		cur_scene.show_prepare_start()
@@ -511,7 +511,7 @@ func _handle_new_round(payload: PackedByteArray):
 		return
 	match_data.hand_in_round = -1
 		
-	var pkg = GameConstants.PROTOBUF.PACKETS.NewRound.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.NewRound.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.current_round = pkg.get_current_round()
 	match_data.pot_value = pkg.get_pot_value()
@@ -523,14 +523,14 @@ func _handle_new_round(payload: PackedByteArray):
 		p.gold = players_gold[i]
 		i += 1
 		
-		SignalBus.emit_signal_global("ingame_update_player_money", [p.uid])
+		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [p.uid])
 	
 	# when new round start, need to rounded score
 	for player in match_data.users:
 		var redunt = player.game_data.points % 3
 		player.game_data.points -= redunt
 	
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BoardScene:
 		cur_scene.on_new_round()
 		cur_scene.update_team_scores()
@@ -545,7 +545,7 @@ func get_my_team_score() -> int:
 	return c
 
 func get_opponent_team_score() -> int:
-	#SignalBus.update_current_turn.emit()
+	#g.v.signal_bus.update_current_turn.emit()
 	var c = 0
 	var my_team_id = match_data.users[my_idx].game_data.team_id
 	for u in match_data.users:
@@ -586,29 +586,29 @@ func is_most_value_card(id: int) -> bool:
 	return id < 4
 	
 func _handle_play_card_error(payload):
-	var pkg = GameConstants.PROTOBUF.PACKETS.PlayCardResponse.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PlayCardResponse.new()
 	var result_code = pkg.from_bytes(payload)
 	var error = pkg.get_status()
 	if error != 0:
-		SceneManager.show_toast('ERROR_PLAY_CARD' + str(error))
+		g.v.scene_manager.show_toast('ERROR_PLAY_CARD' + str(error))
 	# revert to old cards
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BoardScene:
 		cur_scene.update_cards_on_table()
 	
 
 func _handle_cheat_view_card_bot(payload):
-	if Config.CURRENT_MODE == Config.MODES.LIVE:
+	if g.v.config.CURRENT_MODE == g.v.config.MODES.LIVE:
 		print("Error urgent view bot !!!")
 		return
-	if Config.CURRENT_MODE != Config.MODES.LOCAL:
+	if g.v.config.CURRENT_MODE != g.v.config.MODES.LOCAL:
 		return	
-	if not Config.SHOW_CARD_BOT:
+	if not g.v.config.SHOW_CARD_BOT:
 		return
-	var pkg = GameConstants.PROTOBUF.PACKETS.CheatViewCardBot.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.CheatViewCardBot.new()
 	var result_code = pkg.from_bytes(payload)
 	var cards = pkg.get_cards()
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BoardScene:
 		cur_scene._show_cheat_cards_bot(cards)
 
@@ -631,7 +631,7 @@ func find_napoli():
 	return napoli_sets
 	
 func _handle_receive_napoli(payload):
-	var pkg = GameConstants.PROTOBUF.PACKETS.GameActionNapoli.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.GameActionNapoli.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var point_add = pkg.get_point_add()
@@ -640,20 +640,20 @@ func _handle_receive_napoli(payload):
 	# add score point to this user
 	var u = get_user(uid)
 	u.game_data.points += point_add
-	var cur_scene = SceneManager.get_current_scene()
+	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BoardScene:
 		cur_scene._on_user_napoli(uid, point_add, suits)
 		cur_scene.update_team_scores()
 		
 func send_action_napoli():
-	var pkg = GameConstants.PROTOBUF.PACKETS.GameActionNapoli.new()
-	GameClient.send_packet(GameConstants.CMDs.GAME_ACTION_NAPOLI, pkg.to_bytes())
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.GameActionNapoli.new()
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.GAME_ACTION_NAPOLI, pkg.to_bytes())
 
 func auto_play_card():
 	var cards = match_data.users[my_idx].game_data.cards
 	for c in cards:
 		if check_valid_card_play(c):
-			var cur_scene = SceneManager.get_current_scene()
+			var cur_scene = g.v.scene_manager.get_current_scene()
 			if cur_scene is BoardScene:
 				cur_scene.play_my_card(c)
 			return

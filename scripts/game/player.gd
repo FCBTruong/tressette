@@ -19,7 +19,7 @@ extends Node
 var default_pos_bonus
 var is_me: bool = false
 func _ready() -> void:
-	if AppVersion.is_in_review():
+	if g.v.app_version.is_in_review():
 		gold_pn.visible = false
 		name_pn.visible = true
 	else:
@@ -33,7 +33,7 @@ func _ready() -> void:
 	red_dot.visible = false
 	vortex.visible = false
 	
-	SignalBus.connect_global('ingame_update_player_money', Callable(self, "_ingame_update_player_money"))
+	g.v.signal_bus.connect_global('ingame_update_player_money', Callable(self, "_ingame_update_player_money"))
 
 # Properties
 var user_data: UserData
@@ -59,14 +59,14 @@ func set_user_data(user_dt: UserData) -> void:
 	update_points_display()
 	# update avatar
 	print('userdatavat', user_data.avatar)
-	if user_data.uid == PlayerInfoMgr.my_user_data.uid:
+	if user_data.uid == g.v.player_info_mgr.my_user_data.uid:
 		is_me = true
 		avatar_img.set_me()
 	
 		# add red noti for if not yet click avatar pick
 		
-		if PlayerInfoMgr.my_user_data.game_count < 10:
-			var is_clicked_pick_avatar = StorageCache.fetch("open_picking_avatar_gui", '0') == '1'
+		if g.v.player_info_mgr.my_user_data.game_count < 10:
+			var is_clicked_pick_avatar = g.v.storage_cache.fetch("open_picking_avatar_gui", '0') == '1'
 			if not is_clicked_pick_avatar:
 				red_dot.visible = true
 				
@@ -87,8 +87,8 @@ var elapsed_time: float = 0.0  # Tracks the elapsed time
 var running: bool = false
 
 func start_timer():
-	if self.user_data.uid == PlayerInfoMgr.my_user_data.uid:
-		SceneManager.INSTANCES.BOARD_SCENE.play_sound_my_turn()
+	if self.user_data.uid == g.v.player_info_mgr.my_user_data.uid:
+		g.v.scene_manager.INSTANCES.BOARD_SCENE.play_sound_my_turn()
 	
 	time_progress_bar.visible = true
 	elapsed_time = 0.0
@@ -103,10 +103,10 @@ func _process(delta: float):
 		time_progress_bar.visible = false
 		vortex.visible = false
 		return
-	if GameConstants.game_logic.get_uid_in_turn() == self.user_data.uid:
+	if g.v.game_constants.game_logic.get_uid_in_turn() == self.user_data.uid:
 		if not running: 
 			start_timer()
-			SceneManager.INSTANCES.BOARD_SCENE.on_user_turn()
+			g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
 	else:
 		time_progress_bar.visible = false
 		vortex.visible = false
@@ -115,15 +115,15 @@ func _process(delta: float):
 	if running:
 		elapsed_time += delta
 		
-		if elapsed_time < GameServerConfig.time_thinking_in_turn:
+		if elapsed_time < g.v.game_server_config.time_thinking_in_turn:
 			# Update progress bar value based on elapsed time
-			time_progress_bar.value = (GameServerConfig.time_thinking_in_turn - elapsed_time) \
-				/ GameServerConfig.time_thinking_in_turn * 100
+			time_progress_bar.value = (g.v.game_server_config.time_thinking_in_turn - elapsed_time) \
+				/ g.v.game_server_config.time_thinking_in_turn * 100
 			
-			if user_data.uid == PlayerInfoMgr.get_user_id():
-				if SceneManager.INSTANCES.BOARD_SCENE.is_auto_play:
+			if user_data.uid == g.v.player_info_mgr.get_user_id():
+				if g.v.scene_manager.INSTANCES.BOARD_SCENE.is_auto_play:
 					if elapsed_time > 3:
-						SceneManager.INSTANCES.BOARD_SCENE.game_logic.auto_play_card()
+						g.v.scene_manager.INSTANCES.BOARD_SCENE.game_logic.auto_play_card()
 						end_timer()
 		else:
 			end_timer(true)
@@ -133,8 +133,8 @@ func get_user_data() -> UserData:
 	
 func end_timer(out_time=false):
 	running = false
-	if user_data.uid == PlayerInfoMgr.get_user_id() and out_time:
-		SceneManager.INSTANCES.BOARD_SCENE.user_not_play_turn()
+	if user_data.uid == g.v.player_info_mgr.get_user_id() and out_time:
+		g.v.scene_manager.INSTANCES.BOARD_SCENE.user_not_play_turn()
 	time_progress_bar.visible = false
 	vortex.visible = false
 	await get_tree().create_timer(1).timeout
@@ -167,7 +167,7 @@ func effect_add_score(score):
 func _show_info():
 	if is_me:
 		red_dot.visible = false
-	FriendManager.search_friend(user_data.uid)
+	g.v.friend_mgr.search_friend(user_data.uid)
 
 func show_emotion(emo_id):
 	var texture_path = "res://assets/animations/" + str(emo_id) + '.png'
@@ -192,7 +192,7 @@ func _get_gold_str(gold) -> String:
 	return str
 
 func _click_open_invite_gui() -> void:
-	SceneManager.open_gui("res://scenes/board/FriendInviteGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/board/FriendInviteGUI.tscn")
 	pass
 	
 var tw_bonus
@@ -242,7 +242,7 @@ func show_napoli(s, suits):
 		arr_pos = [Vector2(-50, 0), Vector2(0, 0), Vector2(50, 0)]
 	var i = 0
 	for n in suits:
-		var card = SceneManager.INSTANCES.BOARD_SCENE.card_scene.instantiate()
+		var card = g.v.scene_manager.INSTANCES.BOARD_SCENE.card_scene.instantiate()
 		card.scale = Vector2(0, 0)
 		card.position = arr_pos[i]
 		card.set_card(n)

@@ -17,7 +17,7 @@ func _ready():
 	connect("button_up", Callable(self, "_on_button_up"))
 
 func _on_button_down():
-	SoundManager.play_click()
+	g.v.sound_manager.play_click()
 	# Zoom in when pressed
 	tween = create_tween()
 	tween.tween_property(self, "scale", zoom_scale, zoom_duration).set_trans(Tween.TRANS_LINEAR)

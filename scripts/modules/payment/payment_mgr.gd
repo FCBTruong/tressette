@@ -1,4 +1,5 @@
-extends Node
+extends RefCounted
+class_name PaymentMgr
 
 
 var google_payment: GooglePayment
@@ -18,45 +19,45 @@ func _process(delta: float) -> void:
 
 # Payment should init after login success
 func _init_payment_goggle():
-	if Config.get_platform() == Config.PLATFORMS.ANDROID or \
-		Config.CURRENT_MODE == Config.MODES.LOCAL:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID or \
+		g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
 			google_payment = GooglePayment.new()
 			google_payment.init_connection()
 			
 func _init_payment_apple():
-	if Config.get_platform() == Config.PLATFORMS.IOS or \
-		Config.CURRENT_MODE == Config.MODES.LOCAL:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS or \
+		g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
 			apple_payment = ApplePayment.new()
 			apple_payment.init_connection()
 			
 func _init_payment_paypal():
-	if Config.get_platform() == Config.PLATFORMS.WEB:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 			paypal_payment = PaypalPayment.new()
 
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
-		GameConstants.CMDs.PAYMENT_SUCCESS:
+		g.v.game_constants.CMDs.PAYMENT_SUCCESS:
 			_handle_payment_success(payload)
-		GameConstants.CMDs.SHOP_CONFIG:
+		g.v.game_constants.CMDs.SHOP_CONFIG:
 			_handle_shop_config(payload)
-		GameConstants.CMDs.PAYMENT_APPLE_FINISHED_TRANSACTION:
+		g.v.game_constants.CMDs.PAYMENT_APPLE_FINISHED_TRANSACTION:
 			_handle_finished_apple_transaction(payload)
-		GameConstants.CMDs.PAYMENT_PAYPAL_REQUEST_ORDER:
+		g.v.game_constants.CMDs.PAYMENT_PAYPAL_REQUEST_ORDER:
 			paypal_payment._received_order_url(payload)
 
 func _handle_finished_apple_transaction(payload):
-	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentFinishedAppleTransaction.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PaymentFinishedAppleTransaction.new()
 	var result_code = pkg.from_bytes(payload)
 	var pack_id = pkg.get_pack_id()
 	print('_handle_finished_apple_transaction: ', pack_id)
 	apple_payment.finsish_transaction(pack_id)
 	
 func _handle_payment_success(payload):
-	var pkg = GameConstants.PROTOBUF.PACKETS.PaymentSuccess.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PaymentSuccess.new()
 	var result_code = pkg.from_bytes(payload)
 	var gold = pkg.get_gold()
 	
-	SceneManager.show_dialog(tr("YOU_RECEIVED") + ' ' + StringUtils.point_number(gold) \
+	g.v.scene_manager.show_dialog(tr("YOU_RECEIVED") + ' ' + StringUtils.point_number(gold) \
 		+ " " + tr("LIRA"), 
 		func():
 			print('click ok'),
@@ -68,9 +69,9 @@ func _handle_payment_success(payload):
 # Resume billing that not proccessed yet
 # Should call after login
 func _on_billing_resume():
-	if Config.get_platform() == Config.PLATFORMS.ANDROID:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID:
 		google_payment._on_billing_resume()
-	elif Config.get_platform() == Config.PLATFORMS.IOS:
+	elif g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
 		apple_payment._on_billing_resume()
 		
 			
@@ -91,12 +92,12 @@ func test_google_pay():
 	}
 	google_payment._process_purchase(purchase_data)
 func on_user_login():
-	if Config.get_platform() == Config.PLATFORMS.ANDROID:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID:
 		if not google_payment.payment:
 			# init again
 			_init_payment_goggle()
 			
-	if Config.get_platform() == Config.PLATFORMS.IOS:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
 		apple_payment.request_product_info()
 		
 		# continue resume
@@ -104,12 +105,12 @@ func on_user_login():
 
 func get_price_pack(pack_id):
 	var price_str = ''
-	if Config.get_platform() == Config.PLATFORMS.ANDROID:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID:
 		var price_gg = google_payment.get_price_pack(pack_id)
 		if price_gg:
 			price_str = price_gg
 			
-	if Config.get_platform() == Config.PLATFORMS.IOS:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
 		var price_apple = apple_payment.get_price_pack(pack_id)
 		if price_apple:
 			price_str = price_apple
@@ -127,16 +128,16 @@ func buy_pack(pack_id):
 		return
 	print('process buy_pack', pack_id)
 		
-	if Config.get_platform() == Config.PLATFORMS.ANDROID:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID:
 		google_payment.purchase_pack(pack_id)
-	elif Config.get_platform() == Config.PLATFORMS.IOS:
+	elif g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
 		apple_payment.purchase_pack(pack_id)
-	elif Config.get_platform() == Config.PLATFORMS.WEB:
+	elif g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 		paypal_payment.purchase_pack(pack_id)
 
 func _handle_shop_config(payload):
 	print('_handle_shop_config')
-	var pkg = GameConstants.PROTOBUF.PACKETS.ShopConfig.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ShopConfig.new()
 	var result_code = pkg.from_bytes(payload)
 	var pack_ids = pkg.get_pack_ids()
 	var golds = pkg.get_golds()

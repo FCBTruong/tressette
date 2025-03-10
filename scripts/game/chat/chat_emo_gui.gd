@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 func _click_emo(id):
 	pass
 	
-func hide():
+func hide_emo():
 	is_showing = false
 	if tween and tween.is_running():
 		tween.kill()
@@ -33,7 +33,7 @@ func hide():
 		),
 		0.5
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-func show():
+func show_emo():
 	main.visible = true
 	main.position.y = default_pos.y + 200
 	is_showing = true
@@ -51,43 +51,43 @@ func show():
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 func _on_emo_btn_1_pressed() -> void:
 	var id = 1
-	hide()
+	hide_emo()
 	_send_chat_emo(id)
 	pass # Replace with function body.
 	
 func _on_emo_btn_2_pressed() -> void:
 	var id = 2
 	_send_chat_emo(id)
-	hide()
+	hide_emo()
 	pass # Replace with function body.
 	
 func _on_emo_btn_3_pressed() -> void:
 	var id = 3
 	_send_chat_emo(id)
-	hide()
+	hide_emo()
 	pass # Replace with function body.
 	
 func _on_emo_btn_4_pressed() -> void:
 	var id = 4
 	_send_chat_emo(id)
-	hide()
+	hide_emo()
 	pass # Replace with function body.
 	
 func _on_emo_btn_5_pressed() -> void:
 	var id = 5
 	_send_chat_emo(id)
-	hide()
+	hide_emo()
 	pass # Replace with function body.
 
 
 func _on_emo_btn_pressed() -> void:
 	if is_showing:
-		hide()
+		hide_emo()
 	else:
-		show()
+		show_emo()
 	pass # Replace with function body.
 
 func _send_chat_emo(emo: int):
-	var pkg = GameConstants.PROTOBUF.PACKETS.InGameChatEmoticon.new()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.InGameChatEmoticon.new()
 	pkg.set_emoticon(emo)
-	GameClient.send_packet(GameConstants.CMDs.CHAT_EMOTICON, pkg.to_bytes())
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CHAT_EMOTICON, pkg.to_bytes())

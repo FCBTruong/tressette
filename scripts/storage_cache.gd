@@ -1,10 +1,11 @@
-extends Node
+extends RefCounted
+class_name StorageCache
 
 const STORAGE_FILE_PATH := "user://storage.json"
 
 var cache: Dictionary = {}  # In-memory cache
 
-func _ready() -> void:
+func on_ready() -> void:
 	_load_cache()
 
 # Load data from file into memory
