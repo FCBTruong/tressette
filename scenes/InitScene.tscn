@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://hxhcl2lvd7qj"]
+[gd_scene load_steps=7 format=3 uid="uid://hxhcl2lvd7qj"]
 
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_wsetf"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_gx2ns"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_wopsr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7gor"]
 bg_color = Color(0, 0, 0, 0.569)
@@ -139,10 +140,12 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -45.0
-offset_right = 20.0
-offset_bottom = -22.0
+offset_left = -39.0
+offset_top = -63.0
+offset_right = 40.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_wopsr")
+theme_override_font_sizes/font_size = 23
 text = "Loading ..."

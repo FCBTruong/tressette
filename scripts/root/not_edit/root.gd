@@ -16,8 +16,13 @@ func _init():
 		return
 	
 	var cache_version = load_version()
-	if cache_version != -1:
-		version = cache_version
+	
+	if cache_version == -1:
+		return
+		
+	if version == cache_version:
+		return
+	version = cache_version
 		
 	print("load_resource_pack")
 	if OS.get_name() != "Web":
@@ -50,7 +55,7 @@ var last_update_time = 0.0
 func _process(delta: float) -> void:
 	if is_downloading:
 		last_update_time += delta
-		if last_update_time >= 0.5:  # Update every 0.5 seconds
+		if last_update_time >= 0.3:  # Update every 0.5 seconds
 			last_update_time = 0  # Reset timer
 
 			var bodySize = http_request.get_body_size()
