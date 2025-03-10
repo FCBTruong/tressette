@@ -12,25 +12,20 @@ func auto_load_scripts():
 	print("hellloccxxxxxc 122")
 	g.v.test_hello()
 	
-	g.v.storage_cache = load("res://scripts/storage_cache.gd").new() 
+	g.v.storage_cache = StorageCache.new() 
 	g.v.storage_cache.on_ready()
-	
-	g.v.dynamic_mgr = load("res://scripts/dynamic_mgr.gd").new()
-	
-	g.v.config = load("res://scripts/config.gd").new()
+
+	g.v.config = Config.new()
 	g.v.config.on_ready()
 	
-	g.v.game_constants = load("res://scripts/game_constants.gd").new()
+	g.v.game_constants = GameConstants.new()
 	
-	g.v.scene_manager = load("res://scripts/scene_manager.gd").new()
+	g.v.scene_manager = SceneManager.new()
 	g.v.scene_manager.on_ready()
 	
-	g.v.player_info_mgr = load("res://scripts/player_info_mgr.gd").new()
+	g.v.player_info_mgr = PlayerInfoMgr.new()
 	
 	g.v.native_mgr = NativeMgr.new()
-	
-	g.v.dynamic_mgr = DynamicMgr.new()
-	self.add_child(g.v.dynamic_mgr)
 	
 	g.v.firebase_mgr = FirebaseMgr.new()
 	self.add_child(g.v.firebase_mgr)
@@ -47,7 +42,7 @@ func auto_load_scripts():
 	
 	g.v.app_version = AppVersion.new()
 	
-	g.v.game_manager = GameManager.new()
+	g.v.game_manager = GameManager.new() # load("res://scripts/game_manager.gd").new()
 	self.add_child(g.v.game_manager)
 	
 	g.v.login_mgr = LoginMgr.new()
@@ -55,6 +50,7 @@ func auto_load_scripts():
 	g.v.game_client = GameClient.new()
 	
 	g.v.payment_mgr = PaymentMgr.new()
+	self.add_child(g.v.payment_mgr)
 	
 	g.v.game_server_config = GameServerConfig.new()
 	

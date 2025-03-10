@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://hxhcl2lvd7qj"]
+[gd_scene load_steps=6 format=3 uid="uid://hxhcl2lvd7qj"]
 
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_wsetf"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_gx2ns"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7gor"]
+bg_color = Color(0, 0, 0, 0.569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twyde"]
+bg_color = Color(0.455874, 0.25342, 0.25342, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8dux"]
+bg_color = Color(0.093089, 0.856405, 0.241367, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="InitScene" type="Node2D"]
 
@@ -15,3 +37,63 @@ grow_vertical = 2
 texture = ExtResource("1_wsetf")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="DownloadPn" type="Panel" parent="Scene/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b7gor")
+
+[node name="DownloadPn" type="Control" parent="Scene/TextureRect/DownloadPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Scene/TextureRect/DownloadPn/DownloadPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 27.0
+offset_right = 150.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_twyde")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a8dux")
+value = 30.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Scene/TextureRect/DownloadPn/DownloadPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -44.0
+offset_right = 71.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_gx2ns")
+theme_override_font_sizes/font_size = 30
+text = "UPDATING"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -12,7 +12,6 @@ var signal_bus: SignalBus
 var game_client: GameClient
 var sound_manager: SoundManager
 var game_server_config: GameServerConfig
-var dynamic_mgr: DynamicMgr
 var native_mgr: NativeMgr
 var payment_mgr: PaymentMgr
 var firebase_mgr: FirebaseMgr

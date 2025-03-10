@@ -43,7 +43,6 @@ func handle_version_and_open_login(payload) -> void:
 	
 	cdn_version = pkg.get_cdn_version()
 	var cur_cdn_version = g.v.storage_cache.fetch("cdn_version")
-	g.v.dynamic_mgr.download_cdn()
 	
 	if my_code_version >= server_app_version:
 		# Version OK
