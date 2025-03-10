@@ -24,14 +24,6 @@ func _init():
 		ProjectSettings.load_resource_pack(save_path)
 
 func _ready() -> void:
-	if has_internet():
-		get_tree().current_scene.find_child("NoInternet").visible = false
-		print("Internet is available!")
-	else:
-		get_tree().current_scene.find_child("NoInternet").visible = true
-		print("No internet connection!")
-
-
 	get_tree().current_scene.find_child("DownloadPn").visible = false
 	add_child(http_request)
 	print("root game....")
@@ -167,7 +159,3 @@ func _handle_update_version(remote_version):
 		download_cdn()
 	else:
 		_init_game()
-
-
-func has_internet() -> bool:
-	return !IP.resolve_hostname("www.google.com").is_empty()
