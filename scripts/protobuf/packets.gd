@@ -2006,6 +2006,31 @@ class PlayCard:
 		service.field = _hand_suit
 		data[_hand_suit.tag] = service
 		
+		_is_end_hand = PBField.new("is_end_hand", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_end_hand
+		data[_is_end_hand.tag] = service
+		
+		_win_uid = PBField.new("win_uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 7, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_uid
+		data[_win_uid.tag] = service
+		
+		_win_point = PBField.new("win_point", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_point
+		data[_win_point.tag] = service
+		
+		_is_end_round = PBField.new("is_end_round", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 9, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_end_round
+		data[_is_end_round.tag] = service
+		
+		_win_card = PBField.new("win_card", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 10, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_card
+		data[_win_card.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -2052,6 +2077,51 @@ class PlayCard:
 		_hand_suit.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_hand_suit(value : int) -> void:
 		_hand_suit.value = value
+	
+	var _is_end_hand: PBField
+	func get_is_end_hand() -> bool:
+		return _is_end_hand.value
+	func clear_is_end_hand() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_is_end_hand.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_end_hand(value : bool) -> void:
+		_is_end_hand.value = value
+	
+	var _win_uid: PBField
+	func get_win_uid() -> int:
+		return _win_uid.value
+	func clear_win_uid() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_win_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_uid(value : int) -> void:
+		_win_uid.value = value
+	
+	var _win_point: PBField
+	func get_win_point() -> int:
+		return _win_point.value
+	func clear_win_point() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_win_point.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_point(value : int) -> void:
+		_win_point.value = value
+	
+	var _is_end_round: PBField
+	func get_is_end_round() -> bool:
+		return _is_end_round.value
+	func clear_is_end_round() -> void:
+		data[9].state = PB_SERVICE_STATE.UNFILLED
+		_is_end_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_end_round(value : bool) -> void:
+		_is_end_round.value = value
+	
+	var _win_card: PBField
+	func get_win_card() -> int:
+		return _win_card.value
+	func clear_win_card() -> void:
+		data[10].state = PB_SERVICE_STATE.UNFILLED
+		_win_card.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_card(value : int) -> void:
+		_win_card.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4514,11 +4584,6 @@ class AppCodeVersion:
 		service.field = _ios_reviewing_version
 		data[_ios_reviewing_version.tag] = service
 		
-		_cdn_version = PBField.new("cdn_version", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
-		service = PBServiceField.new()
-		service.field = _cdn_version
-		data[_cdn_version.tag] = service
-		
 	var data = {}
 	
 	var _android_version: PBField
@@ -4583,15 +4648,6 @@ class AppCodeVersion:
 		_ios_reviewing_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_ios_reviewing_version(value : int) -> void:
 		_ios_reviewing_version.value = value
-	
-	var _cdn_version: PBField
-	func get_cdn_version() -> int:
-		return _cdn_version.value
-	func clear_cdn_version() -> void:
-		data[8].state = PB_SERVICE_STATE.UNFILLED
-		_cdn_version.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
-	func set_cdn_version(value : int) -> void:
-		_cdn_version.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

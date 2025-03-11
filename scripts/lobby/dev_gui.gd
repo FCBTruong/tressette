@@ -86,8 +86,8 @@ func _click_add_bot():
 	pass
 	
 func _test_share_app():
-	#SetteMezzoMgr.quick_play()
-	return
+	##SetteMezzoMgr.quick_play()
+	#return
 	g.v.native_mgr.share_app("Hello everyone")
 
 func _click_reset_guest():

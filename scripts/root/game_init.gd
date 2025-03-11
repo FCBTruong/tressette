@@ -26,6 +26,7 @@ func auto_load_scripts():
 	g.v.player_info_mgr = PlayerInfoMgr.new()
 	
 	g.v.native_mgr = NativeMgr.new()
+	g.v.native_mgr.on_ready()
 	
 	g.v.firebase_mgr = FirebaseMgr.new()
 	self.add_child(g.v.firebase_mgr)

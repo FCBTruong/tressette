@@ -243,6 +243,15 @@ func _handle_play_card(payload: PackedByteArray):
 	if scene is BoardScene:
 		scene.play_card(uid, card_id, auto)
 	push_cards_compare(uid, card_id)
+	
+	var is_end_hand = pkg.get_is_end_hand()
+	if is_end_hand:
+		win_point_hand = pkg.get_win_point()
+		card_win_id = pkg.get_win_card()
+		var is_end_round = pkg.get_is_end_round()
+		await ROOT.get_tree().create_timer(0.5).timeout
+		if scene is BoardScene:
+			scene.on_finishhand(0.5, is_end_round)
 
 func send_play_card(card_id: int):
 	match_data.current_turn = -1
@@ -388,21 +397,11 @@ func _handle_endhand(payload: PackedByteArray):
 		return
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.EndHand.new()
 	var result_code = pkg.from_bytes(payload)
-	var win_uid = pkg.get_win_uid()
-	win_point_hand = pkg.get_win_point()
-	card_win_id = pkg.get_win_card()
 	var points = pkg.get_user_points()
-	var is_end_round = pkg.get_is_end_round()
-	
 	var i = 0
 	for user in match_data.users:
 		user.game_data.points = points[i]
 		i += 1
-	
-	print('finish rounds...')
-	var scene = g.v.scene_manager.get_current_scene()
-	if scene is BoardScene:
-		scene.on_finishhand(0.5, is_end_round)
 	reset_cards_compare()
 	
 func is_my_team(uid) -> bool:

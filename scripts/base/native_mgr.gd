@@ -1,8 +1,8 @@
-extends Node
+extends RefCounted
 class_name NativeMgr
 
 var native_plugin = null
-func _ready() -> void:
+func on_ready() -> void:
 	if OS.get_name() == 'Android':
 		if Engine.has_singleton("NativeCustomPlugin"):
 			native_plugin = Engine.get_singleton("NativeCustomPlugin")
