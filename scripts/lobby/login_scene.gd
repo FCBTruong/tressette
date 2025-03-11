@@ -5,6 +5,7 @@ extends Node
 @onready var apple_btn = find_child("AppleBtn")
 @onready var login_pn = find_child("LoginPn")
 @onready var select_uid_cheat = find_child("SelectUIDCheat")
+@onready var privacy_pn = find_child("PrivacyTermPn")
 var uids_cheat = []
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +40,11 @@ func _ready() -> void:
 			.set_delay(delay) 
 	tween.parallel().tween_property(login_pn,
 		"modulate:a", 1, 0.4).set_delay(delay) 
+	
+	var privacy_pn_pos = privacy_pn.position
+	privacy_pn.position.y += 200
+	tween.parallel().tween_property(privacy_pn,
+		"position:y", privacy_pn_pos.y, 0.4).set_delay(delay) 
 		
 	var screen_size = DisplayServer.window_get_size()
 	if screen_size.y > screen_size.x * 1.4:

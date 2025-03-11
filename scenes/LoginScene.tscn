@@ -390,7 +390,7 @@ offset_right = 275.0
 offset_bottom = 44.0
 text = "Send"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+[node name="PrivacyTermPn" type="HBoxContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(400, 0)
 anchors_preset = 3
 anchor_left = 1.0
@@ -404,14 +404,14 @@ grow_vertical = 0
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="CanvasLayer/PrivacyTermPn"]
 modulate = Color(1, 1, 1, 0.734)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_7l41h")
 theme_override_font_sizes/font_size = 14
 text = "TERMS_OF_SERVICE"
 
-[node name="TermsBtn" type="Button" parent="CanvasLayer/HBoxContainer2/Label2"]
+[node name="TermsBtn" type="Button" parent="CanvasLayer/PrivacyTermPn/Label2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -421,7 +421,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("3_16366")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HBoxContainer2/Label2"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PrivacyTermPn/Label2"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -432,14 +432,14 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2"]
+[node name="Label" type="Label" parent="CanvasLayer/PrivacyTermPn"]
 modulate = Color(1, 1, 1, 0.734)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_7l41h")
 theme_override_font_sizes/font_size = 14
 text = "PRIVACY_POLICY"
 
-[node name="PrivacyBtn" type="Button" parent="CanvasLayer/HBoxContainer2/Label"]
+[node name="PrivacyBtn" type="Button" parent="CanvasLayer/PrivacyTermPn/Label"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -449,7 +449,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("3_16366")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/HBoxContainer2/Label"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PrivacyTermPn/Label"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -481,5 +481,5 @@ text = "Welcom to Tressette"
 [connection signal="pressed" from="CanvasLayer/PnCheat/BtnQuickLogin/Button" to="." method="test_login_userB"]
 [connection signal="text_submitted" from="CanvasLayer/PnCheat/InputUIDCheat" to="." method="_login_by_uid_cheat"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/SelectUIDCheat/UIDSelectBtn" to="." method="_cheat_select_uid"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer2/Label2/TermsBtn" to="." method="_click_terms_of_service"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer2/Label/PrivacyBtn" to="." method="_click_privacy_policy"]
+[connection signal="pressed" from="CanvasLayer/PrivacyTermPn/Label2/TermsBtn" to="." method="_click_terms_of_service"]
+[connection signal="pressed" from="CanvasLayer/PrivacyTermPn/Label/PrivacyBtn" to="." method="_click_privacy_policy"]
