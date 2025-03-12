@@ -61,6 +61,8 @@ func auto_load_scripts():
 	
 	g.v.sound_manager = SoundManager.new()
 	self.add_child(g.v.sound_manager)
+	
+	g.v.sette_mezzo_mgr = SetteMezzoMgr.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

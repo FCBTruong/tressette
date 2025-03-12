@@ -38,7 +38,7 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			g.v.player_info_mgr.on_receive(cmd_id, payload)
 			g.v.login_mgr.on_receive(cmd_id, payload)
 			g.v.friend_mgr.on_receive(cmd_id, payload)
-			#SetteMezzoMgr.on_receive(cmd_id, payload)
+			g.v.sette_mezzo_mgr.on_receive(cmd_id, payload)
 			pass
 		
 

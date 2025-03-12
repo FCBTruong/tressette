@@ -49,7 +49,7 @@ const TIME_VIEW_CARD = 1.1
 const CARD_DISTANCE_BETWEEN = 90
 
 var card_scene = preload("res://scenes/board/Card.tscn")
-var game_logic = SetteMezzoMgr
+var game_logic: SetteMezzoMgr
 var SCALE_CARD_DEAL_INIT = 0.8	
 var SCALE_CARD_DRAW = 0.6
 var SCALE_CARD_NORMAL = 1
@@ -65,6 +65,7 @@ var center_play_pn_default_pos
 @onready var card_cont_dealer = find_child("CardContainerDealer")
 @onready var emo_chat = find_child("EmoChat")
 func _ready() -> void:	
+	game_logic = g.v.sette_mezzo_mgr
 	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
 	_on_screen_resized()
@@ -292,7 +293,7 @@ func _create_players(player_count: int) -> void:
 func update_player_seat():
 	for player in list_players:
 		var seat_id = player.user_data.game_data.seat_id
-		var pos = _get_seat_position(SetteMezzoMgr.match_data.player_mode, seat_id)
+		var pos = _get_seat_position(g.v.sette_mezzo_mgr.match_data.player_mode, seat_id)
 		player.global_position = pos
 		
 func _get_seat_position(mode_player: int, seat_id: int):

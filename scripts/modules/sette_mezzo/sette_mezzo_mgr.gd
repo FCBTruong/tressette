@@ -1,4 +1,5 @@
-extends Node
+extends RefCounted
+class_name SetteMezzoMgr
 
 var match_data: SetteMezzoMatchData
 var my_idx = -1
@@ -172,7 +173,7 @@ func _start_game(payload: PackedByteArray):
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:
 		scene.on_game_start()
-		await get_tree().create_timer(1).timeout
+		await ROOT.get_tree().create_timer(1).timeout
 		scene.deal_cards(card_deal)
 
 
