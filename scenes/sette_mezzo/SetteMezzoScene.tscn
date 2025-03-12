@@ -72,7 +72,7 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.489817, 0.29806, 0.29806, 0.6)
 shadow_size = 3
 
-[node name="BoardScene" type="Node2D"]
+[node name="BoardScene2" type="Node2D"]
 script = ExtResource("1_gx0u6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -436,6 +436,7 @@ mouse_filter = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer/ActionBtnPn"]
 custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
 offset_left = 26.0
 offset_right = 126.0
 offset_bottom = 50.0

@@ -1046,10 +1046,10 @@ mouse_filter = 2
 
 [node name="EmoBtn" type="Button" parent="CanvasLayer/BottomLeftPn"]
 layout_mode = 0
-offset_left = 124.0
-offset_top = -42.0
-offset_right = 184.0
-offset_bottom = 18.0
+offset_left = 47.0
+offset_top = -246.0
+offset_right = 107.0
+offset_bottom = -186.0
 flat = true
 script = ExtResource("7_gov4p")
 
@@ -1067,10 +1067,10 @@ expand_mode = 1
 
 [node name="ChatBtn" type="Button" parent="CanvasLayer/BottomLeftPn"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = -42.0
-offset_right = 110.0
-offset_bottom = 18.0
+offset_left = 47.0
+offset_top = -176.0
+offset_right = 107.0
+offset_bottom = -116.0
 flat = true
 script = ExtResource("7_gov4p")
 

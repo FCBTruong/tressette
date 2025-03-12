@@ -57,7 +57,7 @@ const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
 const CHAT_EMO_Z_INDEX = 200
 const TIME_VIEW_CARD = 1.1
-const CARD_DISTANCE_BETWEEN = 90
+const CARD_DISTANCE_BETWEEN = 110
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = g.v.game_constants.game_logic
@@ -467,6 +467,7 @@ func on_finishhand(delay = 0.5, is_end_round = false):
 	for c in cards_node_compare:
 		tween.parallel().tween_property(c, "global_position", player_node.global_position, 0.3).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 		tween.parallel().tween_property(c, "scale", Vector2(0.6, 0.6), 0.3)
+		tween.parallel().tween_property(c, "modulate:a", 0, 0.2).set_delay(0.3)
 		
 	tween.tween_interval(0)
 	for c in cards_node_compare:
