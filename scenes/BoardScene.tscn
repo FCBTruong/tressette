@@ -1,11 +1,10 @@
-[gd_scene load_steps=49 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=47 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
 [ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_ncq5t"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_snlll"]
-[ext_resource type="Shader" path="res://shaders/gradient.gdshader" id="4_xmo0b"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
 [ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="6_foh0g"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
@@ -55,11 +54,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kcpnr"]
-shader = ExtResource("4_xmo0b")
-shader_parameter/influence = 0.5
-shader_parameter/offset = null
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wdn7"]
 bg_color = Color(0.690082, 0.398423, 0.197545, 1)
@@ -321,17 +315,17 @@ mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -45.0
-offset_right = 32.5
-offset_bottom = 48.0
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -104.0
+offset_right = 35.0
+offset_bottom = -11.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ktgw6")
 
 [node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
@@ -368,8 +362,7 @@ texture = ExtResource("3_ncq5t")
 expand_mode = 1
 
 [node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-material = SubResource("ShaderMaterial_kcpnr")
-custom_minimum_size = Vector2(65, 90)
+custom_minimum_size = Vector2(70, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1033,27 +1026,29 @@ offset_right = 527.0
 offset_bottom = 147.0
 grow_horizontal = 1
 
-[node name="BottomLeftPn" type="Control" parent="CanvasLayer"]
+[node name="BottomRightPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -41.0
-offset_right = 40.0
-offset_bottom = -1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="EmoBtn" type="Button" parent="CanvasLayer/BottomLeftPn"]
+[node name="EmoBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = 47.0
-offset_top = -246.0
-offset_right = 107.0
-offset_bottom = -186.0
+offset_left = -51.0
+offset_top = -251.0
+offset_right = 9.0
+offset_bottom = -191.0
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/EmoBtn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomRightPn/EmoBtn"]
 modulate = Color(1, 1, 1, 0.757)
 material = SubResource("ShaderMaterial_cyhfc")
 layout_mode = 1
@@ -1065,16 +1060,16 @@ grow_vertical = 2
 texture = ExtResource("12_cc6ty")
 expand_mode = 1
 
-[node name="ChatBtn" type="Button" parent="CanvasLayer/BottomLeftPn"]
+[node name="ChatBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = 47.0
-offset_top = -176.0
-offset_right = 107.0
-offset_bottom = -116.0
+offset_left = -50.0
+offset_top = -178.0
+offset_right = 10.0
+offset_bottom = -118.0
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BottomRightPn/ChatBtn"]
 modulate = Color(1, 1, 1, 0.757)
 material = SubResource("ShaderMaterial_6sle4")
 layout_mode = 1
@@ -1092,7 +1087,7 @@ grow_vertical = 2
 texture = ExtResource("8_f0rj1")
 expand_mode = 1
 
-[node name="RedDot" type="TextureRect" parent="CanvasLayer/BottomLeftPn/ChatBtn"]
+[node name="RedDot" type="TextureRect" parent="CanvasLayer/BottomRightPn/ChatBtn"]
 modulate = Color(0.798701, 0, 0, 1)
 layout_mode = 0
 offset_left = 43.0
@@ -1344,8 +1339,8 @@ volume_db = 12.0
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
-[connection signal="pressed" from="CanvasLayer/BottomLeftPn/EmoBtn" to="CanvasLayer/EmoChat" method="_on_emo_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/BottomLeftPn/ChatBtn" to="." method="on_show_chat_gui"]
+[connection signal="pressed" from="CanvasLayer/BottomRightPn/EmoBtn" to="CanvasLayer/EmoChat" method="_on_emo_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/BottomRightPn/ChatBtn" to="." method="on_show_chat_gui"]
 [connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn5" to="CanvasLayer/EmoChat" method="_on_emo_btn_5_pressed"]
 [connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn4" to="CanvasLayer/EmoChat" method="_on_emo_btn_4_pressed"]
 [connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn3" to="CanvasLayer/EmoChat" method="_on_emo_btn_3_pressed"]

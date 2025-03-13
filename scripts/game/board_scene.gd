@@ -737,6 +737,7 @@ func _effect_draw_card(uid, card_id):
 		tween.parallel().tween_property(instance, "global_position", final_pos, 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
 		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
 		tween.tween_interval(0)
+		tween.tween_property(instance, 'modulate:a', 0, 0.2)
 		tween.tween_callback(
 			func():
 				instance.queue_free()

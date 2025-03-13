@@ -71,6 +71,7 @@ func turn_face_down():
 	self.card_image.self_modulate = Color("#ffffff")
 	
 	if g.v.game_manager.CURRENT_GAME_PLAY == 0:
+		return
 		#self.card_image.material = null
 		card_mat.shader = shader1
 		self.card_image.material = card_mat
