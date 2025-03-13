@@ -124,6 +124,7 @@ func _load_texture_card():
 	elif g.v.game_manager.card_style == g.v.game_constants.CARD_STYLES.MODERN:
 		card_type = 'modern'
 		
+	#card_type = 'piacentine'
 	var path = "res://assets/images/card_tressette/" + card_type + "/card_" + str(id) + ".png"
 	_load_texture(path)
 	

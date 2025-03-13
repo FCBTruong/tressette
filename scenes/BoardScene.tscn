@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=51 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
@@ -17,8 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_078t0"]
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="9_g7ymd"]
+[ext_resource type="Texture2D" uid="uid://ly4nwhli0ra2" path="res://assets/images/board/blue-btn.png" id="9_jnkg8"]
 [ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="9_ujbxy"]
+[ext_resource type="Texture2D" uid="uid://ch7bnsoxinvph" path="res://assets/images/board/red-btn.png" id="10_prh1e"]
 [ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="11_8cjom"]
+[ext_resource type="FontFile" uid="uid://cb1bj1k60uj4u" path="res://assets/fonts/Reglisse_Fill.otf" id="11_23se6"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_lcke6"]
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="11_mpmvk"]
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="12_b6jtg"]
@@ -85,6 +88,13 @@ shader_parameter/color_mode_toggle = false
 shader_parameter/is_horizontal = true
 shader_parameter/delay = 8.0
 shader_parameter/vertical_gradient = SubResource("GradientTexture2D_mcuel")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndb7b"]
+font = ExtResource("11_23se6")
+font_size = 40
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.364706)
+shadow_offset = Vector2(-2, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th6m6"]
 bg_color = Color(0, 0, 0, 0.493)
@@ -479,7 +489,61 @@ text = "1999999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = -2.0
+offset_right = 743.0
+offset_bottom = 98.0
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayGround/Panel"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 4.0
+offset_right = 192.0
+offset_bottom = 27.0
+text = "GAME TO 11"
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayGround/Panel"]
+offset_left = 45.0
+offset_top = 32.0
+offset_right = 145.0
+offset_bottom = 82.0
+texture = ExtResource("9_jnkg8")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/PlayGround/Panel/TextureRect2"]
+offset_left = 13.0
+offset_top = -7.0
+offset_right = 83.0
+offset_bottom = 53.0
+text = "10"
+label_settings = SubResource("LabelSettings_ndb7b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/Panel"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 32.0
+offset_right = 261.0
+offset_bottom = 82.0
+texture = ExtResource("10_prh1e")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayGround/Panel/TextureRect"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -6.0
+offset_right = 89.0
+offset_bottom = 54.0
+text = "11"
+label_settings = SubResource("LabelSettings_ndb7b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
