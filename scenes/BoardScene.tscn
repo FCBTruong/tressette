@@ -203,7 +203,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -360.0
-offset_top = -170.0
+offset_top = -180.0
 offset_right = 360.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -337,16 +337,16 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PlaceCard20" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(65, 167)
+position = Vector2(40, 200)
 
 [node name="PlaceCard21" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(40, 74)
+position = Vector2(40, 70)
 
 [node name="PlaceCard22" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(200, 66)
+position = Vector2(180, 70)
 
 [node name="PlaceCard23" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(187, 160)
+position = Vector2(180, 200)
 
 [node name="PlaceCard1" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 position = Vector2(170, 100)
@@ -950,7 +950,7 @@ stretch_mode = 5
 modulate = Color(1, 1, 1, 0.809)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.865)
-theme_override_fonts/font = ExtResource("15_1f377")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 23
 text = "BET: 100K"
 horizontal_alignment = 2
@@ -1147,7 +1147,6 @@ offset_bottom = 31.0
 text = "Test Deal"
 
 [node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
-visible = false
 custom_minimum_size = Vector2(333, 250)
 anchors_preset = 4
 anchor_top = 0.5
@@ -1158,6 +1157,22 @@ offset_top = -253.0
 offset_right = 527.0
 offset_bottom = 147.0
 grow_horizontal = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/InGameChatGui"]
+custom_minimum_size = Vector2(400, 800)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 787.0
+offset_top = -117.0
+offset_right = 787.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("7_gov4p")
 
 [node name="BottomRightPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1172,9 +1187,9 @@ mouse_filter = 2
 [node name="EmoBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
 offset_left = 38.0
-offset_top = -155.0
+offset_top = -178.0
 offset_right = 98.0
-offset_bottom = -95.0
+offset_bottom = -118.0
 flat = true
 script = ExtResource("7_gov4p")
 
@@ -1469,6 +1484,7 @@ volume_db = 12.0
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
+[connection signal="pressed" from="CanvasLayer/InGameChatGui/Button" to="." method="on_show_chat_gui"]
 [connection signal="pressed" from="CanvasLayer/BottomRightPn/EmoBtn" to="CanvasLayer/EmoChat" method="_on_emo_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/BottomRightPn/ChatBtn" to="." method="on_show_chat_gui"]
 [connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn5" to="CanvasLayer/EmoChat" method="_on_emo_btn_5_pressed"]

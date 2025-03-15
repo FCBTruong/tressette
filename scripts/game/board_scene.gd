@@ -55,7 +55,7 @@ const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
 const CHAT_EMO_Z_INDEX = 200
 const TIME_VIEW_CARD = 1.1
-const CARD_DISTANCE_BETWEEN = 100
+const CARD_DISTANCE_BETWEEN = 95
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = g.v.game_constants.game_logic
@@ -134,7 +134,7 @@ func _on_enter():
 	chat_btn.visible = g.v.game_manager.enable_chat_ingame
 	chat_btn_reddot.visible = false
 	pn_cheat.visible = false #g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE
-	room_id_lb.text = tr("ROOM_ID") + ': ' + str(game_logic.match_data.match_id)
+	room_id_lb.text = "ID" + ': ' + str(game_logic.match_data.match_id)
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		update_cards_on_table()
 		if game_logic.check_finishhand():
@@ -1057,5 +1057,4 @@ func _on_screen_resized():
 		auto_play_pn.size.y = 600
 		auto_play_pn.position.y = get_viewport().get_visible_rect().size.y - auto_play_pn.size.y
 		auto_play_pn.find_child("ReturnTableBtn").scale = Vector2(2, 2)
-	
 	

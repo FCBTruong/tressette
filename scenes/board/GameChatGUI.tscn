@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvs3cl10d1nap"]
+[gd_scene load_steps=12 format=3 uid="uid://cvs3cl10d1nap"]
 
 [ext_resource type="Script" path="res://scripts/game/ingame_chat_gui.gd" id="1_45c2r"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_otlio"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="2_28jub"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_wkwjg"]
 [ext_resource type="Texture2D" uid="uid://yuqomgxpxw4w" path="res://assets/images/board/send_icon.png" id="3_82s7o"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_jsdfg"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_htv7n"]
+[ext_resource type="PackedScene" uid="uid://c0gj4weo12s7r" path="res://scenes/board/QuickChatNode.tscn" id="7_fi4nl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2roa"]
-bg_color = Color(0, 0, 0, 0.622)
+bg_color = Color(0, 0, 0, 0.747)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -18,6 +19,13 @@ corner_radius_bottom_left = 10
 default_font = ExtResource("2_wkwjg")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwea3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5gj3"]
+bg_color = Color(0.690082, 0.409444, 0.0250885, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="InGameChatGui" type="Control"]
 layout_mode = 3
@@ -63,7 +71,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("2_otlio")
+theme_override_fonts/normal_font = ExtResource("2_28jub")
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 scroll_following = true
@@ -111,5 +119,43 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_82s7o")
 expand_mode = 1
+
+[node name="QuickChat" type="Control" parent="."]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 274.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="QuickChat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s5gj3")
+
+[node name="QuickList" type="VBoxContainer" parent="QuickChat"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 62.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="QuickChatNode" parent="QuickChat/QuickList" instance=ExtResource("7_fi4nl")]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/SubmitBtn" to="." method="_click_submit"]

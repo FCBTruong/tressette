@@ -1,6 +1,7 @@
 extends Control
 
 @onready var chat_log = find_child('ChatLog')
+@onready var quick_list = find_child("QuickList")
 var input_label
 var input_field
 var groups = [
@@ -12,12 +13,22 @@ var groups = [
 
 var group_index = 0
 var user_name = 'Emilia'
+var last_time_chat = 0
 
 func _ready():
 	input_label = get_node("VBoxContainer/HBoxContainer/Label")
 	input_field = get_node("VBoxContainer/HBoxContainer/LineEdit")
 	input_field.connect("text_submitted", Callable(self, "text_submitted"))
-
+	
+	for c in quick_list.get_children():
+		c.queue_free()
+	
+	var quick_chat_node = load("res://scenes/board/QuickChatNode.tscn")
+	for i in range(6):
+		var n = quick_chat_node.instantiate()
+		quick_list.add_child(n)
+		n.set_text(tr("QUICK_CHAT_" + str(i)))
+		n.parent = self
 
 func _input(event):
 	if event is InputEventKey:
@@ -36,6 +47,12 @@ func text_submitted(text):
 		return
 	if len(text) >= 100:
 		text = text.substr(0, 100)
+		
+	var now = g.v.game_manager.get_timestamp_client()
+	if now - last_time_chat < 1:
+		# too fast
+		return
+	last_time_chat = now
 		
 	print(text)
 	input_field.text = ''
