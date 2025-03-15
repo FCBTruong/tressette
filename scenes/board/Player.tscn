@@ -49,6 +49,7 @@ offset_bottom = 75.0
 color = Color(1, 0.444462, 0, 1)
 
 [node name="MainPn" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -264,7 +265,7 @@ texture = ExtResource("6_lqmp5")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.148022, 0.642562, 0.195855, 1)
+modulate = Color(0.124474, 0.472845, 0.15817, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -281,7 +282,7 @@ texture = ExtResource("11_7d5ia")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="EmptySlot"]
-modulate = Color(0.148022, 0.642562, 0.195855, 1)
+modulate = Color(0.124474, 0.472845, 0.15817, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

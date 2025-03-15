@@ -212,6 +212,7 @@ texture = ExtResource("7_qshgq")
 expand_mode = 1
 
 [node name="LabelEmpty" type="Label" parent="CanvasLayer/TextureRect"]
+self_modulate = Color(1, 1, 1, 0.737)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

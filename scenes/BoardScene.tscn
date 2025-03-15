@@ -203,7 +203,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -360.0
-offset_top = -150.0
+offset_top = -170.0
 offset_right = 360.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -269,6 +269,7 @@ offset_right = -24.0
 offset_bottom = -97.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="PlayerPos2" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
@@ -280,6 +281,7 @@ offset_top = 33.0
 offset_right = -37.0
 offset_bottom = 33.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="PlayerPos1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
@@ -288,6 +290,7 @@ offset_left = 58.0
 offset_top = 16.0
 offset_right = 98.0
 offset_bottom = 56.0
+mouse_filter = 2
 
 [node name="PlayerPos0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
@@ -299,6 +302,24 @@ offset_top = -97.0
 offset_right = 27.0
 offset_bottom = -97.0
 grow_vertical = 0
+mouse_filter = 2
+
+[node name="seat_pos_solo1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 574.0
+offset_top = 31.0
+offset_right = 574.0
+offset_bottom = 31.0
+mouse_filter = 2
+
+[node name="seat_pos_solo0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
+anchors_preset = 0
+offset_left = 35.0
+offset_top = 181.0
+offset_right = 35.0
+offset_bottom = 181.0
+mouse_filter = 2
 
 [node name="CardComparePn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
@@ -815,7 +836,7 @@ theme_override_colors/font_shadow_color = Color(1, 0.536171, 0.557066, 1)
 theme_override_colors/font_outline_color = Color(0.612013, 0.37438, 0.0564619, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("11_8cjom")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = "GAME_START"
 horizontal_alignment = 1
@@ -1140,23 +1161,20 @@ grow_horizontal = 1
 
 [node name="BottomRightPn" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
 offset_top = -40.0
-grow_horizontal = 0
+offset_right = 40.0
 grow_vertical = 0
 mouse_filter = 2
 
 [node name="EmoBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = -52.0
-offset_top = -281.0
-offset_right = 8.0
-offset_bottom = -221.0
+offset_left = 38.0
+offset_top = -155.0
+offset_right = 98.0
+offset_bottom = -95.0
 flat = true
 script = ExtResource("7_gov4p")
 
@@ -1174,10 +1192,10 @@ expand_mode = 1
 
 [node name="ChatBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = -51.0
-offset_top = -208.0
-offset_right = 9.0
-offset_bottom = -148.0
+offset_left = 38.0
+offset_top = -82.0
+offset_right = 98.0
+offset_bottom = -22.0
 flat = true
 script = ExtResource("7_gov4p")
 

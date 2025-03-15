@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bebfix1c1kukt"]
+[gd_scene load_steps=20 format=3 uid="uid://bebfix1c1kukt"]
 
 [ext_resource type="Script" path="res://scripts/game/game_result_gui.gd" id="1_fpth8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_2qycw"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="5_iqu72"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="5_oq6y8"]
 [ext_resource type="FontFile" uid="uid://cb1bj1k60uj4u" path="res://assets/fonts/Reglisse_Fill.otf" id="5_yowoj"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_c54ls"]
 [ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="7_11gwx"]
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="7_tcbk3"]
@@ -252,10 +253,28 @@ alignment = 1
 [node name="BtnExit" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_c54ls")
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_bxyre")
-text = "EXIT"
 script = ExtResource("4_xsh0q")
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/BtnExit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -11.5
+offset_right = 41.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_c54ls")
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="CanvasLayer/MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
@@ -320,7 +339,7 @@ offset_right = 20.0
 offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_2qycw")
+theme_override_fonts/font = ExtResource("6_c54ls")
 theme_override_font_sizes/font_size = 30
 text = "3"
 horizontal_alignment = 1
@@ -347,8 +366,10 @@ offset_right = 41.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_c54ls")
 text = "CONTINUE"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackgroundParticles" parent="CanvasLayer/MainPn" instance=ExtResource("2_t0g3t")]
 position = Vector2(365, 258)
