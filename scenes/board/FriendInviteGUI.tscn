@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_3qvo6"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="3_5grwg"]
 [ext_resource type="PackedScene" uid="uid://ini8ko5c6tti" path="res://scenes/board/FriendInviteNode.tscn" id="5_f332w"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="7_7gve4"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="7_vonqp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e7rbj"]
 shader = ExtResource("2_11yv1")
@@ -106,7 +106,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_7gve4")
+theme_override_fonts/font = ExtResource("7_vonqp")
 theme_override_font_sizes/font_size = 22
 text = "NO_FRIENDS_ONLINE"
 

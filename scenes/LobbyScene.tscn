@@ -1,8 +1,9 @@
-[gd_scene load_steps=46 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=45 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_x7pan"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_a6ucd"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="5_pl242"]
 [ext_resource type="Texture2D" uid="uid://dfdy8h44wmrd" path="res://assets/images/card_tressette/classic/card_4.png" id="6_514yr"]
@@ -16,10 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_fym06"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_pgu6f"]
-[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="12_q3rst"]
 [ext_resource type="Shader" path="res://effects/2d_trail/preview/material/star_trail.gdshader" id="13_a6psf"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="15_g7l3g"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="18_mdwpl"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="18_wn24e"]
@@ -279,7 +278,7 @@ offset_top = -49.0
 offset_right = 78.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("14_wid5y")
+theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 35
 text = "PLAY_NOW"
 horizontal_alignment = 1
@@ -386,7 +385,7 @@ offset_top = -49.0
 offset_right = 78.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("14_wid5y")
+theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 35
 text = "ROOMS"
 horizontal_alignment = 1
@@ -754,7 +753,7 @@ texture = ExtResource("9_bavc2")
 modulate = Color(1, 1, 1, 0.816)
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_q3rst")
+theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 24
 text = "PROFILE"
 vertical_alignment = 2
@@ -837,7 +836,7 @@ layout_mode = 2
 [node name="NameLb" type="Label" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("14_wid5y")
+theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 26
 text = "Nguyen Huy Truong"
 
@@ -846,7 +845,7 @@ layout_mode = 2
 
 [node name="GoldLb" type="Label" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("15_g7l3g")
+theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 26
 text = "100"
 
@@ -863,7 +862,7 @@ stretch_mode = 4
 modulate = Color(1, 1, 1, 0.816)
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12_q3rst")
+theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 24
 text = "FRIENDS"
 vertical_alignment = 2

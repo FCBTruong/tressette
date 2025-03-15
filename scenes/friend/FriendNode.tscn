@@ -1,14 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwixv73ro3krf"]
+[gd_scene load_steps=11 format=3 uid="uid://bwixv73ro3krf"]
 
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="1_68n2p"]
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_node.gd" id="1_ii6gu"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_wr502"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="3_2r7jm"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_sopwt"]
-[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_m7j3o"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_svbc0"]
 [ext_resource type="Texture2D" uid="uid://dfvc0em4rmmq5" path="res://assets/images/lobby/delete_icon.png" id="5_h58w4"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kam2u"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="7_v67t5"]
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="9_xujkd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs4mr"]
@@ -118,7 +117,7 @@ layout_mode = 2
 [node name="NameLb" type="Label" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0.868)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_wr502")
+theme_override_fonts/font = ExtResource("7_v67t5")
 theme_override_font_sizes/font_size = 25
 text = "Nguyen Huy Truong"
 
@@ -147,9 +146,10 @@ expand_mode = 1
 modulate = Color(1, 1, 1, 0.868)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("4_m7j3o")
+theme_override_fonts/font = ExtResource("7_v67t5")
 theme_override_font_sizes/font_size = 20
 text = "100.000.0"
+vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/GoldLb"]
 layout_mode = 1

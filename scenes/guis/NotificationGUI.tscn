@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/lobby/notification_gui.gd" id="1_okwls"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_d540v"]
 [ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_ugctg"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_pbit8"]
-[ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="4_4bybf"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_icld3"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_k8eoc"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="5_1a8cq"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="6_mr2ps"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwd5"]
 bg_color = Color(0, 0, 0, 0.74)
@@ -101,7 +101,7 @@ offset_right = 94.0
 offset_bottom = 57.5
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.62327, 0.460541, 1)
-theme_override_fonts/font = ExtResource("3_pbit8")
+theme_override_fonts/font = ExtResource("4_k8eoc")
 theme_override_font_sizes/font_size = 32
 text = "NOTIFICATION"
 horizontal_alignment = 1
@@ -153,7 +153,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_pbit8")
+theme_override_fonts/font = ExtResource("4_k8eoc")
 theme_override_font_sizes/font_size = 26
 text = "CANCEL"
 horizontal_alignment = 1
@@ -188,7 +188,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_pbit8")
+theme_override_fonts/font = ExtResource("4_k8eoc")
 theme_override_font_sizes/font_size = 26
 text = "OK"
 horizontal_alignment = 1
@@ -208,7 +208,7 @@ offset_right = 300.0
 offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_4bybf")
+theme_override_fonts/font = ExtResource("6_mr2ps")
 theme_override_font_sizes/font_size = 26
 text = "You are disconnected"
 horizontal_alignment = 1

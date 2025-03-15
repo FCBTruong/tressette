@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/modules/shop/shop_scene.gd" id="1_lrbfb"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="2_fwqk2"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_45jny"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_f7wm3"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="5_f2kdc"]
 
 [node name="ShopScene" type="Node2D"]
 script = ExtResource("1_lrbfb")
@@ -56,9 +56,11 @@ offset_right = 58.0
 offset_bottom = 78.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.649541, 0, 1)
-theme_override_fonts/font = ExtResource("3_f7wm3")
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("5_f2kdc")
+theme_override_font_sizes/font_size = 43
 text = "STORE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="CanvasLayer/TextureRect"]
 layout_mode = 1

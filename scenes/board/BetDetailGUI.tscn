@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhf4of5mkrdho"]
+[gd_scene load_steps=5 format=3 uid="uid://bhf4of5mkrdho"]
 
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="1_84qm5"]
 [ext_resource type="Script" path="res://scripts/game/bet_detail_gui.gd" id="1_hek8f"]
-[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="2_o2vl8"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_h0vbn"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_3wv1l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx2ms"]
@@ -46,7 +45,7 @@ offset_top = 8.0
 offset_right = 59.0
 offset_bottom = 31.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_84qm5")
+theme_override_fonts/font = ExtResource("2_h0vbn")
 theme_override_font_sizes/font_size = 30
 text = "POT & BET"
 uppercase = true
@@ -71,8 +70,8 @@ theme_override_constants/separation = 20
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_o2vl8")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_h0vbn")
+theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_1"
 autowrap_mode = 3
 
@@ -80,8 +79,8 @@ autowrap_mode = 3
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_o2vl8")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_h0vbn")
+theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_2"
 autowrap_mode = 3
 
@@ -89,8 +88,8 @@ autowrap_mode = 3
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_o2vl8")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_h0vbn")
+theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_3"
 autowrap_mode = 3
 
@@ -134,7 +133,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_84qm5")
+theme_override_fonts/font = ExtResource("2_h0vbn")
 theme_override_font_sizes/font_size = 20
 text = "OK"
 horizontal_alignment = 1

@@ -7,7 +7,6 @@ var play_ground
 var list_my_cards = []
 var list_players = []
 var _cur_focusing_card = null
-var place_card_node = null
 var tween: Tween
 var tween_animate: Tween
 var cards_node_compare = []
@@ -19,10 +18,7 @@ var is_portrait = false
 @onready var seat_pos1 = find_child('PlayerPos1')
 @onready var seat_pos2 = find_child('PlayerPos2')
 @onready var seat_pos3 = find_child('PlayerPos3')
-@onready var place_card0 = find_child('PlaceCard0')
-@onready var place_card1 = find_child('PlaceCard1')
-@onready var place_card2 = find_child('PlaceCard2')
-@onready var place_card3 = find_child('PlaceCard3')
+var compare_card_poses = []
 @onready var remain_cards_lb = find_child('RemainCardsLb')
 @onready var my_score_lb = find_child('MyScoreLb')
 @onready var opponent_score_lb = find_child('OpponentScoreLb')
@@ -57,7 +53,7 @@ const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
 const CHAT_EMO_Z_INDEX = 200
 const TIME_VIEW_CARD = 1.1
-const CARD_DISTANCE_BETWEEN = 110
+const CARD_DISTANCE_BETWEEN = 100
 
 var card_scene = preload("res://scenes/board/Card.tscn")
 var game_logic: GameLogic = g.v.game_constants.game_logic
@@ -87,7 +83,6 @@ func _ready() -> void:
 	g.v.scene_manager.INSTANCES.BOARD_SCENE = self
 	my_card_panel = find_child('MyCardPanel')
 	play_ground = find_child('PlayGround')
-	place_card_node = find_child('PlaceCard1')
 	countdown_start_lb.visible = false
 	evaluate_lb.modulate.a = 0
 	evaluate_lb.visible = true
@@ -117,6 +112,16 @@ func _get_card_rotates(n):
 func _on_enter():
 	game_start_lb.visible = false
 	auto_play_pn.visible = false
+	compare_card_poses.clear()
+	
+	if game_logic.match_data.player_mode == GameConstants.PLAYER_MODE.SOLO:
+		compare_card_poses.append(find_child('PlaceCard0'))
+		compare_card_poses.append(find_child('PlaceCard1'))
+	else:
+		compare_card_poses.append(find_child('PlaceCard20'))
+		compare_card_poses.append(find_child('PlaceCard21'))
+		compare_card_poses.append(find_child('PlaceCard22'))
+		compare_card_poses.append(find_child('PlaceCard23'))
 	_update_current_round()
 	on_update_players()
 	update_remain_cards()
@@ -391,11 +396,14 @@ func play_my_card(id: int, auto: bool = false):
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
-	tween.parallel().tween_property(card, "global_position",p_place_world, 0.3)
+	tween.parallel().tween_property(card, "global_position",p_place_world, 0.5).set_trans(Tween.TRANS_SINE)
 	#tween.parallel().tween_property(card, "rotation",rot, 0.3)
 	tween.parallel().tween_property(card, "scale", 
-		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
+		Vector2(SCALE_CARD_NORMAL * 1.5, SCALE_CARD_NORMAL * 1.5), 0.3).set_ease(Tween.EASE_OUT)\
+			.set_trans(Tween.TRANS_SINE)
 	
+	tween.parallel().tween_property(card, "scale", 
+		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)
 	# send to server
 	if not auto:
 		game_logic.send_play_card(id)
@@ -585,6 +593,8 @@ func deal_my_cards(cards) -> void:
 	if g.v.game_manager.enable_sound:
 		$AudioShuffleDealCard.play()
 	var from_pos = NodeUtils.get_center_position(cardback_node)
+	if game_logic.match_data.player_mode != GameConstants.PLAYER_MODE.SOLO:
+		from_pos = get_viewport().get_visible_rect().size / 2
 	remove_all_current_cards()
 	list_my_cards = []
 	var number = len(cards)
@@ -654,34 +664,25 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	if not player_node:
 		return
 	card_instance.global_position = player_node.global_position
-	
+	card_instance.scale = Vector2(SCALE_CARD_NORMAL * 0.8, SCALE_CARD_NORMAL * 0.8)
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
 	var rot_degrees = randf_range(3, 6) if randf() > 0.5 else randf_range(-10, -5)
 	var rot = deg_to_rad(rot_degrees)
-	tween.parallel().tween_property(card_instance, "global_position",p_place_world, 0.3)
+	tween.parallel().tween_property(card_instance, "global_position",p_place_world, 0.5).set_trans(Tween.TRANS_SINE)
 	#tween.parallel().tween_property(card_instance, "rotation", rot, 0.3)
 	tween.parallel().tween_property(card_instance, "scale", 
-		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3)
+		Vector2(SCALE_CARD_NORMAL * 1.1, SCALE_CARD_NORMAL * 1.1), 0.3)\
+			.set_trans(Tween.TRANS_SINE)
+	
+	tween.parallel().tween_property(card_instance, "scale", 
+		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)
 	_update_my_card_positions()
 	cards_node_compare.append(card_instance)
 #	
 func get_place_pos_card(seat_id: int) -> Vector2:
-	if game_logic.match_data.player_mode == g.v.game_constants.PLAYER_MODE.SOLO:
-		if seat_id == 0:
-			return place_card0.global_position
-		else:
-			return place_card2.global_position
-	else:
-		if seat_id == 0:
-			return place_card0.global_position
-		elif seat_id == 1:
-			return place_card1.global_position
-		elif seat_id == 2:
-			return place_card2.global_position
-		else:
-			return place_card3.global_position
+	return compare_card_poses[seat_id].global_position
 
 func get_player_node_by_uid(user_id: int):
 	for p in list_players:
@@ -734,7 +735,7 @@ func _effect_draw_card(uid, card_id):
 			func():
 				instance.hide_card()
 		).set_delay(TIME_VIEW_CARD)
-		tween.parallel().tween_property(instance, "global_position", final_pos, 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
+		tween.parallel().tween_property(instance, "global_position", final_pos, 0.35).set_delay(0.55 + TIME_VIEW_CARD).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
 		tween.tween_interval(0)
 		tween.tween_property(instance, 'modulate:a', 0, 0.2)
@@ -779,8 +780,8 @@ func _effect_draw_card(uid, card_id):
 	# Animate pos
 	var delay = TIME_VIEW_CARD
 
-	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
-	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay)
+	tween.parallel().tween_property(instance, "global_position", final_pos, 0.4).set_delay(delay).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.4).set_delay(delay)
 	
 	var c_idx = 0
 	for c in list_my_cards:

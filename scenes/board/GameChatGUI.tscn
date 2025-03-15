@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvs3cl10d1nap"]
+[gd_scene load_steps=10 format=3 uid="uid://cvs3cl10d1nap"]
 
 [ext_resource type="Script" path="res://scripts/game/ingame_chat_gui.gd" id="1_45c2r"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_otlio"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_wkwjg"]
 [ext_resource type="Texture2D" uid="uid://yuqomgxpxw4w" path="res://assets/images/board/send_icon.png" id="3_82s7o"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_jsdfg"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_htv7n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2roa"]
 bg_color = Color(0, 0, 0, 0.622)
@@ -84,7 +85,7 @@ theme = SubResource("Theme_xbg3o")
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_wkwjg")
+theme_override_fonts/font = ExtResource("4_htv7n")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fwea3")
 placeholder_text = "ENTER_YOUR_MESSAGE"

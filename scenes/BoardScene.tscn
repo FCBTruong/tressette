@@ -1,16 +1,13 @@
-[gd_scene load_steps=54 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=52 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
 [ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_ncq5t"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_2a7pa"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
-[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="4_snlll"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
-[ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="6_foh0g"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="7_qu8fh"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
-[ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="8_afrgf"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_vkglh"]
@@ -28,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="12_cc6ty"]
 [ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_6bu1m"]
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_4pw0j"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="15_1f377"]
 [ext_resource type="Texture2D" uid="uid://bxpqmo0rscimi" path="res://assets/animations/2.png" id="15_fulpj"]
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://wss3dy5md7ag" path="res://assets/animations/3.png" id="16_uybu8"]
@@ -205,12 +203,11 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -360.0
-offset_top = -160.0
+offset_top = -150.0
 offset_right = 360.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="CenterPlayPn" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
@@ -266,10 +263,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -112.0
-offset_right = -30.0
-offset_bottom = -112.0
+offset_left = -24.0
+offset_top = -97.0
+offset_right = -24.0
+offset_bottom = -97.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -287,10 +284,10 @@ grow_horizontal = 0
 [node name="PlayerPos1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 38.0
-offset_top = 33.0
-offset_right = 78.0
-offset_bottom = 73.0
+offset_left = 58.0
+offset_top = 16.0
+offset_right = 98.0
+offset_bottom = 56.0
 
 [node name="PlayerPos0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
@@ -298,9 +295,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 27.0
-offset_top = -115.0
+offset_top = -97.0
 offset_right = 27.0
-offset_bottom = -115.0
+offset_bottom = -97.0
 grow_vertical = 0
 
 [node name="CardComparePn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
@@ -318,17 +315,23 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PlaceCard3" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(180, 195)
+[node name="PlaceCard20" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+position = Vector2(65, 167)
 
-[node name="PlaceCard2" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(180, 75)
+[node name="PlaceCard21" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+position = Vector2(40, 74)
+
+[node name="PlaceCard22" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+position = Vector2(200, 66)
+
+[node name="PlaceCard23" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
+position = Vector2(187, 160)
 
 [node name="PlaceCard1" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(40, 75)
+position = Vector2(170, 100)
 
 [node name="PlaceCard0" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(40, 195)
+position = Vector2(50, 150)
 
 [node name="CardbackPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 anchors_preset = 0
@@ -429,7 +432,7 @@ offset_right = 20.0
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_snlll")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 20
 text = "2"
 horizontal_alignment = 1
@@ -464,7 +467,7 @@ offset_right = -90.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "POT:"
 horizontal_alignment = 1
@@ -498,7 +501,7 @@ offset_right = 58.0
 offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_foh0g")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 28
 text = "1999999"
 horizontal_alignment = 1
@@ -526,6 +529,7 @@ text = "GAME TO 11"
 label_settings = SubResource("LabelSettings_1le32")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayGround/Panel"]
+layout_mode = 0
 offset_left = 22.0
 offset_top = 35.0
 offset_right = 122.0
@@ -534,6 +538,7 @@ texture = ExtResource("9_jnkg8")
 expand_mode = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/PlayGround/Panel/TextureRect2"]
+layout_mode = 0
 offset_left = 13.0
 offset_top = -7.0
 offset_right = 83.0
@@ -544,6 +549,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/PlayGround/Panel/TextureRect2/Label2"]
+layout_mode = 0
 offset_left = 27.0
 offset_top = -13.0
 offset_right = 97.0
@@ -554,6 +560,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/PlayGround/Panel/TextureRect2/Label2/Label2"]
+layout_mode = 0
 offset_top = 24.0
 offset_right = 70.0
 offset_bottom = 84.0
@@ -608,7 +615,7 @@ alignment = 2
 [node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.122525, 0.744392, 0.281657, 1)
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = "10"
 horizontal_alignment = 2
@@ -633,7 +640,7 @@ offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.121569, 0.745098, 0.286275, 1)
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 30
 text = "3
 "
@@ -652,7 +659,7 @@ offset_right = 8.0
 offset_bottom = 48.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.121569, 0.745098, 0.286275, 1)
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 30
 text = "2"
 horizontal_alignment = 1
@@ -700,7 +707,7 @@ layout_mode = 2
 [node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = "10"
 
@@ -727,7 +734,7 @@ offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 30
 text = "3
 "
@@ -745,7 +752,7 @@ offset_right = 8.0
 offset_bottom = 48.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 30
 text = "2"
 horizontal_alignment = 1
@@ -780,7 +787,7 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("7_qu8fh")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = ":"
 horizontal_alignment = 1
@@ -922,6 +929,7 @@ stretch_mode = 5
 modulate = Color(1, 1, 1, 0.809)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.865)
+theme_override_fonts/font = ExtResource("15_1f377")
 theme_override_font_sizes/font_size = 23
 text = "BET: 100K"
 horizontal_alignment = 2
@@ -929,7 +937,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RoomIdLb" type="Label" parent="CanvasLayer/RightTopPanel"]
-modulate = Color(1, 1, 1, 0.7)
+modulate = Color(1, 1, 1, 0.809)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.21
@@ -941,6 +949,7 @@ offset_top = 23.0
 offset_right = 167.0
 offset_bottom = 46.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 22
 text = "ID: 1001"
 horizontal_alignment = 2
@@ -1045,7 +1054,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(200, 25)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("8_afrgf")
+theme_override_fonts/font = ExtResource("15_1f377")
 theme_override_font_sizes/font_size = 26
 text = "Fantastic!"
 horizontal_alignment = 1
@@ -1083,14 +1092,13 @@ expand_icon = true
 script = ExtResource("7_gov4p")
 
 [node name="ReachPointWinLb" type="Label" parent="CanvasLayer/LeftTopPn"]
-visible = false
 modulate = Color(1, 1, 1, 0.316)
 layout_mode = 0
 offset_left = 206.0
 offset_top = 15.0
 offset_right = 408.0
 offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("7_qu8fh")
+theme_override_fonts/font = ExtResource("15_1f377")
 theme_override_font_sizes/font_size = 22
 text = "REACH_POINT_TO_WIN"
 
@@ -1145,10 +1153,10 @@ mouse_filter = 2
 
 [node name="EmoBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = -51.0
-offset_top = -251.0
-offset_right = 9.0
-offset_bottom = -191.0
+offset_left = -52.0
+offset_top = -281.0
+offset_right = 8.0
+offset_bottom = -221.0
 flat = true
 script = ExtResource("7_gov4p")
 
@@ -1166,10 +1174,10 @@ expand_mode = 1
 
 [node name="ChatBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = -50.0
-offset_top = -178.0
-offset_right = 10.0
-offset_bottom = -118.0
+offset_left = -51.0
+offset_top = -208.0
+offset_right = 9.0
+offset_bottom = -148.0
 flat = true
 script = ExtResource("7_gov4p")
 
@@ -1226,7 +1234,7 @@ offset_top = -44.0
 offset_right = 200.0
 offset_bottom = -12.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("4_snlll")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "Waiting for other players ..."
 horizontal_alignment = 1
@@ -1405,7 +1413,7 @@ offset_right = 57.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 20
 text = "RETURN_TO_TABLE"
 horizontal_alignment = 1

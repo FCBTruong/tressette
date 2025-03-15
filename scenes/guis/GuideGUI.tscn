@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_gvjlj"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="4_20swo"]
 [ext_resource type="Texture2D" uid="uid://b1a2wa0f21uuc" path="res://assets/images/lobby/guide/arrow_icon.png" id="4_n0hxl"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_x70jy"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="5_q7g65"]
 [ext_resource type="Texture2D" uid="uid://dfdy8h44wmrd" path="res://assets/images/card_tressette/classic/card_4.png" id="6_vx6jk"]
 [ext_resource type="Texture2D" uid="uid://dld5udpcu0sov" path="res://assets/images/card_tressette/classic/card_8.png" id="7_7br15"]
@@ -16,12 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://bgpqam53rcam3" path="res://assets/images/card_tressette/classic/card_28.png" id="12_rgtiv"]
 [ext_resource type="Texture2D" uid="uid://gj10ylh4lqlu" path="res://assets/images/card_tressette/classic/card_32.png" id="13_klfsl"]
 [ext_resource type="Texture2D" uid="uid://bp6kti3au5fyr" path="res://assets/images/lobby/triangle.png" id="13_me2py"]
-[ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="14_6kmvt"]
 [ext_resource type="Texture2D" uid="uid://b5xjfg6ns167f" path="res://assets/images/card_tressette/classic/card_36.png" id="14_33jrh"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="14_dofd2"]
 [ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="15_pant2"]
 [ext_resource type="Texture2D" uid="uid://dclctdoan3m25" path="res://assets/images/card_tressette/classic/card_2.png" id="17_frgy1"]
 [ext_resource type="Texture2D" uid="uid://crn46tuudqxny" path="res://assets/images/card_tressette/classic/card_6.png" id="18_08pfi"]
 [ext_resource type="Texture2D" uid="uid://6paq0tku0ddg" path="res://assets/images/card_tressette/classic/card_10.png" id="19_u0vcy"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="21_dgt1r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap7gx"]
 bg_color = Color(0.574675, 0.38072, 0.236316, 1)
@@ -213,10 +213,11 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 18
 text = "THIRD_POINT"
 horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/MainPn/Page2/ValuePn"]
@@ -247,10 +248,11 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 18
 text = "THIRD_POINT"
 horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="Panel4" type="Panel" parent="CanvasLayer/MainPn/Page2/ValuePn"]
@@ -281,10 +283,11 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 18
 text = "ONE_POINT"
 horizontal_alignment = 1
+vertical_alignment = 2
 uppercase = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/MainPn/Page2/ValuePn"]
@@ -315,10 +318,11 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 18
 text = "NO_VALUE"
 horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="StrongPn" type="Control" parent="CanvasLayer/MainPn/Page2"]
@@ -343,7 +347,7 @@ offset_top = -14.0
 offset_right = 163.0
 offset_bottom = 14.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 22
 text = "LOWEST"
 
@@ -360,7 +364,7 @@ offset_right = -50.0
 offset_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 22
 text = "STRONGEST"
 horizontal_alignment = 2
@@ -410,7 +414,7 @@ layout_mode = 0
 offset_left = 42.0
 offset_right = 414.0
 offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "NAPOLI"
 uppercase = true
@@ -429,7 +433,7 @@ offset_right = 940.0
 offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("14_6kmvt")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 23
 text = "NAPOLI_TIP"
 
@@ -493,7 +497,7 @@ offset_left = 701.0
 offset_top = 91.0
 offset_right = 891.0
 offset_bottom = 127.0
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "PLUS_1_POINT"
 
@@ -513,7 +517,7 @@ offset_left = 83.0
 offset_top = 97.0
 offset_right = 160.0
 offset_bottom = 133.0
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "GOAL"
 uppercase = true
@@ -532,7 +536,7 @@ offset_right = 609.0
 offset_bottom = 53.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("14_6kmvt")
+theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 23
 text = "GOAL_CONTENT"
 
@@ -543,7 +547,7 @@ offset_left = 83.0
 offset_top = 196.0
 offset_right = 248.0
 offset_bottom = 232.0
-theme_override_fonts/font = ExtResource("4_x70jy")
+theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "GAME_FLOW"
 uppercase = true
@@ -554,40 +558,40 @@ offset_left = 82.0
 offset_top = 47.0
 offset_right = 682.0
 offset_bottom = 247.0
-theme_override_constants/separation = 5
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="CanvasLayer/MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("14_6kmvt")
+theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 23
 text = "GAME_FLOW_STEP_1"
 
 [node name="Label2" type="Label" parent="CanvasLayer/MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("14_6kmvt")
+theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 23
 text = "GAME_FLOW_STEP_2"
 
 [node name="Label3" type="Label" parent="CanvasLayer/MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("14_6kmvt")
+theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 23
 text = "GAME_FLOW_STEP_3"
 
 [node name="Label4" type="Label" parent="CanvasLayer/MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("14_6kmvt")
+theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 23
 text = "GAME_FLOW_STEP_4"
 
 [node name="Label5" type="Label" parent="CanvasLayer/MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("14_6kmvt")
+theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 23
 text = "GAME_FLOW_STEP_5"
 
@@ -631,8 +635,8 @@ offset_top = 23.0
 offset_right = 135.0
 offset_bottom = 59.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("4_x70jy")
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("14_dofd2")
+theme_override_font_sizes/font_size = 35
 text = "HOW_TO_PLAY_TRES"
 horizontal_alignment = 1
 vertical_alignment = 1

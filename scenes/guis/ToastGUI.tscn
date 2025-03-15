@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxw3yvxw28xt1"]
 
 [ext_resource type="Script" path="res://scripts/lobby/toast_gui.gd" id="1_yrqru"]
-[ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="2_8fwa7"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="2_t3cbe"]
 
 [node name="ToastGui" type="Node2D"]
 script = ExtResource("1_yrqru")
@@ -35,7 +35,7 @@ offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_8fwa7")
+theme_override_fonts/font = ExtResource("2_t3cbe")
 theme_override_font_sizes/font_size = 26
 text = "This is a Toast Message"
 horizontal_alignment = 1

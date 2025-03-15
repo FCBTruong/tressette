@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bq3rgtuk3jjpg" path="res://assets/images/lobby/check_icon.png" id="4_tfj5i"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_pu5sr"]
 [ext_resource type="Texture2D" uid="uid://cuodum7wf3mlx" path="res://assets/images/lobby/x_icon.png" id="5_tr680"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="6_0ie53"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="9_bbcr6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krlbo"]
 bg_color = Color(0.585175, 0.616421, 0.676505, 0.664)
@@ -169,9 +169,10 @@ offset_top = -16.0
 offset_right = 302.0
 offset_bottom = 16.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_0ie53")
+theme_override_fonts/font = ExtResource("9_bbcr6")
 theme_override_font_sizes/font_size = 25
 text = "Nguyen Huy Truong"
+vertical_alignment = 1
 
 [connection signal="pressed" from="Avatar/TextureRect2/InfoBtn" to="." method="_click_view_info"]
 [connection signal="pressed" from="AcceptBtn" to="." method="_on_accept"]

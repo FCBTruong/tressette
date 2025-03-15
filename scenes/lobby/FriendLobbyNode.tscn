@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_lobby_node.gd" id="1_gw2x1"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_ff0s7"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_31e73"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="4_xr7js"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="5_1gmnx"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_2i772"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_2k587"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu0cq"]
 bg_color = Color(0.418536, 0.418536, 0.418536, 0.356863)
@@ -98,9 +98,10 @@ expand_mode = 1
 modulate = Color(1, 1, 1, 0.815)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_xr7js")
+theme_override_fonts/font = ExtResource("6_2k587")
 theme_override_font_sizes/font_size = 20
 text = "FRIEND NAME"
+vertical_alignment = 1
 
 [node name="OnlineIcon" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(30, 30)

@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://ccsoww1j85ic" path="res://assets/images/lobby/avatars/avatar_1.png" id="2_l4p4e"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="3_h32k3"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="4_bvyrw"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="5_1ircv"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_6wlpn"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_gtefv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yp4y7"]
 bg_color = Color(0.242, 0.242, 0.242, 0.783)
@@ -98,9 +98,10 @@ offset_left = 82.0
 offset_top = 27.0
 offset_right = 177.0
 offset_bottom = 52.0
-theme_override_fonts/font = ExtResource("5_1ircv")
+theme_override_fonts/font = ExtResource("6_gtefv")
 theme_override_font_sizes/font_size = 20
 text = "User Name"
+vertical_alignment = 1
 
 [node name="InviteBtn" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 40)
@@ -143,7 +144,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_1ircv")
+theme_override_fonts/font = ExtResource("6_gtefv")
 text = "INVITE"
+vertical_alignment = 1
 
 [connection signal="pressed" from="InviteBtn" to="." method="_click_invite"]
