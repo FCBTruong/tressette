@@ -190,8 +190,8 @@ func continue_play():
 		g.v.game_manager.send_register_leave_game()
 	cardback_node.visible = false
 	remove_all_current_cards()
-	opponent_score_lb.text = '0'
-	my_score_lb.text = '0'
+	_update_display_score(true, 0)
+	_update_display_score(false, 0)
 	opponent_score_sub.visible = false
 	my_score_sub.visible = false
 	pot_value_lb.text = '0'
@@ -512,11 +512,20 @@ func _update_display_score(is_myteam, score: int) -> void:
 			my_score_lb.text = ''
 		else:
 			my_score_lb.text = str(main)
+		if main >= game_logic.match_data.point_to_win - 1:
+			score_pn.find_child('FireMine').visible = true
+		else:
+			score_pn.find_child('FireMine').visible = false
 	else:
 		if main == 0 and sub > 0:
 			opponent_score_lb.text = ''
 		else:
 			opponent_score_lb.text = str(main)
+			
+		if main >= game_logic.match_data.point_to_win / 3 - 1:
+			score_pn.find_child('FireOpponent').visible = true
+		else:
+			score_pn.find_child('FireOpponent').visible = false
 	if sub != 0:
 		if is_myteam:
 			my_score_sub.visible = true
@@ -996,6 +1005,9 @@ func on_user_turn():
 				for nap in nap_sets:
 					_hight_light_napoli_set(nap)
 					pass
+	if g.v.game_constants.game_logic.get_uid_in_turn() == g.v.player_info_mgr.get_user_id():
+		
+		pass
 
 func _hight_light_napoli_set(nap):
 	var h = pn_highlight_napoli.duplicate()

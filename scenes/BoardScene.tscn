@@ -1,11 +1,10 @@
-[gd_scene load_steps=57 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=65 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
 [ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_ncq5t"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_2a7pa"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
-[ext_resource type="Shader" path="res://shaders/gradient.gdshader" id="4_xmo0b"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
@@ -18,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://ly4nwhli0ra2" path="res://assets/images/board/blue-btn.png" id="9_jnkg8"]
 [ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="9_ujbxy"]
 [ext_resource type="Texture2D" uid="uid://ch7bnsoxinvph" path="res://assets/images/board/red-btn.png" id="10_prh1e"]
+[ext_resource type="Shader" path="res://shaders/baletro_fire.gdshader" id="11_2rt0a"]
 [ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="11_8cjom"]
 [ext_resource type="FontFile" uid="uid://cb1bj1k60uj4u" path="res://assets/fonts/Reglisse_Fill.otf" id="11_23se6"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_lcke6"]
@@ -115,10 +115,7 @@ shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.364706)
 shadow_offset = Vector2(-2, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1uak"]
-shader = ExtResource("4_xmo0b")
-shader_parameter/influence = 0.2
-shader_parameter/offset = 8.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdh6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b84cg"]
 bg_color = Color(0.142304, 0.513857, 0.815673, 1)
@@ -129,6 +126,27 @@ corner_radius_bottom_left = 5
 shadow_color = Color(0, 0, 0, 0.194)
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gdgki"]
+seed = 6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1l567"]
+noise = SubResource("FastNoiseLite_gdgki")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isqbr"]
+shader = ExtResource("11_2rt0a")
+shader_parameter/bottom_color = Color(0.984314, 0.992157, 0.933333, 1)
+shader_parameter/middle_color = Color(0, 0.996078, 1, 1)
+shader_parameter/top_color = Color(0, 0.576471, 0.996078, 1)
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(-0.2, 1.5)
+shader_parameter/fire_aperture = 0.6
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_1l567")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sv0ng"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8j2g"]
 bg_color = Color(1, 1, 1, 1)
@@ -141,9 +159,6 @@ corner_radius_bottom_left = 1
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m3fb"]
-shader = ExtResource("4_xmo0b")
-shader_parameter/influence = 0.3
-shader_parameter/offset = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4k4q"]
 bg_color = Color(0.757969, 0.0366172, 0, 1)
@@ -154,6 +169,80 @@ corner_radius_bottom_left = 5
 shadow_color = Color(0, 0, 0, 0.181)
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
+
+[sub_resource type="Shader" id="Shader_xqcm3"]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_tex : hint_default_white;
+uniform vec4 bottom_color : source_color = vec4(0.0, 0.7, 1.0, 1.0);
+uniform vec4 middle_color : source_color = vec4(1.0, 0.5, 0.0, 1.0);
+uniform vec4 top_color : source_color = vec4(1.0, 0.03, 0.001, 1.0);
+uniform float fire_alpha : hint_range(0.0, 1.0) = 1.0;
+uniform vec2 fire_speed = vec2(0.0, 2.0);
+uniform float fire_aperture : hint_range(0.0, 3.0) = 0.22;
+
+vec4 tri_color_mix(vec4 color1, vec4 color2, vec4 color3, float pos) {
+    pos = clamp(pos, 0.0, 1.0);
+    if (pos < 0.5) {
+        return mix(color1, color2, pos * 2.0);
+    } else {
+        return mix(color2, color3, (pos - 0.5) * 2.0);
+    }
+}
+
+void fragment() {
+    // Scale UVs to make the noise more visible
+    vec2 base_uv = UV * 1.0;
+
+    // Create two layers of noise with different speeds
+    vec2 shifted_uv1 = base_uv + TIME * fire_speed;
+    vec2 shifted_uv2 = base_uv + TIME * fire_speed * 1.5;
+
+    // Sample noise texture twice
+    float fire_noise1 = texture(noise_tex, fract(shifted_uv1)).r;
+    float fire_noise2 = texture(noise_tex, fract(shifted_uv2)).r;
+
+    // Combine the noise samples
+    float combined_noise = (fire_noise1 + fire_noise2) * 0.5;
+
+    // Calculate fire shape
+    float noise = UV.y * (((UV.y + fire_aperture) * combined_noise - fire_aperture) * 75.0);
+
+    // Add horizontal movement
+    noise += sin(UV.y * 10.0 + TIME * 2.0) * 0.1;
+
+    // Calculate gradient position and mix three colors
+    float gradient_pos = clamp(noise * 0.08, 0.3, 2.0);
+	//vec4 smoth_mid_color = smoothstep(top_color, middle_color, vec4(1));
+    vec4 fire_color = tri_color_mix(bottom_color, middle_color, top_color, gradient_pos);
+
+
+
+    // Set final color and alpha
+    COLOR = fire_color;
+    COLOR.a = clamp(noise, 0.0, 1.0) * fire_alpha;
+}"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_40xxb"]
+noise = SubResource("FastNoiseLite_gdgki")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_to0ld"]
+shader = SubResource("Shader_xqcm3")
+shader_parameter/bottom_color = Color(0.984314, 0.992157, 0.933333, 1)
+shader_parameter/middle_color = Color(0.972549, 0.47451, 0.258824, 1)
+shader_parameter/top_color = Color(1, 0.298039, 0.25098, 1)
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0.2, 1.5)
+shader_parameter/fire_aperture = 0.6
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_40xxb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwvrt"]
+shader = ExtResource("18_37hrg")
+shader_parameter/color = Color(0.415142, 0.21956, 0.146142, 1)
+shader_parameter/width = 2.045
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyhfc"]
 shader = ExtResource("18_37hrg")
@@ -436,9 +525,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -110.0
-offset_top = -153.0
+offset_top = -167.0
 offset_right = 110.0
-offset_bottom = 117.0
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -686,10 +775,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -56.0
-offset_top = 72.0
-offset_right = 56.0
-offset_bottom = 95.0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 278.0
+offset_bottom = 39.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.930548, 0.398064, 1)
 theme_override_colors/font_outline_color = Color(0.496606, 0.409967, 0.409967, 1)
@@ -702,7 +791,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/ScorePn"]
-material = SubResource("ShaderMaterial_q1uak")
+material = SubResource("ShaderMaterial_pdh6q")
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -713,6 +802,17 @@ offset_bottom = 30.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b84cg")
+
+[node name="FireMine" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel"]
+material = SubResource("ShaderMaterial_isqbr")
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sv0ng")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn/Panel"]
 layout_mode = 1
@@ -732,6 +832,9 @@ alignment = 1
 [node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.562)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 45
 text = "10"
@@ -844,6 +947,17 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l4k4q")
 
+[node name="FireOpponent" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel2"]
+material = SubResource("ShaderMaterial_to0ld")
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sv0ng")
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn/Panel2"]
 layout_mode = 1
 anchors_preset = 8
@@ -862,6 +976,8 @@ alignment = 1
 [node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel2/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_constants/shadow_offset_x = 0
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 45
 text = "10"
@@ -1225,15 +1341,32 @@ mouse_force_pass_scroll_events = false
 [node name="BackBtn" type="Button" parent="CanvasLayer/LeftTopPn"]
 modulate = Color(1, 1, 1, 0.829)
 layout_mode = 0
-offset_left = 20.0
-offset_top = 15.0
-offset_right = 100.0
-offset_bottom = 90.0
-icon = ExtResource("9_g7ymd")
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 90.0
+offset_bottom = 80.0
 flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/LeftTopPn/BackBtn"]
+self_modulate = Color(1, 1, 1, 0.9)
+material = SubResource("ShaderMaterial_bwvrt")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_g7ymd")
+expand_mode = 1
 
 [node name="PnCheat" type="Control" parent="CanvasLayer"]
 visible = false
@@ -1300,9 +1433,9 @@ mouse_filter = 2
 [node name="EmoBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
 offset_left = 38.0
-offset_top = -178.0
+offset_top = -156.0
 offset_right = 98.0
-offset_bottom = -118.0
+offset_bottom = -96.0
 flat = true
 script = ExtResource("7_gov4p")
 

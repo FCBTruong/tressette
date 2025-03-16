@@ -15,12 +15,13 @@ var player_id = -1 # ref uid
 @onready var main_pn = find_child('Main')
 @onready var card_btn = find_child('CardBtn')
 var face_state = g.v.game_constants.CARD_FACE_STATE.DOWN
-
+@onready var hint_pn = find_child("HintPn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	is_played = false
 	pos_card = card_image.position
 	main_pn.z_index = 1
+	hint_pn.visible = false
 	g.v.signal_bus.connect_global("update_card_style", Callable(self, "_on_update_card_style"))
 	
 func _on_touch_card() -> void:
@@ -183,10 +184,12 @@ func effect_win_card():
 
 func update_state_can_play(is_valid: bool):
 	if is_valid:
+		recommend(g.v.game_constants.game_logic.check_can_win_card(self.id))
 		card_btn.visible = true
 		main_pn.modulate = Color(1, 1, 1)  # RGB values for red
 		pass
 	else:
+		hint_pn.visible = false
 		card_btn.visible = false
 		main_pn.modulate = Color('585151')  # RGB values for red
 		pass
@@ -196,3 +199,9 @@ func _on_update_card_style():
 		return
 	_load_texture_card()
 	
+func recommend(should_play = true):
+	self.hint_pn.visible = true
+	if should_play:
+		self.hint_pn.modulate = Color('#00d337')
+	else:
+		self.hint_pn.modulate = Color('#ff110a')

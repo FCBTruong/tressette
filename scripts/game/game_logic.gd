@@ -570,6 +570,35 @@ func check_valid_card_play(card_id):
 			
 	return true
 	
+func check_can_win_card(card_id):
+	var suit = card_id % 4
+	if suit != self.hand_suit:
+		return false
+	
+	# get my cards
+	var cards_compare = self.match_data.cards_compare
+	for i in range(len(self.match_data.users)):
+		if i == my_idx:
+			continue
+		var s = cards_compare[i] % 4
+		if s == self.hand_suit:
+			if TRESSETTE_CARD_STRONGS[cards_compare[i] / 4] > TRESSETTE_CARD_STRONGS[card_id / 4]:
+				return false
+	return true
+
+const TRESSETTE_CARD_STRONGS = {
+	2: 100,
+	1: 99,
+	0: 98,
+	9: 97,
+	8: 96,
+	7: 95,
+	6: 94,
+	5: 93,
+	4: 92,
+	3: 91
+}
+
 func update():
 	# handle logic every frame
 	if match_data.state == MatchData.MATCH_STATE.PLAYING:
