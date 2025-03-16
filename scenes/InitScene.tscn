@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="1_t8h7q"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_gx2ns"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_wopsr"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_abeha"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7gor"]
 bg_color = Color(0, 0, 0, 0.569)
@@ -146,6 +146,6 @@ offset_right = 40.0
 offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_wopsr")
+theme_override_fonts/font = ExtResource("3_abeha")
 theme_override_font_sizes/font_size = 23
 text = "Loading ..."

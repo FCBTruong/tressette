@@ -1,10 +1,11 @@
-[gd_scene load_steps=52 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=57 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
 [ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_ncq5t"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_2a7pa"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
+[ext_resource type="Shader" path="res://shaders/gradient.gdshader" id="4_xmo0b"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
@@ -25,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="12_cc6ty"]
 [ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_6bu1m"]
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_4pw0j"]
-[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="15_1f377"]
 [ext_resource type="Texture2D" uid="uid://bxpqmo0rscimi" path="res://assets/animations/2.png" id="15_fulpj"]
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://wss3dy5md7ag" path="res://assets/animations/3.png" id="16_uybu8"]
@@ -34,6 +34,32 @@
 [ext_resource type="Texture2D" uid="uid://bdwytocp27vlf" path="res://assets/animations/4.png" id="18_hnxf0"]
 [ext_resource type="Texture2D" uid="uid://dspngqcofx1o0" path="res://assets/animations/1.png" id="19_avqff"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucf2k"]
+bg_color = Color(0.27258, 0.10223, 0.10223, 0.632)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.421)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="Gradient" id="Gradient_2rqsr"]
+colors = PackedColorArray(1, 0.852079, 0.552612, 1, 1, 0.946208, 0.756484, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mcuel"]
+gradient = SubResource("Gradient_2rqsr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfrck"]
+shader = ExtResource("6_3op4f")
+shader_parameter/size_effect = 0.7
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.9
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/delay = 8.0
+shader_parameter/vertical_gradient = SubResource("GradientTexture2D_mcuel")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjq8g"]
 bg_color = Color(0.008, 0.373, 0.188, 0.316)
@@ -63,29 +89,9 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucf2k"]
-bg_color = Color(0.27258, 0.10223, 0.10223, 0.632)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="Gradient" id="Gradient_2rqsr"]
-colors = PackedColorArray(1, 0.852079, 0.552612, 1, 1, 0.946208, 0.756484, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mcuel"]
-gradient = SubResource("Gradient_2rqsr")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfrck"]
-shader = ExtResource("6_3op4f")
-shader_parameter/size_effect = 0.7
-shader_parameter/speed = 1.0
-shader_parameter/highlight_strength = 0.9
-shader_parameter/color_mode_toggle = false
-shader_parameter/is_horizontal = true
-shader_parameter/delay = 8.0
-shader_parameter/vertical_gradient = SubResource("GradientTexture2D_mcuel")
+shadow_color = Color(0, 0, 0, 0.276)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_428qb"]
 bg_color = Color(0.109, 0.256, 0.146, 0.645)
@@ -109,10 +115,45 @@ shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.364706)
 shadow_offset = Vector2(-2, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_th6m6"]
-bg_color = Color(0, 0, 0, 0.493)
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1uak"]
+shader = ExtResource("4_xmo0b")
+shader_parameter/influence = 0.2
+shader_parameter/offset = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b84cg"]
+bg_color = Color(0.142304, 0.513857, 0.815673, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.194)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8j2g"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo81u"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m3fb"]
+shader = ExtResource("4_xmo0b")
+shader_parameter/influence = 0.3
+shader_parameter/offset = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4k4q"]
+bg_color = Color(0.757969, 0.0366172, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.181)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyhfc"]
 shader = ExtResource("18_37hrg")
@@ -209,6 +250,71 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
+[node name="PotPn" type="Panel" parent="CanvasLayer/PlayGround"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 1
+offset_left = 270.0
+offset_top = 28.0
+offset_right = 420.0
+offset_bottom = 68.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ucf2k")
+
+[node name="Label2" type="Label" parent="CanvasLayer/PlayGround/PotPn"]
+visible = false
+modulate = Color(1, 1, 1, 0.776)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -54.0
+offset_right = 53.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_2a7pa")
+theme_override_font_sizes/font_size = 25
+text = "POT:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/PotPn"]
+material = SubResource("ShaderMaterial_wfrck")
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 25.0
+offset_bottom = 22.0
+grow_vertical = 2
+texture = ExtResource("8_vkglh")
+expand_mode = 1
+
+[node name="PotValueLb" type="Label" parent="CanvasLayer/PlayGround/PotPn"]
+self_modulate = Color(1, 1, 1, 0.95)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -16.0
+offset_right = 57.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_2a7pa")
+theme_override_font_sizes/font_size = 25
+text = "1999999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CenterPlayPn" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
 anchors_preset = 8
@@ -226,6 +332,7 @@ pivot_offset = Vector2(300, 200)
 mouse_filter = 2
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -307,9 +414,9 @@ mouse_filter = 2
 [node name="seat_pos_solo1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 574.0
+offset_left = 559.0
 offset_top = 31.0
-offset_right = 574.0
+offset_right = 559.0
 offset_bottom = 31.0
 mouse_filter = 2
 
@@ -329,9 +436,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -110.0
-offset_top = -133.0
+offset_top = -153.0
 offset_right = 110.0
-offset_bottom = 137.0
+offset_bottom = 117.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -356,10 +463,10 @@ position = Vector2(50, 150)
 
 [node name="CardbackPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 anchors_preset = 0
-offset_left = 66.0
-offset_top = 13.0
-offset_right = 156.0
-offset_bottom = 143.0
+offset_left = 65.0
+offset_top = -16.0
+offset_right = 155.0
+offset_bottom = 114.0
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
@@ -459,72 +566,24 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PotPn" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+[node name="EvaluateLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+custom_minimum_size = Vector2(400, 50)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.333333
-anchor_top = -0.17
-anchor_right = 0.666667
-anchor_bottom = -0.0366667
-offset_left = 0.000213623
-offset_top = 2.0
-offset_right = 0.000213623
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = -48.0
+offset_right = 200.0
 offset_bottom = 2.0
 grow_horizontal = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ucf2k")
-
-[node name="Label2" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
-modulate = Color(1, 1, 1, 0.776)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -185.0
-offset_top = -16.0
-offset_right = -90.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
+pivot_offset = Vector2(200, 25)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.404959, 0.250724, 0.169189, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 25
-text = "POT:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
-material = SubResource("ShaderMaterial_wfrck")
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -23.0
-offset_right = 39.0
-offset_bottom = 22.0
-grow_vertical = 2
-texture = ExtResource("8_vkglh")
-expand_mode = 1
-
-[node name="PotValueLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/PotPn"]
-self_modulate = Color(1, 1, 1, 0.95)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = -16.0
-offset_right = 58.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 28
-text = "1999999"
+theme_override_font_sizes/font_size = 26
+text = "Fantastic!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -610,105 +669,167 @@ label_settings = SubResource("LabelSettings_ndb7b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround"]
+[node name="ScorePn" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_right = 100.0
+offset_left = -110.0
+offset_right = 110.0
 offset_bottom = 70.0
 grow_horizontal = 2
 pivot_offset = Vector2(100, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_th6m6")
+mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn"]
+[node name="ReachPointWinLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 72.0
+offset_right = 56.0
+offset_bottom = 95.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.930548, 0.398064, 1)
+theme_override_colors/font_outline_color = Color(0.496606, 0.409967, 0.409967, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_2a7pa")
+theme_override_font_sizes/font_size = 20
+text = "GAME TO 11"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/ScorePn"]
+material = SubResource("ShaderMaterial_q1uak")
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -40.0
+offset_top = -30.0
 offset_right = 100.0
-offset_bottom = 40.0
+offset_bottom = 30.0
 grow_vertical = 2
-alignment = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b84cg")
 
-[node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.122525, 0.744392, 0.281657, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 45
 text = "10"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MyScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
+[node name="MyScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/Panel/HBoxContainer"]
+visible = false
 modulate = Color(1, 1, 1, 0.9)
-custom_minimum_size = Vector2(25, 0)
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Sub2" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
+[node name="Sub2" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.633333
-anchor_top = 1.0
-anchor_right = 0.633333
-anchor_bottom = 1.0
-offset_left = -3.0
+anchor_left = 0.250001
+anchor_top = 1.18333
+anchor_right = 0.250001
+anchor_bottom = 1.18333
+offset_left = -11.0
 offset_top = -47.0
-offset_right = 13.0
+offset_right = 21.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.121569, 0.745098, 0.286275, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "3
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Sub1" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
+[node name="Sub1" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.633333
-anchor_right = 0.633333
-offset_left = -24.0
+anchor_left = 0.9
+anchor_top = -0.183333
+anchor_right = 0.9
+anchor_bottom = -0.183333
+offset_left = -16.0
 offset_top = 10.0
-offset_right = 8.0
 offset_bottom = 48.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.121569, 0.745098, 0.286275, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer/MyScoreSub"]
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.633333
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.633333
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = 5.0
-offset_right = 11.0
-offset_bottom = 7.0
+offset_left = -8.0
+offset_top = -1.0
+offset_right = 7.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.698132
-color = Color(0.121569, 0.745098, 0.286275, 1)
-metadata/_edit_use_anchors_ = true
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v8j2g")
 
-[node name="Control" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer"]
-custom_minimum_size = Vector2(10, 0)
+[node name="SubPointPn" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn/Panel"]
+layout_mode = 0
+offset_top = 53.0
+offset_right = 100.0
+offset_bottom = 56.0
+alignment = 1
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel/SubPointPn"]
+self_modulate = Color(0.0390342, 0.948052, 0.0375846, 1)
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo81u")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel/SubPointPn"]
+self_modulate = Color(0, 0, 0, 0.2)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo81u")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel/SubPointPn"]
+visible = false
+self_modulate = Color(0.47624, 0.476152, 0.476152, 1)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo81u")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/PlayGround/ScorePn"]
+material = SubResource("ShaderMaterial_0m3fb")
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -716,110 +837,133 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -40.0
-offset_bottom = 40.0
+offset_top = -30.0
+offset_bottom = 30.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l4k4q")
 
-[node name="Control" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
-[node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
+[node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel2/HBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 45
 text = "10"
 
-[node name="Control3" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 2
-
-[node name="OpponentScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2"]
+[node name="OpponentScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/Panel2/HBoxContainer2"]
+visible = false
 modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="Sub2" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
+[node name="Sub2" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -47.0
-offset_right = 13.0
-offset_bottom = -9.0
+offset_left = -8.0
+offset_top = -46.0
+offset_right = 8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "3
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sub1" type="Label" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
+[node name="Sub1" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -24.0
-offset_top = 10.0
+offset_left = -8.0
+offset_top = 9.0
 offset_right = 8.0
-offset_bottom = 48.0
+offset_bottom = 47.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.849616, 0.243214, 0.243214, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayGround/ScorePn/HBoxContainer2/OpponentScoreSub"]
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = 5.0
-offset_right = 11.0
-offset_bottom = 7.0
+offset_left = -8.0
+offset_top = -1.0
+offset_right = 7.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.698132
-color = Color(0.780392, 0.164706, 0.164706, 1)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v8j2g")
 
-[node name="Label" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
+[node name="SubPointPn" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn/Panel2"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -27.0
-offset_right = 20.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -7.0
+offset_right = 34.0
+offset_bottom = -4.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 40
-text = ":"
-horizontal_alignment = 1
-vertical_alignment = 1
+grow_vertical = 0
+alignment = 1
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel2/SubPointPn"]
+self_modulate = Color(0, 0, 0, 0.2)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo81u")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel2/SubPointPn"]
+self_modulate = Color(0, 0, 0, 0.2)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo81u")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/ScorePn/Panel2/SubPointPn"]
+visible = false
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uo81u")
 
 [node name="CountdownTimer" type="Timer" parent="CanvasLayer/PlayGround"]
 wait_time = 3.0
 one_shot = true
 
 [node name="GameStartLb" type="Label" parent="CanvasLayer/PlayGround"]
-modulate = Color(0.985389, 0.754896, 0.291801, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -832,7 +976,8 @@ offset_right = 199.0
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(1, 0.536171, 0.557066, 1)
+theme_override_colors/font_color = Color(1, 0.825999, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.513577, 0.377748, 0.207814, 1)
 theme_override_colors/font_outline_color = Color(0.612013, 0.37438, 0.0564619, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
@@ -843,7 +988,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CountdownStartLb" type="Label" parent="CanvasLayer/PlayGround"]
-modulate = Color(0.985389, 0.754896, 0.291801, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -856,8 +1000,9 @@ offset_right = 30.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0.00392157, 0.419608, 0.215686, 1)
-theme_override_colors/font_outline_color = Color(0.0117647, 0.415686, 0.211765, 1)
+theme_override_colors/font_color = Color(1, 0.937335, 0.338875, 1)
+theme_override_colors/font_shadow_color = Color(0.479634, 0.479634, 0.479634, 1)
+theme_override_colors/font_outline_color = Color(0.527155, 0.42326, 0.175173, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("11_8cjom")
@@ -1060,28 +1205,6 @@ text = "ROUND: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EvaluateLb" type="Label" parent="CanvasLayer"]
-custom_minimum_size = Vector2(400, 50)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 34.0
-offset_top = -214.0
-offset_right = 434.0
-offset_bottom = -164.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(200, 25)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("15_1f377")
-theme_override_font_sizes/font_size = 26
-text = "Fantastic!"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="EvaluateIpadPos" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 5
@@ -1102,26 +1225,15 @@ mouse_force_pass_scroll_events = false
 [node name="BackBtn" type="Button" parent="CanvasLayer/LeftTopPn"]
 modulate = Color(1, 1, 1, 0.829)
 layout_mode = 0
-offset_left = 50.0
-offset_top = 30.0
-offset_right = 142.0
-offset_bottom = 105.0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 100.0
+offset_bottom = 90.0
 icon = ExtResource("9_g7ymd")
 flat = true
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_gov4p")
-
-[node name="ReachPointWinLb" type="Label" parent="CanvasLayer/LeftTopPn"]
-modulate = Color(1, 1, 1, 0.316)
-layout_mode = 0
-offset_left = 206.0
-offset_top = 15.0
-offset_right = 408.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("15_1f377")
-theme_override_font_sizes/font_size = 22
-text = "REACH_POINT_TO_WIN"
 
 [node name="PnCheat" type="Control" parent="CanvasLayer"]
 visible = false
@@ -1147,6 +1259,7 @@ offset_bottom = 31.0
 text = "Test Deal"
 
 [node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
+visible = false
 custom_minimum_size = Vector2(333, 250)
 anchors_preset = 4
 anchor_top = 0.5
@@ -1257,7 +1370,7 @@ grow_vertical = 0
 mouse_filter = 2
 
 [node name="WaitingOtherLb" type="Label" parent="CanvasLayer/BottomCenter"]
-modulate = Color(1, 1, 1, 0.592)
+modulate = Color(1, 1, 1, 0.734)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

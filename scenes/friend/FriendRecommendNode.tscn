@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6kbfnwybvk7w"]
+[gd_scene load_steps=10 format=3 uid="uid://c6kbfnwybvk7w"]
 
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_recommend_node.gd" id="1_kpufp"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="2_i2m2u"]
@@ -6,8 +6,7 @@
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_en3sr"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="5_7tw13"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_3wm8a"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="7_5vf5j"]
-[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="8_wwdpi"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="7_438ti"]
 [ext_resource type="Texture2D" uid="uid://cvs720c5x14nn" path="res://assets/images/lobby/add_friend.png" id="9_stf4b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs4mr"]
@@ -117,14 +116,14 @@ layout_mode = 2
 [node name="NameLb" type="Label" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0.868)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_5vf5j")
+theme_override_fonts/font = ExtResource("7_438ti")
 theme_override_font_sizes/font_size = 25
 text = "Nguyen Huy Truong"
 
 [node name="GoldLb" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0.868)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_wwdpi")
+theme_override_fonts/font = ExtResource("7_438ti")
 theme_override_font_sizes/font_size = 20
 text = "100.000.000 $"
 

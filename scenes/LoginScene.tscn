@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0s371vj6s5od"]
+[gd_scene load_steps=14 format=3 uid="uid://b0s371vj6s5od"]
 
 [ext_resource type="Script" path="res://scripts/lobby/login_scene.gd" id="1_xqlge"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_fvu10"]
 [ext_resource type="Texture2D" uid="uid://clam73q7sj7cp" path="res://assets/images/login/google_icon.png" id="3_2w4au"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="3_7l41h"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_16366"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_wfctv"]
 [ext_resource type="Texture2D" uid="uid://bhi14nillkotg" path="res://assets/images/login/facebook.png" id="4_egrs7"]
@@ -412,7 +411,7 @@ alignment = 1
 [node name="Label2" type="Label" parent="CanvasLayer/PrivacyTermPn"]
 modulate = Color(1, 1, 1, 0.734)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_7l41h")
+theme_override_fonts/font = ExtResource("5_sjnmn")
 theme_override_font_sizes/font_size = 14
 text = "TERMS_OF_SERVICE"
 
@@ -440,7 +439,7 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="CanvasLayer/PrivacyTermPn"]
 modulate = Color(1, 1, 1, 0.734)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_7l41h")
+theme_override_fonts/font = ExtResource("5_sjnmn")
 theme_override_font_sizes/font_size = 14
 text = "PRIVACY_POLICY"
 

@@ -1,12 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkr5aeblxolhf"]
+[gd_scene load_steps=14 format=3 uid="uid://dkr5aeblxolhf"]
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/create_table_gui.gd" id="1_div3u"]
 [ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_371lk"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_l5y7b"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_50y8s"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="3_y8xbq"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="6_tvaur"]
-[ext_resource type="FontFile" uid="uid://dd4ewnvjsi6wj" path="res://assets/fonts/signika/Signika-Light.ttf" id="7_cl0y5"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="5_ahdaw"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="6_xlv08"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_mmcj6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkm7t"]
@@ -141,7 +140,7 @@ offset_right = 29.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_y8xbq")
+theme_override_fonts/font = ExtResource("5_ahdaw")
 theme_override_font_sizes/font_size = 22
 text = "CREATE"
 horizontal_alignment = 1
@@ -178,6 +177,7 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ahdaw")
 selected = 0
 item_count = 1
 popup/item_0/text = "Classic"
@@ -191,7 +191,7 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_fonts/font = ExtResource("5_ahdaw")
 theme_override_font_sizes/font_size = 23
 text = "GAME_MODE"
 vertical_alignment = 1
@@ -212,6 +212,7 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ahdaw")
 selected = 0
 item_count = 2
 popup/item_0/text = "11"
@@ -227,7 +228,7 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_fonts/font = ExtResource("5_ahdaw")
 theme_override_font_sizes/font_size = 23
 text = "POINT_MODE"
 vertical_alignment = 1
@@ -248,6 +249,7 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ahdaw")
 selected = 0
 item_count = 2
 popup/item_0/text = "1vs1"
@@ -263,7 +265,7 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_fonts/font = ExtResource("5_ahdaw")
 theme_override_font_sizes/font_size = 23
 text = "PLAYER_MODE"
 vertical_alignment = 1
@@ -284,6 +286,7 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ahdaw")
 
 [node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/BetPn"]
 layout_mode = 1
@@ -294,7 +297,7 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_fonts/font = ExtResource("5_ahdaw")
 theme_override_font_sizes/font_size = 23
 text = "BET"
 vertical_alignment = 1
@@ -312,7 +315,7 @@ offset_top = -11.5
 offset_right = 29.0
 offset_bottom = 11.5
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("6_tvaur")
+theme_override_fonts/font = ExtResource("5_ahdaw")
 theme_override_font_sizes/font_size = 23
 text = "PRIVATE"
 vertical_alignment = 1
@@ -349,8 +352,9 @@ offset_right = 46.0
 offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("7_cl0y5")
+theme_override_fonts/font = ExtResource("6_xlv08")
 text = "FEE_CREATE"
+vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/FeeLb"]
 layout_mode = 1

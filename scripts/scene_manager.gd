@@ -15,6 +15,7 @@ var last_scene_name = null
 var cur_scene_name = null
 var effect_layer = null
 var _cur_scene = null
+var scene_nodes = {}
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,11 +28,15 @@ func on_ready() -> void:
 func switch_scene(new_scene_path: String) -> void:
 	if cur_scene_name:
 		last_scene_name = cur_scene_name
-	cur_scene_name = last_scene_name
+	cur_scene_name = new_scene_path
 	
 	var scene = null
-
-	scene = load(new_scene_path)
+	
+	if scene_nodes.has(new_scene_path):
+		scene = scene_nodes[new_scene_path]
+	else:
+		scene = load(new_scene_path)
+		scene_nodes[new_scene_path] = scene
 		
 	if is_instance_valid(_cur_scene):
 		_cur_scene.queue_free()

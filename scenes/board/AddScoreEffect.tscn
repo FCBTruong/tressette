@@ -33,12 +33,18 @@ alignment = 1
 
 [node name="MainLb2" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.282353, 0.282353, 0.282353, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_8kei5")
 theme_override_font_sizes/font_size = 34
 text = "+"
 
 [node name="MainLb" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.282353, 0.282353, 0.282353, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_8kei5")
 theme_override_font_sizes/font_size = 34
 text = "1"
@@ -61,6 +67,9 @@ offset_right = 34.5
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.282763, 0.282763, 0.282763, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_8kei5")
 theme_override_font_sizes/font_size = 28
 text = "1"
@@ -78,6 +87,9 @@ offset_right = 34.5
 offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.282763, 0.282763, 0.282763, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_8kei5")
 theme_override_font_sizes/font_size = 28
 text = "3
