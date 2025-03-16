@@ -244,6 +244,7 @@ func _handle_play_card(payload: PackedByteArray):
 		scene.play_card(uid, card_id, auto)
 	push_cards_compare(uid, card_id)
 	
+	g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
 	var is_end_hand = pkg.get_is_end_hand()
 	if is_end_hand:
 		win_point_hand = pkg.get_win_point()
@@ -252,6 +253,7 @@ func _handle_play_card(payload: PackedByteArray):
 		await ROOT.get_tree().create_timer(0.65).timeout
 		if scene is BoardScene:
 			scene.on_finishhand(0.5, is_end_round)
+
 
 func send_play_card(card_id: int):
 	match_data.current_turn = -1
@@ -422,6 +424,8 @@ func _handle_newhand(payload: PackedByteArray):
 	print('new hand: ', match_data.current_turn)
 	
 	self.hand_suit = -1
+	
+	g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
 
 
 func _handle_draw_card(payload: PackedByteArray):
@@ -570,10 +574,10 @@ func check_valid_card_play(card_id):
 			
 	return true
 	
-func check_can_win_card(card_id):
+func check_can_win_card(card_id) -> int:
 	var suit = card_id % 4
 	if suit != self.hand_suit:
-		return false
+		return -1
 	
 	# get my cards
 	var cards_compare = self.match_data.cards_compare
@@ -583,8 +587,8 @@ func check_can_win_card(card_id):
 		var s = cards_compare[i] % 4
 		if s == self.hand_suit:
 			if TRESSETTE_CARD_STRONGS[cards_compare[i] / 4] > TRESSETTE_CARD_STRONGS[card_id / 4]:
-				return false
-	return true
+				return 0
+	return 1
 
 const TRESSETTE_CARD_STRONGS = {
 	2: 100,

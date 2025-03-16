@@ -184,15 +184,21 @@ func effect_win_card():
 
 func update_state_can_play(is_valid: bool):
 	if is_valid:
-		recommend(g.v.game_constants.game_logic.check_can_win_card(self.id))
 		card_btn.visible = true
 		main_pn.modulate = Color(1, 1, 1)  # RGB values for red
 		pass
 	else:
-		hint_pn.visible = false
 		card_btn.visible = false
 		main_pn.modulate = Color('585151')  # RGB values for red
 		pass
+
+func update_recommend():
+	var x = g.v.game_constants.game_logic.check_can_win_card(self.id)
+	if x == 1:
+		recommend(true)
+	elif x == 0:
+		recommend(false)
+	# -1 ignore
 		
 func _on_update_card_style():
 	if face_state != g.v.game_constants.CARD_FACE_STATE.UP:

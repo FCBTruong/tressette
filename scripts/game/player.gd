@@ -85,6 +85,7 @@ func update_points_display(effect_add = false):
 
 var elapsed_time: float = 0.0  # Tracks the elapsed time
 var running: bool = false
+var is_in_turn: bool = false
 
 func start_timer():
 	if self.user_data.uid == g.v.player_info_mgr.my_user_data.uid:
@@ -95,7 +96,14 @@ func start_timer():
 	running = true
 	time_progress_bar.value = 0
 	vortex.visible = true
-
+func on_turn():
+	is_in_turn = true
+	start_timer()
+	
+func end_turn():
+	is_in_turn = false
+	end_timer()
+	
 func _process(delta: float):
 	if not self.user_data:
 		return
@@ -103,14 +111,6 @@ func _process(delta: float):
 		time_progress_bar.visible = false
 		vortex.visible = false
 		return
-	if g.v.game_constants.game_logic.get_uid_in_turn() == self.user_data.uid:
-		if not running: 
-			start_timer()
-			g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
-	else:
-		time_progress_bar.visible = false
-		vortex.visible = false
-		running = false
 		
 	if running:
 		elapsed_time += delta

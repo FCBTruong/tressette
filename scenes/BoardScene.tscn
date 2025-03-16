@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=67 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
@@ -123,7 +123,7 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0, 0.194)
+shadow_color = Color(0, 0, 0, 0.322)
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
 
@@ -166,7 +166,7 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0, 0.181)
+shadow_color = Color(0, 0, 0, 0.329)
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
 
@@ -235,6 +235,22 @@ shader_parameter/fire_alpha = 1.0
 shader_parameter/fire_speed = Vector2(0.2, 1.5)
 shader_parameter/fire_aperture = 0.6
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_40xxb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbehe"]
+shader = ExtResource("18_37hrg")
+shader_parameter/color = Color(0.578, 0.395, 0.27, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ph20b"]
+shader = ExtResource("18_37hrg")
+shader_parameter/color = Color(0.391381, 0.292326, 0.193117, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bwvrt"]
 shader = ExtResource("18_37hrg")
@@ -459,10 +475,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -97.0
-offset_right = -24.0
-offset_bottom = -97.0
+offset_left = 9.0
+offset_top = -101.0
+offset_right = 9.0
+offset_bottom = -101.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -472,10 +488,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -37.0
-offset_top = 33.0
-offset_right = -37.0
-offset_bottom = 33.0
+offset_left = -14.0
+offset_top = -17.0
+offset_right = -14.0
+offset_bottom = -17.0
 grow_horizontal = 0
 mouse_filter = 2
 
@@ -483,9 +499,9 @@ mouse_filter = 2
 layout_mode = 1
 anchors_preset = 0
 offset_left = 58.0
-offset_top = 16.0
+offset_top = -12.0
 offset_right = 98.0
-offset_bottom = 56.0
+offset_bottom = 28.0
 mouse_filter = 2
 
 [node name="PlayerPos0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn/PlayersPn"]
@@ -838,11 +854,10 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 45
 text = "10"
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MyScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/Panel/HBoxContainer"]
-visible = false
 modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
@@ -906,6 +921,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v8j2g")
 
 [node name="SubPointPn" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn/Panel"]
+visible = false
 layout_mode = 0
 offset_top = 53.0
 offset_right = 100.0
@@ -1043,6 +1059,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v8j2g")
 
 [node name="SubPointPn" type="HBoxContainer" parent="CanvasLayer/PlayGround/ScorePn/Panel2"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1263,7 +1280,7 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn"]
-self_modulate = Color(1, 1, 1, 0.678)
+material = SubResource("ShaderMaterial_hbehe")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1286,17 +1303,17 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn"]
-self_modulate = Color(1, 1, 1, 0.678)
+material = SubResource("ShaderMaterial_ph20b")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_ujbxy")

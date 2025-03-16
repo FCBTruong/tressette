@@ -71,6 +71,8 @@ var list_napoli_highlights = []
 var center_play_pn_default_pos
 var R = 4000
 func _ready() -> void:	
+	my_score_lb.text = '0'
+	opponent_score_lb.text = '0'
 	evaluate_lb_default_pos = evaluate_lb.global_position
 	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
@@ -139,6 +141,8 @@ func _on_enter():
 		update_cards_on_table()
 		if game_logic.check_finishhand():
 			on_finishhand(0.5)
+			
+		on_user_turn()
 			
 	self.update_team_scores()
 	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
@@ -303,14 +307,6 @@ func _get_seat_position(mode_player: int, seat_id: int):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	game_logic.update()
-	#print('handsulttt', game_logic.hand_suit)
-	for c in list_my_cards:
-		c.update_state_can_play(true)
-	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
-		if game_logic.is_my_turn():
-			for c in list_my_cards:
-				var is_valid_play = game_logic.check_valid_card_play(c.id)
-				c.update_state_can_play(is_valid_play)
 	
 	if game_logic.match_data.state == MatchData.MATCH_STATE.WAITING:
 		var cur = int(Time.get_unix_time_from_system())
@@ -411,6 +407,8 @@ func play_my_card(id: int, auto: bool = false):
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)
 	# send to server
 	if not auto:
+		game_logic.match_data.current_turn = -1
+		g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
 		game_logic.send_play_card(id)
 	cards_node_compare.append(card)
 	
@@ -507,12 +505,21 @@ func update_team_scores():
 func _update_display_score(is_myteam, score: int) -> void:
 	var main = score / 3
 	var sub = score % 3
+	var tween = create_tween()
 	if is_myteam:
 		if main == 0 and sub > 0:
 			my_score_lb.text = ''
 		else:
-			my_score_lb.text = str(main)
-		if main >= game_logic.match_data.point_to_win - 1:
+			if str(main) != my_score_lb.text:
+				tween.parallel().tween_property(my_score_lb, 'modulate:a', 0.5, 0.3)
+				tween.parallel().tween_property(my_score_lb, 'scale', Vector2(0.9,0.9), 0.3)
+				tween.parallel().tween_callback(func():
+					my_score_lb.text = str(main)
+					).set_delay(0.3)
+				tween.parallel().tween_property(my_score_lb, 'modulate:a', 1, 0.3).set_delay(0.3)
+				tween.parallel().tween_property(my_score_lb, 'scale', Vector2(1,1), 0.3).set_delay(0.3)\
+					.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		if main >= game_logic.match_data.point_to_win / 3 - 1:
 			score_pn.find_child('FireMine').visible = true
 		else:
 			score_pn.find_child('FireMine').visible = false
@@ -520,19 +527,30 @@ func _update_display_score(is_myteam, score: int) -> void:
 		if main == 0 and sub > 0:
 			opponent_score_lb.text = ''
 		else:
-			opponent_score_lb.text = str(main)
-			
+			if str(main) != opponent_score_lb.text:
+				tween.parallel().tween_property(opponent_score_lb, 'modulate:a', 0.5, 0.3)
+				tween.parallel().tween_property(opponent_score_lb, 'scale', Vector2(0.9,0.9), 0.3)
+				tween.parallel().tween_callback(func():
+					opponent_score_lb.text = str(main)
+					).set_delay(0.3)
+				tween.parallel().tween_property(opponent_score_lb, 'modulate:a', 1, 0.3).set_delay(0.3)
+				tween.parallel().tween_property(opponent_score_lb, 'scale', Vector2(1,1), 0.3).set_delay(0.3)\
+					.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		if main >= game_logic.match_data.point_to_win / 3 - 1:
 			score_pn.find_child('FireOpponent').visible = true
 		else:
 			score_pn.find_child('FireOpponent').visible = false
+	
 	if sub != 0:
+		var tween2 = create_tween()
+		var sub_node
 		if is_myteam:
 			my_score_sub.visible = true
-			my_score_sub.find_child('Sub1').text = str(sub)
+			sub_node = my_score_sub.find_child('Sub1')
 		else:
 			opponent_score_sub.visible = true
-			opponent_score_sub.find_child('Sub1').text = str(sub)
+			sub_node = opponent_score_sub.find_child('Sub1')
+		sub_node.text = str(sub)
 	else:
 		if is_myteam:
 			my_score_sub.visible = false
@@ -993,21 +1011,42 @@ func _click_napoli_btn() -> void:
 
 func on_user_turn():
 	napoli_btn.visible = false
+	var uid_in_turn = g.v.game_constants.game_logic.get_uid_in_turn()
 	if len(list_napoli_highlights) > 0:
 		for n in list_napoli_highlights:
 			n.queue_free()
 		list_napoli_highlights.clear()
 	if game_logic.match_data.hand_in_round == 0:
-		if g.v.game_constants.game_logic.get_uid_in_turn() == g.v.player_info_mgr.get_user_id():
+		if uid_in_turn == g.v.player_info_mgr.get_user_id():
 			var nap_sets = game_logic.find_napoli()
 			if len(nap_sets) > 0:
 				napoli_btn.visible = true
 				for nap in nap_sets:
 					_hight_light_napoli_set(nap)
 					pass
-	if g.v.game_constants.game_logic.get_uid_in_turn() == g.v.player_info_mgr.get_user_id():
-		
-		pass
+	for p in self.list_players:
+		if p.is_in_turn:
+			p.end_turn()
+			
+			if p.user_data.uid == g.v.player_info_mgr.get_user_id():
+				for c in list_my_cards:
+					c.update_state_can_play(true)
+					c.hint_pn.visible = false
+					
+		if p.user_data.uid == uid_in_turn:
+			p.on_turn()	
+
+	if uid_in_turn == g.v.player_info_mgr.get_user_id():
+		for c in list_my_cards:
+			c.update_state_can_play(true)
+		if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
+			if game_logic.is_my_turn():
+				for c in list_my_cards:
+					var is_valid_play = game_logic.check_valid_card_play(c.id)
+					c.update_state_can_play(is_valid_play)
+					if is_valid_play:
+						c.update_recommend()
+
 
 func _hight_light_napoli_set(nap):
 	var h = pn_highlight_napoli.duplicate()

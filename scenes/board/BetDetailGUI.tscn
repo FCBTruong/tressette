@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhf4of5mkrdho"]
+[gd_scene load_steps=6 format=3 uid="uid://bhf4of5mkrdho"]
 
 [ext_resource type="Script" path="res://scripts/game/bet_detail_gui.gd" id="1_hek8f"]
+[ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_bi0qm"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_h0vbn"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_3wv1l"]
 
@@ -32,10 +33,20 @@ offset_right = 350.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.75118, 0.526548, 0.234796, 1)
+color = Color(0.679899, 0.464913, 0.185688, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bi0qm")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
-self_modulate = Color(0.544126, 0.202283, 0.202283, 1)
+self_modulate = Color(1, 0.714552, 0.421082, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
