@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhf4of5mkrdho"]
+[gd_scene load_steps=7 format=3 uid="uid://bhf4of5mkrdho"]
 
 [ext_resource type="Script" path="res://scripts/game/bet_detail_gui.gd" id="1_hek8f"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_bi0qm"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_h0vbn"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_3wv1l"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="4_fbylm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx2ms"]
 bg_color = Color(0.160262, 0.175383, 0.269186, 1)
@@ -51,10 +52,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -58.0
-offset_top = 8.0
-offset_right = 59.0
-offset_bottom = 31.0
+offset_left = -66.0
+offset_top = 22.0
+offset_right = 68.0
+offset_bottom = 53.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_h0vbn")
 theme_override_font_sizes/font_size = 30
@@ -81,7 +82,7 @@ theme_override_constants/separation = 20
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_h0vbn")
+theme_override_fonts/font = ExtResource("4_fbylm")
 theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_1"
 autowrap_mode = 3
@@ -90,7 +91,7 @@ autowrap_mode = 3
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_h0vbn")
+theme_override_fonts/font = ExtResource("4_fbylm")
 theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_2"
 autowrap_mode = 3
@@ -99,7 +100,7 @@ autowrap_mode = 3
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_h0vbn")
+theme_override_fonts/font = ExtResource("4_fbylm")
 theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_3"
 autowrap_mode = 3
@@ -149,5 +150,6 @@ theme_override_font_sizes/font_size = 20
 text = "OK"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/CloseBtn" to="." method="_on_close"]
