@@ -208,6 +208,8 @@ func _on_update_card_style():
 func recommend(should_play = true):
 	self.hint_pn.visible = true
 	if should_play:
+		self.hint_pn.rotation = 0
 		self.hint_pn.modulate = Color('#00d337')
 	else:
+		self.hint_pn.rotation = deg_to_rad(180)
 		self.hint_pn.modulate = Color('#ff110a')

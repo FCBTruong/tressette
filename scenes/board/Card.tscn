@@ -2,15 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/game/card.gd" id="1_1xv6o"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="2_sddhp"]
+[ext_resource type="Texture2D" uid="uid://bp6kti3au5fyr" path="res://assets/images/lobby/triangle.png" id="3_the30"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ww22k"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wab3q"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_1xv6o")
@@ -42,19 +36,21 @@ pivot_offset = Vector2(60, 90)
 texture = ExtResource("2_sddhp")
 expand_mode = 1
 
-[node name="HintPn" type="Panel" parent="Main/CardImage"]
+[node name="HintPn" type="TextureRect" parent="Main/CardImage"]
 modulate = Color(1, 0.065011, 0.039644, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -15.0
-offset_top = 4.0
-offset_right = 15.0
-offset_bottom = 14.0
+offset_left = -13.0
+offset_top = 3.0
+offset_right = 13.0
+offset_bottom = 17.0
 grow_horizontal = 2
+pivot_offset = Vector2(13, 7)
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wab3q")
+texture = ExtResource("3_the30")
+expand_mode = 1
 
 [node name="CardBtn" type="Button" parent="Main"]
 modulate = Color(1, 1, 1, 0)

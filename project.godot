@@ -13,7 +13,7 @@ config_version=5
 config/name="Tressette Royal"
 run/main_scene="res://scenes/InitScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-boot_splash/bg_color=Color(0.984314, 0.772549, 0.643137, 1)
+boot_splash/bg_color=Color(0.435508, 0.418242, 0.418242, 1)
 boot_splash/image="res://splash_screen.png"
 config/icon="res://icon.png"
 

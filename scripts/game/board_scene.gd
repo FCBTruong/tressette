@@ -889,7 +889,7 @@ func _effect_evaluate(text = 'Fantastic!'):
 	var y = evaluate_lb_default_pos.y - 30
 	var d = 1
 	tween.parallel().tween_property(evaluate_lb, 'modulate:a', 0, 0.3).set_delay(d)
-	tween.parallel().tween_property(evaluate_lb, 'position:y', y, 0.3).set_delay(d)
+	tween.parallel().tween_property(evaluate_lb, 'position:y', y, 0.5).set_delay(d)
 	tween.parallel().tween_property(evaluate_lb, 'scale', Vector2(0.7, 0.7), 0.3).set_delay(d)
 	pass
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=66 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
@@ -248,14 +248,6 @@ shader_parameter/add_margins = true
 shader = ExtResource("18_37hrg")
 shader_parameter/color = Color(0.391381, 0.292326, 0.193117, 1)
 shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bwvrt"]
-shader = ExtResource("18_37hrg")
-shader_parameter/color = Color(0.415142, 0.21956, 0.146142, 1)
-shader_parameter/width = 2.045
 shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
@@ -791,16 +783,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 166.0
-offset_top = 16.0
-offset_right = 278.0
-offset_bottom = 39.0
+offset_left = 149.0
+offset_top = 26.0
+offset_right = 276.0
+offset_bottom = 52.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.930548, 0.398064, 1)
 theme_override_colors/font_outline_color = Color(0.496606, 0.409967, 0.409967, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 text = "GAME TO 11"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1134,10 +1126,10 @@ offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.937335, 0.338875, 1)
-theme_override_colors/font_shadow_color = Color(0.479634, 0.479634, 0.479634, 1)
-theme_override_colors/font_outline_color = Color(0.527155, 0.42326, 0.175173, 1)
+theme_override_colors/font_shadow_color = Color(0.788518, 0.321816, 0.298324, 1)
+theme_override_colors/font_outline_color = Color(0.85301, 0.290483, 0.0394266, 1)
 theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 2
+theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_8cjom")
 theme_override_font_sizes/font_size = 80
 text = "3"
@@ -1369,7 +1361,6 @@ script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/LeftTopPn/BackBtn"]
 self_modulate = Color(1, 1, 1, 0.9)
-material = SubResource("ShaderMaterial_bwvrt")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
