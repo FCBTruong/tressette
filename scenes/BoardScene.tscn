@@ -1,7 +1,7 @@
-[gd_scene load_steps=66 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=64 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
-[ext_resource type="Texture2D" uid="uid://d0dwob1yo8ejh" path="res://assets/images/board/bg.png" id="2_6snk1"]
+[ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
 [ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_ncq5t"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_2a7pa"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
@@ -42,7 +42,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_color = Color(0, 0, 0, 0.421)
-shadow_size = 2
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="Gradient" id="Gradient_2rqsr"]
@@ -118,7 +117,7 @@ shadow_offset = Vector2(-2, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pdh6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b84cg"]
-bg_color = Color(0.142304, 0.513857, 0.815673, 1)
+bg_color = Color(0.142, 0.514, 0.816, 0.5)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -154,6 +153,9 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
+shadow_color = Color(0, 0, 0, 0.266)
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo81u"]
 bg_color = Color(1, 1, 1, 1)
@@ -161,7 +163,7 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m3fb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4k4q"]
-bg_color = Color(0.757969, 0.0366172, 0, 1)
+bg_color = Color(0.758, 0.037, 0, 0.5)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -236,22 +238,6 @@ shader_parameter/fire_speed = Vector2(0.2, 1.5)
 shader_parameter/fire_aperture = 0.6
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_40xxb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbehe"]
-shader = ExtResource("18_37hrg")
-shader_parameter/color = Color(0.578, 0.395, 0.27, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ph20b"]
-shader = ExtResource("18_37hrg")
-shader_parameter/color = Color(0.391381, 0.292326, 0.193117, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyhfc"]
 shader = ExtResource("18_37hrg")
 shader_parameter/color = Color(0.483028, 0.287575, 0.287575, 1)
@@ -309,7 +295,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6snk1")
+texture = ExtResource("2_hw1ge")
 expand_mode = 1
 stretch_mode = 6
 
@@ -350,15 +336,18 @@ mouse_filter = 2
 [node name="PotPn" type="Panel" parent="CanvasLayer/PlayGround"]
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 1
-offset_left = 270.0
-offset_top = 28.0
-offset_right = 420.0
-offset_bottom = 68.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -381.0
+offset_top = 27.0
+offset_right = -231.0
+offset_bottom = 67.0
+grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ucf2k")
 
 [node name="Label2" type="Label" parent="CanvasLayer/PlayGround/PotPn"]
-visible = false
 modulate = Color(1, 1, 1, 0.776)
 layout_mode = 1
 anchors_preset = 8
@@ -366,10 +355,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -54.0
-offset_right = 53.0
-offset_bottom = -22.0
+offset_left = -155.0
+offset_top = -15.0
+offset_right = -60.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_2a7pa")
@@ -379,6 +368,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/PotPn"]
+visible = false
 material = SubResource("ShaderMaterial_wfrck")
 layout_mode = 1
 anchors_preset = 4
@@ -393,17 +383,17 @@ texture = ExtResource("8_vkglh")
 expand_mode = 1
 
 [node name="PotValueLb" type="Label" parent="CanvasLayer/PlayGround/PotPn"]
-self_modulate = Color(1, 1, 1, 0.95)
+self_modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -16.0
-offset_right = 57.0
-offset_bottom = 17.0
+offset_left = -49.5
+offset_top = -16.5
+offset_right = 49.5
+offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_2a7pa")
@@ -411,6 +401,26 @@ theme_override_font_sizes/font_size = 25
 text = "1999999"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ReachPointWinLb" type="Label" parent="CanvasLayer/PlayGround/PotPn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_top = -23.0
+offset_right = 64.0
+offset_bottom = 3.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.931, 0.398, 0.701)
+theme_override_colors/font_outline_color = Color(0.496606, 0.409967, 0.409967, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_2a7pa")
+theme_override_font_sizes/font_size = 20
+text = "GAME TO 11"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="CenterPlayPn" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
@@ -778,26 +788,6 @@ grow_horizontal = 2
 pivot_offset = Vector2(100, 0)
 mouse_filter = 2
 
-[node name="ReachPointWinLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 149.0
-offset_top = 26.0
-offset_right = 276.0
-offset_bottom = 52.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.930548, 0.398064, 1)
-theme_override_colors/font_outline_color = Color(0.496606, 0.409967, 0.409967, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 25
-text = "GAME TO 11"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
 [node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/ScorePn"]
 material = SubResource("ShaderMaterial_pdh6q")
 layout_mode = 1
@@ -839,7 +829,7 @@ alignment = 1
 
 [node name="MyScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.562)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
@@ -869,6 +859,9 @@ offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "3
@@ -889,6 +882,8 @@ offset_top = 10.0
 offset_bottom = 48.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_constants/shadow_offset_x = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "2"
@@ -983,7 +978,7 @@ alignment = 1
 
 [node name="OpponentScoreLb" type="Label" parent="CanvasLayer/PlayGround/ScorePn/Panel2/HBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
 theme_override_constants/shadow_offset_x = 0
 theme_override_fonts/font = ExtResource("4_2a7pa")
@@ -991,7 +986,6 @@ theme_override_font_sizes/font_size = 45
 text = "10"
 
 [node name="OpponentScoreSub" type="Control" parent="CanvasLayer/PlayGround/ScorePn/Panel2/HBoxContainer2"]
-visible = false
 modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
@@ -1010,6 +1004,8 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "3
@@ -1028,6 +1024,8 @@ offset_right = 8.0
 offset_bottom = 47.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "2"
@@ -1272,7 +1270,7 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn"]
-material = SubResource("ShaderMaterial_hbehe")
+modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1295,7 +1293,7 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn"]
-material = SubResource("ShaderMaterial_ph20b")
+modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1440,9 +1438,9 @@ mouse_filter = 2
 
 [node name="EmoBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = 38.0
+offset_left = 31.0
 offset_top = -156.0
-offset_right = 98.0
+offset_right = 91.0
 offset_bottom = -96.0
 flat = true
 script = ExtResource("7_gov4p")
@@ -1461,9 +1459,9 @@ expand_mode = 1
 
 [node name="ChatBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = 38.0
+offset_left = 31.0
 offset_top = -82.0
-offset_right = 98.0
+offset_right = 91.0
 offset_bottom = -22.0
 flat = true
 script = ExtResource("7_gov4p")

@@ -9,7 +9,7 @@ var reviewing_version = 0
 var cdn_version = 0
 
 # INCREASE WHEN BUILD, should edit when upload new build
-const ANDROID_CODE_VERSION: int = 3
+const ANDROID_CODE_VERSION: int = 4
 const IOS_CODE_VERSION: int = 2
 var my_code_version
 
