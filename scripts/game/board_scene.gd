@@ -402,6 +402,11 @@ func play_my_card(id: int, auto: bool = false):
 	tween.parallel().tween_property(card, "scale", 
 		Vector2(SCALE_CARD_NORMAL * 1.5, SCALE_CARD_NORMAL * 1.5), 0.3).set_ease(Tween.EASE_OUT)\
 			.set_trans(Tween.TRANS_SINE)
+			
+	tween.parallel().tween_callback(
+		func():
+			card.shadow.visible = true
+	).set_delay(0.3)
 	
 	tween.parallel().tween_property(card, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)
@@ -709,6 +714,11 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	tween.parallel().tween_property(card_instance, "scale", 
 		Vector2(SCALE_CARD_NORMAL * 1.1, SCALE_CARD_NORMAL * 1.1), 0.3)\
 			.set_trans(Tween.TRANS_SINE)
+			
+	tween.parallel().tween_callback(
+		func():
+			card_instance.shadow.visible = true
+	).set_delay(0.3)
 	
 	tween.parallel().tween_property(card_instance, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)

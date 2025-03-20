@@ -1,26 +1,36 @@
 shader_type canvas_item;
 
-uniform float r = 0.0;
-uniform float offset: hint_range(0.0, 1.0) = 0.0;
+uniform vec4 drop_shadow_color : source_color = vec4(vec3(0), float(0.5));
+uniform vec2 shadow_offset = vec2(float(0), float(0.1));
 
 void vertex() {
-	VERTEX.xy *= 3.;
+	float max_offset = abs(shadow_offset.x);
+	if (abs(shadow_offset.y) > abs(shadow_offset.x)) {
+		max_offset = abs(shadow_offset.y);
+	}
+	VERTEX *= float(1) + float(2) * max_offset;
 }
-
-void fragment() {
-	mat2 rotation_matrix = mat2(vec2(cos(r), sin(r)), vec2(-sin(r), cos(r)));
-	mat2 scale_matrix = mat2(vec2(1.0, 0.0),vec2(0.0, TEXTURE_PIXEL_SIZE.x/TEXTURE_PIXEL_SIZE.y));
-	vec2 uv = (((UV * 2.0 - 1.0)*3.+1.0)/2.0-vec2(0.5))*scale_matrix;
-	vec2 uv_normal = uv * rotation_matrix * inverse(scale_matrix) + vec2(0.5);
-	uv = (uv * rotation_matrix + vec2(0.25)*offset*rotation_matrix)*inverse(scale_matrix)+vec2(0.5);
-	vec4 shadow;
-	vec4 real;
-	if(offset != 0.0 && uv.x >= 0.0 && uv.x <= 1.0 && uv.y >= 0.0 && uv.y <= 1.0) {
-		vec4 c = texture(TEXTURE, uv);
-		shadow = vec4(0.,0.,0.,c.a-0.6);
+vec4 sample_texture(sampler2D texture, vec2 uv)  {
+	if ((uv.x < 0.0 || uv.x > 1.0) || (uv.y < 0.0 || uv.y > 1.0))  {
+		return vec4(0.0);
+	} else {
+		return texture(texture, uv);
 	}
-	if(uv_normal.x >= 0.0 && uv_normal.x <= 1.0 && uv_normal.y >= 0.0 && uv_normal.y <= 1.0) {
-		real = texture(TEXTURE,uv_normal);
+}
+vec4 mixcolor(vec4 colA, vec4 colB)  {
+	return vec4((colA.rgb + colB.a * (colB.rgb - colA.rgb)), colA.a + colB.a);
+}
+void fragment()  {
+	float max_offset = abs(shadow_offset.x);
+	if (abs(shadow_offset.y) > abs(shadow_offset.x)) {
+		max_offset = abs(shadow_offset.y);
 	}
-	COLOR = mix(shadow,real,real.a);
+	vec2 uv = UV * float(float(1) + float(2) * max_offset) - vec2(max_offset);
+	vec4 original_color = sample_texture(TEXTURE, uv);
+	vec4 shadow_color = vec4(drop_shadow_color.rgb, sample_texture(TEXTURE, uv - shadow_offset).a * drop_shadow_color.a);
+	if (shadow_color.a > float(0)) {
+		COLOR = mixcolor(shadow_color, original_color);
+	} else {
+		COLOR = original_color;
+	}
 }
