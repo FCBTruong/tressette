@@ -95,6 +95,7 @@ var shader = preload("res://shaders/gold.gdshader")
 var card_mat = ShaderMaterial.new()
 
 var shader1 = preload('res://shaders/gradient.gdshader')
+
 	
 func turn_face_up():
 	face_state = g.v.game_constants.CARD_FACE_STATE.UP

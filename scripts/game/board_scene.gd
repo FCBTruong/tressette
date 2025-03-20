@@ -46,7 +46,7 @@ var compare_card_poses = []
 @onready var action_btn_pn = find_child("ActionBtnPn")
 @onready var reach_point_win_lb = find_child("ReachPointWinLb")
 @onready var auto_play_pn = find_child("AutoPlayPn")
-@onready var pn_highlight_napoli = find_child("PnHighlightNapoli")
+var pn_highlight_napoli = preload("res://scenes/board/NapoliCardHighlight.tscn")
 @onready var bet_info_pn = find_child("BetInfoPn")
 @onready var pot_pn = find_child("PotPn")
 @onready var score_pn = find_child("ScorePn")
@@ -889,7 +889,7 @@ func _effect_evaluate(text = 'Fantastic!'):
 	var y = evaluate_lb_default_pos.y - 30
 	var d = 1
 	tween.parallel().tween_property(evaluate_lb, 'modulate:a', 0, 0.3).set_delay(d)
-	tween.parallel().tween_property(evaluate_lb, 'position:y', y, 0.5).set_delay(d)
+	tween.parallel().tween_property(evaluate_lb, 'global_position:y', y, 0.3).set_delay(d)
 	tween.parallel().tween_property(evaluate_lb, 'scale', Vector2(0.7, 0.7), 0.3).set_delay(d)
 	pass
 
@@ -1049,24 +1049,16 @@ func on_user_turn():
 
 
 func _hight_light_napoli_set(nap):
-	var h = pn_highlight_napoli.duplicate()
-	var z = 0
-	pn_highlight_napoli.get_parent().add_child(h)
-	
-	var center_pos = Vector2(0, 0)
 	for c in list_my_cards:
 		if c.id in nap:
-			center_pos += c.global_position
-			if c.z_index > z:
-				z = c.z_index
+			var h = pn_highlight_napoli.instantiate()
+			c.get_parent().add_child(h)
+			h.position = c.position
+			h.z_index = c.z_index + 1
+			h.rotation = c.rotation
 				
-	h.z_index = z + 1
-	var w = 100 + (len(nap) - 1) * CARD_DISTANCE_BETWEEN * SCALE_CARD_NORMAL
-	center_pos = center_pos / len(nap)
-	
-	h.global_position = Vector2(center_pos.x - w / 2, center_pos.y - 75)
-	h.size = Vector2(w, 150 * SCALE_CARD_NORMAL)
-	list_napoli_highlights.append(h)
+			list_napoli_highlights.append(h)
+			
 func _on_user_napoli(uid, point_add, suits):
 	var p = get_player_node_by_uid(uid)
 	if uid == g.v.player_info_mgr.get_user_id():
