@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=46 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="18_wn24e"]
 [ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="19_orflg"]
 [ext_resource type="Texture2D" uid="uid://c3cvhcijeqyq6" path="res://assets/images/lobby/chplay_color_icon.png" id="25_f38q8"]
+[ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="26_kgo4q"]
 [ext_resource type="Texture2D" uid="uid://ckmdrn8wnvvrj" path="res://assets/images/lobby/appstore_icon.png" id="26_p24wg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_infkq"]
@@ -194,7 +195,7 @@ bg_color = Color(0, 0, 0, 0.3)
 corner_radius_top_right = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2vqb"]
-bg_color = Color(0.292946, 0.292946, 0.292946, 0.5)
+bg_color = Color(0.133412, 0.133412, 0.133412, 0.3)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -300,10 +301,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -27.5549
-offset_top = -26.5549
-offset_right = 42.4451
-offset_bottom = 73.4451
+offset_left = -25.0
+offset_top = -24.0
+offset_right = 45.0
+offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.589485
@@ -318,10 +319,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 24.511
-offset_top = -17.5549
-offset_right = 94.511
-offset_bottom = 82.4451
+offset_left = 24.0
+offset_top = -15.0
+offset_right = 94.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.540785
@@ -337,9 +338,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -4.0
-offset_top = -2.55486
 offset_right = 66.0
-offset_bottom = 97.4451
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.00634568
@@ -898,6 +898,7 @@ size_flags_vertical = 3
 vertical_scroll_mode = 3
 
 [node name="LobbyFriendList" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -955,6 +956,14 @@ expand_mode = 1
 [node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
+
+[node name="TestA" type="TextureRect" parent="CanvasLayer/Control"]
+offset_left = 403.0
+offset_top = 174.0
+offset_right = 503.0
+offset_bottom = 274.0
+texture = ExtResource("26_kgo4q")
+expand_mode = 1
 
 [node name="BottomRight" type="Control" parent="CanvasLayer/Control"]
 layout_mode = 1
