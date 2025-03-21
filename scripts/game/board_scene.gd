@@ -879,6 +879,7 @@ func on_new_chat_message(uid, message):
 	for p in list_players:
 		if p.user_data.uid == uid:
 			p.on_chat(message)
+			
 func on_new_chat_emo(uid, emo):
 	var p = get_player_node_by_uid(uid)
 	if p:

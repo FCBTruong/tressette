@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=65 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -261,8 +261,10 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23sef"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78fhh"]
-bg_color = Color(0.521569, 0.0588235, 0, 1)
+bg_color = Color(0.612013, 0.241187, 0.173184, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -455,6 +457,111 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kjq8g")
 
+[node name="CardbackPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+anchors_preset = 0
+offset_left = 65.0
+offset_top = -16.0
+offset_right = 155.0
+offset_bottom = 114.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -104.0
+offset_right = 35.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktgw6")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 29.0
+offset_right = 97.0
+offset_bottom = 159.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ncq5t")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 25.0
+offset_right = 97.0
+offset_bottom = 155.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ncq5t")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 21.0
+offset_right = 97.0
+offset_bottom = 151.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ncq5t")
+expand_mode = 1
+
+[node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
+custom_minimum_size = Vector2(70, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -45.0
+offset_right = 32.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ncq5t")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn/CardBack"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.5
+offset_top = -9.0
+offset_right = 20.5
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2wdn7")
+
+[node name="RemainCardsLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn/CardBack/Panel"]
+modulate = Color(0.944657, 0.832392, 0.515816, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 20.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_2a7pa")
+theme_override_font_sizes/font_size = 20
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PlayersPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
 anchors_preset = 8
@@ -567,111 +674,6 @@ position = Vector2(170, 100)
 
 [node name="PlaceCard0" type="Node2D" parent="CanvasLayer/PlayGround/CenterPlayPn/CardComparePn"]
 position = Vector2(50, 150)
-
-[node name="CardbackPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
-anchors_preset = 0
-offset_left = 65.0
-offset_top = -16.0
-offset_right = 155.0
-offset_bottom = 114.0
-mouse_filter = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -35.0
-offset_top = -104.0
-offset_right = 35.0
-offset_bottom = -11.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ktgw6")
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-visible = false
-layout_mode = 0
-offset_left = 7.0
-offset_top = 29.0
-offset_right = 97.0
-offset_bottom = 159.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_ncq5t")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-visible = false
-layout_mode = 0
-offset_left = 7.0
-offset_top = 25.0
-offset_right = 97.0
-offset_bottom = 155.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_ncq5t")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-visible = false
-layout_mode = 0
-offset_left = 7.0
-offset_top = 21.0
-offset_right = 97.0
-offset_bottom = 151.0
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_ncq5t")
-expand_mode = 1
-
-[node name="CardBack" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn"]
-custom_minimum_size = Vector2(70, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -45.0
-offset_right = 32.5
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_ncq5t")
-expand_mode = 1
-
-[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn/CardBack"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -19.5
-offset_top = -9.0
-offset_right = 20.5
-offset_bottom = 16.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2wdn7")
-
-[node name="RemainCardsLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardbackPn/CardBack/Panel"]
-modulate = Color(0.944657, 0.832392, 0.515816, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -18.0
-offset_right = 20.0
-offset_bottom = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 20
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="EvaluateLb" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 custom_minimum_size = Vector2(400, 50)
@@ -1647,6 +1649,7 @@ texture = ExtResource("19_avqff")
 expand_mode = 1
 
 [node name="AutoPlayPn" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(0, 0, 0, 0.6)
 custom_minimum_size = Vector2(0, 300)
 anchors_preset = -1
 anchor_top = 0.5
@@ -1655,6 +1658,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_23sef")
 metadata/_edit_use_anchors_ = true
 
 [node name="ReturnTableBtn" type="Button" parent="CanvasLayer/AutoPlayPn"]
@@ -1680,6 +1684,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -1698,8 +1703,11 @@ offset_right = 57.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.849)
+theme_override_colors/font_outline_color = Color(0.557704, 0.208504, 0.110136, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 23
 text = "RETURN_TO_TABLE"
 horizontal_alignment = 1
 
