@@ -443,7 +443,10 @@ func _handle_draw_card(payload: PackedByteArray):
 			'uid': user.uid,
 			'card': cards[i]
 		}
-		arr.append(obj)
+		if user.uid == g.v.player_info_mgr.get_user_id():
+			arr.insert(0, obj)
+		else:
+			arr.append(obj)
 		i += 1
 	
 	var scene = g.v.scene_manager.get_current_scene()

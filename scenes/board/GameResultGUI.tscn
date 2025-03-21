@@ -36,18 +36,24 @@ fill_to = Vector2(0.4038, 0.565321)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxyre"]
 bg_color = Color(0.636, 0.145, 0.103, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7cos"]
 bg_color = Color(0.239936, 0.595041, 0.0764193, 1)
 border_color = Color(0.146, 0.524, 0.232, 0.8)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
 
 [node name="GameResultGui" type="Node2D"]
 script = ExtResource("1_fpth8")
@@ -185,16 +191,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -207.0
-offset_top = -83.0
-offset_right = 208.0
-offset_bottom = 57.0
+offset_left = -144.0
+offset_top = -57.0
+offset_right = 82.0
+offset_bottom = 39.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.960162, 0.779502, 1)
 theme_override_fonts/font = ExtResource("5_iqu72")
 theme_override_font_sizes/font_size = 80
-text = "+100000"
+text = "+1000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -205,10 +211,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -40.0
-offset_right = 50.0
-offset_bottom = 40.0
+offset_left = 14.0
+offset_top = -39.0
+offset_right = 94.0
+offset_bottom = 41.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("5_oq6y8")
@@ -241,20 +247,24 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -150.0
+offset_left = -155.0
 offset_top = 37.0
-offset_right = 150.0
-offset_bottom = 77.0
+offset_right = 155.0
+offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="BtnExit" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
 theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = SubResource("StyleBoxFlat_bxyre")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bxyre")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_bxyre")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bxyre")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bxyre")
 script = ExtResource("4_xsh0q")
 
@@ -272,35 +282,48 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
+theme_override_font_sizes/font_size = 22
 text = "EXIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Control" type="Control" parent="CanvasLayer/MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
 
 [node name="ContinueTimer" type="Timer" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
 wait_time = 6.0
 one_shot = true
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+self_modulate = Color(0.140201, 0.116202, 0.116202, 1)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_11gwx")
+expand_mode = 1
+
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
 self_modulate = Color(0.408353, 0.408353, 0.408353, 1)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 27.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_hnshh")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
-self_modulate = Color(0.140201, 0.116202, 0.116202, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("7_11gwx")
 expand_mode = 1
 
 [node name="ContinueTimeNode" type="TextureProgressBar" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
@@ -311,10 +334,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 27.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -340,16 +363,23 @@ offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BtnContinue" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2qycw")
 theme_override_font_sizes/font_size = 18
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_y7cos")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_y7cos")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_y7cos")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y7cos")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_y7cos")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y7cos")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_y7cos")
 theme_override_styles/normal = SubResource("StyleBoxFlat_y7cos")
 script = ExtResource("4_xsh0q")
 
@@ -367,6 +397,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
+theme_override_font_sizes/font_size = 22
 text = "CONTINUE"
 horizontal_alignment = 1
 vertical_alignment = 1

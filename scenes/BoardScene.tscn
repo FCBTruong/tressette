@@ -1182,6 +1182,7 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
 [node name="BetInfoPn" type="HBoxContainer" parent="CanvasLayer/RightTopPanel"]
+modulate = Color(1, 1, 1, 0.6)
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = 171.0
@@ -1192,24 +1193,22 @@ mouse_filter = 2
 alignment = 2
 
 [node name="InfoBetBtn" type="Button" parent="CanvasLayer/RightTopPanel/BetInfoPn"]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/BetInfoPn/InfoBetBtn"]
-self_modulate = Color(1, 1, 1, 0.586)
-custom_minimum_size = Vector2(25, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -7.5
-offset_top = -16.0
-offset_right = 7.5
-offset_bottom = 16.0
+offset_left = -9.5
+offset_top = -17.0
+offset_right = 10.5
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_4pw0j")
@@ -1217,18 +1216,17 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="BetLb" type="Label" parent="CanvasLayer/RightTopPanel/BetInfoPn"]
-modulate = Color(1, 1, 1, 0.809)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.865)
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 20
 text = "BET: 100K"
 horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RoomIdLb" type="Label" parent="CanvasLayer/RightTopPanel"]
-modulate = Color(1, 1, 1, 0.809)
+modulate = Color(1, 1, 1, 0.6)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.21
@@ -1241,7 +1239,7 @@ offset_right = 167.0
 offset_bottom = 46.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 20
 text = "ID: 1001"
 horizontal_alignment = 2
 vertical_alignment = 1
