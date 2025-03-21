@@ -15,3 +15,7 @@ static func get_center_position(node) -> Vector2:
 	else:
 		# If no size is applicable, just return the position
 		return global_position
+
+static func set_center_pivot(node):
+	var size = node.size
+	node.pivot_offset = size / 2

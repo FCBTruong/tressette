@@ -117,6 +117,7 @@ func _open_customer_service_gui():
 	g.v.scene_manager.open_gui("res://scenes/customer_service/CustomerServiceGUI.tscn")
 
 func _click_mission_btn():
+	#g.v.mission_mgr.open_mission_gui()
 	g.v.scene_manager.show_toast(tr('FEATURE_COMING_SOON'))
 	
 func open_shop():

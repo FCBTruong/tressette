@@ -22,6 +22,7 @@ var logs_mgr: LogsMgr
 var effect_mgr: EffectMgr
 var login_mgr: LoginMgr
 var sette_mezzo_mgr: SetteMezzoMgr
+var mission_mgr: MissionMgr
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
