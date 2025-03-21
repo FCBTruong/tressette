@@ -876,7 +876,9 @@ func on_new_chat_message(uid, message):
 		chat_btn_reddot.visible = true
 		
 	in_game_chat_gui.on_received_new_chat(uid, message)
-
+	for p in list_players:
+		if p.user_data.uid == uid:
+			p.on_chat(message)
 func on_new_chat_emo(uid, emo):
 	var p = get_player_node_by_uid(uid)
 	if p:
@@ -909,13 +911,15 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_W:
-				show_prepare_start()
+				
+				#show_prepare_start()
 				return
 				#_effect_evaluate()
 				self.list_players[0].show_emotion(4)
 				print("W key pressed")
 			elif event.keycode == KEY_S:
-				_effect_evaluate("win_messageall")
+				self.list_players[0].on_chat('Hel;oddosososdds')
+				#_effect_evaluate("win_messageall")
 				return
 				test_play_playercard()
 				print("S key pressed")

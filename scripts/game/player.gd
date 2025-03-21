@@ -16,9 +16,11 @@ extends Node
 @onready var gold_pn = find_child("GoldPn")
 @onready var name_pn = find_child("NamePn")
 @onready var name_lb = find_child("NameLb")
+@onready var chat_tooltip = find_child("ChatTooltip")
 var default_pos_bonus
 var is_me: bool = false
 func _ready() -> void:
+	chat_tooltip.visible = false
 	if g.v.app_version.is_in_review():
 		gold_pn.visible = false
 		name_pn.visible = true
@@ -263,4 +265,24 @@ func _ingame_update_player_money(uid):
 	if uid == user_data.uid:
 		print('user ' + str(uid) + 'update money')
 		_update_gold()
+	pass
+
+
+var chat_tw
+func on_chat(text):
+	if chat_tw and chat_tw.is_running():
+		chat_tw.kill()
+	chat_tooltip.visible = true
+	var str = StringUtils.sub_string(text, 30)
+	var content_lb = chat_tooltip.find_child("ChatContent")
+	content_lb.text = str
+	#await get_tree().process_frame
+	var content_size = content_lb.get_minimum_size()
+	var pn = chat_tooltip.find_child("Panel")
+	pn.size.x = content_size.x + 60
+	pn.position.x = -pn.size.x / 2
+	chat_tw = create_tween()
+	chat_tooltip.scale = Vector2(0, 0)
+	chat_tw.tween_property(chat_tooltip, 'scale', Vector2(1, 1), 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	chat_tw.tween_property(chat_tooltip, 'scale', Vector2(0, 0), 0.3).set_delay(2)
 	pass
