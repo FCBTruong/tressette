@@ -78,8 +78,6 @@ func _do_effect() -> void:
 	
 	animation_player.play("play_now_icon")
 	mobile_web_pn.visible = g.v.config.get_platform() == g.v.config.PLATFORMS.WEB
-	var test = find_child("TestA")
-	test.texture = GifManager.animated_texture_from_file('res://assets/animations/emoticons/512.gif')
 
 func _on_update_money():
 	gold_lb.text = StringUtils.point_number(g.v.player_info_mgr.my_user_data.gold)

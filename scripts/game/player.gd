@@ -171,12 +171,15 @@ func _show_info():
 		red_dot.visible = false
 	g.v.friend_mgr.search_friend(user_data.uid)
 
+var tween_emo
 func show_emotion(emo_id):
-	var texture_path = "res://assets/animations/" + str(emo_id) + '.png'
-	emo_icon.texture = load(texture_path)
+	if tween_emo and tween_emo.is_running():
+		tween_emo.kill()
+	emo_icon.texture = g.v.emoticon_mgr.get_texture_emoticon(emo_id)
 	
 	emo_icon.visible = true
-	var tween = create_tween()
+	tween_emo = create_tween()
+	var tween = tween_emo
 	emo_icon.scale = Vector2(0, 0)
 	emo_icon.modulate.a = 1
 	tween.parallel().tween_property(
@@ -184,7 +187,7 @@ func show_emotion(emo_id):
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(
 		emo_icon, 'modulate:a', 0, 0.4
-	).set_delay(1)
+	).set_delay(1.5)
 	
 
 func _get_gold_str(gold) -> String:

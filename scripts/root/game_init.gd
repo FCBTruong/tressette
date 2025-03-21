@@ -65,6 +65,9 @@ func auto_load_scripts():
 	g.v.sette_mezzo_mgr = SetteMezzoMgr.new()
 	
 	g.v.mission_mgr = MissionMgr.new()
+	
+	g.v.emoticon_mgr = EmoticonMgr.new()
+	self.add_child(g.v.emoticon_mgr)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
