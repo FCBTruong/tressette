@@ -67,7 +67,7 @@ func _ready():
 	# Start downloading missing files
 	if keys_to_download:
 		download_next()
-		
+		#
 	for i in range(15):  
 		load_gif_async(i) 
 

@@ -38,6 +38,8 @@ func _ready():
 		n.parent = self
 
 func _process(delta):
+	if g.v.config.get_platform() == Config.PLATFORMS.WEB:
+		return
 	var keyboard_height = DisplayServer.virtual_keyboard_get_height()
 	if keyboard_height > 0:
 		var view_size = get_viewport().get_visible_rect().size

@@ -341,17 +341,14 @@ mouse_filter = 2
 
 [node name="ReachPointWinLb" type="Label" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -63.0
-offset_top = -221.0
+offset_top = 73.0
 offset_right = 64.0
-offset_bottom = -195.0
+offset_bottom = 99.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.601, 0.217, 0.368)
 theme_override_colors/font_outline_color = Color(0.496606, 0.409967, 0.409967, 1)
 theme_override_fonts/font = ExtResource("4_2a7pa")

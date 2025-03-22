@@ -15,13 +15,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func setup_emo_list():
-	if did_setup:
-		return
-		
-	did_setup = true
-	for i in range(4):
-		var x = emo_group_node.duplicate()
-		content_pn.add_child(x)
+	if not did_setup:
+		did_setup = true
+		for i in range(4):
+			var x = emo_group_node.duplicate()
+			content_pn.add_child(x)
 	var emo_id = 1
 	for c in content_pn.get_children():
 		for e in c.get_children():
