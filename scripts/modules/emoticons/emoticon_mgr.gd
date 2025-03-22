@@ -30,7 +30,7 @@ const URLS = {
 	"9": 'https://fonts.gstatic.com/s/e/notoemoji/latest/1f631/512.gif',
 	
 	# Clapping
-	'10': 'https://fonts.gstatic.com/s/e/notoemoji/latest/1f631/512.gif',
+	'10': 'https://fonts.gstatic.com/s/e/notoemoji/latest/1f44f/512.gif',
 	
 	# Hug face
 	'11': 'https://fonts.gstatic.com/s/e/notoemoji/latest/1f917/512.gif',
@@ -44,7 +44,7 @@ const URLS = {
 	# Sun glass face
 	'14': 'https://fonts.gstatic.com/s/e/notoemoji/latest/1f60e/512.gif',
 	
-	'15': 'https://fonts.gstatic.com/s/e/notoemoji/latest/1f4af/512.gif'
+	'15': 'https://fonts.gstatic.com/s/e/notoemoji/latest/1f92e/512.gif'
 	
 }
 

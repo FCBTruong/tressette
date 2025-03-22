@@ -29,7 +29,7 @@ var compare_card_poses = []
 @onready var countdown_start_lb = find_child('CountdownStartLb')
 @onready var room_id_lb = find_child('RoomIdLb')
 @onready var pn_cheat = find_child('PnCheat')
-@onready var in_game_chat_gui = find_child('InGameChatGui')
+var in_game_chat_gui
 @onready var chat_btn = find_child('ChatBtn')
 @onready var chat_btn_reddot = chat_btn.find_child('RedDot')
 @onready var waiting_other_lb = find_child('WaitingOtherLb')
@@ -131,8 +131,7 @@ func _on_enter():
 	_update_current_round()
 	on_update_players()
 	update_remain_cards()
-	in_game_chat_gui.visible = false
-	in_game_chat_gui.z_index = 200
+
 	chat_btn.visible = g.v.game_manager.enable_chat_ingame
 	chat_btn_reddot.visible = false
 	pn_cheat.visible = false #g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE
@@ -867,10 +866,21 @@ func exit_game():
 	g.v.scene_manager.switch_scene("res://scenes/LobbyScene.tscn")
 
 func on_show_chat_gui():
-	in_game_chat_gui.visible = !in_game_chat_gui.visible
+	if not in_game_chat_gui:
+		var chat_scene = load("res://scenes/board/GameChatGUI.tscn")
+		in_game_chat_gui = chat_scene.instantiate()
+		self.add_child(in_game_chat_gui)
+		in_game_chat_gui.on_show()
+		return
+	if in_game_chat_gui.visible:
+		in_game_chat_gui.on_hide()
+	else:
+		in_game_chat_gui.on_show()
 	chat_btn_reddot.visible = false
 
 func on_new_chat_message(uid, message):
+	if not in_game_chat_gui:
+		return
 	if not in_game_chat_gui.visible:
 		g.v.sound_manager.play_notification_alert()
 		chat_btn_reddot.visible = true

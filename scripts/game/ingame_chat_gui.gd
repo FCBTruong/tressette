@@ -1,23 +1,25 @@
-extends Control
+extends CanvasLayer
 
 @onready var chat_log = find_child('ChatLog')
 @onready var quick_list = find_child("QuickList")
-var input_label
-var input_field
+@onready var main_pn = find_child("MainPn")
+@onready var quick_chat = find_child("QuickChat")
+var main_pn_default_pos
 var groups = [
-	{'name': 'Team', 'color': '#ffd600'},
-	{'name': 'Match', 'color': '#32e400'},
-	{'name': 'Global', 'color': '#fc4727'},
-	{'name': 'Global', 'color': '#08d99b'}
+	{'name': 'Team', 'color': '#037509'},
+	{'name': 'Match', 'color': '#b46400'},
+	{'name': 'Global', 'color': '#254199'},
+	{'name': 'Global', 'color': '#be1a94'}
 ]
 
 var group_index = 0
 var user_name = 'Emilia'
 var last_time_chat = 0
-
+var quick_chat_pos
+@onready var input_field = find_child("LineEdit")
 func _ready():
-	input_label = get_node("VBoxContainer/HBoxContainer/Label")
-	input_field = get_node("VBoxContainer/HBoxContainer/LineEdit")
+	main_pn_default_pos = main_pn.position
+	quick_chat_pos = quick_chat.position
 	input_field.connect("text_submitted", Callable(self, "text_submitted"))
 	
 	for c in quick_list.get_children():
@@ -65,8 +67,8 @@ func text_submitted(text):
 func add_message(uid, user_name, text):
 	var group_index = _get_group_index(uid)
 			
-	chat_log.text += '[color=' + groups[group_index]['color'] + ']'
-	chat_log.text += '[' + user_name + ']: ' + '[/color]'
+	chat_log.text += '[color=' + groups[group_index]['color'] + '][b]'
+	chat_log.text += '[' + user_name + ']: ' + '[/b][/color]'
 	chat_log.text += text
 	chat_log.text += ''
 	chat_log.text += '\n'
@@ -87,3 +89,52 @@ func _get_group_index(uid):
 		if user:
 			return user.game_data.seat_id
 	return 0
+
+var tween
+func on_show():
+	self.visible = true
+	if tween and tween.is_running():
+		tween.kill()
+		
+	tween = create_tween()
+	main_pn.position.x = main_pn_default_pos.x - 800
+	tween.parallel().tween_property(
+		main_pn,
+		"position:x",
+		main_pn_default_pos.x,
+		0.5
+	)
+	quick_chat.visible = true
+	quick_chat.position.x = quick_chat_pos.x + 100
+	quick_chat.modulate.a = 0
+	tween.parallel().tween_property(
+		quick_chat,
+		'position:x',
+		quick_chat_pos.x,0.3
+	).set_delay(0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(
+		quick_chat,
+		'modulate:a',
+		1,0.3
+	).set_delay(0.5)
+	pass
+func on_hide():
+	quick_chat.visible = false
+	if tween and tween.is_running():
+		tween.kill()
+		
+	tween = create_tween()
+	tween.tween_property(
+		main_pn,
+		"position:x",
+		main_pn_default_pos.x - 800,
+		0.5
+	)
+	
+	
+	tween.tween_callback(
+		func():
+			self.visible = false
+			pass
+			)
+	pass

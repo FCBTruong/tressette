@@ -187,7 +187,7 @@ func show_emotion(emo_id):
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(
 		emo_icon, 'modulate:a', 0, 0.4
-	).set_delay(1.5)
+	).set_delay(2)
 	
 
 func _get_gold_str(gold) -> String:

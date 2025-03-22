@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_ullgl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e6yh"]
-bg_color = Color(0.11, 0.082, 0.047, 0.362)
+bg_color = Color(0.618802, 0.283191, 0.193418, 0.362)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5

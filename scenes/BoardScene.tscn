@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=60 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_vkglh"]
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_078t0"]
-[ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="9_fe2dn"]
 [ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="9_g7ymd"]
 [ext_resource type="Texture2D" uid="uid://ly4nwhli0ra2" path="res://assets/images/board/blue-btn.png" id="9_jnkg8"]
 [ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="9_ujbxy"]
@@ -26,13 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="12_cc6ty"]
 [ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_6bu1m"]
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_4pw0j"]
-[ext_resource type="Texture2D" uid="uid://bxpqmo0rscimi" path="res://assets/animations/2.png" id="15_fulpj"]
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
-[ext_resource type="Texture2D" uid="uid://wss3dy5md7ag" path="res://assets/animations/3.png" id="16_uybu8"]
-[ext_resource type="Texture2D" uid="uid://d1ptlxc1n2pje" path="res://assets/animations/5.png" id="17_r8ldj"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="18_37hrg"]
-[ext_resource type="Texture2D" uid="uid://bdwytocp27vlf" path="res://assets/animations/4.png" id="18_hnxf0"]
-[ext_resource type="Texture2D" uid="uid://dspngqcofx1o0" path="res://assets/animations/1.png" id="19_avqff"]
+[ext_resource type="PackedScene" uid="uid://bybhqhjkyhhbk" path="res://scenes/board/EmoChatNode.tscn" id="25_t6dir"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucf2k"]
@@ -255,11 +250,16 @@ shader_parameter/inside = false
 shader_parameter/add_margins = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mewnw"]
-bg_color = Color(0.137, 0.137, 0.137, 0.662)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.944657, 0.944657, 0.944657, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.274662, 0.274662, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23sef"]
 
@@ -1397,51 +1397,26 @@ offset_right = 201.0
 offset_bottom = 31.0
 text = "Test Deal"
 
-[node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("9_fe2dn")]
-visible = false
-custom_minimum_size = Vector2(333, 250)
-anchors_preset = 4
-anchor_top = 0.5
-anchor_right = 0.0
-anchor_bottom = 0.5
-offset_left = 27.0
-offset_top = -253.0
-offset_right = 527.0
-offset_bottom = 147.0
-grow_horizontal = 1
-
-[node name="Button" type="Button" parent="CanvasLayer/InGameChatGui"]
-custom_minimum_size = Vector2(400, 800)
-layout_mode = 1
-anchors_preset = 15
+[node name="BottomRightPn" type="Control" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 787.0
-offset_top = -117.0
-offset_right = 787.0
-offset_bottom = 283.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-flat = true
-script = ExtResource("7_gov4p")
-
-[node name="BottomRightPn" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
+offset_left = -40.0
 offset_top = -40.0
-offset_right = 40.0
+grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
 [node name="EmoBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = 31.0
-offset_top = -156.0
-offset_right = 91.0
-offset_bottom = -96.0
+offset_left = 15.0
+offset_top = 20.0
+offset_right = 75.0
+offset_bottom = 80.0
 flat = true
 script = ExtResource("7_gov4p")
 
@@ -1459,10 +1434,10 @@ expand_mode = 1
 
 [node name="ChatBtn" type="Button" parent="CanvasLayer/BottomRightPn"]
 layout_mode = 0
-offset_left = 31.0
-offset_top = -82.0
-offset_right = 91.0
-offset_bottom = -22.0
+offset_left = 104.0
+offset_top = 20.0
+offset_right = 164.0
+offset_bottom = 80.0
 flat = true
 script = ExtResource("7_gov4p")
 
@@ -1527,15 +1502,16 @@ vertical_alignment = 1
 
 [node name="EmoChat" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -120.0
-offset_right = 250.0
-grow_horizontal = 2
+offset_left = -311.0
+offset_top = -417.0
+offset_right = -31.0
+offset_bottom = -107.0
+grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("15_vatcf")
@@ -1550,103 +1526,47 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_mewnw")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/EmoChat/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/EmoChat/Panel"]
+custom_minimum_size = Vector2(270, 290)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -135.0
+offset_top = -145.0
+offset_right = 135.0
+offset_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+scroll_deadzone = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EmoChat/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/separation = 20
+
+[node name="EmoGroupNode" type="HBoxContainer" parent="CanvasLayer/EmoChat/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="EmoBtn5" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Emo1" parent="CanvasLayer/EmoChat/Panel/ScrollContainer/VBoxContainer/EmoGroupNode" instance=ExtResource("25_t6dir")]
 layout_mode = 2
-flat = true
-script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("17_r8ldj")
-expand_mode = 1
-
-[node name="EmoBtn4" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Emo2" parent="CanvasLayer/EmoChat/Panel/ScrollContainer/VBoxContainer/EmoGroupNode" instance=ExtResource("25_t6dir")]
 layout_mode = 2
-flat = true
-script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("18_hnxf0")
-expand_mode = 1
-
-[node name="EmoBtn3" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Emo3" parent="CanvasLayer/EmoChat/Panel/ScrollContainer/VBoxContainer/EmoGroupNode" instance=ExtResource("25_t6dir")]
 layout_mode = 2
-flat = true
-script = ExtResource("7_gov4p")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("16_uybu8")
-expand_mode = 1
-
-[node name="EmoBtn2" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-flat = true
-script = ExtResource("7_gov4p")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("15_fulpj")
-expand_mode = 1
-
-[node name="EmoBtn1" type="Button" parent="CanvasLayer/EmoChat/Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-flat = true
-script = ExtResource("7_gov4p")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("19_avqff")
-expand_mode = 1
 
 [node name="AutoPlayPn" type="Panel" parent="CanvasLayer"]
+visible = false
 self_modulate = Color(0, 0, 0, 0.6)
 custom_minimum_size = Vector2(0, 300)
 anchors_preset = -1
@@ -1702,8 +1622,8 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.849)
-theme_override_colors/font_outline_color = Color(0.557704, 0.208504, 0.110136, 1)
-theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color(0.418536, 0.171507, 0.10192, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 23
 text = "RETURN_TO_TABLE"
@@ -1742,12 +1662,6 @@ volume_db = 12.0
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
-[connection signal="pressed" from="CanvasLayer/InGameChatGui/Button" to="." method="on_show_chat_gui"]
 [connection signal="pressed" from="CanvasLayer/BottomRightPn/EmoBtn" to="CanvasLayer/EmoChat" method="_on_emo_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/BottomRightPn/ChatBtn" to="." method="on_show_chat_gui"]
-[connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn5" to="CanvasLayer/EmoChat" method="_on_emo_btn_5_pressed"]
-[connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn4" to="CanvasLayer/EmoChat" method="_on_emo_btn_4_pressed"]
-[connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn3" to="CanvasLayer/EmoChat" method="_on_emo_btn_3_pressed"]
-[connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn2" to="CanvasLayer/EmoChat" method="_on_emo_btn_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/EmoChat/Panel/HBoxContainer/EmoBtn1" to="CanvasLayer/EmoChat" method="_on_emo_btn_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/AutoPlayPn/ReturnTableBtn" to="." method="_click_return_table"]
