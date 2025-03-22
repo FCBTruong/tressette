@@ -953,10 +953,10 @@ func _input(event):
 
 func update_register_leave_state():
 	if g.v.game_constants.game_logic.is_registered_leave:
-		back_btn.modulate = Color("f6353f67")
+		back_btn.find_child("TextureRect").modulate = Color("a51e1eb5")
 		pass
 	else:
-		back_btn.modulate = Color("ffffffd3")
+		back_btn.find_child("TextureRect").modulate = Color("ffffff8e")
 		pass
 		
 

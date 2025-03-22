@@ -67,6 +67,9 @@ func _ready():
 	# Start downloading missing files
 	if keys_to_download:
 		download_next()
+		
+	for i in range(15):  
+		load_gif_async(i) 
 
 func download_next():
 	if keys_to_download.is_empty():
@@ -92,3 +95,25 @@ func get_texture_emoticon(emo_id):
 		var texture_path = "user://emoticons/" + str(emo_id) + '.gif'
 		texture_cache[emo_id] = GifManager.animated_texture_from_file(texture_path)
 	return texture_cache[emo_id]
+
+
+var thread_pool = {}
+
+func load_gif_async(emo_id):
+	if texture_cache.has(emo_id):  
+		return  
+
+	var texture_path = "user://emoticons/" + str(emo_id) + ".gif"
+	var thread = Thread.new()
+	thread_pool[emo_id] = thread  # Store thread reference
+
+	# Use Callable instead of string
+	var callable = Callable(self, "_load_gif").bind(emo_id, texture_path)
+	thread.start(callable)
+
+func _load_gif(emo_id, texture_path):
+	texture_cache[emo_id] = GifManager.animated_texture_from_file(texture_path)
+
+	# Free the thread after loading is done
+	thread_pool[emo_id].wait_to_finish()
+	thread_pool.erase(emo_id)

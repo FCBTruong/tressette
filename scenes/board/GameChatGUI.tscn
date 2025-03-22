@@ -36,6 +36,7 @@ default_font = ExtResource("2_wkwjg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq2y8"]
 content_margin_left = 20.0
+content_margin_right = 30.0
 bg_color = Color(0.978601, 0.689702, 0.473211, 1)
 corner_radius_bottom_right = 5
 shadow_color = Color(0.483028, 0.483028, 0.483028, 0.1)
@@ -177,7 +178,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPn/VBoxContainer"]
+[node name="HBoxContainer" type="Control" parent="MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = SubResource("Theme_xbg3o")
@@ -185,37 +186,50 @@ theme = SubResource("Theme_xbg3o")
 [node name="LineEdit" type="LineEdit" parent="MainPn/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+offset_right = 500.0
+offset_bottom = 60.0
 size_flags_horizontal = 3
 theme_override_colors/font_placeholder_color = Color(1, 1, 1, 0.734)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("4_htv7n")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fwea3")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kq2y8")
 placeholder_text = "ENTER_YOUR_MESSAGE"
 
-[node name="SubmitBtn" type="Button" parent="MainPn/VBoxContainer/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
+[node name="SubmitBtn" type="Button" parent="MainPn/VBoxContainer/HBoxContainer/LineEdit"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -25.0
+offset_right = -5.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+flat = true
 script = ExtResource("3_jsdfg")
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/VBoxContainer/HBoxContainer/SubmitBtn"]
-modulate = Color(1, 1, 1, 0.777)
+[node name="TextureRect" type="TextureRect" parent="MainPn/VBoxContainer/HBoxContainer/LineEdit/SubmitBtn"]
+self_modulate = Color(0.598, 0.133, 0.106, 0.717)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_82s7o")
 expand_mode = 1
 
 [connection signal="pressed" from="CloseBtn" to="." method="on_hide"]
-[connection signal="pressed" from="MainPn/VBoxContainer/HBoxContainer/SubmitBtn" to="." method="_click_submit"]
+[connection signal="pressed" from="MainPn/VBoxContainer/HBoxContainer/LineEdit/SubmitBtn" to="." method="_click_submit"]

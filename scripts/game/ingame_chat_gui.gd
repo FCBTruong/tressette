@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var quick_list = find_child("QuickList")
 @onready var main_pn = find_child("MainPn")
 @onready var quick_chat = find_child("QuickChat")
+@onready var line_edit = find_child("LineEdit")
 var main_pn_default_pos
 var groups = [
 	{'name': 'Team', 'color': '#037509'},
@@ -16,10 +17,14 @@ var group_index = 0
 var user_name = 'Emilia'
 var last_time_chat = 0
 var quick_chat_pos
+var line_edit_pos 
+var line_edit_size
 @onready var input_field = find_child("LineEdit")
 func _ready():
 	main_pn_default_pos = main_pn.position
 	quick_chat_pos = quick_chat.position
+	line_edit_pos = line_edit.position
+	line_edit_size = line_edit.size
 	input_field.connect("text_submitted", Callable(self, "text_submitted"))
 	
 	for c in quick_list.get_children():
@@ -32,6 +37,18 @@ func _ready():
 		n.set_text(tr("QUICK_CHAT_" + str(i)))
 		n.parent = self
 
+func _process(delta):
+	var keyboard_height = DisplayServer.virtual_keyboard_get_height()
+	if keyboard_height > 0:
+		var view_size = get_viewport().get_visible_rect().size
+		line_edit.size.x = view_size.x
+		var p = Vector2(0, view_size.y - keyboard_height / 2 - 100)
+		line_edit.global_position = p
+	else:
+		line_edit.size = line_edit_size
+		line_edit.position = line_edit_pos
+		#main_pn.position.y = main_pn_default_pos.y
+		
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_ENTER:
@@ -97,12 +114,12 @@ func on_show():
 		tween.kill()
 		
 	tween = create_tween()
-	main_pn.position.x = main_pn_default_pos.x - 800
+	main_pn.position.x = main_pn_default_pos.x - main_pn.size.x
 	tween.parallel().tween_property(
 		main_pn,
 		"position:x",
 		main_pn_default_pos.x,
-		0.5
+		0.3
 	)
 	quick_chat.visible = true
 	quick_chat.position.x = quick_chat_pos.x + 100
@@ -111,12 +128,12 @@ func on_show():
 		quick_chat,
 		'position:x',
 		quick_chat_pos.x,0.3
-	).set_delay(0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	).set_delay(0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(
 		quick_chat,
 		'modulate:a',
 		1,0.3
-	).set_delay(0.5)
+	).set_delay(0.3)
 	pass
 func on_hide():
 	quick_chat.visible = false
@@ -127,7 +144,7 @@ func on_hide():
 	tween.tween_property(
 		main_pn,
 		"position:x",
-		main_pn_default_pos.x - 800,
+		main_pn_default_pos.x - main_pn.size.x,
 		0.5
 	)
 	

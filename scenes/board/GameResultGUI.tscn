@@ -154,6 +154,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WinPn" type="Control" parent="CanvasLayer/MainPn"]
+visible = false
 clip_children = 2
 light_mask = 7
 layout_mode = 1
