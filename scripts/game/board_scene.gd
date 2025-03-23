@@ -120,6 +120,12 @@ func _on_enter():
 	auto_play_pn.visible = false
 	compare_card_poses.clear()
 	
+	# init player slot
+	for p in list_players:	
+		p.queue_free()
+	list_players.clear()
+	_create_players(game_logic.match_data.player_mode)
+	
 	if game_logic.match_data.player_mode == GameConstants.PLAYER_MODE.SOLO:
 		compare_card_poses.append(find_child('PlaceCard0'))
 		compare_card_poses.append(find_child('PlaceCard1'))
@@ -257,18 +263,15 @@ func on_new_round():
 func on_update_players():
 	var players_info = game_logic.get_list_player()
 	var i = 0
-	for p in list_players:	
-		p.queue_free()
-	list_players.clear()
-	_create_players(game_logic.match_data.player_mode)
+
 	for info in players_info:
 		list_players[i].set_user_data(info)
 		i += 1
 	update_player_seat()
-	
+
+var player_scene = preload("res://scenes/board/Player.tscn")  # Load player scene
 # Function to create players
 func _create_players(player_count: int) -> void:
-	var player_scene = load("res://scenes/board/Player.tscn")  # Load player scene
 	
 	for i in range(player_count):
 		var player_instance = player_scene.instantiate()  # Create a new player instance
