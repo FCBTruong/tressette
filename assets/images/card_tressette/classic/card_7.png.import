@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://uxuhdy7o8r2m"
-path="res://.godot/imported/card_7.png-c33e29fb2850f3f3335e3a68c1067584.ctex"
+path.s3tc="res://.godot/imported/card_7.png-c33e29fb2850f3f3335e3a68c1067584.s3tc.ctex"
+path.etc2="res://.godot/imported/card_7.png-c33e29fb2850f3f3335e3a68c1067584.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/card_tressette/classic/card_7.png"
-dest_files=["res://.godot/imported/card_7.png-c33e29fb2850f3f3335e3a68c1067584.ctex"]
+dest_files=["res://.godot/imported/card_7.png-c33e29fb2850f3f3335e3a68c1067584.s3tc.ctex", "res://.godot/imported/card_7.png-c33e29fb2850f3f3335e3a68c1067584.etc2.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
