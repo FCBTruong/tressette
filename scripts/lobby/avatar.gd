@@ -12,6 +12,7 @@ func _ready() -> void:
 
 
 func set_me():
+	is_me = true
 	set_avatar(g.v.player_info_mgr.my_user_data.avatar)
 	
 	

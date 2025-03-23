@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/lobby.png-c58e88c0829391bb81f973fe402bf5b6.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

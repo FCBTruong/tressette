@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/login_scene.png-b8227547306216195178130fb82f4
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

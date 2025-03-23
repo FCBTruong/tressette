@@ -11,9 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_vkglh"]
-[ext_resource type="Texture2D" uid="uid://ly4nwhli0ra2" path="res://assets/images/board/blue-btn.png" id="9_jnkg8"]
 [ext_resource type="Texture2D" uid="uid://b0pkmg6x6knmp" path="res://assets/images/settings.png" id="9_ujbxy"]
-[ext_resource type="Texture2D" uid="uid://ch7bnsoxinvph" path="res://assets/images/board/red-btn.png" id="10_prh1e"]
 [ext_resource type="Shader" path="res://shaders/baletro_fire.gdshader" id="11_2rt0a"]
 [ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="11_8cjom"]
 [ext_resource type="FontFile" uid="uid://cb1bj1k60uj4u" path="res://assets/fonts/Reglisse_Fill.otf" id="11_23se6"]
@@ -99,6 +97,9 @@ font = ExtResource("4_cv557")
 font_size = 20
 font_color = Color(1, 0.819474, 0.345452, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jgudo"]
+load_path = "res://.godot/imported/blue-btn.png-7c4e979f26b51c4e2fdb868eca6a56f2.ctex"
+
 [sub_resource type="LabelSettings" id="LabelSettings_ndb7b"]
 font = ExtResource("11_23se6")
 font_size = 40
@@ -112,6 +113,9 @@ font_size = 30
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.364706)
 shadow_offset = Vector2(-2, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7u8cm"]
+load_path = "res://.godot/imported/red-btn.png-d3b960b564c77aed411035ed80c44101.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pdh6q"]
 
@@ -726,7 +730,7 @@ offset_left = 22.0
 offset_top = 35.0
 offset_right = 122.0
 offset_bottom = 85.0
-texture = ExtResource("9_jnkg8")
+texture = SubResource("CompressedTexture2D_jgudo")
 expand_mode = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/PlayGround/Panel/TextureRect2"]
@@ -767,7 +771,7 @@ offset_left = 138.0
 offset_top = 35.0
 offset_right = 238.0
 offset_bottom = 85.0
-texture = ExtResource("10_prh1e")
+texture = SubResource("CompressedTexture2D_7u8cm")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/PlayGround/Panel/TextureRect"]

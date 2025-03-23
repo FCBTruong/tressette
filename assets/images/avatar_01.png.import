@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/avatar_01.png-1bbd981cedec6a4d54e57d111aede69
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
