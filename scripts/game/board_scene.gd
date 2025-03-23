@@ -193,7 +193,7 @@ func update_cards_on_table():
 func continue_play():
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		return
-		
+	game_logic.match_data.state = MatchData.MATCH_STATE.WAITING
 	if self.is_auto_play:
 		# quit
 		g.v.game_manager.send_register_leave_game()

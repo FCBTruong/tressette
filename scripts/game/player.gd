@@ -183,7 +183,7 @@ func show_emotion(emo_id):
 	emo_icon.scale = Vector2(0, 0)
 	emo_icon.modulate.a = 1
 	tween.parallel().tween_property(
-		emo_icon, 'scale', Vector2(1, 1), 0.4
+		emo_icon, 'scale', Vector2(0.85, 0.85), 0.4
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(
 		emo_icon, 'modulate:a', 0, 0.4

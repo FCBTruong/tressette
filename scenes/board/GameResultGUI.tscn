@@ -59,6 +59,7 @@ shadow_offset = Vector2(0, 2)
 script = ExtResource("1_fpth8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Fog" type="Panel" parent="CanvasLayer"]
 anchors_preset = 15

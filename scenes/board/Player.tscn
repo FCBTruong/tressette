@@ -361,6 +361,7 @@ flat = true
 script = ExtResource("5_tnwwa")
 
 [node name="TextureRect2" type="TextureRect" parent="EmptySlot/InviteBtn"]
+self_modulate = Color(1, 1, 1, 0.6)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -371,7 +372,7 @@ texture = ExtResource("10_dudm3")
 expand_mode = 1
 
 [node name="EmoPlayer" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.9, 0.9)
+scale = Vector2(0.85, 0.85)
 sprite_frames = ExtResource("12_6j45e")
 animation = &"1"
 
