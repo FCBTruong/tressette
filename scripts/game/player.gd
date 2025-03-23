@@ -7,7 +7,7 @@ extends Node
 @onready var score_lb = find_child("ScoreLb")
 @onready var vortex = find_child("Vortex")
 @onready var avatar_img = find_child('AvatarImg')
-@onready var emo_icon = find_child('EmoIcon')
+@onready var emo_icon = find_child('EmoPlayer')
 @onready var gold_lb = find_child("GoldLb")
 @onready var bonus_info_pn = find_child("BonusInfo")
 @onready var bonus_txt_lb = find_child("BonusTxtLb")
@@ -175,8 +175,8 @@ var tween_emo
 func show_emotion(emo_id):
 	if tween_emo and tween_emo.is_running():
 		tween_emo.kill()
-	emo_icon.texture = g.v.emoticon_mgr.get_texture_emoticon(emo_id)
-	
+	emo_icon.play(str(emo_id))
+
 	emo_icon.visible = true
 	tween_emo = create_tween()
 	var tween = tween_emo

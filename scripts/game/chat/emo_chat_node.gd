@@ -1,6 +1,6 @@
 extends Node
 
-@onready var img = find_child("Img")
+@onready var anim_player = find_child("AnimPlayer")
 var emo_id
 var mgr
 # Called when the node enters the scene tree for the first time.
@@ -23,4 +23,4 @@ func _on_click():
 func set_emo(emo_id, mgr):
 	self.mgr = mgr
 	self.emo_id = emo_id
-	img.texture = g.v.emoticon_mgr.get_texture_emoticon(emo_id)
+	anim_player.play(str(emo_id))

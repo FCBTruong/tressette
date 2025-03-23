@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="5_6p0k0"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_tnwwa"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="6_lqmp5"]
-[ext_resource type="Texture2D" uid="uid://dspngqcofx1o0" path="res://assets/animations/1.png" id="8_7md6h"]
 [ext_resource type="Texture2D" uid="uid://bsfmna1hqw3oi" path="res://assets/images/board/chat_arrow.png" id="9_u71qq"]
 [ext_resource type="Texture2D" uid="uid://dekvp4vpshah1" path="res://assets/images/board/empty_slot_icon.png" id="10_dudm3"]
 [ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="11_7d5ia"]
+[ext_resource type="SpriteFrames" uid="uid://cn8du4mgy30t5" path="res://assets/animations/emoticons/emo.tres" id="12_6j45e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuo70"]
 bg_color = Color(0.95484, 0.95484, 0.95484, 1)
@@ -370,23 +370,10 @@ grow_vertical = 2
 texture = ExtResource("10_dudm3")
 expand_mode = 1
 
-[node name="EmoIcon" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(50, 50)
-mouse_filter = 2
-texture = ExtResource("8_7md6h")
-expand_mode = 1
+[node name="EmoPlayer" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+sprite_frames = ExtResource("12_6j45e")
+animation = &"1"
 
 [node name="RedDot" type="TextureRect" parent="."]
 self_modulate = Color(0.924291, 0, 0, 1)

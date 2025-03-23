@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/game/chat/emo_chat_node.gd" id="1_c2q1l"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="1_oyvny"]
-[ext_resource type="Texture2D" uid="uid://bdwytocp27vlf" path="res://assets/animations/4.png" id="2_qi6f2"]
+[ext_resource type="SpriteFrames" uid="uid://cn8du4mgy30t5" path="res://assets/animations/emoticons/emo.tres" id="4_6f476"]
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(60, 60)
@@ -22,14 +22,10 @@ mouse_filter = 1
 flat = true
 script = ExtResource("1_oyvny")
 
-[node name="Img" type="TextureRect" parent="Btn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_qi6f2")
-expand_mode = 1
+[node name="AnimPlayer" type="AnimatedSprite2D" parent="Btn"]
+position = Vector2(31, 32)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("4_6f476")
+animation = &"1"
 
 [connection signal="pressed" from="Btn" to="." method="_on_click"]
