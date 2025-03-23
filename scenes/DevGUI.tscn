@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="3_jlv1p"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="3_s0e4l"]
 [ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="4_eiqqj"]
-[ext_resource type="Shader" path="res://shaders/test.gdshader" id="5_nckot"]
+[ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="5_on8bv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtdei"]
 bg_color = Color(0.649351, 0.231916, 0.00652578, 1)
@@ -12,13 +12,13 @@ bg_color = Color(0.649351, 0.231916, 0.00652578, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6um5f"]
 shader = ExtResource("4_eiqqj")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsdjt"]
-shader = ExtResource("5_nckot")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2i35"]
+shader = ExtResource("5_on8bv")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/stripes = 24
+shader_parameter/speed = 1.0
+shader_parameter/direction = 1
+shader_parameter/color_modifier = Vector3(0.9, 0.9, 0.9)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8oral"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -132,7 +132,7 @@ offset_right = 538.0
 offset_bottom = 544.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn"]
-material = SubResource("ShaderMaterial_fsdjt")
+material = SubResource("ShaderMaterial_t2i35")
 layout_mode = 0
 offset_left = 163.0
 offset_top = 156.0

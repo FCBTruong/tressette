@@ -18,7 +18,7 @@ uniform vec3 color_modifier = vec3(0.9);
 
 void fragment() {
 	// Fix aspect ratio issue.
-	vec2 uv_deriv = fwidthFine(UV);
+	vec2 uv_deriv = fwidth(UV);;
 	float aspect_ratio = uv_deriv.y / uv_deriv.x;
 	vec2 corrected_uv = UV * vec2(aspect_ratio, 1.0);
 	vec2 corrected_center = center * vec2(aspect_ratio, 1.0);

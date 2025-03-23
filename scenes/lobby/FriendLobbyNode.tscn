@@ -143,6 +143,6 @@ position = Vector2(24.5, 31)
 scale = Vector2(0.2, 0.2)
 sprite_frames = ExtResource("8_it4el")
 animation = &"new_animation"
-frame_progress = 0.404174
+frame_progress = 0.349024
 
 [connection signal="pressed" from="HBoxContainer/Control/TextureRect/InfoBtn" to="." method="_click_info"]

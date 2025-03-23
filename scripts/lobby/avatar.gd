@@ -8,17 +8,20 @@ var file_path: String
 func _ready() -> void:
 	if is_me:
 		set_me()
-	pass # Replace with function body.
+	g.v.signal_bus.connect_global('on_changed_avatar', Callable(self, "on_changed_my_avatar"))
+
 
 func set_me():
 	set_avatar(g.v.player_info_mgr.my_user_data.avatar)
-	g.v.signal_bus.connect_global('on_changed_avatar', Callable(self, "on_changed_my_avatar"))
+	
 	
 func _update_my_avatar():
 	set_avatar(g.v.player_info_mgr.my_user_data.avatar)
 	print('avatar....', g.v.player_info_mgr.my_user_data.avatar)
 
 func on_changed_my_avatar():
+	if not is_me:
+		return
 	_update_my_avatar()
 	pass		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
