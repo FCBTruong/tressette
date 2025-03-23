@@ -3530,6 +3530,11 @@ class FriendList:
 		service.field = _onlines
 		data[_onlines.tag] = service
 		
+		_is_playings = PBField.new("is_playings", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 7, true, [])
+		service = PBServiceField.new()
+		service.field = _is_playings
+		data[_is_playings.tag] = service
+		
 	var data = {}
 	
 	var _uids: PBField
@@ -3585,6 +3590,15 @@ class FriendList:
 		_onlines.value = []
 	func add_onlines(value : bool) -> void:
 		_onlines.value.append(value)
+	
+	var _is_playings: PBField
+	func get_is_playings() -> Array:
+		return _is_playings.value
+	func clear_is_playings() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_is_playings.value = []
+	func add_is_playings(value : bool) -> void:
+		_is_playings.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

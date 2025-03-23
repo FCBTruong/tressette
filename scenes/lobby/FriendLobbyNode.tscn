@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcebapnipusff"]
+[gd_scene load_steps=11 format=3 uid="uid://dcebapnipusff"]
 
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="1_0gmpe"]
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_lobby_node.gd" id="1_gw2x1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="5_1gmnx"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_2i772"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_2k587"]
+[ext_resource type="SpriteFrames" uid="uid://mlfql0jumwpp" path="res://assets/animations/anim_playing.tres" id="8_it4el"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu0cq"]
 bg_color = Color(0.418536, 0.418536, 0.418536, 0.356863)
@@ -104,6 +105,7 @@ text = "FRIEND NAME"
 vertical_alignment = 1
 
 [node name="OnlineIcon" type="Control" parent="HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -130,5 +132,17 @@ size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("5_1gmnx")
 expand_mode = 1
+
+[node name="AnimPlaying" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/AnimPlaying"]
+position = Vector2(24.5, 31)
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("8_it4el")
+animation = &"new_animation"
+frame_progress = 0.173714
 
 [connection signal="pressed" from="HBoxContainer/Control/TextureRect/InfoBtn" to="." method="_click_info"]

@@ -99,6 +99,7 @@ func _on_received_list_friend(payload):
 	var friend_golds = pkg.get_golds()
 	var friend_avatars = pkg.get_avatars()
 	var onlines = pkg.get_onlines()
+	var is_playings = pkg.get_is_playings()
 	
 	self.friends.clear()
 	for i in range(len(friend_ids)):
@@ -109,6 +110,7 @@ func _on_received_list_friend(payload):
 		f.gold = friend_golds[i]
 		f.level = friend_levels[i]
 		f.is_online = onlines[i]
+		f.is_playing = is_playings[i]
 		self.friends.append(f)
 	
 	self.friends.sort_custom(_compare_friend_sort)
