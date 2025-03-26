@@ -472,6 +472,7 @@ func _handle_end_game(payload: PackedByteArray):
 	match_result.is_win = get_user(g.v.player_info_mgr.my_user_data.uid).game_data.team_id \
 		== win_team_id
 	if match_result.is_win:
+		g.v.ranking_mgr.user_win_game()
 		match_result.gold_win = match_data.pot_value / (match_data.player_mode / 2) + gold_win_score
 	else:
 		match_result.gold_lose = gold_changes[my_idx]

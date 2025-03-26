@@ -2,6 +2,10 @@ extends Node
 @onready var main_pn = find_child("MainPn")
 @onready var list_player = find_child("ListPlayer")
 @onready var time_lb = find_child("TimeLb")
+@onready var my_name_lb = find_child("MyNameLb")
+@onready var my_score_lb = find_child("ScoreLb")
+@onready var my_rank_lb = find_child("RankLb")
+@onready var my_reward_lb = find_child("RewardLb")
 var ranking_player_scene = preload("res://scenes/ranking/RankingPlayer.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,25 +21,40 @@ func _ready() -> void:
 		var n = ranking_player_scene.instantiate()
 		list_player.add_child(n)
 		n.set_info(u)
-	var time_remain = 20000  # seconds
-
+		
+	my_name_lb.text = g.v.player_info_mgr.my_user_data.name
+	if g.v.ranking_mgr.my_rank <= 3:
+		pass
+	else:
+		my_rank_lb.text = StringUtils.point_number(g.v.ranking_mgr.my_rank)
+		
+	my_score_lb.text = StringUtils.point_number(g.v.ranking_mgr.my_score)
+	
+	var reward = g.v.ranking_mgr.get_reward(g.v.ranking_mgr.my_rank)
+	my_reward_lb.text = StringUtils.symbol_number(reward)
+	
+	g.v.ranking_mgr.check_and_update()
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var time_remain = int(g.v.ranking_mgr.time_end - g.v.game_manager.get_timestamp_server())
 	var days = time_remain / 86400
 	var hours = (time_remain % 86400) / 3600
 	var minutes = (time_remain % 3600) / 60
+	var seconds = time_remain % 60
 
 	var parts = []
 	if days > 0:
 		parts.append("%dd" % days)
 	if hours > 0 or days > 0:  # Always show hours if there are days
 		parts.append("%dh" % hours)
-	if minutes > 0 or (days == 0 and hours == 0):  # Always show minutes if no days/hours
+	if minutes > 0 or days == 0:  # Always show minutes if no days
 		parts.append("%dm" % minutes)
+	#if days == 0:  # Show seconds if less than a day
+	parts.append("%ds" % seconds)
 
 	var str_time = ":".join(parts)
 	self.time_lb.text = str_time
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 
 func _on_close():

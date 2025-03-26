@@ -1130,3 +1130,5 @@ func _on_screen_resized():
 		auto_play_pn.position.y = get_viewport().get_visible_rect().size.y - auto_play_pn.size.y
 		auto_play_pn.find_child("ReturnTableBtn").scale = Vector2(2, 2)
 	
+func _click_ranking() -> void:
+	g.v.scene_manager.open_gui("res://scenes/ranking/RankingGUI.tscn")

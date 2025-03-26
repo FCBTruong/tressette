@@ -5678,4 +5678,171 @@ class SetteMezzoStartGame:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class RankingInfo:
+	func _init():
+		var service
+		
+		_season_id = PBField.new("season_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _season_id
+		data[_season_id.tag] = service
+		
+		_time_start = PBField.new("time_start", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _time_start
+		data[_time_start.tag] = service
+		
+		_time_end = PBField.new("time_end", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _time_end
+		data[_time_end.tag] = service
+		
+		_rewards = PBField.new("rewards", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 4, true, [])
+		service = PBServiceField.new()
+		service.field = _rewards
+		data[_rewards.tag] = service
+		
+		_uids = PBField.new("uids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 5, true, [])
+		service = PBServiceField.new()
+		service.field = _uids
+		data[_uids.tag] = service
+		
+		_avatars = PBField.new("avatars", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 6, true, [])
+		service = PBServiceField.new()
+		service.field = _avatars
+		data[_avatars.tag] = service
+		
+		_names = PBField.new("names", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 7, true, [])
+		service = PBServiceField.new()
+		service.field = _names
+		data[_names.tag] = service
+		
+		_scores = PBField.new("scores", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 8, true, [])
+		service = PBServiceField.new()
+		service.field = _scores
+		data[_scores.tag] = service
+		
+		_my_rank = PBField.new("my_rank", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 9, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _my_rank
+		data[_my_rank.tag] = service
+		
+		_my_score = PBField.new("my_score", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 10, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _my_score
+		data[_my_score.tag] = service
+		
+	var data = {}
+	
+	var _season_id: PBField
+	func get_season_id() -> int:
+		return _season_id.value
+	func clear_season_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_season_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_season_id(value : int) -> void:
+		_season_id.value = value
+	
+	var _time_start: PBField
+	func get_time_start() -> int:
+		return _time_start.value
+	func clear_time_start() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_time_start.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_time_start(value : int) -> void:
+		_time_start.value = value
+	
+	var _time_end: PBField
+	func get_time_end() -> int:
+		return _time_end.value
+	func clear_time_end() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_time_end.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_time_end(value : int) -> void:
+		_time_end.value = value
+	
+	var _rewards: PBField
+	func get_rewards() -> Array:
+		return _rewards.value
+	func clear_rewards() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_rewards.value = []
+	func add_rewards(value : int) -> void:
+		_rewards.value.append(value)
+	
+	var _uids: PBField
+	func get_uids() -> Array:
+		return _uids.value
+	func clear_uids() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_uids.value = []
+	func add_uids(value : int) -> void:
+		_uids.value.append(value)
+	
+	var _avatars: PBField
+	func get_avatars() -> Array:
+		return _avatars.value
+	func clear_avatars() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_avatars.value = []
+	func add_avatars(value : String) -> void:
+		_avatars.value.append(value)
+	
+	var _names: PBField
+	func get_names() -> Array:
+		return _names.value
+	func clear_names() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_names.value = []
+	func add_names(value : String) -> void:
+		_names.value.append(value)
+	
+	var _scores: PBField
+	func get_scores() -> Array:
+		return _scores.value
+	func clear_scores() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_scores.value = []
+	func add_scores(value : int) -> void:
+		_scores.value.append(value)
+	
+	var _my_rank: PBField
+	func get_my_rank() -> int:
+		return _my_rank.value
+	func clear_my_rank() -> void:
+		data[9].state = PB_SERVICE_STATE.UNFILLED
+		_my_rank.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_my_rank(value : int) -> void:
+		_my_rank.value = value
+	
+	var _my_score: PBField
+	func get_my_score() -> int:
+		return _my_score.value
+	func clear_my_score() -> void:
+		data[10].state = PB_SERVICE_STATE.UNFILLED
+		_my_score.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_my_score(value : int) -> void:
+		_my_score.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

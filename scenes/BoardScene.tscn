@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=59 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_4pw0j"]
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://cov5dyjlu7lf1" path="res://assets/images/board/question.png" id="16_7rcy1"]
+[ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="16_oiaq1"]
 [ext_resource type="Texture2D" uid="uid://nrqph4j7ejry" path="res://assets/images/board/previous.png" id="18_5437y"]
 [ext_resource type="PackedScene" uid="uid://bybhqhjkyhhbk" path="res://scenes/board/EmoChatNode.tscn" id="25_t6dir"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
@@ -1344,6 +1345,32 @@ grow_vertical = 2
 texture = ExtResource("9_ujbxy")
 expand_mode = 1
 
+[node name="RankingBtn" type="Button" parent="CanvasLayer/RightTopPanel"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 168.0
+offset_top = 14.0
+offset_right = 218.0
+offset_bottom = 64.0
+flat = true
+script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RightTopPanel/RankingBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_oiaq1")
+expand_mode = 1
+
 [node name="RoundLb" type="Label" parent="CanvasLayer"]
 visible = false
 custom_minimum_size = Vector2(400, 50)
@@ -1693,6 +1720,7 @@ volume_db = 12.0
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/BetInfoPn/InfoBetBtn" to="." method="_click_show_info_bet"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]
+[connection signal="pressed" from="CanvasLayer/RightTopPanel/RankingBtn" to="." method="_click_ranking"]
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]

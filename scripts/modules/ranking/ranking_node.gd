@@ -5,6 +5,8 @@ extends Node
 @onready var score_lb = find_child("ScoreLb")
 @onready var avt_img = find_child("AvtImg")
 @onready var rank_anim = find_child("RankAnim")
+@onready var reward_pn = find_child("Reward")
+@onready var reward_lb = find_child("RewardLb")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
@@ -23,7 +25,11 @@ func set_info(inf):
 		
 	name_lb.text = StringUtils.sub_string(inf.name, 25)
 	avt_img.set_avatar(inf.avatar)
-	pass
+	
+	reward_pn.visible = inf.reward > 0
+	if inf.reward > 0:
+		reward_lb.text = StringUtils.symbol_number(inf.reward)
+	score_lb.text = StringUtils.point_number(inf.score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
