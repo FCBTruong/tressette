@@ -1328,12 +1328,10 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="RankingGui" type="Node2D"]
+[node name="RankingGui" type="CanvasLayer"]
 script = ExtResource("1_u56cx")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1341,22 +1339,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.586)
 
-[node name="MainPn" type="Panel" parent="CanvasLayer"]
+[node name="MainPn" type="Panel" parent="."]
 custom_minimum_size = Vector2(700, 550)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -250.0
-offset_right = 300.0
-offset_bottom = 250.0
+offset_left = -350.0
+offset_top = -275.0
+offset_right = 350.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6fr30")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn"]
+[node name="Panel" type="Panel" parent="MainPn"]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 13.0
@@ -1364,7 +1362,7 @@ offset_right = 184.0
 offset_bottom = 43.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_egl71")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/Panel"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/Panel"]
 self_modulate = Color(1, 0.759019, 0.569053, 0.293)
 layout_mode = 1
 anchors_preset = 4
@@ -1378,7 +1376,7 @@ grow_vertical = 2
 texture = ExtResource("6_o834j")
 expand_mode = 1
 
-[node name="TimeLb" type="Label" parent="CanvasLayer/MainPn/Panel"]
+[node name="TimeLb" type="Label" parent="MainPn/Panel"]
 modulate = Color(1, 1, 1, 0.809)
 layout_mode = 1
 anchors_preset = 8
@@ -1398,7 +1396,7 @@ text = "5d:6h:34m"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn"]
+[node name="Label" type="Label" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1416,7 +1414,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Control" type="Control" parent="CanvasLayer/MainPn"]
+[node name="Control" type="Control" parent="MainPn"]
 custom_minimum_size = Vector2(640, 0)
 layout_mode = 1
 anchors_preset = 5
@@ -1429,7 +1427,7 @@ offset_bottom = 96.0
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/Control"]
+[node name="Label" type="Label" parent="MainPn/Control"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1446,7 +1444,7 @@ text = "RANK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/MainPn/Control"]
+[node name="Label2" type="Label" parent="MainPn/Control"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1463,7 +1461,7 @@ text = "PLAYER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="CanvasLayer/MainPn/Control"]
+[node name="Label4" type="Label" parent="MainPn/Control"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1480,7 +1478,7 @@ text = "GAME_WIN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="CanvasLayer/MainPn/Control"]
+[node name="Label3" type="Label" parent="MainPn/Control"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1497,7 +1495,7 @@ text = "REWARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MainPn"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1512,11 +1510,11 @@ grow_horizontal = 2
 grow_vertical = 2
 vertical_scroll_mode = 3
 
-[node name="ListPlayer" type="VBoxContainer" parent="CanvasLayer/MainPn/ScrollContainer"]
+[node name="ListPlayer" type="VBoxContainer" parent="MainPn/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MyRankPn" type="Panel" parent="CanvasLayer/MainPn"]
+[node name="MyRankPn" type="Panel" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1532,7 +1530,7 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_supbd")
 
-[node name="MyNameLb" type="Label" parent="CanvasLayer/MainPn/MyRankPn"]
+[node name="MyNameLb" type="Label" parent="MainPn/MyRankPn"]
 self_modulate = Color(1, 1, 1, 0.885)
 layout_mode = 1
 anchors_preset = 4
@@ -1547,7 +1545,7 @@ theme_override_fonts/font = ExtResource("3_f631g")
 theme_override_font_sizes/font_size = 25
 text = "Truong Nguyen"
 
-[node name="Control" type="Control" parent="CanvasLayer/MainPn/MyRankPn"]
+[node name="Control" type="Control" parent="MainPn/MyRankPn"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -1560,7 +1558,7 @@ offset_bottom = 25.0
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/MyRankPn/Control"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/MyRankPn/Control"]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -1572,7 +1570,7 @@ mouse_filter = 2
 texture = ExtResource("7_op2o4")
 expand_mode = 1
 
-[node name="AvtImg" type="TextureRect" parent="CanvasLayer/MainPn/MyRankPn/Control/TextureRect"]
+[node name="AvtImg" type="TextureRect" parent="MainPn/MyRankPn/Control/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1583,7 +1581,7 @@ texture = ExtResource("8_uod5d")
 expand_mode = 1
 script = ExtResource("7_7rnl2")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainPn/MyRankPn/Control"]
+[node name="TextureRect2" type="TextureRect" parent="MainPn/MyRankPn/Control"]
 self_modulate = Color(0.196466, 0.228046, 0.39817, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -1594,7 +1592,7 @@ grow_vertical = 2
 texture = ExtResource("9_xnppf")
 expand_mode = 1
 
-[node name="RankLb" type="Label" parent="CanvasLayer/MainPn/MyRankPn"]
+[node name="RankLb" type="Label" parent="MainPn/MyRankPn"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -1611,7 +1609,7 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreLb" type="Label" parent="CanvasLayer/MainPn/MyRankPn"]
+[node name="ScoreLb" type="Label" parent="MainPn/MyRankPn"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1631,14 +1629,14 @@ text = "50"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RankAnim" type="AnimatedSprite2D" parent="CanvasLayer/MainPn/MyRankPn"]
+[node name="RankAnim" type="AnimatedSprite2D" parent="MainPn/MyRankPn"]
 visible = false
 position = Vector2(35, 25)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_dgk5s")
 animation = &"2"
 
-[node name="Reward" type="HBoxContainer" parent="CanvasLayer/MainPn/MyRankPn"]
+[node name="Reward" type="HBoxContainer" parent="MainPn/MyRankPn"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -1653,19 +1651,19 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
 
-[node name="RewardLb" type="Label" parent="CanvasLayer/MainPn/MyRankPn/Reward"]
+[node name="RewardLb" type="Label" parent="MainPn/MyRankPn/Reward"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.91292, 0.779502, 1)
 theme_override_fonts/font = ExtResource("3_f631g")
 theme_override_font_sizes/font_size = 25
 text = "100M"
 
-[node name="Control" type="Control" parent="CanvasLayer/MainPn/MyRankPn/Reward"]
+[node name="Control" type="Control" parent="MainPn/MyRankPn/Reward"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/MyRankPn/Reward/Control"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/MyRankPn/Reward/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1681,7 +1679,7 @@ grow_vertical = 2
 texture = ExtResource("11_ds1ti")
 expand_mode = 1
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="CloseBtn" type="Button" parent="MainPn"]
 layout_mode = 0
 offset_left = 709.0
 offset_top = 2.0
@@ -1690,7 +1688,7 @@ offset_bottom = 52.0
 flat = true
 script = ExtResource("4_3vulk")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
 self_modulate = Color(0.819067, 0.345041, 0.159056, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -1701,4 +1699,4 @@ grow_vertical = 2
 texture = ExtResource("3_iq0qg")
 expand_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]

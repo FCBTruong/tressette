@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 @onready var main_pn = find_child("MainPn")
 @onready var list_player = find_child("ListPlayer")
 @onready var time_lb = find_child("TimeLb")
@@ -14,11 +14,12 @@ func _ready() -> void:
 	var pos = main_pn.position
 	var tween = create_tween()
 	main_pn.position.y  -= 500
-	#main_pn.modulate.a = 0
-	
-	tween.parallel().tween_property(main_pn, 'position', pos, 0.3)
-	#tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.5)
-	
+	main_pn.visible = false
+	tween.parallel().tween_property(main_pn, 'position', pos, 0.4).set_delay(0.15)
+	tween.parallel().tween_callback(
+		func():
+			main_pn.visible = true
+	).set_delay(0.15)
 	for u in g.v.ranking_mgr.list_users:
 		var n = ranking_player_scene.instantiate()
 		list_player.add_child(n)
@@ -69,4 +70,4 @@ func _process(delta: float) -> void:
 
 
 func _on_close():
-	self.queue_free()
+	self.hide()

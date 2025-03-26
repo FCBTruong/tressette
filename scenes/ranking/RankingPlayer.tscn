@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=3 uid="uid://byq6wg8u4cwhi"]
+[gd_scene load_steps=194 format=3 uid="uid://byq6wg8u4cwhi"]
 
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="1_1mn3d"]
 [ext_resource type="Script" path="res://scripts/modules/ranking/ranking_node.gd" id="1_ex1ii"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_fsdod"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="4_ksvuo"]
 [ext_resource type="Texture2D" uid="uid://crcu74gubk26" path="res://assets/images/ranking/medal_1.png" id="6_ikanp"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kpbx5"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="7_0ckxj"]
 [ext_resource type="Texture2D" uid="uid://c87ibd7r6pw78" path="res://assets/images/ranking/medal_2.png" id="7_q6ri7"]
 [ext_resource type="Texture2D" uid="uid://bijkfs3m0gpkp" path="res://assets/images/ranking/medal_3.png" id="8_g7rxp"]
@@ -1357,6 +1358,17 @@ grow_vertical = 2
 texture = ExtResource("4_ksvuo")
 expand_mode = 1
 
+[node name="InfoBtn" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("6_kpbx5")
+
 [node name="NameLb" type="Label" parent="."]
 self_modulate = Color(1, 1, 1, 0.783)
 layout_mode = 1
@@ -1459,4 +1471,6 @@ position = Vector2(35, 25)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_n1oos")
 animation = &"2"
-frame_progress = 0.872806
+frame_progress = 0.377112
+
+[connection signal="pressed" from="Control/InfoBtn" to="." method="_click_info"]

@@ -53,14 +53,29 @@ func switch_scene(new_scene_path: String) -> void:
 		else:
 			print('current scene is null')
 		
-	
-func open_gui(gui_path: String, z_order = 1):
+var gui_nodes = {}
+var gui_caches = {}
+func open_gui(gui_path: String, cache=false):
 	print('open gui: ....', gui_path)
 	var current_scene = self.get_current_scene()
 	if current_scene:
-		var gui = load(gui_path)
-		var popup_instance = gui.instantiate()
-		current_scene.add_child(popup_instance, z_order)
+		var gui
+		if gui_nodes.has(gui_path):
+			gui = gui_nodes[gui_path]
+		else:
+			gui = load(gui_path)
+			gui_nodes[gui_path] = gui
+		var popup_instance
+		if cache and gui_caches.has(gui_path):
+			popup_instance = gui_caches[gui_path]
+			if is_instance_valid(popup_instance):
+				popup_instance.visible = true
+				return gui_caches[gui_path]
+		
+		popup_instance = gui.instantiate()
+		current_scene.add_child(popup_instance, 1)
+		if cache:
+			gui_caches[gui_path] = popup_instance
 		return popup_instance
 	else:
 		print("Current Scene is null ", gui_path)

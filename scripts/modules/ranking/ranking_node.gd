@@ -8,12 +8,14 @@ extends Node
 @onready var reward_pn = find_child("Reward")
 @onready var reward_lb = find_child("RewardLb")
 # Called when the node enters the scene tree for the first time.
+var info
 func _ready() -> void:
 	
 	pass # Replace with function body.
 
 
 func set_info(inf):
+	self.info = inf
 	if inf.rank <= 3:
 		rank_lb.visible = false
 		rank_anim.visible = true
@@ -35,3 +37,7 @@ func set_info(inf):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _click_info():
+	g.v.friend_mgr.search_friend(info.uid)
