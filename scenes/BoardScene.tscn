@@ -98,7 +98,6 @@ font_size = 20
 font_color = Color(1, 0.819474, 0.345452, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jgudo"]
-load_path = "res://.godot/imported/blue-btn.png-7c4e979f26b51c4e2fdb868eca6a56f2.ctex"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ndb7b"]
 font = ExtResource("11_23se6")
@@ -115,7 +114,6 @@ shadow_color = Color(0, 0, 0, 0.364706)
 shadow_offset = Vector2(-2, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7u8cm"]
-load_path = "res://.godot/imported/red-btn.png-d3b960b564c77aed411035ed80c44101.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pdh6q"]
 

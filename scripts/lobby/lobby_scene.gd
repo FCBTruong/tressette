@@ -158,3 +158,6 @@ func _click_open_appstore():
 func _click_open_chplay():
 	OS.shell_open('https://play.google.com/store/apps/details?id=com.clareentertainment.tressette')
 	pass
+
+func _click_ranking():
+	g.v.scene_manager.open_gui("res://scenes/ranking/RankingGUI.tscn")

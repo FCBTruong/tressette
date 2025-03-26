@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=46 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_fym06"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_pgu6f"]
+[ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="12_hwrjc"]
 [ext_resource type="Shader" path="res://effects/2d_trail/preview/material/star_trail.gdshader" id="13_a6psf"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="14_wid5y"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
@@ -578,6 +579,26 @@ grow_vertical = 2
 texture = ExtResource("9_fym06")
 expand_mode = 1
 
+[node name="LeaderboardBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 0
+offset_left = -95.9996
+offset_top = 19.0
+offset_right = -35.9996
+offset_bottom = 79.0
+flat = true
+script = ExtResource("3_x7pan")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/LeaderboardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_hwrjc")
+expand_mode = 1
+
 [node name="LeftPanel" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 9
@@ -803,17 +824,17 @@ expand_mode = 1
 script = ExtResource("15_yoog2")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
-self_modulate = Color(0.108917, 0.165708, 0.435508, 1)
+self_modulate = Color(0.114748, 0.15931, 0.371015, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 48.0
+offset_left = -46.5
+offset_top = -46.5
+offset_right = 46.5
+offset_bottom = 46.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("18_wn24e")
@@ -1059,6 +1080,7 @@ text = "DOWNLOAD"
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/GuideBtn" to="." method="_click_guide_btn"]
+[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/LeaderboardBtn" to="." method="_click_ranking"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/MissionBtn" to="." method="_click_mission_btn"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn" to="." method="_open_friend_gui"]
 [connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn" to="." method="open_shop"]

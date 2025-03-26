@@ -282,6 +282,7 @@ flat = true
 script = ExtResource("5_tnwwa")
 
 [node name="TimeProgressBar" type="TextureProgressBar" parent="MainPn"]
+visible = false
 self_modulate = Color(1, 0.888832, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -307,6 +308,7 @@ nine_patch_stretch = true
 texture_progress = ExtResource("5_6p0k0")
 
 [node name="EmptySlot" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -372,6 +374,7 @@ texture = ExtResource("10_dudm3")
 expand_mode = 1
 
 [node name="EmoPlayer" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(0.85, 0.85)
 sprite_frames = ExtResource("12_6j45e")
 animation = &"1"

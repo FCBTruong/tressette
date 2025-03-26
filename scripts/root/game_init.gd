@@ -68,6 +68,9 @@ func auto_load_scripts():
 	
 	g.v.emoticon_mgr = EmoticonMgr.new()
 	self.add_child(g.v.emoticon_mgr)
+	
+	g.v.ranking_mgr = RankingMgr.new()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
