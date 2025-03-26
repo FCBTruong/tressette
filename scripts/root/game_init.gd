@@ -70,6 +70,8 @@ func auto_load_scripts():
 	self.add_child(g.v.emoticon_mgr)
 	
 	g.v.ranking_mgr = RankingMgr.new()
+	g.v.popup_mgr = PopupMgr.new()
+	self.add_child(g.v.popup_mgr)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

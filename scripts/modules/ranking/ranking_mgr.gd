@@ -49,9 +49,29 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				r.score = scores[i]
 				r.uid = uids[i]
 				
-				r.reward = get_reward(r.rank)
 				list_users.append(r)
 			pass
+			
+		g.v.game_constants.CMDs.RANKING_RESULT:
+			on_received_ranking_result(payload)
+			pass
+		g.v.game_constants.CMDs.RANKING_CLAIM_REWARD:
+			pass
+
+var rank_results = []
+func on_received_ranking_result(payload):
+	rank_results.append(payload)
+	
+func show_rank_result():
+	var payload = rank_results.pop_front()
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RankingResult.new()
+	var result_code = pkg.from_bytes(payload)
+	var season_id = pkg.get_season_id()
+	var rank = pkg.get_rank()
+	var gold_reward = pkg.get_gold_reward()
+	
+	var gui = g.v.scene_manager.open_gui("res://scenes/ranking/RankingResult.tscn")
+	gui.set_info(season_id, rank, gold_reward)
 
 func check_and_update():
 	var interval = g.v.game_manager.get_timestamp_client() - last_time_received
@@ -90,3 +110,8 @@ func sort_and_rank_users(list_users: Array) -> void:
 	# Remove the 11th element if it exists
 	if list_users.size() > 10:
 		list_users.pop_at(10)
+
+func send_claim_reward(season_id):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RankingClaimReward.new()
+	pkg.set_season_id(season_id)
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.RANKING_CLAIM_REWARD, pkg.to_bytes())

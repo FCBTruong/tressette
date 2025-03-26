@@ -26,7 +26,10 @@ func _ready() -> void:
 		var current_locale = OS.get_locale()
 		lang = current_locale.split("_")[0]
 		print("device language", lang)
-		
+	else:
+		lang = choosed_lang
+	
+	lang = lang.to_lower()
 	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
 		lang = 'it'
 		

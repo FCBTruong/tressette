@@ -44,6 +44,12 @@ func _ready() -> void:
 			tr("PLAY_NOW")
 		)
 		g.v.player_info_mgr.startup_gold = 0
+		
+		
+	# hard code temporarily
+	if g.v.ranking_mgr.rank_results.size() > 0:
+		g.v.ranking_mgr.show_rank_result()
+	
 
 @onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')

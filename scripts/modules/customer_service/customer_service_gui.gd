@@ -47,7 +47,8 @@ func _click_send():
 	pkg.set_report_type(0)
 	pkg.set_report_content(str)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.CUSTOMER_SERVICE_REPORT, pkg.to_bytes())
-	pass
+	
+	self.click_fb_fanpage()
 
 func click_fb_fanpage():
 	OS.shell_open("https://www.facebook.com/profile.php?id=61573779305884")

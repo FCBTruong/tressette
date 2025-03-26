@@ -6,6 +6,8 @@ extends Node
 @onready var my_score_lb = find_child("ScoreLb")
 @onready var my_rank_lb = find_child("RankLb")
 @onready var my_reward_lb = find_child("RewardLb")
+@onready var my_rank_anim = find_child("RankAnim")
+@onready var reward_pn = find_child("Reward")
 var ranking_player_scene = preload("res://scenes/ranking/RankingPlayer.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,16 +26,25 @@ func _ready() -> void:
 		
 	my_name_lb.text = g.v.player_info_mgr.my_user_data.name
 	if g.v.ranking_mgr.my_rank <= 3:
+		my_rank_lb.visible = false
+		my_rank_anim.visible = true
+		my_rank_anim.play(str(g.v.ranking_mgr.my_rank))
 		pass
 	else:
+		my_rank_lb.visible = true
+		my_rank_anim.visible = false
 		my_rank_lb.text = StringUtils.point_number(g.v.ranking_mgr.my_rank)
 		
 	my_score_lb.text = StringUtils.point_number(g.v.ranking_mgr.my_score)
 	
 	var reward = g.v.ranking_mgr.get_reward(g.v.ranking_mgr.my_rank)
-	my_reward_lb.text = StringUtils.symbol_number(reward)
-	
+	if reward > 0:
+		reward_pn.visible = true
+		my_reward_lb.text = StringUtils.symbol_number(reward)
+	else:
+		reward_pn.visible = false
 	g.v.ranking_mgr.check_and_update()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var time_remain = int(g.v.ranking_mgr.time_end - g.v.game_manager.get_timestamp_server())

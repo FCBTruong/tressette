@@ -226,7 +226,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/MainPn/SentPn"]
-self_modulate = Color(1, 1, 1, 0.849)
+self_modulate = Color(1, 1, 1, 0.717)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

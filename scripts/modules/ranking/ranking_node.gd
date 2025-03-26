@@ -26,6 +26,7 @@ func set_info(inf):
 	name_lb.text = StringUtils.sub_string(inf.name, 25)
 	avt_img.set_avatar(inf.avatar)
 	
+	inf.reward = g.v.ranking_mgr.get_reward(inf.rank)
 	reward_pn.visible = inf.reward > 0
 	if inf.reward > 0:
 		reward_lb.text = StringUtils.symbol_number(inf.reward)
