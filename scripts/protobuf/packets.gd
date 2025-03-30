@@ -1231,6 +1231,16 @@ class UserInfo:
 		service.field = _startup_gold
 		data[_startup_gold.tag] = service
 		
+		_has_first_buy = PBField.new("has_first_buy", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 15, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _has_first_buy
+		data[_has_first_buy.tag] = service
+		
+		_time_show_ads = PBField.new("time_show_ads", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 16, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _time_show_ads
+		data[_time_show_ads.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1358,6 +1368,24 @@ class UserInfo:
 		_startup_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_startup_gold(value : int) -> void:
 		_startup_gold.value = value
+	
+	var _has_first_buy: PBField
+	func get_has_first_buy() -> bool:
+		return _has_first_buy.value
+	func clear_has_first_buy() -> void:
+		data[15].state = PB_SERVICE_STATE.UNFILLED
+		_has_first_buy.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_has_first_buy(value : bool) -> void:
+		_has_first_buy.value = value
+	
+	var _time_show_ads: PBField
+	func get_time_show_ads() -> int:
+		return _time_show_ads.value
+	func clear_time_show_ads() -> void:
+		data[16].state = PB_SERVICE_STATE.UNFILLED
+		_time_show_ads.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_time_show_ads(value : int) -> void:
+		_time_show_ads.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2899,6 +2927,11 @@ class PaymentSuccess:
 		service.field = _gold
 		data[_gold.tag] = service
 		
+		_pack_id = PBField.new("pack_id", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _pack_id
+		data[_pack_id.tag] = service
+		
 	var data = {}
 	
 	var _gold: PBField
@@ -2909,6 +2942,15 @@ class PaymentSuccess:
 		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_gold(value : int) -> void:
 		_gold.value = value
+	
+	var _pack_id: PBField
+	func get_pack_id() -> String:
+		return _pack_id.value
+	func clear_pack_id() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_pack_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_pack_id(value : String) -> void:
+		_pack_id.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3079,6 +3121,11 @@ class ShopConfig:
 		service.field = _currencies
 		data[_currencies.tag] = service
 		
+		_no_ads_days = PBField.new("no_ads_days", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 5, true, [])
+		service = PBServiceField.new()
+		service.field = _no_ads_days
+		data[_no_ads_days.tag] = service
+		
 	var data = {}
 	
 	var _pack_ids: PBField
@@ -3116,6 +3163,15 @@ class ShopConfig:
 		_currencies.value = []
 	func add_currencies(value : String) -> void:
 		_currencies.value.append(value)
+	
+	var _no_ads_days: PBField
+	func get_no_ads_days() -> Array:
+		return _no_ads_days.value
+	func clear_no_ads_days() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_no_ads_days.value = []
+	func add_no_ads_days(value : int) -> void:
+		_no_ads_days.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -5947,6 +6003,47 @@ class RankingClaimReward:
 		_season_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_season_id(value : int) -> void:
 		_season_id.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class UpdateAds:
+	func _init():
+		var service
+		
+		_time_show_ads = PBField.new("time_show_ads", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _time_show_ads
+		data[_time_show_ads.tag] = service
+		
+	var data = {}
+	
+	var _time_show_ads: PBField
+	func get_time_show_ads() -> int:
+		return _time_show_ads.value
+	func clear_time_show_ads() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_time_show_ads.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_time_show_ads(value : int) -> void:
+		_time_show_ads.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

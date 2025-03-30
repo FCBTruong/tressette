@@ -454,6 +454,7 @@ func _handle_draw_card(payload: PackedByteArray):
 		scene.on_draw_cards(arr)
 	
 func _handle_end_game(payload: PackedByteArray):
+	g.v.game_manager.game_th += 1
 	if not match_data:
 		return
 	match_data.state = MatchData.MATCH_STATE.ENDING

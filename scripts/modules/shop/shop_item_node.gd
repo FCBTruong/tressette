@@ -6,6 +6,8 @@ extends Node
 @onready var apple_icon = find_child('AppleIcon')
 @onready var chplay_icon = find_child("ChplayIcon")
 @onready var paypal_icon = find_child("PaypalIcon")
+@onready var no_ads_pn = find_child("HBoxNoAds")
+@onready var no_ads_lb = find_child("NoAdsLb")
 var info: PackInfo
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +33,14 @@ func set_info(p_info):
 	info = PackInfo.new()
 	info.pack_id = p_info['pack_id']
 	info.gold = p_info['gold']
+	info.no_ads_days = p_info['no_ads_days']
+	if info.no_ads_days > 0:
+		no_ads_pn.visible = true
+		var str = tr("NO_ADS_DAYS")
+		str = str.replace("@day", str(info.no_ads_days))
+		no_ads_lb.text = str
+	else:
+		no_ads_pn.visible = false
 	print('set info pack', info.pack_id)
 	var price = g.v.payment_mgr.get_price_pack(info.pack_id)
 	price_lb.text = price

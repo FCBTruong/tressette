@@ -17,6 +17,7 @@ enum ConnectionState {
 }
 
 var packs = [
+	'first_buy_offer',
 	'pack_01',
 	'pack_02',
 	'pack_03',

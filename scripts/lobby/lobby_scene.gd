@@ -54,7 +54,9 @@ func _ready() -> void:
 	if g.v.game_server_config.enable_ads:
 		g.admob_mgr._on_banner_pressed()
 	
-
+	if g.v.player_info_mgr.has_first_buy:
+		g.v.scene_manager.open_gui("res://scenes/lobby/FirstBuyGUI.tscn")
+	
 @onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')
 @onready var bg = find_child('Background')
@@ -170,4 +172,4 @@ func _click_open_chplay():
 	pass
 
 func _click_ranking():
-	g.v.scene_manager.open_gui("res://scenes/ranking/RankingGUI.tscn")
+	g.v.ranking_mgr.show_gui()

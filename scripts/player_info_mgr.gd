@@ -4,6 +4,8 @@ class_name PlayerInfoMgr
 var my_user_data = UserData.new(0, '')
 var support_num = 0
 var startup_gold = 0
+var time_show_ads = 0
+var has_first_buy: bool = false
 func get_user_id():
 	return my_user_data.uid
 	
@@ -16,6 +18,9 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_on_receive_info(payload)
 		g.v.game_constants.CMDs.UPDATE_MONEY:
 			_on_update_money(payload)
+			
+		g.v.game_constants.CMDs.UPDATE_ADS:
+			receive_update_ads(payload)
 			
 func _on_receive_info(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UserInfo.new()
@@ -30,6 +35,8 @@ func _on_receive_info(bytes: PackedByteArray):
 	my_user_data.avatar_third_party = packet.get_avatar_third_party()
 	support_num = packet.get_support_num()
 	startup_gold = packet.get_startup_gold()
+	has_first_buy = packet.get_has_first_buy()
+	time_show_ads = packet.get_time_show_ads()
 	
 	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.win_count)
 
@@ -44,5 +51,12 @@ func _on_update_money(bytes: PackedByteArray):
 func on_update_avatar(avatar: String):
 	my_user_data.avatar = avatar
 	g.v.signal_bus.emit_signal_global('on_changed_avatar')
+	
+func receive_update_ads(bytes: PackedByteArray):
+	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateAds.new()
+	packet.from_bytes(bytes)
+	self.time_show_ads = packet.get_time_show_ads()
+	g.v.game_server_config.enable_ads = false
+	g.v.signal_bus.emit_signal_global('on_update_ads')
 	
 	

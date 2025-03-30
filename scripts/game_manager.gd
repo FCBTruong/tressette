@@ -15,7 +15,7 @@ var LAST_GAME_IS_WIN = false
 var did_show_guide_new_user = false
 var type_delete_login
 var CURRENT_GAME_PLAY = 0 # tressette, 1 is sette mezzo
-
+var game_th = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("GameManagerReady")
@@ -123,8 +123,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			g.v.game_server_config.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
 			g.v.game_server_config.min_gold_play = g.v.game_server_config.tressette_bets[0] * g.v.game_server_config.bet_multiplier_min
 			g.v.game_server_config.enable_ads = pkg.get_enable_ads()
-			g.v.game_server_config.enable_ads = true # remove
-			
+			print('aass', g.v.game_server_config.enable_ads)
 		g.v.game_constants.CMDs.TABLE_LIST:
 			if g.v.app_version.is_in_review():
 				return 

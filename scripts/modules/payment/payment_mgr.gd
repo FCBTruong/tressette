@@ -56,6 +56,10 @@ func _handle_payment_success(payload):
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PaymentSuccess.new()
 	var result_code = pkg.from_bytes(payload)
 	var gold = pkg.get_gold()
+	var pack_id = pkg.get_pack_id()
+	
+	if pack_id == "offer_first_buy":
+		g.v.player_info_mgr.has_first_buy = false
 	
 	g.v.scene_manager.show_dialog(tr("YOU_RECEIVED") + ' ' + StringUtils.point_number(gold) \
 		+ " " + tr("LIRA"), 
@@ -120,6 +124,7 @@ func get_price_pack(pack_id):
 			if p['pack_id'] == pack_id:
 				price_str = str(p['price']) + ' ' + p['currency']
 				break
+	
 	return price_str
 
 func buy_pack(pack_id):
@@ -143,6 +148,7 @@ func _handle_shop_config(payload):
 	var golds = pkg.get_golds()
 	var prices = pkg.get_prices()
 	var currencies = pkg.get_currencies()
+	var no_ads_days = pkg.get_no_ads_days()
 	
 	shop_packs = []
 	for i in range(len(pack_ids)):
@@ -150,7 +156,8 @@ func _handle_shop_config(payload):
 			'pack_id': pack_ids[i],
 			'gold': golds[i],
 			'price': prices[i],
-			'currency': currencies[i]
+			'currency': currencies[i],
+			'no_ads_days': no_ads_days[i]
 		})
 	
 	

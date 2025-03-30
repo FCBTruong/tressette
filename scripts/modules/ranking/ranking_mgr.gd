@@ -115,3 +115,6 @@ func send_claim_reward(season_id):
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RankingClaimReward.new()
 	pkg.set_season_id(season_id)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.RANKING_CLAIM_REWARD, pkg.to_bytes())
+
+func show_gui():
+	g.v.scene_manager.open_gui("res://scenes/ranking/RankingGUI.tscn", true)

@@ -27,6 +27,8 @@ func _show_popup():
 @onready var exp_bar = find_child("ExpBar")
 @onready var head_pn = find_child("HeadPn")
 @onready var red_dot_avt = find_child("RedDotAvt")
+@onready var hbox_premium = find_child("HBoxPremium")
+@onready var premium_lb = find_child("PremiumLb")
 var is_me: bool = false
 var _info:UserData = null
 func _ready() -> void:
@@ -49,12 +51,21 @@ func set_info(info: UserData):
 		avatar_img.set_me()
 		is_me = true
 		
+		var time_remain = int(g.v.player_info_mgr.time_show_ads - g.v.game_manager.get_timestamp_server())
+		if time_remain > 0:
+			hbox_premium.visible = true
+			var days = time_remain / 86400
+			var minutes = (time_remain % 86400) / 60
+			premium_lb.text = str(days) + "d:" + str(minutes) + "m"
+		else:
+			hbox_premium.visible = false
 		var is_clicked_pick_avatar = g.v.storage_cache.fetch("open_picking_avatar_gui", '0') == '1'
 		if not is_clicked_pick_avatar:
 			red_dot_avt.visible = true
 		
 		head_pn.self_modulate = Color('#429648ca')
 	else:
+		hbox_premium.visible = false
 		avt_edit_btn.visible = false
 		avatar_img.set_avatar(_info.avatar)
 		is_me = false

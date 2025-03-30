@@ -474,6 +474,25 @@ theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22
 text = "50%"
 
+[node name="HBoxPremium" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium"]
+self_modulate = Color(1, 1, 1, 0.7)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.930704, 0.536171, 1)
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "PREMIUM"
+
+[node name="PremiumLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium"]
+self_modulate = Color(1, 1, 1, 0.7)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "10 days"
+
 [node name="TextureRect2" type="Control" parent="Control/MainPn"]
 self_modulate = Color(0.0156505, 0.030661, 0.394776, 1)
 custom_minimum_size = Vector2(100, 100)
