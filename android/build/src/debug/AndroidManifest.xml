@@ -26,6 +26,12 @@
         tools:replace="android:allowBackup,android:appCategory,android:isGame,android:hasFragileUserData,android:requestLegacyExternalStorage"
         tools:ignore="GoogleAppIndexingWarning">
 
+
+<meta-data
+		tools:replace="android:value"
+		android:name="com.google.android.gms.ads.APPLICATION_ID"
+		android:value="ca-app-pub-3119270508535076~1753264471"/>
+
         <activity android:name="com.godot.game.GodotApp" tools:replace="android:screenOrientation,android:excludeFromRecents,android:resizeableActivity" tools:node="mergeOnlyAttributes" android:excludeFromRecents="false" android:screenOrientation="landscape" android:resizeableActivity="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

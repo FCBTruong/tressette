@@ -17,10 +17,11 @@ var effect_layer = null
 var _cur_scene = null
 var scene_nodes = {}
 
-
+var is_in_root = false
 # Called when the node enters the scene tree for the first time.
 func on_ready() -> void:
 	print("Loaded lobby scene aaaaa")
+	is_in_root = true
 	_cur_scene = ROOT.get_tree().current_scene
 	pass
 
@@ -38,8 +39,9 @@ func switch_scene(new_scene_path: String) -> void:
 		scene = load(new_scene_path)
 		scene_nodes[new_scene_path] = scene
 		
-	if is_instance_valid(_cur_scene):
+	if is_instance_valid(_cur_scene) and not is_in_root:
 		_cur_scene.queue_free()
+	is_in_root = false
 	_cur_scene = scene.instantiate()
 	ROOT.get_tree().root.add_child(_cur_scene)
 	print("Loaded scene:", new_scene_path)

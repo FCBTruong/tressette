@@ -2467,6 +2467,11 @@ class GeneralInfo:
 		service.field = _fee_mode_no_bet
 		data[_fee_mode_no_bet.tag] = service
 		
+		_enable_ads = PBField.new("enable_ads", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 7, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _enable_ads
+		data[_enable_ads.tag] = service
+		
 	var data = {}
 	
 	var _timestamp: PBField
@@ -2522,6 +2527,15 @@ class GeneralInfo:
 		_fee_mode_no_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_fee_mode_no_bet(value : int) -> void:
 		_fee_mode_no_bet.value = value
+	
+	var _enable_ads: PBField
+	func get_enable_ads() -> bool:
+		return _enable_ads.value
+	func clear_enable_ads() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_enable_ads.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_enable_ads(value : bool) -> void:
+		_enable_ads.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

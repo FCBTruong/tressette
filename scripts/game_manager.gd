@@ -122,6 +122,9 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			g.v.game_server_config.exp_levels = pkg.get_exp_levels()
 			g.v.game_server_config.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
 			g.v.game_server_config.min_gold_play = g.v.game_server_config.tressette_bets[0] * g.v.game_server_config.bet_multiplier_min
+			g.v.game_server_config.enable_ads = pkg.get_enable_ads()
+			g.v.game_server_config.enable_ads = true # remove
+			
 		g.v.game_constants.CMDs.TABLE_LIST:
 			if g.v.app_version.is_in_review():
 				return 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://hxhcl2lvd7qj"]
+[gd_scene load_steps=9 format=3 uid="uid://hxhcl2lvd7qj"]
 
 [ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="1_t8h7q"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_gx2ns"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_abeha"]
+[ext_resource type="Script" path="res://addons/AdmobPlugin/Admob.gd" id="4_ttrxn"]
+[ext_resource type="Script" path="res://scripts/base/admob_mgr.gd" id="5_o620n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7gor"]
 bg_color = Color(0, 0, 0, 0.569)
@@ -27,7 +29,22 @@ corner_radius_bottom_left = 5
 
 [node name="InitScene" type="Node2D"]
 
+[node name="Admob" type="Node" parent="."]
+script = ExtResource("4_ttrxn")
+banner_position = 1
+debug_application_id = "ca-app-pub-3119270508535076~1753264471"
+debug_banner_id = "ca-app-pub-3940256099942544/9214589741"
+debug_interstitial_id = "ca-app-pub-3940256099942544/1033173712"
+debug_rewarded_id = "ca-app-pub-3940256099942544/5224354917"
+debug_rewarded_interstitial_id = "ca-app-pub-3940256099942544/5354046379"
+real_application_id = "ca-app-pub-3119270508535076~1753264471"
+real_banner_id = "ca-app-pub-3119270508535076/8379216729"
+real_interstitial_id = "ca-app-pub-3119270508535076/6632489397"
+real_rewarded_id = "ca-app-pub-3119270508535076/5319407722"
+real_rewarded_interstitial_id = "ca-app-pub-3119270508535076/5319407722"
+
 [node name="Scene" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="TextureRect" type="TextureRect" parent="Scene"]
 anchors_preset = 15
@@ -149,3 +166,10 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_abeha")
 theme_override_font_sizes/font_size = 23
 text = "Loading ..."
+
+[node name="AdmobMgr" type="Node2D" parent="."]
+script = ExtResource("5_o620n")
+
+[connection signal="initialization_completed" from="Admob" to="AdmobMgr" method="_on_admob_initialization_completed"]
+[connection signal="rewarded_ad_user_earned_reward" from="Admob" to="AdmobMgr" method="_on_admob_rewarded_ad_user_earned_reward"]
+[connection signal="rewarded_interstitial_ad_user_earned_reward" from="Admob" to="AdmobMgr" method="_on_admob_rewarded_interstitial_ad_user_earned_reward"]

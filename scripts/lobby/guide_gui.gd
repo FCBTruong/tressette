@@ -7,6 +7,7 @@ extends Node
 var tween
 var pages = []
 var current_idx = 0
+var is_quick_play = false
 func _ready() -> void:
 	tween = create_tween()
 	var default_pos = main_pn.position
@@ -45,6 +46,9 @@ func on_close() -> void:
 	if tween and tween.is_running():
 		tween.kill()
 	self.queue_free()
+	if is_quick_play:
+		g.v.game_manager.send_quick_play()
+		is_quick_play = false
 	
 func _click_next_page():
 	current_idx += 1

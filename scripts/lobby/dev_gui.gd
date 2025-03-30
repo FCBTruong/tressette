@@ -93,3 +93,6 @@ func _test_share_app():
 func _click_reset_guest():
 	g.v.login_mgr.save_guest_id('')
 	pass
+
+func _click_ads():
+	g.admob_mgr._on_reward_pressed()

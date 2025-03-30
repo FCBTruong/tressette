@@ -2,7 +2,7 @@ extends BaseBoardScene
 class_name BoardScene
 
 # Called when the node enters the scene tree for the first time.
-var my_card_panel
+
 var play_ground
 var list_my_cards = []
 var list_players = []
@@ -11,6 +11,7 @@ var tween: Tween
 var tween_animate: Tween
 var cards_node_compare = []
 var is_portrait = false
+@onready var my_card_panel = find_child('MyCardPanel')
 @onready var players_pn = find_child("PlayersPn")
 @onready var center_play_pn = find_child('CenterPlayPn')
 @onready var cardback_node = find_child('CardbackPn')
@@ -70,7 +71,10 @@ var is_auto_play = false
 var list_napoli_highlights = []
 var center_play_pn_default_pos
 var R = 4000
+var my_card_panel_pos
+@onready var ads_banner_pn = find_child("AdsBannerPn")
 func _ready() -> void:	
+	set_up_ads_banner(g.v.game_server_config.enable_ads)
 	my_score_lb.text = '0'
 	opponent_score_lb.text = '0'
 	evaluate_lb_default_pos = evaluate_lb.global_position
@@ -86,7 +90,6 @@ func _ready() -> void:
 	is_auto_play = false
 	game_start_lb_default_pos = game_start_lb.position
 	g.v.scene_manager.INSTANCES.BOARD_SCENE = self
-	my_card_panel = find_child('MyCardPanel')
 	play_ground = find_child('PlayGround')
 	countdown_start_lb.visible = false
 	evaluate_lb.modulate.a = 0
@@ -96,14 +99,21 @@ func _ready() -> void:
 	action_btn_pn.z_index = 200
 	auto_play_pn.z_index = 300
 	
-	# Check and show GUIDE GUI for new user
-	if g.v.player_info_mgr.my_user_data.game_count == 0 and not \
-		g.v.game_manager.did_show_guide_new_user:
-		self._open_guide_gui()
-		g.v.game_manager.did_show_guide_new_user = true
 			
 	g.v.sound_manager.play_music_board()
 	#show_prepare_start()
+	
+
+var is_showing_ads_banner = false
+func set_up_ads_banner(show: bool):
+	if not show:
+		ads_banner_pn.visible = false
+		is_showing_ads_banner = false
+	else:
+		is_showing_ads_banner = true
+		ads_banner_pn.visible = true
+		ads_banner_pn.z_index = DEFAULT_CARD_Z_INDEX + 15
+	
 func _get_card_rotates(n):
 	var arr = []
 	for i in range(n):
@@ -605,6 +615,10 @@ func _calculate_world_card_positions(number: int):
 		
 		var dis_y = R - sqrt(R * R - dis_x * dis_x)
 		pos.y = p_center.y + dis_y
+		
+		if is_showing_ads_banner:
+			pos.y -= ads_banner_pn.size.y - 10
+		
 		var global_pos = my_card_panel.get_global_transform().origin + pos
 		list_pos.append(global_pos)
 		index += 1

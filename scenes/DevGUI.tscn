@@ -156,6 +156,15 @@ offset_right = 559.0
 offset_bottom = 382.0
 text = "Test1"
 
+[node name="AdsBtn" type="Button" parent="CanvasLayer/MainPn"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 0
+offset_left = 416.0
+offset_top = 129.0
+offset_right = 516.0
+offset_bottom = 169.0
+text = "Ads"
+
 [node name="Button3" type="Button" parent="CanvasLayer/MainPn"]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 0
@@ -217,5 +226,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_2mr3y")
 [connection signal="pressed" from="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2/CheatGoldBtn" to="." method="_click_cheat_goldbtn"]
 [connection signal="pressed" from="CanvasLayer/MainPn/Button" to="." method="_click_add_bot"]
 [connection signal="pressed" from="CanvasLayer/MainPn/Button2" to="." method="_test_share_app"]
+[connection signal="pressed" from="CanvasLayer/MainPn/AdsBtn" to="." method="_click_ads"]
 [connection signal="pressed" from="CanvasLayer/MainPn/Button3" to="." method="_click_reset_guest"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_click_btn"]

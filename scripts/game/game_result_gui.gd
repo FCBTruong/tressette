@@ -126,7 +126,11 @@ func _process_continue():
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.continue_play()
+	
+	if g.v.game_server_config.enable_ads:
+		g.admob_mgr._on_reward_interstitial_pressed()
 		
 func _click_exit_game():
 	g.v.game_manager.send_register_leave_game()
+	g.admob_mgr._on_reward_pressed()
 	pass

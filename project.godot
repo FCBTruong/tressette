@@ -31,7 +31,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/custom_native/plugin.cfg", "res://addons/firebase_plugin/plugin.cfg", "res://addons/protobuf/plugin.cfg")
+enabled=PackedStringArray("res://addons/AdmobPlugin/plugin.cfg", "res://addons/custom_native/plugin.cfg", "res://addons/firebase_plugin/plugin.cfg", "res://addons/protobuf/plugin.cfg")
 
 [internationalization]
 

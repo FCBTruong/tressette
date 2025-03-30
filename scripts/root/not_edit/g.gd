@@ -2,6 +2,7 @@ extends Node2D
 
 var variables = {}  # Dictionary to store global variables
 var v: GlobalVar
+var admob_mgr: AdmobMgr
 func set_var(key: String, value):
 	variables[key] = value
 

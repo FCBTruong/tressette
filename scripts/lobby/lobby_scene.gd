@@ -37,7 +37,9 @@ func _ready() -> void:
 		g.v.scene_manager.show_dialog(
 			str_startup,
 			func ():
-				g.v.game_manager.send_quick_play(),
+				var gui = g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn")
+				gui.is_quick_play = true
+				,
 			func ():
 				pass,
 			true,
@@ -49,6 +51,8 @@ func _ready() -> void:
 	# hard code temporarily
 	if g.v.ranking_mgr.rank_results.size() > 0:
 		g.v.ranking_mgr.show_rank_result()
+	if g.v.game_server_config.enable_ads:
+		g.admob_mgr._on_banner_pressed()
 	
 
 @onready var left_panel = find_child('LeftPanel')
