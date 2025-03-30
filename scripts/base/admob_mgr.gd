@@ -45,3 +45,8 @@ func _on_admob_rewarded_ad_user_earned_reward(ad_id: String, reward_data: Reward
 func _on_admob_rewarded_interstitial_ad_user_earned_reward(ad_id: String, reward_data: RewardItem) -> void:
 	print("reward interstitial addded")
 	pass # Replace with function body.
+
+func _on_banner_close():
+	print('_on_banner_close')
+	admob.hide_banner_ad()
+	pass

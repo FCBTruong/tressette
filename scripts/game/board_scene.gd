@@ -74,7 +74,7 @@ var R = 4000
 var my_card_panel_pos
 @onready var ads_banner_pn = find_child("AdsBannerPn")
 func _ready() -> void:	
-	set_up_ads_banner(g.v.game_server_config.enable_ads)
+	set_up_ads_banner(g.v.game_manager.is_enable_ads())
 	my_score_lb.text = '0'
 	opponent_score_lb.text = '0'
 	evaluate_lb_default_pos = evaluate_lb.global_position

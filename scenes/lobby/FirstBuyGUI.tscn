@@ -108,7 +108,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vo5yy")
 
 [node name="PriceLb" type="Label" parent="CanvasLayer/Main/BuyBtn/Panel"]
-self_modulate = Color(1, 1, 1, 0.822)
+self_modulate = Color(1, 1, 1, 0.934)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,7 +122,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_optfb")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 25
 text = "5 EURO"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -153,4 +153,5 @@ grow_vertical = 2
 texture = ExtResource("2_jpvyo")
 expand_mode = 1
 
+[connection signal="pressed" from="CanvasLayer/Main/BuyBtn" to="." method="purchase"]
 [connection signal="pressed" from="CanvasLayer/Main/CloseBtn" to="." method="on_close"]

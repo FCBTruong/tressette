@@ -51,10 +51,10 @@ func _ready() -> void:
 	# hard code temporarily
 	if g.v.ranking_mgr.rank_results.size() > 0:
 		g.v.ranking_mgr.show_rank_result()
-	if g.v.game_server_config.enable_ads:
+	if g.v.game_manager.is_enable_ads():
 		g.admob_mgr._on_banner_pressed()
 	
-	if g.v.player_info_mgr.has_first_buy:
+	if g.v.player_info_mgr.has_first_buy and g.v.player_info_mgr.my_user_data.game_count > -10:
 		g.v.scene_manager.open_gui("res://scenes/lobby/FirstBuyGUI.tscn")
 	
 @onready var left_panel = find_child('LeftPanel')

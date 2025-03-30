@@ -38,6 +38,9 @@ func _on_receive_info(bytes: PackedByteArray):
 	has_first_buy = packet.get_has_first_buy()
 	time_show_ads = packet.get_time_show_ads()
 	
+	if g.v.config.get_platform() != g.v.config.PLATFORMS.ANDROID:
+		has_first_buy = false
+	
 	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.win_count)
 
 
@@ -56,7 +59,7 @@ func receive_update_ads(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateAds.new()
 	packet.from_bytes(bytes)
 	self.time_show_ads = packet.get_time_show_ads()
-	g.v.game_server_config.enable_ads = false
+	g.admob_mgr._on_banner_close()
 	g.v.signal_bus.emit_signal_global('on_update_ads')
 	
 	

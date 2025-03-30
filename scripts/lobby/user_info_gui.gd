@@ -55,8 +55,13 @@ func set_info(info: UserData):
 		if time_remain > 0:
 			hbox_premium.visible = true
 			var days = time_remain / 86400
-			var minutes = (time_remain % 86400) / 60
-			premium_lb.text = str(days) + "d:" + str(minutes) + "m"
+			var hours = (time_remain % 86400) / 3600
+			var minutes = (time_remain % 3600) / 60
+			if days > 0:
+				premium_lb.text = str(days) + "d:" + str(hours) + "h"
+			else:
+				premium_lb.text = str(hours) + "h:" + str(minutes) + "m"
+
 		else:
 			hbox_premium.visible = false
 		var is_clicked_pick_avatar = g.v.storage_cache.fetch("open_picking_avatar_gui", '0') == '1'

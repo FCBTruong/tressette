@@ -122,8 +122,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			g.v.game_server_config.exp_levels = pkg.get_exp_levels()
 			g.v.game_server_config.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
 			g.v.game_server_config.min_gold_play = g.v.game_server_config.tressette_bets[0] * g.v.game_server_config.bet_multiplier_min
-			g.v.game_server_config.enable_ads = pkg.get_enable_ads()
-			print('aass', g.v.game_server_config.enable_ads)
+			
 		g.v.game_constants.CMDs.TABLE_LIST:
 			if g.v.app_version.is_in_review():
 				return 
@@ -286,3 +285,10 @@ func request_delete_account():
 func _received_delete_account():
 	if type_delete_login == g.v.game_constants.LOGIN_TYPE.GUEST:
 		g.v.login_mgr.save_guest_id('')
+
+func is_enable_ads() -> bool:
+	if g.v.config.get_platform() != g.v.config.PLATFORMS.ANDROID:
+		return false
+	if g.v.player_info_mgr.time_show_ads > self.get_timestamp_server():
+		return false
+	return true

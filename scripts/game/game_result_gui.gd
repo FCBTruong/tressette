@@ -127,7 +127,7 @@ func _process_continue():
 	if scene is BoardScene:
 		scene.continue_play()
 	
-	if g.v.game_server_config.enable_ads:
+	if g.v.game_manager.is_enable_ads():
 		if g.v.game_manager.game_th % 4 == 0:
 			g.admob_mgr._on_reward_interstitial_pressed()
 		else:
