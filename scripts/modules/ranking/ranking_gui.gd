@@ -70,4 +70,4 @@ func _process(delta: float) -> void:
 
 
 func _on_close():
-	self.hide()
+	self.queue_free()

@@ -58,7 +58,7 @@ func _handle_payment_success(payload):
 	var gold = pkg.get_gold()
 	var pack_id = pkg.get_pack_id()
 	
-	if pack_id == "offer_first_buy":
+	if pack_id == "first_buy_offer":
 		g.v.player_info_mgr.has_first_buy = false
 	
 	g.v.scene_manager.show_dialog(tr("YOU_RECEIVED") + ' ' + StringUtils.point_number(gold) \

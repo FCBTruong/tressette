@@ -479,15 +479,14 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium"]
-self_modulate = Color(1, 1, 1, 0.7)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.930704, 0.536171, 1)
+theme_override_colors/font_color = Color(0.994193, 1, 0.536171, 1)
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22
 text = "PREMIUM"
 
 [node name="PremiumLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium"]
-self_modulate = Color(1, 1, 1, 0.7)
+self_modulate = Color(0.915, 1, 0.885, 0.98)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22

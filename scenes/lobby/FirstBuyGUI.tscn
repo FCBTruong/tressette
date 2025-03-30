@@ -93,7 +93,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("2_7rpsx")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Main/BuyBtn"]
+[node name="BuyPnEff" type="Panel" parent="CanvasLayer/Main/BuyBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,7 +107,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vo5yy")
 
-[node name="PriceLb" type="Label" parent="CanvasLayer/Main/BuyBtn/Panel"]
+[node name="PriceLb" type="Label" parent="CanvasLayer/Main/BuyBtn/BuyPnEff"]
 self_modulate = Color(1, 1, 1, 0.934)
 layout_mode = 1
 anchors_preset = 8

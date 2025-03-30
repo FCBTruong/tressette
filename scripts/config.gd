@@ -14,7 +14,7 @@ var EDIT_MODE = false
 func on_ready():
 	if CURRENT_MODE == MODES.LOCAL:
 		if OS.get_name() == "Android":
-			CURRENT_MODE = MODES.PRIVATE		
+			CURRENT_MODE = MODES.LIVE		
 		elif OS.get_name() == "iOS":
 			CURRENT_MODE = MODES.LIVE
 		elif OS.get_name() == "Web":

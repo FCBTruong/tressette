@@ -2,6 +2,7 @@ extends Node
 
 @onready var main_pn = find_child("Main")
 @onready var price_lb = find_child("PriceLb")
+@onready var buy_pn_eff = find_child("BuyPnEff")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var tween = create_tween()

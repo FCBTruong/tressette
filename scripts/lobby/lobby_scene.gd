@@ -54,7 +54,7 @@ func _ready() -> void:
 	if g.v.game_manager.is_enable_ads():
 		g.admob_mgr._on_banner_pressed()
 	
-	if g.v.player_info_mgr.has_first_buy and g.v.player_info_mgr.my_user_data.game_count > -10:
+	if g.v.player_info_mgr.has_first_buy and g.v.player_info_mgr.my_user_data.game_count > 0:
 		g.v.scene_manager.open_gui("res://scenes/lobby/FirstBuyGUI.tscn")
 	
 @onready var left_panel = find_child('LeftPanel')
