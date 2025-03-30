@@ -76,12 +76,17 @@ const PLUGIN_SINGLETON_NAME: String = "AdmobPlugin"
 @export var debug_rewarded_id: String
 @export var debug_rewarded_interstitial_id: String
 
-@export_group("Real IDs", "real_")
-@export var real_application_id: String
-@export var real_banner_id: String
-@export var real_interstitial_id: String
-@export var real_rewarded_id: String
-@export var real_rewarded_interstitial_id: String
+@export_group("Real Android IDs", "real_")
+@export var real_and_banner_id: String
+@export var real_and_interstitial_id: String
+@export var real_and_rewarded_id: String
+@export var real_and_rewarded_interstitial_id: String
+
+@export_group("Real iOS IDs", "real_")
+@export var real_ios_banner_id: String
+@export var real_ios_interstitial_id: String
+@export var real_ios_rewarded_id: String
+@export var real_ios_rewarded_interstitial_id: String
 
 @export_group("Cache")
 @export_range(1,100) var max_banner_ad_cache: int = 1: set = set_max_banner_ad_cache
@@ -89,11 +94,11 @@ const PLUGIN_SINGLETON_NAME: String = "AdmobPlugin"
 @export_range(1,100) var max_rewarded_ad_cache: int = 1: set = set_max_rewarded_ad_cache
 @export_range(1,100) var max_rewarded_interstitial_ad_cache: int = 1: set = set_max_rewarded_interstitial_ad_cache
 
-@onready var _banner_id: String = real_banner_id if is_real else debug_banner_id
-@onready var _interstitial_id: String = real_interstitial_id if is_real else debug_interstitial_id
-@onready var _rewarded_id: String = real_rewarded_id if is_real else debug_rewarded_id
-@onready var _rewarded_interstitial_id: String = real_rewarded_interstitial_id if is_real else debug_rewarded_interstitial_id
-
+@onready var _banner_id: String = (real_and_banner_id if OS.get_name() == 'Android' else real_ios_banner_id) if is_real else debug_banner_id
+@onready var _interstitial_id: String = (real_and_interstitial_id if OS.get_name() == 'Android' else real_ios_interstitial_id) if is_real else debug_interstitial_id
+@onready var _rewarded_id: String = (real_and_rewarded_id if OS.get_name() == 'Android' else real_ios_rewarded_id) if is_real else debug_rewarded_id
+@onready var _rewarded_interstitial_id: String = (real_and_rewarded_interstitial_id if OS.get_name() == 'Android' else real_ios_rewarded_interstitial_id) if is_real else debug_rewarded_interstitial_id
+var real_application_id:String = 'ca-app-pub-3119270508535076~1753264471' if OS.get_name() == 'Android' else 'ca-app-pub-3119270508535076~8103183856'
 var _plugin_singleton: Object
 
 var _active_banner_ads: Array

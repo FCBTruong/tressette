@@ -31,17 +31,21 @@ corner_radius_bottom_left = 5
 
 [node name="Admob" type="Node" parent="."]
 script = ExtResource("4_ttrxn")
+is_real = true
 banner_position = 1
 debug_application_id = "ca-app-pub-3119270508535076~1753264471"
 debug_banner_id = "ca-app-pub-3940256099942544/9214589741"
 debug_interstitial_id = "ca-app-pub-3940256099942544/1033173712"
 debug_rewarded_id = "ca-app-pub-3940256099942544/5224354917"
 debug_rewarded_interstitial_id = "ca-app-pub-3940256099942544/5354046379"
-real_application_id = "ca-app-pub-3119270508535076~1753264471"
-real_banner_id = "ca-app-pub-3119270508535076/8379216729"
-real_interstitial_id = "ca-app-pub-3119270508535076/6632489397"
-real_rewarded_id = "ca-app-pub-3119270508535076/5319407722"
-real_rewarded_interstitial_id = "ca-app-pub-3119270508535076/5319407722"
+real_and_banner_id = "ca-app-pub-3119270508535076/8379216729"
+real_and_interstitial_id = "ca-app-pub-3119270508535076/6632489397"
+real_and_rewarded_id = "ca-app-pub-3119270508535076/7448444280"
+real_and_rewarded_interstitial_id = "ca-app-pub-3119270508535076/5319407722"
+real_ios_banner_id = "ca-app-pub-3119270508535076/6658240249"
+real_ios_interstitial_id = "ca-app-pub-3119270508535076/5807526725"
+real_ios_rewarded_id = "ca-app-pub-3119270508535076/7805136116"
+real_ios_rewarded_interstitial_id = "ca-app-pub-3119270508535076/3619512930"
 
 [node name="Scene" type="CanvasLayer" parent="."]
 layer = 0

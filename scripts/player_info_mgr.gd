@@ -38,7 +38,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	has_first_buy = packet.get_has_first_buy()
 	time_show_ads = packet.get_time_show_ads()
 	
-	if g.v.config.get_platform() != g.v.config.PLATFORMS.ANDROID:
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 		has_first_buy = false
 	
 	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.win_count)

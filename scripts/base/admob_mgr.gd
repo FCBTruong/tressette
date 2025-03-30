@@ -5,6 +5,14 @@ class_name AdmobMgr
 var is_initialized: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# init admob ids
+	if OS.get_name() == "Android":
+		print("admob android")
+		admob.configure_ads(
+			
+		)
+	elif OS.get_name() == "iOS":
+		print("admob ios")
 	g.admob_mgr = self
 	admob.initialize()
 
