@@ -31,7 +31,6 @@ corner_radius_bottom_left = 5
 
 [node name="Admob" type="Node" parent="."]
 script = ExtResource("4_ttrxn")
-is_real = true
 banner_position = 1
 debug_application_id = "ca-app-pub-3119270508535076~1753264471"
 debug_banner_id = "ca-app-pub-3940256099942544/9214589741"

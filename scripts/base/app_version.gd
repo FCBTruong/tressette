@@ -10,7 +10,7 @@ var cdn_version = 0
 
 # INCREASE WHEN BUILD, should edit when upload new build
 const ANDROID_CODE_VERSION: int = 7
-const IOS_CODE_VERSION: int = 3
+const IOS_CODE_VERSION: int = 4
 var my_code_version
 
 func test():

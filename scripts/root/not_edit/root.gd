@@ -8,7 +8,7 @@ var update_url = "https://tressette-cdn.s3.ap-southeast-1.amazonaws.com/update.p
 var game_init
 var is_downloading = false
 var progress_bar
-var version = 1
+var version = 2
 var is_local = false
 func _init():
 	if OS.get_name() == "macOS":
@@ -20,7 +20,7 @@ func _init():
 	if cache_version == -1:
 		return
 		
-	if version == cache_version:
+	if version >= cache_version:
 		return
 	version = cache_version
 		

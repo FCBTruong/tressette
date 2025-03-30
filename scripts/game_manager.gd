@@ -287,7 +287,7 @@ func _received_delete_account():
 		g.v.login_mgr.save_guest_id('')
 
 func is_enable_ads() -> bool:
-	if g.v.config.get_platform() != g.v.config.PLATFORMS.ANDROID:
+	if g.v.config.get_platform() != g.v.config.PLATFORMS.ANDROID and g.v.config.get_platform() != g.v.config.PLATFORMS.IOS:
 		return false
 	if g.v.player_info_mgr.time_show_ads > self.get_timestamp_server():
 		return false
