@@ -6,7 +6,8 @@ var packs = [
 	'pack_02',
 	'pack_03',
 	'pack_04',
-	'pack_05'
+	'pack_05',
+	'first_buy_offer'
 ]
 var packages:Array = []
 var pending_purchases:Array = []
