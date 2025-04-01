@@ -295,3 +295,18 @@ func is_enable_ads() -> bool:
 
 func open_guide_gui():
 	return g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn", true)
+
+var did_show_fanpage = false
+func check_show_fanpage():
+	if did_show_fanpage:
+		return
+	if g.v.player_info_mgr.my_user_data.game_count < 2:
+		return
+	did_show_fanpage = true
+	var n = g.v.storage_cache.fetch("show_fanpage", 0)
+	
+	print('debugxdds', n)
+	if n >= g.v.game_constants.MAX_SHOW_FANPAGE_LIKE:
+		return
+	
+	g.v.popup_mgr.add_popup("res://scenes/lobby/LikeFanpageGUI.tscn")

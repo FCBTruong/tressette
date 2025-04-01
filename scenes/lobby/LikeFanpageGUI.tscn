@@ -1,8 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgnwu87db7eql"]
+[gd_scene load_steps=7 format=3 uid="uid://bgnwu87db7eql"]
 
+[ext_resource type="Script" path="res://scripts/lobby/like_fanpage_gui.gd" id="1_f5cvu"]
 [ext_resource type="Texture2D" uid="uid://bb4yn4onbn250" path="res://assets/images/lobby/fanpage_like_pg.png" id="1_fu6lm"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_jr05s"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="3_c718l"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_n5gs5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hseb"]
+bg_color = Color(0.965023, 0.821951, 0.0160447, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.234)
+shadow_size = 3
 
 [node name="LikeFanpageGui" type="Control"]
 layout_mode = 3
@@ -12,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_f5cvu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -22,32 +34,50 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.753)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MainPn" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -175.0
-offset_right = 250.0
-offset_bottom = 175.0
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_fu6lm")
 expand_mode = 1
 
-[node name="Button2" type="Button" parent="TextureRect"]
+[node name="CloseBtn" type="Button" parent="MainPn"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
-offset_left = 474.0
-offset_top = -20.0
-offset_right = 524.0
-offset_bottom = 30.0
+offset_left = 572.0
+offset_top = -17.0
+offset_right = 622.0
+offset_bottom = 33.0
+flat = true
+script = ExtResource("2_jr05s")
 
-[node name="Button" type="Button" parent="TextureRect"]
-custom_minimum_size = Vector2(120, 60)
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_c718l")
+expand_mode = 1
+
+[node name="ButtonOk" type="Button" parent="MainPn"]
+custom_minimum_size = Vector2(120, 50)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -55,14 +85,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -60.0
-offset_top = -14.0
+offset_top = -16.0
 offset_right = 60.0
-offset_bottom = 46.0
+offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 0
 flat = true
+script = ExtResource("2_jr05s")
 
-[node name="Panel" type="Panel" parent="TextureRect/Button"]
+[node name="Panel" type="Panel" parent="MainPn/ButtonOk"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,3 +102,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7hseb")
+
+[node name="Label" type="Label" parent="MainPn/ButtonOk/Panel"]
+self_modulate = Color(0.612013, 0.353987, 0.126898, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -15.5
+offset_right = 20.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_n5gs5")
+theme_override_font_sizes/font_size = 30
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="on_close"]
+[connection signal="pressed" from="MainPn/ButtonOk" to="." method="like_fanpage"]
