@@ -55,13 +55,18 @@ shadow_color = Color(0, 0, 0, 0.3)
 shadow_size = 2
 shadow_offset = Vector2(0, 2)
 
-[node name="GameResultGui" type="Node2D"]
+[node name="GameResultGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_fpth8")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Fog" type="Panel" parent="CanvasLayer"]
+[node name="Fog" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -69,17 +74,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y1xll")
 
-[node name="MainPn" type="Panel" parent="CanvasLayer"]
+[node name="MainPn" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 250)
+layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -125.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hag70")
 
-[node name="LosePn" type="Control" parent="CanvasLayer/MainPn"]
+[node name="LosePn" type="Control" parent="MainPn"]
 light_mask = 7
 layout_mode = 1
 anchors_preset = 15
@@ -88,7 +96,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainPn/LosePn"]
+[node name="ColorRect2" type="ColorRect" parent="MainPn/LosePn"]
 custom_minimum_size = Vector2(0, 280)
 layout_mode = 1
 anchors_preset = 14
@@ -101,7 +109,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.525504, 0.52364, 0.550915, 1)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn/LosePn"]
+[node name="ColorRect" type="ColorRect" parent="MainPn/LosePn"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 1
 anchors_preset = 14
@@ -114,7 +122,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.794647, 0.802068, 0.836039, 1)
 
-[node name="GoldResultLose" type="Label" parent="CanvasLayer/MainPn/LosePn"]
+[node name="GoldResultLose" type="Label" parent="MainPn/LosePn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -134,7 +142,7 @@ text = "100000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TitleLbLose" type="Label" parent="CanvasLayer/MainPn/LosePn"]
+[node name="TitleLbLose" type="Label" parent="MainPn/LosePn"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -154,7 +162,7 @@ text = "YOU_LOSE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WinPn" type="Control" parent="CanvasLayer/MainPn"]
+[node name="WinPn" type="Control" parent="MainPn"]
 visible = false
 clip_children = 2
 light_mask = 7
@@ -165,7 +173,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn/WinPn"]
+[node name="ColorRect" type="ColorRect" parent="MainPn/WinPn"]
 custom_minimum_size = Vector2(0, 270)
 layout_mode = 1
 anchors_preset = 14
@@ -176,7 +184,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.910714, 0.723064, 0.509261, 1)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/WinPn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/WinPn"]
 material = SubResource("ShaderMaterial_jiyt7")
 layout_mode = 1
 anchors_preset = 15
@@ -186,7 +194,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_il20s")
 
-[node name="GoldResultWin" type="Label" parent="CanvasLayer/MainPn/WinPn"]
+[node name="GoldResultWin" type="Label" parent="MainPn/WinPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -206,7 +214,7 @@ text = "+1000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/WinPn/GoldResultWin"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/WinPn/GoldResultWin"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -222,7 +230,7 @@ grow_vertical = 2
 texture = ExtResource("5_oq6y8")
 expand_mode = 1
 
-[node name="TitleLb" type="Label" parent="CanvasLayer/MainPn/WinPn"]
+[node name="TitleLb" type="Label" parent="MainPn/WinPn"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -242,7 +250,7 @@ text = "YOU_WIN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -258,7 +266,7 @@ grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="BtnExit" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+[node name="BtnExit" type="Button" parent="MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
@@ -270,7 +278,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_bxyre")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bxyre")
 script = ExtResource("4_xsh0q")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/BtnExit"]
+[node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnExit"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -289,15 +297,15 @@ text = "EXIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/MainPn/HBoxContainer"]
+[node name="Control" type="Control" parent="MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
 
-[node name="ContinueTimer" type="Timer" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+[node name="ContinueTimer" type="Timer" parent="MainPn/HBoxContainer/Control"]
 wait_time = 6.0
 one_shot = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/Control"]
 self_modulate = Color(0.140201, 0.116202, 0.116202, 1)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
@@ -311,7 +319,7 @@ grow_vertical = 2
 texture = ExtResource("7_11gwx")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+[node name="TextureRect2" type="TextureRect" parent="MainPn/HBoxContainer/Control"]
 self_modulate = Color(0.408353, 0.408353, 0.408353, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -328,7 +336,7 @@ grow_vertical = 2
 texture = ExtResource("6_hnshh")
 expand_mode = 1
 
-[node name="ContinueTimeNode" type="TextureProgressBar" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+[node name="ContinueTimeNode" type="TextureProgressBar" parent="MainPn/HBoxContainer/Control"]
 self_modulate = Color(0.890348, 0.6586, 0.0148031, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -351,7 +359,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("6_hnshh")
 
-[node name="ContinueTimeLb" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/Control/ContinueTimeNode"]
+[node name="ContinueTimeLb" type="Label" parent="MainPn/HBoxContainer/Control/ContinueTimeNode"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -370,7 +378,7 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BtnContinue" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+[node name="BtnContinue" type="Button" parent="MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2qycw")
@@ -385,7 +393,7 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_y7cos")
 theme_override_styles/normal = SubResource("StyleBoxFlat_y7cos")
 script = ExtResource("4_xsh0q")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/BtnContinue"]
+[node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnContinue"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -404,10 +412,10 @@ text = "CONTINUE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackgroundParticles" parent="CanvasLayer/MainPn" instance=ExtResource("2_t0g3t")]
+[node name="BackgroundParticles" parent="MainPn" instance=ExtResource("2_t0g3t")]
 position = Vector2(365, 258)
 
-[node name="CrownIcon" type="TextureRect" parent="CanvasLayer/MainPn"]
+[node name="CrownIcon" type="TextureRect" parent="MainPn"]
 visible = false
 layout_mode = 2
 offset_left = 416.0
@@ -417,5 +425,5 @@ offset_bottom = 127.0
 texture = ExtResource("7_tcbk3")
 expand_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/BtnExit" to="." method="_click_exit_game"]
-[connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/BtnContinue" to="." method="_click_continue_play"]
+[connection signal="pressed" from="MainPn/HBoxContainer/BtnExit" to="." method="_click_exit_game"]
+[connection signal="pressed" from="MainPn/HBoxContainer/BtnContinue" to="." method="_click_continue_play"]

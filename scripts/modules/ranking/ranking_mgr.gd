@@ -75,7 +75,7 @@ func show_rank_result():
 
 func check_and_update():
 	var interval = g.v.game_manager.get_timestamp_client() - last_time_received
-	if interval < 30:
+	if interval < 15:
 		return
 	send_get_ranking_info()
 	
@@ -117,4 +117,4 @@ func send_claim_reward(season_id):
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.RANKING_CLAIM_REWARD, pkg.to_bytes())
 
 func show_gui():
-	g.v.scene_manager.open_gui("res://scenes/ranking/RankingGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/ranking/RankingGUI.tscn", true)

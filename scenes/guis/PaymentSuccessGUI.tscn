@@ -40,14 +40,19 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.0823529, 0.32549, 0.552941, 1)
 shadow_size = 5
 
-[node name="PaymentSuccessGUI" type="Node2D"]
-position = Vector2(0, 1)
+[node name="PaymentSuccessGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_ut534")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel2" type="Panel" parent="CanvasLayer"]
+[node name="Panel2" type="Panel" parent="."]
 visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,16 +60,18 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eqwd5")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_r7411")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPn" type="Panel" parent="CanvasLayer"]
+[node name="MainPn" type="Panel" parent="."]
 clip_children = 1
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -81,7 +88,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_lm6ps")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,7 +98,7 @@ grow_vertical = 2
 texture = ExtResource("3_rs4tb")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn"]
+[node name="Label" type="Label" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -109,7 +116,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="MessageLb" type="Label" parent="CanvasLayer/MainPn"]
+[node name="MessageLb" type="Label" parent="MainPn"]
 modulate = Color(1, 1, 1, 0.898)
 layout_mode = 1
 anchors_preset = 8
@@ -128,7 +135,7 @@ text = "YOU_RECEIVED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/MessageLb"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/MessageLb"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -144,7 +151,7 @@ grow_vertical = 2
 texture = ExtResource("6_x0hvc")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -160,13 +167,13 @@ grow_vertical = 0
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="CancelBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+[node name="CancelBtn" type="Button" parent="MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("5_uo36a")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/HBoxContainer/CancelBtn"]
+[node name="Panel" type="Panel" parent="MainPn/HBoxContainer/CancelBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,7 +183,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_s0co1")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/CancelBtn"]
+[node name="Label" type="Label" parent="MainPn/HBoxContainer/CancelBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -195,13 +202,13 @@ text = "CANCEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OkBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+[node name="OkBtn" type="Button" parent="MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("5_uo36a")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/HBoxContainer/OkBtn"]
+[node name="Panel" type="Panel" parent="MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -211,7 +218,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2c7d7")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/OkBtn"]
+[node name="Label" type="Label" parent="MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -231,7 +238,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="CloseBtn" type="Button" parent="MainPn"]
 modulate = Color(1, 1, 1, 0.819)
 layout_mode = 0
 offset_left = 6.5
@@ -241,7 +248,7 @@ offset_bottom = 60.5
 flat = true
 script = ExtResource("5_uo36a")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -257,6 +264,6 @@ grow_vertical = 2
 texture = ExtResource("7_4ge3i")
 expand_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/CancelBtn" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/OkBtn" to="." method="_on_ok_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MainPn/HBoxContainer/CancelBtn" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MainPn/HBoxContainer/OkBtn" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close_button_pressed"]

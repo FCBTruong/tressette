@@ -292,3 +292,6 @@ func is_enable_ads() -> bool:
 	if g.v.player_info_mgr.time_show_ads > self.get_timestamp_server():
 		return false
 	return true
+
+func open_guide_gui():
+	return g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn", true)

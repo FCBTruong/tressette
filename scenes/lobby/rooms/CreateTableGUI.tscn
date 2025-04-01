@@ -30,36 +30,43 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1q1s"]
 
-[node name="CreateTableGui" type="Node2D"]
+[node name="CreateTableGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_div3u")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Fog" type="Panel" parent="CanvasLayer"]
+[node name="Fog" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPn" type="Panel" parent="CanvasLayer"]
+[node name="MainPn" type="Panel" parent="."]
 clip_children = 1
 custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(300, 200)
 theme_override_styles/panel = SubResource("StyleBoxFlat_bkm7t")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +76,7 @@ grow_vertical = 2
 texture = ExtResource("2_l5y7b")
 expand_mode = 1
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="CloseBtn" type="Button" parent="MainPn"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
 offset_left = 8.0
@@ -79,7 +86,7 @@ offset_bottom = 58.0
 flat = true
 script = ExtResource("3_50y8s")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
 self_modulate = Color(1, 1, 1, 0.799)
 layout_mode = 1
 anchors_preset = 8
@@ -96,7 +103,7 @@ grow_vertical = 2
 texture = ExtResource("2_371lk")
 expand_mode = 1
 
-[node name="CreateBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="CreateBtn" type="Button" parent="MainPn"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = 7
@@ -115,7 +122,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ugd67")
 flat = true
 script = ExtResource("3_50y8s")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/CreateBtn"]
+[node name="Panel" type="Panel" parent="MainPn/CreateBtn"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -126,7 +133,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ay0ys")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/CreateBtn/Panel"]
+[node name="Label" type="Label" parent="MainPn/CreateBtn/Panel"]
 self_modulate = Color(1, 1, 1, 0.763)
 layout_mode = 1
 anchors_preset = 8
@@ -146,7 +153,7 @@ text = "CREATE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -161,11 +168,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="Control2" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="Control2" type="Control" parent="MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control2"]
+[node name="OptionButton" type="OptionButton" parent="MainPn/VBoxContainer/Control2"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -182,7 +189,7 @@ selected = 0
 item_count = 1
 popup/item_0/text = "Classic"
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control2"]
+[node name="Label" type="Label" parent="MainPn/VBoxContainer/Control2"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -196,11 +203,11 @@ theme_override_font_sizes/font_size = 23
 text = "GAME_MODE"
 vertical_alignment = 1
 
-[node name="Control5" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="Control5" type="Control" parent="MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="OptionPoints" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control5"]
+[node name="OptionPoints" type="OptionButton" parent="MainPn/VBoxContainer/Control5"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -219,7 +226,7 @@ popup/item_0/text = "11"
 popup/item_1/text = "21"
 popup/item_1/id = 1
 
-[node name="POINT_MODE" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control5"]
+[node name="POINT_MODE" type="Label" parent="MainPn/VBoxContainer/Control5"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -233,11 +240,11 @@ theme_override_font_sizes/font_size = 23
 text = "POINT_MODE"
 vertical_alignment = 1
 
-[node name="Control3" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="Control3" type="Control" parent="MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="OptionPlayer" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/Control3"]
+[node name="OptionPlayer" type="OptionButton" parent="MainPn/VBoxContainer/Control3"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -256,7 +263,7 @@ popup/item_0/text = "1vs1"
 popup/item_1/text = "2v2"
 popup/item_1/id = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control3"]
+[node name="Label" type="Label" parent="MainPn/VBoxContainer/Control3"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -270,11 +277,11 @@ theme_override_font_sizes/font_size = 23
 text = "PLAYER_MODE"
 vertical_alignment = 1
 
-[node name="BetPn" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="BetPn" type="Control" parent="MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="OptionBet" type="OptionButton" parent="CanvasLayer/MainPn/VBoxContainer/BetPn"]
+[node name="OptionBet" type="OptionButton" parent="MainPn/VBoxContainer/BetPn"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -288,7 +295,7 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_ahdaw")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/BetPn"]
+[node name="Label" type="Label" parent="MainPn/VBoxContainer/BetPn"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -302,11 +309,11 @@ theme_override_font_sizes/font_size = 23
 text = "BET"
 vertical_alignment = 1
 
-[node name="Control4" type="Control" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="Control4" type="Control" parent="MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/Control4"]
+[node name="Label" type="Label" parent="MainPn/VBoxContainer/Control4"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -320,7 +327,7 @@ theme_override_font_sizes/font_size = 23
 text = "PRIVATE"
 vertical_alignment = 1
 
-[node name="PrivateCheck" type="CheckBox" parent="CanvasLayer/MainPn/VBoxContainer/Control4"]
+[node name="PrivateCheck" type="CheckBox" parent="MainPn/VBoxContainer/Control4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -339,7 +346,7 @@ flat = true
 icon_alignment = 1
 script = ExtResource("3_50y8s")
 
-[node name="FeeLb" type="Label" parent="CanvasLayer/MainPn"]
+[node name="FeeLb" type="Label" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -356,7 +363,7 @@ theme_override_fonts/font = ExtResource("6_xlv08")
 text = "FEE_CREATE"
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/FeeLb"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/FeeLb"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -372,5 +379,5 @@ grow_vertical = 2
 texture = ExtResource("8_mmcj6")
 expand_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
-[connection signal="pressed" from="CanvasLayer/MainPn/CreateBtn" to="." method="_on_create_table"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="MainPn/CreateBtn" to="." method="_on_create_table"]

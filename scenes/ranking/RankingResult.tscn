@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=3 uid="uid://vamttrvpw2gb"]
+[gd_scene load_steps=192 format=3 uid="uid://vamttrvpw2gb"]
 
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="1_0a8ja"]
 [ext_resource type="Script" path="res://scripts/modules/ranking/ranking_result.gd" id="1_mpp1x"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_7ag0e"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="4_20d4n"]
 [ext_resource type="Texture2D" uid="uid://crcu74gubk26" path="res://assets/images/ranking/medal_1.png" id="5_daypd"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="5_w86km"]
 [ext_resource type="Texture2D" uid="uid://c87ibd7r6pw78" path="res://assets/images/ranking/medal_2.png" id="6_jlt8c"]
 [ext_resource type="Texture2D" uid="uid://bijkfs3m0gpkp" path="res://assets/images/ranking/medal_3.png" id="7_jyinh"]
 
@@ -1312,12 +1311,18 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="RankingResult" type="Node2D"]
+[node name="RankingResult" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_mpp1x")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1325,7 +1330,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6)
 
-[node name="MainPn" type="Panel" parent="CanvasLayer"]
+[node name="MainPn" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1339,7 +1345,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_i6oqr")
 
-[node name="RankLb" type="Label" parent="CanvasLayer/MainPn"]
+[node name="RankLb" type="Label" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1359,7 +1365,7 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn"]
+[node name="Label" type="Label" parent="MainPn"]
 layout_mode = 0
 offset_left = 202.0
 offset_top = 10.0
@@ -1373,11 +1379,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="BackgroundParticles" parent="CanvasLayer/MainPn" instance=ExtResource("2_lhc41")]
+[node name="BackgroundParticles" parent="MainPn" instance=ExtResource("2_lhc41")]
 position = Vector2(365, 258)
 amount = 50
 
-[node name="ClaimBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="ClaimBtn" type="Button" parent="MainPn"]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 0
 offset_left = 234.0
@@ -1387,7 +1393,7 @@ offset_bottom = 315.0
 flat = true
 script = ExtResource("3_7ag0e")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/ClaimBtn"]
+[node name="Panel" type="Panel" parent="MainPn/ClaimBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1397,7 +1403,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ius4f")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/ClaimBtn/Panel"]
+[node name="Label" type="Label" parent="MainPn/ClaimBtn/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1416,14 +1422,14 @@ text = "CLAIM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPn"]
 layout_mode = 0
 offset_left = 220.0
 offset_top = 190.0
 offset_right = 389.0
 offset_bottom = 230.0
 
-[node name="RewardLb" type="Label" parent="CanvasLayer/MainPn/HBoxContainer"]
+[node name="RewardLb" type="Label" parent="MainPn/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.743)
 theme_override_fonts/font = ExtResource("1_0a8ja")
@@ -1432,41 +1438,21 @@ text = "1.000.000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/MainPn/HBoxContainer"]
+[node name="Control" type="Control" parent="MainPn/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_20d4n")
 expand_mode = 1
 
-[node name="RankAnim" type="AnimatedSprite2D" parent="CanvasLayer/MainPn"]
+[node name="RankAnim" type="AnimatedSprite2D" parent="MainPn"]
 position = Vector2(290, 123)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_jipiw")
 animation = &"2"
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer"]
-visible = false
-custom_minimum_size = Vector2(50, 50)
-offset_left = 934.0
-offset_top = 151.0
-offset_right = 984.0
-offset_bottom = 201.0
-flat = true
-script = ExtResource("3_7ag0e")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CloseBtn"]
-self_modulate = Color(0.924291, 0.616085, 0, 1)
-layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 42.0
-offset_bottom = 41.0
-texture = ExtResource("5_w86km")
-expand_mode = 1
-
-[connection signal="pressed" from="CanvasLayer/MainPn/ClaimBtn" to="." method="click_claim"]
+[connection signal="pressed" from="MainPn/ClaimBtn" to="." method="click_claim"]

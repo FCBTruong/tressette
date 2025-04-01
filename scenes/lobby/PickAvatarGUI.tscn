@@ -15,13 +15,18 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="PickAvatarGui" type="Node2D"]
+[node name="PickAvatarGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_eiu5u")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Panel2" type="Panel" parent="CanvasLayer"]
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -29,7 +34,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lmy6g")
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -44,7 +50,7 @@ grow_vertical = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_sxhje")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,73 +64,73 @@ offset_bottom = 202.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Row1" type="HBoxContainer" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer"]
+[node name="Row1" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Avatar0" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
+[node name="Avatar0" parent="Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Avatar1" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
+[node name="Avatar1" parent="Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Avatar2" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
+[node name="Avatar2" parent="Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Avatar3" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
+[node name="Avatar3" parent="Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Avatar4" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
+[node name="Avatar4" parent="Panel/ScrollContainer/VBoxContainer/Row1" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Row2" type="HBoxContainer" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-alignment = 1
-
-[node name="Avatar4" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
-layout_mode = 2
-
-[node name="Avatar5" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
-layout_mode = 2
-
-[node name="Avatar6" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
-layout_mode = 2
-
-[node name="Avatar8" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
-layout_mode = 2
-
-[node name="Avatar7" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
-layout_mode = 2
-
-[node name="Row3" type="HBoxContainer" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer"]
+[node name="Row2" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="Avatar8" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+[node name="Avatar4" parent="Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Avatar9" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+[node name="Avatar5" parent="Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Avatar10" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+[node name="Avatar6" parent="Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Avatar12" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+[node name="Avatar8" parent="Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="Avatar11" parent="CanvasLayer/Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+[node name="Avatar7" parent="Panel/ScrollContainer/VBoxContainer/Row2" instance=ExtResource("2_x7n7w")]
 layout_mode = 2
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/Panel"]
+[node name="Row3" type="HBoxContainer" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Avatar8" parent="Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+layout_mode = 2
+
+[node name="Avatar9" parent="Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+layout_mode = 2
+
+[node name="Avatar10" parent="Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+layout_mode = 2
+
+[node name="Avatar12" parent="Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+layout_mode = 2
+
+[node name="Avatar11" parent="Panel/ScrollContainer/VBoxContainer/Row3" instance=ExtResource("2_x7n7w")]
+layout_mode = 2
+
+[node name="CloseBtn" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -1.0
@@ -133,7 +139,7 @@ offset_bottom = 49.0
 flat = true
 script = ExtResource("1_h8bdd")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="Panel/CloseBtn"]
 self_modulate = Color(0.846222, 0.256155, 0.256155, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -150,4 +156,4 @@ grow_vertical = 2
 texture = ExtResource("1_jytpp")
 expand_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/Panel/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="Panel/CloseBtn" to="." method="_on_close"]

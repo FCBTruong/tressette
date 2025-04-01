@@ -8,19 +8,26 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_rdjcg"]
 [ext_resource type="PackedScene" uid="uid://tbrfbf1hmujq" path="res://scenes/mission/MissionNode.tscn" id="7_8uc8c"]
 
-[node name="MissionGui" type="Node2D"]
+[node name="MissionGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_ajijp")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Fog" type="Panel" parent="CanvasLayer"]
+[node name="Fog" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPn" type="TextureRect" parent="CanvasLayer"]
+[node name="MainPn" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -34,7 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_wjkij")
 
-[node name="Title" type="Label" parent="CanvasLayer/MainPn"]
+[node name="Title" type="Label" parent="MainPn"]
 self_modulate = Color(0.992178, 0.695038, 0.254661, 1)
 layout_mode = 1
 anchors_preset = 5
@@ -52,14 +59,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Control" type="Control" parent="CanvasLayer/MainPn"]
+[node name="Control" type="Control" parent="MainPn"]
 anchors_preset = 0
 offset_left = 52.0
 offset_top = 56.0
 offset_right = 752.0
 offset_bottom = 96.0
 
-[node name="Label2" type="Label" parent="CanvasLayer/MainPn/Control"]
+[node name="Label2" type="Label" parent="MainPn/Control"]
 self_modulate = Color(1, 1, 1, 0.8)
 layout_mode = 0
 offset_left = 19.0
@@ -72,7 +79,7 @@ text = "MISSION_NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="CanvasLayer/MainPn/Control"]
+[node name="Label3" type="Label" parent="MainPn/Control"]
 self_modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 8
@@ -92,7 +99,7 @@ text = "MISSION_REWARD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="CanvasLayer/MainPn/Control"]
+[node name="Label4" type="Label" parent="MainPn/Control"]
 self_modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchors_preset = 8
@@ -112,7 +119,7 @@ text = "MISSION_STATUS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="CloseBtn" type="Button" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -128,7 +135,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("4_rdjcg")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
 self_modulate = Color(1, 1, 1, 0.72)
 layout_mode = 0
 offset_right = 40.0
@@ -136,7 +143,7 @@ offset_bottom = 40.0
 texture = ExtResource("3_lt2nw")
 expand_mode = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MainPn"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPn"]
 custom_minimum_size = Vector2(700, 400)
 layout_mode = 0
 offset_left = 53.0
@@ -144,11 +151,11 @@ offset_top = 101.0
 offset_right = 753.0
 offset_bottom = 501.0
 
-[node name="MissionList" type="VBoxContainer" parent="CanvasLayer/MainPn/ScrollContainer"]
+[node name="MissionList" type="VBoxContainer" parent="MainPn/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MissionNode" parent="CanvasLayer/MainPn/ScrollContainer/MissionList" instance=ExtResource("7_8uc8c")]
+[node name="MissionNode" parent="MainPn/ScrollContainer/MissionList" instance=ExtResource("7_8uc8c")]
 layout_mode = 2
 
-[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]

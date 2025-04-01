@@ -74,7 +74,8 @@ var R = 4000
 var my_card_panel_pos
 @onready var ads_banner_pn = find_child("AdsBannerPn")
 func _ready() -> void:	
-	set_up_ads_banner(g.v.game_manager.is_enable_ads())
+	#set_up_ads_banner(g.v.game_manager.is_enable_ads())
+	set_up_ads_banner(false)
 	my_score_lb.text = '0'
 	opponent_score_lb.text = '0'
 	evaluate_lb_default_pos = evaluate_lb.global_position
@@ -888,6 +889,7 @@ func on_show_chat_gui():
 		in_game_chat_gui = chat_scene.instantiate()
 		self.add_child(in_game_chat_gui)
 		in_game_chat_gui.on_show()
+		in_game_chat_gui.z_index = 200
 		return
 	if in_game_chat_gui.visible:
 		in_game_chat_gui.on_hide()
@@ -985,10 +987,10 @@ func _on_back_btn_pressed() -> void:
 		g.v.game_manager.send_register_leave_game()
 
 func _open_settings_gui() -> void:
-	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn", true)
 
 func _open_guide_gui() -> void:
-	g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn")
+	g.v.game_manager.open_guide_gui()
 	
 func _effect_pot_contribute():
 	if g.v.app_version.is_in_review():

@@ -662,7 +662,7 @@ func _open_settings_gui() -> void:
 	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn")
 
 func _open_guide_gui() -> void:
-	g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn")
+	g.v.game_manager.open_guide_gui()
 	
 func on_finish_effect_contribute_pot():
 	var cur_pot_value =  StringUtils.convert_point_string_to_int(pot_value_lb.text)

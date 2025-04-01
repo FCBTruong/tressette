@@ -47,7 +47,7 @@ func _input(event):
 				g.v.game_constants.game_logic.match_result.is_win = true
 				g.v.game_constants.game_logic.match_result.players.append(a)
 				g.v.game_constants.game_logic.match_result.players.append(b)
-				g.v.scene_manager.open_gui('res://scenes/board/GameResultGUI.tscn')
+				g.v.scene_manager.open_gui('res://scenes/board/GameResultGUI.tscn', true)
 				pass
 				g.v.scene_manager.clear_loading()
 				#print('search friend')

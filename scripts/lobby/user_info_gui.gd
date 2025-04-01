@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 # Close button action
 func _on_CloseButton_pressed():

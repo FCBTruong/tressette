@@ -500,7 +500,7 @@ func _handle_end_game(payload: PackedByteArray):
 		match_data.users[i].gold = players_gold[i]
 		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [match_data.users[i].uid])
 		
-	g.v.scene_manager.open_gui('res://scenes/board/GameResultGUI.tscn')
+	g.v.scene_manager.open_gui('res://scenes/board/GameResultGUI.tscn', true)
 
 func _handle_prepare_start(payload: PackedByteArray):
 	if not match_data:

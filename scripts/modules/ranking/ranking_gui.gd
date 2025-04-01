@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 @onready var main_pn = find_child("MainPn")
 @onready var list_player = find_child("ListPlayer")
 @onready var time_lb = find_child("TimeLb")
@@ -8,23 +8,38 @@ extends CanvasLayer
 @onready var my_reward_lb = find_child("RewardLb")
 @onready var my_rank_anim = find_child("RankAnim")
 @onready var reward_pn = find_child("Reward")
+var list_nodes = []
+var main_pos
 var ranking_player_scene = preload("res://scenes/ranking/RankingPlayer.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var pos = main_pn.position
-	var tween = create_tween()
-	main_pn.position.y  -= 500
-	main_pn.visible = false
-	tween.parallel().tween_property(main_pn, 'position', pos, 0.4).set_delay(0.15)
-	tween.parallel().tween_callback(
-		func():
-			main_pn.visible = true
-	).set_delay(0.15)
-	for u in g.v.ranking_mgr.list_users:
+	main_pos = main_pn.position
+	for i in range(10):
 		var n = ranking_player_scene.instantiate()
 		list_player.add_child(n)
-		n.set_info(u)
-		
+		list_nodes.append(n)
+		n.visible = false
+
+var tween
+func on_show():
+	self.show()
+	if tween and tween.is_running():
+		tween.kill()
+	tween = create_tween()
+	main_pn.position.y = main_pos.y - 600
+	tween.parallel().tween_property(main_pn, 'position', main_pos, 0.4)
+	
+	
+	self.update_info()
+	
+func update_info():
+	var i = 0
+	for u in g.v.ranking_mgr.list_users:
+		if i >= len(list_nodes):
+			break
+		list_nodes[i].set_info(u)
+		list_nodes[i].visible = true
+		i += 1
 	my_name_lb.text = g.v.player_info_mgr.my_user_data.name
 	if g.v.ranking_mgr.my_rank <= 3:
 		my_rank_lb.visible = false
@@ -48,6 +63,8 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not visible:
+		return
 	var time_remain = int(g.v.ranking_mgr.time_end - g.v.game_manager.get_timestamp_server())
 	var days = time_remain / 86400
 	var hours = (time_remain % 86400) / 3600
@@ -70,4 +87,11 @@ func _process(delta: float) -> void:
 
 
 func _on_close():
-	self.queue_free()
+	if tween and tween.is_running():
+		tween.kill()
+	tween = create_tween()
+	tween.parallel().tween_property(main_pn, 'position:y', main_pos.y - 600, 0.3)
+	tween.tween_callback(
+		func():
+			self.hide()
+	).set_delay(0.3)

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @onready var chat_log = find_child('ChatLog')
 @onready var quick_list = find_child("QuickList")
@@ -38,7 +38,7 @@ func _ready():
 		n.parent = self
 
 func _process(delta):
-	if g.v.config.get_platform() == Config.PLATFORMS.WEB:
+	if g.v.config.get_platform() == Config.PLATFORMS.WEB or g.v.config.get_platform() == Config.PLATFORMS.MAC_OS:
 		return
 	var keyboard_height = DisplayServer.virtual_keyboard_get_height()
 	if keyboard_height > 0:

@@ -40,12 +40,17 @@ corner_radius_bottom_left = 10
 expand_margin_left = 5.0
 expand_margin_right = 5.0
 
-[node name="FriendScene" type="Node2D"]
+[node name="FriendScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_eo0n0")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Bg" type="TextureRect" parent="CanvasLayer"]
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -54,22 +59,23 @@ grow_vertical = 2
 texture = ExtResource("2_vpk1r")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -250.0
-offset_right = 250.0
+offset_left = -400.0
+offset_right = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = SubResource("Theme_qci5g")
@@ -78,23 +84,23 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 scroll_deadzone = 10
 
-[node name="ListContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/ScrollContainer"]
+[node name="ListContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control2" type="Control" parent="CanvasLayer/VBoxContainer"]
+[node name="Control2" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="TopPn" type="Control" parent="CanvasLayer"]
+[node name="TopPn" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 100)
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 100.0
 grow_horizontal = 2
 
-[node name="BackBtn" type="Button" parent="CanvasLayer/TopPn"]
+[node name="BackBtn" type="Button" parent="TopPn"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 25.0
@@ -103,7 +109,7 @@ offset_bottom = 85.0
 flat = true
 script = ExtResource("3_jpf4c")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopPn/BackBtn"]
+[node name="TextureRect" type="TextureRect" parent="TopPn/BackBtn"]
 modulate = Color(1, 1, 1, 0.428)
 layout_mode = 1
 anchors_preset = 8
@@ -120,7 +126,7 @@ grow_vertical = 2
 texture = ExtResource("3_ssykr")
 expand_mode = 1
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/TopPn"]
+[node name="LineEdit" type="LineEdit" parent="TopPn"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = -1
@@ -145,7 +151,7 @@ virtual_keyboard_type = 2
 right_icon = ExtResource("5_gto5b")
 metadata/_edit_use_anchors_ = true
 
-[node name="RequestBtn" type="Button" parent="CanvasLayer/TopPn"]
+[node name="RequestBtn" type="Button" parent="TopPn"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 1
 anchors_preset = 6
@@ -162,7 +168,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("3_jpf4c")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopPn/RequestBtn"]
+[node name="TextureRect" type="TextureRect" parent="TopPn/RequestBtn"]
 modulate = Color(0.910714, 0.910714, 0.910714, 0.704)
 layout_mode = 1
 anchors_preset = 8
@@ -179,7 +185,7 @@ grow_vertical = 2
 texture = ExtResource("12_1onhq")
 expand_mode = 1
 
-[node name="RequestDot" type="TextureRect" parent="CanvasLayer/TopPn/RequestBtn"]
+[node name="RequestDot" type="TextureRect" parent="TopPn/RequestBtn"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 0
 offset_left = 1.0
@@ -189,7 +195,7 @@ offset_bottom = 67.0
 texture = ExtResource("8_kp8m7")
 expand_mode = 1
 
-[node name="RequestNumberLb" type="Label" parent="CanvasLayer/TopPn/RequestBtn/RequestDot"]
+[node name="RequestNumberLb" type="Label" parent="TopPn/RequestBtn/RequestDot"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -208,6 +214,6 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/TopPn/BackBtn" to="." method="_back_to_lobby"]
-[connection signal="text_submitted" from="CanvasLayer/TopPn/LineEdit" to="." method="_on_line_edit_text_submitted"]
-[connection signal="pressed" from="CanvasLayer/TopPn/RequestBtn" to="." method="_open_requests"]
+[connection signal="pressed" from="TopPn/BackBtn" to="." method="_back_to_lobby"]
+[connection signal="text_submitted" from="TopPn/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="TopPn/RequestBtn" to="." method="_open_requests"]

@@ -19,6 +19,9 @@ var my_team_id
 var gold_result_lb = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
+func on_show():
+	self.visible = true
 	if g.v.app_version.is_in_review():
 		gold_result_lb_lose.visible = false
 		gold_result_lb_win.visible = false
@@ -120,7 +123,7 @@ func _click_continue_play():
 
 	
 func _process_continue():
-	queue_free()
+	self.visible = false
 	
 	# continue play
 	var scene = g.v.scene_manager.get_current_scene()
@@ -133,6 +136,7 @@ func _process_continue():
 		else:
 			g.admob_mgr._on_interstitial_pressed()
 func _click_exit_game():
+	self.visible = false
 	g.v.game_manager.send_register_leave_game()
 	g.admob_mgr._on_reward_pressed()
 	pass

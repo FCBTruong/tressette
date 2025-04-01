@@ -9,20 +9,27 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx2ms"]
 bg_color = Color(0.160262, 0.175383, 0.269186, 1)
 
-[node name="BetDetailGui" type="Node2D"]
+[node name="BetDetailGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_hek8f")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPn" type="ColorRect" parent="CanvasLayer"]
+[node name="MainPn" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(700, 400)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -36,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.679899, 0.464913, 0.185688, 1)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +53,7 @@ grow_vertical = 2
 texture = ExtResource("2_bi0qm")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn"]
+[node name="Label" type="Label" parent="MainPn"]
 self_modulate = Color(1, 0.714552, 0.421082, 1)
 layout_mode = 1
 anchors_preset = 5
@@ -62,7 +69,7 @@ theme_override_font_sizes/font_size = 30
 text = "POT & AMOUNT"
 uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPn"]
 custom_minimum_size = Vector2(380, 160)
 layout_mode = 1
 anchors_preset = 8
@@ -78,7 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="Label" type="Label" parent="MainPn/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -87,7 +94,7 @@ theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_1"
 autowrap_mode = 3
 
-[node name="Label3" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="Label3" type="Label" parent="MainPn/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -96,7 +103,7 @@ theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_2"
 autowrap_mode = 3
 
-[node name="Label4" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
+[node name="Label4" type="Label" parent="MainPn/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.842)
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -105,7 +112,7 @@ theme_override_font_sizes/font_size = 21
 text = "BET_EXPLAIN_3"
 autowrap_mode = 3
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="CloseBtn" type="Button" parent="MainPn"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 1
 anchors_preset = 7
@@ -122,7 +129,7 @@ grow_vertical = 0
 flat = true
 script = ExtResource("4_3wv1l")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/CloseBtn"]
+[node name="Panel" type="Panel" parent="MainPn/CloseBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,7 +139,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fx2ms")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/CloseBtn/Panel"]
+[node name="Label" type="Label" parent="MainPn/CloseBtn/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,4 +159,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]

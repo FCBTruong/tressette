@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 # Radius of the main circle
 @export var main_circle_radius: float = 40.0

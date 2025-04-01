@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var load_bar: ProgressBar = find_child('LoadBar')  # Ensure your loading bar node is named 'LoadBar'
 @onready var loading_timer: Timer = Timer.new()  # Timer to simulate loading progress

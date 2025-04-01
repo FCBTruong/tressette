@@ -8,14 +8,19 @@
 shader = ExtResource("2_2402w")
 shader_parameter/blur_amount = 3.0
 
-[node name="WaitingGui" type="Node2D"]
+[node name="WaitingGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_w6b64")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 128
-
-[node name="Blur" type="ColorRect" parent="CanvasLayer"]
+[node name="Blur" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_u54gp")
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,7 +28,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Circle" type="TextureRect" parent="CanvasLayer"]
+[node name="Circle" type="TextureRect" parent="."]
 visible = false
 self_modulate = Color(0.236939, 1, 0.825749, 1)
 offset_left = 145.0
@@ -41,8 +47,8 @@ offset_bottom = 125.0
 texture = ExtResource("3_1iggc")
 expand_mode = 1
 
-[node name="Center" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="Center" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

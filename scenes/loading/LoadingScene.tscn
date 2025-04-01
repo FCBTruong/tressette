@@ -17,13 +17,17 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 
-[node name="LoadingScene" type="Node2D"]
+[node name="LoadingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_64x5r")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,7 +36,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,13 +47,14 @@ texture = ExtResource("2_bgxl0")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="LoadBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="LoadBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1.0
+offset_top = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 # Called when the node enters the scene tree for the first time.
@@ -37,7 +37,7 @@ func _ready() -> void:
 		g.v.scene_manager.show_dialog(
 			str_startup,
 			func ():
-				var gui = g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn")
+				var gui = g.v.game_manager.open_guide_gui()
 				gui.is_quick_play = true
 				,
 			func ():
@@ -160,8 +160,7 @@ func _click_nofriend_btn():
 	g.v.scene_manager.switch_scene("res://scenes/FriendScene.tscn")
 	
 func _click_guide_btn():
-	g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn")
-
+	g.v.game_manager.open_guide_gui()
 
 func _click_open_appstore():
 	OS.shell_open('https://apps.apple.com/us/app/tressette-royal/id6741761784')

@@ -26,30 +26,37 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="FirstBuyGui" type="Node2D"]
-script = ExtResource("1_8ta2g")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Fog" type="ColorRect" parent="CanvasLayer"]
+[node name="FirstBuyGui" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.6)
+script = ExtResource("1_8ta2g")
 
-[node name="Main" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="Fog" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.687)
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Main"]
+[node name="Panel" type="Panel" parent="Main"]
 clip_children = 2
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 1
@@ -66,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ewkb6")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Main/Panel"]
+[node name="TextureRect" type="TextureRect" parent="Main/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,7 +83,7 @@ grow_vertical = 2
 texture = ExtResource("3_5riyn")
 expand_mode = 1
 
-[node name="BuyBtn" type="Button" parent="CanvasLayer/Main"]
+[node name="BuyBtn" type="Button" parent="Main"]
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 1
 anchors_preset = 8
@@ -93,7 +100,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("2_7rpsx")
 
-[node name="BuyPnEff" type="Panel" parent="CanvasLayer/Main/BuyBtn"]
+[node name="BuyPnEff" type="Panel" parent="Main/BuyBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,7 +114,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vo5yy")
 
-[node name="PriceLb" type="Label" parent="CanvasLayer/Main/BuyBtn/BuyPnEff"]
+[node name="PriceLb" type="Label" parent="Main/BuyBtn/BuyPnEff"]
 self_modulate = Color(1, 1, 1, 0.934)
 layout_mode = 1
 anchors_preset = 8
@@ -127,7 +134,7 @@ text = "5 EURO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/Main"]
+[node name="CloseBtn" type="Button" parent="Main"]
 custom_minimum_size = Vector2(50, 50)
 offset_left = 185.0
 offset_top = -243.0
@@ -136,7 +143,7 @@ offset_bottom = -193.0
 flat = true
 script = ExtResource("2_7rpsx")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Main/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="Main/CloseBtn"]
 self_modulate = Color(0.869982, 0.100286, 0.100286, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -153,5 +160,5 @@ grow_vertical = 2
 texture = ExtResource("2_jpvyo")
 expand_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/Main/BuyBtn" to="." method="purchase"]
-[connection signal="pressed" from="CanvasLayer/Main/CloseBtn" to="." method="on_close"]
+[connection signal="pressed" from="Main/BuyBtn" to="." method="purchase"]
+[connection signal="pressed" from="Main/CloseBtn" to="." method="on_close"]

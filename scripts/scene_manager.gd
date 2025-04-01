@@ -18,12 +18,20 @@ var _cur_scene = null
 var scene_nodes = {}
 
 var is_in_root = false
+var layer_gui: CanvasLayer
 # Called when the node enters the scene tree for the first time.
+
+const LAYER_INDEX = {
+	GUI = 10
+}
+
 func on_ready() -> void:
 	print("Loaded lobby scene aaaaa")
 	is_in_root = true
 	_cur_scene = ROOT.get_tree().current_scene
-	pass
+	layer_gui = CanvasLayer.new()
+	layer_gui.layer = LAYER_INDEX.GUI
+	ROOT.get_tree().root.add_child(layer_gui)
 
 # Function to switch scenes
 func switch_scene(new_scene_path: String) -> void:
@@ -39,11 +47,14 @@ func switch_scene(new_scene_path: String) -> void:
 		scene = load(new_scene_path)
 		scene_nodes[new_scene_path] = scene
 		
+	is_in_root = false
+	var new_scene = scene.instantiate()
+	ROOT.get_tree().root.add_child(new_scene)
+	
 	if is_instance_valid(_cur_scene) and not is_in_root:
 		_cur_scene.queue_free()
-	is_in_root = false
-	_cur_scene = scene.instantiate()
-	ROOT.get_tree().root.add_child(_cur_scene)
+		
+	_cur_scene = new_scene
 	print("Loaded scene:", new_scene_path)
 		
 	if g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE:
@@ -59,29 +70,30 @@ var gui_nodes = {}
 var gui_caches = {}
 func open_gui(gui_path: String, cache=false):
 	print('open gui: ....', gui_path)
-	var current_scene = self.get_current_scene()
-	if current_scene:
-		var gui
-		if gui_nodes.has(gui_path):
-			gui = gui_nodes[gui_path]
-		else:
-			gui = load(gui_path)
-			gui_nodes[gui_path] = gui
-		var popup_instance
-		if cache and gui_caches.has(gui_path):
-			popup_instance = gui_caches[gui_path]
-			if is_instance_valid(popup_instance):
-				popup_instance.visible = true
-				return gui_caches[gui_path]
-		
-		popup_instance = gui.instantiate()
-		current_scene.add_child(popup_instance, 1)
-		if cache:
-			gui_caches[gui_path] = popup_instance
-		return popup_instance
+
+	var gui
+	if gui_nodes.has(gui_path):
+		gui = gui_nodes[gui_path]
 	else:
-		print("Current Scene is null ", gui_path)
-	return null
+		gui = load(gui_path)
+		gui_nodes[gui_path] = gui
+		
+	var popup_instance
+	if cache and gui_caches.has(gui_path):
+		popup_instance = gui_caches[gui_path]
+		if is_instance_valid(popup_instance):
+			if popup_instance.has_method("on_show"):
+				popup_instance.on_show()
+			return gui_caches[gui_path]
+		
+	popup_instance = gui.instantiate()
+	layer_gui.add_child(popup_instance, 1)
+	if cache:
+		gui_caches[gui_path] = popup_instance
+	if popup_instance.has_method("on_show"):
+		popup_instance.on_show()
+	return popup_instance
+
 
 func get_current_scene():
 	if not _cur_scene:

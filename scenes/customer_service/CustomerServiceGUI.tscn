@@ -25,12 +25,18 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="CustomerServiceGui" type="Node2D"]
+[node name="CustomerServiceGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_skaxo")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,9 +44,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_quive")
 
-[node name="MainPn" type="Control" parent="CanvasLayer"]
+[node name="MainPn" type="Control" parent="."]
 custom_minimum_size = Vector2(600, 400)
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -56,7 +62,7 @@ pivot_offset = Vector2(300, 200)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn"]
+[node name="Panel" type="Panel" parent="MainPn"]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -66,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ltcpe")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/Panel"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,7 +82,7 @@ grow_vertical = 2
 texture = ExtResource("2_5ljjh")
 expand_mode = 1
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="CloseBtn" type="Button" parent="MainPn"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 13.0
@@ -85,7 +91,7 @@ offset_bottom = 58.0
 flat = true
 script = ExtResource("4_pj2rb")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
 self_modulate = Color(1, 1, 1, 0.707)
 layout_mode = 1
 anchors_preset = 8
@@ -102,7 +108,7 @@ grow_vertical = 2
 texture = ExtResource("5_uxelo")
 expand_mode = 1
 
-[node name="Content" type="Control" parent="CanvasLayer/MainPn"]
+[node name="Content" type="Control" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,7 +117,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/Content"]
+[node name="Label" type="Label" parent="MainPn/Content"]
 modulate = Color(1, 0.639, 0.368, 0.97)
 layout_mode = 1
 anchors_preset = 5
@@ -128,7 +134,7 @@ text = "CUSTOMER_SUPPORT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SendBtn" type="Button" parent="CanvasLayer/MainPn/Content"]
+[node name="SendBtn" type="Button" parent="MainPn/Content"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = 7
@@ -145,7 +151,7 @@ grow_vertical = 0
 flat = true
 script = ExtResource("4_pj2rb")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/Content/SendBtn"]
+[node name="Panel" type="Panel" parent="MainPn/Content/SendBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,7 +161,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oi6kh")
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/Content/SendBtn/Panel"]
+[node name="Label" type="Label" parent="MainPn/Content/SendBtn/Panel"]
 modulate = Color(1, 1, 1, 0.783)
 layout_mode = 1
 anchors_preset = 8
@@ -176,7 +182,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ReceivedLb" type="Label" parent="CanvasLayer/MainPn/Content"]
+[node name="ReceivedLb" type="Label" parent="MainPn/Content"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -198,7 +204,7 @@ We’ve received your message and will work on it soon"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer/MainPn/Content"]
+[node name="TextEdit" type="TextEdit" parent="MainPn/Content"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -216,7 +222,7 @@ theme_override_font_sizes/font_size = 20
 placeholder_text = "PLEASE_DESCRIBE_ISSUE"
 wrap_mode = 1
 
-[node name="SentPn" type="Control" parent="CanvasLayer/MainPn"]
+[node name="SentPn" type="Control" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,7 +231,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn/SentPn"]
+[node name="Label" type="Label" parent="MainPn/SentPn"]
 self_modulate = Color(1, 1, 1, 0.717)
 layout_mode = 1
 anchors_preset = 8
@@ -246,7 +252,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="FbBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="FbBtn" type="Button" parent="MainPn"]
 layout_mode = 0
 offset_left = 522.0
 offset_top = 336.0
@@ -255,7 +261,7 @@ offset_bottom = 386.0
 flat = true
 script = ExtResource("4_pj2rb")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/FbBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/FbBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -271,6 +277,6 @@ grow_vertical = 2
 texture = ExtResource("7_gs3jo")
 expand_mode = 1
 
-[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
-[connection signal="pressed" from="CanvasLayer/MainPn/Content/SendBtn" to="." method="_click_send"]
-[connection signal="pressed" from="CanvasLayer/MainPn/FbBtn" to="." method="click_fb_fanpage"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="MainPn/Content/SendBtn" to="." method="_click_send"]
+[connection signal="pressed" from="MainPn/FbBtn" to="." method="click_fb_fanpage"]

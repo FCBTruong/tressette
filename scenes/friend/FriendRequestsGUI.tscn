@@ -12,19 +12,25 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="FriendRequestsGui" type="Node2D"]
+[node name="FriendRequestsGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_4tq2x")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Fog" type="Panel" parent="CanvasLayer"]
+[node name="Fog" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPn" type="Panel" parent="CanvasLayer"]
+[node name="MainPn" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,7 +45,7 @@ grow_vertical = 2
 pivot_offset = Vector2(400, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_g05vm")
 
-[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+[node name="CloseBtn" type="Button" parent="MainPn"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 7.0
@@ -48,7 +54,7 @@ offset_bottom = 57.0
 flat = true
 script = ExtResource("2_thc1y")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
 self_modulate = Color(0.893742, 0.890638, 0.890638, 0.744)
 layout_mode = 1
 anchors_preset = 8
@@ -65,7 +71,7 @@ grow_vertical = 2
 texture = ExtResource("2_w4k6p")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/MainPn"]
+[node name="Label" type="Label" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -81,7 +87,7 @@ theme_override_font_sizes/font_size = 30
 text = "REQUESTS"
 uppercase = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MainPn"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -92,8 +98,8 @@ offset_right = 260.0
 offset_bottom = 394.0
 grow_horizontal = 2
 
-[node name="ListContainer" type="VBoxContainer" parent="CanvasLayer/MainPn/ScrollContainer"]
+[node name="ListContainer" type="VBoxContainer" parent="MainPn/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]

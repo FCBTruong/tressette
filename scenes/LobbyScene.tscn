@@ -204,22 +204,16 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hal5k"]
 bg_color = Color(0.0117647, 0.168627, 0.290196, 1)
 
-[node name="LobbyScene" type="Node2D"]
-script = ExtResource("1_wigpx")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="LobbyScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+script = ExtResource("1_wigpx")
 
-[node name="Background" type="TextureRect" parent="CanvasLayer/Control"]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -234,7 +228,7 @@ texture = ExtResource("2_4au8t")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="PlayContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="PlayContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -250,13 +244,13 @@ grow_vertical = 2
 pivot_offset = Vector2(165, 190)
 mouse_filter = 2
 
-[node name="StartBtn" type="Button" parent="CanvasLayer/Control/PlayContainer"]
+[node name="StartBtn" type="Button" parent="PlayContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
+[node name="Panel" type="Panel" parent="PlayContainer/StartBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -266,7 +260,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_infkq")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
+[node name="Label" type="Label" parent="PlayContainer/StartBtn"]
 modulate = Color(1, 1, 1, 0.812)
 layout_mode = 1
 anchors_preset = 7
@@ -285,7 +279,7 @@ text = "PLAY_NOW"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control2" type="Control" parent="CanvasLayer/Control/PlayContainer/StartBtn"]
+[node name="Control2" type="Control" parent="PlayContainer/StartBtn"]
 layout_mode = 2
 anchors_preset = 0
 offset_left = 128.0
@@ -294,7 +288,7 @@ offset_right = 128.0
 offset_bottom = -22.0
 mouse_filter = 2
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/StartBtn/Control2"]
+[node name="TextureRect2" type="TextureRect" parent="PlayContainer/StartBtn/Control2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -312,7 +306,7 @@ pivot_offset = Vector2(70, 100)
 texture = ExtResource("6_514yr")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/StartBtn/Control2"]
+[node name="TextureRect3" type="TextureRect" parent="PlayContainer/StartBtn/Control2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -330,7 +324,7 @@ pivot_offset = Vector2(0, 100)
 texture = ExtResource("7_fjgxk")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/StartBtn/Control2"]
+[node name="TextureRect" type="TextureRect" parent="PlayContainer/StartBtn/Control2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -347,22 +341,22 @@ pivot_offset = Vector2(35, 100)
 texture = ExtResource("5_pl242")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Control/PlayContainer/StartBtn/Control2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayContainer/StartBtn/Control2"]
 libraries = {
 "": SubResource("AnimationLibrary_ysekw")
 }
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/PlayContainer"]
+[node name="Control" type="Control" parent="PlayContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="RoomsBtn" type="Button" parent="CanvasLayer/Control/PlayContainer"]
+[node name="RoomsBtn" type="Button" parent="PlayContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/PlayContainer/RoomsBtn"]
+[node name="Panel" type="Panel" parent="PlayContainer/RoomsBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,7 +366,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_reuhb")
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/PlayContainer/RoomsBtn"]
+[node name="Label2" type="Label" parent="PlayContainer/RoomsBtn"]
 modulate = Color(1, 1, 1, 0.812)
 layout_mode = 1
 anchors_preset = 7
@@ -391,7 +385,7 @@ text = "ROOMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D2" type="TextureRect" parent="CanvasLayer/Control/PlayContainer/RoomsBtn"]
+[node name="Sprite2D2" type="TextureRect" parent="PlayContainer/RoomsBtn"]
 modulate = Color(1, 1, 1, 0.717)
 layout_mode = 1
 anchors_preset = 8
@@ -408,11 +402,11 @@ grow_vertical = 2
 texture = ExtResource("7_en482")
 expand_mode = 1
 
-[node name="CardContainer3" type="Control" parent="CanvasLayer/Control/PlayContainer"]
+[node name="CardContainer3" type="Control" parent="PlayContainer"]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="CardContainer3" type="Control" parent="CanvasLayer/Control/PlayContainer/CardContainer3"]
+[node name="CardContainer3" type="Control" parent="PlayContainer/CardContainer3"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 36.0
@@ -422,7 +416,7 @@ offset_bottom = 329.0
 pivot_offset = Vector2(70, 0)
 mouse_filter = 1
 
-[node name="CardContainer3" type="Control" parent="CanvasLayer/Control/PlayContainer/CardContainer3/CardContainer3"]
+[node name="CardContainer3" type="Control" parent="PlayContainer/CardContainer3/CardContainer3"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 36.0
@@ -432,7 +426,7 @@ offset_bottom = 329.0
 pivot_offset = Vector2(70, 0)
 mouse_filter = 1
 
-[node name="CardContainer3" type="Control" parent="CanvasLayer/Control/PlayContainer/CardContainer3/CardContainer3/CardContainer3"]
+[node name="CardContainer3" type="Control" parent="PlayContainer/CardContainer3/CardContainer3/CardContainer3"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 36.0
@@ -442,7 +436,7 @@ offset_bottom = 329.0
 pivot_offset = Vector2(70, 0)
 mouse_filter = 1
 
-[node name="RightTopPanel" type="Panel" parent="CanvasLayer/Control"]
+[node name="RightTopPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.933333
@@ -455,7 +449,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_22e1k")
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/RightTopPanel"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="RightTopPanel"]
 layout_direction = 3
 layout_mode = 1
 anchors_preset = 15
@@ -465,13 +459,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="SettingBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
+[node name="SettingBtn" type="Button" parent="RightTopPanel/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn"]
+[node name="Panel" type="Panel" parent="RightTopPanel/HBoxContainer2/SettingBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -486,7 +480,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn"]
+[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer2/SettingBtn"]
 self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
@@ -503,13 +497,13 @@ grow_vertical = 2
 texture = ExtResource("6_vby4e")
 expand_mode = 1
 
-[node name="SupportBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
+[node name="SupportBtn" type="Button" parent="RightTopPanel/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn"]
+[node name="Panel" type="Panel" parent="RightTopPanel/HBoxContainer2/SupportBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -524,7 +518,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn"]
+[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer2/SupportBtn"]
 self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
@@ -541,13 +535,13 @@ grow_vertical = 2
 texture = ExtResource("7_48niu")
 expand_mode = 1
 
-[node name="GuideBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2"]
+[node name="GuideBtn" type="Button" parent="RightTopPanel/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/GuideBtn"]
+[node name="Panel" type="Panel" parent="RightTopPanel/HBoxContainer2/GuideBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -562,7 +556,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/HBoxContainer2/GuideBtn"]
+[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer2/GuideBtn"]
 self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
@@ -579,7 +573,7 @@ grow_vertical = 2
 texture = ExtResource("9_fym06")
 expand_mode = 1
 
-[node name="LeaderboardBtn" type="Button" parent="CanvasLayer/Control/RightTopPanel"]
+[node name="LeaderboardBtn" type="Button" parent="RightTopPanel"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 0
 offset_left = -121.0
@@ -589,7 +583,7 @@ offset_bottom = 92.0
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/RightTopPanel/LeaderboardBtn"]
+[node name="TextureRect" type="TextureRect" parent="RightTopPanel/LeaderboardBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -599,7 +593,7 @@ grow_vertical = 2
 texture = ExtResource("12_hwrjc")
 expand_mode = 1
 
-[node name="LeftPanel" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="LeftPanel" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -608,12 +602,12 @@ offset_right = 400.0
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/Control/LeftPanel"]
+[node name="Panel2" type="Panel" parent="LeftPanel"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rqssi")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/Panel2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LeftPanel/Panel2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -622,13 +616,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="MissionBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+[node name="MissionBtn" type="Button" parent="LeftPanel/Panel2/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/MissionBtn"]
+[node name="Panel" type="Panel" parent="LeftPanel/Panel2/HBoxContainer/MissionBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -643,7 +637,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/MissionBtn"]
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/Panel2/HBoxContainer/MissionBtn"]
 self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
@@ -660,13 +654,13 @@ grow_vertical = 2
 texture = ExtResource("8_p6t30")
 expand_mode = 1
 
-[node name="FriendBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+[node name="FriendBtn" type="Button" parent="LeftPanel/Panel2/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
+[node name="Panel" type="Panel" parent="LeftPanel/Panel2/HBoxContainer/FriendBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -681,7 +675,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/Panel2/HBoxContainer/FriendBtn"]
 self_modulate = Color(1, 1, 1, 0.793)
 layout_mode = 1
 anchors_preset = 8
@@ -698,7 +692,7 @@ grow_vertical = 2
 texture = ExtResource("7_l35oy")
 expand_mode = 1
 
-[node name="ImgHot" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn"]
+[node name="ImgHot" type="TextureRect" parent="LeftPanel/Panel2/HBoxContainer/FriendBtn"]
 self_modulate = Color(1, 0.233651, 0.233651, 1)
 layout_mode = 0
 offset_left = 65.0
@@ -708,13 +702,13 @@ offset_bottom = 35.0
 texture = ExtResource("11_pgu6f")
 expand_mode = 1
 
-[node name="ShopBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+[node name="ShopBtn" type="Button" parent="LeftPanel/Panel2/HBoxContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
+[node name="Panel2" type="Panel" parent="LeftPanel/Panel2/HBoxContainer/ShopBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -729,7 +723,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjmth")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn"]
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/Panel2/HBoxContainer/ShopBtn"]
 self_modulate = Color(1, 0.986236, 0.828826, 1)
 material = SubResource("ShaderMaterial_of3oq")
 layout_mode = 1
@@ -747,13 +741,13 @@ grow_vertical = 2
 texture = ExtResource("6_ccwgc")
 expand_mode = 1
 
-[node name="Button3" type="Button" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer"]
+[node name="Button3" type="Button" parent="LeftPanel/Panel2/HBoxContainer"]
 visible = false
 modulate = Color(0.737255, 0.74902, 0.780392, 1)
 layout_mode = 2
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3"]
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/Panel2/HBoxContainer/Button3"]
 self_modulate = Color(1, 1, 1, 0.9)
 layout_mode = 1
 anchors_preset = 8
@@ -769,7 +763,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_bavc2")
 
-[node name="ProfileLb" type="Label" parent="CanvasLayer/Control/LeftPanel"]
+[node name="ProfileLb" type="Label" parent="LeftPanel"]
 modulate = Color(1, 1, 1, 0.816)
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
@@ -778,24 +772,24 @@ theme_override_font_sizes/font_size = 24
 text = "PROFILE"
 vertical_alignment = 2
 
-[node name="UserInfoPn" type="Panel" parent="CanvasLayer/Control/LeftPanel"]
+[node name="UserInfoPn" type="Panel" parent="LeftPanel"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wv6aw")
 
-[node name="PanelInfo" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/UserInfoPn"]
+[node name="PanelInfo" type="HBoxContainer" parent="LeftPanel/UserInfoPn"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 offset_right = 350.0
 offset_bottom = 100.0
 
-[node name="AvatarBtn" type="Button" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
+[node name="AvatarBtn" type="Button" parent="LeftPanel/UserInfoPn/PanelInfo"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 8
@@ -812,7 +806,7 @@ grow_vertical = 2
 texture = ExtResource("11_pgu6f")
 expand_mode = 1
 
-[node name="Avatar" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn/TextureRect"]
+[node name="Avatar" type="TextureRect" parent="LeftPanel/UserInfoPn/PanelInfo/AvatarBtn/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -823,7 +817,7 @@ texture = ExtResource("4_cni6g")
 expand_mode = 1
 script = ExtResource("15_yoog2")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
+[node name="TextureRect2" type="TextureRect" parent="LeftPanel/UserInfoPn/PanelInfo/AvatarBtn"]
 self_modulate = Color(0.114748, 0.15931, 0.371015, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -840,36 +834,36 @@ grow_vertical = 2
 texture = ExtResource("18_wn24e")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
+[node name="Control" type="Control" parent="LeftPanel/UserInfoPn/PanelInfo"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel/UserInfoPn/PanelInfo"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
+[node name="Control" type="Control" parent="LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="NameLb" type="Label" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
+[node name="NameLb" type="Label" parent="LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 26
 text = "Nguyen Huy Truong"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LeftPanel/UserInfoPn/PanelInfo/VBoxContainer"]
 layout_mode = 2
 
-[node name="GoldLb" type="Label" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer/HBoxContainer"]
+[node name="GoldLb" type="Label" parent="LeftPanel/UserInfoPn/PanelInfo/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 26
 text = "100"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/UserInfoPn/PanelInfo/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -878,7 +872,7 @@ texture = ExtResource("18_mdwpl")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="FriendsLb" type="Label" parent="CanvasLayer/Control/LeftPanel"]
+[node name="FriendsLb" type="Label" parent="LeftPanel"]
 modulate = Color(1, 1, 1, 0.816)
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
@@ -887,18 +881,18 @@ theme_override_font_sizes/font_size = 24
 text = "FRIENDS"
 vertical_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel"]
 custom_minimum_size = Vector2(350, 300)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/VBoxContainer"]
+[node name="Panel" type="Panel" parent="LeftPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_w6i40")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -908,27 +902,27 @@ offset_right = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control2" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+[node name="Control2" type="Control" parent="LeftPanel/VBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="LeftPanel/VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 vertical_scroll_mode = 3
 
-[node name="LobbyFriendList" type="VBoxContainer" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer"]
+[node name="LobbyFriendList" type="VBoxContainer" parent="LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="NofriendBtn" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList"]
+[node name="NofriendBtn" type="Control" parent="LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn"]
+[node name="Button" type="Button" parent="LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -945,7 +939,7 @@ flat = true
 script = ExtResource("3_x7pan")
 zoom_scale = Vector2(0.95, 0.95)
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button"]
+[node name="Panel" type="Panel" parent="LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -955,7 +949,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x2vqb")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button"]
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button"]
 self_modulate = Color(1, 1, 1, 0.401)
 layout_mode = 1
 anchors_preset = 8
@@ -973,11 +967,11 @@ mouse_filter = 2
 texture = ExtResource("19_orflg")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer"]
+[node name="Control" type="Control" parent="LeftPanel/VBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="BottomRight" type="Control" parent="CanvasLayer/Control"]
+[node name="BottomRight" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -989,7 +983,7 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="MobileWebPn" type="Control" parent="CanvasLayer/Control/BottomRight"]
+[node name="MobileWebPn" type="Control" parent="BottomRight"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1002,7 +996,7 @@ grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(200, 80)
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/BottomRight/MobileWebPn"]
+[node name="Panel" type="Panel" parent="BottomRight/MobileWebPn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1011,7 +1005,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hal5k")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/BottomRight/MobileWebPn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BottomRight/MobileWebPn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1021,13 +1015,13 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ChplayBtn" type="Button" parent="CanvasLayer/Control/BottomRight/MobileWebPn/HBoxContainer"]
+[node name="ChplayBtn" type="Button" parent="BottomRight/MobileWebPn/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/BottomRight/MobileWebPn/HBoxContainer/ChplayBtn"]
+[node name="TextureRect" type="TextureRect" parent="BottomRight/MobileWebPn/HBoxContainer/ChplayBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1043,13 +1037,13 @@ grow_vertical = 2
 texture = ExtResource("25_f38q8")
 expand_mode = 1
 
-[node name="AppstoreBtn" type="Button" parent="CanvasLayer/Control/BottomRight/MobileWebPn/HBoxContainer"]
+[node name="AppstoreBtn" type="Button" parent="BottomRight/MobileWebPn/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/BottomRight/MobileWebPn/HBoxContainer/AppstoreBtn"]
+[node name="TextureRect" type="TextureRect" parent="BottomRight/MobileWebPn/HBoxContainer/AppstoreBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1065,7 +1059,7 @@ grow_vertical = 2
 texture = ExtResource("26_p24wg")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/BottomRight/MobileWebPn"]
+[node name="Label" type="Label" parent="BottomRight/MobileWebPn"]
 layout_mode = 0
 offset_left = -131.0
 offset_top = 28.0
@@ -1075,17 +1069,17 @@ theme_override_fonts/font = ExtResource("14_wid5y")
 theme_override_font_sizes/font_size = 22
 text = "DOWNLOAD"
 
-[connection signal="pressed" from="CanvasLayer/Control/PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/PlayContainer/RoomsBtn" to="." method="_open_tables_scene"]
-[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
-[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
-[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/HBoxContainer2/GuideBtn" to="." method="_click_guide_btn"]
-[connection signal="pressed" from="CanvasLayer/Control/RightTopPanel/LeaderboardBtn" to="." method="_click_ranking"]
-[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/MissionBtn" to="." method="_click_mission_btn"]
-[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/FriendBtn" to="." method="_open_friend_gui"]
-[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/ShopBtn" to="." method="open_shop"]
-[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/Panel2/HBoxContainer/Button3" to="." method="_open_mail_gui"]
-[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/UserInfoPn/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]
-[connection signal="pressed" from="CanvasLayer/Control/LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button" to="." method="_click_nofriend_btn"]
-[connection signal="pressed" from="CanvasLayer/Control/BottomRight/MobileWebPn/HBoxContainer/ChplayBtn" to="." method="_click_open_chplay"]
-[connection signal="pressed" from="CanvasLayer/Control/BottomRight/MobileWebPn/HBoxContainer/AppstoreBtn" to="." method="_click_open_appstore"]
+[connection signal="pressed" from="PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="PlayContainer/RoomsBtn" to="." method="_open_tables_scene"]
+[connection signal="pressed" from="RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
+[connection signal="pressed" from="RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
+[connection signal="pressed" from="RightTopPanel/HBoxContainer2/GuideBtn" to="." method="_click_guide_btn"]
+[connection signal="pressed" from="RightTopPanel/LeaderboardBtn" to="." method="_click_ranking"]
+[connection signal="pressed" from="LeftPanel/Panel2/HBoxContainer/MissionBtn" to="." method="_click_mission_btn"]
+[connection signal="pressed" from="LeftPanel/Panel2/HBoxContainer/FriendBtn" to="." method="_open_friend_gui"]
+[connection signal="pressed" from="LeftPanel/Panel2/HBoxContainer/ShopBtn" to="." method="open_shop"]
+[connection signal="pressed" from="LeftPanel/Panel2/HBoxContainer/Button3" to="." method="_open_mail_gui"]
+[connection signal="pressed" from="LeftPanel/UserInfoPn/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]
+[connection signal="pressed" from="LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button" to="." method="_click_nofriend_btn"]
+[connection signal="pressed" from="BottomRight/MobileWebPn/HBoxContainer/ChplayBtn" to="." method="_click_open_chplay"]
+[connection signal="pressed" from="BottomRight/MobileWebPn/HBoxContainer/AppstoreBtn" to="." method="_click_open_appstore"]
