@@ -987,7 +987,7 @@ func _on_back_btn_pressed() -> void:
 		g.v.game_manager.send_register_leave_game()
 
 func _open_settings_gui() -> void:
-	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn", true)
+	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn")
 
 func _open_guide_gui() -> void:
 	g.v.game_manager.open_guide_gui()

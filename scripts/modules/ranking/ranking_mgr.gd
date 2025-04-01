@@ -58,20 +58,15 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 		g.v.game_constants.CMDs.RANKING_CLAIM_REWARD:
 			pass
 
-var rank_results = []
 func on_received_ranking_result(payload):
-	rank_results.append(payload)
-	
-func show_rank_result():
-	var payload = rank_results.pop_front()
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RankingResult.new()
 	var result_code = pkg.from_bytes(payload)
 	var season_id = pkg.get_season_id()
 	var rank = pkg.get_rank()
 	var gold_reward = pkg.get_gold_reward()
 	
-	var gui = g.v.scene_manager.open_gui("res://scenes/ranking/RankingResult.tscn")
-	gui.set_info(season_id, rank, gold_reward)
+	g.v.popup_mgr.add_popup("res://scenes/ranking/RankingResult.tscn", "set_info", [season_id, rank, gold_reward])
+	
 
 func check_and_update():
 	var interval = g.v.game_manager.get_timestamp_client() - last_time_received
