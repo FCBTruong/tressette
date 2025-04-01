@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Texture2D" uid="uid://ceyy7y3k4olhi" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="3_f4vbo"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="4_4wqb5"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_b03ik"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_umvqn"]
@@ -194,7 +194,6 @@ flat = true
 script = ExtResource("11_eoxhy")
 
 [node name="TextureRect" type="TextureRect" parent="Control/MainPn/HeadPn/CloseBtn"]
-self_modulate = Color(0.930762, 0.945953, 1, 0.724)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -208,7 +207,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_f4vbo")
+texture = ExtResource("4_4wqb5")
 expand_mode = 1
 
 [node name="GoldBg" type="Panel" parent="Control/MainPn/HeadPn"]

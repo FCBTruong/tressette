@@ -49,9 +49,11 @@ func _ready() -> void:
 		
 		
 
-	if g.v.game_manager.is_enable_ads():
-		g.admob_mgr._on_banner_pressed()
+	#if g.v.game_manager.is_enable_ads():
+		#g.admob_mgr._on_banner_pressed()
 	
+	
+	#g.v.popup_mgr.add_popup("res://scenes/lobby/LikeFanpageGUI.tscn")
 
 	
 @onready var left_panel = find_child('LeftPanel')

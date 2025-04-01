@@ -5,8 +5,8 @@
 [ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="2_ugctg"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_icld3"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_k8eoc"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="5_1a8cq"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="6_mr2ps"]
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="7_bi8j4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwd5"]
 bg_color = Color(0, 0, 0, 0.74)
@@ -16,6 +16,7 @@ shader = ExtResource("2_ugctg")
 shader_parameter/blur_amount = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm6ps"]
+border_color = Color(0.917503, 0, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -50,6 +51,7 @@ mouse_filter = 2
 script = ExtResource("1_okwls")
 
 [node name="Panel2" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -226,7 +228,6 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="CloseBtn" type="Button" parent="MainPn"]
-modulate = Color(1, 1, 1, 0.819)
 layout_mode = 0
 offset_left = 6.5
 offset_top = 10.5
@@ -248,7 +249,7 @@ offset_right = 17.5
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_1a8cq")
+texture = ExtResource("7_bi8j4")
 expand_mode = 1
 
 [connection signal="pressed" from="MainPn/HBoxContainer/CancelBtn" to="." method="_on_close_button_pressed"]

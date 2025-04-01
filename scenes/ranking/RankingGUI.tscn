@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/modules/ranking/ranking_gui.gd" id="1_u56cx"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_f631g"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="3_iq0qg"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_3vulk"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="4_joe3n"]
 [ext_resource type="Texture2D" uid="uid://bebwgbrt25gss" path="res://assets/images/ranking/clock.png" id="6_o834j"]
@@ -14,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="11_ds1ti"]
 [ext_resource type="Texture2D" uid="uid://c87ibd7r6pw78" path="res://assets/images/ranking/medal_2.png" id="11_naqnt"]
 [ext_resource type="Texture2D" uid="uid://bijkfs3m0gpkp" path="res://assets/images/ranking/medal_3.png" id="12_y5nls"]
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="14_y5jqy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fr30"]
 bg_color = Color(0.996078, 0.854902, 0.631373, 1)
@@ -1690,22 +1690,21 @@ expand_mode = 1
 
 [node name="CloseBtn" type="Button" parent="MainPn"]
 layout_mode = 0
-offset_left = 709.0
-offset_top = 2.0
-offset_right = 759.0
-offset_bottom = 52.0
+offset_left = 666.0
+offset_top = -12.0
+offset_right = 716.0
+offset_bottom = 38.0
 flat = true
 script = ExtResource("4_3vulk")
 
 [node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
-self_modulate = Color(0.819067, 0.345041, 0.159056, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_iq0qg")
+texture = ExtResource("14_y5jqy")
 expand_mode = 1
 
 [connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]

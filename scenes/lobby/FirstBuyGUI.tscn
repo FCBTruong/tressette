@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/lobby/first_buy_gui.gd" id="1_8ta2g"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_7rpsx"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_jpvyo"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_optfb"]
 [ext_resource type="Texture2D" uid="uid://vxg7s6wcm2l1" path="res://assets/images/lobby/offer_first_buy/offer_bg.png" id="3_5riyn"]
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="5_8kxtj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewkb6"]
 bg_color = Color(1, 0.527119, 0.407929, 1)
@@ -136,15 +136,14 @@ vertical_alignment = 1
 
 [node name="CloseBtn" type="Button" parent="Main"]
 custom_minimum_size = Vector2(50, 50)
-offset_left = 185.0
-offset_top = -243.0
-offset_right = 235.0
-offset_bottom = -193.0
+offset_left = 169.0
+offset_top = -246.0
+offset_right = 219.0
+offset_bottom = -196.0
 flat = true
 script = ExtResource("2_7rpsx")
 
 [node name="TextureRect" type="TextureRect" parent="Main/CloseBtn"]
-self_modulate = Color(0.869982, 0.100286, 0.100286, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -157,7 +156,7 @@ offset_right = 25.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_jpvyo")
+texture = ExtResource("5_8kxtj")
 expand_mode = 1
 
 [connection signal="pressed" from="Main/BuyBtn" to="." method="purchase"]

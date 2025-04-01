@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_requests_gui.gd" id="1_4tq2x"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_thc1y"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_w4k6p"]
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="3_k1pnb"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_ocbit"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g05vm"]
@@ -55,7 +55,6 @@ flat = true
 script = ExtResource("2_thc1y")
 
 [node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
-self_modulate = Color(0.893742, 0.890638, 0.890638, 0.744)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -68,7 +67,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_w4k6p")
+texture = ExtResource("3_k1pnb")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="MainPn"]

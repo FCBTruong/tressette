@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/lobby/guide_gui.gd" id="1_1mjrk"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_gvjlj"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="4_20swo"]
 [ext_resource type="Texture2D" uid="uid://b1a2wa0f21uuc" path="res://assets/images/lobby/guide/arrow_icon.png" id="4_n0hxl"]
 [ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="5_q7g65"]
 [ext_resource type="Texture2D" uid="uid://dfdy8h44wmrd" path="res://assets/images/card_tressette/classic/card_4.png" id="6_vx6jk"]
@@ -22,9 +21,15 @@
 [ext_resource type="Texture2D" uid="uid://crn46tuudqxny" path="res://assets/images/card_tressette/classic/card_6.png" id="18_08pfi"]
 [ext_resource type="Texture2D" uid="uid://6paq0tku0ddg" path="res://assets/images/card_tressette/classic/card_10.png" id="19_u0vcy"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="21_dgt1r"]
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="22_2d5qe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap7gx"]
-bg_color = Color(0.574675, 0.38072, 0.236316, 1)
+bg_color = Color(0.673111, 0.443396, 0.272368, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.778335, 0.486655, 0.120434, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -90,6 +95,7 @@ pivot_offset = Vector2(600, 300)
 theme_override_styles/panel = SubResource("StyleBoxFlat_ap7gx")
 
 [node name="Page2" type="Control" parent="MainPn"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -509,13 +515,30 @@ theme_override_font_sizes/font_size = 28
 text = "PLUS_1_POINT"
 
 [node name="Page1" type="Control" parent="MainPn"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label2" type="Label" parent="MainPn/Page1"]
+self_modulate = Color(1, 1, 1, 0.898)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -815.0
+offset_top = -121.0
+offset_right = -15.0
+offset_bottom = -92.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("21_dgt1r")
+theme_override_font_sizes/font_size = 26
+text = "GOAL_CONTENT"
 
 [node name="Label" type="Label" parent="MainPn/Page1"]
 self_modulate = Color(1, 0.915489, 0.404641, 1)
@@ -528,24 +551,6 @@ theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "GOAL"
 uppercase = true
-
-[node name="Label2" type="Label" parent="MainPn/Page1/Label"]
-self_modulate = Color(1, 1, 1, 0.898)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 13.0
-offset_top = 24.0
-offset_right = 609.0
-offset_bottom = 53.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("21_dgt1r")
-theme_override_font_sizes/font_size = 23
-text = "GOAL_CONTENT"
 
 [node name="Label3" type="Label" parent="MainPn/Page1"]
 self_modulate = Color(1, 0.915489, 0.404641, 1)
@@ -561,45 +566,45 @@ uppercase = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPn/Page1/Label3"]
 layout_mode = 0
-offset_left = 82.0
+offset_left = 51.0
 offset_top = 47.0
-offset_right = 682.0
+offset_right = 851.0
 offset_bottom = 247.0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("21_dgt1r")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_1"
 
 [node name="Label2" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("21_dgt1r")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_2"
 
 [node name="Label3" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("21_dgt1r")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_3"
 
 [node name="Label4" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("21_dgt1r")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_4"
 
 [node name="Label5" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("21_dgt1r")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_5"
 
 [node name="PreviousBtn" type="Button" parent="MainPn"]
@@ -632,7 +637,7 @@ texture = ExtResource("4_n0hxl")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="MainPn"]
-self_modulate = Color(0.812278, 0.657039, 0.57174, 1)
+self_modulate = Color(1, 0.777996, 0.111986, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -686,20 +691,11 @@ offset_bottom = 39.0
 flat = true
 script = ExtResource("3_gvjlj")
 
-[node name="ColorRect" type="ColorRect" parent="MainPn/CloseBtn"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 10.0
-offset_right = 41.0
-offset_bottom = 40.0
-color = Color(1, 0.829902, 0.572342, 1)
-
 [node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
-self_modulate = Color(0.761363, 0.230468, 0.230468, 1)
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 50.0
-texture = ExtResource("4_20swo")
+texture = ExtResource("22_2d5qe")
 expand_mode = 1
 
 [connection signal="pressed" from="MainPn/PreviousBtn" to="." method="_click_previous_page"]

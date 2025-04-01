@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://dkr5aeblxolhf"]
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/create_table_gui.gd" id="1_div3u"]
-[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="2_371lk"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_l5y7b"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_50y8s"]
+[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="4_m1lhd"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="5_ahdaw"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="6_xlv08"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_mmcj6"]
@@ -87,7 +87,6 @@ flat = true
 script = ExtResource("3_50y8s")
 
 [node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
-self_modulate = Color(1, 1, 1, 0.799)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,7 +99,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_371lk")
+texture = ExtResource("4_m1lhd")
 expand_mode = 1
 
 [node name="CreateBtn" type="Button" parent="MainPn"]
@@ -190,6 +189,7 @@ item_count = 1
 popup/item_0/text = "Classic"
 
 [node name="Label" type="Label" parent="MainPn/VBoxContainer/Control2"]
+self_modulate = Color(1, 1, 1, 0.845)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -227,6 +227,7 @@ popup/item_1/text = "21"
 popup/item_1/id = 1
 
 [node name="POINT_MODE" type="Label" parent="MainPn/VBoxContainer/Control5"]
+self_modulate = Color(1, 1, 1, 0.845)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -264,6 +265,7 @@ popup/item_1/text = "2v2"
 popup/item_1/id = 1
 
 [node name="Label" type="Label" parent="MainPn/VBoxContainer/Control3"]
+self_modulate = Color(1, 1, 1, 0.845)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -296,6 +298,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_ahdaw")
 
 [node name="Label" type="Label" parent="MainPn/VBoxContainer/BetPn"]
+self_modulate = Color(1, 1, 1, 0.845)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -314,6 +317,7 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MainPn/VBoxContainer/Control4"]
+self_modulate = Color(1, 1, 1, 0.845)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
