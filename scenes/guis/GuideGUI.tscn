@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://crn46tuudqxny" path="res://assets/images/card_tressette/classic/card_6.png" id="18_08pfi"]
 [ext_resource type="Texture2D" uid="uid://6paq0tku0ddg" path="res://assets/images/card_tressette/classic/card_10.png" id="19_u0vcy"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="21_dgt1r"]
-[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="22_2d5qe"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="22_qtxu7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap7gx"]
 bg_color = Color(0.673111, 0.443396, 0.272368, 1)
@@ -695,7 +695,7 @@ script = ExtResource("3_gvjlj")
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 50.0
-texture = ExtResource("22_2d5qe")
+texture = ExtResource("22_qtxu7")
 expand_mode = 1
 
 [connection signal="pressed" from="MainPn/PreviousBtn" to="." method="_click_previous_page"]

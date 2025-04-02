@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_icld3"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_k8eoc"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="6_mr2ps"]
-[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="7_bi8j4"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="7_7u1fw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwd5"]
 bg_color = Color(0, 0, 0, 0.74)
@@ -63,11 +63,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_eqwd5")
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_r7411")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -249,7 +247,7 @@ offset_right = 17.5
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_bi8j4")
+texture = ExtResource("7_7u1fw")
 expand_mode = 1
 
 [connection signal="pressed" from="MainPn/HBoxContainer/CancelBtn" to="." method="_on_close_button_pressed"]

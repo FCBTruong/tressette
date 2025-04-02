@@ -52,5 +52,6 @@ func check_and_show():
 		return
 	arr_popups.erase(popup)
 	var gui = g.v.scene_manager.open_gui(popup['gui'])
-	gui.callv(popup["func_name"], popup["params"])
+	if popup["func_name"]:
+		gui.callv(popup["func_name"], popup["params"])
 	cur_popup = gui

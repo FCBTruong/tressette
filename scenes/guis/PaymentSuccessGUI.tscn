@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_uo36a"]
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="6_5c2fa"]
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="6_x0hvc"]
-[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="8_dqq4p"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="8_rfyeu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwd5"]
 bg_color = Color(0, 0, 0, 0.74)
@@ -260,7 +260,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_dqq4p")
+texture = ExtResource("8_rfyeu")
 expand_mode = 1
 
 [connection signal="pressed" from="MainPn/HBoxContainer/CancelBtn" to="." method="_on_close_button_pressed"]

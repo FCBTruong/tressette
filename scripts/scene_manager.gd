@@ -47,13 +47,14 @@ func switch_scene(new_scene_path: String) -> void:
 		scene = load(new_scene_path)
 		scene_nodes[new_scene_path] = scene
 		
-	is_in_root = false
 	var new_scene = scene.instantiate()
 	ROOT.get_tree().root.add_child(new_scene)
 	
 	if is_instance_valid(_cur_scene) and not is_in_root:
 		_cur_scene.queue_free()
 		
+	is_in_root = false
+	
 	_cur_scene = new_scene
 	print("Loaded scene:", new_scene_path)
 		
@@ -76,6 +77,9 @@ func open_gui(gui_path: String, cache=false):
 		gui = gui_nodes[gui_path]
 	else:
 		gui = load(gui_path)
+		if gui == null:
+			print("Failed to load gui scene!")  # Check the console
+
 		gui_nodes[gui_path] = gui
 		
 	var popup_instance

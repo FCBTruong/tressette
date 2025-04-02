@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/lobby/pick_avatar_gui.gd" id="1_eiu5u"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="1_h8bdd"]
 [ext_resource type="PackedScene" uid="uid://b6pf3hcone3fr" path="res://scenes/lobby/PickAvatarNode.tscn" id="2_x7n7w"]
-[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="4_dqxci"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_og2gl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lmy6g"]
 bg_color = Color(0, 0, 0, 0.714)
@@ -152,7 +152,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_dqxci")
+texture = ExtResource("4_og2gl")
 expand_mode = 1
 
 [connection signal="pressed" from="Panel/CloseBtn" to="." method="_on_close"]

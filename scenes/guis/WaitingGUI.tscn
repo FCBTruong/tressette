@@ -40,6 +40,7 @@ color = Color(1, 1, 1, 0)
 [node name="Circle" type="TextureRect" parent="."]
 visible = false
 self_modulate = Color(0.236939, 1, 0.825749, 1)
+layout_mode = 0
 offset_left = 145.0
 offset_top = 110.0
 offset_right = 160.0

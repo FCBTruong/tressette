@@ -8,9 +8,6 @@ func _ready() -> void:
 	# init admob ids
 	if OS.get_name() == "Android":
 		print("admob android")
-		admob.configure_ads(
-			
-		)
 	elif OS.get_name() == "iOS":
 		print("admob ios")
 	g.admob_mgr = self

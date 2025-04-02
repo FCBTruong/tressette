@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/modules/customer_service/customer_service_gui.gd" id="1_skaxo"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_5ljjh"]
-[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="4_4754y"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_1xg2c"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_pj2rb"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="5_6b2qg"]
 [ext_resource type="Texture2D" uid="uid://bhi14nillkotg" path="res://assets/images/login/facebook.png" id="7_gs3jo"]
@@ -104,7 +104,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_4754y")
+texture = ExtResource("4_1xg2c")
 expand_mode = 1
 
 [node name="Content" type="Control" parent="MainPn"]

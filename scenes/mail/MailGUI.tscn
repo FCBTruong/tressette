@@ -10,6 +10,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 273.0
 offset_top = 72.0
 offset_right = 1043.0

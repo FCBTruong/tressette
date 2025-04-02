@@ -898,6 +898,10 @@ func on_show_chat_gui():
 	chat_btn_reddot.visible = false
 
 func on_new_chat_message(uid, message):
+	for p in list_players:
+		if p.user_data.uid == uid:
+			p.on_chat(message)
+			
 	if not in_game_chat_gui:
 		return
 	if not in_game_chat_gui.visible:
@@ -905,9 +909,6 @@ func on_new_chat_message(uid, message):
 		chat_btn_reddot.visible = true
 		
 	in_game_chat_gui.on_received_new_chat(uid, message)
-	for p in list_players:
-		if p.user_data.uid == uid:
-			p.on_chat(message)
 			
 func on_new_chat_emo(uid, emo):
 	var p = get_player_node_by_uid(uid)

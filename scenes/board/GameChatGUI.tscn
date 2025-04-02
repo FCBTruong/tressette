@@ -44,7 +44,6 @@ shadow_size = 5
 shadow_offset = Vector2(0, -2)
 
 [node name="InGameChatGui" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
