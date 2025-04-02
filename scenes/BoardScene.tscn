@@ -1,8 +1,9 @@
-[gd_scene load_steps=60 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=61 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
 [ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_ncq5t"]
+[ext_resource type="Texture2D" uid="uid://chr5ymkhnv53v" path="res://assets/images/board/cup_coffee.png" id="3_riun7"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_2a7pa"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
@@ -127,8 +128,9 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.322)
-shadow_offset = Vector2(0, 2)
+shadow_color = Color(0, 0, 0, 0.117647)
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wav06"]
 bg_color = Color(0, 0, 0, 0.282353)
@@ -184,7 +186,9 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_offset = Vector2(0, 2)
+shadow_color = Color(0, 0, 0, 0.117647)
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
 
 [sub_resource type="Shader" id="Shader_xqcm3"]
 code = "shader_type canvas_item;
@@ -320,6 +324,18 @@ grow_vertical = 2
 texture = ExtResource("2_hw1ge")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="CupCoffee" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -256.0
+offset_right = 293.0
+grow_vertical = 0
+texture = ExtResource("3_riun7")
+expand_mode = 1
 
 [node name="PlayGround" type="Control" parent="."]
 layout_mode = 1
@@ -1305,14 +1321,31 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -173.0
-offset_top = -35.0
+offset_top = -30.0
 offset_right = -23.0
-offset_bottom = 15.0
+offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 alignment = 2
+
+[node name="RankingBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+flat = true
+script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer/RankingBtn"]
+material = SubResource("ShaderMaterial_ydul5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_oiaq1")
+expand_mode = 1
 
 [node name="GuideBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
 custom_minimum_size = Vector2(60, 50)
@@ -1358,27 +1391,6 @@ grow_vertical = 2
 texture = ExtResource("15_fl0rb")
 expand_mode = 1
 
-[node name="RankingBtn" type="Button" parent="RightTopPanel"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 0
-offset_left = 168.0
-offset_top = 12.0
-offset_right = 228.0
-offset_bottom = 72.0
-flat = true
-script = ExtResource("7_gov4p")
-
-[node name="TextureRect" type="TextureRect" parent="RightTopPanel/RankingBtn"]
-material = SubResource("ShaderMaterial_ydul5")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("16_oiaq1")
-expand_mode = 1
-
 [node name="RoundLb" type="Label" parent="."]
 visible = false
 custom_minimum_size = Vector2(400, 50)
@@ -1419,9 +1431,9 @@ mouse_force_pass_scroll_events = false
 [node name="BackBtn" type="Button" parent="LeftTopPn"]
 layout_mode = 0
 offset_left = 30.0
-offset_top = 15.0
+offset_top = 20.0
 offset_right = 80.0
-offset_bottom = 65.0
+offset_bottom = 70.0
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -1730,9 +1742,9 @@ volume_db = 12.0
 
 [connection signal="pressed" from="ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
 [connection signal="pressed" from="RightTopPanel/BetInfoPn/InfoBetBtn" to="." method="_click_show_info_bet"]
+[connection signal="pressed" from="RightTopPanel/HBoxContainer/RankingBtn" to="." method="_click_ranking"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]
-[connection signal="pressed" from="RightTopPanel/RankingBtn" to="." method="_click_ranking"]
 [connection signal="pressed" from="LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
