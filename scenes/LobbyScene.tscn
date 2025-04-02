@@ -7,16 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="4_j2d4c"]
 [ext_resource type="Texture2D" uid="uid://ce2xu8i28ghrs" path="res://assets/images/lobby/play_now_btn.png" id="4_nkqsu"]
-[ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="5_pl242"]
-[ext_resource type="Texture2D" uid="uid://dfdy8h44wmrd" path="res://assets/images/card_tressette/classic/card_4.png" id="6_514yr"]
 [ext_resource type="Texture2D" uid="uid://b2w5a1ssk768s" path="res://assets/images/lobby/shopping_card.png" id="6_ccwgc"]
 [ext_resource type="Texture2D" uid="uid://dv83dxl1rc5g4" path="res://assets/images/lobby/settings.png" id="6_vby4e"]
+[ext_resource type="Texture2D" uid="uid://d2tfe85dyn0yu" path="res://assets/images/card_tressette/classic/4.png" id="7_6d8ha"]
 [ext_resource type="Texture2D" uid="uid://dutxuwb4adufu" path="res://assets/images/lobby/customer-service.png" id="7_48niu"]
-[ext_resource type="Texture2D" uid="uid://dld5udpcu0sov" path="res://assets/images/card_tressette/classic/card_8.png" id="7_fjgxk"]
 [ext_resource type="Texture2D" uid="uid://c28lqqxrgu2eg" path="res://assets/images/lobby/friends.png" id="7_l35oy"]
+[ext_resource type="Texture2D" uid="uid://sdy5lv7vlgi0" path="res://assets/images/card_tressette/classic/8.png" id="8_2m2e2"]
 [ext_resource type="Texture2D" uid="uid://dkxdfloxhov7c" path="res://assets/images/lobby/room_btn.png" id="8_ehhk7"]
 [ext_resource type="Texture2D" uid="uid://cxkmagcclh5x6" path="res://assets/images/lobby/clipboard.png" id="8_p6t30"]
 [ext_resource type="Texture2D" uid="uid://bmtl8yhp014u4" path="res://assets/images/lobby/mail.png" id="9_bavc2"]
+[ext_resource type="Texture2D" uid="uid://t4qbllnxmlnt" path="res://assets/images/card_tressette/classic/0.png" id="9_bp02q"]
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="9_fym06"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_pgu6f"]
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="12_hwrjc"]
@@ -306,7 +306,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.589485
 pivot_offset = Vector2(70, 100)
-texture = ExtResource("6_514yr")
+texture = ExtResource("7_6d8ha")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="PlayContainer/StartBtn/Control2"]
@@ -324,7 +324,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.540785
 pivot_offset = Vector2(0, 100)
-texture = ExtResource("7_fjgxk")
+texture = ExtResource("8_2m2e2")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="PlayContainer/StartBtn/Control2"]
@@ -341,7 +341,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.00634568
 pivot_offset = Vector2(35, 100)
-texture = ExtResource("5_pl242")
+texture = ExtResource("9_bp02q")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayContainer/StartBtn/Control2"]

@@ -122,14 +122,14 @@ func turn_face_up():
 	# set special colour for strong card
 
 func _load_texture_card():
-	var card_type = 'classic'
+	var path
 	if g.v.game_manager.card_style == g.v.game_constants.CARD_STYLES.CLASSIC:
-		card_type = 'classic'
+		path = "res://assets/images/card_tressette/classic/" + str(id) + ".png"
 	elif g.v.game_manager.card_style == g.v.game_constants.CARD_STYLES.MODERN:
-		card_type = 'modern'
+		path = "res://assets/images/card_tressette/modern/card_" + str(id) + ".png"
+
 		
-	#card_type = 'piacentine'
-	var path = "res://assets/images/card_tressette/" + card_type + "/card_" + str(id) + ".png"
+
 	_load_texture(path)
 	
 func show_card(effect_flip: bool = false):

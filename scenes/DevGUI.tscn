@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://pnvlnkvi3no"]
+[gd_scene load_steps=10 format=3 uid="uid://pnvlnkvi3no"]
 
 [ext_resource type="Script" path="res://scripts/lobby/dev_gui.gd" id="1_10d5g"]
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="3_jlv1p"]
-[ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="3_s0e4l"]
 [ext_resource type="Shader" path="res://shaders/animated_pattern.gdshader" id="4_eiqqj"]
 [ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="5_on8bv"]
 
@@ -127,7 +126,6 @@ offset_left = 20.0
 offset_top = 190.0
 offset_right = 120.0
 offset_bottom = 320.0
-texture = ExtResource("3_s0e4l")
 expand_mode = 1
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainPn"]
