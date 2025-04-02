@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhgkntha63vqu"]
 
 [ext_resource type="Script" path="res://scripts/game/card.gd" id="1_1xv6o"]
-[ext_resource type="Texture2D" uid="uid://0cu1weinh88g" path="res://assets/images/card_tressette/classic/card_0.png" id="2_sddhp"]
+[ext_resource type="Texture2D" uid="uid://oir8in6emjbh" path="res://assets/images/card_tressette/classic/1.png" id="2_o8dud"]
 [ext_resource type="Texture2D" uid="uid://bp6kti3au5fyr" path="res://assets/images/lobby/triangle.png" id="3_the30"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ptg7"]
@@ -53,7 +53,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(60, 90)
-texture = ExtResource("2_sddhp")
+texture = ExtResource("2_o8dud")
 expand_mode = 1
 
 [node name="HintPn" type="TextureRect" parent="Main/CardImage"]
