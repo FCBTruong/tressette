@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dys3frx0yshwh"
-path="res://.godot/imported/poker-table.png-3b4a06a33b1314d91d0a55f97412ec76.ctex"
+uid="uid://ce2xu8i28ghrs"
+path="res://.godot/imported/play_now_btn.png-dd4d7db526af9d8cb66442798a29293d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/poker-table.png"
-dest_files=["res://.godot/imported/poker-table.png-3b4a06a33b1314d91d0a55f97412ec76.ctex"]
+source_file="res://assets/images/lobby/play_now_btn.png"
+dest_files=["res://.godot/imported/play_now_btn.png-dd4d7db526af9d8cb66442798a29293d.ctex"]
 
 [params]
 
