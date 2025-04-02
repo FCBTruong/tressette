@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfhij1rrsx23o"
-path="res://.godot/imported/bg.jpg-0d33a3e94a76fbab2d2d55896d8f5904.ctex"
+uid="uid://balh12uyomml8"
+path="res://.godot/imported/cup_pot.png-94aadfeb871fb05b3d456014017c930b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/board/bg.jpg"
-dest_files=["res://.godot/imported/bg.jpg-0d33a3e94a76fbab2d2d55896d8f5904.ctex"]
+source_file="res://assets/images/board/cup_pot.png"
+dest_files=["res://.godot/imported/cup_pot.png-94aadfeb871fb05b3d456014017c930b.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

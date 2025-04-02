@@ -90,7 +90,7 @@ func _on_close():
 	if tween and tween.is_running():
 		tween.kill()
 	tween = create_tween()
-	tween.parallel().tween_property(main_pn, 'position:y', main_pos.y - 600, 0.3)
+	tween.parallel().tween_property(main_pn, 'position:y', main_pos.y - 700, 0.3)
 	tween.tween_callback(
 		func():
 			self.hide()

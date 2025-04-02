@@ -45,9 +45,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_10d5g")
 
-[node name="MainPn" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainPn" type="ColorRect" parent="CanvasLayer"]
 self_modulate = Color(0.673111, 0.673111, 0.673111, 1)
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -61,58 +62,58 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.570904, 0.5673, 0.605224, 0.724)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPn"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn"]
 layout_mode = 0
 offset_top = 20.0
 offset_right = 338.0
 offset_bottom = 105.0
 theme_override_constants/separation = 5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainPn/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainPn/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Cheat GOLD:"
 horizontal_alignment = 2
 
-[node name="LineEditGold" type="LineEdit" parent="MainPn/VBoxContainer/HBoxContainer2"]
+[node name="LineEditGold" type="LineEdit" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 placeholder_text = "gold"
 virtual_keyboard_type = 2
 
-[node name="CheatGoldBtn" type="Button" parent="MainPn/VBoxContainer/HBoxContainer2"]
+[node name="CheatGoldBtn" type="Button" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_qtdei")
 text = "Cheat"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPn/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainPn/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Cheat EXP:"
 horizontal_alignment = 2
 
-[node name="LineEdit" type="LineEdit" parent="MainPn/VBoxContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 placeholder_text = "exp"
 virtual_keyboard_type = 2
 
-[node name="CheatExpBtn" type="Button" parent="MainPn/VBoxContainer/HBoxContainer"]
+[node name="CheatExpBtn" type="Button" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_qtdei")
 text = "Cheat"
 
-[node name="TextureRect2" type="TextureRect" parent="MainPn"]
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/MainPn"]
 layout_mode = 0
 offset_left = 473.0
 offset_top = 201.0
@@ -120,7 +121,7 @@ offset_right = 573.0
 offset_bottom = 331.0
 texture = ExtResource("3_jlv1p")
 
-[node name="TextureRect" type="TextureRect" parent="MainPn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 190.0
@@ -129,7 +130,7 @@ offset_bottom = 320.0
 texture = ExtResource("3_s0e4l")
 expand_mode = 1
 
-[node name="ColorRect2" type="ColorRect" parent="MainPn"]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/MainPn"]
 material = SubResource("ShaderMaterial_6um5f")
 layout_mode = 0
 offset_left = 326.0
@@ -137,7 +138,7 @@ offset_top = 312.0
 offset_right = 538.0
 offset_bottom = 544.0
 
-[node name="ColorRect" type="ColorRect" parent="MainPn"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MainPn"]
 material = SubResource("ShaderMaterial_t2i35")
 layout_mode = 0
 offset_left = 163.0
@@ -146,7 +147,7 @@ offset_right = 375.0
 offset_bottom = 388.0
 color = Color(0.666322, 0.666322, 0.666322, 1)
 
-[node name="Button" type="Button" parent="MainPn"]
+[node name="Button" type="Button" parent="CanvasLayer/MainPn"]
 layout_mode = 0
 offset_left = 417.0
 offset_top = 21.0
@@ -154,7 +155,7 @@ offset_right = 496.0
 offset_bottom = 52.0
 text = "ADD BOT"
 
-[node name="Button2" type="Button" parent="MainPn"]
+[node name="Button2" type="Button" parent="CanvasLayer/MainPn"]
 layout_mode = 0
 offset_left = 499.0
 offset_top = 342.0
@@ -162,7 +163,7 @@ offset_right = 559.0
 offset_bottom = 382.0
 text = "Test1"
 
-[node name="AdsBtn" type="Button" parent="MainPn"]
+[node name="AdsBtn" type="Button" parent="CanvasLayer/MainPn"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 0
 offset_left = 416.0
@@ -171,7 +172,7 @@ offset_right = 516.0
 offset_bottom = 169.0
 text = "Ads"
 
-[node name="Button3" type="Button" parent="MainPn"]
+[node name="Button3" type="Button" parent="CanvasLayer/MainPn"]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 0
 offset_left = 414.0
@@ -180,7 +181,7 @@ offset_right = 512.0
 offset_bottom = 104.0
 text = "Reset guest"
 
-[node name="Panel" type="Panel" parent="MainPn"]
+[node name="Panel" type="Panel" parent="CanvasLayer/MainPn"]
 layout_mode = 0
 offset_left = 152.0
 offset_top = 281.0
@@ -189,9 +190,8 @@ offset_bottom = 381.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8oral")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.635)
-layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -202,7 +202,7 @@ offset_bottom = -41.0
 grow_vertical = 0
 color = Color(0.846, 0.846, 0.846, 0.875)
 
-[node name="FpsLb" type="Label" parent="ColorRect"]
+[node name="FpsLb" type="Label" parent="CanvasLayer/ColorRect"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -220,7 +220,7 @@ theme_override_font_sizes/font_size = 28
 text = "60"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="ColorRect"]
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -230,9 +230,9 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2mr3y")
 
-[connection signal="pressed" from="MainPn/VBoxContainer/HBoxContainer2/CheatGoldBtn" to="." method="_click_cheat_goldbtn"]
-[connection signal="pressed" from="MainPn/Button" to="." method="_click_add_bot"]
-[connection signal="pressed" from="MainPn/Button2" to="." method="_test_share_app"]
-[connection signal="pressed" from="MainPn/AdsBtn" to="." method="_click_ads"]
-[connection signal="pressed" from="MainPn/Button3" to="." method="_click_reset_guest"]
-[connection signal="pressed" from="ColorRect/Button" to="." method="_click_btn"]
+[connection signal="pressed" from="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2/CheatGoldBtn" to="." method="_click_cheat_goldbtn"]
+[connection signal="pressed" from="CanvasLayer/MainPn/Button" to="." method="_click_add_bot"]
+[connection signal="pressed" from="CanvasLayer/MainPn/Button2" to="." method="_test_share_app"]
+[connection signal="pressed" from="CanvasLayer/MainPn/AdsBtn" to="." method="_click_ads"]
+[connection signal="pressed" from="CanvasLayer/MainPn/Button3" to="." method="_click_reset_guest"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Button" to="." method="_click_btn"]

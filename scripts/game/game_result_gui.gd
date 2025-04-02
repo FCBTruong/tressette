@@ -45,7 +45,7 @@ func on_show():
 	tween.parallel().tween_callback(
 		func ():
 			continue_time_node.visible = true
-			continue_timer.connect("timeout", Callable(self, "_process_continue"))
+			continue_timer.connect("timeout", Callable(self, "_click_exit_game"))
 			continue_timer.start()
 			
 	)
@@ -123,6 +123,7 @@ func _click_continue_play():
 
 	
 func _process_continue():
+	continue_timer.stop()
 	self.visible = false
 	
 	# continue play
@@ -130,7 +131,7 @@ func _process_continue():
 	if scene is BoardScene:
 		scene.continue_play()
 	
-	if g.v.game_manager.is_enable_ads():
+	if g.v.game_manager.is_enable_ads() and g.v.player_info_mgr.my_user_data.game_count > 2:
 		if g.v.game_manager.game_th % 4 == 0:
 			g.admob_mgr._on_reward_interstitial_pressed()
 		else:

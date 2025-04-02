@@ -49,9 +49,8 @@ func _ready() -> void:
 		
 		
 
-	if g.v.game_manager.is_enable_ads():
-		g.admob_mgr._on_banner_pressed()
-	
+	#if g.v.game_manager.is_enable_ads():
+		#g.admob_mgr._on_banner_pressed()
 	
 	g.v.game_manager.check_show_fanpage()
 

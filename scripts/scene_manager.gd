@@ -26,14 +26,20 @@ const LAYER_INDEX = {
 }
 
 func on_ready() -> void:
-	print("Loaded lobby scene aaaaa")
 	is_in_root = true
 	_cur_scene = ROOT.get_tree().current_scene
 	layer_gui = CanvasLayer.new()
 	layer_gui.layer = LAYER_INDEX.GUI
 	ROOT.get_tree().root.add_child(layer_gui)
+	
+	if g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE:
+		var gui = load('res://scenes/DevGUI.tscn')
+		var popup_instance = gui.instantiate()
+		ROOT.get_tree().root.add_child(popup_instance)
+	
 
 # Function to switch scenes
+var tween_trans_scene
 func switch_scene(new_scene_path: String) -> void:
 	if cur_scene_name:
 		last_scene_name = cur_scene_name
@@ -50,22 +56,27 @@ func switch_scene(new_scene_path: String) -> void:
 	var new_scene = scene.instantiate()
 	ROOT.get_tree().root.add_child(new_scene)
 	
-	if is_instance_valid(_cur_scene) and not is_in_root:
-		_cur_scene.queue_free()
-		
-	is_in_root = false
+	if tween_trans_scene and tween_trans_scene.is_running():
+		tween_trans_scene.kill()
+	tween_trans_scene = ROOT.get_tree().create_tween()
 	
-	_cur_scene = new_scene
+	if is_instance_valid(_cur_scene) and not is_in_root:
+		_cur_scene.z_index = 10
+		tween_trans_scene.tween_property(
+			_cur_scene, "modulate:a", 0, 0.3
+		)
+		tween_trans_scene.tween_callback(
+			func():
+				_cur_scene.queue_free()
+				_cur_scene = new_scene
+		)
+	else:
+		_cur_scene = new_scene
+	if is_in_root:
+		is_in_root = false
+
 	print("Loaded scene:", new_scene_path)
-		
-	if g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE:
-		var current_scene = self.get_current_scene()
-		if current_scene:
-			var gui = load('res://scenes/DevGUI.tscn')
-			var popup_instance = gui.instantiate()
-			current_scene.add_child(popup_instance)
-		else:
-			print('current scene is null')
+
 		
 var gui_nodes = {}
 var gui_caches = {}
