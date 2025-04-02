@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=60 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -117,14 +117,25 @@ shadow_offset = Vector2(-2, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pdh6q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b84cg"]
-bg_color = Color(0.142, 0.514, 0.816, 0.5)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+bg_color = Color(0.121569, 0.376471, 0.521569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0392157, 0.156863, 0.121569, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 shadow_color = Color(0, 0, 0, 0.322)
-shadow_size = 3
 shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wav06"]
+bg_color = Color(0, 0, 0, 0.282353)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_gdgki"]
 seed = 6
@@ -144,11 +155,11 @@ shader_parameter/noise_tex = SubResource("NoiseTexture2D_1l567")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sv0ng"]
 bg_color = Color(1, 1, 1, 1)
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8j2g"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.988235, 0.929412, 0.796078, 1)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -163,13 +174,16 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m3fb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4k4q"]
-bg_color = Color(0.758, 0.037, 0, 0.5)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0, 0.329)
-shadow_size = 3
+bg_color = Color(0.639216, 0.176471, 0.054902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.337255, 0.105882, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="Shader" id="Shader_xqcm3"]
@@ -797,15 +811,37 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b84cg")
 
-[node name="FireMine" type="Panel" parent="PlayGround/ScorePn/Panel"]
-material = SubResource("ShaderMaterial_isqbr")
-custom_minimum_size = Vector2(0, 10)
+[node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -25.0
+offset_right = 45.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wav06")
+
+[node name="FireMine" type="Panel" parent="PlayGround/ScorePn/Panel"]
+material = SubResource("ShaderMaterial_isqbr")
+custom_minimum_size = Vector2(96, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -62.0
+offset_right = 48.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sv0ng")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayGround/ScorePn/Panel"]
@@ -825,10 +861,10 @@ alignment = 1
 
 [node name="MyScoreLb" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.9)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.562)
-theme_override_constants/shadow_offset_x = 0
+theme_override_colors/font_color = Color(0.988235, 0.929412, 0.796078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 45
 text = "10"
@@ -854,17 +890,16 @@ offset_right = 21.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
-theme_override_constants/shadow_offset_x = 1
+theme_override_colors/font_color = Color(0.988235, 0.929412, 0.796078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "3
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Sub1" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub"]
 layout_mode = 1
@@ -877,15 +912,14 @@ offset_left = -16.0
 offset_top = 10.0
 offset_bottom = 48.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
-theme_override_constants/shadow_offset_x = 1
+theme_override_colors/font_color = Color(0.988235, 0.929412, 0.796078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub"]
 layout_mode = 1
@@ -946,15 +980,37 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_l4k4q")
 
-[node name="FireOpponent" type="Panel" parent="PlayGround/ScorePn/Panel2"]
-material = SubResource("ShaderMaterial_to0ld")
-custom_minimum_size = Vector2(0, 30)
+[node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel2"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -25.0
+offset_right = 45.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wav06")
+
+[node name="FireOpponent" type="Panel" parent="PlayGround/ScorePn/Panel2"]
+material = SubResource("ShaderMaterial_to0ld")
+custom_minimum_size = Vector2(96, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -52.0
+offset_right = 48.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sv0ng")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PlayGround/ScorePn/Panel2"]
@@ -974,9 +1030,10 @@ alignment = 1
 
 [node name="OpponentScoreLb" type="Label" parent="PlayGround/ScorePn/Panel2/HBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.9)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 45
 text = "10"
@@ -999,9 +1056,10 @@ offset_right = 8.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "3
@@ -1019,9 +1077,10 @@ offset_top = 9.0
 offset_right = 8.0
 offset_bottom = 47.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "2"
