@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d2dopof1ns88o" path="res://scenes/board/background_particles.tscn" id="2_lhc41"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_7ag0e"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="4_20d4n"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="5_b8dbn"]
 [ext_resource type="Texture2D" uid="uid://crcu74gubk26" path="res://assets/images/ranking/medal_1.png" id="5_daypd"]
 [ext_resource type="Texture2D" uid="uid://c87ibd7r6pw78" path="res://assets/images/ranking/medal_2.png" id="6_jlt8c"]
 [ext_resource type="Texture2D" uid="uid://bijkfs3m0gpkp" path="res://assets/images/ranking/medal_3.png" id="7_jyinh"]
@@ -16,22 +17,12 @@ border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(1, 0.905518, 0.131715, 1)
+border_color = Color(0, 0, 0, 1)
 border_blend = true
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ius4f"]
-bg_color = Color(0, 0.679899, 0.00212903, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.207)
-shadow_size = 2
-shadow_offset = Vector2(0, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a83di"]
 atlas = ExtResource("5_daypd")
@@ -1328,7 +1319,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.6)
+color = Color(0, 0, 0, 0.490196)
 
 [node name="MainPn" type="Panel" parent="."]
 layout_mode = 1
@@ -1371,7 +1362,9 @@ offset_left = 202.0
 offset_top = 10.0
 offset_right = 379.0
 offset_bottom = 51.0
-theme_override_colors/font_color = Color(1, 1, 1, 0.743)
+theme_override_colors/font_color = Color(1, 0.853502, 0.730178, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("1_0a8ja")
 theme_override_font_sizes/font_size = 30
 text = "RANK"
@@ -1384,36 +1377,43 @@ position = Vector2(365, 258)
 amount = 50
 
 [node name="ClaimBtn" type="Button" parent="MainPn"]
-custom_minimum_size = Vector2(120, 50)
-layout_mode = 0
-offset_left = 234.0
-offset_top = 265.0
-offset_right = 354.0
-offset_bottom = 315.0
+custom_minimum_size = Vector2(140, 55)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -29.0
+offset_right = 64.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
 flat = true
 script = ExtResource("3_7ag0e")
 
-[node name="Panel" type="Panel" parent="MainPn/ClaimBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/ClaimBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ius4f")
+texture = ExtResource("5_b8dbn")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="MainPn/ClaimBtn/Panel"]
+[node name="Label" type="Label" parent="MainPn/ClaimBtn/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -35.0
+offset_top = -13.0
+offset_right = 35.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_0a8ja")
@@ -1431,7 +1431,9 @@ offset_bottom = 230.0
 
 [node name="RewardLb" type="Label" parent="MainPn/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.743)
+theme_override_colors/font_color = Color(1, 1, 1, 0.862745)
+theme_override_colors/font_outline_color = Color(0.357438, 0.204368, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("1_0a8ja")
 theme_override_font_sizes/font_size = 30
 text = "1.000.000"

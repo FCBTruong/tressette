@@ -325,6 +325,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_premm")
 
 [node name="TextureRect" type="TextureRect" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn/Panel"]
 material = SubResource("ShaderMaterial_na55j")
+layout_mode = 0
 offset_left = 275.0
 offset_top = -37.0
 offset_right = 335.0

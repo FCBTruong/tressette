@@ -34,15 +34,13 @@ func _ready() -> void:
 		# popup received gold startup
 		var str_startup = tr("STARTUP_GOLD")
 		str_startup = str_startup.replace("@num", StringUtils.point_number(g.v.player_info_mgr.startup_gold))
-		g.v.scene_manager.show_dialog(
+		g.v.scene_manager.show_ok_dialog(
 			str_startup,
 			func ():
 				var gui = g.v.game_manager.open_guide_gui()
 				gui.is_quick_play = true
 				,
-			func ():
-				pass,
-			true,
+			false,
 			tr("PLAY_NOW")
 		)
 		g.v.player_info_mgr.startup_gold = 0

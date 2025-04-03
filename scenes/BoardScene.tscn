@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="16_oiaq1"]
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="17_11riy"]
+[ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="24_gd8ru"]
 [ext_resource type="PackedScene" uid="uid://bybhqhjkyhhbk" path="res://scenes/board/EmoChatNode.tscn" id="25_t6dir"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
 
@@ -281,15 +282,6 @@ shadow_size = 5
 shadow_offset = Vector2(0, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23sef"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78fhh"]
-bg_color = Color(0.612013, 0.241187, 0.173184, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.489817, 0.29806, 0.29806, 0.6)
-shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t6yy"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -1651,7 +1643,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="AutoPlayPn" type="Panel" parent="."]
-visible = false
 self_modulate = Color(0, 0, 0, 0.6)
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
@@ -1666,7 +1657,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_23sef")
 metadata/_edit_use_anchors_ = true
 
 [node name="ReturnTableBtn" type="Button" parent="AutoPlayPn"]
-custom_minimum_size = Vector2(200, 60)
+custom_minimum_size = Vector2(240, 90)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1683,28 +1674,27 @@ pivot_offset = Vector2(100, 30)
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="Panel" type="Panel" parent="AutoPlayPn/ReturnTableBtn"]
+[node name="TextureRect" type="TextureRect" parent="AutoPlayPn/ReturnTableBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_78fhh")
+texture = ExtResource("24_gd8ru")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="AutoPlayPn/ReturnTableBtn/Panel"]
+[node name="Label" type="Label" parent="AutoPlayPn/ReturnTableBtn/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -57.5
-offset_top = -11.5
-offset_right = 57.5
-offset_bottom = 11.5
+offset_left = -97.0
+offset_top = -12.0
+offset_right = 97.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.849)
