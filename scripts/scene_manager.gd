@@ -27,7 +27,7 @@ const LAYER_INDEX = {
 
 func on_ready() -> void:
 	is_in_root = true
-	_cur_scene = ROOT.get_tree().current_scene
+
 	layer_gui = CanvasLayer.new()
 	layer_gui.layer = LAYER_INDEX.GUI
 	ROOT.get_tree().root.add_child(layer_gui)
@@ -40,6 +40,7 @@ func on_ready() -> void:
 
 # Function to switch scenes
 var tween_trans_scene
+var old_scene
 func switch_scene(new_scene_path: String) -> void:
 	if cur_scene_name:
 		last_scene_name = cur_scene_name
@@ -53,27 +54,28 @@ func switch_scene(new_scene_path: String) -> void:
 		scene = load(new_scene_path)
 		scene_nodes[new_scene_path] = scene
 		
-	var new_scene = scene.instantiate()
-	ROOT.get_tree().root.add_child(new_scene)
-	
 	if tween_trans_scene and tween_trans_scene.is_running():
 		tween_trans_scene.kill()
+		if old_scene and is_instance_valid(_cur_scene):
+			old_scene.queue_free()
+		
+	var new_scene = scene.instantiate()
+	ROOT.get_tree().root.add_child(new_scene)
+	old_scene = _cur_scene
+	_cur_scene = new_scene
+	
+
 	tween_trans_scene = ROOT.get_tree().create_tween()
 	
-	if is_instance_valid(_cur_scene) and not is_in_root:
-		_cur_scene.z_index = 10
+	if old_scene:
+		old_scene.z_index = 10
 		tween_trans_scene.tween_property(
-			_cur_scene, "modulate:a", 0, 0.3
+			old_scene, "modulate:a", 0, 0.3
 		)
 		tween_trans_scene.tween_callback(
 			func():
-				_cur_scene.queue_free()
-				_cur_scene = new_scene
+				old_scene.queue_free()
 		)
-	else:
-		_cur_scene = new_scene
-	if is_in_root:
-		is_in_root = false
 
 	print("Loaded scene:", new_scene_path)
 

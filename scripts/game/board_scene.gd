@@ -81,6 +81,7 @@ var is_showing_functions = false
 
 @onready var ads_banner_pn = find_child("AdsBannerPn")
 func _ready() -> void:	
+	self.show_function_btns()
 	#set_up_ads_banner(g.v.game_manager.is_enable_ads())
 	set_up_ads_banner(false)
 	my_score_lb.text = '0'
@@ -91,8 +92,9 @@ func _ready() -> void:
 	_on_screen_resized()
 	
 	if g.v.app_version.is_in_review():
-		pot_pn.visible = false
 		self.bet_info_pn.visible = false
+		
+	pot_pn.visible = false
 		
 	napoli_btn.visible = false 
 	is_auto_play = false
@@ -180,8 +182,6 @@ func _on_enter():
 	str_reach_win = str_reach_win.replace("#point", str(game_logic.match_data.point_to_win / 3))
 	self.reach_point_win_lb.text = str_reach_win
 	
-	self.hide_function_btns()
-	
 func update_cards_on_table():
 	remove_all_current_cards()
 	# update cards compare
@@ -230,6 +230,7 @@ func continue_play():
 	my_score_sub.visible = false
 	pot_value_lb.text = '0'
 	round_lb.text = ''
+	self.pot_pn.visible = false
 
 func _update_current_round():
 	if game_logic.match_data.current_round == 0:
@@ -1015,6 +1016,7 @@ func _open_guide_gui() -> void:
 func _effect_pot_contribute():
 	if g.v.app_version.is_in_review():
 		return
+	pot_pn.visible = true
 	center_play_pn_pos = NodeUtils.get_center_position(center_play_pn)
 	var i = 0
 	for player in list_players:
