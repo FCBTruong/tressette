@@ -72,6 +72,13 @@ var list_napoli_highlights = []
 var center_play_pn_default_pos
 var R = 4000
 var my_card_panel_pos
+
+var is_showing_functions = false
+@onready var right_top_pn = find_child("RightTopPanel")
+@onready var left_top_pn = find_child("LeftTopPn")
+@onready var btn_hide_func_bar = find_child("HideFunctionBtn")
+@onready var btn_show_func_bar = find_child("ShowFunctionBtn")
+
 @onready var ads_banner_pn = find_child("AdsBannerPn")
 func _ready() -> void:	
 	#set_up_ads_banner(g.v.game_manager.is_enable_ads())
@@ -173,6 +180,8 @@ func _on_enter():
 	str_reach_win = str_reach_win.replace("#point", str(game_logic.match_data.point_to_win / 3))
 	self.reach_point_win_lb.text = str_reach_win
 	
+	self.hide_function_btns()
+	
 func update_cards_on_table():
 	remove_all_current_cards()
 	# update cards compare
@@ -231,6 +240,8 @@ func on_game_start():
 	game_start_lb.text = tr("GAME_START")
 	_eff_text_middle()
 	_update_current_round()
+	
+	self.hide_function_btns()
 	
 func _eff_text_middle():
 	# effect start game
@@ -889,6 +900,9 @@ func exit_game():
 	g.v.scene_manager.switch_scene("res://scenes/LobbyScene.tscn")
 
 func on_show_chat_gui():
+	if not g.v.game_manager.enable_chat:
+		g.v.scene_manager.show_toast(tr("CHAT_IS_OFF"))
+		return
 	if not in_game_chat_gui:
 		var chat_scene = load("res://scenes/board/GameChatGUI.tscn")
 		in_game_chat_gui = chat_scene.instantiate()
@@ -1154,3 +1168,47 @@ func _on_screen_resized():
 	
 func _click_ranking() -> void:
 	g.v.ranking_mgr.show_gui()
+
+
+var tween_function_btn
+func show_function_btns():
+	self.is_showing_functions = true
+	self.left_top_pn.visible = true
+	self.right_top_pn.visible = true
+	self.btn_show_func_bar.visible = false
+	self.btn_hide_func_bar.visible = true
+	self.reach_point_win_lb.visible = true
+	
+	var img = btn_hide_func_bar.find_child("TextureRect")
+	img.modulate.a = 1
+	
+	if tween_function_btn and tween_function_btn.is_running():
+		tween_function_btn.kill()
+	tween_function_btn = create_tween()
+	tween_function_btn.tween_property(
+		img,
+		"modulate:a",
+		0.2,
+		0.5
+	).set_delay(1.5)
+	
+
+func hide_function_btns() -> void:
+	self.is_showing_functions = false
+	self.left_top_pn.visible = false
+	self.right_top_pn.visible = false
+	self.btn_show_func_bar.visible = true
+	self.btn_hide_func_bar.visible = false
+	self.reach_point_win_lb.visible = false
+	var img = btn_show_func_bar.find_child("TextureRect")
+	img.modulate.a = 1
+	
+	if tween_function_btn and tween_function_btn.is_running():
+		tween_function_btn.kill()
+	tween_function_btn = create_tween()
+	tween_function_btn.tween_property(
+		img,
+		"modulate:a",
+		0.2,
+		0.5
+	).set_delay(1.5)

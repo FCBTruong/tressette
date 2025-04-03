@@ -122,6 +122,13 @@ theme_override_font_sizes/font_size = 20
 text = "SOUND"
 script = ExtResource("2_txiv8")
 
+[node name="ChatBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kpywk")
+theme_override_font_sizes/font_size = 20
+text = "CHAT"
+script = ExtResource("2_txiv8")
+
 [node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -387,6 +394,7 @@ layout_mode = 2
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_hide_gui"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/MusicBtn" to="CanvasLayer" method="_click_music"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/SoundBtn" to="CanvasLayer" method="_click_sound"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/ChatBtn" to="CanvasLayer" method="_click_chat"]
 [connection signal="item_selected" from="CanvasLayer/Panel/VBoxContainer/OptionLanguage" to="CanvasLayer" method="_on_select_language_option"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn" to="CanvasLayer" method="_choose_card_modern"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn" to="CanvasLayer" method="_choose_card_classic"]

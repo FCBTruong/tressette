@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=62 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://chr5ymkhnv53v" path="res://assets/images/board/cup_coffee.png" id="3_riun7"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_2a7pa"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
+[ext_resource type="Texture2D" uid="uid://cgodot5mrjw1e" path="res://assets/images/lobby/arrow.png" id="4_ei7ic"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
 [ext_resource type="Texture2D" uid="uid://balh12uyomml8" path="res://assets/images/board/cup_pot.png" id="6_wv77y"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
@@ -329,6 +330,63 @@ grow_vertical = 0
 texture = ExtResource("3_riun7")
 expand_mode = 1
 
+[node name="HideFunctionBtn" type="Button" parent="."]
+layout_mode = 1
+offset_left = 29.0
+offset_top = 75.0
+offset_right = 79.0
+offset_bottom = 125.0
+flat = true
+script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="HideFunctionBtn"]
+self_modulate = Color(1, 0.628856, 0.181039, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("4_ei7ic")
+expand_mode = 1
+
+[node name="ShowFunctionBtn" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 82.0
+offset_bottom = 71.0
+flat = true
+script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="ShowFunctionBtn"]
+self_modulate = Color(1, 0.608594, 0.0955444, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("4_ei7ic")
+expand_mode = 1
+
 [node name="PlayGround" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -379,9 +437,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -63.0
-offset_top = 73.0
+offset_top = 89.0
 offset_right = 64.0
-offset_bottom = 99.0
+offset_bottom = 115.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.830856, 0.217, 0.704)
 theme_override_colors/font_outline_color = Color(0.0528283, 0.160567, 0.0774021, 1)
@@ -799,11 +857,11 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -110.0
-offset_right = 110.0
+offset_left = -130.0
+offset_right = 130.0
 offset_bottom = 70.0
 grow_horizontal = 2
-pivot_offset = Vector2(100, 0)
+pivot_offset = Vector2(130, 0)
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="PlayGround/ScorePn"]
@@ -813,8 +871,8 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -30.0
-offset_right = 100.0
-offset_bottom = 30.0
+offset_right = 120.0
+offset_bottom = 40.0
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b84cg")
@@ -845,9 +903,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -48.0
+offset_left = -58.0
 offset_top = -62.0
-offset_right = 48.0
+offset_right = 58.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -981,9 +1039,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -100.0
+offset_left = -120.0
 offset_top = -30.0
-offset_bottom = 30.0
+offset_bottom = 40.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
@@ -1015,9 +1073,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -52.0
-offset_right = 48.0
+offset_left = -58.0
+offset_top = -62.0
+offset_right = 58.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -1234,7 +1292,6 @@ script = ExtResource("7_gov4p")
 layout_mode = 1
 
 [node name="RightTopPanel" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -1734,6 +1791,8 @@ volume_db = 1.0
 stream = ExtResource("8_62q6d")
 volume_db = 12.0
 
+[connection signal="pressed" from="HideFunctionBtn" to="." method="hide_function_btns"]
+[connection signal="pressed" from="ShowFunctionBtn" to="." method="show_function_btns"]
 [connection signal="pressed" from="ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
 [connection signal="pressed" from="RightTopPanel/BetInfoPn/InfoBetBtn" to="." method="_click_show_info_bet"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer/RankingBtn" to="." method="_click_ranking"]

@@ -16,6 +16,7 @@ var LanguageConf = {
 @onready var option_language = find_child('OptionLanguage')
 @onready var logout_btn = find_child("LogoutBtn")
 @onready var remove_acc_btn = find_child("RemoveAccBtn")
+@onready var chat_checker = find_child("ChatBtn")
 func _ready() -> void:
 	default_pos = $Panel.position
 	
@@ -33,7 +34,7 @@ func _ready() -> void:
 	
 	sound_checker.button_pressed = g.v.game_manager.enable_sound
 	music_checker.button_pressed = g.v.game_manager.enable_music
-	
+	chat_checker.button_pressed = g.v.game_manager.enable_chat
 	var lang_idx = -1
 	if g.v.game_manager.language == 'en':
 		lang_idx = LanguageConf.get('en')
@@ -91,6 +92,10 @@ func _click_sound():
 	
 func _click_music():
 	g.v.game_manager.set_enable_music(music_checker.button_pressed)
+	pass
+	
+func _click_chat():
+	g.v.game_manager.set_enable_chat(chat_checker.button_pressed)
 	pass
 	
 func _on_select_language_option(index):

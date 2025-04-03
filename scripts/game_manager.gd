@@ -6,6 +6,7 @@ var _token:String = 'default' # note, protobuf string can not be empty, otherwis
 var timestamp_server_delta = 0
 var enable_sound = true
 var enable_music = false
+var enable_chat = true
 var enable_chat_ingame = true
 var card_style: int = 0 # classic, default, 1 is modern
 var table_list = []
@@ -41,6 +42,7 @@ func _ready() -> void:
 	card_style = int(g.v.storage_cache.fetch('card_style', '0'))
 	enable_sound = g.v.storage_cache.fetch('enable_sound', '1') == '1'
 	enable_music = g.v.storage_cache.fetch('enable_music', '1') == '1'
+	enable_chat = g.v.storage_cache.fetch('enable_chat', '1') == '1'
 
 
 func choose_language(lang):
@@ -310,3 +312,8 @@ func check_show_fanpage():
 		return
 	
 	g.v.popup_mgr.add_popup("res://scenes/lobby/LikeFanpageGUI.tscn")
+
+
+func set_enable_chat(e):
+	g.v.storage_cache.store('enable_chat', '1' if e else '0')
+	enable_chat = e

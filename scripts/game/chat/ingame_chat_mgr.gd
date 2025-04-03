@@ -12,6 +12,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_chat_emo(payload)
 			
 func _handle_new_message(payload):
+	if not g.v.game_manager.enable_chat:
+		return
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.InGameChatMessage.new()
 	var result_code = pkg.from_bytes(payload)
 	var message = pkg.get_chat_message()
