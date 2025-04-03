@@ -104,6 +104,11 @@ func _ready() -> void:
 	g.v.sound_manager.play_music_board()
 	#show_prepare_start()
 	
+	# check game is waiting and not enough players -> show ads
+	if g.v.game_manager.is_enable_ads() and g.v.player_info_mgr.my_user_data.game_count > 2:
+		if not game_logic.check_enough_players_room():
+			g.admob_mgr._on_interstitial_pressed()
+	
 
 var is_showing_ads_banner = false
 func set_up_ads_banner(show: bool):

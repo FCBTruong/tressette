@@ -53,6 +53,7 @@ func _on_close():
 	self.get_parent().remove_child(self)
 
 func _on_create_table():
+	self._on_close()
 	if g.v.app_version.is_in_review():
 		if g.v.player_info_mgr.my_user_data.gold < g.v.game_server_config.fee_mode_no_bet:
 			g.v.game_manager.show_not_gold_recommend_shop()

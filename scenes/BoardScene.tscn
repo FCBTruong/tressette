@@ -120,11 +120,11 @@ shadow_offset = Vector2(-2, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b84cg"]
 bg_color = Color(0.121569, 0.376471, 0.521569, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0392157, 0.156863, 0.121569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0753752, 0.238637, 0.189658, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -177,11 +177,11 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m3fb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4k4q"]
-bg_color = Color(0.639216, 0.176471, 0.054902, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.574675, 0.185495, 0.0832522, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 border_color = Color(0.337255, 0.105882, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -1234,6 +1234,7 @@ script = ExtResource("7_gov4p")
 layout_mode = 1
 
 [node name="RightTopPanel" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -1385,36 +1386,8 @@ grow_vertical = 2
 texture = ExtResource("15_fl0rb")
 expand_mode = 1
 
-[node name="RoundLb" type="Label" parent="."]
-visible = false
-custom_minimum_size = Vector2(400, 50)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -365.0
-offset_top = 8.0
-offset_right = 35.0
-offset_bottom = 58.0
-grow_horizontal = 2
-pivot_offset = Vector2(200, 25)
-theme_override_colors/font_color = Color(1, 1, 1, 0.76)
-theme_override_fonts/font = ExtResource("4_cv557")
-theme_override_font_sizes/font_size = 25
-text = "ROUND: 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EvaluateIpadPos" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 113.0
-offset_bottom = 113.0
-grow_horizontal = 2
-
 [node name="LeftTopPn" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 400.0
@@ -1448,6 +1421,35 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("17_11riy")
 expand_mode = 1
+
+[node name="RoundLb" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -365.0
+offset_top = 8.0
+offset_right = 35.0
+offset_bottom = 58.0
+grow_horizontal = 2
+pivot_offset = Vector2(200, 25)
+theme_override_colors/font_color = Color(1, 1, 1, 0.76)
+theme_override_fonts/font = ExtResource("4_cv557")
+theme_override_font_sizes/font_size = 25
+text = "ROUND: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EvaluateIpadPos" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 113.0
+offset_bottom = 113.0
+grow_horizontal = 2
 
 [node name="PnCheat" type="Control" parent="."]
 visible = false

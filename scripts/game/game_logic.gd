@@ -694,3 +694,9 @@ func auto_play_card():
 			if cur_scene is BoardScene:
 				cur_scene.play_my_card(c)
 			return
+
+func check_enough_players_room():
+	for p in match_data.users:
+		if p.uid == -1:
+			return false
+	return true
