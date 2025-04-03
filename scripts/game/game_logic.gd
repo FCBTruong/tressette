@@ -499,7 +499,12 @@ func _handle_end_game(payload: PackedByteArray):
 		match_result.players.append(score_data)
 		match_data.users[i].gold = players_gold[i]
 		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [match_data.users[i].uid])
-		
+	
+	var cur_scene = g.v.scene_manager.get_current_scene()
+	if cur_scene is BoardScene:
+		cur_scene.end_game()
+	# Wait for a second
+	await ROOT.get_tree().create_timer(1.5).timeout
 	g.v.scene_manager.open_gui('res://scenes/board/GameResultGUI.tscn', true)
 
 func _handle_prepare_start(payload: PackedByteArray):

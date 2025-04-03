@@ -94,7 +94,7 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 
 		tween.tween_callback(node.queue_free)
 		
-func effect_fly_object(img: String, num: int, start_pos: Vector2, des_pos: Vector2, fly_time: float, scale = 1):
+func effect_fly_object(img: String, num: int, start_pos: Vector2, des_pos: Vector2, fly_time: float, scale = 1, delay_time = 0):
 	var canvas_layer = CanvasLayer.new()
 	g.v.scene_manager.get_current_scene().add_child(canvas_layer)
 	canvas_layer.layer = 200  # Higher layer value means it will be drawn above lower values
@@ -116,15 +116,16 @@ func effect_fly_object(img: String, num: int, start_pos: Vector2, des_pos: Vecto
 		des_pos.y += randf_range(-30, 30)
 		
 		var trail_node = trail_scene.instantiate()
+		trail_node.global_position = start_pos
 		canvas_layer.add_child(trail_node)
-		trail_node.find_child("Line2D").target = node
+		trail_node.find_child('Boid2D').target = node
 
 	
 		var mid_pos = (start_pos + des_pos) * 0.5
 		mid_pos.y -=  ax + randf_range(-5, 5)  # Adjust this for more curvature (move control point up)
 
 		var tween = create_tween()
-		var delay = i * 0.05 + randf_range(0, 0.1)
+		var delay = delay_time + i * 0.06 + randf_range(0, 0.1)
 		# Interpolate the Bezier curve using custom tween process
 		tween.parallel().tween_method(
 			func(value: float):

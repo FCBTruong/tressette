@@ -962,7 +962,14 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_W:
-				
+				g.v.effect_mgr.effect_fly_object(
+					"res://assets/images/lobby/lira_icon.png",
+					5,
+					pot_pn.global_position,
+					Vector2(500, 500),
+					0.6,
+					1
+				)
 				#show_prepare_start()
 				return
 				#_effect_evaluate()
@@ -1214,3 +1221,43 @@ func hide_function_btns() -> void:
 		0.2,
 		0.5
 	).set_delay(1.5)
+
+var anim_cup_scene = preload("res://scenes/board/AnimCupWin.tscn")
+func end_game():
+	if pot_pn.visible:
+		var cur_pot_value =  StringUtils.convert_point_string_to_int(pot_value_lb.text)
+		
+		var pot_tween = create_tween()
+		pot_tween.tween_method(_set_int_to_text.bind(pot_value_lb, false), cur_pot_value, 0, 0.4)
+		
+		# effect get pot
+		var p_pot = pot_pn.global_position
+		p_pot += Vector2(50, 50)
+		for p in self.list_players:
+			if p.user_data.game_data.team_id == game_logic.match_result.win_team_id:
+				var anim_cup = anim_cup_scene.instantiate()
+				anim_cup.play("default")
+				p.add_child(anim_cup)
+				
+				var tween = create_tween()
+				anim_cup.scale = Vector2(0, 0)
+				tween.tween_property(
+					anim_cup,
+					"scale",
+					Vector2(0.8, 0.8),
+					0.3
+				).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+				tween.tween_callback(func():
+					anim_cup.queue_free()
+				).set_delay(2)
+				#g.v.effect_mgr.effect_fly_object(
+					#"res://assets/images/lobby/lira_icon.png",
+					#5,
+					#p_pot,
+					#p.global_position,
+					#0.6,
+					#1,
+					#0.4
+				#)
+				pass
+	pass
