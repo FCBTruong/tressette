@@ -65,6 +65,7 @@ func _on_close_tween_finished() -> void:
 	$Panel.position = default_pos
 
 func _logout() -> void:
+	self._hide_gui()
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.LOG_OUT, [])
 	
 func _choose_card_classic():

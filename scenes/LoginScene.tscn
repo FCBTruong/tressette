@@ -13,35 +13,41 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkwm1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm302"]
-bg_color = Color(0.059, 0.059, 0.059, 0.497)
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.520366, 0.127145, 0, 1)
 border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
 shadow_color = Color(0, 0, 0, 0.273)
 shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_premm"]
+bg_color = Color(0.975206, 0.948744, 0.930132, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.133333)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7cpd"]
-bg_color = Color(0.75118, 0.115198, 0.101412, 1)
+bg_color = Color(0.265791, 0.230507, 0.229909, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_color = Color(0.816, 0.648, 0.453, 0.092)
-shadow_size = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_premm"]
-bg_color = Color(1, 1, 1, 0.9)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-shadow_color = Color(0.873, 0.686, 0.468, 0.477)
 shadow_size = 2
 
 [node name="LoginScene" type="Control"]
@@ -64,26 +70,95 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("2_hgaq6")
 expand_mode = 1
-stretch_mode = 6
 
 [node name="LoginPn" type="Panel" parent="."]
-self_modulate = Color(1, 1, 1, 0.711)
 material = SubResource("ShaderMaterial_xkwm1")
-custom_minimum_size = Vector2(450, 320)
+custom_minimum_size = Vector2(350, 320)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = -160.0
-offset_right = 225.0
-offset_bottom = 160.0
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -320.0
+offset_right = 175.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 pivot_offset = Vector2(225, 160)
 theme_override_styles/panel = SubResource("StyleBoxFlat_qm302")
+
+[node name="PrivacyTermPn" type="HBoxContainer" parent="LoginPn"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -30.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label2" type="Label" parent="LoginPn/PrivacyTermPn"]
+modulate = Color(0.282763, 0.00284168, 0.00284168, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_sjnmn")
+theme_override_font_sizes/font_size = 14
+text = "TERMS_OF_SERVICE"
+
+[node name="TermsBtn" type="Button" parent="LoginPn/PrivacyTermPn/Label2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("3_16366")
+
+[node name="ColorRect" type="ColorRect" parent="LoginPn/PrivacyTermPn/Label2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="LoginPn/PrivacyTermPn"]
+modulate = Color(0.282763, 0.00284168, 0.00284168, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_sjnmn")
+theme_override_font_sizes/font_size = 14
+text = "PRIVACY_POLICY"
+
+[node name="PrivacyBtn" type="Button" parent="LoginPn/PrivacyTermPn/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("3_16366")
+
+[node name="ColorRect" type="ColorRect" parent="LoginPn/PrivacyTermPn/Label"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
 
 [node name="ColorRect" type="Control" parent="LoginPn"]
 layout_mode = 1
@@ -101,132 +176,37 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -54.0
-offset_top = -9.0
-offset_right = 56.0
-offset_bottom = 23.0
+offset_left = -97.0
+offset_top = -12.0
+offset_right = 100.0
+offset_bottom = 24.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.763)
+theme_override_colors/font_color = Color(1, 0.826466, 0, 1)
+theme_override_colors/font_outline_color = Color(0.571281, 0.141296, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_wfctv")
-theme_override_font_sizes/font_size = 27
+theme_override_font_sizes/font_size = 35
 text = "LOGIN_WITH"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="GuestBtn" type="Button" parent="LoginPn/ColorRect"]
+[node name="HBoxContainer" type="VBoxContainer" parent="LoginPn/ColorRect"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = 91.0
-offset_right = 55.0
-offset_bottom = 131.0
+offset_left = -150.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 266.0
 grow_horizontal = 2
-grow_vertical = 2
-flat = true
-script = ExtResource("3_16366")
-
-[node name="Panel" type="Panel" parent="LoginPn/ColorRect/GuestBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_h7cpd")
-
-[node name="Label" type="Label" parent="LoginPn/ColorRect/GuestBtn"]
-self_modulate = Color(1, 1, 1, 0.9)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -11.5
-offset_right = 23.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_sjnmn")
-theme_override_font_sizes/font_size = 20
-text = "GUEST"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="LoginPn/ColorRect"]
-modulate = Color(1, 1, 1, 0.8)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = 49.0
-offset_right = 13.0
-offset_bottom = 74.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_sjnmn")
-theme_override_font_sizes/font_size = 20
-text = "OR"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ColorRect2" type="ColorRect" parent="LoginPn/ColorRect/Label2"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 5.0
-offset_top = -0.5
-offset_right = 105.0
-offset_bottom = 0.5
-grow_horizontal = 0
-grow_vertical = 2
-color = Color(1, 1, 1, 0.8)
-
-[node name="ColorRect" type="ColorRect" parent="LoginPn/ColorRect/Label2"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -106.0
-offset_top = -0.5
-offset_right = -6.0
-offset_bottom = 0.5
-grow_vertical = 2
-color = Color(1, 1, 1, 0.8)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="LoginPn/ColorRect"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -356.0
-offset_top = -76.0
-offset_right = 356.0
-offset_bottom = 22.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 12
 alignment = 1
 
 [node name="GoogleBtn" type="Button" parent="LoginPn/ColorRect/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 flat = true
 alignment = 0
@@ -241,32 +221,29 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_premm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LoginPn/ColorRect/HBoxContainer/GoogleBtn"]
+[node name="VBoxContainer" type="HBoxContainer" parent="LoginPn/ColorRect/HBoxContainer/GoogleBtn"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
-alignment = 2
+alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="LoginPn/ColorRect/HBoxContainer/GoogleBtn/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("3_2w4au")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="LoginPn/ColorRect/HBoxContainer/GoogleBtn/VBoxContainer"]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.255608, 0.0671859, 0.0034093, 1)
 theme_override_fonts/font = ExtResource("5_sjnmn")
 theme_override_font_sizes/font_size = 18
-text = "Google"
+text = "LOGIN_WITH_GOOGLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -305,7 +282,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AppleBtn" type="Button" parent="LoginPn/ColorRect/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 flat = true
 script = ExtResource("3_16366")
@@ -319,35 +296,90 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_premm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -42.0
-offset_top = -110.0
-offset_right = 43.0
-offset_bottom = -1.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_constants/separation = 5
-alignment = 2
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn/VBoxContainer"]
-custom_minimum_size = Vector2(85, 85)
+[node name="Control" type="Control" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn/VBoxContainer2"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn/VBoxContainer2/Control"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -34.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_rp1b3")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
-[node name="Label" type="Label" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn/VBoxContainer"]
-self_modulate = Color(0, 0, 0, 1)
+[node name="Label" type="Label" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.255608, 0.0671859, 0.0034093, 1)
 theme_override_fonts/font = ExtResource("5_sjnmn")
 theme_override_font_sizes/font_size = 18
-text = "Apple"
+text = "LOGIN_WITH_APPLE"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="LoginPn/ColorRect/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.8)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.854902)
+theme_override_fonts/font = ExtResource("5_sjnmn")
+theme_override_font_sizes/font_size = 16
+text = "OR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GuestBtn" type="Button" parent="LoginPn/ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("3_16366")
+
+[node name="Panel" type="Panel" parent="LoginPn/ColorRect/HBoxContainer/GuestBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h7cpd")
+
+[node name="Label" type="Label" parent="LoginPn/ColorRect/HBoxContainer/GuestBtn"]
+self_modulate = Color(1, 1, 1, 0.9)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -11.5
+offset_right = 23.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_sjnmn")
+theme_override_font_sizes/font_size = 20
+text = "GUEST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -399,77 +431,6 @@ offset_right = 275.0
 offset_bottom = 44.0
 text = "Send"
 
-[node name="PrivacyTermPn" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -30.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="Label2" type="Label" parent="PrivacyTermPn"]
-modulate = Color(1, 1, 1, 0.734)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_sjnmn")
-theme_override_font_sizes/font_size = 14
-text = "TERMS_OF_SERVICE"
-
-[node name="TermsBtn" type="Button" parent="PrivacyTermPn/Label2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-script = ExtResource("3_16366")
-
-[node name="ColorRect" type="ColorRect" parent="PrivacyTermPn/Label2"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="PrivacyTermPn"]
-modulate = Color(1, 1, 1, 0.734)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_sjnmn")
-theme_override_font_sizes/font_size = 14
-text = "PRIVACY_POLICY"
-
-[node name="PrivacyBtn" type="Button" parent="PrivacyTermPn/Label"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-script = ExtResource("3_16366")
-
-[node name="ColorRect" type="ColorRect" parent="PrivacyTermPn/Label"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-
 [node name="Label" type="Label" parent="."]
 visible = false
 layout_mode = 0
@@ -484,13 +445,13 @@ theme_override_fonts/font = ExtResource("9_4swjg")
 theme_override_font_sizes/font_size = 30
 text = "Welcom to Tressette"
 
-[connection signal="pressed" from="LoginPn/ColorRect/GuestBtn" to="." method="_login_guest"]
+[connection signal="pressed" from="LoginPn/PrivacyTermPn/Label2/TermsBtn" to="." method="_click_terms_of_service"]
+[connection signal="pressed" from="LoginPn/PrivacyTermPn/Label/PrivacyBtn" to="." method="_click_privacy_policy"]
 [connection signal="pressed" from="LoginPn/ColorRect/HBoxContainer/GoogleBtn" to="." method="_login_google"]
 [connection signal="pressed" from="LoginPn/ColorRect/HBoxContainer/FacebookBtn" to="." method="_login_facebook"]
 [connection signal="pressed" from="LoginPn/ColorRect/HBoxContainer/AppleBtn" to="." method="_login_with_apple"]
+[connection signal="pressed" from="LoginPn/ColorRect/HBoxContainer/GuestBtn" to="." method="_login_guest"]
 [connection signal="pressed" from="PnCheat/BtnQuickLogin" to="." method="test_login_user_A"]
 [connection signal="pressed" from="PnCheat/BtnQuickLogin/Button" to="." method="test_login_userB"]
 [connection signal="text_submitted" from="PnCheat/InputUIDCheat" to="." method="_login_by_uid_cheat"]
 [connection signal="pressed" from="PnCheat/SelectUIDCheat/UIDSelectBtn" to="." method="_cheat_select_uid"]
-[connection signal="pressed" from="PrivacyTermPn/Label2/TermsBtn" to="." method="_click_terms_of_service"]
-[connection signal="pressed" from="PrivacyTermPn/Label/PrivacyBtn" to="." method="_click_privacy_policy"]
