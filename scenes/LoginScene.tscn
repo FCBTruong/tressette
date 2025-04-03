@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0s371vj6s5od"]
+[gd_scene load_steps=19 format=3 uid="uid://b0s371vj6s5od"]
 
 [ext_resource type="Script" path="res://scripts/lobby/login_scene.gd" id="1_xqlge"]
 [ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="2_hgaq6"]
@@ -7,7 +7,9 @@
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_wfctv"]
 [ext_resource type="Texture2D" uid="uid://bhi14nillkotg" path="res://assets/images/login/facebook.png" id="4_egrs7"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="5_sjnmn"]
+[ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_24kwt"]
 [ext_resource type="Texture2D" uid="uid://dvkbr2jw0gmib" path="res://assets/images/login/apple_icon.png" id="6_rp1b3"]
+[ext_resource type="Texture2D" uid="uid://bwqoh74dqbxea" path="res://assets/images/login/gift_icon.png" id="7_f45wp"]
 [ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="9_4swjg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkwm1"]
@@ -40,6 +42,22 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0, 0, 0, 0.133333)
 shadow_size = 2
 shadow_offset = Vector2(0, 2)
+
+[sub_resource type="Gradient" id="Gradient_83i37"]
+colors = PackedColorArray(0.998967, 0.814045, 0.161143, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5iq3u"]
+gradient = SubResource("Gradient_83i37")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_na55j"]
+shader = ExtResource("6_24kwt")
+shader_parameter/size_effect = 0.4
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/delay = 1.0
+shader_parameter/vertical_gradient = SubResource("GradientTexture2D_5iq3u")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7cpd"]
 bg_color = Color(0.265791, 0.230507, 0.229909, 1)
@@ -181,9 +199,7 @@ offset_top = -12.0
 offset_right = 100.0
 offset_bottom = 24.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.826466, 0, 1)
-theme_override_colors/font_outline_color = Color(0.571281, 0.141296, 0, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(0.537338, 0.26516, 0.206827, 1)
 theme_override_fonts/font = ExtResource("3_wfctv")
 theme_override_font_sizes/font_size = 35
 text = "LOGIN_WITH"
@@ -220,6 +236,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_premm")
+
+[node name="TextureRect" type="TextureRect" parent="LoginPn/ColorRect/HBoxContainer/GoogleBtn/Panel"]
+material = SubResource("ShaderMaterial_na55j")
+layout_mode = 0
+offset_left = 275.0
+offset_top = -39.0
+offset_right = 335.0
+offset_bottom = 21.0
+rotation = 0.39968
+texture = ExtResource("7_f45wp")
+expand_mode = 1
 
 [node name="VBoxContainer" type="HBoxContainer" parent="LoginPn/ColorRect/HBoxContainer/GoogleBtn"]
 layout_mode = 1
@@ -295,6 +322,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_premm")
+
+[node name="TextureRect" type="TextureRect" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn/Panel"]
+material = SubResource("ShaderMaterial_na55j")
+offset_left = 275.0
+offset_top = -37.0
+offset_right = 335.0
+offset_bottom = 23.0
+rotation = 0.39968
+texture = ExtResource("7_f45wp")
+expand_mode = 1
 
 [node name="VBoxContainer2" type="HBoxContainer" parent="LoginPn/ColorRect/HBoxContainer/AppleBtn"]
 layout_mode = 1
