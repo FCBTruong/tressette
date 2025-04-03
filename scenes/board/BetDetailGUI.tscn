@@ -5,9 +5,7 @@
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_h0vbn"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_3wv1l"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="4_fbylm"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fx2ms"]
-bg_color = Color(0.160262, 0.175383, 0.269186, 1)
+[ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="6_1bb74"]
 
 [node name="BetDetailGui" type="Control"]
 layout_mode = 3
@@ -113,7 +111,7 @@ text = "BET_EXPLAIN_3"
 autowrap_mode = 3
 
 [node name="CloseBtn" type="Button" parent="MainPn"]
-custom_minimum_size = Vector2(100, 40)
+custom_minimum_size = Vector2(120, 50)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -129,17 +127,17 @@ grow_vertical = 0
 flat = true
 script = ExtResource("4_3wv1l")
 
-[node name="Panel" type="Panel" parent="MainPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fx2ms")
+texture = ExtResource("6_1bb74")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="MainPn/CloseBtn/Panel"]
+[node name="Label" type="Label" parent="MainPn/CloseBtn/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -153,7 +151,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_h0vbn")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 25
 text = "OK"
 horizontal_alignment = 1
 vertical_alignment = 1

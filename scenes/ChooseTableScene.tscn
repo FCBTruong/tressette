@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/choose_room_scene.gd" id="1_jurov"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_3t1ly"]
-[ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="3_mpgmw"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_wafs1"]
 [ext_resource type="Texture2D" uid="uid://c2sg4foah440r" path="res://assets/images/search_icon_small.png" id="4_kxarc"]
 [ext_resource type="PackedScene" uid="uid://coalpvybk074r" path="res://scenes/lobby/rooms/TableNode.tscn" id="4_mh24x"]
+[ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="4_vw5jh"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="5_ly3p4"]
 [ext_resource type="Texture2D" uid="uid://cd028ilkawb1x" path="res://assets/images/lobby/refresh_icon.png" id="7_qshgq"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="8_esc6h"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="8_ipbxi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ao2y"]
 
@@ -19,19 +20,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 expand_margin_left = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4a4e"]
-bg_color = Color(0.0365095, 0.503394, 0.0863587, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0150875, 0.27258, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_offset = Vector2(0, 1)
 
 [node name="ChooseTableScene" type="Control"]
 layout_mode = 3
@@ -62,7 +50,6 @@ flat = true
 script = ExtResource("3_wafs1")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/BackBtn"]
-self_modulate = Color(1, 1, 1, 0.483)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -75,7 +62,7 @@ offset_right = 30.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_mpgmw")
+texture = ExtResource("4_vw5jh")
 expand_mode = 1
 
 [node name="LineEdit" type="LineEdit" parent="TextureRect"]
@@ -151,34 +138,34 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -75.0
-offset_top = 39.0
-offset_right = 75.0
-offset_bottom = 89.0
+offset_left = -81.0
+offset_top = 36.0
+offset_right = 69.0
+offset_bottom = 96.0
 grow_horizontal = 2
 flat = true
 script = ExtResource("3_wafs1")
 
-[node name="Panel" type="Panel" parent="TextureRect/CreateTableBtn"]
+[node name="TextureRect" type="TextureRect" parent="TextureRect/CreateTableBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i4a4e")
+texture = ExtResource("8_ipbxi")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="TextureRect/CreateTableBtn/Panel"]
+[node name="Label" type="Label" parent="TextureRect/CreateTableBtn/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -49.0
+offset_left = -65.5
 offset_top = -11.5
-offset_right = 49.0
+offset_right = 65.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -214,10 +201,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_qshgq")

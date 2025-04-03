@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="6_5c2fa"]
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="6_x0hvc"]
 [ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="8_rfyeu"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="8_s2lax"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwd5"]
 bg_color = Color(0, 0, 0, 0.74)
@@ -29,15 +30,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_color = Color(0.13593, 0.308344, 0.469451, 1)
-shadow_size = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c7d7"]
-bg_color = Color(0.364776, 0.673042, 0.764758, 0.753)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.0823529, 0.32549, 0.552941, 1)
 shadow_size = 5
 
 [node name="PaymentSuccessGUI" type="Control"]
@@ -168,6 +160,7 @@ theme_override_constants/separation = 40
 alignment = 1
 
 [node name="CancelBtn" type="Button" parent="MainPn/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 flat = true
@@ -208,15 +201,15 @@ layout_mode = 2
 flat = true
 script = ExtResource("5_uo36a")
 
-[node name="Panel" type="Panel" parent="MainPn/HBoxContainer/OkBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2c7d7")
+texture = ExtResource("8_s2lax")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1
@@ -226,9 +219,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -16.5
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_u7y8u")

@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_50y8s"]
 [ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_ir5fg"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="5_ahdaw"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="5_s0iba"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="6_xlv08"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_mmcj6"]
 
@@ -18,13 +19,6 @@ corner_radius_bottom_left = 10
 [sub_resource type="Theme" id="Theme_blkqw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugd67"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay0ys"]
-bg_color = Color(0.0637113, 0.455874, 0.00757947, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8ai4"]
 
@@ -103,7 +97,7 @@ texture = ExtResource("4_ir5fg")
 expand_mode = 1
 
 [node name="CreateBtn" type="Button" parent="MainPn"]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(120, 50)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -121,18 +115,17 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ugd67")
 flat = true
 script = ExtResource("3_50y8s")
 
-[node name="Panel" type="Panel" parent="MainPn/CreateBtn"]
-custom_minimum_size = Vector2(100, 0)
+[node name="TextureRect" type="TextureRect" parent="MainPn/CreateBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ay0ys")
+texture = ExtResource("5_s0iba")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="MainPn/CreateBtn/Panel"]
+[node name="Label" type="Label" parent="MainPn/CreateBtn/TextureRect"]
 self_modulate = Color(1, 1, 1, 0.763)
 layout_mode = 1
 anchors_preset = 8
@@ -140,9 +133,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -29.0
+offset_left = -36.0
 offset_top = -11.5
-offset_right = 29.0
+offset_right = 36.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2

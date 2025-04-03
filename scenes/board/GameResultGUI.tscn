@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="7_11gwx"]
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="7_tcbk3"]
+[ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="8_17kmu"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="12_tifh7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1xll"]
 bg_color = Color(0, 0, 0, 0.451)
@@ -33,27 +35,6 @@ colors = PackedColorArray(0.934474, 0.722009, 0.501038, 1, 0.90732, 0.455937, 0.
 gradient = SubResource("Gradient_56tgq")
 fill_from = Vector2(0.769596, 0.0261283)
 fill_to = Vector2(0.4038, 0.565321)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxyre"]
-bg_color = Color(0.636, 0.145, 0.103, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.3)
-shadow_size = 2
-shadow_offset = Vector2(0, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7cos"]
-bg_color = Color(0.239936, 0.595041, 0.0764193, 1)
-border_color = Color(0.146, 0.524, 0.232, 0.8)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.3)
-shadow_size = 2
-shadow_offset = Vector2(0, 2)
 
 [node name="GameResultGui" type="Control"]
 layout_mode = 3
@@ -267,18 +248,24 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="BtnExit" type="Button" parent="MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/focus = SubResource("StyleBoxFlat_bxyre")
-theme_override_styles/hover = SubResource("StyleBoxFlat_bxyre")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_bxyre")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bxyre")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bxyre")
+flat = true
 script = ExtResource("4_xsh0q")
 
-[node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnExit"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/BtnExit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_17kmu")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnExit/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -379,19 +366,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BtnContinue" type="Button" parent="MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2qycw")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_y7cos")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_y7cos")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_y7cos")
-theme_override_styles/hover = SubResource("StyleBoxFlat_y7cos")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_y7cos")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y7cos")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_y7cos")
-theme_override_styles/normal = SubResource("StyleBoxFlat_y7cos")
+flat = true
 script = ExtResource("4_xsh0q")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/BtnContinue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_tifh7")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnContinue"]
 layout_mode = 1
@@ -400,9 +390,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.5
+offset_left = -49.5
 offset_top = -11.5
-offset_right = 41.5
+offset_right = 49.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="4_bvyrw"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_6wlpn"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_gtefv"]
+[ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="8_cvv5q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yp4y7"]
 bg_color = Color(0.242, 0.242, 0.242, 0.783)
@@ -14,15 +15,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow4aj"]
-bg_color = Color(0.924291, 0.460433, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0, 0.106)
-shadow_size = 4
 
 [node name="FriendInviteNode" type="Control"]
 custom_minimum_size = Vector2(300, 80)
@@ -120,31 +112,32 @@ grow_vertical = 2
 flat = true
 script = ExtResource("6_6wlpn")
 
-[node name="Panel" type="Panel" parent="InviteBtn"]
+[node name="TextureRect" type="TextureRect" parent="InviteBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ow4aj")
+texture = ExtResource("8_cvv5q")
+expand_mode = 1
 
-[node name="Label" type="Label" parent="InviteBtn"]
+[node name="Label" type="Label" parent="InviteBtn/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+offset_left = -23.0
 offset_top = -11.5
-offset_right = 20.0
+offset_right = 23.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("6_gtefv")
+theme_override_font_sizes/font_size = 18
 text = "INVITE"
 vertical_alignment = 1
 

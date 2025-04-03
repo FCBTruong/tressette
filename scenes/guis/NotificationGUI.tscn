@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_icld3"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_k8eoc"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="6_mr2ps"]
+[ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="6_ot8ux"]
 [ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="7_7u1fw"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="7_hqsf3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwd5"]
 bg_color = Color(0, 0, 0, 0.74)
@@ -21,24 +23,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0co1"]
-bg_color = Color(0.846222, 0.53513, 0.117025, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.13593, 0.308344, 0.469451, 1)
-shadow_size = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2c7d7"]
-bg_color = Color(0.364776, 0.673042, 0.764758, 0.753)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0.0823529, 0.32549, 0.552941, 1)
-shadow_size = 5
 
 [node name="NotificationGui" type="Control"]
 layout_mode = 3
@@ -140,15 +124,15 @@ layout_mode = 2
 flat = true
 script = ExtResource("4_icld3")
 
-[node name="Panel" type="Panel" parent="MainPn/HBoxContainer/CancelBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/CancelBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_s0co1")
+texture = ExtResource("6_ot8ux")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="MainPn/HBoxContainer/CancelBtn"]
 layout_mode = 1
@@ -170,20 +154,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OkBtn" type="Button" parent="MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(140, 50)
+custom_minimum_size = Vector2(140, 60)
 layout_mode = 2
 flat = true
 script = ExtResource("4_icld3")
 
-[node name="Panel" type="Panel" parent="MainPn/HBoxContainer/OkBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2c7d7")
+texture = ExtResource("7_hqsf3")
+expand_mode = 1
 
 [node name="OkTxtLb" type="Label" parent="MainPn/HBoxContainer/OkBtn"]
 layout_mode = 1

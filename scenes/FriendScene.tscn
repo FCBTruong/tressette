@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_scene.gd" id="1_eo0n0"]
 [ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_vpk1r"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_jpf4c"]
-[ext_resource type="Texture2D" uid="uid://c8ovrrijtx4jw" path="res://assets/images/back-button.png" id="3_ssykr"]
+[ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="4_nujve"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="5_altrw"]
 [ext_resource type="Texture2D" uid="uid://c2sg4foah440r" path="res://assets/images/search_icon_small.png" id="5_gto5b"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="8_kp8m7"]
@@ -110,7 +110,6 @@ flat = true
 script = ExtResource("3_jpf4c")
 
 [node name="TextureRect" type="TextureRect" parent="TopPn/BackBtn"]
-modulate = Color(1, 1, 1, 0.428)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,7 +122,7 @@ offset_right = 30.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_ssykr")
+texture = ExtResource("4_nujve")
 expand_mode = 1
 
 [node name="LineEdit" type="LineEdit" parent="TopPn"]
@@ -169,17 +168,16 @@ flat = true
 script = ExtResource("3_jpf4c")
 
 [node name="TextureRect" type="TextureRect" parent="TopPn/RequestBtn"]
-modulate = Color(0.910714, 0.910714, 0.910714, 0.704)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_1onhq")

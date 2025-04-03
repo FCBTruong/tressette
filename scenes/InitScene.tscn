@@ -44,7 +44,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_t8h7q")
 expand_mode = 1
-stretch_mode = 6
 
 [node name="DownloadPn" type="Panel" parent="TextureRect"]
 visible = false
