@@ -401,6 +401,8 @@ func _get_my_card(id):
 	return null
 	
 func play_my_card(id: int, auto: bool = false):
+	if is_alarming_clock:
+		stop_alarm_clock()
 	if len(list_napoli_highlights) > 0:
 		for n in list_napoli_highlights:
 			n.queue_free()
@@ -1289,3 +1291,12 @@ func end_game():
 				#)
 				pass
 	pass
+
+var is_alarming_clock = false
+func on_alarm_clock():
+	is_alarming_clock = true
+	$AudioClockTick.play()
+	
+func stop_alarm_clock():
+	is_alarming_clock = false
+	$AudioClockTick.stop()

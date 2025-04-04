@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_requests_gui.gd" id="1_4tq2x"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_lq7hr"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_thc1y"]
-[ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="3_k1pnb"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_2g1lf"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_ocbit"]
 
 [node name="FriendRequestsGui" type="Control"]
@@ -70,7 +70,7 @@ offset_right = 22.5
 offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_k1pnb")
+texture = ExtResource("4_2g1lf")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="MainPn"]

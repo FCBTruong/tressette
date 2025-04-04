@@ -134,7 +134,9 @@ func _process(delta: float):
 				var time_remain = g.v.game_server_config.time_thinking_in_turn - elapsed_time
 				if time_remain < 5 and not did_alarm_clock:
 					did_alarm_clock = true
-					g.v.sound_manager.play_clock_tick_sound()
+					var board = g.v.scene_manager.get_current_scene()
+					if board is BoardScene:
+						board.on_alarm_clock()
 		else:
 			end_timer(true)
 

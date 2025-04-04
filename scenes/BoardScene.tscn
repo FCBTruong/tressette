@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=65 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="24_gd8ru"]
 [ext_resource type="PackedScene" uid="uid://bybhqhjkyhhbk" path="res://scenes/board/EmoChatNode.tscn" id="25_t6dir"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
+[ext_resource type="AudioStream" uid="uid://g0su4roe1kup" path="res://assets/sounds/clock_tick_sound.mp3" id="33_2tsyk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucf2k"]
 bg_color = Color(0.207843, 0.180392, 0.0980392, 1)
@@ -1835,6 +1836,10 @@ volume_db = 1.0
 
 [node name="AudioPlayCard" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_62q6d")
+volume_db = 12.0
+
+[node name="AudioClockTick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_2tsyk")
 volume_db = 12.0
 
 [connection signal="pressed" from="HideFunctionBtn" to="." method="hide_function_btns"]
