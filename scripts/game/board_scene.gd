@@ -1224,7 +1224,6 @@ func hide_function_btns() -> void:
 	var guide_click = btn_show_func_bar.find_child("GuideClick")
 	guide_click.visible = false
 	var did_show_hint_click = g.v.storage_cache.fetch("did_show_hint_click", '0') == '1'
-	did_show_hint_click = false
 	if not did_show_hint_click:
 		g.v.storage_cache.store("did_show_hint_click", '1')
 		guide_click.visible = true
@@ -1249,7 +1248,7 @@ func hide_function_btns() -> void:
 			"modulate:a",
 			0,
 			0.3
-		).set_delay(4)
+		).set_delay(5)
 
 var anim_cup_scene = preload("res://scenes/board/AnimCupWin.tscn")
 func end_game():
