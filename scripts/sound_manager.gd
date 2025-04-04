@@ -33,6 +33,13 @@ func play_win_congrat_sound():
 	audio_player.stream = win_congrat_sound
 	audio_player.play()
 	
+var clock_tick_sound = preload('res://assets/sounds/clock_tick_sound.mp3')
+func play_clock_tick_sound():
+	if not g.v.game_manager.enable_sound:
+		return
+	audio_player.stream = clock_tick_sound
+	audio_player.play()
+	
 var lose_sound = preload('res://assets/sounds/lose_sound.mp3')
 func play_lose_sound():
 	if not g.v.game_manager.enable_sound:

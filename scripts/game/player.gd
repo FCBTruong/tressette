@@ -92,10 +92,11 @@ var elapsed_time: float = 0.0  # Tracks the elapsed time
 var running: bool = false
 var is_in_turn: bool = false
 
+var did_alarm_clock = false
 func start_timer():
 	if self.user_data.uid == g.v.player_info_mgr.my_user_data.uid:
 		g.v.scene_manager.INSTANCES.BOARD_SCENE.play_sound_my_turn()
-	
+		did_alarm_clock = false
 	time_progress_bar.visible = true
 	elapsed_time = 0.0
 	running = true
@@ -130,6 +131,10 @@ func _process(delta: float):
 					if elapsed_time > 3:
 						g.v.scene_manager.INSTANCES.BOARD_SCENE.game_logic.auto_play_card()
 						end_timer()
+				var time_remain = g.v.game_server_config.time_thinking_in_turn - elapsed_time
+				if time_remain < 5 and not did_alarm_clock:
+					did_alarm_clock = true
+					g.v.sound_manager.play_clock_tick_sound()
 		else:
 			end_timer(true)
 

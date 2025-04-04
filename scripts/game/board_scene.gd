@@ -963,12 +963,12 @@ func _input(event):
 		if event.pressed:
 			if event.keycode == KEY_W:
 				g.v.effect_mgr.effect_fly_object(
-					"res://assets/images/lobby/lira_icon.png",
+					"res://assets/images/lobby/icon_gold.png",
 					5,
 					pot_pn.global_position,
 					Vector2(500, 500),
 					0.6,
-					1
+					0.6
 				)
 				#show_prepare_start()
 				return
@@ -1031,12 +1031,12 @@ func _effect_pot_contribute():
 		var des_p = Vector2(center_play_pn_pos.x, center_play_pn_pos.y)
 
 		g.v.effect_mgr.effect_fly_coin_bet_table(
-			"res://assets/images/lobby/lira_icon.png",
+			"res://assets/images/lobby/icon_gold.png",
 			5,
 			pos,
 			des_p,
 			0.6,
-			1,
+			0.2,
 			self,
 			i == 0
 		)

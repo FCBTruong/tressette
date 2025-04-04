@@ -331,3 +331,8 @@ func check_show_group_fb():
 func set_enable_chat(e):
 	g.v.storage_cache.store('enable_chat', '1' if e else '0')
 	enable_chat = e
+
+
+func user_ready_match():
+	# must send this pack to let server know
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.USER_READY_MATCH, [])

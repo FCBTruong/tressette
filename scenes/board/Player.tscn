@@ -5,9 +5,9 @@
 [ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="3_lqea4"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_tcukj"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="3_tw46g"]
-[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="4_oc1ex"]
 [ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="5_6p0k0"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_tnwwa"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="6_g820y"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="6_lqmp5"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="9_55w0l"]
 [ext_resource type="Texture2D" uid="uid://bsfmna1hqw3oi" path="res://assets/images/board/chat_arrow.png" id="9_u71qq"]
@@ -248,7 +248,7 @@ offset_right = -92.0
 offset_bottom = 17.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("4_oc1ex")
+texture = ExtResource("6_g820y")
 expand_mode = 1
 
 [node name="GoldLb" type="Label" parent="MainPn/GoldPn"]

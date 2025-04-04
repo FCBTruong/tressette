@@ -22,9 +22,9 @@
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
 [ext_resource type="Texture2D" uid="uid://b0oyopl34mjy7" path="res://assets/images/lobby/buttons/friend_btn.png" id="16_iw3ky"]
 [ext_resource type="Texture2D" uid="uid://durbnkdnqppsc" path="res://assets/images/lobby/buttons/shop_btn.png" id="18_db14g"]
-[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="18_mdwpl"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="18_wn24e"]
 [ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="19_orflg"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="23_x5ipj"]
 [ext_resource type="Texture2D" uid="uid://c3cvhcijeqyq6" path="res://assets/images/lobby/chplay_color_icon.png" id="25_f38q8"]
 [ext_resource type="Texture2D" uid="uid://ckmdrn8wnvvrj" path="res://assets/images/lobby/appstore_icon.png" id="26_p24wg"]
 [ext_resource type="Texture2D" uid="uid://chdb6xb0yq64c" path="res://assets/images/lobby/offers/offer_btn.png" id="28_50qpl"]
@@ -693,12 +693,28 @@ theme_override_fonts/font = ExtResource("4_a6ucd")
 theme_override_font_sizes/font_size = 26
 text = "100"
 
-[node name="TextureRect" type="TextureRect" parent="LeftPanel/UserInfoPn/PanelInfo/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(25, 25)
+[node name="Control" type="Control" parent="LeftPanel/UserInfoPn/PanelInfo/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/UserInfoPn/PanelInfo/VBoxContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("18_mdwpl")
+texture = ExtResource("23_x5ipj")
 expand_mode = 1
 stretch_mode = 4
 

@@ -123,6 +123,9 @@ func _click_continue_play():
 
 	
 func _process_continue():
+	# send to server that this user is ready to play
+	g.v.game_manager.user_ready_match()
+	
 	continue_timer.stop()
 	self.visible = false
 	
