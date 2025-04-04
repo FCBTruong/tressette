@@ -29,6 +29,7 @@ func _show_popup():
 @onready var red_dot_avt = find_child("RedDotAvt")
 @onready var hbox_premium = find_child("HBoxPremium")
 @onready var premium_lb = find_child("PremiumLb")
+@onready var vip_icon = find_child("VipIcon")
 var is_me: bool = false
 var _info:UserData = null
 func _ready() -> void:
@@ -46,13 +47,15 @@ func _ready() -> void:
 func set_info(info: UserData):
 	_info = info
 	red_dot_avt.visible = false
+	vip_icon.visible = false
 	if _info.uid == g.v.player_info_mgr.my_user_data.uid:
 		avt_edit_btn.visible = true
 		avatar_img.set_me()
 		is_me = true
 		
 		var time_remain = int(g.v.player_info_mgr.time_show_ads - g.v.game_manager.get_timestamp_server())
-		if time_remain > 0:
+		if time_remain > 0:	
+			vip_icon.visible = true
 			hbox_premium.visible = true
 			var days = time_remain / 86400
 			var hours = (time_remain % 86400) / 3600

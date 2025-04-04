@@ -93,6 +93,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 	var team_id = pkg.get_team_id()
 	var avatar = pkg.get_avatar()
 	var gold = pkg.get_gold()
+	var is_vip = pkg.get_is_vip()
 	print('seat server', seat_server)
 	var seat_id = seat_server - match_data.seat_delta
 	if seat_id < 0:
@@ -108,6 +109,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 			user.game_data.team_id = team_id
 			user.avatar = avatar
 			user.gold = gold
+			user.is_vip = is_vip
 			
 	for user in match_data.users:
 		print('debug seat', user.game_data.seat_id)
@@ -167,6 +169,7 @@ func _handle_game_info(payload: PackedByteArray):
 	var avatars = pkg.get_avatars()
 	var user_points = pkg.get_user_points()
 	var team_ids = pkg.get_team_ids()
+	var is_vips = pkg.get_is_vips()
 	
 	var users: Array[UserData] = []
 	
@@ -178,6 +181,7 @@ func _handle_game_info(payload: PackedByteArray):
 		userdata.game_data.team_id = team_ids[i]
 		userdata.avatar = avatars[i]
 		userdata.gold = golds[i]
+		userdata.is_vip = is_vips[i]
 		users.append(userdata)
 		if uid == g.v.player_info_mgr.my_user_data.uid:
 			my_idx = i

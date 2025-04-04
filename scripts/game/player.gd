@@ -17,6 +17,7 @@ extends Node
 @onready var name_pn = find_child("NamePn")
 @onready var name_lb = find_child("NameLb")
 @onready var chat_tooltip = find_child("ChatTooltip")
+@onready var vip_icon = find_child("VipIcon")
 var default_pos_bonus
 var is_me: bool = false
 func _ready() -> void:
@@ -52,6 +53,8 @@ func set_user_data(user_dt: UserData) -> void:
 
 	main_pn.visible = true
 	empty_slot.visible = false
+	
+	vip_icon.visible = user_data.is_vip
 	
 	if name_lb.visible:
 		name_lb.text = StringUtils.sub_string(user_data.name, 15)

@@ -8,7 +8,9 @@ extends Node
 @onready var paypal_icon = find_child("PaypalIcon")
 @onready var no_ads_pn = find_child("HBoxNoAds")
 @onready var no_ads_lb = find_child("NoAdsLb")
+@onready var gold_icon = find_child("GoldIcon")
 var info: PackInfo
+var index
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	apple_icon.visible = g.v.config.get_platform() == g.v.config.PLATFORMS.IOS
@@ -29,7 +31,8 @@ func effect_appear(delay: float) -> void:
 	tween.tween_property(main_pn, 'position', default_pos, 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).set_delay(delay)
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.5).set_delay(delay)
 	
-func set_info(p_info):
+func set_info(p_info, idx):
+	index = idx
 	info = PackInfo.new()
 	info.pack_id = p_info['pack_id']
 	info.gold = p_info['gold']
@@ -45,6 +48,8 @@ func set_info(p_info):
 	var price = g.v.payment_mgr.get_price_pack(info.pack_id)
 	price_lb.text = price
 	gold_lb.text = StringUtils.point_number(info.gold)
+	
+	gold_icon.texture = load("res://assets/images/lobby/shop/pack_0" + str(index + 1) + ".png")
 	
 func _click_buy():
 	g.v.payment_mgr.buy_pack(info.pack_id)

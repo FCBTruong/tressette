@@ -1522,6 +1522,11 @@ class GameInfo:
 		service.field = _enable_bet_win_score
 		data[_enable_bet_win_score.tag] = service
 		
+		_is_vips = PBField.new("is_vips", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 23, true, [])
+		service = PBServiceField.new()
+		service.field = _is_vips
+		data[_is_vips.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1722,6 +1727,15 @@ class GameInfo:
 	func set_enable_bet_win_score(value : bool) -> void:
 		_enable_bet_win_score.value = value
 	
+	var _is_vips: PBField
+	func get_is_vips() -> Array:
+		return _is_vips.value
+	func clear_is_vips() -> void:
+		data[23].state = PB_SERVICE_STATE.UNFILLED
+		_is_vips.value = []
+	func add_is_vips(value : bool) -> void:
+		_is_vips.value.append(value)
+	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
 		
@@ -1818,6 +1832,11 @@ class NewUserJoinMatch:
 		service.field = _avatar
 		data[_avatar.tag] = service
 		
+		_is_vip = PBField.new("is_vip", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 7, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_vip
+		data[_is_vip.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1873,6 +1892,15 @@ class NewUserJoinMatch:
 		_avatar.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_avatar(value : String) -> void:
 		_avatar.value = value
+	
+	var _is_vip: PBField
+	func get_is_vip() -> bool:
+		return _is_vip.value
+	func clear_is_vip() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_is_vip.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_vip(value : bool) -> void:
+		_is_vip.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

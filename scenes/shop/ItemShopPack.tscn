@@ -1,18 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://doyshtw1etx6n"]
+[gd_scene load_steps=15 format=3 uid="uid://doyshtw1etx6n"]
 
 [ext_resource type="Script" path="res://scripts/modules/shop/shop_item_node.gd" id="1_ffhj8"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_s4pv2"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_eb3ac"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="3_hrwo0"]
 [ext_resource type="Texture2D" uid="uid://be3hpamk68mi0" path="res://assets/images/ad-blocker.png" id="4_om0jh"]
+[ext_resource type="Texture2D" uid="uid://c76fi5yva6ktd" path="res://assets/images/lobby/shop/pack_01.png" id="4_vge8k"]
 [ext_resource type="Texture2D" uid="uid://dvkbr2jw0gmib" path="res://assets/images/login/apple_icon.png" id="5_hrp46"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="5_n3q8i"]
 [ext_resource type="Texture2D" uid="uid://doxr31gm6ex1a" path="res://assets/images/lobby/chplay_icon.png" id="6_guew6"]
 [ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="6_ws3r3"]
 [ext_resource type="Texture2D" uid="uid://bfb3pvm5odphn" path="res://assets/images/lobby/paypal_icon.png" id="7_i8nk8"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="7_yigor"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1it3v"]
-bg_color = Color(0.0941176, 0.0941176, 0.0941176, 0.752941)
+bg_color = Color(0, 0, 0, 0.447059)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -26,13 +28,6 @@ shader_parameter/highlight_strength = 0.6
 shader_parameter/color_mode_toggle = false
 shader_parameter/is_horizontal = true
 shader_parameter/delay = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ok3s"]
-bg_color = Color(0.0857412, 0.70366, 0.20139, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="ItemShopPack" type="Control"]
 custom_minimum_size = Vector2(200, 300)
@@ -68,29 +63,39 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -55.0
+offset_top = -33.0
 offset_right = 100.0
-offset_bottom = -15.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="GoldLb" type="Label" parent="Main/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.90046, 0, 1)
+theme_override_colors/font_color = Color(0.995572, 0.91865, 0.222796, 1)
 theme_override_fonts/font = ExtResource("2_s4pv2")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 35
 text = "1.000.000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Main/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("3_hrwo0")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="GoldIcon" type="TextureRect" parent="Main"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -52.0
+offset_right = 175.0
+offset_bottom = 98.0
+texture = ExtResource("4_vge8k")
+expand_mode = 1
 
 [node name="HBoxNoAds" type="HBoxContainer" parent="Main"]
 custom_minimum_size = Vector2(200, 0)
@@ -101,9 +106,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -8.0
+offset_top = 15.0
 offset_right = 100.0
-offset_bottom = 32.0
+offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -117,9 +122,25 @@ text = "5 days"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Main/HBoxNoAds"]
-custom_minimum_size = Vector2(30, 30)
+[node name="Control" type="Control" parent="Main/HBoxNoAds"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main/HBoxNoAds/Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 4
 texture = ExtResource("4_om0jh")
 expand_mode = 1
@@ -134,25 +155,25 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -75.0
-offset_top = -50.0
+offset_top = -56.0
 offset_right = 75.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 0
 flat = true
 script = ExtResource("3_eb3ac")
 
-[node name="Panel" type="Panel" parent="Main/BuyBtn"]
+[node name="Panel" type="TextureRect" parent="Main/BuyBtn"]
 material = SubResource("ShaderMaterial_6mhwh")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -6.0
-offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ok3s")
+texture = ExtResource("7_yigor")
+expand_mode = 1
 
 [node name="AppleIcon" type="TextureRect" parent="Main/BuyBtn/Panel"]
 self_modulate = Color(1, 1, 1, 0.2)
@@ -160,9 +181,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 5.0
+offset_left = 10.0
 offset_top = -17.0
-offset_right = 35.0
+offset_right = 40.0
 offset_bottom = 13.0
 grow_vertical = 2
 texture = ExtResource("5_hrp46")
@@ -173,9 +194,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 11.0
+offset_left = 16.0
 offset_top = -15.0
-offset_right = 41.0
+offset_right = 46.0
 offset_bottom = 15.0
 grow_vertical = 2
 texture = ExtResource("7_i8nk8")
@@ -187,9 +208,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 7.0
+offset_left = 12.0
 offset_top = -15.0
-offset_right = 37.0
+offset_right = 42.0
 offset_bottom = 15.0
 grow_vertical = 2
 texture = ExtResource("6_guew6")

@@ -12,7 +12,7 @@ func _ready() -> void:
 		instance.name = 'ItemShopPack' + str(i + 1)
 		packs_container.add_child(instance)
 		packs_node.append(instance)
-		instance.set_info(packs[i])
+		instance.set_info(packs[i], i)
 	
 	_effect_appear()
 
