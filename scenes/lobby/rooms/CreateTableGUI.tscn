@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkr5aeblxolhf"]
+[gd_scene load_steps=13 format=3 uid="uid://dkr5aeblxolhf"]
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/create_table_gui.gd" id="1_div3u"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_l5y7b"]
@@ -8,13 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="5_s0iba"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="6_xlv08"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_mmcj6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkm7t"]
-bg_color = Color(0.409856, 0.556132, 0.798701, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_blkqw"]
 
@@ -42,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPn" type="Panel" parent="."]
+[node name="MainPn" type="Control" parent="."]
 clip_children = 1
 custom_minimum_size = Vector2(600, 400)
 layout_mode = 1
@@ -58,7 +51,6 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(300, 200)
-theme_override_styles/panel = SubResource("StyleBoxFlat_bkm7t")
 
 [node name="TextureRect" type="TextureRect" parent="MainPn"]
 layout_mode = 1
@@ -73,10 +65,10 @@ expand_mode = 1
 [node name="CloseBtn" type="Button" parent="MainPn"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 58.0
-offset_bottom = 58.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 51.0
+offset_bottom = 49.0
 flat = true
 script = ExtResource("3_50y8s")
 
@@ -87,10 +79,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -22.5
+offset_top = -22.5
+offset_right = 22.5
+offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_ir5fg")
@@ -104,10 +96,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -60.0
-offset_right = 50.0
-offset_bottom = -10.0
+offset_left = -60.0
+offset_top = -72.0
+offset_right = 60.0
+offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_blkqw")
@@ -153,9 +145,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -170.0
-offset_top = -137.0
+offset_top = -156.0
 offset_right = 170.0
-offset_bottom = 123.0
+offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
@@ -351,9 +343,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -46.0
-offset_top = -98.0
+offset_top = -123.0
 offset_right = 46.0
-offset_bottom = -75.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("6_xlv08")

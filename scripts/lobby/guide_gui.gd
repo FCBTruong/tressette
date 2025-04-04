@@ -4,11 +4,15 @@ extends Node
 @onready var close_btn = find_child("CloseBtn")
 @onready var next_btn = find_child("NextBtn")
 @onready var previous_btn = find_child("PreviousBtn")
+@onready var card_strong_pn = find_child("CardStrongPn")
 var tween
 var pages = []
 var current_idx = 0
 var is_quick_play = false
+var strong_cards = []
+var cur_card_style
 func _ready() -> void:
+	cur_card_style = g.v.game_constants.CARD_STYLES.CLASSIC
 	tween = create_tween()
 	var default_pos = main_pn.position
 	#main_pn.modulate.a = 0
@@ -40,6 +44,10 @@ func _ready() -> void:
 			pages[i].visible = true
 		else:
 			pages[i].visible = false
+			
+	for i in range(10):
+		var card = card_strong_pn.find_child("CardStrong" + str(i))
+		strong_cards.append(card)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func on_close() -> void:
@@ -72,3 +80,25 @@ func _click_previous_page():
 	next_btn.visible = true
 
 	pass
+
+
+var strong_ids = [12, 16, 20, 24, 28, 32, 36, 0, 4, 8]
+func on_show():
+	if cur_card_style == g.v.game_manager.card_style:
+		return
+	else:
+		cur_card_style = g.v.game_manager.card_style
+	var path
+	if g.v.game_manager.card_style == g.v.game_constants.CARD_STYLES.CLASSIC:
+		path = "res://assets/images/card_tressette/classic/"
+	elif g.v.game_manager.card_style == g.v.game_constants.CARD_STYLES.MODERN:
+		path = "res://assets/images/card_tressette/modern/card_"
+
+
+	for i in range(10):
+		var p = path + str(strong_ids[i]) + ".png"
+		strong_cards[i].texture = load(p)
+	
+	var napolis = [1, 5, 9]
+	for j in range(3):
+		find_child("NapoliCard" + str(j)).texture = load(path + str(napolis[j]) + ".png")

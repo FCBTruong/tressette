@@ -6,6 +6,7 @@ func _ready() -> void:
 	var tween = create_tween()
 	main_pn.scale = Vector2(0, 0)
 	main_pn.modulate.a = 0
+	NodeUtils.set_center_pivot(self.main_pn)
 	
 	tween.parallel().tween_property(main_pn, 'scale', Vector2(1, 1), 0.5).set_trans(Tween.TRANS_BACK) \
 		.set_ease(Tween.EASE_OUT)

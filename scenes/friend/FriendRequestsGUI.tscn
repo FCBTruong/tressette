@@ -1,16 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxtjcc2o2djd8"]
 
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_requests_gui.gd" id="1_4tq2x"]
+[ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_lq7hr"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_thc1y"]
 [ext_resource type="Texture2D" uid="uid://cupkt0oi4gxxf" path="res://assets/images/lobby/user_info_gui/close-button.png" id="3_k1pnb"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_ocbit"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g05vm"]
-bg_color = Color(0.000129516, 0.398668, 0.700265, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="FriendRequestsGui" type="Control"]
 layout_mode = 3
@@ -29,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPn" type="Panel" parent="."]
+[node name="MainPn" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,14 +37,23 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(400, 0)
-theme_override_styles/panel = SubResource("StyleBoxFlat_g05vm")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lq7hr")
+expand_mode = 1
 
 [node name="CloseBtn" type="Button" parent="MainPn"]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 7.0
-offset_right = 55.0
-offset_bottom = 57.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 52.0
+offset_bottom = 52.0
 flat = true
 script = ExtResource("2_thc1y")
 
@@ -61,10 +64,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -22.5
+offset_top = -22.5
+offset_right = 22.5
+offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_k1pnb")
@@ -75,14 +78,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -59.0
-offset_top = 13.0
-offset_right = 59.0
-offset_bottom = 51.0
+offset_left = -72.0
+offset_top = 18.0
+offset_right = 72.0
+offset_bottom = 56.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.845)
+theme_override_colors/font_color = Color(0.934474, 0.589893, 0.249069, 1)
 theme_override_fonts/font = ExtResource("4_ocbit")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "REQUESTS"
 uppercase = true
 
@@ -92,9 +95,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -260.0
-offset_top = 74.0
+offset_top = 64.0
 offset_right = 260.0
-offset_bottom = 394.0
+offset_bottom = 384.0
 grow_horizontal = 2
 
 [node name="ListContainer" type="VBoxContainer" parent="MainPn/ScrollContainer"]

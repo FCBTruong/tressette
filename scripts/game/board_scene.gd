@@ -1221,6 +1221,35 @@ func hide_function_btns() -> void:
 		0.2,
 		0.5
 	).set_delay(1.5)
+	var guide_click = btn_show_func_bar.find_child("GuideClick")
+	guide_click.visible = false
+	var did_show_hint_click = g.v.storage_cache.fetch("did_show_hint_click", '0') == '1'
+	did_show_hint_click = false
+	if not did_show_hint_click:
+		g.v.storage_cache.store("did_show_hint_click", '1')
+		guide_click.visible = true
+		guide_click.modulate.a = 0
+		tween_function_btn.tween_property(
+			guide_click,
+			"modulate:a",
+			1,
+			0.3
+		)
+		
+		var finger_icon = guide_click.find_child("FingerIcon")
+		var finger_tw = create_tween()
+		finger_tw.set_loops() # infinite loop
+		finger_tw.tween_property(finger_icon, "position:y", 5, 0.3)
+		finger_tw.tween_property(finger_icon, "position:y", -5, 0.3) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_IN_OUT)
+
+		tween_function_btn.tween_property(
+			guide_click,
+			"modulate:a",
+			0,
+			0.3
+		).set_delay(4)
 
 var anim_cup_scene = preload("res://scenes/board/AnimCupWin.tscn")
 func end_game():

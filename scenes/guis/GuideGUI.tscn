@@ -102,7 +102,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPn/Page2"]
+[node name="CardStrongPn" type="HBoxContainer" parent="MainPn/Page2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -117,70 +117,70 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect5" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong0" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("2_m2d06")
 expand_mode = 1
 
-[node name="TextureRect6" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong1" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("3_dafih")
 expand_mode = 1
 
-[node name="TextureRect7" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong2" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("4_f3b6x")
 expand_mode = 1
 
-[node name="TextureRect8" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong3" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("5_tksor")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="MainPn/Page2/HBoxContainer"]
+[node name="Control" type="Control" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
-[node name="TextureRect10" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong4" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("6_furuv")
 expand_mode = 1
 
-[node name="TextureRect9" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong5" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("7_4s5tw")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong6" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("8_ttw65")
 expand_mode = 1
 
-[node name="Control2" type="Control" parent="MainPn/Page2/HBoxContainer"]
+[node name="Control2" type="Control" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
-[node name="TextureRect3" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong7" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 material = SubResource("ShaderMaterial_b4qms")
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("10_o4nmy")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong8" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("11_knq73")
 expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="MainPn/Page2/HBoxContainer"]
+[node name="CardStrong9" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("12_5eg2x")
@@ -457,20 +457,20 @@ offset_top = 48.0
 offset_right = 375.0
 offset_bottom = 168.0
 
-[node name="TextureRect3" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
+[node name="NapoliCard0" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
 material = SubResource("ShaderMaterial_ccdio")
 custom_minimum_size = Vector2(80, 120)
 layout_mode = 2
 texture = ExtResource("15_bd7yw")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
+[node name="NapoliCard1" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
 custom_minimum_size = Vector2(80, 120)
 layout_mode = 2
 texture = ExtResource("16_g3bi1")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
+[node name="NapoliCard2" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
 custom_minimum_size = Vector2(80, 120)
 layout_mode = 2
 texture = ExtResource("17_tqcw4")

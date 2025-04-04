@@ -30,6 +30,7 @@ func _ready() -> void:
 				g.v.native_mgr.rate_app()
 				g.v.storage_cache.store("store_rating", 1)
 				
+
 	if g.v.player_info_mgr.startup_gold > 0:
 		# popup received gold startup
 		var str_startup = tr("STARTUP_GOLD")
@@ -37,8 +38,7 @@ func _ready() -> void:
 		g.v.scene_manager.show_ok_dialog(
 			str_startup,
 			func ():
-				var gui = g.v.game_manager.open_guide_gui()
-				gui.is_quick_play = true
+				g.v.scene_manager.open_gui("res://scenes/lobby/PickCardGUI.tscn")
 				,
 			false,
 			tr("PLAY_NOW")
