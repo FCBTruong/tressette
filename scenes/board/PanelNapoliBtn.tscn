@@ -1,30 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwlkcma7c0pa3"]
+[gd_scene load_steps=3 format=3 uid="uid://bwlkcma7c0pa3"]
 
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="1_htjrv"]
+[ext_resource type="Texture2D" uid="uid://bio3c7xh7hs06" path="res://assets/images/lobby/buttons/blue_btn.png" id="1_wqcap"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn1ms"]
-bg_color = Color(0.499483, 0.560203, 0.998967, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0, 0.2)
-shadow_size = 5
-
-[sub_resource type="Gradient" id="Gradient_333yp"]
-colors = PackedColorArray(0.21721, 0.267847, 1, 1, 0.338875, 0.709869, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkk7c"]
-gradient = SubResource("Gradient_333yp")
-
-[node name="PanelNapoliBtn" type="Panel"]
+[node name="PanelNapoliBtn" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jn1ms")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -33,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_rkk7c")
+texture = ExtResource("1_wqcap")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="."]

@@ -41,6 +41,8 @@ func _click_send():
 	var str = content_edit.text
 	
 	str = StringUtils.sub_string(str, 500)
+	if str == "":
+		return
 	content_edit.text = str
 	
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.CustomerServiceReport.new()

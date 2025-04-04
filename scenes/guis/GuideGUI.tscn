@@ -505,13 +505,14 @@ expand_mode = 1
 [node name="Label" type="Label" parent="MainPn/Page2/Napoli2"]
 self_modulate = Color(1, 1, 1, 0.704)
 layout_mode = 0
-offset_left = 701.0
-offset_top = 91.0
-offset_right = 891.0
-offset_bottom = 127.0
+offset_left = 693.0
+offset_top = 94.0
+offset_right = 883.0
+offset_bottom = 130.0
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "PLUS_1_POINT"
+vertical_alignment = 1
 
 [node name="Page1" type="Control" parent="MainPn"]
 layout_mode = 1

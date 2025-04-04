@@ -299,6 +299,7 @@ func open_guide_gui():
 	return g.v.scene_manager.open_gui("res://scenes/guis/GuideGUI.tscn", true)
 
 var did_show_fanpage = false
+var did_show_fb_group = false
 func check_show_fanpage():
 	if did_show_fanpage:
 		return
@@ -313,6 +314,19 @@ func check_show_fanpage():
 	
 	g.v.popup_mgr.add_popup("res://scenes/lobby/LikeFanpageGUI.tscn")
 
+func check_show_group_fb():
+	if did_show_fb_group:
+		return
+	if g.v.player_info_mgr.my_user_data.game_count < 4:
+		return
+	did_show_fb_group = true
+	var n = g.v.storage_cache.fetch("join_group_fb", 0)
+	
+
+	if n >= g.v.game_constants.MAX_SHOW_JOIN_GROUP_FB:
+		return
+	
+	g.v.popup_mgr.add_popup("res://scenes/lobby/JoinFbGroupGUI.tscn")
 
 func set_enable_chat(e):
 	g.v.storage_cache.store('enable_chat', '1' if e else '0')

@@ -135,3 +135,4 @@ const TERMS_OF_SERVICE_URL = 'https://clareentertainment.my.canva.site/term-of-s
 
 const GEO_API_URL = "https://ipwhois.app/json/"
 const MAX_SHOW_FANPAGE_LIKE = 3
+const MAX_SHOW_JOIN_GROUP_FB = 3

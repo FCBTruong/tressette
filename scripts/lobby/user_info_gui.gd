@@ -113,7 +113,7 @@ func _copy_uid() -> void:
 	
 func _open_pick_avatar() -> void:
 	red_dot_avt.visible = false
-	g.v.scene_manager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn', g.v.game_constants.GUI_ZORDER.PICK_AVATAR)
+	g.v.scene_manager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn')
 	
 func _send_request_friend():
 	g.v.friend_mgr.send_add_friend(self._info.uid)

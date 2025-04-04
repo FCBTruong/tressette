@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7q07a0522mky"]
+[gd_scene load_steps=16 format=3 uid="uid://b7q07a0522mky"]
 
 [ext_resource type="Script" path="res://scripts/lobby/first_buy_gui.gd" id="1_8ta2g"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_7rpsx"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="4_acfgl"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="4_q8y5m"]
 [ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="5_cc7ps"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="7_oouga"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_jcow4"]
+[ext_resource type="Texture2D" uid="uid://be3hpamk68mi0" path="res://assets/images/ad-blocker.png" id="9_al5fx"]
+[ext_resource type="Texture2D" uid="uid://drmwf5psvwa1h" path="res://assets/images/lobby/user_info_gui/vip_icon.png" id="10_fthh0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewkb6"]
 bg_color = Color(1, 0.527119, 0.407929, 1)
@@ -73,10 +77,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -211.0
-offset_right = 200.0
-offset_bottom = 189.0
+offset_left = -275.0
+offset_top = -275.0
+offset_right = 275.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ewkb6")
@@ -99,10 +103,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = 169.0
-offset_right = 75.0
-offset_bottom = 229.0
+offset_left = -137.0
+offset_top = 190.0
+offset_right = 13.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
@@ -139,13 +143,31 @@ text = "5 EURO"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TimeLb" type="Label" parent="Main"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -268.0
+offset_right = -106.0
+offset_bottom = -242.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.313312, 0.11399, 0.0319957, 1)
+theme_override_fonts/font = ExtResource("7_oouga")
+theme_override_font_sizes/font_size = 25
+text = "20:00:01"
+
 [node name="CloseBtn" type="Button" parent="Main"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 0
-offset_left = 169.0
-offset_top = -226.0
-offset_right = 219.0
-offset_bottom = -176.0
+offset_left = 217.0
+offset_top = -296.0
+offset_right = 297.0
+offset_bottom = -216.0
 flat = true
 script = ExtResource("2_7rpsx")
 
@@ -164,6 +186,108 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_cc7ps")
 expand_mode = 1
+
+[node name="ItemsPn" type="VBoxContainer" parent="Main"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = -191.0
+offset_top = -13.0
+offset_right = 9.0
+offset_bottom = 187.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/ItemsPn"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Main/ItemsPn/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main/ItemsPn/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_jcow4")
+expand_mode = 1
+
+[node name="GoldLb" type="Label" parent="Main/ItemsPn/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("2_optfb")
+theme_override_font_sizes/font_size = 28
+text = "10M Gold"
+
+[node name="NoAds" type="HBoxContainer" parent="Main/ItemsPn"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Main/ItemsPn/NoAds"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main/ItemsPn/NoAds/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_al5fx")
+expand_mode = 1
+
+[node name="NoAdsLb" type="Label" parent="Main/ItemsPn/NoAds"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("2_optfb")
+theme_override_font_sizes/font_size = 28
+text = "30 days"
+
+[node name="VipPn" type="HBoxContainer" parent="Main/ItemsPn"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Main/ItemsPn/VipPn"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main/ItemsPn/VipPn/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -32.5
+offset_right = 32.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_fthh0")
+expand_mode = 1
+
+[node name="VipLb" type="Label" parent="Main/ItemsPn/VipPn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("2_optfb")
+theme_override_font_sizes/font_size = 28
+text = "Vip"
 
 [connection signal="pressed" from="Main/BuyBtn" to="." method="purchase"]
 [connection signal="pressed" from="Main/CloseBtn" to="." method="on_close"]

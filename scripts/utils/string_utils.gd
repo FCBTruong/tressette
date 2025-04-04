@@ -46,3 +46,9 @@ static func convert_point_string_to_int(point_str: String) -> int:
 	var cleaned_str = point_str.replace(".", "")
 	# Convert the cleaned string to an integer
 	return cleaned_str.to_int()
+
+static func format_time(time_remain: int) -> String:
+	var hours = time_remain / 3600
+	var minutes = (time_remain % 3600) / 60
+	var seconds = time_remain % 60
+	return "%02d:%02d:%02d" % [hours, minutes, seconds]

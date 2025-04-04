@@ -131,13 +131,15 @@ func _process_continue():
 	if scene is BoardScene:
 		scene.continue_play()
 	
-	if g.v.game_manager.is_enable_ads() and g.v.player_info_mgr.my_user_data.game_count > 2:
+	if g.v.game_manager.is_enable_ads() and g.v.player_info_mgr.my_user_data.game_count > 3:
 		if g.v.game_manager.game_th % 4 == 0:
-			g.admob_mgr._on_reward_interstitial_pressed()
+			g.admob_mgr._on_interstitial_pressed()
+			#g.admob_mgr._on_reward_interstitial_pressed()
 		else:
 			g.admob_mgr._on_interstitial_pressed()
 func _click_exit_game():
 	self.visible = false
 	g.v.game_manager.send_register_leave_game()
 	g.admob_mgr._on_reward_pressed()
+	g.admob_mgr._on_interstitial_pressed()
 	pass

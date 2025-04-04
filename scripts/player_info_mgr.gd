@@ -22,6 +22,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 		g.v.game_constants.CMDs.UPDATE_ADS:
 			receive_update_ads(payload)
 			
+var time_end_offer = 0
 func _on_receive_info(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UserInfo.new()
 	packet.from_bytes(bytes)
@@ -40,7 +41,20 @@ func _on_receive_info(bytes: PackedByteArray):
 	
 	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 		has_first_buy = false
+	
+	if has_first_buy:
+		# this should check cache of client, because countdown time client manage
+		time_end_offer = g.v.storage_cache.fetch("first_buy_offer_time" + str(self.get_user_id()), 0)
 		
+		if time_end_offer < g.v.game_manager.get_timestamp_client():
+			if time_end_offer > g.v.game_manager.get_timestamp_client() - 86400:
+				has_first_buy = false
+				# due to offer just expired, need to cooldown
+			else:
+				# regen time end offer
+				time_end_offer = g.v.game_manager.get_timestamp_client() + 86400
+				# save to cache
+				g.v.storage_cache.store("first_buy_offer_time" + str(self.get_user_id()), time_end_offer)
 	if has_first_buy and my_user_data.game_count > 0:
 		g.v.popup_mgr.add_popup("res://scenes/lobby/FirstBuyGUI.tscn")
 	
@@ -65,4 +79,6 @@ func receive_update_ads(bytes: PackedByteArray):
 	g.admob_mgr._on_banner_close()
 	g.v.signal_bus.emit_signal_global('on_update_ads')
 	
-	
+
+func is_user_vip() -> bool:
+	return g.v.player_info_mgr.time_show_ads > g.v.game_manager.get_timestamp_server()

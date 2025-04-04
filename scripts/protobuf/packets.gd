@@ -3154,6 +3154,31 @@ class ShopConfig:
 		service.field = _no_ads_days
 		data[_no_ads_days.tag] = service
 		
+		_gold_offer_first = PBField.new("gold_offer_first", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _gold_offer_first
+		data[_gold_offer_first.tag] = service
+		
+		_no_ads_day_offer_first = PBField.new("no_ads_day_offer_first", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 7, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _no_ads_day_offer_first
+		data[_no_ads_day_offer_first.tag] = service
+		
+		_price_offer_first = PBField.new("price_offer_first", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _price_offer_first
+		data[_price_offer_first.tag] = service
+		
+		_currency_offer_first = PBField.new("currency_offer_first", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 9, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _currency_offer_first
+		data[_currency_offer_first.tag] = service
+		
+		_pack_id_offer_first = PBField.new("pack_id_offer_first", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 10, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _pack_id_offer_first
+		data[_pack_id_offer_first.tag] = service
+		
 	var data = {}
 	
 	var _pack_ids: PBField
@@ -3200,6 +3225,51 @@ class ShopConfig:
 		_no_ads_days.value = []
 	func add_no_ads_days(value : int) -> void:
 		_no_ads_days.value.append(value)
+	
+	var _gold_offer_first: PBField
+	func get_gold_offer_first() -> int:
+		return _gold_offer_first.value
+	func clear_gold_offer_first() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_gold_offer_first.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_gold_offer_first(value : int) -> void:
+		_gold_offer_first.value = value
+	
+	var _no_ads_day_offer_first: PBField
+	func get_no_ads_day_offer_first() -> int:
+		return _no_ads_day_offer_first.value
+	func clear_no_ads_day_offer_first() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_no_ads_day_offer_first.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_no_ads_day_offer_first(value : int) -> void:
+		_no_ads_day_offer_first.value = value
+	
+	var _price_offer_first: PBField
+	func get_price_offer_first() -> int:
+		return _price_offer_first.value
+	func clear_price_offer_first() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_price_offer_first.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_price_offer_first(value : int) -> void:
+		_price_offer_first.value = value
+	
+	var _currency_offer_first: PBField
+	func get_currency_offer_first() -> String:
+		return _currency_offer_first.value
+	func clear_currency_offer_first() -> void:
+		data[9].state = PB_SERVICE_STATE.UNFILLED
+		_currency_offer_first.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_currency_offer_first(value : String) -> void:
+		_currency_offer_first.value = value
+	
+	var _pack_id_offer_first: PBField
+	func get_pack_id_offer_first() -> String:
+		return _pack_id_offer_first.value
+	func clear_pack_id_offer_first() -> void:
+		data[10].state = PB_SERVICE_STATE.UNFILLED
+		_pack_id_offer_first.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_pack_id_offer_first(value : String) -> void:
+		_pack_id_offer_first.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

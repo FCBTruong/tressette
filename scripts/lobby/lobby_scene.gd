@@ -51,6 +51,9 @@ func _ready() -> void:
 		#g.admob_mgr._on_banner_pressed()
 	
 	g.v.game_manager.check_show_fanpage()
+	g.v.game_manager.check_show_group_fb()
+	
+	self.offer_first_btn.visible = g.v.player_info_mgr.has_first_buy
 
 	
 @onready var left_panel = find_child('LeftPanel')
@@ -65,6 +68,7 @@ func _ready() -> void:
 @onready var nofriend_btn = find_child('NofriendBtn')
 @onready var animation_player = find_child("AnimationPlayer")
 @onready var mobile_web_pn = find_child("MobileWebPn")
+@onready var offer_first_btn = find_child("OfferFirstBtn")
 func _do_effect() -> void:
 	var left_panel_defaultpos = left_panel.position
 	var play_container_defaultpos = play_container.position
@@ -168,3 +172,9 @@ func _click_open_chplay():
 
 func _click_ranking():
 	g.v.ranking_mgr.show_gui()
+
+func _click_offer_first_buy():
+	if not g.v.player_info_mgr.has_first_buy:
+		self.offer_first_btn.visible = false
+		return
+	g.v.scene_manager.open_gui("res://scenes/lobby/FirstBuyGUI.tscn")

@@ -140,6 +140,7 @@ func buy_pack(pack_id):
 	elif g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 		paypal_payment.purchase_pack(pack_id)
 
+var offer_first_info
 func _handle_shop_config(payload):
 	print('_handle_shop_config')
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ShopConfig.new()
@@ -159,5 +160,12 @@ func _handle_shop_config(payload):
 			'currency': currencies[i],
 			'no_ads_days': no_ads_days[i]
 		})
+		
+	offer_first_info = {
+		'pack_id': pkg.get_pack_id_offer_first(),
+		'gold': pkg.get_gold_offer_first(),
+		'price': pkg.get_currency_offer_first(),
+		'no_ads_days': pkg.get_no_ads_day_offer_first()
+	}
 	
 	
