@@ -248,7 +248,8 @@ func _handle_play_card(payload: PackedByteArray):
 		scene.play_card(uid, card_id, auto)
 	push_cards_compare(uid, card_id)
 	
-	g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
+	if scene is BoardScene:
+		scene.on_user_turn()
 	var is_end_hand = pkg.get_is_end_hand()
 	if is_end_hand:
 		win_point_hand = pkg.get_win_point()
