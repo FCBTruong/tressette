@@ -287,7 +287,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
 theme_override_fonts/font = ExtResource("2_optfb")
 theme_override_font_sizes/font_size = 28
-text = "Vip"
+text = "VIP_MEMBER"
 
 [connection signal="pressed" from="Main/BuyBtn" to="." method="purchase"]
 [connection signal="pressed" from="Main/CloseBtn" to="." method="on_close"]

@@ -45,7 +45,7 @@ func on_show():
 	tween.parallel().tween_callback(
 		func ():
 			continue_time_node.visible = true
-			continue_timer.connect("timeout", Callable(self, "_click_exit_game"))
+			continue_timer.connect("timeout", Callable(self, "_process_continue"))
 			continue_timer.start()
 			
 	)

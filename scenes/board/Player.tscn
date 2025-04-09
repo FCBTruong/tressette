@@ -320,6 +320,7 @@ texture_progress = ExtResource("5_6p0k0")
 
 [node name="VipIcon" type="TextureRect" parent="MainPn"]
 material = SubResource("ShaderMaterial_rpnew")
+layout_mode = 0
 offset_left = -42.0
 offset_top = -40.0
 offset_right = 8.0
