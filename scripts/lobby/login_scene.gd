@@ -77,6 +77,10 @@ func test_login_userB() -> void:
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.LOGIN, pkg.to_bytes())
 
 func _login_google() -> void:
+	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
+		g.v.login_mgr.send_login_firebase("abcd12", 0)
+		return
+	
 	g.v.firebase_mgr.login_with_google()
 
 func _login_facebook() -> void:

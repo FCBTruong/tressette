@@ -60,7 +60,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	if has_first_buy and my_user_data.game_count > 0:
 		g.v.popup_mgr.add_popup("res://scenes/lobby/FirstBuyGUI.tscn")
 	
-	if login_type == g.v.game_constants.LOGIN_TYPE.GUEST:
+	if login_type == g.v.game_constants.LOGIN_TYPE.GUEST and my_user_data.game_count > 0:
 		g.v.popup_mgr.add_popup("res://scenes/lobby/LinkAccountGUI.tscn")
 	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.win_count)
 

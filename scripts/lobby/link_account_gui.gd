@@ -24,5 +24,5 @@ func _on_close():
 	
 func _link_now():
 	self._on_close()
-	g.v.game_manager.logout()
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.LOG_OUT, [])
 	pass
