@@ -60,10 +60,24 @@ func _on_receive_info(bytes: PackedByteArray):
 	if has_first_buy and my_user_data.game_count > 0:
 		g.v.popup_mgr.add_popup("res://scenes/lobby/FirstBuyGUI.tscn")
 	
-	if login_type == g.v.game_constants.LOGIN_TYPE.GUEST and my_user_data.game_count > 0:
-		g.v.popup_mgr.add_popup("res://scenes/lobby/LinkAccountGUI.tscn")
+	if login_type == g.v.game_constants.LOGIN_TYPE.GUEST:
+		if my_user_data.game_count > 0:
+			var last_time_remind_link = g.v.storage_cache.fetch("link_acc_remind", 0)
+			var remind_link_times = g.v.storage_cache.fetch("remind_link_times", 0)
+			if remind_link_times < 5 and last_time_remind_link < g.v.game_manager.get_timestamp_client() - 86400:			
+				g.v.popup_mgr.add_popup("res://scenes/lobby/LinkAccountGUI.tscn")
+				g.v.storage_cache.store("link_acc_remind", g.v.game_manager.get_timestamp_client())
+				g.v.storage_cache.store("remind_link_times", remind_link_times + 1)
 	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.win_count)
-
+	
+	if is_linking_acc:
+		if login_type != g.v.game_constants.LOGIN_TYPE.GUEST:
+			if uid_linking == my_user_data.uid:
+				# link successfully
+				g.v.scene_manager.show_ok_dialog(tr("LINK_ACCOUNT_SUCCESS"))
+			else:
+				g.v.scene_manager.show_ok_dialog(tr("CANNOT_LINK_ACCOUNT"))
+		is_linking_acc = false
 
 func _on_update_money(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateMoney.new()
@@ -86,3 +100,6 @@ func receive_update_ads(bytes: PackedByteArray):
 
 func is_user_vip() -> bool:
 	return g.v.player_info_mgr.time_show_ads > g.v.game_manager.get_timestamp_server()
+
+var is_linking_acc: bool = false
+var uid_linking: int

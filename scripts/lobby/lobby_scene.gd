@@ -23,13 +23,10 @@ func _ready() -> void:
 			
 	var store_rate = g.v.storage_cache.fetch("store_rating", 0)
 	if store_rate == 0:
-		if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID:
-			if g.v.scene_manager.is_back_from_board() \
-				and g.v.game_manager.LAST_GAME_IS_WIN \
+		if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID \
 				and g.v.player_info_mgr.my_user_data.game_count > 5:
-				g.v.native_mgr.rate_app()
 				g.v.storage_cache.store("store_rating", 1)
-				
+				g.v.popup_mgr.add_popup("res://scenes/lobby/RatingGUI.tscn")			
 
 	if g.v.player_info_mgr.startup_gold > 0:
 		# popup received gold startup

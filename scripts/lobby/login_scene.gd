@@ -78,7 +78,7 @@ func test_login_userB() -> void:
 
 func _login_google() -> void:
 	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
-		g.v.login_mgr.send_login_firebase("abcd12", 0)
+		g.v.login_mgr.send_login_firebase("abcd1234", 0)
 		return
 	
 	g.v.firebase_mgr.login_with_google()

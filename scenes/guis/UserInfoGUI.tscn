@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene load_steps=36 format=3 uid="uid://bajq0x8ksakrb"]
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Texture2D" uid="uid://ceyy7y3k4olhi" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="17_65462"]
 [ext_resource type="Texture2D" uid="uid://bl5ci50kep8hk" path="res://assets/images/lobby/user_info_gui/friend_ok_icon.png" id="17_lnp64"]
 [ext_resource type="Texture2D" uid="uid://beksnb501alnd" path="res://assets/images/lobby/friend_reject_icon.png" id="18_jxtpp"]
+[ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="22_65kq0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaus5"]
 
@@ -706,9 +707,56 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_cin67")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cin67")
 script = ExtResource("11_eoxhy")
 
+[node name="LinkAccBtn" type="Button" parent="Control/MainPn"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -61.0
+offset_right = 60.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/LinkAccBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_65kq0")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/MainPn/LinkAccBtn/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -13.0
+offset_right = 39.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 20
+text = "VERIFY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Control/MainPn/HeadPn/CloseBtn" to="." method="_on_CloseButton_pressed"]
 [connection signal="pressed" from="Control/MainPn/HBoxContainer/CopyBtn" to="." method="_copy_uid"]
 [connection signal="pressed" from="Control/MainPn/TextureRect2/AvtEditBtn" to="." method="_open_pick_avatar"]
 [connection signal="pressed" from="Control/MainPn/ButtonPn/RequestFriendBtn" to="." method="_send_request_friend"]
 [connection signal="pressed" from="Control/MainPn/ButtonPn/AcceptFriendBtn" to="." method="_click_quick_accept_friend"]
 [connection signal="pressed" from="Control/MainPn/ButtonPn/RejectFriendBtn" to="." method="_click_quick_reject_friend"]
+[connection signal="pressed" from="Control/MainPn/LinkAccBtn" to="." method="_verify_account"]

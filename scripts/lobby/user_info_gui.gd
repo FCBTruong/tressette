@@ -30,6 +30,7 @@ func _show_popup():
 @onready var hbox_premium = find_child("HBoxPremium")
 @onready var premium_lb = find_child("PremiumLb")
 @onready var vip_icon = find_child("VipIcon")
+@onready var link_acc_btn = find_child("LinkAccBtn")
 var is_me: bool = false
 var _info:UserData = null
 func _ready() -> void:
@@ -48,6 +49,7 @@ func set_info(info: UserData):
 	_info = info
 	red_dot_avt.visible = false
 	vip_icon.visible = false
+	link_acc_btn.visible = false
 	if _info.uid == g.v.player_info_mgr.my_user_data.uid:
 		avt_edit_btn.visible = true
 		avatar_img.set_me()
@@ -72,6 +74,11 @@ func set_info(info: UserData):
 			red_dot_avt.visible = true
 		
 		head_pn.self_modulate = Color('#429648ca')
+		
+		var scene = g.v.scene_manager.get_current_scene()
+		if scene is not BoardScene:
+			if g.v.player_info_mgr.login_type == g.v.game_constants.LOGIN_TYPE.GUEST:
+				link_acc_btn.visible = true
 	else:
 		hbox_premium.visible = false
 		avt_edit_btn.visible = false
@@ -151,4 +158,9 @@ func _click_quick_accept_friend():
 	
 func _click_quick_reject_friend():
 	g.v.friend_mgr.send_reject_friend_request(_info.uid)
+	pass
+	
+func _verify_account():
+	self._on_CloseButton_pressed()
+	g.v.scene_manager.open_gui("res://scenes/lobby/LinkAccountGUI.tscn")
 	pass
