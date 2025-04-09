@@ -54,7 +54,7 @@ func _ready() -> void:
 	g.v.game_manager.check_show_group_fb()
 	
 	self.offer_first_btn.visible = g.v.player_info_mgr.has_first_buy
-
+	#g.v.scene_manager.open_gui("res://scenes/lobby/LinkAccountGUI.tscn")
 	
 @onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')

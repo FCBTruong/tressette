@@ -143,6 +143,7 @@ func _process_continue():
 func _click_exit_game():
 	self.visible = false
 	g.v.game_manager.send_register_leave_game()
-	g.admob_mgr._on_reward_pressed()
-	g.admob_mgr._on_interstitial_pressed()
+	if g.v.game_manager.is_enable_ads():
+		#g.admob_mgr._on_reward_pressed()
+		g.admob_mgr._on_interstitial_pressed()
 	pass

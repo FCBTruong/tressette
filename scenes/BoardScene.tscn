@@ -17,6 +17,7 @@
 [ext_resource type="Shader" path="res://shaders/baletro_fire.gdshader" id="11_2rt0a"]
 [ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="11_8cjom"]
 [ext_resource type="FontFile" uid="uid://cb1bj1k60uj4u" path="res://assets/fonts/Reglisse_Fill.otf" id="11_23se6"]
+[ext_resource type="Texture2D" uid="uid://c4n4ak32npep1" path="res://assets/images/board/layer_board_card.png" id="11_eum2r"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_lcke6"]
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="11_mpmvk"]
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="12_b6jtg"]
@@ -24,7 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_6bu1m"]
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_4pw0j"]
 [ext_resource type="Texture2D" uid="uid://v20b0tyl7vei" path="res://assets/images/board/guide_btn.png" id="14_arj4s"]
+[ext_resource type="Texture2D" uid="uid://cysw0jpqw1g0e" path="res://assets/images/board/flag_1.png" id="15_4ba6y"]
 [ext_resource type="Texture2D" uid="uid://ccq1m054wgoom" path="res://assets/images/board/settings_btn.png" id="15_fl0rb"]
+[ext_resource type="Texture2D" uid="uid://cltg2vecpujc" path="res://assets/images/board/score_bg.png" id="15_u7aql"]
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="16_oiaq1"]
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="17_11riy"]
@@ -63,7 +66,7 @@ shader_parameter/delay = 8.0
 shader_parameter/vertical_gradient = SubResource("GradientTexture2D_mcuel")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjq8g"]
-bg_color = Color(0.008, 0.373, 0.188, 0.316)
+bg_color = Color(0.0548801, 0.326889, 0.189022, 0.316)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -122,21 +125,6 @@ shadow_offset = Vector2(-2, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pdh6q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b84cg"]
-bg_color = Color(0.121569, 0.376471, 0.521569, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.0753752, 0.238637, 0.189658, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.117647)
-shadow_size = 3
-shadow_offset = Vector2(0, 3)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wav06"]
 bg_color = Color(0, 0, 0, 0.282353)
 corner_radius_top_left = 7
@@ -160,40 +148,18 @@ shader_parameter/fire_speed = Vector2(-0.2, 1.5)
 shader_parameter/fire_aperture = 0.6
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_1l567")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sv0ng"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8j2g"]
 bg_color = Color(0.988235, 0.929412, 0.796078, 1)
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
-shadow_color = Color(0, 0, 0, 0.266)
-shadow_size = 1
 shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo81u"]
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m3fb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4k4q"]
-bg_color = Color(0.574675, 0.185495, 0.0832522, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.337255, 0.105882, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.117647)
-shadow_size = 3
-shadow_offset = Vector2(0, 3)
 
 [sub_resource type="Shader" id="Shader_xqcm3"]
 code = "shader_type canvas_item;
@@ -562,6 +528,22 @@ pivot_offset = Vector2(300, 200)
 mouse_filter = 2
 
 [node name="Panel2" type="Panel" parent="PlayGround/CenterPlayPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -175.0
+offset_right = 300.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kjq8g")
+
+[node name="Deco2vs2" type="Control" parent="PlayGround/CenterPlayPn/Panel2"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -569,14 +551,77 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -150.0
-offset_right = 250.0
-offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_kjq8g")
+
+[node name="TextureRect" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+self_modulate = Color(0, 0.97, 0, 0.588235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -175.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_eum2r")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+self_modulate = Color(0, 0.97, 0, 0.588235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 175.0
+offset_right = 250.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+texture = ExtResource("11_eum2r")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+self_modulate = Color(1, 0.116667, 0, 0.588235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 250.0
+offset_top = 175.0
+offset_right = 500.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+texture = ExtResource("11_eum2r")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect4" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+self_modulate = Color(1, 0.116667, 0, 0.588235)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 250.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+texture = ExtResource("11_eum2r")
+expand_mode = 1
+flip_v = true
 
 [node name="CardbackPn" type="Control" parent="PlayGround/CenterPlayPn"]
 anchors_preset = 0
@@ -705,9 +750,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
+offset_left = -19.0
 offset_top = -100.0
-offset_right = 20.0
+offset_right = -19.0
 offset_bottom = -100.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -719,19 +764,19 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -14.0
-offset_top = -15.0
+offset_top = -13.0
 offset_right = -14.0
-offset_bottom = -15.0
+offset_bottom = -13.0
 grow_horizontal = 0
 mouse_filter = 2
 
 [node name="PlayerPos1" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn"]
 layout_mode = 1
 anchors_preset = 0
-offset_left = 58.0
+offset_left = 18.0
 offset_top = -15.0
-offset_right = 98.0
-offset_bottom = 25.0
+offset_right = 18.0
+offset_bottom = -15.0
 mouse_filter = 2
 
 [node name="PlayerPos0" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn"]
@@ -911,18 +956,33 @@ grow_horizontal = 2
 pivot_offset = Vector2(130, 0)
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="PlayGround/ScorePn"]
+[node name="TextureRect" type="TextureRect" parent="PlayGround/ScorePn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = -54.0
+offset_right = 100.0
+offset_bottom = 146.0
+grow_horizontal = 2
+texture = ExtResource("15_u7aql")
+expand_mode = 1
+
+[node name="Panel" type="TextureRect" parent="PlayGround/ScorePn"]
+clip_children = 2
 material = SubResource("ShaderMaterial_pdh6q")
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -30.0
-offset_right = 120.0
-offset_bottom = 40.0
+offset_left = 27.0
+offset_top = -18.0
+offset_right = 147.0
+offset_bottom = 62.0
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_b84cg")
+expand_mode = 1
 
 [node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel"]
 visible = false
@@ -941,22 +1001,28 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wav06")
 
+[node name="TextureRect" type="TextureRect" parent="PlayGround/ScorePn/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 100.0
+grow_horizontal = 2
+texture = ExtResource("15_4ba6y")
+expand_mode = 1
+
 [node name="FireMine" type="Panel" parent="PlayGround/ScorePn/Panel"]
 material = SubResource("ShaderMaterial_isqbr")
 custom_minimum_size = Vector2(96, 60)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -58.0
-offset_top = -62.0
-offset_right = 58.0
-offset_bottom = -2.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_sv0ng")
+grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayGround/ScorePn/Panel"]
 layout_mode = 1
@@ -966,16 +1032,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -40.0
-offset_top = -30.0
+offset_top = -40.0
 offset_right = 40.0
-offset_bottom = 30.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="MyScoreLb" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.988235, 0.929412, 0.796078, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
@@ -986,7 +1052,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MyScoreSub" type="Control" parent="PlayGround/ScorePn/Panel/HBoxContainer"]
-modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 mouse_filter = 2
@@ -1078,7 +1143,8 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uo81u")
 
-[node name="Panel2" type="Panel" parent="PlayGround/ScorePn"]
+[node name="Panel2" type="TextureRect" parent="PlayGround/ScorePn"]
+clip_children = 2
 material = SubResource("ShaderMaterial_0m3fb")
 layout_mode = 1
 anchors_preset = 6
@@ -1086,13 +1152,14 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -30.0
-offset_bottom = 40.0
+offset_left = -145.0
+offset_top = -19.0
+offset_right = -25.0
+offset_bottom = 61.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l4k4q")
+expand_mode = 1
 
 [node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel2"]
 visible = false
@@ -1115,18 +1182,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wav06")
 material = SubResource("ShaderMaterial_to0ld")
 custom_minimum_size = Vector2(96, 60)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -58.0
-offset_top = -62.0
-offset_right = 58.0
-offset_bottom = -2.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_sv0ng")
+grow_vertical = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PlayGround/ScorePn/Panel2"]
 layout_mode = 1
@@ -1136,16 +1196,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -40.0
-offset_top = -40.0
+offset_top = -50.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="OpponentScoreLb" type="Label" parent="PlayGround/ScorePn/Panel2/HBoxContainer2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/outline_size = 1
@@ -1257,6 +1317,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="GameStartLb" type="Label" parent="PlayGround"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1281,6 +1342,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CountdownStartLb" type="Label" parent="PlayGround"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1684,6 +1746,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EmoChat" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1749,6 +1812,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="AutoPlayPn" type="Panel" parent="."]
+visible = false
 self_modulate = Color(0, 0, 0, 0.6)
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1

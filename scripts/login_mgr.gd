@@ -118,6 +118,10 @@ func send_login_firebase(token: String, sub_type) -> void:
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.LoginFirebase.new()
 	pkg.set_login_token(token)
 	pkg.set_sub_type(sub_type)
+	
+	# link guest id, if this is new account firebase
+	var guest_id = load_guest_id()
+	pkg.set_guest_id(guest_id)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.LOGIN_FIREBASE, pkg.to_bytes())
 	
 func _set_device_info(pkg):

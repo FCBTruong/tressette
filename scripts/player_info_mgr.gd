@@ -23,6 +23,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			receive_update_ads(payload)
 			
 var time_end_offer = 0
+var login_type
 func _on_receive_info(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UserInfo.new()
 	packet.from_bytes(bytes)
@@ -38,6 +39,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	startup_gold = packet.get_startup_gold()
 	has_first_buy = packet.get_has_first_buy()
 	time_show_ads = packet.get_time_show_ads()
+	login_type = packet.get_login_type()
 	
 	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 		has_first_buy = false
@@ -58,6 +60,8 @@ func _on_receive_info(bytes: PackedByteArray):
 	if has_first_buy and my_user_data.game_count > 0:
 		g.v.popup_mgr.add_popup("res://scenes/lobby/FirstBuyGUI.tscn")
 	
+	if login_type == g.v.game_constants.LOGIN_TYPE.GUEST:
+		g.v.popup_mgr.add_popup("res://scenes/lobby/LinkAccountGUI.tscn")
 	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.win_count)
 
 

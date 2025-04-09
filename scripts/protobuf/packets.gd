@@ -1020,6 +1020,11 @@ class LoginFirebase:
 		service.field = _login_token
 		data[_login_token.tag] = service
 		
+		_guest_id = PBField.new("guest_id", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _guest_id
+		data[_guest_id.tag] = service
+		
 	var data = {}
 	
 	var _sub_type: PBField
@@ -1039,6 +1044,15 @@ class LoginFirebase:
 		_login_token.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_login_token(value : String) -> void:
 		_login_token.value = value
+	
+	var _guest_id: PBField
+	func get_guest_id() -> String:
+		return _guest_id.value
+	func clear_guest_id() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_guest_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_guest_id(value : String) -> void:
+		_guest_id.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -1241,6 +1255,11 @@ class UserInfo:
 		service.field = _time_show_ads
 		data[_time_show_ads.tag] = service
 		
+		_login_type = PBField.new("login_type", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 17, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _login_type
+		data[_login_type.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1386,6 +1405,15 @@ class UserInfo:
 		_time_show_ads.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_time_show_ads(value : int) -> void:
 		_time_show_ads.value = value
+	
+	var _login_type: PBField
+	func get_login_type() -> int:
+		return _login_type.value
+	func clear_login_type() -> void:
+		data[17].state = PB_SERVICE_STATE.UNFILLED
+		_login_type.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_login_type(value : int) -> void:
+		_login_type.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

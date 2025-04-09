@@ -78,7 +78,7 @@ var is_showing_functions = false
 @onready var left_top_pn = find_child("LeftTopPn")
 @onready var btn_hide_func_bar = find_child("HideFunctionBtn")
 @onready var btn_show_func_bar = find_child("ShowFunctionBtn")
-
+@onready var emo_chat = find_child("EmoChat")
 @onready var ads_banner_pn = find_child("AdsBannerPn")
 func _ready() -> void:	
 	self.show_function_btns()
@@ -104,7 +104,8 @@ func _ready() -> void:
 	countdown_start_lb.visible = false
 	evaluate_lb.modulate.a = 0
 	evaluate_lb.visible = true
-	find_child('EmoChat').z_index = CHAT_EMO_Z_INDEX
+	emo_chat.visible = true
+	emo_chat.z_index = CHAT_EMO_Z_INDEX
 	_on_enter()
 	action_btn_pn.z_index = 200
 	auto_play_pn.z_index = 300
@@ -1295,7 +1296,8 @@ func end_game():
 var is_alarming_clock = false
 func on_alarm_clock():
 	is_alarming_clock = true
-	$AudioClockTick.play()
+	if g.v.game_manager.enable_sound:
+		$AudioClockTick.play()
 	
 func stop_alarm_clock():
 	is_alarming_clock = false

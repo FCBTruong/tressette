@@ -1,0 +1,275 @@
+[gd_scene load_steps=10 format=3 uid="uid://w4x1p7ag1j0b"]
+
+[ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="1_2r1gj"]
+[ext_resource type="Script" path="res://scripts/lobby/link_account_gui.gd" id="1_m0jd3"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_6btw5"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="3_w2dne"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_3cudd"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_ygbqf"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="5_eh21g"]
+[ext_resource type="Texture2D" uid="uid://b0404n44l1nqf" path="res://assets/images/lobby/gift_daily_icon.png" id="6_niktt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lp1sr"]
+bg_color = Color(0.0949344, 0.132469, 0.143595, 0.564706)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="LinkAccountGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m0jd3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.694118)
+
+[node name="MainPn" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -225.0
+offset_right = 325.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2r1gj")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 29.5
+offset_right = 161.0
+offset_bottom = 65.5
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.796834, 0.565765, 1)
+theme_override_fonts/font = ExtResource("2_6btw5")
+theme_override_font_sizes/font_size = 35
+text = "LINK_YOUR_ACC"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -138.0
+offset_right = 300.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.926604, 0.871573, 0.870588)
+theme_override_fonts/font = ExtResource("2_6btw5")
+theme_override_font_sizes/font_size = 24
+text = "LINK_CONTENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="LinkBtn" type="Button" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -50.5
+offset_right = 75.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_ygbqf")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/LinkBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_w2dne")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MainPn/LinkBtn/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -11.5
+offset_right = 40.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6btw5")
+theme_override_font_sizes/font_size = 22
+text = "LINK_NOW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="MainPn"]
+layout_mode = 0
+offset_left = -2.5
+offset_top = 2.5
+offset_right = 42.5
+offset_bottom = 47.5
+flat = true
+script = ExtResource("4_ygbqf")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -22.5
+offset_right = 22.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3cudd")
+expand_mode = 1
+
+[node name="Panel" type="Control" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 17.0
+offset_right = 150.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="MainPn/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -106.0
+offset_right = 54.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.768627)
+theme_override_fonts/font = ExtResource("2_6btw5")
+theme_override_font_sizes/font_size = 28
+text = "BENEFITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPn/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -50.0
+offset_right = 240.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Panel" type="Panel" parent="MainPn/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(130, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lp1sr")
+
+[node name="Label" type="Label" parent="MainPn/Panel/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.884491, 0.717025, 1)
+theme_override_fonts/font = ExtResource("2_6btw5")
+theme_override_font_sizes/font_size = 21
+text = "CLAIM_LINK_GOLD"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/Panel/HBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 65.0
+offset_right = 93.0
+offset_bottom = 125.0
+texture = ExtResource("5_eh21g")
+expand_mode = 1
+
+[node name="Panel2" type="Panel" parent="MainPn/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(130, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lp1sr")
+
+[node name="Label" type="Label" parent="MainPn/Panel/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.884491, 0.717025, 1)
+theme_override_fonts/font = ExtResource("2_6btw5")
+theme_override_font_sizes/font_size = 21
+text = "DAILY_SUPPORT_LINK"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/Panel/HBoxContainer/Panel2"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 61.0
+offset_right = 100.0
+offset_bottom = 131.0
+texture = ExtResource("6_niktt")
+expand_mode = 1
+
+[connection signal="pressed" from="MainPn/LinkBtn" to="." method="_link_now"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]
