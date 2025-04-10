@@ -73,6 +73,14 @@ mouse_filter = 2
 texture = ExtResource("3_the30")
 expand_mode = 1
 
+[node name="StarIcon" type="TextureRect" parent="Main/CardImage"]
+offset_left = 40.0
+offset_top = -18.0
+offset_right = 80.0
+offset_bottom = 22.0
+texture = ExtResource("4_m8dyq")
+expand_mode = 1
+
 [node name="CardBtn" type="Button" parent="Main"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -81,14 +89,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="StarIcon" type="TextureRect" parent="."]
-offset_left = -20.0
-offset_top = -108.0
-offset_right = 20.0
-offset_bottom = -68.0
-texture = ExtResource("4_m8dyq")
-expand_mode = 1
 
 [connection signal="button_down" from="Main/CardBtn" to="." method="_on_touch_card_down"]
 [connection signal="button_up" from="Main/CardBtn" to="." method="_on_touch_card_up"]

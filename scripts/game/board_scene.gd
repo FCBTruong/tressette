@@ -769,6 +769,8 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	update_card_follow_star()
 #
 func update_card_follow_star():
+	if game_logic.match_data.player_mode == GameConstants.PLAYER_MODE.SOLO:
+		return
 	if len(cards_node_compare) == 1:
 		cards_node_compare[0].set_star()
 func get_place_pos_card(seat_id: int) -> Vector2:
