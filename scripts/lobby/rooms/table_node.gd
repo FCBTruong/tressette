@@ -15,8 +15,7 @@ func _process(delta: float) -> void:
 
 func set_info(table: TableInfo):
 	self._info = table
-	self.bet_lb.text = StringUtils.point_number(table.bet) \
-		 + ' ' + g.v.game_constants.LIRA_TEXT
+	self.bet_lb.text = StringUtils.point_number(table.bet)
 		
 	var str = ""
 	str += str(table.num_player) + '/' + str(table.player_mode)

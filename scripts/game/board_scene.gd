@@ -100,6 +100,9 @@ func _ready() -> void:
 		
 	napoli_btn.visible = false 
 	is_auto_play = false
+	if game_logic.match_data.player_mode == GameConstants.PLAYER_MODE.TEAM:
+		game_start_lb.position.y += 80
+		countdown_start_lb.position.y += 80
 	game_start_lb_default_pos = game_start_lb.position
 	g.v.scene_manager.INSTANCES.BOARD_SCENE = self
 	play_ground = find_child('PlayGround')
@@ -236,7 +239,6 @@ func continue_play():
 	my_score_sub.visible = false
 	pot_value_lb.text = '0'
 	round_lb.text = ''
-	self.pot_pn.visible = false
 
 func _update_current_round():
 	if game_logic.match_data.current_round == 0:
