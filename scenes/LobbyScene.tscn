@@ -136,6 +136,19 @@ _data = {
 bg_color = Color(0, 0, 0, 0.3)
 corner_radius_bottom_left = 20
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjl6a"]
+shader = ExtResource("4_j2d4c")
+shader_parameter/size_effect = 0.6
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/delay = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnt7q"]
+shader = ExtResource("26_bbl5h")
+shader_parameter/weighted = true
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqssi"]
 bg_color = Color(0, 0, 0, 0.3)
 corner_radius_bottom_right = 20
@@ -174,19 +187,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjl6a"]
-shader = ExtResource("4_j2d4c")
-shader_parameter/size_effect = 0.6
-shader_parameter/speed = 1.0
-shader_parameter/highlight_strength = 0.5
-shader_parameter/color_mode_toggle = false
-shader_parameter/is_horizontal = true
-shader_parameter/delay = 0.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnt7q"]
-shader = ExtResource("26_bbl5h")
-shader_parameter/weighted = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hal5k"]
 bg_color = Color(0.0117647, 0.168627, 0.290196, 1)
@@ -466,25 +466,50 @@ grow_vertical = 2
 texture = ExtResource("13_t7q2e")
 expand_mode = 1
 
-[node name="LeaderboardBtn" type="Button" parent="RightTopPanel"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 0
-offset_left = -121.0
-offset_top = 12.0
-offset_right = -40.9996
-offset_bottom = 92.0
+[node name="WatchAdsBtn" type="Button" parent="RightTopPanel"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -157.0
+offset_top = -79.0
+offset_right = -56.9996
+offset_bottom = -9.0
+grow_vertical = 0
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="RightTopPanel/LeaderboardBtn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_hwrjc")
+[node name="IconActive" type="TextureRect" parent="RightTopPanel/WatchAdsBtn"]
+material = SubResource("ShaderMaterial_qjl6a")
+layout_mode = 0
+offset_left = -14.0
+offset_top = -39.0
+offset_right = 114.0
+offset_bottom = 89.0
+texture = ExtResource("25_iyd1h")
 expand_mode = 1
+
+[node name="IconDisable" type="TextureRect" parent="RightTopPanel/WatchAdsBtn"]
+material = SubResource("ShaderMaterial_bnt7q")
+layout_mode = 0
+offset_left = -14.0
+offset_top = -39.0
+offset_right = 114.0
+offset_bottom = 89.0
+texture = ExtResource("25_iyd1h")
+expand_mode = 1
+
+[node name="AdsTime" type="Label" parent="RightTopPanel/WatchAdsBtn"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 77.0
+offset_right = 87.0
+offset_bottom = 100.0
+theme_override_fonts/font = ExtResource("4_a6ucd")
+theme_override_font_sizes/font_size = 20
+text = "3h:00:00"
+horizontal_alignment = 1
 
 [node name="LeftPanel" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -832,51 +857,6 @@ expand_mode = 1
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="WatchAdsBtn" type="Button" parent="."]
-custom_minimum_size = Vector2(100, 60)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 423.0
-offset_top = -110.0
-offset_right = 523.0
-offset_bottom = -40.0
-grow_vertical = 0
-flat = true
-script = ExtResource("3_x7pan")
-
-[node name="IconActive" type="TextureRect" parent="WatchAdsBtn"]
-material = SubResource("ShaderMaterial_qjl6a")
-layout_mode = 0
-offset_left = -14.0
-offset_top = -39.0
-offset_right = 114.0
-offset_bottom = 89.0
-texture = ExtResource("25_iyd1h")
-expand_mode = 1
-
-[node name="IconDisable" type="TextureRect" parent="WatchAdsBtn"]
-material = SubResource("ShaderMaterial_bnt7q")
-layout_mode = 0
-offset_left = -14.0
-offset_top = -39.0
-offset_right = 114.0
-offset_bottom = 89.0
-texture = ExtResource("25_iyd1h")
-expand_mode = 1
-
-[node name="AdsTime" type="Label" parent="WatchAdsBtn"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 77.0
-offset_right = 87.0
-offset_bottom = 100.0
-theme_override_fonts/font = ExtResource("4_a6ucd")
-theme_override_font_sizes/font_size = 20
-text = "3h:00:00"
-horizontal_alignment = 1
-
 [node name="BottomRight" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -890,15 +870,15 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="MobileWebPn" type="Control" parent="BottomRight"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -200.0
+offset_left = -518.0
 offset_top = -80.0
+offset_right = -318.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(200, 80)
@@ -976,12 +956,38 @@ theme_override_fonts/font = ExtResource("14_wid5y")
 theme_override_font_sizes/font_size = 22
 text = "DOWNLOAD"
 
+[node name="LeaderboardBtn" type="Button" parent="BottomRight"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 0
+offset_left = -102.0
+offset_top = -58.0
+offset_right = -21.9996
+offset_bottom = 22.0
+flat = true
+script = ExtResource("3_x7pan")
+
+[node name="TextureRect" type="TextureRect" parent="BottomRight/LeaderboardBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_hwrjc")
+expand_mode = 1
+
 [node name="OfferFirstBtn" type="Button" parent="BottomRight"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 0
-offset_left = -103.0
+offset_left = -208.0
 offset_top = -63.0
-offset_right = -13.0
+offset_right = -118.0
 offset_bottom = 27.0
 flat = true
 script = ExtResource("3_x7pan")
@@ -1001,14 +1007,14 @@ expand_mode = 1
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/GuideBtn" to="." method="_click_guide_btn"]
-[connection signal="pressed" from="RightTopPanel/LeaderboardBtn" to="." method="_click_ranking"]
+[connection signal="pressed" from="RightTopPanel/WatchAdsBtn" to="." method="watch_ads_reward"]
 [connection signal="pressed" from="LeftPanel/Panel2/HBoxContainer/MissionBtn" to="." method="_click_mission_btn"]
 [connection signal="pressed" from="LeftPanel/Panel2/HBoxContainer/FriendBtn" to="." method="_open_friend_gui"]
 [connection signal="pressed" from="LeftPanel/Panel2/HBoxContainer/ShopBtn" to="." method="open_shop"]
 [connection signal="pressed" from="LeftPanel/Panel2/HBoxContainer/Button3" to="." method="_open_mail_gui"]
 [connection signal="pressed" from="LeftPanel/UserInfoPn/PanelInfo/AvatarBtn" to="." method="_open_user_info_gui"]
 [connection signal="pressed" from="LeftPanel/VBoxContainer/Panel/VBoxContainer/ScrollContainer/LobbyFriendList/NofriendBtn/Button" to="." method="_click_nofriend_btn"]
-[connection signal="pressed" from="WatchAdsBtn" to="." method="watch_ads_reward"]
 [connection signal="pressed" from="BottomRight/MobileWebPn/HBoxContainer/ChplayBtn" to="." method="_click_open_chplay"]
 [connection signal="pressed" from="BottomRight/MobileWebPn/HBoxContainer/AppstoreBtn" to="." method="_click_open_appstore"]
+[connection signal="pressed" from="BottomRight/LeaderboardBtn" to="." method="_click_ranking"]
 [connection signal="pressed" from="BottomRight/OfferFirstBtn" to="." method="_click_offer_first_buy"]

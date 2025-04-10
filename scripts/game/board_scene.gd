@@ -993,8 +993,8 @@ func _input(event):
 				self.list_players[0].show_emotion(4)
 				print("W key pressed")
 			elif event.keycode == KEY_S:
-				self.list_players[0].on_chat('Hel;oddosososdds')
-				#_effect_evaluate("win_messageall")
+				var anim_cup = anim_cup_scene.instantiate()
+				list_players[0].add_child(anim_cup)
 				return
 				test_play_playercard()
 				print("S key pressed")
@@ -1217,7 +1217,6 @@ func show_function_btns():
 		0.5
 	).set_delay(1.5)
 	
-
 func hide_function_btns() -> void:
 	self.is_showing_functions = false
 	self.left_top_pn.visible = false
@@ -1280,30 +1279,7 @@ func end_game():
 		for p in self.list_players:
 			if p.user_data.game_data.team_id == game_logic.match_result.win_team_id:
 				var anim_cup = anim_cup_scene.instantiate()
-				anim_cup.play("default")
 				p.add_child(anim_cup)
-				
-				var tween = create_tween()
-				anim_cup.scale = Vector2(0, 0)
-				tween.tween_property(
-					anim_cup,
-					"scale",
-					Vector2(0.8, 0.8),
-					0.3
-				).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-				tween.tween_callback(func():
-					anim_cup.queue_free()
-				).set_delay(2)
-				#g.v.effect_mgr.effect_fly_object(
-					#"res://assets/images/lobby/lira_icon.png",
-					#5,
-					#p_pot,
-					#p.global_position,
-					#0.6,
-					#1,
-					#0.4
-				#)
-				pass
 	pass
 
 var is_alarming_clock = false

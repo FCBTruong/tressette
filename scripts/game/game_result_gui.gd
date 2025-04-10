@@ -16,6 +16,7 @@ var my_team_id
 @onready var continue_time_node = find_child("ContinueTimeNode")
 @onready var win_pn = find_child("WinPn")
 @onready var lose_pn = find_child("LosePn")
+@onready var eff_win = find_child("EffWin")
 var gold_result_lb = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,13 +34,12 @@ func on_show():
 	var tween = create_tween()
 	tween.parallel().tween_property(MainPn, 'scale', Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
-	TitleLb.scale = Vector2(3, 3)
-	tween.parallel().tween_property(TitleLb, 'scale', Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK) \
-		.set_delay(0.5)
+	eff_win.scale = Vector2(3, 3)
+	tween.parallel().tween_property(eff_win, 'scale', Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_delay(0.5)
 	
-	TitleLb.modulate.a = 0
-	tween.parallel().tween_property(TitleLb, 'modulate:a', 1, 0.5) \
-		.set_delay(0.5)
+	eff_win.modulate.a = 0
+	tween.parallel().tween_property(eff_win, 'modulate:a', 1, 0.5).set_delay(0.5)
+		
 	
 	continue_time_node.visible = false
 	tween.parallel().tween_callback(

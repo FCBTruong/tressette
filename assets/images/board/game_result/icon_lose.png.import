@@ -2,22 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdl7kcjbrd74j"
-path="res://.godot/imported/cup_anim.png-4cc8cc3e68036cfe3fc601ed18ff290c.ctex"
+uid="uid://by7rcr6y45reu"
+path="res://.godot/imported/icon_lose.png-ff19330a121f2bf9204dd96996107e54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/animations/cup_anim.png"
-dest_files=["res://.godot/imported/cup_anim.png-4cc8cc3e68036cfe3fc601ed18ff290c.ctex"]
+source_file="res://assets/images/board/game_result/icon_lose.png"
+dest_files=["res://.godot/imported/icon_lose.png-ff19330a121f2bf9204dd96996107e54.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
-compress/lossy_quality=0.8
+compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0

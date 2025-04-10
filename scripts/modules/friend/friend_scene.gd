@@ -24,6 +24,9 @@ func _ready() -> void:
 	g.v.signal_bus.connect_global('update_friend_requests', Callable(self, '_update_friends_requests'))
 	_update_friends_list()
 	_update_friends_requests()
+	
+	if g.v.game_manager.is_enable_ads():
+		g.admob_mgr._on_interstitial_pressed()
 	pass # Replace with function body.
 
 func _update_friends_list():

@@ -44,7 +44,7 @@ func _input(event):
 				b.team_id = 1
 				g.v.game_constants.game_logic.match_result.gold_win = 992822
 				g.v.game_constants.game_logic.match_result.gold_lose = -992822
-				g.v.game_constants.game_logic.match_result.is_win = true
+				g.v.game_constants.game_logic.match_result.is_win = false
 				g.v.game_constants.game_logic.match_result.players.append(a)
 				g.v.game_constants.game_logic.match_result.players.append(b)
 				g.v.scene_manager.open_gui('res://scenes/board/GameResultGUI.tscn', true)

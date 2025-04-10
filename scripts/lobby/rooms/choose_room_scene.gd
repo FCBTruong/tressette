@@ -8,7 +8,7 @@ extends Node
 @onready var lb_empty = find_child("LabelEmpty")
 var table_node_scene = preload("res://scenes/lobby/rooms/TableNode.tscn")  # Load player scene
 signal update_table_list
-var last_time_show_ads_here = 0
+
 func _ready() -> void:
 	if g.v.app_version.is_in_review():
 		create_table_btn.visible = false
@@ -19,9 +19,7 @@ func _ready() -> void:
 	g.v.signal_bus.emit_signal_global('update_table_list')
 	
 	if g.v.game_manager.is_enable_ads():
-		if last_time_show_ads_here < g.v.game_manager.get_timestamp_client() - 30:
-			last_time_show_ads_here = g.v.game_manager.get_timestamp_client()
-			g.admob_mgr._on_interstitial_pressed()
+		g.admob_mgr._on_interstitial_pressed()
 	pass # Replace with function body.
 
 func _update_table_list():

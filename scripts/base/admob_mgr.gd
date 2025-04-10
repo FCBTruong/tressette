@@ -33,6 +33,7 @@ func _on_reward_pressed():
 	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
 		_on_admob_rewarded_ad_user_earned_reward('', null)
 	if is_initialized:
+		g.v.scene_manager.add_loading(3)
 		admob.load_rewarded_ad()
 		await admob.rewarded_ad_loaded
 		admob.show_rewarded_ad()

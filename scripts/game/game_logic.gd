@@ -53,6 +53,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 
 
 func _handle_user_leave_match(payload: PackedByteArray):
+	if not match_data:
+		return
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.UserLeaveMatch.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
