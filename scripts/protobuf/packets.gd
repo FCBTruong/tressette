@@ -3547,6 +3547,11 @@ class SearchFriendResponse:
 		service.field = _exp
 		data[_exp.tag] = service
 		
+		_is_verified = PBField.new("is_verified", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 10, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_verified
+		data[_is_verified.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -3629,6 +3634,15 @@ class SearchFriendResponse:
 		_exp.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_exp(value : int) -> void:
 		_exp.value = value
+	
+	var _is_verified: PBField
+	func get_is_verified() -> bool:
+		return _is_verified.value
+	func clear_is_verified() -> void:
+		data[10].state = PB_SERVICE_STATE.UNFILLED
+		_is_verified.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_verified(value : bool) -> void:
+		_is_verified.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

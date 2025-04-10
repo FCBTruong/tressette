@@ -127,12 +127,13 @@ shadow_offset = Vector2(-2, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0khie"]
 bg_color = Color(0, 0.357128, 0.510183, 1)
 border_width_left = 5
-border_width_top = 20
+border_width_top = 10
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.0705882, 0.27451, 0.121569, 1)
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+corner_detail = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wav06"]
 bg_color = Color(0, 0, 0, 0.282353)
@@ -176,14 +177,15 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m3fb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbo7h"]
-bg_color = Color(0.557704, 0.0276112, 0.0932669, 1)
+bg_color = Color(0.48, 0.0576, 0.10688, 1)
 border_width_left = 5
-border_width_top = 20
+border_width_top = 10
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.070834, 0.275974, 0.119889, 1)
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+corner_detail = 20
 
 [sub_resource type="Shader" id="Shader_xqcm3"]
 code = "shader_type canvas_item;
@@ -1025,6 +1027,7 @@ texture = ExtResource("15_4ba6y")
 expand_mode = 1
 
 [node name="FireMine" type="Panel" parent="PlayGround/ScorePn/Panel"]
+visible = false
 material = SubResource("ShaderMaterial_isqbr")
 custom_minimum_size = Vector2(96, 60)
 layout_mode = 1
@@ -1035,6 +1038,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayGround/ScorePn/Panel"]
+modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1168,6 +1172,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sbo7h")
 
 [node name="FireOpponent" type="Panel" parent="PlayGround/ScorePn/Panel2"]
+visible = false
 material = SubResource("ShaderMaterial_to0ld")
 custom_minimum_size = Vector2(96, 60)
 layout_mode = 1
@@ -1178,6 +1183,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PlayGround/ScorePn/Panel2"]
+modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1489,9 +1495,15 @@ script = ExtResource("7_gov4p")
 [node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer/RankingBtn"]
 material = SubResource("ShaderMaterial_ydul5")
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_oiaq1")

@@ -40,6 +40,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	has_first_buy = packet.get_has_first_buy()
 	time_show_ads = packet.get_time_show_ads()
 	login_type = packet.get_login_type()
+	my_user_data.is_verified = login_type != g.v.game_constants.LOGIN_TYPE.GUEST
 	
 	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 		has_first_buy = false
@@ -61,7 +62,7 @@ func _on_receive_info(bytes: PackedByteArray):
 		g.v.popup_mgr.add_popup("res://scenes/lobby/FirstBuyGUI.tscn")
 	
 	if login_type == g.v.game_constants.LOGIN_TYPE.GUEST:
-		if my_user_data.game_count > 0:
+		if my_user_data.game_count > 2:
 			var last_time_remind_link = g.v.storage_cache.fetch("link_acc_remind", 0)
 			var remind_link_times = g.v.storage_cache.fetch("remind_link_times", 0)
 			if remind_link_times < 5 and last_time_remind_link < g.v.game_manager.get_timestamp_client() - 86400:			

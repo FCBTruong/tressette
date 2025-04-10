@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="3_2r7jm"]
 [ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_sopwt"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_svbc0"]
-[ext_resource type="Texture2D" uid="uid://dfvc0em4rmmq5" path="res://assets/images/lobby/delete_icon.png" id="5_h58w4"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kam2u"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="7_v67t5"]
+[ext_resource type="Texture2D" uid="uid://bm7mhnrkhp63u" path="res://assets/images/lobby/friend_remove_btn.png" id="9_eygm3"]
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="9_xujkd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs4mr"]
@@ -180,20 +180,19 @@ flat = true
 script = ExtResource("6_kam2u")
 
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/HBoxContainer/RemoveBtn"]
-modulate = Color(0.917503, 0.217393, 0.273677, 0.931)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -17.5
-offset_top = -17.5
-offset_right = 17.5
-offset_bottom = 17.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_h58w4")
+texture = ExtResource("9_eygm3")
 expand_mode = 1
 
 [node name="Control3" type="Control" parent="Panel/HBoxContainer/HBoxContainer"]

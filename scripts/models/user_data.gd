@@ -12,6 +12,7 @@ extends Resource  # Use RefCounted for lightweight, reference-managed objects
 @export var game_count: int
 @export var exp: int
 @export var is_vip: bool
+@export var is_verified: bool
 
 func _init(uid: int, name: String) -> void:
 	self.uid = uid

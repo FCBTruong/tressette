@@ -56,6 +56,7 @@ func _on_received_search_friend(payload):
 	var exp = pkg.get_exp()
 	var game_count = pkg.get_game_count()
 	var win_count = pkg.get_win_count()
+	var is_verified = pkg.get_is_verified()
 	
 	var user_data = UserData.new(uid, name)
 	user_data.avatar = avatar
@@ -63,6 +64,7 @@ func _on_received_search_friend(payload):
 	user_data.exp = exp
 	user_data.win_count = win_count
 	user_data.game_count = game_count
+	user_data.is_verified = is_verified
 	
 	var gui = await g.v.scene_manager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
 	gui.set_info(user_data)

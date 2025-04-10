@@ -2,7 +2,7 @@ extends Node
 
 @onready var pn_cheat = find_child('PnCheat')
 @onready var input_uid_cheat = find_child('InputUIDCheat')
-@onready var apple_btn = find_child("AppleBtn")
+@onready var apple_btn = find_child("ApplePn")
 @onready var login_pn = find_child("LoginPn")
 @onready var select_uid_cheat = find_child("SelectUIDCheat")
 @onready var privacy_pn = find_child("PrivacyTermPn")

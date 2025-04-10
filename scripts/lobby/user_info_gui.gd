@@ -31,6 +31,7 @@ func _show_popup():
 @onready var premium_lb = find_child("PremiumLb")
 @onready var vip_icon = find_child("VipIcon")
 @onready var link_acc_btn = find_child("LinkAccBtn")
+@onready var verified_icon = find_child("VerifiedIcon")
 var is_me: bool = false
 var _info:UserData = null
 func _ready() -> void:
@@ -50,6 +51,7 @@ func set_info(info: UserData):
 	red_dot_avt.visible = false
 	vip_icon.visible = false
 	link_acc_btn.visible = false
+	verified_icon.visible = info.is_verified
 	if _info.uid == g.v.player_info_mgr.my_user_data.uid:
 		avt_edit_btn.visible = true
 		avatar_img.set_me()
