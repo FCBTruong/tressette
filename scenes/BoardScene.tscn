@@ -22,10 +22,10 @@
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="11_mpmvk"]
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="12_b6jtg"]
 [ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="12_cc6ty"]
+[ext_resource type="Texture2D" uid="uid://d3so2iryojgej" path="res://assets/images/board/battle_icon.png" id="12_v447i"]
 [ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_6bu1m"]
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_4pw0j"]
 [ext_resource type="Texture2D" uid="uid://v20b0tyl7vei" path="res://assets/images/board/guide_btn.png" id="14_arj4s"]
-[ext_resource type="Texture2D" uid="uid://cysw0jpqw1g0e" path="res://assets/images/board/flag_1.png" id="15_4ba6y"]
 [ext_resource type="Texture2D" uid="uid://ccq1m054wgoom" path="res://assets/images/board/settings_btn.png" id="15_fl0rb"]
 [ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="16_oiaq1"]
@@ -570,7 +570,6 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kjq8g")
 
 [node name="Deco2vs2" type="Control" parent="PlayGround/CenterPlayPn/Panel2"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -582,7 +581,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
-self_modulate = Color(0, 0.97, 0, 0.588235)
+self_modulate = Color(0.0443053, 0.707054, 0.0443053, 0.588235)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -597,7 +596,7 @@ texture = ExtResource("11_eum2r")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
-self_modulate = Color(0, 0.97, 0, 0.588235)
+self_modulate = Color(0.0443053, 0.707054, 0.0443053, 0.588235)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -614,7 +613,7 @@ texture = ExtResource("11_eum2r")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
-self_modulate = Color(1, 0.116667, 0, 0.588235)
+self_modulate = Color(0.737603, 0.216865, 0.148088, 0.588235)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -633,7 +632,7 @@ expand_mode = 1
 flip_h = true
 
 [node name="TextureRect4" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
-self_modulate = Color(1, 0.116667, 0, 0.588235)
+self_modulate = Color(0.737603, 0.216865, 0.148088, 0.588235)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -648,6 +647,22 @@ rotation = 3.14159
 texture = ExtResource("11_eum2r")
 expand_mode = 1
 flip_v = true
+
+[node name="TextureRect5" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_v447i")
+expand_mode = 1
 
 [node name="CardbackPn" type="Control" parent="PlayGround/CenterPlayPn"]
 anchors_preset = 0
@@ -850,22 +865,22 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PlaceCard20" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(40, 200)
+position = Vector2(40, 230)
 
 [node name="PlaceCard21" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(40, 70)
+position = Vector2(40, 90)
 
 [node name="PlaceCard22" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(180, 70)
+position = Vector2(180, 90)
 
 [node name="PlaceCard23" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(180, 200)
+position = Vector2(180, 230)
 
 [node name="PlaceCard1" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(170, 100)
+position = Vector2(170, 120)
 
 [node name="PlaceCard0" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
-position = Vector2(50, 150)
+position = Vector2(50, 180)
 
 [node name="EvaluateLb" type="Label" parent="PlayGround/CenterPlayPn"]
 custom_minimum_size = Vector2(400, 50)
@@ -1012,19 +1027,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wav06")
-
-[node name="TextureRect" type="TextureRect" parent="PlayGround/ScorePn/Panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.0
-offset_right = 40.0
-offset_bottom = 100.0
-grow_horizontal = 2
-texture = ExtResource("15_4ba6y")
-expand_mode = 1
 
 [node name="FireMine" type="Panel" parent="PlayGround/ScorePn/Panel"]
 visible = false
@@ -1312,7 +1314,6 @@ wait_time = 3.0
 one_shot = true
 
 [node name="GameStartLb" type="Label" parent="PlayGround"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1320,16 +1321,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -199.0
-offset_top = -69.0
+offset_top = -52.0
 offset_right = 199.0
-offset_bottom = 55.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.825999, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.513577, 0.377748, 0.207814, 1)
-theme_override_colors/font_outline_color = Color(0.612013, 0.37438, 0.0564619, 1)
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 2
+theme_override_colors/font_color = Color(0.981995, 0.66387, 0.0938241, 1)
+theme_override_colors/font_outline_color = Color(0.231848, 0.231848, 0.231848, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = "GAME_START"
@@ -1337,7 +1336,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CountdownStartLb" type="Label" parent="PlayGround"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1345,16 +1343,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -30.0
-offset_top = -68.0
+offset_top = -54.0
 offset_right = 30.0
-offset_bottom = 56.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.937335, 0.338875, 1)
-theme_override_colors/font_shadow_color = Color(0.788518, 0.321816, 0.298324, 1)
-theme_override_colors/font_outline_color = Color(0.85301, 0.290483, 0.0394266, 1)
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 3
+theme_override_colors/font_color = Color(1, 0.795842, 0.332299, 1)
+theme_override_colors/font_outline_color = Color(0.133412, 0.133412, 0.133412, 1)
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("11_8cjom")
 theme_override_font_sizes/font_size = 80
 text = "3"
@@ -1736,9 +1732,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -200.0
-offset_top = -111.0
+offset_top = -60.0
 offset_right = 200.0
-offset_bottom = -79.0
+offset_bottom = -28.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25

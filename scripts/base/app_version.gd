@@ -77,7 +77,7 @@ func is_in_review():
 		return false
 	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
 		if g.v.player_info_mgr.my_user_data:
-			if g.v.player_info_mgr.my_user_data.game_count < 5:
+			if g.v.player_info_mgr.my_user_data.game_count < 3:
 				return true
 				
 	return reviewing_version == my_code_version

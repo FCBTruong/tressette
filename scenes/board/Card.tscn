@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhgkntha63vqu"]
+[gd_scene load_steps=6 format=3 uid="uid://dhgkntha63vqu"]
 
 [ext_resource type="Script" path="res://scripts/game/card.gd" id="1_1xv6o"]
 [ext_resource type="Texture2D" uid="uid://oir8in6emjbh" path="res://assets/images/card_tressette/classic/1.png" id="2_o8dud"]
 [ext_resource type="Texture2D" uid="uid://bp6kti3au5fyr" path="res://assets/images/lobby/triangle.png" id="3_the30"]
+[ext_resource type="Texture2D" uid="uid://5e38l1pfgif4" path="res://assets/images/board/follow_card_icon.png" id="4_m8dyq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ptg7"]
 bg_color = Color(0.096, 0.096, 0.096, 0.25)
@@ -80,6 +81,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="StarIcon" type="TextureRect" parent="."]
+offset_left = -20.0
+offset_top = -108.0
+offset_right = 20.0
+offset_bottom = -68.0
+texture = ExtResource("4_m8dyq")
+expand_mode = 1
 
 [connection signal="button_down" from="Main/CardBtn" to="." method="_on_touch_card_down"]
 [connection signal="button_up" from="Main/CardBtn" to="." method="_on_touch_card_up"]

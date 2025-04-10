@@ -51,6 +51,7 @@ var pn_highlight_napoli = preload("res://scenes/board/NapoliCardHighlight.tscn")
 @onready var bet_info_pn = find_child("BetInfoPn")
 @onready var pot_pn = find_child("PotPn")
 @onready var score_pn = find_child("ScorePn")
+@onready var deco_2v2 = find_child("Deco2vs2")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -155,7 +156,10 @@ func _on_enter():
 	if game_logic.match_data.player_mode == GameConstants.PLAYER_MODE.SOLO:
 		compare_card_poses.append(find_child('PlaceCard0'))
 		compare_card_poses.append(find_child('PlaceCard1'))
+		deco_2v2.visible = false
 	else:
+		deco_2v2.visible = true
+		SCALE_CARD_COMPARE *= 0.8
 		compare_card_poses.append(find_child('PlaceCard20'))
 		compare_card_poses.append(find_child('PlaceCard21'))
 		compare_card_poses.append(find_child('PlaceCard22'))
@@ -449,6 +453,7 @@ func play_my_card(id: int, auto: bool = false):
 		g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
 		game_logic.send_play_card(id)
 	cards_node_compare.append(card)
+	update_card_follow_star()
 	
 	list_my_cards.erase(card)
 	_update_my_card_positions(true)
@@ -761,7 +766,11 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)
 	_update_my_card_positions()
 	cards_node_compare.append(card_instance)
-#	
+	update_card_follow_star()
+#
+func update_card_follow_star():
+	if len(cards_node_compare) == 1:
+		cards_node_compare[0].set_star()
 func get_place_pos_card(seat_id: int) -> Vector2:
 	return compare_card_poses[seat_id].global_position
 

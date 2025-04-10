@@ -17,6 +17,7 @@ var player_id = -1 # ref uid
 var face_state = g.v.game_constants.CARD_FACE_STATE.DOWN
 @onready var hint_pn = find_child("HintPn")
 @onready var shadow = find_child("Shadow")
+@onready var star_icon = find_child("StarIcon")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	is_played = false
@@ -24,6 +25,7 @@ func _ready() -> void:
 	main_pn.z_index = 1
 	hint_pn.visible = false
 	shadow.visible = false
+	star_icon.visible = false
 	g.v.signal_bus.connect_global("update_card_style", Callable(self, "_on_update_card_style"))
 	
 func _on_touch_card() -> void:
@@ -216,3 +218,6 @@ func recommend(should_play = true):
 	else:
 		self.hint_pn.rotation = deg_to_rad(180)
 		self.hint_pn.modulate = Color('#ff110a')
+
+func set_star():
+	self.star_icon.visible = true
