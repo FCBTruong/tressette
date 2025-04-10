@@ -44,9 +44,9 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-shadow_color = Color(0, 0, 0, 0.219608)
-shadow_size = 4
-shadow_offset = Vector2(0, 3)
+shadow_color = Color(0, 0, 0, 0.164706)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="Gradient" id="Gradient_2rqsr"]
 colors = PackedColorArray(1, 0.852079, 0.552612, 1, 1, 0.946208, 0.756484, 1)
@@ -1326,9 +1326,9 @@ offset_right = 199.0
 offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.981995, 0.66387, 0.0938241, 1)
-theme_override_colors/font_outline_color = Color(0.231848, 0.231848, 0.231848, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_color = Color(1, 0.753776, 0.312569, 1)
+theme_override_colors/font_outline_color = Color(0.371015, 0.278684, 0.146468, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = "GAME_START"
@@ -1349,8 +1349,8 @@ offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.795842, 0.332299, 1)
-theme_override_colors/font_outline_color = Color(0.133412, 0.133412, 0.133412, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_outline_color = Color(0.371015, 0.198002, 0.0720483, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("11_8cjom")
 theme_override_font_sizes/font_size = 80
 text = "3"
@@ -1506,7 +1506,7 @@ texture = ExtResource("16_oiaq1")
 expand_mode = 1
 
 [node name="GuideBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
-custom_minimum_size = Vector2(60, 50)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
@@ -1528,7 +1528,7 @@ texture = ExtResource("14_arj4s")
 expand_mode = 1
 
 [node name="SettingBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
-custom_minimum_size = Vector2(60, 50)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")

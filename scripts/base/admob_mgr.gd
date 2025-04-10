@@ -30,6 +30,8 @@ func _on_interstitial_pressed():
 		admob.show_interstitial_ad()
 		
 func _on_reward_pressed():
+	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
+		_on_admob_rewarded_ad_user_earned_reward('', null)
 	if is_initialized:
 		admob.load_rewarded_ad()
 		await admob.rewarded_ad_loaded
@@ -44,7 +46,9 @@ func _on_reward_interstitial_pressed():
 
 func _on_admob_rewarded_ad_user_earned_reward(ad_id: String, reward_data: RewardItem) -> void:
 	print("reward addded")
-	pass # Replace with function body.
+	
+	# send to server to claim reward
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CLAIM_ADS_REWARD, [])
 
 
 func _on_admob_rewarded_interstitial_ad_user_earned_reward(ad_id: String, reward_data: RewardItem) -> void:

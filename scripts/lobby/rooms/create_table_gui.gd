@@ -82,7 +82,7 @@ func _on_create_table():
 	else:
 		pkg.set_bet_mode(true)
 	var point_mode = 11
-	if option_point.get_selected_id() == 1:
+	if option_point.get_selected_id() == 0:
 		point_mode = 21
 	pkg.set_point_mode(point_mode)
 		

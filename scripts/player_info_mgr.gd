@@ -24,6 +24,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			
 var time_end_offer = 0
 var login_type
+var enable_ads_reward = false
+var time_ads_reward = 0
 func _on_receive_info(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UserInfo.new()
 	packet.from_bytes(bytes)
@@ -40,6 +42,12 @@ func _on_receive_info(bytes: PackedByteArray):
 	has_first_buy = packet.get_has_first_buy()
 	time_show_ads = packet.get_time_show_ads()
 	login_type = packet.get_login_type()
+	time_ads_reward = packet.get_time_ads_reward()
+	#time_ads_reward = g.v.game_manager.get_timestamp_server() + 3000
+	if time_ads_reward == -1:
+		enable_ads_reward = false
+	else:
+		enable_ads_reward = true
 	my_user_data.is_verified = login_type != g.v.game_constants.LOGIN_TYPE.GUEST
 	
 	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
@@ -79,6 +87,10 @@ func _on_receive_info(bytes: PackedByteArray):
 			else:
 				g.v.scene_manager.show_ok_dialog(tr("CANNOT_LINK_ACCOUNT"))
 		is_linking_acc = false
+		
+	if enable_ads_reward and time_ads_reward < g.v.game_manager.get_timestamp_server():
+		# add popup watch ads
+		g.v.popup_mgr.add_popup("res://scenes/lobby/WatchAdsGUI.tscn")
 
 func _on_update_money(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateMoney.new()

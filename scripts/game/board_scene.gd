@@ -92,10 +92,11 @@ func _ready() -> void:
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
 	_on_screen_resized()
 	
+	pot_pn.visible = true
 	if g.v.app_version.is_in_review():
 		self.bet_info_pn.visible = false
+		pot_pn.visible = false
 		
-	pot_pn.visible = false
 		
 	napoli_btn.visible = false 
 	is_auto_play = false
@@ -1037,7 +1038,6 @@ func _open_guide_gui() -> void:
 func _effect_pot_contribute():
 	if g.v.app_version.is_in_review():
 		return
-	pot_pn.visible = true
 	center_play_pn_pos = NodeUtils.get_center_position(center_play_pn)
 	var i = 0
 	for player in list_players:

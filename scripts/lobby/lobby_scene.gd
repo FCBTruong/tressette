@@ -52,7 +52,9 @@ func _ready() -> void:
 	
 	self.offer_first_btn.visible = g.v.player_info_mgr.has_first_buy
 	#g.v.scene_manager.open_gui("res://scenes/lobby/LinkAccountGUI.tscn")
-	
+	update_ads_reward_info()
+		
+@onready var watch_ads_btn = find_child("WatchAdsBtn")
 @onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')
 @onready var bg = find_child('Background')
@@ -175,3 +177,46 @@ func _click_offer_first_buy():
 		self.offer_first_btn.visible = false
 		return
 	g.v.scene_manager.open_gui("res://scenes/lobby/FirstBuyGUI.tscn")
+
+func watch_ads_reward():
+	if not g.v.player_info_mgr.enable_ads_reward:
+		return
+	if g.v.player_info_mgr.time_ads_reward > g.v.game_manager.get_timestamp_server():
+		return
+	g.admob_mgr._on_reward_pressed()
+	pass
+
+var tween_btn_ads
+@onready var ads_time_lb = find_child("AdsTime")
+func update_ads_reward_info():
+	if not g.v.player_info_mgr.enable_ads_reward:
+		self.watch_ads_btn.visible = false
+		return
+	if tween_btn_ads and tween_btn_ads.is_running():
+		tween_btn_ads.kill()
+	self.watch_ads_btn.visible = true
+	if g.v.player_info_mgr.time_ads_reward < g.v.game_manager.get_timestamp_server():
+		ads_time_lb.visible = false
+		watch_ads_btn.find_child("IconActive").visible = true
+		watch_ads_btn.find_child("IconDisable").visible = false
+		pass
+	else:
+		watch_ads_btn.find_child("IconActive").visible = false
+		watch_ads_btn.find_child("IconDisable").visible = true
+		ads_time_lb.visible = true
+		tween_btn_ads = create_tween()
+		tween_btn_ads.set_loops()
+		tween_btn_ads.tween_callback(
+			func():
+				var remain = g.v.player_info_mgr.time_ads_reward - g.v.game_manager.get_timestamp_server()
+				remain = int(remain)
+				ads_time_lb.text = format_time(remain)
+				pass
+		)
+		tween_btn_ads.tween_interval(1)
+
+func format_time(remain: int) -> String:
+	var hours = remain / 3600
+	var minutes = (remain % 3600) / 60
+	var seconds = remain % 60
+	return "%02d:%02d:%02d" % [hours, minutes, seconds]

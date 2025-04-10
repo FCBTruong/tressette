@@ -207,8 +207,9 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_ahdaw")
 selected = 0
 item_count = 2
-popup/item_0/text = "11"
-popup/item_1/text = "21"
+popup/item_0/text = "21"
+popup/item_0/id = 1
+popup/item_1/text = "11"
 popup/item_1/id = 1
 
 [node name="POINT_MODE" type="Label" parent="MainPn/VBoxContainer/Control5"]

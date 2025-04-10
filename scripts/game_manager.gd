@@ -159,6 +159,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			
 		g.v.game_constants.CMDs.INVITE_FRIEND_PLAY:
 			receive_play_invite(payload)
+		g.v.game_constants.CMDs.CLAIM_ADS_REWARD:
+			receive_ads_reward(payload)
 		_:
 			g.v.game_constants.game_logic.on_receive(cmd_id, payload)
 	
@@ -336,3 +338,15 @@ func set_enable_chat(e):
 func user_ready_match():
 	# must send this pack to let server know
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.USER_READY_MATCH, [])
+
+func receive_ads_reward(payload):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.AdsReward.new()
+	var result_code = pkg.from_bytes(payload)
+	var gold = pkg.get_gold()
+	g.v.player_info_mgr.time_ads_reward = pkg.get_time_ads_reward()
+	var str = tr("CLAIM_REWARD_SUCCESS")
+	str = str.replace("@num", StringUtils.point_number(gold))
+	g.v.scene_manager.show_ok_dialog(str)
+	var scene = g.v.scene_manager.get_current_scene()
+	if scene is LobbyScene:
+		scene.update_ads_reward_info()
