@@ -91,7 +91,11 @@ func _on_receive_info(bytes: PackedByteArray):
 	if enable_ads_reward and time_ads_reward < g.v.game_manager.get_timestamp_server():
 		# add popup watch ads
 		g.v.popup_mgr.add_popup("res://scenes/lobby/WatchAdsGUI.tscn")
-
+		
+	# add popup change user name
+	if self.my_user_data.game_count > 3 and my_user_data.name == 'tressette player':
+		g.v.popup_mgr.add_popup("res://scenes/lobby/ChangeUserNameGUI.tscn")
+		
 func _on_update_money(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateMoney.new()
 	packet.from_bytes(bytes)
