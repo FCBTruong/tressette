@@ -146,7 +146,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_7dkv1")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_7dkv1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7dkv1")
 placeholder_text = "Enter your name"
-max_length = 25
+max_length = 20
 
 [connection signal="pressed" from="MainPn/Close" to="." method="_on_close"]
 [connection signal="pressed" from="MainPn/Button2" to="." method="_click_ok"]

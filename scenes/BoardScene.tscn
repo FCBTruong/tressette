@@ -177,7 +177,7 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0m3fb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbo7h"]
-bg_color = Color(0.48, 0.0576, 0.10688, 1)
+bg_color = Color(0.752941, 0.25098, 0.25098, 1)
 border_width_left = 5
 border_width_top = 10
 border_width_right = 5
@@ -335,7 +335,7 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="HideFunctionBtn"]
-self_modulate = Color(1, 0.628856, 0.181039, 1)
+self_modulate = Color(0.557704, 0.467414, 0.236673, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -364,7 +364,7 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="ShowFunctionBtn"]
-self_modulate = Color(1, 0.608594, 0.0955444, 1)
+self_modulate = Color(0.557704, 0.467414, 0.236673, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1060,7 +1060,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = "10"
@@ -1088,7 +1087,6 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "3
@@ -1109,7 +1107,6 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "2"
@@ -1205,7 +1202,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
-theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = "10"
@@ -1231,7 +1227,6 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "3
@@ -1252,7 +1247,6 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
-theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 25
 text = "2"
@@ -1403,7 +1397,6 @@ mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
 [node name="BetInfoPn" type="HBoxContainer" parent="RightTopPanel"]
-modulate = Color(1, 0.971284, 0.943915, 0.368627)
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = 171.0
@@ -1420,16 +1413,17 @@ flat = true
 script = ExtResource("7_gov4p")
 
 [node name="TextureRect" type="TextureRect" parent="RightTopPanel/BetInfoPn/InfoBetBtn"]
+self_modulate = Color(1, 1, 1, 0.705882)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -9.5
-offset_top = -17.0
-offset_right = 10.5
-offset_bottom = 15.0
+offset_left = -16.5
+offset_top = -18.0
+offset_right = 17.5
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_4pw0j")
@@ -1437,6 +1431,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="BetLb" type="Label" parent="RightTopPanel/BetInfoPn"]
+modulate = Color(1, 0.972549, 0.945098, 0.368627)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 20
@@ -1506,7 +1501,7 @@ texture = ExtResource("16_oiaq1")
 expand_mode = 1
 
 [node name="GuideBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(55, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
@@ -1518,17 +1513,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_arj4s")
 expand_mode = 1
 
 [node name="SettingBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
-custom_minimum_size = Vector2(50, 50)
+custom_minimum_size = Vector2(55, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
@@ -1540,10 +1535,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_fl0rb")
@@ -1576,10 +1571,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("17_11riy")
