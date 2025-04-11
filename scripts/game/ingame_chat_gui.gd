@@ -83,6 +83,12 @@ func text_submitted(text):
 	pkg.set_chat_message(text)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.NEW_INGAME_CHAT_MESSAGE, pkg.to_bytes())
 	
+	var cur_scene = g.v.scene_manager.get_current_scene()
+	if cur_scene is BoardScene:
+		for p in cur_scene.list_players:
+			if p.user_data.uid == g.v.player_info_mgr.get_user_id():
+				p.on_chat(text)
+				
 func add_message(uid, user_name, text):
 	var group_index = _get_group_index(uid)
 			

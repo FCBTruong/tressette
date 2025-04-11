@@ -72,7 +72,9 @@ func _open_app_store():
 		return
 	OS.shell_open("https://play.google.com/store/apps/details?id=" + g.v.game_constants.PACKAGE_NAME)
 
-func is_in_review():		
+func is_in_review():	
+	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
+		return false	
 	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
 		return false
 	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:

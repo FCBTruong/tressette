@@ -935,15 +935,13 @@ func on_show_chat_gui():
 	chat_btn_reddot.visible = false
 
 func on_new_chat_message(uid, message):
+	g.v.sound_manager.play_notification_alert()
 	for p in list_players:
 		if p.user_data.uid == uid:
 			p.on_chat(message)
-			
+	
 	if not in_game_chat_gui:
 		return
-	if not in_game_chat_gui.visible:
-		g.v.sound_manager.play_notification_alert()
-		chat_btn_reddot.visible = true
 		
 	in_game_chat_gui.on_received_new_chat(uid, message)
 			
@@ -1276,11 +1274,10 @@ func end_game():
 		# effect get pot
 		var p_pot = pot_pn.global_position
 		p_pot += Vector2(50, 50)
-		for p in self.list_players:
-			if p.user_data.game_data.team_id == game_logic.match_result.win_team_id:
-				var anim_cup = anim_cup_scene.instantiate()
-				p.add_child(anim_cup)
-	pass
+	for p in self.list_players:
+		if p.user_data.game_data.team_id == game_logic.match_result.win_team_id:
+			var anim_cup = anim_cup_scene.instantiate()
+			p.add_child(anim_cup)
 
 var is_alarming_clock = false
 func on_alarm_clock():

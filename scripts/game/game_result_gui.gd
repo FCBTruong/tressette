@@ -18,16 +18,26 @@ var my_team_id
 @onready var lose_pn = find_child("LosePn")
 @onready var eff_win = find_child("EffWin")
 var gold_result_lb = null
+@onready var hbox_score = find_child("HBoxScore")
+@onready var my_team_score_lb = find_child("MyTeamScoreLb")
+@onready var opp_score_lb = find_child("OppScoreLb")
+var hbox_score_default_pos
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hbox_score_default_pos = hbox_score.position
 	pass
 func on_show():
 	self.visible = true
+	hbox_score.position = hbox_score_default_pos
+	gold_result_lb_lose.visible = true
+	gold_result_lb_win.visible = true
 	if g.v.app_version.is_in_review():
 		gold_result_lb_lose.visible = false
 		gold_result_lb_win.visible = false
-		find_child("TitleLbLose").position.y += 170
-		find_child("TitleLb").position.y += 170
+		hbox_score.position.y = hbox_score_default_pos.y - 75
+		hbox_score.scale = Vector2(2,2)
+		#find_child("TitleLbLose").position.y += 170
+		#find_child("TitleLb").position.y += 170
 	update_result(g.v.game_constants.game_logic.match_result)
 	
 	MainPn.scale = Vector2(0, 0)
@@ -59,6 +69,10 @@ func _process(delta: float) -> void:
 func update_result(data: MatchData.MatchResult):
 	win_team_id = data.win_team_id
 	my_team_id = data.my_team_id
+	var my_score = data.my_team_score / 3
+	var opp_score = data.opp_score / 3
+	my_team_score_lb.text = str(my_score)
+	opp_score_lb.text = str(opp_score)
 	var gold_change = 0
 	if data.is_win:
 		gold_result_lb = gold_result_lb_win
@@ -135,11 +149,9 @@ func _process_continue():
 		scene.continue_play()
 	
 	if g.v.game_manager.is_enable_ads() and g.v.player_info_mgr.my_user_data.game_count > 3:
-		if g.v.game_manager.game_th % 4 == 0:
+		if g.v.game_manager.game_th % 3 == 0:
 			g.admob_mgr._on_interstitial_pressed()
-			#g.admob_mgr._on_reward_interstitial_pressed()
-		else:
-			g.admob_mgr._on_interstitial_pressed()
+	
 func _click_exit_game():
 	self.visible = false
 	g.v.game_manager.send_register_leave_game()

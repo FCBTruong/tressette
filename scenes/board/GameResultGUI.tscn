@@ -154,10 +154,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -226.0
-offset_right = 200.0
-offset_bottom = 174.0
+offset_left = -187.5
+offset_top = -125.0
+offset_right = 187.5
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(200, 200)
@@ -169,10 +169,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -201.0
-offset_top = 210.0
-offset_right = 199.0
-offset_bottom = 322.0
+offset_left = -202.0
+offset_top = 106.0
+offset_right = 198.0
+offset_bottom = 218.0
 grow_horizontal = 2
 pivot_offset = Vector2(190, 56)
 theme_override_colors/font_color = Color(0.880165, 0.880165, 0.880165, 1)
@@ -183,7 +183,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WinPn" type="Control" parent="MainPn"]
-visible = false
 clip_children = 2
 light_mask = 7
 layout_mode = 1
@@ -486,6 +485,43 @@ offset_right = 466.0
 offset_bottom = 127.0
 texture = ExtResource("7_tcbk3")
 expand_mode = 1
+
+[node name="HBoxScore" type="HBoxContainer" parent="MainPn"]
+modulate = Color(1, 1, 1, 0.831373)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -56.0
+offset_right = 149.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(150, 25)
+alignment = 1
+
+[node name="MyTeamScoreLb" type="Label" parent="MainPn/HBoxScore"]
+self_modulate = Color(0.0332452, 0.530549, 0.157571, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_c54ls")
+theme_override_font_sizes/font_size = 40
+text = "20"
+
+[node name="MyTeamScoreLb2" type="Label" parent="MainPn/HBoxScore"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_c54ls")
+theme_override_font_sizes/font_size = 40
+text = "-"
+
+[node name="OppScoreLb" type="Label" parent="MainPn/HBoxScore"]
+self_modulate = Color(0.730814, 0.123833, 0.0626159, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_c54ls")
+theme_override_font_sizes/font_size = 40
+text = "20"
 
 [connection signal="pressed" from="MainPn/HBoxContainer/BtnExit" to="." method="_click_exit_game"]
 [connection signal="pressed" from="MainPn/HBoxContainer/BtnContinue" to="." method="_click_continue_play"]

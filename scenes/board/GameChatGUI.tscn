@@ -16,7 +16,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2roa"]
-bg_color = Color(0.93108, 0.828644, 0.722717, 1)
+bg_color = Color(0.910714, 0.800103, 0.664983, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 shadow_color = Color(0, 0, 0, 0.2)
@@ -24,7 +24,7 @@ shadow_size = 2
 shadow_offset = Vector2(2, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p0y5"]
-bg_color = Color(0.846222, 0.365741, 0.167112, 1)
+bg_color = Color(0.740997, 0.282336, 0.0927275, 1)
 shadow_color = Color(0.354044, 0.354044, 0.354044, 0.2)
 shadow_size = 4
 shadow_offset = Vector2(0, 2)
@@ -37,7 +37,7 @@ default_font = ExtResource("2_wkwjg")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq2y8"]
 content_margin_left = 20.0
 content_margin_right = 30.0
-bg_color = Color(0.948052, 0.627184, 0.386738, 1)
+bg_color = Color(0.951446, 0.710978, 0.528909, 0.862745)
 corner_radius_bottom_right = 5
 shadow_color = Color(0.483028, 0.483028, 0.483028, 0.1)
 shadow_size = 5
@@ -140,7 +140,7 @@ offset_right = 22.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+theme_override_colors/font_color = Color(1, 1, 1, 0.807843)
 theme_override_fonts/font = ExtResource("4_htv7n")
 theme_override_font_sizes/font_size = 30
 text = "ROOM"
@@ -198,8 +198,8 @@ layout_mode = 2
 offset_right = 500.0
 offset_bottom = 60.0
 size_flags_horizontal = 3
-theme_override_colors/font_placeholder_color = Color(1, 1, 1, 0.734)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(0.537338, 0.287368, 0.197993, 0.862745)
+theme_override_colors/font_color = Color(0.700265, 0.269481, 0.0784197, 1)
 theme_override_fonts/font = ExtResource("4_htv7n")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fwea3")

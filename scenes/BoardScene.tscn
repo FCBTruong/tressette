@@ -581,7 +581,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
-self_modulate = Color(0.0443053, 0.707054, 0.0443053, 0.588235)
+self_modulate = Color(0.0431373, 0.705882, 0.0431373, 0.392157)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -596,7 +596,7 @@ texture = ExtResource("11_eum2r")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
-self_modulate = Color(0.0443053, 0.707054, 0.0443053, 0.588235)
+self_modulate = Color(0.0431373, 0.705882, 0.0431373, 0.392157)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -613,7 +613,7 @@ texture = ExtResource("11_eum2r")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
-self_modulate = Color(0.737603, 0.216865, 0.148088, 0.588235)
+self_modulate = Color(0.737255, 0.215686, 0.14902, 0.392157)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -632,7 +632,7 @@ expand_mode = 1
 flip_h = true
 
 [node name="TextureRect4" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
-self_modulate = Color(0.737603, 0.216865, 0.148088, 0.588235)
+self_modulate = Color(0.737255, 0.215686, 0.14902, 0.392157)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1809,7 +1809,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="AutoPlayPn" type="Panel" parent="."]
-visible = false
 self_modulate = Color(0, 0, 0, 0.6)
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
@@ -1864,9 +1863,7 @@ offset_right = 97.0
 offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.849)
-theme_override_colors/font_outline_color = Color(0.418536, 0.171507, 0.10192, 1)
-theme_override_constants/outline_size = 4
+theme_override_colors/font_color = Color(0.978601, 0.958239, 0.881883, 0.913725)
 theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 23
 text = "RETURN_TO_TABLE"

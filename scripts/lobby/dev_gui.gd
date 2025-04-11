@@ -86,9 +86,15 @@ func _click_add_bot():
 	pass
 	
 func _test_share_app():
-	g.v.sette_mezzo_mgr.quick_play()
-	return
-	g.v.native_mgr.share_app("Hello everyone")
+	g.v.scene_manager.show_dialog(
+		tr("SHARE_GAME"),
+		func():
+			#g.v.storage_cache.store("share_game", 3)
+			g.v.native_mgr.share_app(
+				tr("SHARE_CONTENT")
+			)
+			pass
+	)
 
 func _click_reset_guest():
 	g.v.login_mgr.save_guest_id('')

@@ -486,7 +486,8 @@ func _handle_end_game(payload: PackedByteArray):
 		match_result.gold_lose = gold_changes[my_idx]
 	match_result.win_team_id = win_team_id
 	match_result.my_team_id = get_user(g.v.player_info_mgr.my_user_data.uid).game_data.team_id
-	
+	match_result.my_team_score = get_my_team_score()
+	match_result.opp_score = get_opponent_team_score()
 	# update my user info
 	g.v.game_manager.LAST_GAME_IS_WIN = false
 	if match_result.is_win:

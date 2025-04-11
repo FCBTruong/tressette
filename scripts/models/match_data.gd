@@ -34,6 +34,8 @@ class MatchResult:
 	var my_team_id: int
 	var gold_lose: int
 	var gold_win: int
+	var my_team_score: int
+	var opp_score: int
 	var players: Array[MatchResultPlayer] = [
 		
 	]

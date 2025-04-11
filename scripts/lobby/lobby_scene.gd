@@ -1,6 +1,7 @@
 extends Control
 
 class_name LobbyScene
+var did_share_session
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_size = DisplayServer.window_get_size()
@@ -53,6 +54,22 @@ func _ready() -> void:
 	self.offer_first_btn.visible = g.v.player_info_mgr.has_first_buy
 	#g.v.scene_manager.open_gui("res://scenes/lobby/LinkAccountGUI.tscn")
 	update_ads_reward_info()
+	
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.ANDROID:
+		var num_share = g.v.storage_cache.fetch("share_game", 0)
+		if not did_share_session and num_share < 3 and g.v.player_info_mgr.my_user_data.game_count > 10:
+			# add popup share
+			did_share_session = true
+			g.v.storage_cache.store("share_game", num_share + 1)
+			g.v.scene_manager.show_dialog(
+				tr("SHARE_GAME"),
+				func():
+					g.v.storage_cache.store("share_game", 3)
+					g.v.native_mgr.share_app(
+						tr("SHARE_CONTENT")
+					)
+					pass
+			)
 		
 @onready var watch_ads_btn = find_child("WatchAdsBtn")
 @onready var left_panel = find_child('LeftPanel')
