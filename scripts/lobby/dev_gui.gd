@@ -101,4 +101,6 @@ func _click_reset_guest():
 	pass
 
 func _click_ads():
+	g.v.native_mgr.rate_app()
+	return
 	g.admob_mgr._on_interstitial_pressed()
