@@ -61,12 +61,12 @@ func _handle_payment_success(payload):
 	if pack_id == "first_buy_offer":
 		g.v.player_info_mgr.has_first_buy = false
 	
-	g.v.scene_manager.show_dialog(tr("YOU_RECEIVED") + ' ' + StringUtils.point_number(gold) \
-		+ " " + tr("LIRA"), 
-		func():
-			print('click ok'),
-		func():
-			print('click close')
+	
+	g.v.popup_mgr.add_popup(
+		"res://scenes/lobby/ReceiveGiftGUI.tscn",
+		"set_info",
+		[tr("YOU_RECEIVED"), gold],
+		false
 	)
 	return
 	

@@ -514,7 +514,8 @@ text = "20"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
 theme_override_font_sizes/font_size = 40
-text = "-"
+text = ":"
+vertical_alignment = 1
 
 [node name="OppScoreLb" type="Label" parent="MainPn/HBoxScore"]
 self_modulate = Color(0.730814, 0.123833, 0.0626159, 1)

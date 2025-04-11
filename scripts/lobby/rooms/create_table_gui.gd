@@ -35,6 +35,9 @@ func _ready() -> void:
 	var b_idx = find_largest_suitable_bet(g.v.player_info_mgr.my_user_data.gold)
 	option_bet.select(b_idx)
 	
+	if g.v.player_info_mgr.my_user_data.game_count < 5:
+		option_point.select(0)
+	
 func find_largest_suitable_bet(my_gold: int) -> int:
 	var best_idx = 0  # Default to 0 in case no valid bet is found
 	var largest_bet = -1
@@ -82,7 +85,7 @@ func _on_create_table():
 	else:
 		pkg.set_bet_mode(true)
 	var point_mode = 11
-	if option_point.get_selected_id() == 0:
+	if option_point.get_selected_id() == 1:
 		point_mode = 21
 	pkg.set_point_mode(point_mode)
 		

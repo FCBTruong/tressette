@@ -31,7 +31,9 @@ func on_show():
 	hbox_score.position = hbox_score_default_pos
 	gold_result_lb_lose.visible = true
 	gold_result_lb_win.visible = true
+	hbox_score.visible = false
 	if g.v.app_version.is_in_review():
+		hbox_score.visible = true
 		gold_result_lb_lose.visible = false
 		gold_result_lb_win.visible = false
 		hbox_score.position.y = hbox_score_default_pos.y - 75

@@ -70,6 +70,7 @@ func _ready() -> void:
 					)
 					pass
 			)
+			
 		
 @onready var watch_ads_btn = find_child("WatchAdsBtn")
 @onready var left_panel = find_child('LeftPanel')
