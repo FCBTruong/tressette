@@ -246,7 +246,7 @@ func _update_current_round():
 	round_lb.text = tr("ROUND") + ": " + str(game_logic.match_data.current_round)
 
 func on_game_start():
-	game_start_lb.text = tr("GAME_START")
+	#game_start_lb.text = tr("GAME_START")
 	_eff_text_middle()
 	_update_current_round()
 	
@@ -256,13 +256,13 @@ func _eff_text_middle():
 	# effect start game
 	game_start_lb.visible = true
 	game_start_lb.position = game_start_lb_default_pos
-	game_start_lb.position.x -= 200
+	game_start_lb.scale = Vector2(2,2)
 	game_start_lb.modulate.a = 0
 	var start_eff_tween = create_tween()
 	start_eff_tween.parallel().tween_property(
 		game_start_lb,
-		"position",
-		game_start_lb_default_pos,
+		"scale",
+		Vector2(1,1),
 		0.3
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	start_eff_tween.parallel().tween_property(

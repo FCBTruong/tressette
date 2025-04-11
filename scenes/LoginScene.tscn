@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0s371vj6s5od"]
+[gd_scene load_steps=18 format=3 uid="uid://b0s371vj6s5od"]
 
 [ext_resource type="Script" path="res://scripts/lobby/login_scene.gd" id="1_xqlge"]
 [ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="2_hgaq6"]
@@ -10,7 +10,6 @@
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_24kwt"]
 [ext_resource type="Texture2D" uid="uid://dvkbr2jw0gmib" path="res://assets/images/login/apple_icon.png" id="6_rp1b3"]
 [ext_resource type="Texture2D" uid="uid://bwqoh74dqbxea" path="res://assets/images/login/gift_icon.png" id="7_f45wp"]
-[ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="9_4swjg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xkwm1"]
 
@@ -498,20 +497,6 @@ offset_top = -6.0
 offset_right = 275.0
 offset_bottom = 44.0
 text = "Send"
-
-[node name="Label" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 354.0
-offset_top = 70.0
-offset_right = 857.0
-offset_bottom = 103.0
-theme_override_colors/font_color = Color(0.866588, 0.855529, 0.843631, 1)
-theme_override_colors/font_outline_color = Color(0.364227, 0.253974, 0.253974, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("9_4swjg")
-theme_override_font_sizes/font_size = 30
-text = "Welcom to Tressette"
 
 [connection signal="pressed" from="LoginPn/PrivacyTermPn/Label2/TermsBtn" to="." method="_click_terms_of_service"]
 [connection signal="pressed" from="LoginPn/PrivacyTermPn/Label/PrivacyBtn" to="." method="_click_privacy_policy"]
