@@ -246,7 +246,7 @@ func _update_current_round():
 	round_lb.text = tr("ROUND") + ": " + str(game_logic.match_data.current_round)
 
 func on_game_start():
-	#game_start_lb.text = tr("GAME_START")
+	game_start_lb.text = tr("GAME_START")
 	_eff_text_middle()
 	_update_current_round()
 	
