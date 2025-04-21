@@ -59,7 +59,7 @@ func on_login_local_firebase_succeeed(auth):
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func test_login_user_A() -> void:

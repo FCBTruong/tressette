@@ -551,12 +551,12 @@ func update_team_scores():
 func _update_display_score(is_myteam, score: int) -> void:
 	var main = score / 3
 	var sub = score % 3
-	var tween = create_tween()
 	if is_myteam:
 		if main == 0 and sub > 0:
 			my_score_lb.text = ''
 		else:
 			if str(main) != my_score_lb.text:
+				var tween = create_tween()
 				tween.parallel().tween_property(my_score_lb, 'modulate:a', 0.5, 0.3)
 				tween.parallel().tween_property(my_score_lb, 'scale', Vector2(0.9,0.9), 0.3)
 				tween.parallel().tween_callback(func():
@@ -574,6 +574,7 @@ func _update_display_score(is_myteam, score: int) -> void:
 			opponent_score_lb.text = ''
 		else:
 			if str(main) != opponent_score_lb.text:
+				var tween = create_tween()
 				tween.parallel().tween_property(opponent_score_lb, 'modulate:a', 0.5, 0.3)
 				tween.parallel().tween_property(opponent_score_lb, 'scale', Vector2(0.9,0.9), 0.3)
 				tween.parallel().tween_callback(func():
@@ -588,7 +589,6 @@ func _update_display_score(is_myteam, score: int) -> void:
 			score_pn.find_child('FireOpponent').visible = false
 	
 	if sub != 0:
-		var tween2 = create_tween()
 		var sub_node
 		if is_myteam:
 			my_score_sub.visible = true
@@ -767,7 +767,6 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	
 	tween.parallel().tween_property(card_instance, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)
-	_update_my_card_positions()
 	cards_node_compare.append(card_instance)
 	update_card_follow_star()
 #
@@ -830,8 +829,8 @@ func _effect_draw_card(uid, card_id):
 			func():
 				instance.hide_card()
 		).set_delay(TIME_VIEW_CARD)
-		tween.parallel().tween_property(instance, "global_position", final_pos, 0.35).set_delay(0.55 + TIME_VIEW_CARD).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN	)
-		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
+		tween.parallel().tween_property(instance, "global_position", final_pos, 0.4).set_delay(0.55 + TIME_VIEW_CARD)
+		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.4).set_delay(0.55 + TIME_VIEW_CARD) 
 		tween.tween_interval(0)
 		tween.tween_property(instance, 'modulate:a', 0, 0.2)
 		tween.tween_callback(
@@ -875,7 +874,7 @@ func _effect_draw_card(uid, card_id):
 	# Animate pos
 	var delay = TIME_VIEW_CARD
 
-	tween.parallel().tween_property(instance, "global_position", final_pos, 0.4).set_delay(delay).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(instance, "global_position", final_pos, 0.4).set_delay(delay)
 	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.4).set_delay(delay)
 	tween.parallel().tween_property(instance, "rotation", rot_radians, 0.4).set_delay(delay)
 	

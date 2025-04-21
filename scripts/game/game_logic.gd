@@ -258,7 +258,7 @@ func _handle_play_card(payload: PackedByteArray):
 		card_win_id = pkg.get_win_card()
 		var is_end_round = pkg.get_is_end_round()
 		await ROOT.get_tree().create_timer(0.65).timeout
-		if scene is BoardScene:
+		if scene and scene is BoardScene:
 			scene.on_finishhand(0.5, is_end_round)
 
 

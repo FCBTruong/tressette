@@ -205,6 +205,7 @@ color = Color(0.910714, 0.723064, 0.509261, 1)
 
 [node name="TextureRect3" type="TextureRect" parent="MainPn/WinPn"]
 self_modulate = Color(1, 1, 1, 0.6)
+layout_mode = 0
 offset_left = 364.0
 offset_top = -239.0
 offset_right = 814.0

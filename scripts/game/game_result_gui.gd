@@ -64,15 +64,15 @@ func on_show():
 	
 	MainPn.pivot_offset = Vector2(MainPn.size / 2)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	continue_time_node.value = continue_timer.time_left / 6 * 100
 	self.continue_time_lb.text = str(int(continue_timer.time_left))
 	
 func update_result(data: MatchData.MatchResult):
 	win_team_id = data.win_team_id
 	my_team_id = data.my_team_id
-	var my_score = data.my_team_score / 3
-	var opp_score = data.opp_score / 3
+	var my_score = int(data.my_team_score / 3)
+	var opp_score = int(data.opp_score / 3)
 	my_team_score_lb.text = str(my_score)
 	opp_score_lb.text = str(opp_score)
 	var gold_change = 0
@@ -105,7 +105,7 @@ func update_result(data: MatchData.MatchResult):
 	tween_gold.tween_method(set_int_to_text.bind(gold_result_lb, true), 0, gold_change, time_run)
 
 func set_int_to_text(value: int, label, add: bool = false) -> void:
-	var str
+	var str = ''
 	if value >= 0:
 		str = "+" + StringUtils.point_number(value)
 	else:
@@ -119,7 +119,7 @@ func _update_player(p, data: MatchData.MatchResultPlayer):
 	p.find_child('ScoreCard').text = str(int(data.score_card / 3))
 	p.find_child('ScoreLastTrick').text = str(int(data.score_last_trick / 3))
 	p.find_child('ScoreTotal').text = str(int(data.score_total / 3))
-	var avt = p.find_child("AvatarCircle")
+
 	var avt_img = p.find_child("AvatarImg")
 	var avt_border = p.find_child("AvtBorder")
 	if avt_border and data.team_id == my_team_id:

@@ -74,6 +74,7 @@ texture = ExtResource("3_the30")
 expand_mode = 1
 
 [node name="StarIcon" type="TextureRect" parent="Main/CardImage"]
+layout_mode = 0
 offset_left = 40.0
 offset_top = -18.0
 offset_right = 80.0

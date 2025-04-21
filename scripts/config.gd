@@ -7,7 +7,7 @@ class_name Config
 enum MODES { LOCAL, PRIVATE, LIVE }
 
 @export var CURRENT_MODE: int = MODES.LOCAL
-@export var SHOW_CARD_BOT: bool = false
+@export var SHOW_CARD_BOT: bool = true
 var WEBSOCKET_URL: String
 var EDIT_MODE = false
 
@@ -16,7 +16,7 @@ func on_ready():
 		if OS.get_name() == "Android":
 			CURRENT_MODE = MODES.LIVE		
 		elif OS.get_name() == "iOS":
-			CURRENT_MODE = MODES.LIVE
+			CURRENT_MODE = MODES.PRIVATE
 		elif OS.get_name() == "Web":
 			CURRENT_MODE = MODES.LIVE
 			pass

@@ -2,16 +2,14 @@ extends Node2D
 
 @export var target : Node2D
 var size_factor = randf_range(0.8, 1.2)
-@onready var zone = %Zone
-@onready var zone_collision = %CollisionShape2D
+
 
 var speed = 50.0
 var top_speed = 10.0
 var fear_factor = 1.0
 var velocity : Vector2 = Vector2.ZERO
 
-@onready var zone_size = 256.0 * size_factor
-@onready var half_zone_size = zone_size / 2.0
+
 @onready var visual_root = %VisualRoot
 @onready var trail_2d = %Trail2D
 @onready var fade = %Fade
