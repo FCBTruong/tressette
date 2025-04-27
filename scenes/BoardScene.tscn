@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="17_11riy"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="23_5xkug"]
 [ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="24_gd8ru"]
-[ext_resource type="PackedScene" path="res://scenes/board/EmoChatNode.tscn" id="25_t6dir"]
+[ext_resource type="PackedScene" uid="uid://bybhqhjkyhhbk" path="res://scenes/board/EmoChatNode.tscn" id="25_t6dir"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
 [ext_resource type="AudioStream" uid="uid://g0su4roe1kup" path="res://assets/sounds/clock_tick_sound.mp3" id="33_2tsyk"]
 

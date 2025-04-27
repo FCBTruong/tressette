@@ -4,6 +4,8 @@ class_name SetteMezzoMgr
 var match_data: SetteMezzoMatchData
 var my_idx = -1
 var dealer_cards = []
+var my_cards = []
+var playing_users = []
 
 class SetteDealCard:
 	var uid: int
@@ -45,6 +47,7 @@ func _handle_game_info(payload):
 	match_data.current_round = pkg.get_current_round()
 	match_data.hand_in_round = pkg.get_hand_in_round()
 	match_data.banker_uid = pkg.get_banker_uid()
+	my_cards = pkg.get_my_cards()
 	
 	var uids = pkg.get_uids()
 	print('uids: ', uids)
@@ -134,7 +137,7 @@ func get_user(uid: int) -> UserData:
 	return null
 
 func get_my_cards():
-	return []
+	return my_cards
 
 func _start_game(payload: PackedByteArray):
 	if not match_data:
@@ -183,7 +186,7 @@ func _handle_prepare_start(payload: PackedByteArray):
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PrepareStartGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var time_start = pkg.get_time_start()
-	await g.v.scene_manager.get_current_scene().create_timer(0.5).timeout
+	await ROOT.get_tree().create_timer(0.5).timeout
 	var cur_scene = g.v.scene_manager.get_current_scene()
 	match_data.state = MatchData.MATCH_STATE.PREPARING_START
 	if cur_scene is SetteMezzoScene:
@@ -230,3 +233,11 @@ func action_hit():
 
 func action_stand():
 	pass
+
+
+func get_uid_in_turn():
+	if not match_data:
+		return -1
+	if match_data.current_turn == -1:
+		return -1
+	return self.playing_users[match_data.current_turn].uid
