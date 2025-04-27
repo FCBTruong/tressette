@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bjbyaluspvll3"]
+[gd_scene load_steps=29 format=3 uid="uid://bjbyaluspvll3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/sette_mezzo_scene.gd" id="1_gx0u6"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_sxb23"]
@@ -7,9 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="5_sgf2r"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="6_3v5sw"]
 [ext_resource type="Texture2D" uid="uid://bkeih7on4lkfa" path="res://assets/images/board/sette_mezzo/dealer.png" id="6_mcr3g"]
-[ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="7_btnom"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="10_t82fj"]
-[ext_resource type="FontFile" uid="uid://65ud4otpgavr" path="res://assets/fonts/heros_legend.ttf" id="11_5xbix"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="12_hjpec"]
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_x0s8b"]
 [ext_resource type="Texture2D" uid="uid://c0pxwxnph7lwt" path="res://assets/images/lobby/guide_icon.png" id="15_uhsqq"]
@@ -379,7 +377,6 @@ theme_override_colors/font_shadow_color = Color(1, 0.536171, 0.557066, 1)
 theme_override_colors/font_outline_color = Color(0.612013, 0.37438, 0.0564619, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("7_btnom")
 theme_override_font_sizes/font_size = 40
 text = "GAME_START"
 horizontal_alignment = 1
@@ -403,7 +400,6 @@ theme_override_colors/font_shadow_color = Color(0.00392157, 0.419608, 0.215686, 
 theme_override_colors/font_outline_color = Color(0.0117647, 0.415686, 0.211765, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("11_5xbix")
 theme_override_font_sizes/font_size = 60
 text = "3"
 horizontal_alignment = 1

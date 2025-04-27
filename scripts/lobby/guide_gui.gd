@@ -11,6 +11,8 @@ var current_idx = 0
 var is_quick_play = false
 var strong_cards = []
 var cur_card_style
+var default_pos
+@onready var t = find_child("Node2Dx")
 func _ready() -> void:
 	cur_card_style = g.v.game_constants.CARD_STYLES.CLASSIC
 	pages.append(find_child("Page1"))
@@ -18,27 +20,27 @@ func _ready() -> void:
 	for i in range(10):
 		var card = card_strong_pn.find_child("CardStrong" + str(i))
 		strong_cards.append(card)
-	
+	default_pos = t.position
+
 func _on_show():
 	tween = create_tween()
-	var default_pos = main_pn.position
-	#main_pn.modulate.a = 0
-	main_pn.position.y -= 600
-	
+	tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
 	previous_btn.visible = true
 	next_btn.visible = true
 
+	#main_pn.modulate.a = 0
+	t.position.y -= 600
+
+	tween.tween_property(t, 'position', default_pos, 0.3)
+	tween.tween_property(next_btn, "scale", Vector2(1.2, 1.2), 0.5).set_trans(Tween.TRANS_QUAD) \
+		.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(next_btn, "scale", Vector2(1, 1), 0.5)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)  
+	tween.tween_property(next_btn, "scale", Vector2(1.2, 1.2), 0.5).set_trans(Tween.TRANS_QUAD) \
+		.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(next_btn, "scale", Vector2(1, 1), 0.5)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)  
 	
-	tween.tween_property(main_pn, 'position', default_pos, 0.3)
-	#tween.tween_property(next_btn, "scale", Vector2(1.2, 1.2), 0.5).set_trans(Tween.TRANS_QUAD) \
-		#.set_ease(Tween.EASE_IN_OUT)
-	#tween.tween_property(next_btn, "scale", Vector2(1, 1), 0.5)\
-		#.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)  
-	#tween.tween_property(next_btn, "scale", Vector2(1.2, 1.2), 0.5).set_trans(Tween.TRANS_QUAD) \
-		#.set_ease(Tween.EASE_IN_OUT)
-	#tween.tween_property(next_btn, "scale", Vector2(1, 1), 0.5)\
-		#.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)  
-	#
 	
 	if current_idx == len(pages) - 1:
 		self.next_btn.visible = false
@@ -50,7 +52,7 @@ func _on_show():
 			pages[i].visible = true
 		else:
 			pages[i].visible = false
-			
+		
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

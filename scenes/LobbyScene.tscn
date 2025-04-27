@@ -338,6 +338,47 @@ libraries = {
 "": SubResource("AnimationLibrary_ysekw")
 }
 
+[node name="SetteMezzoBtn" type="Button" parent="PlayContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+offset_left = -227.0
+offset_right = -27.0
+offset_bottom = 160.0
+flat = true
+script = ExtResource("3_x7pan")
+
+[node name="Panel" type="TextureRect" parent="PlayContainer/SetteMezzoBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_nkqsu")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="PlayContainer/SetteMezzoBtn"]
+modulate = Color(1, 1, 1, 0.854902)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.0
+offset_top = -120.0
+offset_right = 102.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_a6ucd")
+theme_override_font_sizes/font_size = 40
+text = "Sette
+Mezzo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RoomsBtn" type="Button" parent="PlayContainer"]
 custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
@@ -1003,6 +1044,7 @@ texture = ExtResource("28_50qpl")
 expand_mode = 1
 
 [connection signal="pressed" from="PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="PlayContainer/SetteMezzoBtn" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="PlayContainer/RoomsBtn" to="." method="_open_tables_scene"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]

@@ -91,7 +91,6 @@ offset_right = 475.0
 offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(600, 300)
 theme_override_styles/panel = SubResource("StyleBoxFlat_ap7gx")
 
 [node name="Page2" type="Control" parent="MainPn"]

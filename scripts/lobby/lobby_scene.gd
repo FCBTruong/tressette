@@ -238,3 +238,7 @@ func format_time(remain: int) -> String:
 	var minutes = (remain % 3600) / 60
 	var seconds = remain % 60
 	return "%02d:%02d:%02d" % [hours, minutes, seconds]
+
+
+func play_sette_mezzo():
+	g.v.game_manager.send_quick_play()
