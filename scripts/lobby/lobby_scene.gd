@@ -241,4 +241,4 @@ func format_time(remain: int) -> String:
 
 
 func play_sette_mezzo():
-	g.v.game_manager.send_quick_play()
+	g.v.sette_mezzo_mgr.quick_play()

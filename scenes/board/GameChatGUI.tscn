@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://yuqomgxpxw4w" path="res://assets/images/board/send_icon.png" id="3_82s7o"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_jsdfg"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_htv7n"]
-[ext_resource type="PackedScene" uid="uid://c0gj4weo12s7r" path="res://scenes/board/QuickChatNode.tscn" id="7_fi4nl"]
+[ext_resource type="PackedScene" uid="uid://dmdvm1nrf0ws5" path="res://scenes/board/QuickChatNode.tscn" id="7_fi4nl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5gj3"]
 bg_color = Color(0.802095, 0.51041, 0.110923, 1)

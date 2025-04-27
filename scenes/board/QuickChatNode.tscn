@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0gj4weo12s7r"]
+[gd_scene load_steps=5 format=3 uid="uid://dmdvm1nrf0ws5"]
 
 [ext_resource type="Script" path="res://scripts/game/chat/quick_chat_node.gd" id="1_ut4tb"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_olrc5"]

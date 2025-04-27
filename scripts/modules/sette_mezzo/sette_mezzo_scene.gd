@@ -63,7 +63,7 @@ var center_play_pn_default_pos
 @onready var card_cont2 = find_child("CardContainer2")
 @onready var card_cont3 = find_child("CardContainer3")
 @onready var card_cont_dealer = find_child("CardContainerDealer")
-@onready var emo_chat = find_child("EmoChat")
+
 func _ready() -> void:	
 	game_logic = g.v.sette_mezzo_mgr
 	center_play_pn_default_pos = center_play_pn.position
@@ -80,9 +80,7 @@ func _ready() -> void:
 	play_ground = find_child('PlayGround')
 	place_card_node = find_child('PlaceCard1')
 	countdown_start_lb.visible = false
-	
-	emo_chat.z_index = CHAT_EMO_Z_INDEX
-	emo_chat.visible = true
+
 	_on_enter()
 	action_btn_pn.z_index = 200
 	auto_play_pn.z_index = 300

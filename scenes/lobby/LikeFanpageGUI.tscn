@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgnwu87db7eql"]
+[gd_scene load_steps=7 format=3 uid="uid://dsyrolee3f0wu"]
 
 [ext_resource type="Script" path="res://scripts/lobby/like_fanpage_gui.gd" id="1_f5cvu"]
 [ext_resource type="Texture2D" uid="uid://bb4yn4onbn250" path="res://assets/images/lobby/fanpage_like_pg.png" id="1_fu6lm"]

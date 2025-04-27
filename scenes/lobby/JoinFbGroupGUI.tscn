@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://hsljjjo2p85c"]
+[gd_scene load_steps=7 format=3 uid="uid://cbfs15hkg6imy"]
 
 [ext_resource type="Script" path="res://scripts/lobby/join_group_fb_gui.gd" id="1_w62gi"]
 [ext_resource type="Texture2D" uid="uid://bsugyyt6jary8" path="res://assets/images/lobby/fb_group_bg.png" id="2_jsrib"]

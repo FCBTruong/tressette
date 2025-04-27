@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7q07a0522mky"]
+[gd_scene load_steps=16 format=3 uid="uid://3qm1ixed4ow6"]
 
 [ext_resource type="Script" path="res://scripts/lobby/first_buy_gui.gd" id="1_8ta2g"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_7rpsx"]

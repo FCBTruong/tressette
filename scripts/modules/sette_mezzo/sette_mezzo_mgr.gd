@@ -183,7 +183,7 @@ func _handle_prepare_start(payload: PackedByteArray):
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PrepareStartGame.new()
 	var result_code = pkg.from_bytes(payload)
 	var time_start = pkg.get_time_start()
-	await g.v.scene_manager.get_tree().create_timer(0.5).timeout
+	await g.v.scene_manager.get_current_scene().create_timer(0.5).timeout
 	var cur_scene = g.v.scene_manager.get_current_scene()
 	match_data.state = MatchData.MATCH_STATE.PREPARING_START
 	if cur_scene is SetteMezzoScene:

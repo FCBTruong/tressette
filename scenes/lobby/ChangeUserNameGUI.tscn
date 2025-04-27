@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlu7yx7e1dwmj"]
+[gd_scene load_steps=8 format=3 uid="uid://r0qvk6j6wwg8"]
 
 [ext_resource type="Script" path="res://scripts/lobby/change_user_name_gui.gd" id="1_7toib"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="1_n5jg8"]

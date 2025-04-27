@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://bff8t6j3u48bh"]
+[gd_scene load_steps=104 format=3 uid="uid://b2f6fasxp6hl3"]
 
 [ext_resource type="Script" path="res://scripts/lobby/anim_cup_win.gd" id="1_0wnm0"]
 [ext_resource type="Texture2D" uid="uid://cgubbhm3qpa22" path="res://assets/images/lights/light_03.png" id="1_kwfip"]

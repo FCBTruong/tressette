@@ -1044,7 +1044,7 @@ texture = ExtResource("28_50qpl")
 expand_mode = 1
 
 [connection signal="pressed" from="PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="PlayContainer/SetteMezzoBtn" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="PlayContainer/SetteMezzoBtn" to="." method="play_sette_mezzo"]
 [connection signal="pressed" from="PlayContainer/RoomsBtn" to="." method="_open_tables_scene"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/SettingBtn" to="." method="_open_setting_gui"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/SupportBtn" to="." method="_open_customer_service_gui"]
