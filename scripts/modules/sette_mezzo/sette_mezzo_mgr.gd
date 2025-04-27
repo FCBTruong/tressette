@@ -27,6 +27,10 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			
 		g.v.game_constants.CMDs.SETTE_MEZZO_NEW_USER_JOIN_MATCH:
 			_handle_user_join_match(payload)
+		g.v.game_constants.CMDs.SETTE_MEZZO_ACTION_HIT:
+			_handle_action_hit(payload)
+		g.v.game_constants.CMDs.SETTE_MEZZO_ACTION_STAND:
+			_handle_action_stand(payload)
 	
 
 func _handle_game_info(payload):
@@ -50,7 +54,7 @@ func _handle_game_info(payload):
 	my_cards = pkg.get_my_cards()
 	
 	var uids = pkg.get_uids()
-	print('uids: ', uids)
+	print('uids: ', match_data.current_turn)
 	var user_names = pkg.get_user_names()
 	var golds = pkg.get_user_golds()
 	var avatars = pkg.get_avatars()
@@ -229,11 +233,10 @@ func _handle_user_join_match(payload: PackedByteArray):
 		cur_scene.on_update_players()
 	
 func action_hit():
-	pass
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.SETTE_MEZZO_ACTION_HIT, [])
 
 func action_stand():
-	pass
-
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.SETTE_MEZZO_ACTION_STAND, [])
 
 func get_uid_in_turn():
 	if not match_data:
@@ -241,3 +244,22 @@ func get_uid_in_turn():
 	if match_data.current_turn == -1:
 		return -1
 	return self.playing_users[match_data.current_turn].uid
+
+func _handle_action_hit(payload):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoActionHit.new()
+
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	var card_id = pkg.get_card_id()
+	
+	var scene = g.v.scene_manager.get_current_scene()
+	
+	for p in self.match_data.users:
+		if p.uid == uid:
+			p.game_data.cards.append(card_id)
+	if scene is SetteMezzoScene:
+		scene.user_hit_card(uid, card_id)
+	pass
+	
+func _handle_action_stand(payload):
+	pass

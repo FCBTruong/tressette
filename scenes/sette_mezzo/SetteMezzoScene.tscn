@@ -430,7 +430,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Button2" type="Button" parent="CanvasLayer/ActionBtnPn"]
+[node name="StandBtn" type="Button" parent="CanvasLayer/ActionBtnPn"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 0
 offset_left = 26.0
@@ -438,7 +438,7 @@ offset_right = 126.0
 offset_bottom = 50.0
 text = "STAND"
 
-[node name="Button" type="Button" parent="CanvasLayer/ActionBtnPn"]
+[node name="HitBtn" type="Button" parent="CanvasLayer/ActionBtnPn"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 0
 offset_left = -100.0
@@ -840,6 +840,8 @@ volume_db = 1.0
 stream = ExtResource("34_h1l13")
 volume_db = 12.0
 
+[connection signal="pressed" from="CanvasLayer/ActionBtnPn/StandBtn" to="." method="click_stand_btn"]
+[connection signal="pressed" from="CanvasLayer/ActionBtnPn/HitBtn" to="." method="click_hit_btn"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/BetInfoPn/InfoBetBtn" to="." method="_click_show_info_bet"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]

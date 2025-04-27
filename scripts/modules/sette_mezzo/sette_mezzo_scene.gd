@@ -702,5 +702,47 @@ func _on_screen_resized():
 	if screen_size.y > screen_size.x * 1.4:
 		var r = 1.9
 		is_portrait = true
-		
+
+
+func click_stand_btn() -> void:
+	g.v.sette_mezzo_mgr.action_stand()
+	pass # Replace with function body.
+
+
+func click_hit_btn() -> void:
+	g.v.sette_mezzo_mgr.action_hit()
+	pass # Replace with function body.
+
+func user_hit_card(uid, card_id) -> void:	
+	var from_pos = NodeUtils.get_center_position(cardback_node)
 	
+	var start_pos = find_child("Dealer").global_position
+	start_pos += Vector2(60, 130)
+	var seat_id = -1
+
+	var p = get_player_node_by_uid(uid)
+	seat_id = p.user_data.game_data.seat_id
+		
+	var con = get_card_container(seat_id)
+	var ins = card_scene.instantiate()
+	ins.scale = Vector2(0.4, 0.4)
+	con.add_child(ins)
+	ins.turn_face_down()
+	
+	ins.set_card(card_id)
+		 
+	ins.global_position = start_pos
+	var tween = create_tween()
+	var arr = get_pos_card_table(seat_id)
+	var final_pos = arr.back()
+	ins.modulate.a = 0
+	var delay = 0
+	tween.parallel().tween_property(ins, "position", final_pos, 0.3).set_delay(delay)
+	tween.parallel().tween_property(ins, "scale", Vector2(0.4, 0.4), 0.3).set_delay(delay)
+	tween.parallel().tween_property(ins, "modulate:a", 1, 0.1).set_delay(delay)
+	delay += 0.1
+		
+	tween.parallel().tween_callback(func():
+		if ins.id != -1:
+			ins.show_card(true)
+	).set_delay(0.3 + delay)

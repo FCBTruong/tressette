@@ -409,6 +409,10 @@ func _get_my_card(id):
 	return null
 	
 func play_my_card(id: int, auto: bool = false):
+	if not g.v.game_constants.game_logic.is_my_turn():
+		print('not your turn')
+		return
+		
 	if is_alarming_clock:
 		stop_alarm_clock()
 	if len(list_napoli_highlights) > 0:

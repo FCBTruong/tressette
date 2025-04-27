@@ -29,9 +29,6 @@ func _ready() -> void:
 	g.v.signal_bus.connect_global("update_card_style", Callable(self, "_on_update_card_style"))
 	
 func _on_touch_card() -> void:
-	if not g.v.game_constants.game_logic.is_my_turn():
-		print('not your turn')
-		return
 	g.v.scene_manager.INSTANCES.BOARD_SCENE.play_my_card(id)
 	
 func set_state_focusing(focus = false) -> void:
