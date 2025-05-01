@@ -13,7 +13,6 @@ config_version=5
 config/name="Tressette Royal"
 run/main_scene="res://scenes/InitScene.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-run/max_fps=60
 boot_splash/bg_color=Color(0.343861, 0.147055, 0.147055, 1)
 boot_splash/image="res://icon.png"
 config/icon="res://icon.png"
@@ -41,6 +40,10 @@ common/snap_controls_to_pixels=false
 [internationalization]
 
 locale/translations=PackedStringArray("res://localization/localize.csv", "res://localization/localize.en.translation", "res://localization/localize.it.translation", "res://localization/localize.vi.translation")
+
+[physics]
+
+common/physics_interpolation=true
 
 [rendering]
 

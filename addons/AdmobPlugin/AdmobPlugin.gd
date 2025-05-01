@@ -293,6 +293,7 @@ class IosExportPlugin extends EditorExportPlugin:
 
 
 	func _export_begin(features: PackedStringArray, is_debug: bool, path: String, flags: int) -> void:
+		print('export ios begin, admob')
 		var __admob_node: Admob = Admob.get_admob_node(EditorInterface.get_edited_scene_root())
 		add_ios_plist_content("<key>GADApplicationIdentifier</key>")
 		add_ios_plist_content("\t<string>%s</string>" % (__admob_node.real_application_id if __admob_node.is_real else __admob_node.debug_application_id))

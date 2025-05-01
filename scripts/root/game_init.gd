@@ -9,6 +9,8 @@ func _ready() -> void:
 	self.auto_load_scripts()
 
 func auto_load_scripts():
+	var time_start_load = Time.get_ticks_msec()
+
 	print("hellloccxxxxxc 122")
 	g.v.test_hello()
 	
@@ -72,6 +74,9 @@ func auto_load_scripts():
 	g.v.ranking_mgr = RankingMgr.new()
 	g.v.popup_mgr = PopupMgr.new()
 	self.add_child(g.v.popup_mgr)
+	
+	var time_end_load = Time.get_ticks_msec()
+	print('timeloadd', time_end_load - time_start_load)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

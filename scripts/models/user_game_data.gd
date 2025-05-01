@@ -6,6 +6,7 @@ var seat_id :int = 0
 var cards = []
 var points: int = 0
 var team_id: int = 0
+var is_in_game: bool = false
 
 
 func _init() -> void:

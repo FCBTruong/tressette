@@ -21,6 +21,8 @@ func _ready() -> void:
 		var card = card_strong_pn.find_child("CardStrong" + str(i))
 		strong_cards.append(card)
 	default_pos = t.position
+	
+	_on_show()
 
 func _on_show():
 	tween = create_tween()

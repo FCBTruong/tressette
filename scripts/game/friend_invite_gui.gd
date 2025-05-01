@@ -24,6 +24,8 @@ func _ready() -> void:
 	for c in friends_container.get_children():
 		c.queue_free()
 	for f in friends:
+		if f.is_playing:
+			continue
 		var n = friend_node_scene.instantiate()
 		friends_container.add_child(n)
 		n.set_info(f)

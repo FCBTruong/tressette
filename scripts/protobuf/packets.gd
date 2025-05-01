@@ -5589,6 +5589,11 @@ class SetteMezzoGameInfo:
 		service.field = _hand_in_round
 		data[_hand_in_round.tag] = service
 		
+		_is_in_games = PBField.new("is_in_games", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 21, true, [])
+		service = PBServiceField.new()
+		service.field = _is_in_games
+		data[_is_in_games.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -5771,6 +5776,15 @@ class SetteMezzoGameInfo:
 	func set_hand_in_round(value : int) -> void:
 		_hand_in_round.value = value
 	
+	var _is_in_games: PBField
+	func get_is_in_games() -> Array:
+		return _is_in_games.value
+	func clear_is_in_games() -> void:
+		data[21].state = PB_SERVICE_STATE.UNFILLED
+		_is_in_games.value = []
+	func add_is_in_games(value : bool) -> void:
+		_is_in_games.value.append(value)
+	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
 		
@@ -5843,6 +5857,11 @@ class SetteMezzoStartGame:
 		service.field = _cards
 		data[_cards.tag] = service
 		
+		_is_in_games = PBField.new("is_in_games", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 5, true, [])
+		service = PBServiceField.new()
+		service.field = _is_in_games
+		data[_is_in_games.tag] = service
+		
 	var data = {}
 	
 	var _pot_value: PBField
@@ -5880,6 +5899,15 @@ class SetteMezzoStartGame:
 		_cards.value = []
 	func add_cards(value : int) -> void:
 		_cards.value.append(value)
+	
+	var _is_in_games: PBField
+	func get_is_in_games() -> Array:
+		return _is_in_games.value
+	func clear_is_in_games() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_is_in_games.value = []
+	func add_is_in_games(value : bool) -> void:
+		_is_in_games.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

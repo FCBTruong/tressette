@@ -278,7 +278,7 @@ func on_update_players():
 	
 # Function to create players
 func _create_players(player_count: int) -> void:
-	var player_scene = load("res://scenes/board/Player.tscn")  # Load player scene
+	var player_scene = load("res://scenes/sette_mezzo/SetteMezzoPlayer.tscn")  # Load player scene
 	
 	for i in range(player_count):
 		var player_instance = player_scene.instantiate()  # Create a new player instance

@@ -59,6 +59,7 @@ func _handle_game_info(payload):
 	var golds = pkg.get_user_golds()
 	var avatars = pkg.get_avatars()
 	var team_ids = pkg.get_team_ids()
+	var is_in_games = pkg.get_is_in_games()
 	
 	var users: Array[UserData] = []
 	
@@ -68,6 +69,7 @@ func _handle_game_info(payload):
 		var userdata = UserData.new(uid, user_names[i])
 		userdata.avatar = avatars[i]
 		userdata.gold = golds[i]
+		userdata.game_data.is_in_game = is_in_games[i]
 		users.append(userdata)
 		if uid == g.v.player_info_mgr.my_user_data.uid:
 			my_idx = i
@@ -162,6 +164,7 @@ func _start_game(payload: PackedByteArray):
 	
 	var uids = pkg.get_uids()
 	var cards = pkg.get_cards()
+	var is_in_games = pkg.get_is_in_games()
 	dealer_cards = []
 	var i = 0
 	var card_deal = []
@@ -176,6 +179,7 @@ func _start_game(payload: PackedByteArray):
 			continue
 		var p = get_user(uid)
 		p.game_data.cards = [cards[i]]
+		p.game_data.is_in_game = is_in_games[i]
 		i += 1
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:

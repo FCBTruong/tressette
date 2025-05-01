@@ -57,7 +57,7 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.489817, 0.29806, 0.29806, 0.6)
 shadow_size = 3
 
-[node name="BoardScene2" type="Control"]
+[node name="SetteMezzonBoard" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -660,6 +660,7 @@ offset_bottom = 31.0
 text = "Test Deal"
 
 [node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("19_vx6l7")]
+visible = false
 layout_mode = 1
 
 [node name="BottomLeftPn" type="Control" parent="CanvasLayer"]
