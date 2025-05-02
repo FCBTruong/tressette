@@ -5594,6 +5594,11 @@ class SetteMezzoGameInfo:
 		service.field = _is_in_games
 		data[_is_in_games.tag] = service
 		
+		_play_turn_time = PBField.new("play_turn_time", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 22, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _play_turn_time
+		data[_play_turn_time.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -5784,6 +5789,15 @@ class SetteMezzoGameInfo:
 		_is_in_games.value = []
 	func add_is_in_games(value : bool) -> void:
 		_is_in_games.value.append(value)
+	
+	var _play_turn_time: PBField
+	func get_play_turn_time() -> int:
+		return _play_turn_time.value
+	func clear_play_turn_time() -> void:
+		data[22].state = PB_SERVICE_STATE.UNFILLED
+		_play_turn_time.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_play_turn_time(value : int) -> void:
+		_play_turn_time.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -6377,6 +6391,61 @@ class SetteMezzoActionHit:
 		_card_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_card_id(value : int) -> void:
 		_card_id.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class SetteMezzoUpdateTurn:
+	func _init():
+		var service
+		
+		_current_turn = PBField.new("current_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _current_turn
+		data[_current_turn.tag] = service
+		
+		_play_turn_time = PBField.new("play_turn_time", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _play_turn_time
+		data[_play_turn_time.tag] = service
+		
+	var data = {}
+	
+	var _current_turn: PBField
+	func get_current_turn() -> int:
+		return _current_turn.value
+	func clear_current_turn() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_current_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_current_turn(value : int) -> void:
+		_current_turn.value = value
+	
+	var _play_turn_time: PBField
+	func get_play_turn_time() -> int:
+		return _play_turn_time.value
+	func clear_play_turn_time() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_play_turn_time.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_play_turn_time(value : int) -> void:
+		_play_turn_time.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

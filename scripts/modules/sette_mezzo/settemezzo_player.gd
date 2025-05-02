@@ -79,10 +79,12 @@ func set_user_data(user_dt: UserData) -> void:
 		is_me = false
 			
 	avatar_img.set_avatar(user_data.avatar)
-	if user_data.game_data.is_in_game:
-		self.modulate.a = 1
-	else:
+	var g_mgr = g.v.sette_mezzo_mgr
+	var is_game_playing = g_mgr.match_data.state == MatchData.MATCH_STATE.PLAYING
+	if is_game_playing and not user_data.game_data.is_in_game:
 		self.modulate.a = 0.5
+	else:
+		self.modulate.a = 1
 
 func _update_gold():
 	gold_lb.text = _get_gold_str(user_data.gold)
@@ -102,10 +104,11 @@ func start_timer():
 		g.v.scene_manager.INSTANCES.BOARD_SCENE.play_sound_my_turn()
 		did_alarm_clock = false
 	time_progress_bar.visible = true
-	elapsed_time = 0.0
+	elapsed_time = g.v.game_server_config.time_thinking_in_turn - (g.v.game_manager.get_timestamp_server() - g.v.sette_mezzo_mgr.play_turn_time)
 	running = true
 	time_progress_bar.value = 0
 	vortex.visible = true
+	print('uidiidd', user_data.uid)
 func on_turn():
 	is_in_turn = true
 	start_timer()

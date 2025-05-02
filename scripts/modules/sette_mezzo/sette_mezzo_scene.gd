@@ -98,6 +98,13 @@ func _get_card_rotates(n):
 	return arr
 		
 func _on_enter():
+	# init player slot
+	for p in list_players:	
+		p.queue_free()
+	list_players.clear()
+	_create_players(game_logic.match_data.player_mode)
+	
+	
 	game_start_lb.visible = false
 	auto_play_pn.visible = false
 	on_update_players()
@@ -114,6 +121,7 @@ func _on_enter():
 		
 	update_cards_on_table()
 	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
+	on_user_turn()
 	
 func update_banker():
 	pass
@@ -267,10 +275,7 @@ func on_new_round():
 func on_update_players():
 	var players_info = game_logic.get_list_player()
 	var i = 0
-	for p in list_players:	
-		p.queue_free()
-	list_players.clear()
-	_create_players(game_logic.match_data.player_mode)
+
 	for info in players_info:
 		list_players[i].set_user_data(info)
 		i += 1
@@ -681,6 +686,12 @@ func _show_cheat_cards_bot(card_ids):
 	pass
 
 func on_user_turn():
+	var uid_in_turn = self.game_logic.get_uid_in_turn()
+	if uid_in_turn != -1:
+		for p in self.list_players:
+			if p.user_data.uid == uid_in_turn:
+				p.on_turn()
+				break
 	pass
 
 func _click_show_info_bet() -> void:
