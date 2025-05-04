@@ -155,6 +155,7 @@ func _show_card_dealer():
 	var i = 0
 	for c in cards:
 		var n = card_scene.instantiate()
+		banker_card_nodes.append(n)
 		card_cont_dealer.add_child(n)
 		n.set_card(c)
 		n.turn_face_up()
@@ -209,7 +210,7 @@ func get_pos_card_table(seat_id):
 			arr.append(Vector2(card_cont.size.x - i * 40, 0))
 	elif seat_id == -1:  # Dealer centered alignment
 		for i in range(count):
-			var x = 40 * (i - (count - 1) / 2.0) + card_cont.size.x / 2
+			var x = - 60 * (i - (count - 1) / 2.0) + card_cont.size.x / 2
 			arr.append(Vector2(x, 0))
 
 	return arr
@@ -433,6 +434,7 @@ func remove_all_current_cards():
 	NodeUtils.remove_all_child(card_cont2)
 	NodeUtils.remove_all_child(card_cont3)
 	NodeUtils.remove_all_child(card_cont_dealer)
+	banker_card_nodes.clear()
 
 func update_remain_cards():
 	if game_logic.match_data.remain_cards == 0:
@@ -441,6 +443,7 @@ func update_remain_cards():
 		cardback_node.visible = true
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
 
+var banker_card_nodes = []
 func deal_cards(cards, delay = 0) -> void:	
 	if g.v.game_manager.enable_sound:
 		$AudioShuffleDealCard.play()
@@ -464,6 +467,10 @@ func deal_cards(cards, delay = 0) -> void:
 			seat_id = -1
 		var con = get_card_container(seat_id)
 		var ins = card_scene.instantiate()
+		
+		if seat_id == -1:
+			# banker cards
+			self.banker_card_nodes.append(ins)
 		ins.scale = Vector2(0.4, 0.4)
 		con.add_child(ins)
 		ins.turn_face_down()

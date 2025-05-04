@@ -33,6 +33,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_action_stand(payload)
 		g.v.game_constants.CMDs.SETTE_MEZZO_UPDATE_TURN:
 			_handle_update_turn(payload)
+		g.v.game_constants.CMDs.SETTE_MEZZO_SHOW_BANKER_CARD:
+			_handle_show_banker_card(payload)
 	
 
 func _handle_game_info(payload):
@@ -299,4 +301,17 @@ func _handle_update_turn(payload):
 	
 	if scene is SetteMezzoScene:
 		scene.on_user_turn()
-	pass
+
+func _handle_show_banker_card(payload):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoShowBankerCard.new()
+
+	var result_code = pkg.from_bytes(payload)
+
+	var card_id = pkg.get_card_id()
+	var scene = g.v.scene_manager.get_current_scene()
+	
+	
+	if scene is SetteMezzoScene:
+		var card = scene.banker_card_nodes[0]
+		card.set_card(card_id)
+		card.show_card(true)
