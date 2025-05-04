@@ -20,6 +20,7 @@ extends Node
 @onready var vip_icon = find_child("VipIcon")
 var default_pos_bonus
 var is_me: bool = false
+const TIME_THINKING_IN_TURN = 10
 func _ready() -> void:
 	chat_tooltip.visible = false
 	if g.v.app_version.is_in_review():
@@ -104,11 +105,14 @@ func start_timer():
 		g.v.scene_manager.INSTANCES.BOARD_SCENE.play_sound_my_turn()
 		did_alarm_clock = false
 	time_progress_bar.visible = true
-	elapsed_time = g.v.game_server_config.time_thinking_in_turn - (g.v.game_manager.get_timestamp_server() - g.v.sette_mezzo_mgr.play_turn_time)
+	elapsed_time = TIME_THINKING_IN_TURN - (g.v.sette_mezzo_mgr.play_turn_time - g.v.game_manager.get_timestamp_server())
+	print('ellllll', elapsed_time)
+	if elapsed_time < 0:
+		elapsed_time = 0
 	running = true
 	time_progress_bar.value = 0
 	vortex.visible = true
-	print('uidiidd', user_data.uid)
+	
 func on_turn():
 	is_in_turn = true
 	start_timer()
@@ -128,10 +132,10 @@ func _process(delta: float):
 	if running:
 		elapsed_time += delta
 		
-		if elapsed_time < g.v.game_server_config.time_thinking_in_turn:
+		if elapsed_time < TIME_THINKING_IN_TURN:
 			# Update progress bar value based on elapsed time
-			time_progress_bar.value = (g.v.game_server_config.time_thinking_in_turn - elapsed_time) \
-				/ g.v.game_server_config.time_thinking_in_turn * 100
+			time_progress_bar.value = (TIME_THINKING_IN_TURN - elapsed_time) \
+				/ TIME_THINKING_IN_TURN * 100
 			
 			if user_data.uid == g.v.player_info_mgr.get_user_id():
 				if g.v.scene_manager.INSTANCES.BOARD_SCENE.is_auto_play:
@@ -152,12 +156,10 @@ func get_user_data() -> UserData:
 	
 func end_timer(out_time=false):
 	running = false
-	if user_data.uid == g.v.player_info_mgr.get_user_id() and out_time:
+	if out_time and user_data.uid == g.v.player_info_mgr.get_user_id():
 		g.v.scene_manager.INSTANCES.BOARD_SCENE.user_not_play_turn()
 	time_progress_bar.visible = false
 	vortex.visible = false
-	await get_tree().create_timer(1).timeout
-	print("Timer complete!")
 
 var effect_add_score_scene = preload('res://scenes/board/AddScoreEffect.tscn')
 func effect_add_score(score):

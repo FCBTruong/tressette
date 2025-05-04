@@ -145,12 +145,10 @@ func get_user_data() -> UserData:
 	
 func end_timer(out_time=false):
 	running = false
-	if user_data.uid == g.v.player_info_mgr.get_user_id() and out_time:
+	if out_time and user_data.uid == g.v.player_info_mgr.get_user_id():
 		g.v.scene_manager.INSTANCES.BOARD_SCENE.user_not_play_turn()
 	time_progress_bar.visible = false
 	vortex.visible = false
-	await get_tree().create_timer(1).timeout
-	print("Timer complete!")
 
 var effect_add_score_scene = preload('res://scenes/board/AddScoreEffect.tscn')
 func effect_add_score(score):

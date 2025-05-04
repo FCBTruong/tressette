@@ -58,6 +58,7 @@ var game_start_lb_default_pos
 var is_auto_play = false
 var list_napoli_highlights = []
 var center_play_pn_default_pos
+var start_card_pos
 @onready var card_cont0 = find_child("CardContainer0")
 @onready var card_cont1 = find_child("CardContainer1")
 @onready var card_cont2 = find_child("CardContainer2")
@@ -65,6 +66,7 @@ var center_play_pn_default_pos
 @onready var card_cont_dealer = find_child("CardContainerDealer")
 
 func _ready() -> void:	
+	start_card_pos = find_child("Dealer").global_position
 	game_logic = g.v.sette_mezzo_mgr
 	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
@@ -126,6 +128,7 @@ func _on_enter():
 func update_banker():
 	pass
 func update_cards_on_table():
+	# Update my cards
 	remove_all_current_cards()	
 	# update current cards
 	var cards = game_logic.get_my_cards()
@@ -225,6 +228,8 @@ func continue_play():
 	round_lb.text = ''
 
 func on_game_start():
+	# clear all current cards
+	remove_all_current_cards()
 	game_start_lb.text = tr("GAME_START")
 	_eff_text_middle()
 	update_banker()
@@ -430,7 +435,7 @@ func update_remain_cards():
 	else:
 		cardback_node.visible = true
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
-	
+
 func deal_cards(cards, delay = 0) -> void:	
 	if g.v.game_manager.enable_sound:
 		$AudioShuffleDealCard.play()
@@ -442,7 +447,12 @@ func deal_cards(cards, delay = 0) -> void:
 	for i in range(len(cards)):
 		var card_id = cards[i].card
 		var uid = cards[i].uid
-		if uid != -1:
+		
+		if uid == g.v.player_info_mgr.get_user_id():
+			draw_my_card(card_id, delay)
+			continue
+			
+		if uid != g.v.game_constants.BANKER_DEFAULT_UID:
 			var p = get_player_node_by_uid(uid)
 			seat_id = p.user_data.game_data.seat_id
 		else:
@@ -496,23 +506,17 @@ func test_deal_card():
 
 func test_play_playercard():
 	#play_card(4, 3)
-	_effect_draw_card(1000000, 4)
+	draw_my_card(4)
 	return
 	
 func on_draw_cards(arr):
-	for obj in arr:
-		var uid = obj['uid']
-		var card_id = obj['card']
-		_effect_draw_card(uid, card_id)
-		game_logic.match_data.remain_cards -= 1
-		update_remain_cards()
-		await get_tree().create_timer(1.75).timeout
-
+	pass
+	
 func play_sound_my_turn():
 	if g.v.game_manager.enable_sound:
 		$AudioYourTurn.play()
 			
-func _effect_draw_card(uid, card_id):
+func draw_my_card(card_id, delay = 0):
 	if g.v.game_manager.enable_sound:
 		$AudioDrawCard.play()
 	var tween = create_tween()
@@ -522,51 +526,16 @@ func _effect_draw_card(uid, card_id):
 	instance.scale = Vector2(0.6 * SCALE_CARD_NORMAL, 0.6 * SCALE_CARD_NORMAL)
 	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.3)
 	instance.turn_face_down()
-	instance.show_card(true)
 	instance.z_index = DEFAULT_CARD_Z_INDEX
-	var from_pos = get_center(cardback_node)
+	var from_pos = start_card_pos
 	instance.global_position = from_pos
 	var final_pos
-	if uid != g.v.player_info_mgr.my_user_data.uid:
-		var player_node = get_player_node_by_uid(uid)
-		final_pos = player_node.global_position
-		tween.parallel().tween_callback(
-			func():
-				instance.hide_card()
-		).set_delay(TIME_VIEW_CARD)
-		tween.parallel().tween_property(instance, "global_position", final_pos, 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
-		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.35).set_delay(0.55 + TIME_VIEW_CARD) 
-		tween.tween_interval(0)
-		tween.tween_callback(
-			func():
-				instance.queue_free()
-		)
-		return
 	
 	var l = len(list_my_cards)
 	var next_size = l + 1
 	var card_suit = card_id % 4
 	# Find suitable position
 	var des_i = l
-	
-	var on_suit_ray = false
-	for i in range(len(list_my_cards)):
-		var c = list_my_cards[i]
-		var suit = c.id % 4
-		if suit == card_suit:
-			on_suit_ray = true
-		
-		if on_suit_ray and suit != card_suit:
-			# Mean that not any cards same suit after, get position here
-			des_i = i
-			break
-		if on_suit_ray:
-			if game_logic.get_rank_card(card_id) > game_logic.get_rank_card(c.id):
-				continue
-			else:
-				# this is exactly position we should place the card
-				des_i = i
-				break
 			
 	var new_pos_arr = _calculate_world_card_positions(next_size)
 	var new_rotates = _get_card_rotates(next_size)
@@ -575,29 +544,16 @@ func _effect_draw_card(uid, card_id):
 	
 	var rot_radians: float = new_rotates[des_i]
 
-	# Animate pos
-	var delay = TIME_VIEW_CARD
-
 	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
 	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay)
 	
-	var c_idx = 0
-	for c in list_my_cards:
-		if c_idx == des_i:
-			continue
-		
-		var c_tween = create_tween()
-		c_tween.tween_property(
-			c, "global_position", 
-			new_pos_arr[c_idx],
-			0.3
-		).set_delay(delay)
-		
-		c_idx += 1
-		
-	tween.chain().tween_callback(
+	tween.parallel().tween_callback(
 		func():
 			_update_my_card_positions(true)
+	).set_delay(delay)
+	tween.chain().tween_callback(
+		func():
+			instance.show_card(true)
 	)
 func _on_received_draw_card():
 	pass
@@ -643,6 +599,8 @@ func _input(event):
 			if event.keycode == KEY_Q:
 				test_deal_card()
 				return
+			if event.keycode == KEY_R:
+				test_play_playercard()
 			
 
 func update_register_leave_state():
@@ -689,9 +647,10 @@ func on_user_turn():
 	var uid_in_turn = self.game_logic.get_uid_in_turn()
 	if uid_in_turn != -1:
 		for p in self.list_players:
+			if p.is_in_turn:
+				p.end_turn()
 			if p.user_data.uid == uid_in_turn:
 				p.on_turn()
-				break
 	pass
 
 func _click_show_info_bet() -> void:
@@ -725,14 +684,20 @@ func click_hit_btn() -> void:
 	pass # Replace with function body.
 
 func user_hit_card(uid, card_id) -> void:	
+	print('user hit card', uid, 'card ', card_id)
+	if uid == g.v.player_info_mgr.get_user_id():
+		draw_my_card(card_id)
+		return
 	var from_pos = NodeUtils.get_center_position(cardback_node)
 	
-	var start_pos = find_child("Dealer").global_position
+	var start_pos = start_card_pos
 	start_pos += Vector2(60, 130)
 	var seat_id = -1
 
-	var p = get_player_node_by_uid(uid)
-	seat_id = p.user_data.game_data.seat_id
+	if uid != g.v.game_constants.BANKER_DEFAULT_UID:
+		var p = get_player_node_by_uid(uid)
+		seat_id = p.user_data.game_data.seat_id
+
 		
 	var con = get_card_container(seat_id)
 	var ins = card_scene.instantiate()

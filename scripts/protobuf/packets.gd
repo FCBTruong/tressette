@@ -5534,70 +5534,70 @@ class SetteMezzoGameInfo:
 		service.field = _game_state
 		data[_game_state.tag] = service
 		
-		_my_cards = PBField.new("my_cards", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 10, true, [])
-		service = PBServiceField.new()
-		service.field = _my_cards
-		data[_my_cards.tag] = service
-		
-		_remain_cards = PBField.new("remain_cards", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 11, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
-		service = PBServiceField.new()
-		service.field = _remain_cards
-		data[_remain_cards.tag] = service
-		
-		_user_points = PBField.new("user_points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 12, true, [])
+		_user_points = PBField.new("user_points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 11, true, [])
 		service = PBServiceField.new()
 		service.field = _user_points
 		data[_user_points.tag] = service
 		
-		_team_ids = PBField.new("team_ids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 13, true, [])
+		_team_ids = PBField.new("team_ids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 12, true, [])
 		service = PBServiceField.new()
 		service.field = _team_ids
 		data[_team_ids.tag] = service
 		
-		_hand_suit = PBField.new("hand_suit", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 14, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_hand_suit = PBField.new("hand_suit", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 13, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
 		service.field = _hand_suit
 		data[_hand_suit.tag] = service
 		
-		_avatars = PBField.new("avatars", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 15, true, [])
+		_avatars = PBField.new("avatars", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 14, true, [])
 		service = PBServiceField.new()
 		service.field = _avatars
 		data[_avatars.tag] = service
 		
-		_is_registered_leave = PBField.new("is_registered_leave", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 16, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		_is_registered_leave = PBField.new("is_registered_leave", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 15, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
 		service = PBServiceField.new()
 		service.field = _is_registered_leave
 		data[_is_registered_leave.tag] = service
 		
-		_bet = PBField.new("bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 17, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_bet = PBField.new("bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 16, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
 		service.field = _bet
 		data[_bet.tag] = service
 		
-		_pot_value = PBField.new("pot_value", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 18, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
+		_pot_value = PBField.new("pot_value", PB_DATA_TYPE.INT64, PB_RULE.OPTIONAL, 17, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT64])
 		service = PBServiceField.new()
 		service.field = _pot_value
 		data[_pot_value.tag] = service
 		
-		_current_round = PBField.new("current_round", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 19, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_current_round = PBField.new("current_round", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 18, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
 		service.field = _current_round
 		data[_current_round.tag] = service
 		
-		_hand_in_round = PBField.new("hand_in_round", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 20, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_hand_in_round = PBField.new("hand_in_round", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 19, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
 		service.field = _hand_in_round
 		data[_hand_in_round.tag] = service
 		
-		_is_in_games = PBField.new("is_in_games", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 21, true, [])
+		_is_in_games = PBField.new("is_in_games", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 20, true, [])
 		service = PBServiceField.new()
 		service.field = _is_in_games
 		data[_is_in_games.tag] = service
 		
-		_play_turn_time = PBField.new("play_turn_time", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 22, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_play_turn_time = PBField.new("play_turn_time", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 21, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
 		service.field = _play_turn_time
 		data[_play_turn_time.tag] = service
+		
+		_player_infos = PBField.new("player_infos", PB_DATA_TYPE.BYTES, PB_RULE.REPEATED, 22, true, [])
+		service = PBServiceField.new()
+		service.field = _player_infos
+		data[_player_infos.tag] = service
+		
+		_banker_cards = PBField.new("banker_cards", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 23, true, [])
+		service = PBServiceField.new()
+		service.field = _banker_cards
+		data[_banker_cards.tag] = service
 		
 	var data = {}
 	
@@ -5682,29 +5682,11 @@ class SetteMezzoGameInfo:
 	func set_game_state(value : int) -> void:
 		_game_state.value = value
 	
-	var _my_cards: PBField
-	func get_my_cards() -> Array:
-		return _my_cards.value
-	func clear_my_cards() -> void:
-		data[10].state = PB_SERVICE_STATE.UNFILLED
-		_my_cards.value = []
-	func add_my_cards(value : int) -> void:
-		_my_cards.value.append(value)
-	
-	var _remain_cards: PBField
-	func get_remain_cards() -> int:
-		return _remain_cards.value
-	func clear_remain_cards() -> void:
-		data[11].state = PB_SERVICE_STATE.UNFILLED
-		_remain_cards.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
-	func set_remain_cards(value : int) -> void:
-		_remain_cards.value = value
-	
 	var _user_points: PBField
 	func get_user_points() -> Array:
 		return _user_points.value
 	func clear_user_points() -> void:
-		data[12].state = PB_SERVICE_STATE.UNFILLED
+		data[11].state = PB_SERVICE_STATE.UNFILLED
 		_user_points.value = []
 	func add_user_points(value : int) -> void:
 		_user_points.value.append(value)
@@ -5713,7 +5695,7 @@ class SetteMezzoGameInfo:
 	func get_team_ids() -> Array:
 		return _team_ids.value
 	func clear_team_ids() -> void:
-		data[13].state = PB_SERVICE_STATE.UNFILLED
+		data[12].state = PB_SERVICE_STATE.UNFILLED
 		_team_ids.value = []
 	func add_team_ids(value : int) -> void:
 		_team_ids.value.append(value)
@@ -5722,7 +5704,7 @@ class SetteMezzoGameInfo:
 	func get_hand_suit() -> int:
 		return _hand_suit.value
 	func clear_hand_suit() -> void:
-		data[14].state = PB_SERVICE_STATE.UNFILLED
+		data[13].state = PB_SERVICE_STATE.UNFILLED
 		_hand_suit.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_hand_suit(value : int) -> void:
 		_hand_suit.value = value
@@ -5731,7 +5713,7 @@ class SetteMezzoGameInfo:
 	func get_avatars() -> Array:
 		return _avatars.value
 	func clear_avatars() -> void:
-		data[15].state = PB_SERVICE_STATE.UNFILLED
+		data[14].state = PB_SERVICE_STATE.UNFILLED
 		_avatars.value = []
 	func add_avatars(value : String) -> void:
 		_avatars.value.append(value)
@@ -5740,7 +5722,7 @@ class SetteMezzoGameInfo:
 	func get_is_registered_leave() -> bool:
 		return _is_registered_leave.value
 	func clear_is_registered_leave() -> void:
-		data[16].state = PB_SERVICE_STATE.UNFILLED
+		data[15].state = PB_SERVICE_STATE.UNFILLED
 		_is_registered_leave.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
 	func set_is_registered_leave(value : bool) -> void:
 		_is_registered_leave.value = value
@@ -5749,7 +5731,7 @@ class SetteMezzoGameInfo:
 	func get_bet() -> int:
 		return _bet.value
 	func clear_bet() -> void:
-		data[17].state = PB_SERVICE_STATE.UNFILLED
+		data[16].state = PB_SERVICE_STATE.UNFILLED
 		_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_bet(value : int) -> void:
 		_bet.value = value
@@ -5758,7 +5740,7 @@ class SetteMezzoGameInfo:
 	func get_pot_value() -> int:
 		return _pot_value.value
 	func clear_pot_value() -> void:
-		data[18].state = PB_SERVICE_STATE.UNFILLED
+		data[17].state = PB_SERVICE_STATE.UNFILLED
 		_pot_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_pot_value(value : int) -> void:
 		_pot_value.value = value
@@ -5767,7 +5749,7 @@ class SetteMezzoGameInfo:
 	func get_current_round() -> int:
 		return _current_round.value
 	func clear_current_round() -> void:
-		data[19].state = PB_SERVICE_STATE.UNFILLED
+		data[18].state = PB_SERVICE_STATE.UNFILLED
 		_current_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_current_round(value : int) -> void:
 		_current_round.value = value
@@ -5776,7 +5758,7 @@ class SetteMezzoGameInfo:
 	func get_hand_in_round() -> int:
 		return _hand_in_round.value
 	func clear_hand_in_round() -> void:
-		data[20].state = PB_SERVICE_STATE.UNFILLED
+		data[19].state = PB_SERVICE_STATE.UNFILLED
 		_hand_in_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_hand_in_round(value : int) -> void:
 		_hand_in_round.value = value
@@ -5785,7 +5767,7 @@ class SetteMezzoGameInfo:
 	func get_is_in_games() -> Array:
 		return _is_in_games.value
 	func clear_is_in_games() -> void:
-		data[21].state = PB_SERVICE_STATE.UNFILLED
+		data[20].state = PB_SERVICE_STATE.UNFILLED
 		_is_in_games.value = []
 	func add_is_in_games(value : bool) -> void:
 		_is_in_games.value.append(value)
@@ -5794,10 +5776,69 @@ class SetteMezzoGameInfo:
 	func get_play_turn_time() -> int:
 		return _play_turn_time.value
 	func clear_play_turn_time() -> void:
-		data[22].state = PB_SERVICE_STATE.UNFILLED
+		data[21].state = PB_SERVICE_STATE.UNFILLED
 		_play_turn_time.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_play_turn_time(value : int) -> void:
 		_play_turn_time.value = value
+	
+	var _player_infos: PBField
+	func get_player_infos() -> Array:
+		return _player_infos.value
+	func clear_player_infos() -> void:
+		data[22].state = PB_SERVICE_STATE.UNFILLED
+		_player_infos.value = []
+	func add_player_infos(value : PackedByteArray) -> void:
+		_player_infos.value.append(value)
+	
+	var _banker_cards: PBField
+	func get_banker_cards() -> Array:
+		return _banker_cards.value
+	func clear_banker_cards() -> void:
+		data[23].state = PB_SERVICE_STATE.UNFILLED
+		_banker_cards.value = []
+	func add_banker_cards(value : int) -> void:
+		_banker_cards.value.append(value)
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class SetteMezzoPlayerInfo:
+	func _init():
+		var service
+		
+		_card_ids = PBField.new("card_ids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 1, true, [])
+		service = PBServiceField.new()
+		service.field = _card_ids
+		data[_card_ids.tag] = service
+		
+	var data = {}
+	
+	var _card_ids: PBField
+	func get_card_ids() -> Array:
+		return _card_ids.value
+	func clear_card_ids() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_card_ids.value = []
+	func add_card_ids(value : int) -> void:
+		_card_ids.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -5871,11 +5912,6 @@ class SetteMezzoStartGame:
 		service.field = _cards
 		data[_cards.tag] = service
 		
-		_is_in_games = PBField.new("is_in_games", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 5, true, [])
-		service = PBServiceField.new()
-		service.field = _is_in_games
-		data[_is_in_games.tag] = service
-		
 	var data = {}
 	
 	var _pot_value: PBField
@@ -5913,15 +5949,6 @@ class SetteMezzoStartGame:
 		_cards.value = []
 	func add_cards(value : int) -> void:
 		_cards.value.append(value)
-	
-	var _is_in_games: PBField
-	func get_is_in_games() -> Array:
-		return _is_in_games.value
-	func clear_is_in_games() -> void:
-		data[5].state = PB_SERVICE_STATE.UNFILLED
-		_is_in_games.value = []
-	func add_is_in_games(value : bool) -> void:
-		_is_in_games.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -6443,6 +6470,75 @@ class SetteMezzoUpdateTurn:
 		return _play_turn_time.value
 	func clear_play_turn_time() -> void:
 		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_play_turn_time.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_play_turn_time(value : int) -> void:
+		_play_turn_time.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class SetteMezzoActionStand:
+	func _init():
+		var service
+		
+		_uid = PBField.new("uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _uid
+		data[_uid.tag] = service
+		
+		_current_turn = PBField.new("current_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _current_turn
+		data[_current_turn.tag] = service
+		
+		_play_turn_time = PBField.new("play_turn_time", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _play_turn_time
+		data[_play_turn_time.tag] = service
+		
+	var data = {}
+	
+	var _uid: PBField
+	func get_uid() -> int:
+		return _uid.value
+	func clear_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_uid(value : int) -> void:
+		_uid.value = value
+	
+	var _current_turn: PBField
+	func get_current_turn() -> int:
+		return _current_turn.value
+	func clear_current_turn() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_current_turn.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_current_turn(value : int) -> void:
+		_current_turn.value = value
+	
+	var _play_turn_time: PBField
+	func get_play_turn_time() -> int:
+		return _play_turn_time.value
+	func clear_play_turn_time() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
 		_play_turn_time.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_play_turn_time(value : int) -> void:
 		_play_turn_time.value = value

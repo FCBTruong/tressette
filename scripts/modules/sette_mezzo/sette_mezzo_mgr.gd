@@ -4,7 +4,6 @@ class_name SetteMezzoMgr
 var match_data: SetteMezzoMatchData
 var my_idx = -1
 var dealer_cards = []
-var my_cards = []
 var playing_users = []
 var play_turn_time = 0 # server timestamp, time player must play
 
@@ -50,13 +49,11 @@ func _handle_game_info(payload):
 	match_data.seat_delta = 0 # between server and client
 	match_data.state = pkg.get_game_state()
 	match_data.current_turn = pkg.get_current_turn()
-	match_data.remain_cards = pkg.get_remain_cards()
 	match_data.pot_value = pkg.get_pot_value()
 	match_data.current_round = pkg.get_current_round()
 	match_data.hand_in_round = pkg.get_hand_in_round()
 	match_data.banker_uid = pkg.get_banker_uid()
-	play_turn_time = pkg.get_play_turn_time()
-	my_cards = pkg.get_my_cards()
+	dealer_cards = pkg.get_banker_cards()
 	play_turn_time = pkg.get_play_turn_time()
 	
 	var uids = pkg.get_uids()
@@ -68,14 +65,18 @@ func _handle_game_info(payload):
 	var is_in_games = pkg.get_is_in_games()
 	
 	var users: Array[UserData] = []
-	
+	var player_infos = pkg.get_player_infos()
 	my_idx = -1
 	for i in range(len(uids)):
 		var uid = uids[i]
+		var player_bytes = player_infos[i]
+		var pkg_player = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoPlayerInfo.new()
+		pkg_player.from_bytes(player_bytes)
 		var userdata = UserData.new(uid, user_names[i])
 		userdata.avatar = avatars[i]
 		userdata.gold = golds[i]
 		userdata.game_data.is_in_game = is_in_games[i]
+		userdata.game_data.cards = pkg_player.get_card_ids()
 		if userdata.game_data.is_in_game:
 			playing_users.append(uid)
 		users.append(userdata)
@@ -151,7 +152,9 @@ func get_user(uid: int) -> UserData:
 	return null
 
 func get_my_cards():
-	return my_cards
+	for p in self.match_data.users:
+		if p.uid == g.v.player_info_mgr.get_user_id():
+			return p.game_data.cards
 
 func _start_game(payload: PackedByteArray):
 	if not match_data:
@@ -175,7 +178,7 @@ func _start_game(payload: PackedByteArray):
 		a.uid = uid
 		a.card = cards[i]
 		card_deal.append(a)
-		if uid == -1:
+		if uid == g.v.game_constants.BANKER_DEFAULT_UID:
 			dealer_cards.append(cards[i])
 			i += 1
 			continue
@@ -247,6 +250,9 @@ func action_stand():
 func get_uid_in_turn():
 	if not match_data:	
 		return -1
+	if match_data.current_turn == g.v.game_constants.BANKER_DEFAULT_TURN:
+		return g.v.game_constants.BANKER_DEFAULT_UID
+		
 	if match_data.current_turn == -1:
 		return -1
 	return self.playing_users[match_data.current_turn]
@@ -268,7 +274,17 @@ func _handle_action_hit(payload):
 	pass
 	
 func _handle_action_stand(payload):
-	pass
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoActionStand.new()
+
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	self.match_data.current_turn = pkg.get_current_turn()
+	self.play_turn_time = pkg.get_play_turn_time()
+	
+	var scene = g.v.scene_manager.get_current_scene()
+	
+	if scene is SetteMezzoScene:
+		scene.on_user_turn()
 	
 	
 func _handle_update_turn(payload):
