@@ -254,35 +254,6 @@ func show_bonus(txt, type=0): # last trick
 	).set_delay(2)
 	pass
 
-
-func show_napoli(s, suits):
-	self.show_bonus(s, 1)
-	var arr_pos = []
-	if len(suits) == 1:
-		arr_pos = [Vector2(0, 0)]
-	elif len(suits) == 2:
-		arr_pos = [Vector2(-25, 0), Vector2(25, 0)]
-	else:
-		arr_pos = [Vector2(-50, 0), Vector2(0, 0), Vector2(50, 0)]
-	var i = 0
-	for n in suits:
-		var card = g.v.scene_manager.INSTANCES.BOARD_SCENE.card_scene.instantiate()
-		card.scale = Vector2(0, 0)
-		card.position = arr_pos[i]
-		card.set_card(n)
-		self.add_child(card)
-		card.turn_face_up()
-		
-		var tw = create_tween()
-		tw.tween_property(card, 'scale', Vector2(0.6, 0.6), 0.2)
-		tw.tween_property(card, 'modulate:a', 0, 0.2).set_delay(1.5)
-		tw.tween_callback(
-			func():
-				card.queue_free()
-		)
-		i += 1
-
-
 func _ingame_update_player_money(uid):
 	if uid == user_data.uid:
 		print('user ' + str(uid) + 'update money')
@@ -307,4 +278,15 @@ func on_chat(text):
 	chat_tooltip.scale = Vector2(0, 0)
 	chat_tw.tween_property(chat_tooltip, 'scale', Vector2(1, 1), 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	chat_tw.tween_property(chat_tooltip, 'scale', Vector2(0, 0), 0.3).set_delay(2)
+	pass
+	
+
+var effect_burst = null
+var burst_scene = preload("res://vfx/explosion/explosion.tscn")
+func effect_bursted():
+	if effect_burst == null:
+		effect_burst = burst_scene.instantiate()
+		self.add_child(effect_burst)
+		effect_burst.z_index = 10
+	effect_burst.find_child("AnimationPlayer").play()
 	pass

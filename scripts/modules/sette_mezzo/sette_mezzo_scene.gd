@@ -67,6 +67,7 @@ var start_card_pos
 
 func _ready() -> void:	
 	start_card_pos = find_child("Dealer").global_position
+	start_card_pos += Vector2(60, 130)
 	game_logic = g.v.sette_mezzo_mgr
 	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
@@ -155,16 +156,19 @@ func _show_card_dealer():
 	var i = 0
 	for c in cards:
 		var n = card_scene.instantiate()
-		banker_card_nodes.append(n)
+		self.node_card_map[-1].append(n)
 		card_cont_dealer.add_child(n)
 		n.set_card(c)
-		n.turn_face_up()
+		if c == -1:
+			n.turn_face_down()
+		else:
+			n.turn_face_up()
 		n.scale = Vector2(0.4, 0.4)
 		i += 1
 		
 	var j = 0
 	var arr_pos = get_pos_card_table(-1)
-	for c in card_cont_dealer.get_children():
+	for c in self.node_card_map[-1]:
 		c.position = arr_pos[j]
 		j += 1
 		
@@ -175,13 +179,14 @@ func _show_cards_player(p):
 
 	for i in range(cards.size()):
 		var card = card_scene.instantiate()
+		self.node_card_map[seat_id].append(card)
 		card_cont.add_child(card)
 		card.set_card(cards[i])
 		card.turn_face_up()
 		card.scale = Vector2(0.4, 0.4)
 
 	var arr_pos = get_pos_card_table(seat_id)
-	var children = card_cont.get_children()
+	var children = self.node_card_map[seat_id]
 	for i in range(children.size()):
 		children[i].position = arr_pos[i]
 
@@ -200,7 +205,7 @@ func get_pos_card_table(seat_id):
 		return []
 
 	var arr = []
-	var count = card_cont.get_child_count()
+	var count = self.node_card_map[seat_id].size()
 
 	if seat_id in [0, 3]:  # Left to right alignment
 		for i in range(count):
@@ -210,7 +215,7 @@ func get_pos_card_table(seat_id):
 			arr.append(Vector2(card_cont.size.x - i * 40, 0))
 	elif seat_id == -1:  # Dealer centered alignment
 		for i in range(count):
-			var x = - 60 * (i - (count - 1) / 2.0) + card_cont.size.x / 2
+			var x = 40 * (i - (count - 1) / 2.0) + card_cont.size.x / 2
 			arr.append(Vector2(x, 0))
 
 	return arr
@@ -424,17 +429,23 @@ func _calculate_world_card_positions(number: int):
 @export var rot_max: float = 19.0
 @export var anim_offset_y: float = 0.3
 var sine_offset_mult: float = 0.0
-
+var node_card_map: Dictionary = {}
 func remove_all_current_cards():
 	for card in list_my_cards:
 		card.queue_free()
+		
+	for key in node_card_map:
+		for node in node_card_map[key]:
+			if is_instance_valid(node):
+				node.queue_free()	
 	list_my_cards.clear()
-	NodeUtils.remove_all_child(card_cont0)
-	NodeUtils.remove_all_child(card_cont1)
-	NodeUtils.remove_all_child(card_cont2)
-	NodeUtils.remove_all_child(card_cont3)
-	NodeUtils.remove_all_child(card_cont_dealer)
-	banker_card_nodes.clear()
+	node_card_map[0] = []
+	node_card_map[1] = []
+	node_card_map[2] = []
+	node_card_map[3] = []
+	node_card_map[-1] = []
+	
+
 
 func update_remain_cards():
 	if game_logic.match_data.remain_cards == 0:
@@ -443,7 +454,6 @@ func update_remain_cards():
 		cardback_node.visible = true
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
 
-var banker_card_nodes = []
 func deal_cards(cards, delay = 0) -> void:	
 	if g.v.game_manager.enable_sound:
 		$AudioShuffleDealCard.play()
@@ -466,11 +476,11 @@ func deal_cards(cards, delay = 0) -> void:
 		else:
 			seat_id = -1
 		var con = get_card_container(seat_id)
+		var score = self.game_logic.calculate_score([card_id])
+		con.find_child("LbScore").text = str(score)
 		var ins = card_scene.instantiate()
 		
-		if seat_id == -1:
-			# banker cards
-			self.banker_card_nodes.append(ins)
+		self.node_card_map[seat_id].append(ins)
 		ins.scale = Vector2(0.4, 0.4)
 		con.add_child(ins)
 		ins.turn_face_down()
@@ -566,7 +576,17 @@ func draw_my_card(card_id, delay = 0):
 	tween.chain().tween_callback(
 		func():
 			instance.show_card(true)
+			update_my_score()
+			self.check_burst(g.v.player_info_mgr.get_user_id())
 	)
+	
+func check_burst(uid):
+	var score = game_logic.get_score_uid(uid)
+	if score > 7.5:
+		# bursted
+		var p = self.get_player_node_by_uid(uid)
+		p.effect_bursted()
+		
 func _on_received_draw_card():
 	pass
 func get_center(node):
@@ -703,25 +723,38 @@ func user_hit_card(uid, card_id) -> void:
 	var from_pos = NodeUtils.get_center_position(cardback_node)
 	
 	var start_pos = start_card_pos
-	start_pos += Vector2(60, 130)
 	var seat_id = -1
-
+	var score = self.game_logic.get_score_uid(uid)
 	if uid != g.v.game_constants.BANKER_DEFAULT_UID:
 		var p = get_player_node_by_uid(uid)
 		seat_id = p.user_data.game_data.seat_id
-
-		
 	var con = get_card_container(seat_id)
-	var ins = card_scene.instantiate()
-	ins.scale = Vector2(0.4, 0.4)
-	con.add_child(ins)
-	ins.turn_face_down()
-	
-	ins.set_card(card_id)
-		 
-	ins.global_position = start_pos
+	con.find_child("LbScore").text = str(score)
+
 	var tween = create_tween()
+
+	var ins = card_scene.instantiate()
+	self.node_card_map[seat_id].append(ins)
+	con.add_child(ins)
+	ins.scale = Vector2(0.4, 0.4)
+	ins.turn_face_down()
+	ins.set_card(card_id)		 
+	ins.global_position = start_pos
 	var arr = get_pos_card_table(seat_id)
+	var j = 0
+	for c in self.node_card_map[seat_id]:
+		if c == ins:
+			continue
+		var tw = create_tween()
+		var p = arr[j]
+		tw.tween_property(
+			c,
+			'position',
+			p,
+			0.3
+		)
+		j += 1
+	
 	var final_pos = arr.back()
 	ins.modulate.a = 0
 	var delay = 0
@@ -734,3 +767,10 @@ func user_hit_card(uid, card_id) -> void:
 		if ins.id != -1:
 			ins.show_card(true)
 	).set_delay(0.3 + delay)
+
+@onready var lb_my_score = find_child("LbMyScore")
+func update_my_score():
+	var my_cards = self.game_logic.get_my_cards()
+	var score = self.game_logic.calculate_score(my_cards)
+	lb_my_score.text = str(score)
+	pass

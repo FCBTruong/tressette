@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjbyaluspvll3"]
+[gd_scene load_steps=32 format=3 uid="uid://bjbyaluspvll3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/sette_mezzo_scene.gd" id="1_gx0u6"]
 [ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_sxb23"]
@@ -7,6 +7,9 @@
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="5_sgf2r"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="6_3v5sw"]
 [ext_resource type="Texture2D" uid="uid://bkeih7on4lkfa" path="res://assets/images/board/sette_mezzo/dealer.png" id="6_mcr3g"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="7_h67wp"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="8_4s583"]
+[ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="9_musa1"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="10_t82fj"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="12_hjpec"]
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_x0s8b"]
@@ -31,6 +34,13 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j4i0"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.619608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyhfc"]
 shader = ExtResource("20_gg3j5")
@@ -95,21 +105,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MyCardPanel" type="Control" parent="CanvasLayer/PlayGround"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -360.0
-offset_top = -160.0
-offset_right = 360.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="CenterPlayPn" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
 anchors_preset = 8
@@ -150,6 +145,13 @@ offset_right = 360.0
 offset_bottom = 290.0
 mouse_filter = 1
 
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer0"]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = -7.0
+text = "0"
+
 [node name="CardContainer1" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
 anchors_preset = 0
@@ -159,6 +161,13 @@ offset_right = 540.0
 offset_bottom = 290.0
 pivot_offset = Vector2(300, 0)
 mouse_filter = 1
+
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer1"]
+offset_left = 259.0
+offset_top = -57.0
+offset_right = 299.0
+offset_bottom = -34.0
+text = "0"
 
 [node name="CardContainer2" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
@@ -170,6 +179,13 @@ offset_bottom = 160.0
 pivot_offset = Vector2(300, 0)
 mouse_filter = 1
 
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer2"]
+offset_left = 243.0
+offset_top = -61.0
+offset_right = 283.0
+offset_bottom = -38.0
+text = "0"
+
 [node name="CardContainer3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
 anchors_preset = 0
@@ -178,6 +194,13 @@ offset_top = 90.0
 offset_right = 360.0
 offset_bottom = 160.0
 mouse_filter = 1
+
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer3"]
+offset_left = -1.0
+offset_top = -51.0
+offset_right = 39.0
+offset_bottom = -28.0
+text = "0"
 
 [node name="CardContainerDealer" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
@@ -188,6 +211,13 @@ offset_right = 453.0
 offset_bottom = 101.0
 pivot_offset = Vector2(150, 0)
 mouse_filter = 1
+
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainerDealer"]
+offset_left = 147.0
+offset_top = 29.0
+offset_right = 187.0
+offset_bottom = 52.0
+text = "0"
 
 [node name="PlayersPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
@@ -367,6 +397,54 @@ grow_horizontal = 2
 texture = ExtResource("6_mcr3g")
 expand_mode = 1
 
+[node name="MyCardPanel" type="Control" parent="CanvasLayer/PlayGround"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -160.0
+offset_right = 360.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/MyCardPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -116.0
+offset_right = 50.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2j4i0")
+
+[node name="LbMyScore" type="Label" parent="CanvasLayer/PlayGround/MyCardPanel/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "21"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CountdownTimer" type="Timer" parent="CanvasLayer/PlayGround"]
 wait_time = 3.0
 one_shot = true
@@ -412,6 +490,7 @@ theme_override_colors/font_shadow_color = Color(0.00392157, 0.419608, 0.215686, 
 theme_override_colors/font_outline_color = Color(0.0117647, 0.415686, 0.211765, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_h67wp")
 theme_override_font_sizes/font_size = 60
 text = "3"
 horizontal_alignment = 1
@@ -437,13 +516,73 @@ offset_left = 26.0
 offset_right = 126.0
 offset_bottom = 50.0
 text = "STAND"
+script = ExtResource("12_hjpec")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ActionBtnPn/StandBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_4s583")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ActionBtnPn/StandBtn/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -14.5
+offset_right = 40.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 28
+text = "STAND"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HitBtn" type="Button" parent="CanvasLayer/ActionBtnPn"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 0
 offset_left = -100.0
 offset_bottom = 50.0
+flat = true
+script = ExtResource("12_hjpec")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ActionBtnPn/HitBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_musa1")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ActionBtnPn/HitBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 28
 text = "HIT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RightTopPanel" type="Control" parent="CanvasLayer"]
 layout_mode = 1

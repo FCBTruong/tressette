@@ -309,9 +309,29 @@ func _handle_show_banker_card(payload):
 
 	var card_id = pkg.get_card_id()
 	var scene = g.v.scene_manager.get_current_scene()
-	
+	self.dealer_cards = [card_id]
 	
 	if scene is SetteMezzoScene:
-		var card = scene.banker_card_nodes[0]
+		var card = scene.node_card_map[-1][0]
 		card.set_card(card_id)
 		card.show_card(true)
+
+func calculate_score(cards):
+	var score = 0.0
+	for c in cards:
+		var r = int(c / 4)
+		if r < 7:
+			score += r + 1
+		else:
+			score += 0.5
+	return score
+
+func get_score_uid(uid):
+	if uid == g.v.game_constants.BANKER_DEFAULT_UID:
+		return calculate_score(dealer_cards)
+	else:
+		for p in self.match_data.users:
+			if p.uid == uid:
+				var cards = p.game_data.cards
+				return calculate_score(cards)
+	return 0
