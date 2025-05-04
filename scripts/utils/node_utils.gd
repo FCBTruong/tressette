@@ -31,3 +31,7 @@ static func update_animated_sprite(sprite: AnimatedSprite2D, tres_path: String):
 	if sprite_frames.get_animation_names().size() > 0:
 		sprite.animation = sprite_frames.get_animation_names()[0]  # Set first animation
 		sprite.play()  # Play animation
+
+static func remove_all_child(node):
+	for c in node.get_children():
+		c.queue_free()

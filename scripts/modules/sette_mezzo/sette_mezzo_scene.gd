@@ -428,6 +428,11 @@ func remove_all_current_cards():
 	for card in list_my_cards:
 		card.queue_free()
 	list_my_cards.clear()
+	NodeUtils.remove_all_child(card_cont0)
+	NodeUtils.remove_all_child(card_cont1)
+	NodeUtils.remove_all_child(card_cont2)
+	NodeUtils.remove_all_child(card_cont3)
+	NodeUtils.remove_all_child(card_cont_dealer)
 
 func update_remain_cards():
 	if game_logic.match_data.remain_cards == 0:
