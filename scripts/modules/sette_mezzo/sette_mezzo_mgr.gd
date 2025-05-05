@@ -35,6 +35,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_update_turn(payload)
 		g.v.game_constants.CMDs.SETTE_MEZZO_SHOW_BANKER_CARD:
 			_handle_show_banker_card(payload)
+		g.v.game_constants.CMDs.SETTE_MEZZO_END_GAME:
+			_handle_end_game(payload)
 	
 
 func _handle_game_info(payload):
@@ -279,6 +281,8 @@ func _handle_action_hit(payload):
 	pass
 	
 func _handle_action_stand(payload):
+	if not self.match_data:
+		return
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoActionStand.new()
 
 	var result_code = pkg.from_bytes(payload)
@@ -338,3 +342,10 @@ func get_score_uid(uid):
 				var cards = p.game_data.cards
 				return calculate_score(cards)
 	return 0
+
+func _handle_end_game(payload):
+	match_data.state = MatchData.MATCH_STATE.ENDED
+	var scene = g.v.scene_manager.get_current_scene()
+	if scene is SetteMezzoScene:
+		scene.on_end_game()
+	pass

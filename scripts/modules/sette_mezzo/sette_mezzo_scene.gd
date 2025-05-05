@@ -64,9 +64,10 @@ var start_card_pos
 @onready var card_cont2 = find_child("CardContainer2")
 @onready var card_cont3 = find_child("CardContainer3")
 @onready var card_cont_dealer = find_child("CardContainerDealer")
-
+@onready var dealer_node = find_child("Dealer")
+@onready var dealer_burst_eff = dealer_node.find_child("ExplosionBurst")
 func _ready() -> void:	
-	start_card_pos = find_child("Dealer").global_position
+	start_card_pos = dealer_node.global_position
 	start_card_pos += Vector2(60, 130)
 	game_logic = g.v.sette_mezzo_mgr
 	center_play_pn_default_pos = center_play_pn.position
@@ -106,7 +107,7 @@ func reset_scores():
 	card_cont2.find_child("LbScore").text = ''
 	card_cont3.find_child("LbScore").text = ''
 	card_cont_dealer.find_child("LbScore").text = ''
-	lb_my_score.text = ''
+	my_score_pn.visible = false
 	
 func _on_enter():
 	reset_scores()
@@ -246,12 +247,9 @@ func continue_play():
 	round_lb.text = ''
 
 func on_game_start():
-	# clear all current cards
-	remove_all_current_cards()
 	game_start_lb.text = tr("GAME_START")
 	_eff_text_middle()
 	update_banker()
-	reset_scores()
 	
 func _eff_text_middle():
 	# effect start game
@@ -302,6 +300,7 @@ func on_update_players():
 
 	for info in players_info:
 		list_players[i].set_user_data(info)
+		list_players[i].update_state_ingame()
 		i += 1
 	update_player_seat()
 	
@@ -495,7 +494,7 @@ func deal_cards(cards, delay = 0) -> void:
 		var ins = card_scene.instantiate()
 		
 		self.node_card_map[seat_id].append(ins)
-		ins.scale = Vector2(0.4, 0.4)
+		ins.scale = Vector2(0.2, 0.2)
 		con.add_child(ins)
 		ins.turn_face_down()
 		
@@ -559,7 +558,7 @@ func draw_my_card(card_id, delay = 0):
 	var instance = card_scene.instantiate()
 	play_ground.add_child(instance)
 	instance.set_card(card_id)
-	instance.scale = Vector2(0.6 * SCALE_CARD_NORMAL, 0.6 * SCALE_CARD_NORMAL)
+	instance.scale = Vector2(0.2, 0.2)
 	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.3)
 	instance.turn_face_down()
 	instance.z_index = DEFAULT_CARD_Z_INDEX
@@ -612,6 +611,8 @@ var countdown_value: int = 3
 @onready var countdown_timer: Timer = find_child('CountdownTimer')
 
 func show_prepare_start():
+	self.remove_all_current_cards()
+	reset_scores()
 	print('show_prepare_start')
 	countdown_start_lb.visible = true
 	countdown_timer.start()
@@ -707,6 +708,7 @@ func _click_show_info_bet() -> void:
 	g.v.scene_manager.open_gui("res://scenes/board/BetDetailGUI.tscn")
 
 func user_not_play_turn():
+	return
 	is_auto_play = true
 	self.auto_play_pn.visible = true
 	
@@ -728,8 +730,12 @@ func click_stand_btn() -> void:
 	g.v.sette_mezzo_mgr.action_stand()
 	pass # Replace with function body.
 
-
+var last_time_click = 0
 func click_hit_btn() -> void:
+	var now = g.v.game_manager.get_timestamp_client()
+	if now - last_time_click < 1:
+		return
+	last_time_click = now
 	g.v.sette_mezzo_mgr.action_hit()
 	pass # Replace with function body.
 
@@ -743,9 +749,10 @@ func user_hit_card(uid, card_id) -> void:
 	var start_pos = start_card_pos
 	var seat_id = -1
 	var score = self.game_logic.get_score_uid(uid)
+	var player_node = null
 	if uid != g.v.game_constants.BANKER_DEFAULT_UID:
-		var p = get_player_node_by_uid(uid)
-		seat_id = p.user_data.game_data.seat_id
+		player_node = get_player_node_by_uid(uid)
+		seat_id = player_node.user_data.game_data.seat_id
 	var con = get_card_container(seat_id)
 
 	var tween = create_tween()
@@ -786,14 +793,23 @@ func user_hit_card(uid, card_id) -> void:
 				true, 
 				func():
 					con.find_child("LbScore").text = str(score)
-			)
+					if score > 7.5:
+						# user bursted
+						if player_node:
+							player_node.effect_bursted()
+						else:
+							# dealer bursted
+							dealer_burst_eff.find_child("AnimationPlayer").play("Explode")
+			)	
 	).set_delay(0.3 + delay)
 
 @onready var lb_my_score = find_child("LbMyScore")
+@onready var my_score_pn = find_child("MyScorePn")
 func update_my_score():
 	var my_cards = self.game_logic.get_my_cards()
 	var score = self.game_logic.calculate_score(my_cards)
 	lb_my_score.text = str(score)
+	my_score_pn.visible = true
 	pass
 
 func dealer_show_card(card_id):
@@ -804,3 +820,7 @@ func dealer_show_card(card_id):
 		func():
 			card_cont_dealer.find_child("LbScore").text = str(score)
 	)
+
+func on_end_game():
+	for p in list_players:
+		p.update_state_ingame()

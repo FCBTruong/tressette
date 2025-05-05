@@ -80,6 +80,10 @@ func set_user_data(user_dt: UserData) -> void:
 		is_me = false
 			
 	avatar_img.set_avatar(user_data.avatar)
+	
+func update_state_ingame():
+	if not user_data:
+		return
 	var g_mgr = g.v.sette_mezzo_mgr
 	var is_game_playing = g_mgr.match_data.state == MatchData.MATCH_STATE.PLAYING
 	if is_game_playing and not user_data.game_data.is_in_game:
@@ -140,7 +144,7 @@ func _process(delta: float):
 			if user_data.uid == g.v.player_info_mgr.get_user_id():
 				if g.v.scene_manager.INSTANCES.BOARD_SCENE.is_auto_play:
 					if elapsed_time > 3:
-						g.v.scene_manager.INSTANCES.BOARD_SCENE.game_logic.auto_play_card()
+						#g.v.scene_manager.INSTANCES.BOARD_SCENE.game_logic.auto_play_card()
 						end_timer()
 				var time_remain = g.v.game_server_config.time_thinking_in_turn - elapsed_time
 				if time_remain < 5 and not did_alarm_clock:
@@ -288,5 +292,5 @@ func effect_bursted():
 		effect_burst = burst_scene.instantiate()
 		self.add_child(effect_burst)
 		effect_burst.z_index = 10
-	effect_burst.find_child("AnimationPlayer").play()
+	effect_burst.find_child("AnimationPlayer").play("Explode")
 	pass
