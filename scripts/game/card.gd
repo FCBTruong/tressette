@@ -131,7 +131,7 @@ func _load_texture_card():
 
 	_load_texture(path)
 	
-func show_card(effect_flip: bool = false):
+func show_card(effect_flip: bool = false, callback = null):
 	if not effect_flip:
 		turn_face_up()
 	else:
@@ -154,7 +154,11 @@ func show_card(effect_flip: bool = false):
 		)
 		# Second part: Scale X back to 1 (flip card back)
 		tween.tween_property(card_image, "scale:x", 1, halfway_time).set_ease(Tween.EASE_OUT)
-
+		if callback != null:
+			tween.tween_callback(
+				func():
+					callback.call()
+			)
 func hide_card():
 	# Ensure no other tween is running
 	if tween and tween.is_running():

@@ -146,6 +146,7 @@ offset_bottom = 290.0
 mouse_filter = 1
 
 [node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer0"]
+visible = false
 layout_mode = 0
 offset_top = -30.0
 offset_right = 40.0
@@ -163,11 +164,16 @@ pivot_offset = Vector2(300, 0)
 mouse_filter = 1
 
 [node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer1"]
+layout_mode = 0
 offset_left = 259.0
 offset_top = -57.0
 offset_right = 299.0
 offset_bottom = -34.0
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 26
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CardContainer2" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
@@ -180,11 +186,16 @@ pivot_offset = Vector2(300, 0)
 mouse_filter = 1
 
 [node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer2"]
-offset_left = 243.0
+layout_mode = 0
+offset_left = 263.0
 offset_top = -61.0
-offset_right = 283.0
-offset_bottom = -38.0
+offset_right = 303.0
+offset_bottom = -34.0
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 26
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CardContainer3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
@@ -196,11 +207,16 @@ offset_bottom = 160.0
 mouse_filter = 1
 
 [node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer3"]
-offset_left = -1.0
-offset_top = -51.0
-offset_right = 39.0
-offset_bottom = -28.0
+layout_mode = 0
+offset_left = 19.0
+offset_top = -61.0
+offset_right = 59.0
+offset_bottom = -34.0
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 26
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CardContainerDealer" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
@@ -213,11 +229,16 @@ pivot_offset = Vector2(150, 0)
 mouse_filter = 1
 
 [node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainerDealer"]
-offset_left = 147.0
-offset_top = 29.0
-offset_right = 187.0
-offset_bottom = 52.0
+layout_mode = 0
+offset_left = 127.0
+offset_top = 39.0
+offset_right = 167.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 26
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayersPn" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 1
@@ -420,9 +441,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -116.0
+offset_top = -133.0
 offset_right = 50.0
-offset_bottom = -76.0
+offset_bottom = -93.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

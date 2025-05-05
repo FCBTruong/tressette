@@ -99,8 +99,17 @@ func _get_card_rotates(n):
 		var rot_radians: float = lerp_angle(-rot_max_radians, rot_max_radians, float(i)/float(n-1))
 		arr.append(rot_radians)
 	return arr
-		
+
+func reset_scores():
+	card_cont0.find_child("LbScore").text = ''
+	card_cont1.find_child("LbScore").text = ''
+	card_cont2.find_child("LbScore").text = ''
+	card_cont3.find_child("LbScore").text = ''
+	card_cont_dealer.find_child("LbScore").text = ''
+	lb_my_score.text = ''
+	
 func _on_enter():
+	reset_scores()
 	# init player slot
 	for p in list_players:	
 		p.queue_free()
@@ -147,6 +156,8 @@ func update_cards_on_table():
 	
 	# update other cards on table
 	for p in list_players:
+		if p.user_data.uid == g.v.player_info_mgr.get_user_id():
+			continue
 		_show_cards_player(p)
 	_show_card_dealer()
 
@@ -223,6 +234,7 @@ func get_pos_card_table(seat_id):
 func continue_play():
 	if game_logic.match_data.state == MatchData.MATCH_STATE.PLAYING:
 		return
+	reset_scores()
 		
 	if self.is_auto_play:
 		# quit
@@ -239,6 +251,7 @@ func on_game_start():
 	game_start_lb.text = tr("GAME_START")
 	_eff_text_middle()
 	update_banker()
+	reset_scores()
 	
 func _eff_text_middle():
 	# effect start game
@@ -477,7 +490,8 @@ func deal_cards(cards, delay = 0) -> void:
 			seat_id = -1
 		var con = get_card_container(seat_id)
 		var score = self.game_logic.calculate_score([card_id])
-		con.find_child("LbScore").text = str(score)
+		if score > 0.1: # prevent case 0.0
+			con.find_child("LbScore").text = str(score)
 		var ins = card_scene.instantiate()
 		
 		self.node_card_map[seat_id].append(ins)
@@ -678,6 +692,10 @@ func _show_cheat_cards_bot(card_ids):
 func on_user_turn():
 	var uid_in_turn = self.game_logic.get_uid_in_turn()
 	if uid_in_turn != -1:
+		if uid_in_turn == g.v.player_info_mgr.get_user_id():
+			action_btn_pn.visible = true
+		else:
+			action_btn_pn.visible = false
 		for p in self.list_players:
 			if p.is_in_turn:
 				p.end_turn()
@@ -729,7 +747,6 @@ func user_hit_card(uid, card_id) -> void:
 		var p = get_player_node_by_uid(uid)
 		seat_id = p.user_data.game_data.seat_id
 	var con = get_card_container(seat_id)
-	con.find_child("LbScore").text = str(score)
 
 	var tween = create_tween()
 
@@ -765,7 +782,11 @@ func user_hit_card(uid, card_id) -> void:
 		
 	tween.parallel().tween_callback(func():
 		if ins.id != -1:
-			ins.show_card(true)
+			ins.show_card(
+				true, 
+				func():
+					con.find_child("LbScore").text = str(score)
+			)
 	).set_delay(0.3 + delay)
 
 @onready var lb_my_score = find_child("LbMyScore")
@@ -774,3 +795,12 @@ func update_my_score():
 	var score = self.game_logic.calculate_score(my_cards)
 	lb_my_score.text = str(score)
 	pass
+
+func dealer_show_card(card_id):
+	var score = self.game_logic.get_score_uid(g.v.game_constants.BANKER_DEFAULT_UID)
+	var card = self.node_card_map[-1][0]
+	card.set_card(card_id)
+	card.show_card(true, 
+		func():
+			card_cont_dealer.find_child("LbScore").text = str(score)
+	)

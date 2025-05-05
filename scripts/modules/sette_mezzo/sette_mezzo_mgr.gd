@@ -268,9 +268,12 @@ func _handle_action_hit(payload):
 	
 	var scene = g.v.scene_manager.get_current_scene()
 	
-	for p in self.match_data.users:
-		if p.uid == uid:
-			p.game_data.cards.append(card_id)
+	if uid == g.v.game_constants.BANKER_DEFAULT_UID:
+		dealer_cards.append(card_id)
+	else:
+		for p in self.match_data.users:
+			if p.uid == uid:
+				p.game_data.cards.append(card_id)
 	if scene is SetteMezzoScene:
 		scene.user_hit_card(uid, card_id)
 	pass
@@ -312,13 +315,13 @@ func _handle_show_banker_card(payload):
 	self.dealer_cards = [card_id]
 	
 	if scene is SetteMezzoScene:
-		var card = scene.node_card_map[-1][0]
-		card.set_card(card_id)
-		card.show_card(true)
+		scene.dealer_show_card(card_id)
 
 func calculate_score(cards):
 	var score = 0.0
 	for c in cards:
+		if c == -1:
+			continue
 		var r = int(c / 4)
 		if r < 7:
 			score += r + 1
