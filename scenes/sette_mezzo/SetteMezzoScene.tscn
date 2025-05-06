@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bjbyaluspvll3"]
+[gd_scene load_steps=33 format=3 uid="uid://bjbyaluspvll3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/sette_mezzo_scene.gd" id="1_gx0u6"]
 [ext_resource type="Texture2D" uid="uid://hjvfin0rocla" path="res://assets/images/board/sette_mezzo/bg.jpg" id="2_n181u"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="8_4s583"]
 [ext_resource type="PackedScene" uid="uid://debxx26bk78ai" path="res://vfx/explosion/explosion.tscn" id="9_j5fyy"]
 [ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="9_musa1"]
+[ext_resource type="Texture2D" uid="uid://dn7v0ak8pmgo2" path="res://assets/images/board/sette_mezzo/icon_stand.png" id="10_na581"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="12_hjpec"]
 [ext_resource type="Texture2D" uid="uid://v20b0tyl7vei" path="res://assets/images/board/guide_btn.png" id="13_5lkix"]
 [ext_resource type="Texture2D" uid="uid://ccq1m054wgoom" path="res://assets/images/board/settings_btn.png" id="14_ee5ig"]
@@ -26,6 +27,17 @@
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="32_e8pgo"]
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="33_683u7"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="34_h1l13"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vepap"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2wdn7"]
 bg_color = Color(0.690082, 0.398423, 0.197545, 1)
@@ -48,7 +60,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j4i0"]
-bg_color = Color(0.196078, 0.196078, 0.196078, 0.619608)
+bg_color = Color(0.462662, 0.462662, 0.462662, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -159,12 +171,28 @@ offset_bottom = 301.0
 pivot_offset = Vector2(300, 0)
 mouse_filter = 1
 
-[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer1"]
+[node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer1"]
+self_modulate = Color(0.136227, 0.486423, 0.0560719, 1)
 layout_mode = 0
-offset_left = 283.0
-offset_top = -72.0
-offset_right = 323.0
-offset_bottom = -45.0
+offset_left = 276.0
+offset_top = -69.0
+offset_right = 326.0
+offset_bottom = -39.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vepap")
+
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer1/ScorePn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.5
+offset_right = 20.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_wiuq8")
 theme_override_font_sizes/font_size = 22
 text = "0"
@@ -181,12 +209,28 @@ offset_bottom = 160.0
 pivot_offset = Vector2(300, 0)
 mouse_filter = 1
 
-[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer2"]
+[node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer2"]
+self_modulate = Color(0.136227, 0.486423, 0.0560719, 1)
 layout_mode = 0
-offset_left = 263.0
-offset_top = -61.0
-offset_right = 303.0
+offset_left = 254.0
+offset_top = -64.0
+offset_right = 304.0
 offset_bottom = -34.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vepap")
+
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer2/ScorePn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.5
+offset_right = 20.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_wiuq8")
 theme_override_font_sizes/font_size = 22
 text = "0"
@@ -196,18 +240,34 @@ vertical_alignment = 1
 [node name="CardContainer3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 60.0
+offset_left = 37.0
 offset_top = 90.0
-offset_right = 360.0
+offset_right = 337.0
 offset_bottom = 160.0
 mouse_filter = 1
 
-[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer3"]
+[node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer3"]
+self_modulate = Color(0.136227, 0.486423, 0.0560719, 1)
 layout_mode = 0
-offset_left = -19.0
-offset_top = -64.0
-offset_right = 21.0
-offset_bottom = -37.0
+offset_left = -25.0
+offset_top = -69.0
+offset_right = 25.0
+offset_bottom = -39.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vepap")
+
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer3/ScorePn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.5
+offset_right = 20.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_wiuq8")
 theme_override_font_sizes/font_size = 22
 text = "0"
@@ -215,21 +275,47 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CardContainerDealer" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 143.0
-offset_top = 14.0
-offset_right = 443.0
-offset_bottom = 84.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 25.0
+offset_right = 150.0
+offset_bottom = 95.0
+grow_horizontal = 2
 pivot_offset = Vector2(150, 0)
 mouse_filter = 1
 
-[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainerDealer"]
-layout_mode = 0
-offset_left = 127.0
-offset_top = 52.0
-offset_right = 167.0
-offset_bottom = 75.0
+[node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainerDealer"]
+self_modulate = Color(0.136227, 0.486423, 0.0560719, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -21.0
+offset_right = 25.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vepap")
+
+[node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainerDealer/ScorePn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -13.5
+offset_right = 20.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_wiuq8")
 theme_override_font_sizes/font_size = 22
 text = "0"
@@ -406,10 +492,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -50.0
-offset_top = -164.0
-offset_right = 40.0
-offset_bottom = -74.0
+offset_left = -48.0
+offset_top = -165.0
+offset_right = 42.0
+offset_bottom = -75.0
 grow_horizontal = 2
 texture = ExtResource("6_mcr3g")
 expand_mode = 1
@@ -446,6 +532,15 @@ vertical_alignment = 1
 [node name="ExplosionBurst" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer" instance=ExtResource("9_j5fyy")]
 position = Vector2(45, 64)
 
+[node name="IconStandBanker" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer"]
+layout_mode = 0
+offset_top = 11.0
+offset_right = 80.0
+offset_bottom = 121.0
+pivot_offset = Vector2(40, 60)
+texture = ExtResource("10_na581")
+expand_mode = 1
+
 [node name="MyCardPanel" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
 anchors_preset = 7
@@ -459,7 +554,6 @@ offset_right = 360.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="MyScorePn" type="Panel" parent="CanvasLayer/PlayGround/MyCardPanel"]
 layout_mode = 1
@@ -467,9 +561,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -40.0
-offset_top = -74.0
+offset_top = -64.0
 offset_right = 40.0
-offset_bottom = -34.0
+offset_bottom = -24.0
 grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2j4i0")

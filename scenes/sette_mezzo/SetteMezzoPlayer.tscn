@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://6mwjo3fjpdd3"]
+[gd_scene load_steps=23 format=3 uid="uid://6mwjo3fjpdd3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/settemezzo_player.gd" id="1_qmmjy"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_sbcn4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dekvp4vpshah1" path="res://assets/images/board/empty_slot_icon.png" id="13_ojixo"]
 [ext_resource type="SpriteFrames" uid="uid://cn8du4mgy30t5" path="res://assets/animations/emoticons/emo.tres" id="14_526v1"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="15_ofkkm"]
+[ext_resource type="Texture2D" uid="uid://dn7v0ak8pmgo2" path="res://assets/images/board/sette_mezzo/icon_stand.png" id="16_wmjaw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuo70"]
 bg_color = Color(0.95484, 0.95484, 0.95484, 1)
@@ -406,6 +407,15 @@ offset_top = -43.0
 offset_right = 43.0
 offset_bottom = -23.0
 texture = ExtResource("15_ofkkm")
+expand_mode = 1
+
+[node name="IconStand" type="TextureRect" parent="."]
+offset_left = -50.0
+offset_top = -81.0
+offset_right = 40.0
+offset_bottom = 39.0
+pivot_offset = Vector2(45, 80)
+texture = ExtResource("16_wmjaw")
 expand_mode = 1
 
 [connection signal="pressed" from="MainPn/AvatarCircle/InfoBtn" to="." method="_show_info"]

@@ -18,6 +18,7 @@ extends Node
 @onready var name_lb = find_child("NameLb")
 @onready var chat_tooltip = find_child("ChatTooltip")
 @onready var vip_icon = find_child("VipIcon")
+@onready var icon_stand = find_child("IconStand")
 var default_pos_bonus
 var is_me: bool = false
 const TIME_THINKING_IN_TURN = 10
@@ -36,6 +37,7 @@ func _ready() -> void:
 	default_pos_bonus = self.bonus_info_pn.position
 	red_dot.visible = false
 	vortex.visible = false
+	icon_stand.visible = false
 	
 	g.v.signal_bus.connect_global('ingame_update_player_money', Callable(self, "_ingame_update_player_money"))
 
@@ -294,3 +296,21 @@ func effect_bursted():
 		effect_burst.z_index = 10
 	effect_burst.find_child("AnimationPlayer").play("Explode")
 	pass
+
+func effect_user_stand():
+	icon_stand.visible = true
+	icon_stand.modulate.a = 1
+	icon_stand.scale = Vector2(0, 0)
+	var tw = create_tween()
+	tw.tween_property(
+		icon_stand,
+		"scale",
+		Vector2(1, 1),
+		0.4
+	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.tween_property(
+		icon_stand,
+		"modulate:a",
+		0,
+		0.3		
+	).set_delay(1)

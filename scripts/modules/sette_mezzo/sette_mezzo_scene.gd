@@ -41,7 +41,7 @@ var is_portrait = false
 @onready var reach_point_win_lb = find_child("ReachPointWinLb")
 @onready var auto_play_pn = find_child("AutoPlayPn")
 @onready var bet_info_pn = find_child("BetInfoPn")
-
+@onready var icon_banker_stand = find_child("IconStandBanker")
 const DEFAULT_CARD_Z_INDEX = 10
 const WIN_CARD_Z_INDEX = 101
 const CHAT_EMO_Z_INDEX = 200
@@ -67,6 +67,7 @@ var start_card_pos
 @onready var dealer_node = find_child("Dealer")
 @onready var dealer_burst_eff = dealer_node.find_child("ExplosionBurst")
 func _ready() -> void:	
+	icon_banker_stand.visible = false
 	start_card_pos = dealer_node.global_position
 	start_card_pos += Vector2(60, 130)
 	game_logic = g.v.sette_mezzo_mgr
@@ -102,11 +103,10 @@ func _get_card_rotates(n):
 	return arr
 
 func reset_scores():
-	card_cont0.find_child("LbScore").text = ''
-	card_cont1.find_child("LbScore").text = ''
-	card_cont2.find_child("LbScore").text = ''
-	card_cont3.find_child("LbScore").text = ''
-	card_cont_dealer.find_child("LbScore").text = ''
+	card_cont1.find_child("ScorePn").visible = false
+	card_cont2.find_child("ScorePn").visible = false
+	card_cont3.find_child("ScorePn").visible = false
+	card_cont_dealer.find_child("ScorePn").visible = false
 	my_score_pn.visible = false
 	
 func _on_enter():
@@ -490,6 +490,7 @@ func deal_cards(cards, delay = 0) -> void:
 		var con = get_card_container(seat_id)
 		var score = self.game_logic.calculate_score([card_id])
 		if score > 0.1: # prevent case 0.0
+			con.find_child("ScorePn").visible = true
 			con.find_child("LbScore").text = str(score)
 		var ins = card_scene.instantiate()
 		
@@ -792,6 +793,7 @@ func user_hit_card(uid, card_id) -> void:
 			ins.show_card(
 				true, 
 				func():
+					con.find_child("ScorePn").visible = true
 					con.find_child("LbScore").text = str(score)
 					if score > 7.5:
 						# user bursted
@@ -818,9 +820,33 @@ func dealer_show_card(card_id):
 	card.set_card(card_id)
 	card.show_card(true, 
 		func():
+			card_cont_dealer.find_child("ScorePn").visible = true
 			card_cont_dealer.find_child("LbScore").text = str(score)
 	)
 
 func on_end_game():
 	for p in list_players:
 		p.update_state_ingame()
+
+func user_stand(uid):
+	if uid == g.v.game_constants.BANKER_DEFAULT_UID:
+		icon_banker_stand.visible = true
+		icon_banker_stand.modulate.a = 1
+		icon_banker_stand.scale = Vector2(0, 0)
+		var tw = create_tween()
+		tw.tween_property(
+			icon_banker_stand,
+			"scale",
+			Vector2(1, 1),
+			0.4
+		).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		tw.tween_property(
+			icon_banker_stand,
+			"modulate:a",
+			0,
+			0.3		
+		).set_delay(1)
+		return
+	var p = self.get_player_node_by_uid(uid)
+	if p:
+		p.effect_user_stand()

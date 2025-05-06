@@ -293,6 +293,7 @@ func _handle_action_stand(payload):
 	var scene = g.v.scene_manager.get_current_scene()
 	
 	if scene is SetteMezzoScene:
+		scene.user_stand(uid)
 		scene.on_user_turn()
 	
 	
