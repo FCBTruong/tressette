@@ -5,6 +5,7 @@ extends Control
 @onready var main_pn = find_child("MainPn")
 @onready var quick_chat = find_child("QuickChat")
 @onready var line_edit = find_child("LineEdit")
+@export var is_sette_mezzo = false
 var main_pn_default_pos
 var groups = [
 	{'name': 'Team', 'color': '#037509'},
@@ -34,7 +35,10 @@ func _ready():
 	for i in range(6):
 		var n = quick_chat_node.instantiate()
 		quick_list.add_child(n)
-		n.set_text(tr("QUICK_CHAT_" + str(i)))
+		if is_sette_mezzo:
+			n.set_text(tr("SETTE_QUICK_CHAT_" + str(i)))
+		else:
+			n.set_text(tr("QUICK_CHAT_" + str(i)))
 		n.parent = self
 
 func _process(delta):

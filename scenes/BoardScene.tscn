@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=58 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -27,12 +27,11 @@
 [ext_resource type="Texture2D" uid="uid://v20b0tyl7vei" path="res://assets/images/board/guide_btn.png" id="14_arj4s"]
 [ext_resource type="Texture2D" uid="uid://ccq1m054wgoom" path="res://assets/images/board/settings_btn.png" id="15_fl0rb"]
 [ext_resource type="Texture2D" uid="uid://d1cv761bu0g1a" path="res://assets/images/board/game_start.png" id="15_fu0n4"]
-[ext_resource type="Script" path="res://scripts/game/chat/chat_emo_gui.gd" id="15_vatcf"]
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="16_oiaq1"]
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="17_11riy"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="23_5xkug"]
 [ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="24_gd8ru"]
-[ext_resource type="PackedScene" uid="uid://bybhqhjkyhhbk" path="res://scenes/board/EmoChatNode.tscn" id="25_t6dir"]
+[ext_resource type="PackedScene" uid="uid://d3phqitk2yrkh" path="res://scenes/board/EmoChat.tscn" id="27_8g18i"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
 [ext_resource type="AudioStream" uid="uid://g0su4roe1kup" path="res://assets/sounds/clock_tick_sound.mp3" id="33_2tsyk"]
 
@@ -233,21 +232,6 @@ shader_parameter/highlight_strength = 0.5
 shader_parameter/color_mode_toggle = false
 shader_parameter/is_horizontal = true
 shader_parameter/delay = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mewnw"]
-bg_color = Color(0.944657, 0.944657, 0.944657, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.5, 0.274662, 0.274662, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-shadow_color = Color(0, 0, 0, 0.289)
-shadow_size = 5
-shadow_offset = Vector2(0, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23sef"]
 
@@ -1647,71 +1631,8 @@ text = "Waiting for other players ..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EmoChat" type="Control" parent="."]
-visible = false
+[node name="EmoChat" parent="." instance=ExtResource("27_8g18i")]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -375.0
-offset_top = -417.0
-offset_right = -95.0
-offset_bottom = -107.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
-script = ExtResource("15_vatcf")
-
-[node name="Panel" type="Panel" parent="EmoChat"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_mewnw")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="EmoChat/Panel"]
-custom_minimum_size = Vector2(270, 290)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = -145.0
-offset_right = 135.0
-offset_bottom = 145.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-scroll_deadzone = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="EmoChat/Panel/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_constants/separation = 20
-
-[node name="EmoGroupNode" type="HBoxContainer" parent="EmoChat/Panel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="Emo1" parent="EmoChat/Panel/ScrollContainer/VBoxContainer/EmoGroupNode" instance=ExtResource("25_t6dir")]
-layout_mode = 2
-
-[node name="Emo2" parent="EmoChat/Panel/ScrollContainer/VBoxContainer/EmoGroupNode" instance=ExtResource("25_t6dir")]
-layout_mode = 2
-
-[node name="Emo3" parent="EmoChat/Panel/ScrollContainer/VBoxContainer/EmoGroupNode" instance=ExtResource("25_t6dir")]
-layout_mode = 2
 
 [node name="AutoPlayPn" type="Panel" parent="."]
 self_modulate = Color(0, 0, 0, 0.6)
@@ -1815,6 +1736,5 @@ volume_db = 12.0
 [connection signal="pressed" from="LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
-[connection signal="pressed" from="BottomRightPn/EmoBtn" to="EmoChat" method="_on_emo_btn_pressed"]
 [connection signal="pressed" from="BottomRightPn/ChatBtn" to="." method="on_show_chat_gui"]
 [connection signal="pressed" from="AutoPlayPn/ReturnTableBtn" to="." method="_click_return_table"]

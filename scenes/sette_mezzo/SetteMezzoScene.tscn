@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bjbyaluspvll3"]
+[gd_scene load_steps=34 format=3 uid="uid://bjbyaluspvll3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/sette_mezzo_scene.gd" id="1_gx0u6"]
 [ext_resource type="Texture2D" uid="uid://hjvfin0rocla" path="res://assets/images/board/sette_mezzo/bg.jpg" id="2_n181u"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ccq1m054wgoom" path="res://assets/images/board/settings_btn.png" id="14_ee5ig"]
 [ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_x0s8b"]
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="16_5vdcl"]
+[ext_resource type="PackedScene" uid="uid://d3phqitk2yrkh" path="res://scenes/board/EmoChat.tscn" id="19_ffb8o"]
 [ext_resource type="PackedScene" uid="uid://cvs3cl10d1nap" path="res://scenes/board/GameChatGUI.tscn" id="19_vx6l7"]
 [ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="21_ajh0x"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="22_nt0kc"]
@@ -356,9 +357,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 76.0
+offset_left = 91.0
 offset_top = 11.0
-offset_right = 76.0
+offset_right = 91.0
 offset_bottom = 11.0
 grow_horizontal = 0
 
@@ -890,9 +891,9 @@ mouse_force_pass_scroll_events = false
 
 [node name="BackBtn" type="Button" parent="CanvasLayer/LeftTopPn"]
 layout_mode = 0
-offset_left = 50.0
+offset_left = 32.0
 offset_top = 30.0
-offset_right = 110.0
+offset_right = 92.0
 offset_bottom = 90.0
 flat = true
 icon_alignment = 1
@@ -905,6 +906,12 @@ offset_right = 60.0
 offset_bottom = 60.0
 texture = ExtResource("16_5vdcl")
 expand_mode = 1
+
+[node name="EmoChat" parent="CanvasLayer" instance=ExtResource("19_ffb8o")]
+visible = false
+layout_mode = 1
+offset_left = -1118.0
+offset_right = -838.0
 
 [node name="PnCheat" type="Control" parent="CanvasLayer"]
 visible = false
@@ -932,6 +939,7 @@ text = "Test Deal"
 [node name="InGameChatGui" parent="CanvasLayer" instance=ExtResource("19_vx6l7")]
 visible = false
 layout_mode = 1
+is_sette_mezzo = true
 
 [node name="BottomLeftPn" type="Control" parent="CanvasLayer"]
 layout_mode = 1
@@ -1110,5 +1118,6 @@ volume_db = 12.0
 [connection signal="pressed" from="CanvasLayer/LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="CanvasLayer/PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
+[connection signal="pressed" from="CanvasLayer/BottomLeftPn/EmoBtn" to="CanvasLayer/EmoChat" method="_on_emo_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/BottomLeftPn/ChatBtn" to="." method="on_show_chat_gui"]
 [connection signal="pressed" from="CanvasLayer/AutoPlayPn/ReturnTableBtn" to="." method="_click_return_table"]

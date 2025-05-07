@@ -728,4 +728,4 @@ expand_mode = 1
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_354iy")
-frame_progress = 0.982613
+frame_progress = 0.979243

@@ -67,6 +67,8 @@ var start_card_pos
 @onready var dealer_node = find_child("Dealer")
 @onready var dealer_burst_eff = dealer_node.find_child("ExplosionBurst")
 func _ready() -> void:	
+	action_btn_pn.visible = false
+	self.find_child("EmoChat").visible = true
 	icon_banker_stand.visible = false
 	start_card_pos = dealer_node.global_position
 	start_card_pos += Vector2(60, 130)
@@ -624,8 +626,22 @@ func exit_game():
 	g.v.scene_manager.switch_scene("res://scenes/LobbyScene.tscn")
 
 func on_show_chat_gui():
-	in_game_chat_gui.visible = !in_game_chat_gui.visible
+	if not g.v.game_manager.enable_chat:
+		g.v.scene_manager.show_toast(tr("CHAT_IS_OFF"))
+		return
+	if not in_game_chat_gui:
+		var chat_scene = load("res://scenes/board/GameChatGUI.tscn")
+		in_game_chat_gui = chat_scene.instantiate()
+		self.add_child(in_game_chat_gui)
+		in_game_chat_gui.on_show()
+		in_game_chat_gui.z_index = 200
+		return
+	if in_game_chat_gui.visible:
+		in_game_chat_gui.on_hide()
+	else:
+		in_game_chat_gui.on_show()
 	chat_btn_reddot.visible = false
+
 
 func on_new_chat_message(uid, message):
 	if not in_game_chat_gui.visible:
@@ -661,7 +677,7 @@ func update_register_leave_state():
 		
 
 func _on_back_btn_pressed() -> void:
-	if g.v.game_constants.game_logic.is_registered_leave:
+	if self.game_logic.is_registered_leave:
 		# cancel
 		g.v.game_manager.send_deregister_leave_game()
 	else:
@@ -824,9 +840,15 @@ func dealer_show_card(card_id):
 			card_cont_dealer.find_child("LbScore").text = str(score)
 	)
 
-func on_end_game():
+var anim_cup_scene = preload("res://scenes/board/AnimCupWin.tscn")
+func on_end_game(uids, is_wins):
 	for p in list_players:
 		p.update_state_ingame()
+		for i in range(len(uids)):
+			var uid = uids[i]
+			if p.user_data.uid == uid and is_wins[i]:
+				var anim_cup = anim_cup_scene.instantiate()
+				p.add_child(anim_cup)
 
 func user_stand(uid):
 	if uid == g.v.game_constants.BANKER_DEFAULT_UID:

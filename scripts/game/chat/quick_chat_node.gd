@@ -21,7 +21,7 @@ func set_text(txt):
 func _click_chat():
 	parent.text_submitted(text)
 	var cur_scene = g.v.scene_manager.get_current_scene()
-	if cur_scene is BoardScene:
+	if cur_scene is BaseBoardScene:
 		for p in cur_scene.list_players:
 			if p.user_data.uid == g.v.player_info_mgr.get_user_id():
 				p.on_chat(text)

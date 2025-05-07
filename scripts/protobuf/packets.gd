@@ -6568,7 +6568,49 @@ class SetteMezzoEndGame:
 	func _init():
 		var service
 		
+		_uids = PBField.new("uids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 1, true, [])
+		service = PBServiceField.new()
+		service.field = _uids
+		data[_uids.tag] = service
+		
+		_scores = PBField.new("scores", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 2, true, [])
+		service = PBServiceField.new()
+		service.field = _scores
+		data[_scores.tag] = service
+		
+		_is_wins = PBField.new("is_wins", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _is_wins
+		data[_is_wins.tag] = service
+		
 	var data = {}
+	
+	var _uids: PBField
+	func get_uids() -> Array:
+		return _uids.value
+	func clear_uids() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_uids.value = []
+	func add_uids(value : int) -> void:
+		_uids.value.append(value)
+	
+	var _scores: PBField
+	func get_scores() -> Array:
+		return _scores.value
+	func clear_scores() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_scores.value = []
+	func add_scores(value : int) -> void:
+		_scores.value.append(value)
+	
+	var _is_wins: PBField
+	func get_is_wins() -> Array:
+		return _is_wins.value
+	func clear_is_wins() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_is_wins.value = []
+	func add_is_wins(value : bool) -> void:
+		_is_wins.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

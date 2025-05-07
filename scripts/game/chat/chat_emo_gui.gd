@@ -12,8 +12,7 @@ var did_setup = false
 func _ready() -> void:
 	default_pos = main.position
 	main.visible = false
-	pass # Replace with function body.
-
+	
 func setup_emo_list():
 	if not did_setup:
 		did_setup = true

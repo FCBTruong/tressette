@@ -6,13 +6,16 @@ var my_idx = -1
 var dealer_cards = []
 var playing_users = []
 var play_turn_time = 0 # server timestamp, time player must play
-
+var is_registered_leave = false
 class SetteDealCard:
 	var uid: int
 	var card: int
 	
 func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
+		g.v.game_constants.CMDs.REGISTER_LEAVE_GAME:
+			_handle_register_leave_game(payload)
+			
 		g.v.game_constants.CMDs.SETTE_MEZZO_GAME_INFO:
 			_handle_game_info(payload)
 			
@@ -298,6 +301,8 @@ func _handle_action_stand(payload):
 	
 	
 func _handle_update_turn(payload):
+	if not match_data:
+		return
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoUpdateTurn.new()
 
 	var result_code = pkg.from_bytes(payload)
@@ -347,6 +352,30 @@ func get_score_uid(uid):
 func _handle_end_game(payload):
 	match_data.state = MatchData.MATCH_STATE.ENDED
 	var scene = g.v.scene_manager.get_current_scene()
+	
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoEndGame.new()
+
+	var result_code = pkg.from_bytes(payload)
+	var uids = pkg.get_uids()
+	var is_wins = pkg.get_is_wins()
+	var scores = pkg.get_scores()
+	
 	if scene is SetteMezzoScene:
-		scene.on_end_game()
+		scene.on_end_game(uids, is_wins)
 	pass
+
+func _handle_register_leave_game(payload: PackedByteArray):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
+	var result_code = pkg.from_bytes(payload)
+	var status_leave = pkg.get_status()
+	self.is_registered_leave = status_leave == 0 
+	
+	# Make toast
+	if self.is_registered_leave:
+		g.v.scene_manager.show_toast("REGISTER_LEAVE")
+	else:
+		g.v.scene_manager.show_toast("CANCEL_REGISTER_LEAVE")
+	
+	var scene = g.v.scene_manager.get_current_scene()
+	if scene is BaseBoardScene:
+		scene.update_register_leave_state()
