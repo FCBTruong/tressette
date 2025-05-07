@@ -1,4 +1,4 @@
-[gd_scene load_steps=202 format=3 uid="uid://bdmaxbovp5d2v"]
+[gd_scene load_steps=199 format=3 uid="uid://bdmaxbovp5d2v"]
 
 [ext_resource type="Script" path="res://scripts/modules/ranking/ranking_gui.gd" id="1_u56cx"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_f631g"]
@@ -1328,42 +1328,6 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="Animation" id="Animation_4ao1m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainPn:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(250, 50)]
-}
-
-[sub_resource type="Animation" id="Animation_4e67k"]
-resource_name = "start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainPn:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(250, -500), Vector2(250, 50)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmnxm"]
-_data = {
-"RESET": SubResource("Animation_4ao1m"),
-"start": SubResource("Animation_4e67k")
-}
-
 [node name="RankingGui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1742,10 +1706,5 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_a542t")
 expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_wmnxm")
-}
 
 [connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]

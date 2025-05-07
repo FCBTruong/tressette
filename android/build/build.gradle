@@ -3,6 +3,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id("com.google.gms.google-services") version "4.3.15"
+    id 'com.google.firebase.crashlytics' version '3.0.3'
 }
 
 apply from: 'config.gradle'
@@ -34,7 +35,7 @@ configurations {
 dependencies {
     implementation "androidx.fragment:fragment:$versions.fragmentVersion"
     implementation "androidx.core:core-splashscreen:$versions.splashscreenVersion"
-    implementation 'platform("com.google.firebase:firebase-bom:33.12.0")'
+    implementation "com.google.firebase:firebase-crashlytics:19.4.3"
     implementation "com.google.firebase:firebase-crashlytics"
     implementation 'com.android.billingclient:billing:6.0.1'
     implementation 'com.google.firebase:firebase-messaging:24.1.0' 

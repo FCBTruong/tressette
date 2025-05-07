@@ -11,8 +11,8 @@ func _ready() -> void:
 var time_elapsed = 0.0
 
 func _process(delta):
-	if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
-		return
+	#if g.v.config.CURRENT_MODE == g.v.config.MODES.LOCAL:
+		#return
 	time_elapsed += delta  # Accumulate time
 	if time_elapsed >= 0.5:
 		time_elapsed = 0.0  # Reset timer

@@ -21,17 +21,14 @@ func _ready() -> void:
 		n.visible = false
 
 var tween
-@onready var anim = find_child("AnimationPlayer")
 func on_show():
 	self.show()
-	#if tween and tween.is_running():
-		#tween.kill()
-	#tween = create_tween()
-	#main_pn.position.y = main_pos.y - 600
-	#tween.parallel().tween_property(main_pn, 'position', main_pos, 0.4)
-	#
-	anim.play("start")
-	
+	if tween and tween.is_running():
+		tween.kill()
+	tween = create_tween()
+	main_pn.position.y = main_pos.y - 600
+	tween.parallel().tween_property(main_pn, 'position', main_pos, 0.4)
+
 	self.update_info()
 	
 func update_info():

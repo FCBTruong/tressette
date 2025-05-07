@@ -18,9 +18,9 @@ func _ready() -> void:
 	g.v.game_manager.send_get_table_list()
 	g.v.signal_bus.emit_signal_global('update_table_list')
 	
-	if g.v.game_manager.is_enable_ads():
-		g.admob_mgr._on_interstitial_pressed()
-	pass # Replace with function body.
+	#if g.v.game_manager.is_enable_ads():
+		#g.admob_mgr._on_interstitial_pressed()
+	#pass # Replace with function body.
 
 func _update_table_list():
 	lb_empty.visible = true

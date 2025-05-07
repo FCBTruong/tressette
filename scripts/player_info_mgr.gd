@@ -95,7 +95,12 @@ func _on_receive_info(bytes: PackedByteArray):
 	# add popup change user name
 	if self.my_user_data.game_count > 3 and my_user_data.name == 'tressette player':
 		g.v.popup_mgr.add_popup("res://scenes/lobby/ChangeUserNameGUI.tscn")
-		
+	
+	if self.my_user_data.game_count > 2:
+		var sette_times = g.v.storage_cache.fetch("sette_mezzo_play")
+		if sette_times < 3:
+			g.v.popup_mgr.add_popup("res://scenes/sette_mezzo/SetteMezzoIntroGUI.tscn")
+	
 func _on_update_money(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateMoney.new()
 	packet.from_bytes(bytes)

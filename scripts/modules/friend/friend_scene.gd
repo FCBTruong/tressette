@@ -25,9 +25,9 @@ func _ready() -> void:
 	_update_friends_list()
 	_update_friends_requests()
 	
-	if g.v.game_manager.is_enable_ads():
-		g.admob_mgr._on_interstitial_pressed()
-	pass # Replace with function body.
+	#if g.v.game_manager.is_enable_ads():
+		#g.admob_mgr._on_interstitial_pressed()
+	#pass # Replace with function body.
 
 func _update_friends_list():
 	for child in list_container.get_children():

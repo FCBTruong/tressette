@@ -17,6 +17,7 @@ func _ready() -> void:
 	cur_card_style = g.v.game_constants.CARD_STYLES.CLASSIC
 	pages.append(find_child("Page1"))
 	pages.append(find_child("Page2"))
+	default_pos = main_pn.position
 	for i in range(10):
 		var card = card_strong_pn.find_child("CardStrong" + str(i))
 		strong_cards.append(card)
@@ -28,7 +29,9 @@ func _on_show():
 	tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
 	previous_btn.visible = true
 	next_btn.visible = true
-
+	main_pn.position.y = default_pos.y - 600
+	tween.tween_property(main_pn, "position", default_pos, 0.5)
+		
 	tween.tween_property(next_btn, "scale", Vector2(1.2, 1.2), 0.5).set_trans(Tween.TRANS_QUAD) \
 		.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(next_btn, "scale", Vector2(1, 1), 0.5)\
