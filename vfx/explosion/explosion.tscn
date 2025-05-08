@@ -1,11 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://debxx26bk78ai"]
+[gd_scene load_steps=24 format=3 uid="uid://debxx26bk78ai"]
 
 [ext_resource type="Texture2D" uid="uid://dd6xndt4da314" path="res://vfx/explosion/sparkle.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://b7hkga47sgbdd" path="res://vfx/explosion/explosion_gradient_2.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://2khc22xde2b3" path="res://vfx/explosion/puff.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dy01acb1efou5" path="res://vfx/explosion/puff_smooth.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://h3o3rsm5s8wf" path="res://vfx/explosion/scraps_gradient.tres" id="6"]
-[ext_resource type="AudioStream" uid="uid://bu44e7r2pc5ev" path="res://vfx/explosion/explosion_01.wav" id="8"]
 
 [sub_resource type="Gradient" id="1"]
 offsets = PackedFloat32Array(0.0494297, 0.913043, 1)
@@ -187,18 +186,6 @@ tracks/7/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n0s0v"]
 _data = {
@@ -277,7 +264,6 @@ randomness = 0.5
 
 [node name="SparkleParticles2D" type="GPUParticles2D" parent="."]
 modulate = Color(1.5, 1.5, 1.5, 1)
-emitting = false
 amount = 32
 process_material = SubResource("13")
 texture = ExtResource("1")
@@ -286,7 +272,6 @@ randomness = 1.0
 
 [node name="FireBallParticles2D" type="GPUParticles2D" parent="."]
 modulate = Color(1.1, 1.1, 1.1, 1)
-emitting = false
 amount = 64
 process_material = SubResource("16")
 texture = ExtResource("3")
@@ -297,6 +282,3 @@ randomness = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_n0s0v")
 }
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8")

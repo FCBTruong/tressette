@@ -61,11 +61,19 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j4i0"]
-bg_color = Color(0.462662, 0.462662, 0.462662, 1)
+bg_color = Color(0.134004, 0.327504, 0.428719, 0.815686)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.815673, 0.581795, 0.128894, 1)
+border_blend = true
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.192157)
+shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78fhh"]
 bg_color = Color(0.521569, 0.0588235, 0, 1)
@@ -493,9 +501,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -48.0
+offset_left = -45.0
 offset_top = -165.0
-offset_right = 42.0
+offset_right = 45.0
 offset_bottom = -75.0
 grow_horizontal = 2
 texture = ExtResource("6_mcr3g")
@@ -582,6 +590,9 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.689003, 0.312569, 1)
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 30
 text = "21"
 horizontal_alignment = 1
 vertical_alignment = 1

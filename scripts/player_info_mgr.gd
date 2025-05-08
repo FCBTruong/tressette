@@ -97,7 +97,7 @@ func _on_receive_info(bytes: PackedByteArray):
 		g.v.popup_mgr.add_popup("res://scenes/lobby/ChangeUserNameGUI.tscn")
 	
 	if self.my_user_data.game_count > 2:
-		var sette_times = g.v.storage_cache.fetch("sette_mezzo_play")
+		var sette_times = g.v.storage_cache.fetch("sette_mezzo_play", 0)
 		if sette_times < 3:
 			g.v.popup_mgr.add_popup("res://scenes/sette_mezzo/SetteMezzoIntroGUI.tscn")
 	

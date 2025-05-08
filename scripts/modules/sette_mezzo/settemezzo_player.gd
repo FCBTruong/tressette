@@ -294,6 +294,7 @@ func effect_bursted():
 		effect_burst = burst_scene.instantiate()
 		self.add_child(effect_burst)
 		effect_burst.z_index = 10
+	g.v.sound_manager.play_bursted_sound()
 	effect_burst.find_child("AnimationPlayer").play("Explode")
 	pass
 

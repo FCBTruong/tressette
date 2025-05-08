@@ -71,7 +71,7 @@ func _ready() -> void:
 	self.find_child("EmoChat").visible = true
 	icon_banker_stand.visible = false
 	start_card_pos = dealer_node.global_position
-	start_card_pos += Vector2(60, 130)
+	start_card_pos += Vector2(45, 90)
 	game_logic = g.v.sette_mezzo_mgr
 	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
@@ -249,8 +249,11 @@ func continue_play():
 	round_lb.text = ''
 
 func on_game_start():
+	self.remove_all_current_cards(true)
+	reset_scores()
+	
 	game_start_lb.text = tr("GAME_START")
-	_eff_text_middle()
+	#_eff_text_middle()
 	update_banker()
 	
 func _eff_text_middle():
@@ -359,7 +362,7 @@ func _process(delta: float) -> void:
 			countdown_start_lb.visible = false
 
 
-func _update_my_card_positions(effect = false):
+func _update_my_card_positions(effect = false, card_exclude = null):
 	var list = []
 	for card in list_my_cards:
 		if card.is_played:
@@ -378,6 +381,8 @@ func _update_my_card_positions(effect = false):
 			card.global_position = desired_pos
 			#card.rotation = desired_rot
 		else:
+			if card_exclude == card:
+				return
 			tween.parallel().tween_property(card, 'global_position', desired_pos, 0.3)
 			#tween.parallel().tween_property(card, 'rotation', desired_rot, 0.3)
 		
@@ -444,14 +449,40 @@ func _calculate_world_card_positions(number: int):
 @export var anim_offset_y: float = 0.3
 var sine_offset_mult: float = 0.0
 var node_card_map: Dictionary = {}
-func remove_all_current_cards():
+func remove_all_current_cards(eff = false):
+	var tw = create_tween()
+	tw.set_parallel(true)
+	var list = []
 	for card in list_my_cards:
-		card.queue_free()
+		list.append(card)
+		
 		
 	for key in node_card_map:
 		for node in node_card_map[key]:
 			if is_instance_valid(node):
-				node.queue_free()	
+				list.append(node)
+	
+	for card in list:
+		if eff:
+			tw.tween_property(
+				card,
+				"global_position",
+				start_card_pos,
+				0.4
+			)
+			tw.tween_property(
+				card,
+				"scale",
+				Vector2(0.2, 0.2),
+				0.4
+			)
+			tw.tween_callback(
+				func():
+					card.queue_free()
+			).set_delay(0.4)
+		else:
+			card.queue_free()
+		
 	list_my_cards.clear()
 	node_card_map[0] = []
 	node_card_map[1] = []
@@ -468,9 +499,7 @@ func update_remain_cards():
 		cardback_node.visible = true
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
 
-func deal_cards(cards, delay = 0) -> void:	
-	if g.v.game_manager.enable_sound:
-		$AudioShuffleDealCard.play()
+func deal_cards(cards, delay = 0.3) -> void:	
 	var from_pos = NodeUtils.get_center_position(cardback_node)
 	
 	var start_pos = find_child("Dealer").global_position
@@ -482,6 +511,7 @@ func deal_cards(cards, delay = 0) -> void:
 		
 		if uid == g.v.player_info_mgr.get_user_id():
 			draw_my_card(card_id, delay)
+			delay += 0.1
 			continue
 			
 		if uid != g.v.game_constants.BANKER_DEFAULT_UID:
@@ -500,6 +530,7 @@ func deal_cards(cards, delay = 0) -> void:
 		ins.scale = Vector2(0.2, 0.2)
 		con.add_child(ins)
 		ins.turn_face_down()
+		ins.visible = false
 		
 		ins.set_card(card_id)
 		 
@@ -508,9 +539,19 @@ func deal_cards(cards, delay = 0) -> void:
 		var arr = get_pos_card_table(seat_id)
 		var final_pos = arr.back()
 		ins.modulate.a = 0
+		ins.rotation_degrees = 90
+
+	
+		tween.parallel().tween_property(ins, "rotation_degrees", 0, 0.3).set_delay(delay)
 		tween.parallel().tween_property(ins, "position", final_pos, 0.3).set_delay(delay)
 		tween.parallel().tween_property(ins, "scale", Vector2(0.4, 0.4), 0.3).set_delay(delay)
 		tween.parallel().tween_property(ins, "modulate:a", 1, 0.1).set_delay(delay)
+		tween.parallel().tween_callback(
+			func():
+				ins.visible = true
+				if g.v.game_manager.enable_sound:
+					$AudioDrawCard.play()
+		).set_delay(delay)
 		delay += 0.1
 		
 		tween.parallel().tween_callback(func():
@@ -555,14 +596,12 @@ func play_sound_my_turn():
 		$AudioYourTurn.play()
 			
 func draw_my_card(card_id, delay = 0):
-	if g.v.game_manager.enable_sound:
-		$AudioDrawCard.play()
 	var tween = create_tween()
 	var instance = card_scene.instantiate()
+	instance.visible = false
 	play_ground.add_child(instance)
 	instance.set_card(card_id)
 	instance.scale = Vector2(0.2, 0.2)
-	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.3)
 	instance.turn_face_down()
 	instance.z_index = DEFAULT_CARD_Z_INDEX
 	var from_pos = start_card_pos
@@ -581,13 +620,20 @@ func draw_my_card(card_id, delay = 0):
 	list_my_cards.insert(des_i, instance)
 	
 	var rot_radians: float = new_rotates[des_i]
+	instance.rotation_degrees = 90
 
-	tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(delay)
-	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay)
-	
+	tween.parallel().tween_property(instance, "global_position", final_pos, 0.5).set_delay(delay)
+	tween.parallel().tween_property(instance, "rotation_degrees", 0, 0.5).set_delay(delay)
+	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.5).set_delay(delay)
 	tween.parallel().tween_callback(
 		func():
-			_update_my_card_positions(true)
+			instance.visible = true
+			if g.v.game_manager.enable_sound:
+				$AudioDrawCard.play()
+	).set_delay(delay)
+	tween.parallel().tween_callback(
+		func():
+			_update_my_card_positions(true, instance)
 	).set_delay(delay)
 	tween.chain().tween_callback(
 		func():
@@ -614,13 +660,15 @@ var countdown_value: int = 3
 @onready var countdown_timer: Timer = find_child('CountdownTimer')
 
 func show_prepare_start():
-	self.remove_all_current_cards()
-	reset_scores()
-	print('show_prepare_start')
-	countdown_start_lb.visible = true
-	countdown_timer.start()
-	# count from 3 -> 2 -> 1 -> 0 and disappear
 	pass
+	#self.remove_all_current_cards(true)
+	#reset_scores()
+	#return
+	#print('show_prepare_start')
+	#countdown_start_lb.visible = true
+	#countdown_timer.start()
+	## count from 3 -> 2 -> 1 -> 0 and disappear
+	#pass
 
 func exit_game():
 	g.v.scene_manager.switch_scene("res://scenes/LobbyScene.tscn")
@@ -818,6 +866,7 @@ func user_hit_card(uid, card_id) -> void:
 						else:
 							# dealer bursted
 							dealer_burst_eff.find_child("AnimationPlayer").play("Explode")
+							g.v.sound_manager.play_bursted_sound()
 			)	
 	).set_delay(0.3 + delay)
 

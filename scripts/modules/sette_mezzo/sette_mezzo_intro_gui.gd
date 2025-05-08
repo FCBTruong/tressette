@@ -4,7 +4,7 @@ extends Node
 var info
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var sette_times = g.v.storage_cache.fetch("sette_mezzo_play")
+	var sette_times = g.v.storage_cache.fetch("sette_mezzo_play", 0)
 	g.v.storage_cache.store("sette_mezzo_play", (sette_times + 1))
 	var tween = create_tween()
 	main_pn.scale = Vector2(0, 0)
