@@ -386,17 +386,6 @@ func _update_my_card_positions(effect = false, card_exclude = null):
 			tween.parallel().tween_property(card, 'global_position', desired_pos, 0.3)
 			#tween.parallel().tween_property(card, 'rotation', desired_rot, 0.3)
 		
-func on_focus_card(card_id: int) -> void:
-	var card = _get_my_card(card_id)
-	if card.is_played:
-		return
-	if _cur_focusing_card:
-		_cur_focusing_card.set_state_focusing(false)
-	if _cur_focusing_card == card:
-		_cur_focusing_card = null
-		return
-	_cur_focusing_card = card
-	card.set_state_focusing(true)
 
 func _get_my_card(id):
 	for i in range(len(list_my_cards)):
@@ -521,9 +510,7 @@ func deal_cards(cards, delay = 0.3) -> void:
 			seat_id = -1
 		var con = get_card_container(seat_id)
 		var score = self.game_logic.calculate_score([card_id])
-		if score > 0.1: # prevent case 0.0
-			con.find_child("ScorePn").visible = true
-			con.find_child("LbScore").text = str(score)
+		
 		var ins = card_scene.instantiate()
 		
 		self.node_card_map[seat_id].append(ins)
@@ -557,6 +544,9 @@ func deal_cards(cards, delay = 0.3) -> void:
 		tween.parallel().tween_callback(func():
 			if ins.id != -1:
 				ins.show_card(true)
+			if score > 0.1: # prevent case 0.0
+				con.find_child("ScorePn").visible = true
+				con.find_child("LbScore").text = str(score)
 		).set_delay(0.3 + delay)
 
 func play_card(user_id: int, card_id: int, auto: bool = false):
@@ -637,7 +627,8 @@ func draw_my_card(card_id, delay = 0):
 	).set_delay(delay)
 	tween.chain().tween_callback(
 		func():
-			instance.show_card(true)
+			instance.show_card(true,
+			)
 			update_my_score()
 			self.check_burst(g.v.player_info_mgr.get_user_id())
 	)

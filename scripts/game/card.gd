@@ -22,7 +22,6 @@ var face_state = g.v.game_constants.CARD_FACE_STATE.DOWN
 func _ready() -> void:
 	is_played = false
 	pos_card = card_image.position
-	main_pn.z_index = 1
 	hint_pn.visible = false
 	shadow.visible = false
 	star_icon.visible = false
@@ -30,15 +29,6 @@ func _ready() -> void:
 	
 func _on_touch_card() -> void:
 	g.v.scene_manager.INSTANCES.BOARD_SCENE.play_my_card(id)
-	
-func set_state_focusing(focus = false) -> void:
-	if focus:
-		is_selecting = true
-		card_image.position.y = pos_card.y - 30
-		self.z_index = 30
-	else:
-		card_image.position = pos_card
-		self.z_index = _default_z_index
 		
 func _on_touch_card_down() -> void:
 	return

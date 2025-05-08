@@ -389,18 +389,6 @@ func _update_my_card_positions(effect = false):
 			tween.parallel().tween_property(card, 'global_position', desired_pos, 0.3)
 			tween.parallel().tween_property(card, 'rotation', desired_rot, 0.3)
 		
-func on_focus_card(card_id: int) -> void:
-	var card = _get_my_card(card_id)
-	if card.is_played:
-		return
-	if _cur_focusing_card:
-		_cur_focusing_card.set_state_focusing(false)
-	if _cur_focusing_card == card:
-		_cur_focusing_card = null
-		return
-	_cur_focusing_card = card
-	card.set_state_focusing(true)
-
 func _get_my_card(id):
 	for i in range(len(list_my_cards)):
 		var c = list_my_cards[i]
