@@ -40,7 +40,6 @@ var is_portrait = false
 @onready var action_btn_pn = find_child("ActionBtnPn")
 @onready var reach_point_win_lb = find_child("ReachPointWinLb")
 @onready var auto_play_pn = find_child("AutoPlayPn")
-@onready var bet_info_pn = find_child("BetInfoPn")
 @onready var icon_banker_stand = find_child("IconStandBanker")
 const DEFAULT_CARD_Z_INDEX = 10
 const WIN_CARD_Z_INDEX = 101
@@ -66,6 +65,7 @@ var start_card_pos
 @onready var card_cont_dealer = find_child("CardContainerDealer")
 @onready var dealer_node = find_child("Dealer")
 @onready var dealer_burst_eff = dealer_node.find_child("ExplosionBurst")
+var bet_expect = 0
 func _ready() -> void:	
 	action_btn_pn.visible = false
 	self.find_child("EmoChat").visible = true
@@ -76,9 +76,7 @@ func _ready() -> void:
 	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
 	_on_screen_resized()
-	
-	if true:
-		self.bet_info_pn.visible = false
+
 
 	is_auto_play = false
 	game_start_lb_default_pos = game_start_lb.position
@@ -94,6 +92,37 @@ func _ready() -> void:
 			
 	g.v.sound_manager.play_music_board()
 	#show_prepare_start()
+
+@onready var bet_bar = find_child("BetBar")
+func _get_bet_range() -> Dictionary:
+	var gold: int = g.v.player_info_mgr.my_user_data.gold
+	var bet_min: int = gold / 10
+	if bet_min < 1000:
+		bet_min = 1000
+	var bet_max: int = gold
+	var bet_range: int = bet_max - bet_min
+	return {
+		"gold": gold,
+		"min": bet_min,
+		"max": bet_max,
+		"range": bet_range
+	}
+
+func update_suitable_bet() -> void:
+	var bet: Dictionary = _get_bet_range()
+	bet_expect = clamp(int(bet["gold"] / 5), bet["min"], bet["max"])
+	var percent: float = (float(bet_expect - bet["min"]) / float(bet["range"]) * 100.0) if bet["range"] > 0 else 0.0
+	bet_bar.value = percent
+	bet_lb.text = StringUtils.symbol_number(bet_expect)
+
+func _on_slider_bet_changed(value: float) -> void:
+	var bet: Dictionary = _get_bet_range()
+	bet_expect = int(bet["min"] + (value / 100.0 * bet["range"])) if bet["range"] > 0 else bet["min"]
+	bet_lb.text = StringUtils.symbol_number(bet_expect)
+
+func bet_all_in():
+	_on_slider_bet_changed(100)
+	
 func _get_card_rotates(n):
 	if n == 1:
 		return [0]
@@ -135,8 +164,8 @@ func _on_enter():
 		update_banker()
 		
 	update_cards_on_table()
-	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
 	on_user_turn()
+	self.update_suitable_bet()
 	
 func update_banker():
 	pass
