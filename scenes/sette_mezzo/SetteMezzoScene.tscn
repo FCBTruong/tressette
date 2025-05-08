@@ -31,6 +31,18 @@
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="33_683u7"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="34_h1l13"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrd8p"]
+bg_color = Color(0.80549, 0.685191, 0.124636, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0281881, 0.0275341, 0.0275341, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vepap"]
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
@@ -49,18 +61,6 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrd8p"]
-bg_color = Color(0.80549, 0.685191, 0.124636, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.0281881, 0.0275341, 0.0275341, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2j4i0"]
 bg_color = Color(0.134004, 0.327504, 0.428719, 0.815686)
@@ -173,6 +173,60 @@ offset_bottom = 344.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_c2lih")
+expand_mode = 1
+
+[node name="Dealer" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = -165.0
+offset_right = 45.0
+offset_bottom = -75.0
+grow_horizontal = 2
+texture = ExtResource("6_mcr3g")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 89.0
+offset_right = 89.0
+offset_bottom = 114.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrd8p")
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.0
+offset_right = 32.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.890196)
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 16
+text = "BANKER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExplosionBurst" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer" instance=ExtResource("9_j5fyy")]
+position = Vector2(45, 64)
+
+[node name="IconStandBanker" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer"]
+layout_mode = 0
+offset_top = 11.0
+offset_right = 80.0
+offset_bottom = 121.0
+pivot_offset = Vector2(40, 60)
+texture = ExtResource("10_na581")
 expand_mode = 1
 
 [node name="CardContainer0" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
@@ -517,60 +571,6 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dealer" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -45.0
-offset_top = -165.0
-offset_right = 45.0
-offset_bottom = -75.0
-grow_horizontal = 2
-texture = ExtResource("6_mcr3g")
-expand_mode = 1
-
-[node name="Panel" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = 89.0
-offset_right = 89.0
-offset_bottom = 114.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nrd8p")
-
-[node name="Label" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -11.0
-offset_right = 32.0
-offset_bottom = 12.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.890196)
-theme_override_fonts/font = ExtResource("7_h67wp")
-theme_override_font_sizes/font_size = 16
-text = "BANKER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ExplosionBurst" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer" instance=ExtResource("9_j5fyy")]
-position = Vector2(45, 64)
-
-[node name="IconStandBanker" type="TextureRect" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer"]
-layout_mode = 0
-offset_top = 11.0
-offset_right = 80.0
-offset_bottom = 121.0
-pivot_offset = Vector2(40, 60)
-texture = ExtResource("10_na581")
-expand_mode = 1
-
 [node name="MyCardPanel" type="Control" parent="CanvasLayer/PlayGround"]
 layout_mode = 1
 anchors_preset = 7
@@ -717,13 +717,13 @@ offset_top = 209.0
 offset_right = 200.0
 offset_bottom = 249.0
 rotation = -1.5708
-theme_override_constants/center_grabber = 1
 theme_override_icons/grabber = ExtResource("16_q3dry")
 theme_override_icons/grabber_highlight = ExtResource("16_q3dry")
 theme_override_icons/tick = ExtResource("16_q3dry")
 theme_override_styles/slider = SubResource("StyleBoxTexture_2l87s")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_hd5qr")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_hd5qr")
+value = 10.0
 
 [node name="BetLb" type="Label" parent="CanvasLayer/BetPn"]
 layout_mode = 0
@@ -1171,6 +1171,8 @@ volume_db = 1.0
 stream = ExtResource("34_h1l13")
 volume_db = 12.0
 
+[connection signal="pressed" from="CanvasLayer/BetPn/AllInBtn" to="." method="bet_all_in"]
+[connection signal="drag_started" from="CanvasLayer/BetPn/BetBar" to="." method="_on_slider_drag_started"]
 [connection signal="value_changed" from="CanvasLayer/BetPn/BetBar" to="." method="_on_slider_bet_changed"]
 [connection signal="pressed" from="CanvasLayer/ActionBtnPn/StandBtn" to="." method="click_stand_btn"]
 [connection signal="pressed" from="CanvasLayer/ActionBtnPn/HitBtn" to="." method="click_hit_btn"]

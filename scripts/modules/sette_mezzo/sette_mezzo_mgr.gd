@@ -202,6 +202,7 @@ func _start_game(payload: PackedByteArray):
 
 
 func _handle_prepare_start(payload: PackedByteArray):
+	return
 	if not match_data:
 		return
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.PrepareStartGame.new()

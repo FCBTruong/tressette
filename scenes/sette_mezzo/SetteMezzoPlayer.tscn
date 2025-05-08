@@ -418,5 +418,21 @@ pivot_offset = Vector2(45, 80)
 texture = ExtResource("16_wmjaw")
 expand_mode = 1
 
+[node name="EffGoldLb" type="Label" parent="."]
+modulate = Color(0.605224, 0.605224, 0.605224, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = -50.0
+offset_right = 75.0
+offset_bottom = -9.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_7cgks")
+theme_override_font_sizes/font_size = 40
+text = "+ 100K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="MainPn/AvatarCircle/InfoBtn" to="." method="_show_info"]
 [connection signal="pressed" from="EmptySlot/InviteBtn" to="." method="_click_open_invite_gui"]

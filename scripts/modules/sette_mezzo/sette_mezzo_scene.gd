@@ -96,7 +96,7 @@ func _ready() -> void:
 @onready var bet_bar = find_child("BetBar")
 func _get_bet_range() -> Dictionary:
 	var gold: int = g.v.player_info_mgr.my_user_data.gold
-	var bet_min: int = gold / 10
+	var bet_min: int = gold / 20
 	if bet_min < 1000:
 		bet_min = 1000
 	var bet_max: int = gold
@@ -110,18 +110,23 @@ func _get_bet_range() -> Dictionary:
 
 func update_suitable_bet() -> void:
 	var bet: Dictionary = _get_bet_range()
-	bet_expect = clamp(int(bet["gold"] / 5), bet["min"], bet["max"])
+	bet_expect = clamp(int(bet["gold"] / 10), bet["min"], bet["max"])
 	var percent: float = (float(bet_expect - bet["min"]) / float(bet["range"]) * 100.0) if bet["range"] > 0 else 0.0
 	bet_bar.value = percent
 	bet_lb.text = StringUtils.symbol_number(bet_expect)
 
+func _on_slider_drag_started():
+	last_time_touch_bet = g.v.game_manager.get_timestamp_client()
+	print("User started touching the slider")
+	
 func _on_slider_bet_changed(value: float) -> void:
 	var bet: Dictionary = _get_bet_range()
 	bet_expect = int(bet["min"] + (value / 100.0 * bet["range"])) if bet["range"] > 0 else bet["min"]
 	bet_lb.text = StringUtils.symbol_number(bet_expect)
 
 func bet_all_in():
-	_on_slider_bet_changed(100)
+	self.bet_bar.value = 100
+	_on_slider_bet_changed(100.0)
 	
 func _get_card_rotates(n):
 	if n == 1:
@@ -367,7 +372,9 @@ func _get_seat_position(mode_player: int, seat_id: int):
 		3: 
 			return seat_pos3.global_position
 	return null
-		
+
+@onready var bet_pn = find_child("BetPn")
+var last_time_touch_bet = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if game_logic.match_data.state == MatchData.MATCH_STATE.WAITING:
@@ -380,8 +387,16 @@ func _process(delta: float) -> void:
 		elif cur % 4 == 3:
 			str = base_text + " ..."
 		self.waiting_other_lb.text = str
-	else:
+	else:	
 		self.waiting_other_lb.text = ''
+
+	if game_logic.match_data.state != MatchData.MATCH_STATE.PLAYING:
+		self.bet_pn.modulate.a = 1
+	else:
+		self.bet_pn.modulate.a = 0.5
+		if last_time_touch_bet + 2 > g.v.game_manager.get_timestamp_client():
+			self.bet_pn.modulate.a = 1
+			
 	if countdown_timer and countdown_start_lb.visible:
 		var time_left_str = str(ceil(countdown_timer.time_left))
 		#if countdown_start_lb.text != time_left_str:
@@ -520,8 +535,7 @@ func update_remain_cards():
 func deal_cards(cards, delay = 0.3) -> void:	
 	var from_pos = NodeUtils.get_center_position(cardback_node)
 	
-	var start_pos = find_child("Dealer").global_position
-	start_pos += Vector2(60, 130)
+	var start_pos = start_card_pos
 	var seat_id = -1
 	for i in range(len(cards)):
 		var card_id = cards[i].card
@@ -918,6 +932,7 @@ func on_end_game(uids, is_wins):
 			if p.user_data.uid == uid and is_wins[i]:
 				var anim_cup = anim_cup_scene.instantiate()
 				p.add_child(anim_cup)
+				p.eff_win_gold(100000)
 
 func user_stand(uid):
 	if uid == g.v.game_constants.BANKER_DEFAULT_UID:

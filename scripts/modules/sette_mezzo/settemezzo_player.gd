@@ -19,9 +19,11 @@ extends Node
 @onready var chat_tooltip = find_child("ChatTooltip")
 @onready var vip_icon = find_child("VipIcon")
 @onready var icon_stand = find_child("IconStand")
+@onready var eff_gold_lb = find_child("EffGoldLb")
 var default_pos_bonus
 var is_me: bool = false
 const TIME_THINKING_IN_TURN = 10
+var default_pos_eff_gold
 func _ready() -> void:
 	chat_tooltip.visible = false
 	if g.v.app_version.is_in_review():
@@ -38,7 +40,8 @@ func _ready() -> void:
 	red_dot.visible = false
 	vortex.visible = false
 	icon_stand.visible = false
-	
+	default_pos_eff_gold = self.eff_gold_lb.position
+	eff_gold_lb.visible = false
 	g.v.signal_bus.connect_global('ingame_update_player_money', Callable(self, "_ingame_update_player_money"))
 
 # Properties
@@ -314,4 +317,36 @@ func effect_user_stand():
 		"modulate:a",
 		0,
 		0.3		
+	).set_delay(1)
+
+var tw_eff_win_gold
+func eff_win_gold(gold):
+	if gold > 0:
+		eff_gold_lb.modulate = Color("f3dd01")
+		self.eff_gold_lb.text = "+" + StringUtils.symbol_number(gold)
+	else:
+		eff_gold_lb.modulate = Color("9a9a9a")
+		self.eff_gold_lb.text = StringUtils.symbol_number(gold)
+	self.eff_gold_lb.position = default_pos_eff_gold
+	if tw_eff_win_gold and tw_eff_win_gold.is_running():
+		tw_eff_win_gold.kill()
+	tw_eff_win_gold = create_tween()
+	eff_gold_lb.visible = true
+	eff_gold_lb.modulate.a = 0
+	tw_eff_win_gold.parallel().tween_property(
+		self.eff_gold_lb,
+		"modulate:a",
+		1,
+		0.1
+	).set_delay(0.3)
+	
+	tw_eff_win_gold.parallel().tween_property(
+		self.eff_gold_lb,
+		"position",
+		Vector2(default_pos_eff_gold.x, default_pos_eff_gold.y - 50),
+		0.5
+	).set_delay(0.3)
+	tw_eff_win_gold.tween_callback(
+		func():
+			self.eff_gold_lb.visible = false
 	).set_delay(1)
