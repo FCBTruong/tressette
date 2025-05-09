@@ -423,7 +423,7 @@ texture = ExtResource("16_wmjaw")
 expand_mode = 1
 
 [node name="EffGoldLb" type="Label" parent="."]
-modulate = Color(0.605224, 0.605224, 0.605224, 1)
+modulate = Color(0.768152, 0.768152, 0.768152, 1)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

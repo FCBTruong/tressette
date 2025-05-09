@@ -922,15 +922,20 @@ func dealer_show_card(card_id):
 	)
 
 var anim_cup_scene = preload("res://scenes/board/AnimCupWin.tscn")
-func on_end_game(uids, is_wins):
+func on_end_game(uids, is_wins, golds):
 	for p in list_players:
 		p.update_state_ingame()
+		if p.user_data.uid == -1:
+			continue
 		for i in range(len(uids)):
 			var uid = uids[i]
-			if p.user_data.uid == uid and is_wins[i]:
-				var anim_cup = anim_cup_scene.instantiate()
-				p.add_child(anim_cup)
-				p.eff_win_gold(100000)
+			var gold = golds[i]
+			var is_win = is_wins[i]
+			if p.user_data.uid == uid:
+				if is_win:
+					var anim_cup = anim_cup_scene.instantiate()
+					p.add_child(anim_cup)
+				p.eff_win_gold(gold)
 
 func user_stand(uid):
 	if uid == g.v.game_constants.BANKER_DEFAULT_UID:

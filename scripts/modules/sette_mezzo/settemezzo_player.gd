@@ -325,7 +325,7 @@ func eff_win_gold(gold):
 		eff_gold_lb.modulate = Color("f3dd01")
 		self.eff_gold_lb.text = "+" + StringUtils.symbol_number(gold)
 	else:
-		eff_gold_lb.modulate = Color("9a9a9a")
+		eff_gold_lb.modulate = Color("c4c4c4")
 		self.eff_gold_lb.text = StringUtils.symbol_number(gold)
 	self.eff_gold_lb.position = default_pos_eff_gold
 	if tw_eff_win_gold and tw_eff_win_gold.is_running():
@@ -338,14 +338,14 @@ func eff_win_gold(gold):
 		"modulate:a",
 		1,
 		0.1
-	).set_delay(0.3)
+	).set_delay(0.5)
 	
 	tw_eff_win_gold.parallel().tween_property(
 		self.eff_gold_lb,
 		"position",
 		Vector2(default_pos_eff_gold.x, default_pos_eff_gold.y - 50),
 		0.5
-	).set_delay(0.3)
+	).set_delay(0.5)
 	tw_eff_win_gold.tween_callback(
 		func():
 			self.eff_gold_lb.visible = false

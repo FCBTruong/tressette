@@ -864,7 +864,7 @@ func _effect_draw_card(uid, card_id):
 	play_ground.add_child(instance)
 	instance.set_card(card_id)
 	instance.scale = Vector2(0.6 * SCALE_CARD_NORMAL, 0.6 * SCALE_CARD_NORMAL)
-	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.2)
+	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.3)
 	instance.turn_face_down()
 	instance.show_card(true)
 	instance.z_index = DEFAULT_CARD_Z_INDEX
@@ -878,7 +878,8 @@ func _effect_draw_card(uid, card_id):
 			func():
 				instance.hide_card()
 		).set_delay(TIME_VIEW_CARD)
-		tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(0.45 + TIME_VIEW_CARD)
+		tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(0.5 + TIME_VIEW_CARD)
+		tween.parallel().tween_property(instance, "rotation_degrees", -90, 0.3).set_delay(0.5 + TIME_VIEW_CARD)
 		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.3).set_delay(0.45 + TIME_VIEW_CARD) 
 		tween.tween_interval(0)
 		tween.tween_property(instance, 'modulate:a', 0, 0.2)
@@ -921,7 +922,7 @@ func _effect_draw_card(uid, card_id):
 	var rot_radians: float = new_rotates[des_i]
 
 	# Animate pos
-	var delay = TIME_VIEW_CARD
+	var delay = TIME_VIEW_CARD - 0.2
 
 	tween.parallel().tween_property(instance, "global_position", final_pos, 0.4).set_delay(delay)
 	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.4).set_delay(delay)

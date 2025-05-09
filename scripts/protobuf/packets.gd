@@ -6625,6 +6625,11 @@ class SetteMezzoEndGame:
 		service.field = _is_wins
 		data[_is_wins.tag] = service
 		
+		_golds = PBField.new("golds", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 4, true, [])
+		service = PBServiceField.new()
+		service.field = _golds
+		data[_golds.tag] = service
+		
 	var data = {}
 	
 	var _uids: PBField
@@ -6653,6 +6658,15 @@ class SetteMezzoEndGame:
 		_is_wins.value = []
 	func add_is_wins(value : bool) -> void:
 		_is_wins.value.append(value)
+	
+	var _golds: PBField
+	func get_golds() -> Array:
+		return _golds.value
+	func clear_golds() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_golds.value = []
+	func add_golds(value : int) -> void:
+		_golds.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

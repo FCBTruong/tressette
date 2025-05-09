@@ -2,6 +2,7 @@ extends Control
 
 class_name LobbyScene
 var did_share_session
+@onready var sette_mezzo_btn = find_child("SetteMezzoBtn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_size = DisplayServer.window_get_size()
@@ -70,7 +71,10 @@ func _ready() -> void:
 					)
 					pass
 			)
-			
+	if g.v.app_version.is_in_review():
+		self.sette_mezzo_btn.visible = false
+	else:
+		self.sette_mezzo_btn.visible = true
 		
 @onready var watch_ads_btn = find_child("WatchAdsBtn")
 @onready var left_panel = find_child('LeftPanel')

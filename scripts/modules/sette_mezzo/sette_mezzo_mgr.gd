@@ -351,6 +351,8 @@ func get_score_uid(uid):
 	return 0
 
 func _handle_end_game(payload):
+	if not match_data:
+		return
 	match_data.state = MatchData.MATCH_STATE.ENDED
 	var scene = g.v.scene_manager.get_current_scene()
 	
@@ -360,9 +362,10 @@ func _handle_end_game(payload):
 	var uids = pkg.get_uids()
 	var is_wins = pkg.get_is_wins()
 	var scores = pkg.get_scores()
+	var golds = pkg.get_golds()
 	
 	if scene is SetteMezzoScene:
-		scene.on_end_game(uids, is_wins)
+		scene.on_end_game(uids, is_wins, golds)
 	pass
 
 func _handle_register_leave_game(payload: PackedByteArray):
