@@ -697,7 +697,7 @@ grow_vertical = 2
 texture = ExtResource("3_ncq5t")
 expand_mode = 1
 
-[node name="Panel" type="Panel" parent="PlayGround/CenterPlayPn/CardbackPn/CardBack"]
+[node name="RemainCardPn" type="Panel" parent="PlayGround/CenterPlayPn/CardbackPn/CardBack"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -709,7 +709,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2wdn7")
 
-[node name="RemainCardsLb" type="Label" parent="PlayGround/CenterPlayPn/CardbackPn/CardBack/Panel"]
+[node name="RemainCardsLb" type="Label" parent="PlayGround/CenterPlayPn/CardbackPn/CardBack/RemainCardPn"]
 modulate = Color(0.944657, 0.832392, 0.515816, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -1736,5 +1736,6 @@ volume_db = 12.0
 [connection signal="pressed" from="LeftTopPn/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="PnCheat/Button" to="." method="test_deal_card"]
 [connection signal="pressed" from="PnCheat/Button/TestPlaycard" to="." method="test_play_playercard"]
+[connection signal="pressed" from="BottomRightPn/EmoBtn" to="EmoChat" method="_on_emo_btn_pressed"]
 [connection signal="pressed" from="BottomRightPn/ChatBtn" to="." method="on_show_chat_gui"]
 [connection signal="pressed" from="AutoPlayPn/ReturnTableBtn" to="." method="_click_return_table"]

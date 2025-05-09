@@ -240,7 +240,6 @@ func _handle_play_card(payload: PackedByteArray):
 	var auto = pkg.get_auto()
 	self.hand_suit = pkg.get_hand_suit()
 	print('current handsuit follow', self.hand_suit)
-	match_data.current_turn = pkg.get_current_turn()
 	
 	if uid == g.v.player_info_mgr.get_user_id():
 		match_data.users[my_idx].game_data.cards.erase(card_id)
@@ -248,6 +247,9 @@ func _handle_play_card(payload: PackedByteArray):
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.play_card(uid, card_id, auto)
+		
+	match_data.current_turn = pkg.get_current_turn()
+	
 	push_cards_compare(uid, card_id)
 	
 	if scene is BoardScene:

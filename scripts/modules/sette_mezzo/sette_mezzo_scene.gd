@@ -533,8 +533,6 @@ func update_remain_cards():
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
 
 func deal_cards(cards, delay = 0.3) -> void:	
-	var from_pos = NodeUtils.get_center_position(cardback_node)
-	
 	var start_pos = start_card_pos
 	var seat_id = -1
 	for i in range(len(cards)):
@@ -750,7 +748,7 @@ func _input(event):
 			
 
 func update_register_leave_state():
-	if g.v.game_constants.game_logic.is_registered_leave:
+	if self.game_logic.is_registered_leave:
 		back_btn.modulate = Color("f6353f67")
 		pass
 	else:

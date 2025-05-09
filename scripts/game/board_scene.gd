@@ -56,7 +56,7 @@ const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
 const CHAT_EMO_Z_INDEX = 200
-const TIME_VIEW_CARD = 1.1
+const TIME_VIEW_CARD = 1
 const CARD_DISTANCE_BETWEEN = 95
 
 var card_scene = preload("res://scenes/board/Card.tscn")
@@ -81,8 +81,12 @@ var is_showing_functions = false
 @onready var btn_show_func_bar = find_child("ShowFunctionBtn")
 @onready var emo_chat = find_child("EmoChat")
 @onready var ads_banner_pn = find_child("AdsBannerPn")
+var cardback_node_default_pos
+var remain_card_pn
 func _ready() -> void:	
 	self.show_function_btns()
+	remain_card_pn = cardback_node.find_child("RemainCardPn")
+	cardback_node_default_pos = cardback_node.position
 	#set_up_ads_banner(g.v.game_manager.is_enable_ads())
 	set_up_ads_banner(false)
 	my_score_lb.text = '0'
@@ -660,16 +664,16 @@ func update_remain_cards():
 	if game_logic.match_data.remain_cards == 0:
 		cardback_node.visible = false
 	else:
+		remain_card_pn.visible = true
 		cardback_node.visible = true
 		remain_cards_lb.text = str(game_logic.match_data.remain_cards)
-	
+
+var tween_deal_2 = null
 func deal_my_cards(cards) -> void:	
 	cardback_node.visible = false
 	if g.v.game_manager.enable_sound:
 		$AudioShuffleDealCard.play()
-	var from_pos = NodeUtils.get_center_position(cardback_node)
-	if game_logic.match_data.player_mode != GameConstants.PLAYER_MODE.SOLO:
-		from_pos = get_viewport().get_visible_rect().size / 2
+	var from_pos = NodeUtils.get_center_position(self)
 	remove_all_current_cards()
 	list_my_cards = []
 	var number = len(cards)
@@ -679,6 +683,14 @@ func deal_my_cards(cards) -> void:
 	tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	var list_pos_des = _calculate_world_card_positions(number)
 	var rotates = _get_card_rotates(number) 
+	if game_logic.match_data.remain_cards > 0:
+		var a = from_pos
+		a.x -= 45
+		a.y -= 70
+						
+		cardback_node.global_position = a
+		cardback_node.visible = true
+		remain_card_pn.visible = false
 	for i in range(number):
 		var instance = card_scene.instantiate()
 		play_ground.add_child(instance)
@@ -702,15 +714,31 @@ func deal_my_cards(cards) -> void:
 		rot_radians = rotates[i]
 		#print("Rot: ", rot_radians)
 		#print("Card %d: , size: %s, pivot: %s" % [i, str(instance.size), str(instance.pivot_offset)])
-		
+		instance.visible = false
+		instance.rotation_degrees = -180
 		var delay = i * 0.1
 		# Animate pos
-		if i == number - 1:
-			tween.parallel().tween_callback(
-				func():
-					update_remain_cards()
-					pass
-			).set_delay(delay)
+		tween.parallel().tween_callback(
+			func():
+				if i == number - 1:
+					if cardback_node.visible:
+						# effect move cardbacknode
+						var tw = create_tween()
+						tw.tween_property(
+							cardback_node,
+							"position",
+							cardback_node_default_pos,
+							0.3
+						).set_delay(0.3)
+						tw.tween_callback(
+							func():
+								update_remain_cards()
+						)
+					
+				instance.visible = true
+				pass
+		).set_delay(delay)
+		
 		tween.parallel().tween_property(instance, "position", final_pos, 0.3).set_delay(delay).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		tween.parallel().tween_property(instance, "rotation", rot_radians, 0.3).set_delay(delay)
 		tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay)
@@ -719,11 +747,40 @@ func deal_my_cards(cards) -> void:
 			instance.show_card(true)
 		).set_delay(0.3 + delay)
 	
-	tween.tween_callback(set_process.bind(true))
-	tween.tween_property(self, "sine_offset_mult", anim_offset_y, 1.5).from(0.0)
+	# effect for other players too
+	if tween_deal_2 and tween_deal_2.is_running():
+		tween_deal_2.kill()
+	tween_deal_2 = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	for p in list_players:
+		if p.user_data.uid == g.v.player_info_mgr.my_user_data.uid:
+			continue
+		
+		var des_pos = p.global_position
+		var delay_2 = 0
+		for i in range(10):
+			var instance = card_scene.instantiate()
+			play_ground.add_child(instance)
+			instance.scale = Vector2(SCALE_CARD_DRAW, SCALE_CARD_DRAW)
+			instance.turn_face_down()
+			instance.z_index = DEFAULT_CARD_Z_INDEX
+			instance.global_position = from_pos
+			instance.rotation_degrees = -180
+			
+			tween_deal_2.parallel().tween_property(instance, "position", des_pos, 0.3).set_delay(delay_2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+			tween_deal_2.parallel().tween_property(instance, "rotation", 0, 0.3).set_delay(delay_2)
+			#tween_deal_2.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.3).set_delay(delay_2)
+			tween_deal_2.parallel().tween_callback(
+				func():
+					instance.queue_free()			
+			).set_delay(delay_2 + 0.3)
+			delay_2 += 0.1
+			
+		
+	#tween.tween_callback(set_process.bind(true))
+	#tween.tween_property(self, "sine_offset_mult", anim_offset_y, 1.5).from(0.0)
 
 func play_card(user_id: int, card_id: int, auto: bool = false):
-	print("user " + str(user_id) + "play_a_card", card_id)
+	print("user " + str(user_id) + "play_a_card", card_id, auto)
 	if user_id == g.v.player_info_mgr.my_user_data.uid:
 		if auto:
 			play_my_card(card_id, auto)
@@ -807,7 +864,7 @@ func _effect_draw_card(uid, card_id):
 	play_ground.add_child(instance)
 	instance.set_card(card_id)
 	instance.scale = Vector2(0.6 * SCALE_CARD_NORMAL, 0.6 * SCALE_CARD_NORMAL)
-	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.3)
+	tween.parallel().tween_property(instance, 'scale', Vector2(SCALE_CARD_DEAL_INIT, SCALE_CARD_DEAL_INIT), 0.2)
 	instance.turn_face_down()
 	instance.show_card(true)
 	instance.z_index = DEFAULT_CARD_Z_INDEX
@@ -821,8 +878,8 @@ func _effect_draw_card(uid, card_id):
 			func():
 				instance.hide_card()
 		).set_delay(TIME_VIEW_CARD)
-		tween.parallel().tween_property(instance, "global_position", final_pos, 0.4).set_delay(0.55 + TIME_VIEW_CARD)
-		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.4).set_delay(0.55 + TIME_VIEW_CARD) 
+		tween.parallel().tween_property(instance, "global_position", final_pos, 0.3).set_delay(0.45 + TIME_VIEW_CARD)
+		tween.parallel().tween_property(instance, "scale", Vector2(0.5 * SCALE_CARD_NORMAL, 0.5 * SCALE_CARD_NORMAL), 0.3).set_delay(0.45 + TIME_VIEW_CARD) 
 		tween.tween_interval(0)
 		tween.tween_property(instance, 'modulate:a', 0, 0.2)
 		tween.tween_callback(
@@ -1132,7 +1189,7 @@ func _hight_light_napoli_set(nap):
 			var h = pn_highlight_napoli.instantiate()
 			c.get_parent().add_child(h)
 			h.position = c.position
-			h.z_index = c.z_index + 1
+			h.z_index = c.z_index
 			h.rotation = c.rotation
 				
 			list_napoli_highlights.append(h)

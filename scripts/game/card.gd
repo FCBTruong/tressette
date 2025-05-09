@@ -174,6 +174,7 @@ var light_scene = preload("res://scenes/board/EffectLightCard.tscn")
 func effect_win_card():
 	var instance = light_scene.instantiate()
 	add_child(instance)
+	move_child(instance, 0)
 	var tween = create_tween()
 	tween.tween_property(instance, "rotation_degrees", 360, 3.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)  
 	tween.finished.connect(func(): instance.queue_free())
