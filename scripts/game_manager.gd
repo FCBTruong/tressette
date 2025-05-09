@@ -134,15 +134,30 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			var bets = pkg.get_bets()
 			var num_players = pkg.get_num_players()
 			var player_modes = pkg.get_player_modes()
+			var game_modes = pkg.get_game_modes()
+			var avatars = pkg.get_avatars()
+			var uids = pkg.get_player_uids()
 			table_list = []
 			
+			var j = 0
 			for i in range(len(table_ids)):
 				var table = TableInfo.new()
 				table.match_id = table_ids[i]
 				table.bet = bets[i]
 				table.num_player = num_players[i]
 				table.player_mode = player_modes[i]
+				table.player_avatars = []
+				table.player_uids = []
+				table.game_mode = game_modes[i]
 				table_list.append(table)
+				
+				for x in range(table.player_mode):
+					if j >= len(uids):
+						break
+					table.player_uids.append(uids[j])
+					table.player_avatars.append(avatars[j])
+					j += 1
+					
 				
 			g.v.signal_bus.emit_signal_global("update_table_list")
 		g.v.game_constants.CMDs.JOIN_TABLE_BY_ID:

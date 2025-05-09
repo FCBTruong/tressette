@@ -6,6 +6,9 @@ var match_id: int
 var bet: int
 var player_mode:  int
 var num_player: int
+var player_uids
+var player_avatars
+var game_mode: int
 
 func _init() -> void:
 	pass

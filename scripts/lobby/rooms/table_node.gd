@@ -1,11 +1,16 @@
 extends Node
 
 @onready var bet_lb = find_child("BetLb")
-@onready var player_lb = find_child("PlayerLb")
 @onready var player_icon = find_child('PlayerIcon')
+@onready var full_icon = find_child("FullIcon")
 var _info: TableInfo
+var slots = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	slots.append(find_child("Slot1"))
+	slots.append(find_child("Slot2"))
+	slots.append(find_child("Slot3"))
+	slots.append(find_child("Slot4"))
 	pass # Replace with function body.
 
 
@@ -13,18 +18,37 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+@onready var game_lb = find_child("GameLb")
 func set_info(table: TableInfo):
 	self._info = table
 	self.bet_lb.text = StringUtils.point_number(table.bet)
-		
-	var str = ""
-	str += str(table.num_player) + '/' + str(table.player_mode)
-	player_lb.text = str
+
+	if table.player_mode < 4:
+		slots[2].visible = false
+		slots[3].visible = false
+	else:
+		slots[2].visible = true
+		slots[3].visible = true
 	
 	if table.num_player == table.player_mode:
-		#player_icon.modulate = Color('a61616')
-		pass
+		full_icon.visible = true
+	else:
+		full_icon.visible = false
+	if table.game_mode == g.v.game_constants.GAME_MODE.TRESSETTE:
+		game_lb.text = "Tressette"
+	else:
+		game_lb.text = "Sette e Mezzo"
 	
+	for i in range(len(table.player_uids)):
+		var uid = table.player_uids[i]
+		var avatar = table.player_avatars[i]
+		if i >= len(slots):
+			break
+		if uid == -1:
+			slots[i].find_child("AvatarCircle").visible = false
+			continue
+		slots[i].find_child("AvatarCircle").visible = true
+		slots[i].find_child("AvatarImg").set_avatar(avatar)
 
 func _click_play():
 	if self._info.num_player == self._info.player_mode:

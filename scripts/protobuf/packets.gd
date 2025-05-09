@@ -3108,6 +3108,21 @@ class TableList:
 		service.field = _player_modes
 		data[_player_modes.tag] = service
 		
+		_player_uids = PBField.new("player_uids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 5, true, [])
+		service = PBServiceField.new()
+		service.field = _player_uids
+		data[_player_uids.tag] = service
+		
+		_avatars = PBField.new("avatars", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 6, true, [])
+		service = PBServiceField.new()
+		service.field = _avatars
+		data[_avatars.tag] = service
+		
+		_game_modes = PBField.new("game_modes", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 7, true, [])
+		service = PBServiceField.new()
+		service.field = _game_modes
+		data[_game_modes.tag] = service
+		
 	var data = {}
 	
 	var _table_ids: PBField
@@ -3145,6 +3160,33 @@ class TableList:
 		_player_modes.value = []
 	func add_player_modes(value : int) -> void:
 		_player_modes.value.append(value)
+	
+	var _player_uids: PBField
+	func get_player_uids() -> Array:
+		return _player_uids.value
+	func clear_player_uids() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_player_uids.value = []
+	func add_player_uids(value : int) -> void:
+		_player_uids.value.append(value)
+	
+	var _avatars: PBField
+	func get_avatars() -> Array:
+		return _avatars.value
+	func clear_avatars() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_avatars.value = []
+	func add_avatars(value : String) -> void:
+		_avatars.value.append(value)
+	
+	var _game_modes: PBField
+	func get_game_modes() -> Array:
+		return _game_modes.value
+	func clear_game_modes() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_game_modes.value = []
+	func add_game_modes(value : int) -> void:
+		_game_modes.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://gd1jod3mrcan"]
+[gd_scene load_steps=5 format=3 uid="uid://d0i4k35ot55iw"]
 
-[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="1_ixgkt"]
-[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_trhkx"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_3p2k8"]
-[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="3_gprs8"]
+[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="1_omcqc"]
+[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_4duqh"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="3_nb63d"]
+[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="4_orwgj"]
 
 [node name="AvatarCircle" type="Control"]
 layout_mode = 3
@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ixgkt")
+texture = ExtResource("1_omcqc")
 expand_mode = 1
 
 [node name="AvatarImg" type="TextureRect" parent="TextureRect"]
@@ -38,9 +38,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_trhkx")
+texture = ExtResource("2_4duqh")
 expand_mode = 1
-script = ExtResource("3_gprs8")
+script = ExtResource("3_nb63d")
 is_me = false
 
 [node name="AvatarBorder" type="TextureRect" parent="."]
@@ -51,5 +51,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_3p2k8")
+texture = ExtResource("4_orwgj")
 expand_mode = 1

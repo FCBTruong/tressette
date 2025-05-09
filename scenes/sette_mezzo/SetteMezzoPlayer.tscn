@@ -272,6 +272,10 @@ vertical_alignment = 1
 
 [node name="AvatarCircle" parent="MainPn" instance=ExtResource("7_us3mp")]
 layout_mode = 1
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
 mouse_filter = 1
 
 [node name="InfoBtn" type="Button" parent="MainPn/AvatarCircle"]

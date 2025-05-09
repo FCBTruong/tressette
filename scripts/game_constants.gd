@@ -9,7 +9,7 @@ const PACKAGE_NAME = 'com.clareentertainment.tressette'
 const APPLE_APP_ID = '6741761784'
 const GAME_MODE = {
 	TRESSETTE = 0,
-	BRISCOLA = 1,
+	SETTE_MEZZO = 1,
 }
 const MAX_AVATAR_ID = 13
 
