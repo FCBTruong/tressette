@@ -40,6 +40,10 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_show_banker_card(payload)
 		g.v.game_constants.CMDs.SETTE_MEZZO_END_GAME:
 			_handle_end_game(payload)
+		g.v.game_constants.CMDs.SETTE_MEZZO_BETTING:
+			_handle_start_betting(payload)
+		g.v.game_constants.CMDs.SETTE_MEZZO_USER_BET:
+			_received_user_bet(payload)
 	
 
 func _handle_game_info(payload):
@@ -197,7 +201,7 @@ func _start_game(payload: PackedByteArray):
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:
 		scene.on_game_start()
-		await ROOT.get_tree().create_timer(1).timeout
+		#await ROOT.get_tree().create_timer(0.25).timeout
 		scene.deal_cards(card_deal)
 
 
@@ -383,3 +387,23 @@ func _handle_register_leave_game(payload: PackedByteArray):
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BaseBoardScene:
 		scene.update_register_leave_state()
+
+func _handle_start_betting(payload):
+	self.match_data.state = MatchData.MATCH_STATE.BETTING
+	
+	var scene = g.v.scene_manager.get_current_scene()
+	if scene is SetteMezzoScene:
+		scene.on_start_betting()
+
+func send_bet(bet_value: int):
+	print("user bet::: ", bet_value)
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoUserBet.new()
+	pkg.set_bet(bet_value)
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.SETTE_MEZZO_USER_BET, pkg.to_bytes())
+
+func _received_user_bet(payload):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoUserBet.new()
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	var bet = pkg.get_bet()
+	pass

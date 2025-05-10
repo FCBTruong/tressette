@@ -6,7 +6,8 @@ enum MATCH_STATE {
 	PREPARING_START = 1,
 	PLAYING = 2,
 	ENDING = 3,
-	ENDED = 4
+	ENDED = 4,
+	BETTING = 5
 }
 @export var match_id: int = 0
 @export var state: int = MATCH_STATE.WAITING

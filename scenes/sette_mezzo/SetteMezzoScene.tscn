@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bjbyaluspvll3"]
+[gd_scene load_steps=41 format=3 uid="uid://bjbyaluspvll3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/sette_mezzo_scene.gd" id="1_gx0u6"]
 [ext_resource type="Texture2D" uid="uid://hjvfin0rocla" path="res://assets/images/board/sette_mezzo/bg.jpg" id="2_n181u"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b035rav2whgsu" path="res://assets/images/board/sette_mezzo/bet_bar_bg.png" id="14_32pq7"]
 [ext_resource type="Texture2D" uid="uid://bm26a6mwmg7hd" path="res://assets/images/board/sette_mezzo/all_in_btn.png" id="14_a4yy5"]
 [ext_resource type="Texture2D" uid="uid://ccq1m054wgoom" path="res://assets/images/board/settings_btn.png" id="14_ee5ig"]
+[ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="15_mrivb"]
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="16_5vdcl"]
 [ext_resource type="Texture2D" uid="uid://byythckomn4mf" path="res://assets/images/board/sette_mezzo/bet_bar_edit.png" id="16_q3dry"]
 [ext_resource type="PackedScene" uid="uid://d3phqitk2yrkh" path="res://scenes/board/EmoChat.tscn" id="19_ffb8o"]
@@ -76,6 +77,11 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_color = Color(0, 0, 0, 0.192157)
 shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1c8f8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyddj"]
+bg_color = Color(0.886954, 0.0789104, 0.0789104, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2l87s"]
 content_margin_left = 5.0
@@ -665,6 +671,24 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TimeBetProgressBar" type="ProgressBar" parent="CanvasLayer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -125.0
+offset_right = 75.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_1c8f8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cyddj")
+value = 30.0
+show_percentage = false
+
 [node name="BetPn" type="Control" parent="CanvasLayer"]
 layout_mode = 1
 anchors_preset = 3
@@ -672,10 +696,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -123.0
-offset_top = -354.0
-offset_right = -83.0
-offset_bottom = -154.0
+offset_left = -129.0
+offset_top = -253.0
+offset_right = -89.0
+offset_bottom = -53.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -726,18 +750,144 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_hd5qr")
 value = 10.0
 
 [node name="BetLb" type="Label" parent="CanvasLayer/BetPn"]
+modulate = Color(0.859799, 0.845504, 0.845504, 1)
 layout_mode = 0
-offset_left = 55.0
-offset_top = 103.0
-offset_right = 104.0
-offset_bottom = 127.0
+offset_left = -150.0
+offset_top = 110.0
+offset_right = -95.0
+offset_bottom = 137.0
+theme_override_colors/font_outline_color = Color(0.489817, 0.227762, 0.0983399, 1)
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("7_h67wp")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 26
 text = "100K"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button3" type="Button" parent="CanvasLayer/BetPn"]
+visible = false
+layout_mode = 0
+offset_left = -231.0
+offset_top = 246.0
+offset_right = -131.0
+offset_bottom = 296.0
+flat = true
+script = ExtResource("12_hjpec")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BetPn/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_mrivb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/BetPn/Button3"]
+self_modulate = Color(1, 1, 1, 0.768627)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 28
+text = "20K"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Button2" type="Button" parent="CanvasLayer/BetPn"]
+visible = false
+layout_mode = 0
+offset_left = -375.0
+offset_top = 246.0
+offset_right = -275.0
+offset_bottom = 296.0
+flat = true
+script = ExtResource("12_hjpec")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BetPn/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_4s583")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/BetPn/Button2"]
+self_modulate = Color(1, 1, 1, 0.768627)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 28
+text = "10K"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="BtnOkBet" type="Button" parent="CanvasLayer/BetPn"]
+layout_mode = 0
+offset_left = -189.0
+offset_top = 155.0
+offset_right = -59.0
+offset_bottom = 215.0
+flat = true
+script = ExtResource("12_hjpec")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BetPn/BtnOkBet"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_musa1")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/BetPn/BtnOkBet"]
+self_modulate = Color(1, 1, 1, 0.768627)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 25
+text = "BET"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="ActionBtnPn" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1174,6 +1324,7 @@ volume_db = 12.0
 [connection signal="pressed" from="CanvasLayer/BetPn/AllInBtn" to="." method="bet_all_in"]
 [connection signal="drag_started" from="CanvasLayer/BetPn/BetBar" to="." method="_on_slider_drag_started"]
 [connection signal="value_changed" from="CanvasLayer/BetPn/BetBar" to="." method="_on_slider_bet_changed"]
+[connection signal="pressed" from="CanvasLayer/BetPn/BtnOkBet" to="." method="click_bet"]
 [connection signal="pressed" from="CanvasLayer/ActionBtnPn/StandBtn" to="." method="click_stand_btn"]
 [connection signal="pressed" from="CanvasLayer/ActionBtnPn/HitBtn" to="." method="click_hit_btn"]
 [connection signal="pressed" from="CanvasLayer/RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]

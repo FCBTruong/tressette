@@ -68,6 +68,7 @@ var start_card_pos
 var bet_expect = 0
 func _ready() -> void:	
 	action_btn_pn.visible = false
+	self.bet_pn.visible = false 
 	self.find_child("EmoChat").visible = true
 	icon_banker_stand.visible = false
 	start_card_pos = dealer_node.global_position
@@ -125,8 +126,10 @@ func _on_slider_bet_changed(value: float) -> void:
 	bet_lb.text = StringUtils.symbol_number(bet_expect)
 
 func bet_all_in():
-	self.bet_bar.value = 100
-	_on_slider_bet_changed(100.0)
+	self.bet_pn.visible = false
+	# send bet all in
+	bet_expect = g.v.player_info_mgr.my_user_data.gold
+	g.v.sette_mezzo_mgr.send_bet(bet_expect)
 	
 func _get_card_rotates(n):
 	if n == 1:
@@ -171,6 +174,7 @@ func _on_enter():
 	update_cards_on_table()
 	on_user_turn()
 	self.update_suitable_bet()
+	self.update_game_state()
 	
 func update_banker():
 	pass
@@ -283,12 +287,12 @@ func continue_play():
 	round_lb.text = ''
 
 func on_game_start():
-	self.remove_all_current_cards(true)
 	reset_scores()
 	
 	game_start_lb.text = tr("GAME_START")
 	#_eff_text_middle()
 	update_banker()
+	self.update_game_state()
 	
 func _eff_text_middle():
 	# effect start game
@@ -377,26 +381,6 @@ func _get_seat_position(mode_player: int, seat_id: int):
 var last_time_touch_bet = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if game_logic.match_data.state == MatchData.MATCH_STATE.WAITING:
-		var cur = int(Time.get_unix_time_from_system())
-		var str = base_text
-		if cur % 4 == 1:
-			str = base_text + " ."
-		elif cur % 4 == 2:
-			str = base_text + " .."
-		elif cur % 4 == 3:
-			str = base_text + " ..."
-		self.waiting_other_lb.text = str
-	else:	
-		self.waiting_other_lb.text = ''
-
-	if game_logic.match_data.state != MatchData.MATCH_STATE.PLAYING:
-		self.bet_pn.modulate.a = 1
-	else:
-		self.bet_pn.modulate.a = 0.5
-		if last_time_touch_bet + 2 > g.v.game_manager.get_timestamp_client():
-			self.bet_pn.modulate.a = 1
-			
 	if countdown_timer and countdown_start_lb.visible:
 		var time_left_str = str(ceil(countdown_timer.time_left))
 		#if countdown_start_lb.text != time_left_str:
@@ -653,9 +637,9 @@ func draw_my_card(card_id, delay = 0):
 	var rot_radians: float = new_rotates[des_i]
 	instance.rotation_degrees = 90
 
-	tween.parallel().tween_property(instance, "global_position", final_pos, 0.5).set_delay(delay)
-	tween.parallel().tween_property(instance, "rotation_degrees", 0, 0.5).set_delay(delay)
-	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.5).set_delay(delay)
+	tween.parallel().tween_property(instance, "global_position", final_pos, 0.4).set_delay(delay)
+	tween.parallel().tween_property(instance, "rotation_degrees", 0, 0.4).set_delay(delay)
+	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.4).set_delay(delay)
 	tween.parallel().tween_callback(
 		func():
 			instance.visible = true
@@ -959,3 +943,51 @@ func user_stand(uid):
 	var p = self.get_player_node_by_uid(uid)
 	if p:
 		p.effect_user_stand()
+
+func on_start_betting():
+	reset_scores()
+	self.remove_all_current_cards(true)
+	await ROOT.get_tree().create_timer(0.5).timeout
+	self.update_game_state()
+
+var is_showing_pn_bet = false
+func update_game_state():
+	self.action_btn_pn.visible = false
+	var state = self.game_logic.match_data.state
+	if state == MatchData.MATCH_STATE.BETTING:
+		var tw_bet = create_tween()
+		self.bet_pn.modulate.a = 0
+		tw_bet.parallel().tween_property(
+			self.bet_pn,
+			"modulate:a",
+			1,
+			0.3
+		)
+		tw_bet.parallel().tween_method(update_bet_time, 100.0, 0.0, 10.0)
+		self.bet_pn.visible = true
+		self.is_showing_pn_bet = true
+		self.bet_progress_time.visible = true
+	else:
+		self.bet_progress_time.visible = false
+		if self.is_showing_pn_bet:
+			var tw_bet = create_tween()
+			tw_bet.tween_property(
+				self.bet_pn,
+				"modulate:a",
+				0,
+				0.3
+			)
+			tw_bet.tween_callback(
+				func():
+					self.bet_pn.visible = false
+			)
+	
+			
+
+@onready var bet_progress_time = find_child("TimeBetProgressBar")
+func update_bet_time(value):
+	bet_progress_time.value = value
+
+func click_bet() -> void:
+	g.v.sette_mezzo_mgr.send_bet(self.bet_expect)
+	pass # Replace with function body.

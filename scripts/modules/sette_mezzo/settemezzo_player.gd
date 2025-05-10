@@ -115,7 +115,6 @@ func start_timer():
 		did_alarm_clock = false
 	time_progress_bar.visible = true
 	elapsed_time = TIME_THINKING_IN_TURN - (g.v.sette_mezzo_mgr.play_turn_time - g.v.game_manager.get_timestamp_server())
-	print('ellllll', elapsed_time)
 	if elapsed_time < 0:
 		elapsed_time = 0
 	running = true
@@ -346,7 +345,9 @@ func eff_win_gold(gold):
 		Vector2(default_pos_eff_gold.x, default_pos_eff_gold.y - 50),
 		0.5
 	).set_delay(0.5)
-	tw_eff_win_gold.tween_callback(
-		func():
-			self.eff_gold_lb.visible = false
+	tw_eff_win_gold.tween_property(
+		self.eff_gold_lb,
+		"modulate:a",
+		0,
+		0.3
 	).set_delay(1)

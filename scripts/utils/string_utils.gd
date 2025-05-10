@@ -27,14 +27,17 @@ static func point_number(number: int) -> String:
 
 
 static func symbol_number(num: int) -> String:
-	if num >= 1_000_000_000:
-		return str(floor(num / 1_000_000_000.0)) + "B"
-	elif num >= 1_000_000:
-		return str(floor(num / 1_000_000.0)) + "M"
-	elif num >= 1_000:
-		return str(floor(num / 1_000.0)) + "K"
+	var abs_num = abs(num)
+	var prefix = "-" if num < 0 else ""
+	if abs_num >= 1_000_000_000:
+		return prefix + str(floor(abs_num / 1_000_000_000.0)) + "B"
+	elif abs_num >= 1_000_000:
+		return prefix + str(floor(abs_num / 1_000_000.0)) + "M"
+	elif abs_num >= 1_000:
+		return prefix + str(floor(abs_num / 1_000.0)) + "K"
 	else:
 		return str(num)
+
 		
 static func sub_string(str: String, size: int) -> String:
 	if str.length() > size:

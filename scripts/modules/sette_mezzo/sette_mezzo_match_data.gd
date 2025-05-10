@@ -1,15 +1,8 @@
 # UserData.gd
 class_name SetteMezzoMatchData
 
-enum MATCH_STATE {
-	WAITING = 0,
-	PREPARING_START = 1,
-	PLAYING = 2,
-	ENDING = 3,
-	ENDED = 4
-}
 @export var match_id: int = 0
-@export var state: int = MATCH_STATE.WAITING
+@export var state: int = MatchData.MATCH_STATE.WAITING
 @export var users: Array[UserData] = []
 @export var game_mode: int = g.v.game_constants.GAME_MODE.TRESSETTE
 @export var player_mode:int = g.v.game_constants.PLAYER_MODE.SOLO
