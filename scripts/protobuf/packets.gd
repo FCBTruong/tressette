@@ -2570,6 +2570,11 @@ class GeneralInfo:
 		service.field = _enable_ads
 		data[_enable_ads.tag] = service
 		
+		_sette_mezzo_bet_scale = PBField.new("sette_mezzo_bet_scale", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _sette_mezzo_bet_scale
+		data[_sette_mezzo_bet_scale.tag] = service
+		
 	var data = {}
 	
 	var _timestamp: PBField
@@ -2634,6 +2639,15 @@ class GeneralInfo:
 		_enable_ads.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
 	func set_enable_ads(value : bool) -> void:
 		_enable_ads.value = value
+	
+	var _sette_mezzo_bet_scale: PBField
+	func get_sette_mezzo_bet_scale() -> int:
+		return _sette_mezzo_bet_scale.value
+	func clear_sette_mezzo_bet_scale() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_sette_mezzo_bet_scale.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_sette_mezzo_bet_scale(value : int) -> void:
+		_sette_mezzo_bet_scale.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

@@ -66,6 +66,7 @@ func _handle_game_info(payload):
 	match_data.banker_uid = pkg.get_banker_uid()
 	dealer_cards = pkg.get_banker_cards()
 	play_turn_time = pkg.get_play_turn_time()
+	self.is_registered_leave = pkg.get_is_registered_leave()
 	
 	var uids = pkg.get_uids()
 	print('uids: ', match_data.current_turn)
@@ -195,7 +196,6 @@ func _start_game(payload: PackedByteArray):
 			continue
 		var p = get_user(uid)
 		p.game_data.cards = [cards[i]]
-		p.game_data.is_in_game = true
 		playing_users.append(uid)
 		i += 1
 	var scene = g.v.scene_manager.get_current_scene()
@@ -394,6 +394,8 @@ func _handle_start_betting(payload):
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:
 		scene.on_start_betting()
+	for p in match_data.users:
+		p.game_data.is_in_game = true
 
 func send_bet(bet_value: int):
 	print("user bet::: ", bet_value)

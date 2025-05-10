@@ -90,7 +90,10 @@ func update_state_ingame():
 	if not user_data:
 		return
 	var g_mgr = g.v.sette_mezzo_mgr
-	var is_game_playing = g_mgr.match_data.state == MatchData.MATCH_STATE.PLAYING
+	var is_game_playing = false
+	if g_mgr.match_data.state == MatchData.MATCH_STATE.PLAYING \
+		or g_mgr.match_data.state == MatchData.MATCH_STATE.BETTING:
+			is_game_playing = true
 	if is_game_playing and not user_data.game_data.is_in_game:
 		self.modulate.a = 0.5
 	else:

@@ -97,7 +97,7 @@ func _ready() -> void:
 @onready var bet_bar = find_child("BetBar")
 func _get_bet_range() -> Dictionary:
 	var gold: int = g.v.player_info_mgr.my_user_data.gold
-	var bet_min: int = gold / 20
+	var bet_min: int = gold / g.v.game_server_config.sette_mezzo_bet_scale
 	if bet_min < 1000:
 		bet_min = 1000
 	var bet_max: int = gold
@@ -111,7 +111,8 @@ func _get_bet_range() -> Dictionary:
 
 func update_suitable_bet() -> void:
 	var bet: Dictionary = _get_bet_range()
-	bet_expect = clamp(int(bet["gold"] / 10), bet["min"], bet["max"])
+	var sette_mezzo_bet_scale = g.v.game_server_config.sette_mezzo_bet_scale
+	bet_expect = clamp(int(bet["gold"] / (sette_mezzo_bet_scale / 2)), bet["min"], bet["max"])
 	var percent: float = (float(bet_expect - bet["min"]) / float(bet["range"]) * 100.0) if bet["range"] > 0 else 0.0
 	bet_bar.value = percent
 	bet_lb.text = StringUtils.symbol_number(bet_expect)

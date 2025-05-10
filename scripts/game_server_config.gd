@@ -8,6 +8,7 @@ var exp_levels = []
 var bet_multiplier_min = 1
 var min_gold_play: int
 var fee_mode_no_bet: int
+var sette_mezzo_bet_scale: int
 
 func convert_exp_to_level(exp) -> int:
 	var level = 1  # Default to level 1 if exp is below the first threshold

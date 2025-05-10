@@ -79,9 +79,25 @@ shadow_color = Color(0, 0, 0, 0.192157)
 shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1c8f8"]
+bg_color = Color(0.196078, 0.160784, 0.160784, 0.780392)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0, 0, 0, 0.168627)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyddj"]
-bg_color = Color(0.886954, 0.0789104, 0.0789104, 1)
+bg_color = Color(0.93108, 0.34484, 0.137946, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2l87s"]
 content_margin_left = 5.0
@@ -292,9 +308,9 @@ vertical_alignment = 1
 [node name="CardContainer2" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 286.0
+offset_left = 265.0
 offset_top = 90.0
-offset_right = 586.0
+offset_right = 565.0
 offset_bottom = 160.0
 pivot_offset = Vector2(300, 0)
 mouse_filter = 1
@@ -302,10 +318,10 @@ mouse_filter = 1
 [node name="ScorePn" type="Panel" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer2"]
 self_modulate = Color(0.136227, 0.486423, 0.0560719, 1)
 layout_mode = 0
-offset_left = 254.0
-offset_top = -64.0
-offset_right = 304.0
-offset_bottom = -34.0
+offset_left = 275.0
+offset_top = -69.0
+offset_right = 325.0
+offset_bottom = -39.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vepap")
 
 [node name="LbScore" type="Label" parent="CanvasLayer/PlayGround/CenterPlayPn/CardContainer2/ScorePn"]
@@ -673,21 +689,42 @@ vertical_alignment = 1
 
 [node name="TimeBetProgressBar" type="ProgressBar" parent="CanvasLayer"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 offset_left = -75.0
-offset_top = -125.0
+offset_top = 5.0
 offset_right = 75.0
-offset_bottom = -105.0
+offset_bottom = 20.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_1c8f8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cyddj")
 value = 30.0
 show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/TimeBetProgressBar"]
+self_modulate = Color(1, 1, 1, 0.768627)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -40.0
+offset_right = 47.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_h67wp")
+theme_override_font_sizes/font_size = 23
+text = "BETTING"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="BetPn" type="Control" parent="CanvasLayer"]
 layout_mode = 1
@@ -697,9 +734,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -129.0
-offset_top = -253.0
+offset_top = -243.0
 offset_right = -89.0
-offset_bottom = -53.0
+offset_bottom = -43.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -752,10 +789,10 @@ value = 10.0
 [node name="BetLb" type="Label" parent="CanvasLayer/BetPn"]
 modulate = Color(0.859799, 0.845504, 0.845504, 1)
 layout_mode = 0
-offset_left = -150.0
-offset_top = 110.0
-offset_right = -95.0
-offset_bottom = 137.0
+offset_left = -164.0
+offset_top = 118.0
+offset_right = -109.0
+offset_bottom = 145.0
 theme_override_colors/font_outline_color = Color(0.489817, 0.227762, 0.0983399, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("7_h67wp")
@@ -848,10 +885,10 @@ uppercase = true
 
 [node name="BtnOkBet" type="Button" parent="CanvasLayer/BetPn"]
 layout_mode = 0
-offset_left = -189.0
-offset_top = 155.0
-offset_right = -59.0
-offset_bottom = 215.0
+offset_left = -203.0
+offset_top = 154.0
+offset_right = -73.0
+offset_bottom = 214.0
 flat = true
 script = ExtResource("12_hjpec")
 
@@ -1166,9 +1203,9 @@ mouse_filter = 2
 [node name="EmoBtn" type="Button" parent="CanvasLayer/BottomLeftPn"]
 layout_mode = 0
 offset_left = 124.0
-offset_top = -50.0
+offset_top = -60.0
 offset_right = 204.0
-offset_bottom = 30.0
+offset_bottom = 20.0
 flat = true
 script = ExtResource("12_hjpec")
 
@@ -1185,9 +1222,9 @@ expand_mode = 1
 [node name="ChatBtn" type="Button" parent="CanvasLayer/BottomLeftPn"]
 layout_mode = 0
 offset_left = 36.0
-offset_top = -50.0
+offset_top = -60.0
 offset_right = 116.0
-offset_bottom = 30.0
+offset_bottom = 20.0
 flat = true
 script = ExtResource("12_hjpec")
 
