@@ -31,6 +31,14 @@ func add_popup(gui_path: String, func_name: String = '', params: Array = [], lob
 		"lobby": lobby
 	})
 
+func add_popup_intermediate(gui_path: String, func_name: String = '', params: Array = [], lobby: bool = true):
+	arr_popups.insert(0, {
+		"gui": gui_path,
+		"func_name": func_name,
+		"params": params,
+		"lobby": lobby
+	})
+
 	
 func check_and_show():
 	if cur_popup and is_instance_valid(cur_popup) and cur_popup.visible:

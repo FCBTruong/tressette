@@ -1265,6 +1265,11 @@ class UserInfo:
 		service.field = _time_ads_reward
 		data[_time_ads_reward.tag] = service
 		
+		_add_for_user_support = PBField.new("add_for_user_support", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 19, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _add_for_user_support
+		data[_add_for_user_support.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1428,6 +1433,15 @@ class UserInfo:
 		_time_ads_reward.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_time_ads_reward(value : int) -> void:
 		_time_ads_reward.value = value
+	
+	var _add_for_user_support: PBField
+	func get_add_for_user_support() -> bool:
+		return _add_for_user_support.value
+	func clear_add_for_user_support() -> void:
+		data[19].state = PB_SERVICE_STATE.UNFILLED
+		_add_for_user_support.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_add_for_user_support(value : bool) -> void:
+		_add_for_user_support.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

@@ -101,6 +101,10 @@ func _on_receive_info(bytes: PackedByteArray):
 		if sette_times < 3:
 			g.v.popup_mgr.add_popup("res://scenes/sette_mezzo/SetteMezzoIntroGUI.tscn")
 	
+	var should_ask_support = packet.get_add_for_user_support()
+	if self.has_first_buy:
+		if should_ask_support:
+			_handle_ask_for_support()
 func _on_update_money(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateMoney.new()
 	packet.from_bytes(bytes)
@@ -125,3 +129,10 @@ func is_user_vip() -> bool:
 
 var is_linking_acc: bool = false
 var uid_linking: int
+
+
+func _handle_ask_for_support():
+	var should_show = g.v.storage_cache.fetch("show_ask_support", '0')
+	
+	g.v.popup_mgr.add_popup("res://scenes/lobby/AskForSupportGUI.tscn")
+	pass
