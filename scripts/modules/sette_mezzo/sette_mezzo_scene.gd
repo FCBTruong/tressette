@@ -288,10 +288,6 @@ func continue_play():
 	round_lb.text = ''
 
 func on_game_start():
-	reset_scores()
-	
-	game_start_lb.text = tr("GAME_START")
-	#_eff_text_middle()
 	update_banker()
 	self.update_game_state()
 	
@@ -365,7 +361,23 @@ func update_player_seat():
 		var seat_id = player.user_data.game_data.seat_id
 		var pos = _get_seat_position(g.v.sette_mezzo_mgr.match_data.player_mode, seat_id)
 		player.global_position = pos
-		
+
+@onready var bet_user_node_0 = find_child("BetUserNode0")
+@onready var bet_user_node_1 = find_child("BetUserNode1")
+@onready var bet_user_node_2 = find_child("BetUserNode2")
+@onready var bet_user_node_3 = find_child("BetUserNode3")
+func get_bet_user_node_by_seat(seat_id: int):
+	match seat_id:
+		0: 
+			return bet_user_node_0
+		1:
+			return bet_user_node_1
+		2:
+			return bet_user_node_2
+		3: 
+			return bet_user_node_3
+	return null
+	
 func _get_seat_position(mode_player: int, seat_id: int):
 	match seat_id:
 		0: 
@@ -921,7 +933,10 @@ func on_end_game(uids, is_wins, golds):
 					var anim_cup = anim_cup_scene.instantiate()
 					p.add_child(anim_cup)
 				p.eff_win_gold(gold)
-
+	
+	await ROOT.get_tree().create_timer(1).timeout
+	reset_scores()
+	self.remove_all_current_cards(true)
 func user_stand(uid):
 	if uid == g.v.game_constants.BANKER_DEFAULT_UID:
 		icon_banker_stand.visible = true
@@ -946,9 +961,10 @@ func user_stand(uid):
 		p.effect_user_stand()
 
 func on_start_betting():
-	reset_scores()
-	self.remove_all_current_cards(true)
-	await ROOT.get_tree().create_timer(0.5).timeout
+	game_start_lb.text = tr("GAME_START")
+	_eff_text_middle()
+	
+	await ROOT.get_tree().create_timer(1).timeout
 	self.update_game_state()
 
 var is_showing_pn_bet = false
@@ -968,7 +984,38 @@ func update_game_state():
 		self.bet_pn.visible = true
 		self.is_showing_pn_bet = true
 		self.bet_progress_time.visible = true
+		
+		# update display current user bets
+		for p in list_players:
+			var seat_id = p.user_data.game_data.seat_id
+			var user_bet_node = get_bet_user_node_by_seat(seat_id)
+			user_bet_node.visible = true
+			user_bet_node.modulate = 1
+			user_bet_node.update_bet(p.user_data.game_data.sette_bet)
+	elif state == MatchData.MATCH_STATE.PLAYING:
+		for p in list_players:
+			var seat_id = p.user_data.game_data.seat_id
+			var user_bet_node = get_bet_user_node_by_seat(seat_id)
+			if user_bet_node.visible:
+				var tw_bet_n = create_tween()
+				tw_bet_n.tween_property(
+					user_bet_node,
+					"modulate:a",
+					0,
+					0.5
+				)
+				tw_bet_n.tween_callback(
+					func():
+						user_bet_node.visible = false
+				)
+		
 	else:
+		for p in list_players:
+			var seat_id = p.user_data.game_data.seat_id
+			var user_bet_node = get_bet_user_node_by_seat(seat_id)	
+			user_bet_node.visible = false
+			
+	if state != MatchData.MATCH_STATE.BETTING:
 		self.bet_progress_time.visible = false
 		if self.is_showing_pn_bet:
 			var tw_bet = create_tween()
@@ -992,3 +1039,9 @@ func update_bet_time(value):
 func click_bet() -> void:
 	g.v.sette_mezzo_mgr.send_bet(self.bet_expect)
 	pass # Replace with function body.
+
+func on_user_bet(uid, bet):
+	var p = get_player_node_by_uid(uid)
+	var seat_id = p.user_data.game_data.seat_id
+	var user_bet_node = get_bet_user_node_by_seat(seat_id)
+	user_bet_node.update_bet(bet, p)

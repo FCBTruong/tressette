@@ -5655,6 +5655,11 @@ class SetteMezzoGameInfo:
 		service.field = _banker_cards
 		data[_banker_cards.tag] = service
 		
+		_player_bets = PBField.new("player_bets", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 24, true, [])
+		service = PBServiceField.new()
+		service.field = _player_bets
+		data[_player_bets.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -5854,6 +5859,15 @@ class SetteMezzoGameInfo:
 		_banker_cards.value = []
 	func add_banker_cards(value : int) -> void:
 		_banker_cards.value.append(value)
+	
+	var _player_bets: PBField
+	func get_player_bets() -> Array:
+		return _player_bets.value
+	func clear_player_bets() -> void:
+		data[24].state = PB_SERVICE_STATE.UNFILLED
+		_player_bets.value = []
+	func add_player_bets(value : int) -> void:
+		_player_bets.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

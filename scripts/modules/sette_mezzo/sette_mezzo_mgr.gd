@@ -75,6 +75,7 @@ func _handle_game_info(payload):
 	var avatars = pkg.get_avatars()
 	var team_ids = pkg.get_team_ids()
 	var is_in_games = pkg.get_is_in_games()
+	var player_bets = pkg.get_player_bets()
 	
 	var users: Array[UserData] = []
 	var player_infos = pkg.get_player_infos()
@@ -88,6 +89,7 @@ func _handle_game_info(payload):
 		userdata.avatar = avatars[i]
 		userdata.gold = golds[i]
 		userdata.game_data.is_in_game = is_in_games[i]
+		userdata.game_data.sette_bet = player_bets[i]
 		userdata.game_data.cards = pkg_player.get_card_ids()
 		if userdata.game_data.is_in_game:
 			playing_users.append(uid)
@@ -389,12 +391,15 @@ func _handle_register_leave_game(payload: PackedByteArray):
 		scene.update_register_leave_state()
 
 func _handle_start_betting(payload):
+	if not match_data:
+		return
 	self.match_data.state = MatchData.MATCH_STATE.BETTING
 	
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:
 		scene.on_start_betting()
 	for p in match_data.users:
+		p.game_data.sette_bet = 0
 		p.game_data.is_in_game = true
 
 func send_bet(bet_value: int):
@@ -404,8 +409,16 @@ func send_bet(bet_value: int):
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.SETTE_MEZZO_USER_BET, pkg.to_bytes())
 
 func _received_user_bet(payload):
+	if not match_data:
+		return
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoUserBet.new()
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var bet = pkg.get_bet()
+	
+	var p = get_user(uid)
+	p.game_data.sette_bet += bet
+	var scene = g.v.scene_manager.get_current_scene()
+	if scene is SetteMezzoScene:
+		scene.on_user_bet(uid, p.game_data.sette_bet)
 	pass
