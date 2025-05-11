@@ -2575,6 +2575,11 @@ class GeneralInfo:
 		service.field = _sette_mezzo_bet_scale
 		data[_sette_mezzo_bet_scale.tag] = service
 		
+		_min_gold_play_sette_mezzo = PBField.new("min_gold_play_sette_mezzo", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 9, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _min_gold_play_sette_mezzo
+		data[_min_gold_play_sette_mezzo.tag] = service
+		
 	var data = {}
 	
 	var _timestamp: PBField
@@ -2648,6 +2653,15 @@ class GeneralInfo:
 		_sette_mezzo_bet_scale.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_sette_mezzo_bet_scale(value : int) -> void:
 		_sette_mezzo_bet_scale.value = value
+	
+	var _min_gold_play_sette_mezzo: PBField
+	func get_min_gold_play_sette_mezzo() -> int:
+		return _min_gold_play_sette_mezzo.value
+	func clear_min_gold_play_sette_mezzo() -> void:
+		data[9].state = PB_SERVICE_STATE.UNFILLED
+		_min_gold_play_sette_mezzo.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_min_gold_play_sette_mezzo(value : int) -> void:
+		_min_gold_play_sette_mezzo.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -5660,6 +5674,11 @@ class SetteMezzoGameInfo:
 		service.field = _player_bets
 		data[_player_bets.tag] = service
 		
+		_time_end_bet = PBField.new("time_end_bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 25, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _time_end_bet
+		data[_time_end_bet.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -5868,6 +5887,15 @@ class SetteMezzoGameInfo:
 		_player_bets.value = []
 	func add_player_bets(value : int) -> void:
 		_player_bets.value.append(value)
+	
+	var _time_end_bet: PBField
+	func get_time_end_bet() -> int:
+		return _time_end_bet.value
+	func clear_time_end_bet() -> void:
+		data[25].state = PB_SERVICE_STATE.UNFILLED
+		_time_end_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_time_end_bet(value : int) -> void:
+		_time_end_bet.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -6653,10 +6681,15 @@ class SetteMezzoEndGame:
 		service.field = _is_wins
 		data[_is_wins.tag] = service
 		
-		_golds = PBField.new("golds", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 4, true, [])
+		_golds_change = PBField.new("golds_change", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 4, true, [])
 		service = PBServiceField.new()
-		service.field = _golds
-		data[_golds.tag] = service
+		service.field = _golds_change
+		data[_golds_change.tag] = service
+		
+		_player_golds = PBField.new("player_golds", PB_DATA_TYPE.INT64, PB_RULE.REPEATED, 5, true, [])
+		service = PBServiceField.new()
+		service.field = _player_golds
+		data[_player_golds.tag] = service
 		
 	var data = {}
 	
@@ -6687,14 +6720,23 @@ class SetteMezzoEndGame:
 	func add_is_wins(value : bool) -> void:
 		_is_wins.value.append(value)
 	
-	var _golds: PBField
-	func get_golds() -> Array:
-		return _golds.value
-	func clear_golds() -> void:
+	var _golds_change: PBField
+	func get_golds_change() -> Array:
+		return _golds_change.value
+	func clear_golds_change() -> void:
 		data[4].state = PB_SERVICE_STATE.UNFILLED
-		_golds.value = []
-	func add_golds(value : int) -> void:
-		_golds.value.append(value)
+		_golds_change.value = []
+	func add_golds_change(value : int) -> void:
+		_golds_change.value.append(value)
+	
+	var _player_golds: PBField
+	func get_player_golds() -> Array:
+		return _player_golds.value
+	func clear_player_golds() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_player_golds.value = []
+	func add_player_golds(value : int) -> void:
+		_player_golds.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -6762,7 +6804,21 @@ class SetteMezzoBetting:
 	func _init():
 		var service
 		
+		_time_end_bet = PBField.new("time_end_bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _time_end_bet
+		data[_time_end_bet.tag] = service
+		
 	var data = {}
+	
+	var _time_end_bet: PBField
+	func get_time_end_bet() -> int:
+		return _time_end_bet.value
+	func clear_time_end_bet() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_time_end_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_time_end_bet(value : int) -> void:
+		_time_end_bet.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

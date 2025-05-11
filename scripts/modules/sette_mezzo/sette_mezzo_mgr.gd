@@ -7,6 +7,8 @@ var dealer_cards = []
 var playing_users = []
 var play_turn_time = 0 # server timestamp, time player must play
 var is_registered_leave = false
+var time_end_bet
+var time_bet_total = 10
 class SetteDealCard:
 	var uid: int
 	var card: int
@@ -66,6 +68,7 @@ func _handle_game_info(payload):
 	match_data.banker_uid = pkg.get_banker_uid()
 	dealer_cards = pkg.get_banker_cards()
 	play_turn_time = pkg.get_play_turn_time()
+	self.time_end_bet = pkg.get_time_end_bet()
 	self.is_registered_leave = pkg.get_is_registered_leave()
 	
 	var uids = pkg.get_uids()
@@ -120,6 +123,21 @@ func _handle_game_info(payload):
 
 
 func quick_play():
+	if g.v.player_info_mgr.my_user_data.gold < g.v.game_server_config.min_gold_play_sette_mezzo:
+		var str_noti = tr('NOT_ENOUGH_MIN_GOLD_PLAY_BUY')
+		str_noti = str_noti.replace("@num", StringUtils.point_number(g.v.game_server_config.min_gold_play_sette_mezzo))
+		g.v.scene_manager.show_dialog(
+				str_noti
+				,
+				func ():
+					g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
+				func ():
+					pass,
+				true
+			)
+			
+		return
+	g.v.scene_manager.add_loading(3)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.SETTE_MEZZO_QUICK_PLAY, [])
 	pass
 
@@ -368,10 +386,19 @@ func _handle_end_game(payload):
 	var uids = pkg.get_uids()
 	var is_wins = pkg.get_is_wins()
 	var scores = pkg.get_scores()
-	var golds = pkg.get_golds()
+	var golds_change = pkg.get_golds_change()
+	
+	var player_golds = pkg.get_player_golds()
+	
+	for i in range(len(uids)):
+		var gold = player_golds[i]
+		var uid = uids[i]
+		var u = get_user(uid)
+		u.gold = gold
+		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [uid])
 	
 	if scene is SetteMezzoScene:
-		scene.on_end_game(uids, is_wins, golds)
+		scene.on_end_game(uids, is_wins, golds_change)
 	pass
 
 func _handle_register_leave_game(payload: PackedByteArray):
@@ -393,8 +420,11 @@ func _handle_register_leave_game(payload: PackedByteArray):
 func _handle_start_betting(payload):
 	if not match_data:
 		return
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.SetteMezzoBetting.new()
+	var result_code = pkg.from_bytes(payload)
 	self.match_data.state = MatchData.MATCH_STATE.BETTING
-	
+	self.time_end_bet = pkg.get_time_end_bet()
+	self.time_bet_total = self.time_end_bet - g.v.game_manager.get_timestamp_server()
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:
 		scene.on_start_betting()
@@ -418,6 +448,9 @@ func _received_user_bet(payload):
 	
 	var p = get_user(uid)
 	p.game_data.sette_bet += bet
+	p.gold -= bet
+	
+	g.v.signal_bus.emit_signal_global("ingame_update_player_money", [p.uid])
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:
 		scene.on_user_bet(uid, p.game_data.sette_bet)

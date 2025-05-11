@@ -419,6 +419,7 @@ offset_top = -81.0
 offset_right = 40.0
 offset_bottom = 39.0
 pivot_offset = Vector2(45, 80)
+mouse_filter = 2
 texture = ExtResource("16_wmjaw")
 expand_mode = 1
 

@@ -125,6 +125,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			g.v.game_server_config.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
 			g.v.game_server_config.min_gold_play = g.v.game_server_config.tressette_bets[0] * g.v.game_server_config.bet_multiplier_min
 			g.v.game_server_config.sette_mezzo_bet_scale = pkg.get_sette_mezzo_bet_scale()
+			g.v.game_server_config.min_gold_play_sette_mezzo = pkg.get_min_gold_play_sette_mezzo()
 		g.v.game_constants.CMDs.TABLE_LIST:
 			if g.v.app_version.is_in_review():
 				return 

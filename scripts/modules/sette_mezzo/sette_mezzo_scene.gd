@@ -860,6 +860,9 @@ func user_hit_card(uid, card_id) -> void:
 	ins.global_position = start_pos
 	var arr = get_pos_card_table(seat_id)
 	var j = 0
+	
+	if g.v.game_manager.enable_sound:
+		$AudioDrawCard.play()
 	for c in self.node_card_map[seat_id]:
 		if c == ins:
 			continue
@@ -980,7 +983,8 @@ func update_game_state():
 			1,
 			0.3
 		)
-		tw_bet.parallel().tween_method(update_bet_time, 100.0, 0.0, 10.0)
+		var remain = game_logic.time_end_bet - g.v.game_manager.get_timestamp_server()
+		tw_bet.parallel().tween_method(update_bet_time, 100.0, 0.0, remain)
 		self.bet_pn.visible = true
 		self.is_showing_pn_bet = true
 		self.bet_progress_time.visible = true
@@ -990,7 +994,7 @@ func update_game_state():
 			var seat_id = p.user_data.game_data.seat_id
 			var user_bet_node = get_bet_user_node_by_seat(seat_id)
 			user_bet_node.visible = true
-			user_bet_node.modulate = 1
+			user_bet_node.modulate.a = 1
 			user_bet_node.update_bet(p.user_data.game_data.sette_bet)
 	elif state == MatchData.MATCH_STATE.PLAYING:
 		for p in list_players:

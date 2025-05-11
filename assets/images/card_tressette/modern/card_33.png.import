@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvqogf01okp4j"
-path.s3tc="res://.godot/imported/card_33.png-29c01f7ed01de3587ba3de5293a5c115.s3tc.ctex"
-path.etc2="res://.godot/imported/card_33.png-29c01f7ed01de3587ba3de5293a5c115.etc2.ctex"
+path="res://.godot/imported/card_33.png-29c01f7ed01de3587ba3de5293a5c115.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/images/card_tressette/modern/card_33.png"
-dest_files=["res://.godot/imported/card_33.png-29c01f7ed01de3587ba3de5293a5c115.s3tc.ctex", "res://.godot/imported/card_33.png-29c01f7ed01de3587ba3de5293a5c115.etc2.ctex"]
+dest_files=["res://.godot/imported/card_33.png-29c01f7ed01de3587ba3de5293a5c115.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

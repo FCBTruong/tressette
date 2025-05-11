@@ -11,6 +11,8 @@ func _ready() -> void:
 var tw
 var current_bet: int = 0
 func update_bet(bet: int, p = null):
+	for c in icon_chip.get_children():
+		c.queue_free()
 	if bet == 0:
 		main.visible = false
 	else:
@@ -26,7 +28,7 @@ func update_bet(bet: int, p = null):
 		for i in range(num):
 			
 			var sprite = Sprite2D.new()
-			self.add_child(sprite)
+			icon_chip.add_child(sprite)
 			sprite.z_index = 1
 			sprite.global_position = start_p
 			sprite.modulate.a = 0
