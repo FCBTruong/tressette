@@ -246,3 +246,6 @@ func format_time(remain: int) -> String:
 
 func play_sette_mezzo():
 	g.v.sette_mezzo_mgr.quick_play()
+
+func open_fb_group():
+	OS.shell_open("https://www.facebook.com/share/g/1ALgWc7Lg9/")

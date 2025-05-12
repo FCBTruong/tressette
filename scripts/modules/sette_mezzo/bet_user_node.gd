@@ -62,7 +62,8 @@ func update_bet(bet: int, p = null):
 			tw.parallel().tween_callback(
 				func():
 					g.v.sound_manager.play_coin_hit_sound()
-					sprite.queue_free()
+					if sprite:
+						sprite.queue_free()
 			).set_delay(delay + time_move + 0.1)
 			
 			if i == num - 1:

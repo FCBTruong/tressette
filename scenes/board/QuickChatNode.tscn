@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_ullgl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e6yh"]
-bg_color = Color(0.618802, 0.283191, 0.193418, 0.362)
+bg_color = Color(0.466057, 0.2832, 0.231496, 0.643137)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -27,7 +27,7 @@ flat = true
 script = ExtResource("2_ullgl")
 
 [node name="Label" type="Label" parent="Button"]
-self_modulate = Color(0.842827, 0.842827, 0.842827, 1)
+self_modulate = Color(0.920897, 0.91467, 0.91467, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

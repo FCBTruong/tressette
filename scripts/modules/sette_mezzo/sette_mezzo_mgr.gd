@@ -260,7 +260,6 @@ func _handle_user_join_match(payload: PackedByteArray):
 			# update info
 			user.uid = uid
 			user.name = name
-			user.game_data = UserGameData.new()
 			user.game_data.team_id = team_id
 			user.game_data.is_in_game = not self.is_game_started()
 			user.avatar = avatar

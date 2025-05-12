@@ -1,22 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvs3cl10d1nap"]
+[gd_scene load_steps=12 format=3 uid="uid://cvs3cl10d1nap"]
 
 [ext_resource type="Script" path="res://scripts/game/ingame_chat_gui.gd" id="1_45c2r"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="2_28jub"]
-[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_wkwjg"]
 [ext_resource type="Texture2D" uid="uid://yuqomgxpxw4w" path="res://assets/images/board/send_icon.png" id="3_82s7o"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_jsdfg"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_htv7n"]
 [ext_resource type="PackedScene" uid="uid://dmdvm1nrf0ws5" path="res://scenes/board/QuickChatNode.tscn" id="7_fi4nl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5gj3"]
-bg_color = Color(0.802095, 0.51041, 0.110923, 1)
+bg_color = Color(0.130018, 0.10575, 0.0829654, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2roa"]
-bg_color = Color(0.910714, 0.800103, 0.664983, 1)
+bg_color = Color(0.920897, 0.808673, 0.623968, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 shadow_color = Color(0, 0, 0, 0.2)
@@ -24,13 +23,10 @@ shadow_size = 2
 shadow_offset = Vector2(2, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p0y5"]
-bg_color = Color(0.740997, 0.282336, 0.0927275, 1)
+bg_color = Color(0.516972, 0.192166, 0.0578934, 1)
 shadow_color = Color(0.354044, 0.354044, 0.354044, 0.2)
 shadow_size = 4
 shadow_offset = Vector2(0, 2)
-
-[sub_resource type="Theme" id="Theme_xbg3o"]
-default_font = ExtResource("2_wkwjg")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwea3"]
 
@@ -140,7 +136,7 @@ offset_right = 22.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.807843)
+theme_override_colors/font_color = Color(1, 1, 1, 0.941176)
 theme_override_fonts/font = ExtResource("4_htv7n")
 theme_override_font_sizes/font_size = 30
 text = "ROOM"
@@ -190,7 +186,6 @@ layout_mode = 2
 [node name="HBoxContainer" type="Control" parent="MainPn/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme = SubResource("Theme_xbg3o")
 
 [node name="LineEdit" type="LineEdit" parent="MainPn/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
