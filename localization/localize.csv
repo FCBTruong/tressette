@@ -189,3 +189,22 @@ STAND,Stand,Sto,,
 TEXT_ASK_USER_PAY,"Dear Tressette lover,
 We’re a small indie team, out of budget but not out of love for this game. If you’ve enjoyed it, please help us keep it alive and growing. Your support means everything.","Caro amante del Tressette,
 Siamo un piccolo team indipendente, con poche risorse ma tanto amore per questo gioco. Se ti sta piacendo, aiutaci a tenerlo vivo e a farlo crescere. Il tuo supporto vale tantissimo.",,
+BANKER,Banker,il banco,,
+SETTE_GUIDE_0,- Get as close to 7.5 as possible without going over.,* Avvicinati il più possibile a 7 e mezzo senza superarlo.,,
+SETTE_GUIDE_1,"- Number cards = face value
+- Face cards = 0.5
+- King of Coins = wild (any value)","* Carte numeriche = valore nominale
+* Figure = 0,5
+* Re di Denari = jolly (qualsiasi valore)
+",,
+SETTE_GUIDE_2,"- Each player gets 1 card.
+- On your turn: draw or stay.
+- Over 7.5 = lose.
+- Dealer draws until at least 5, then may stop.
+","* Ogni giocatore riceve 1 carta.
+* Al tuo turno: pesca o resta.
+* Oltre 7 e mezzo = sconfitta.
+* Il banco pesca fino ad almeno 5, poi può fermarsi.
+",,
+SETTE_GUIDE_3,- Closest to 7.5 wins. Ties go to dealer.,"* Il più vicino a 7 e mezzo vince. In caso di pareggio vince il banco.
+",,

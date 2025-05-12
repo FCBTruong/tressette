@@ -11,6 +11,7 @@ var place_card_node = null
 var tween: Tween
 var tween_animate: Tween
 var is_portrait = false
+var did_show_start_eff = false
 @onready var players_pn = find_child("PlayersPn")
 @onready var center_play_pn = find_child('CenterPlayPn')
 @onready var cardback_node = find_child('CardBack')
@@ -67,8 +68,14 @@ var start_card_pos
 @onready var dealer_burst_eff = dealer_node.find_child("ExplosionBurst")
 var bet_expect = 0
 func _ready() -> void:	
+	did_show_start_eff = false
 	action_btn_pn.visible = false
 	self.bet_pn.visible = false 
+	self.bet_user_node_0.visible = false
+	self.bet_user_node_1.visible = false
+	self.bet_user_node_2.visible = false
+	self.bet_user_node_3.visible = false
+	
 	self.find_child("EmoChat").visible = true
 	icon_banker_stand.visible = false
 	start_card_pos = dealer_node.global_position
@@ -334,14 +341,15 @@ func on_new_round():
 	game_start_lb.text = tr("ROUND") + " " + str(game_logic.match_data.current_round)
 	_eff_text_middle()
 	
-func on_update_players():
+func on_update_players(uid = -1):
 	var players_info = game_logic.get_list_player()
-	var i = 0
 
-	for info in players_info:
+	for i in range(len(players_info)):
+		var info = players_info[i]
+		if uid != -1 and info.uid != uid:
+			continue
 		list_players[i].set_user_data(info)
 		list_players[i].update_state_ingame()
-		i += 1
 	update_player_seat()
 	
 # Function to create players
@@ -494,22 +502,30 @@ func remove_all_current_cards(eff = false):
 	
 	for card in list:
 		if eff:
+			var dl = 0.2
 			tw.tween_property(
 				card,
 				"global_position",
 				start_card_pos,
 				0.4
-			)
+			).set_delay(dl)
 			tw.tween_property(
 				card,
 				"scale",
 				Vector2(0.2, 0.2),
 				0.4
-			)
+			).set_delay(dl)
+			tw.tween_property(
+				card,
+				"rotation_degrees",
+				-180,
+				0.4
+			).set_delay(dl)
+			card.hide_card(0.4)
 			tw.tween_callback(
 				func():
 					card.queue_free()
-			).set_delay(0.4)
+			).set_delay(0.4 + dl)
 		else:
 			card.queue_free()
 		
@@ -764,7 +780,7 @@ func _open_settings_gui() -> void:
 	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn")
 
 func _open_guide_gui() -> void:
-	g.v.game_manager.open_guide_gui()
+	g.v.sette_mezzo_mgr.open_guide_gui()
 	
 func on_finish_effect_contribute_pot():
 	var cur_pot_value =  StringUtils.convert_point_string_to_int(pot_value_lb.text)
@@ -923,6 +939,11 @@ func dealer_show_card(card_id):
 
 var anim_cup_scene = preload("res://scenes/board/AnimCupWin.tscn")
 func on_end_game(uids, is_wins, golds):
+	for x in range(len(uids)):
+		if uids[x] == g.v.player_info_mgr.get_user_id():
+			if is_wins[x]:
+				g.v.sound_manager.play_win_congrat_sound()
+	
 	for p in list_players:
 		p.update_state_ingame()
 		if p.user_data.uid == -1:
@@ -964,11 +985,17 @@ func user_stand(uid):
 		p.effect_user_stand()
 
 func on_start_betting():
-	game_start_lb.text = tr("GAME_START")
-	_eff_text_middle()
+	if not self.did_show_start_eff:
+		game_start_lb.text = tr("GAME_START")
+		_eff_text_middle()
+		self.did_show_start_eff = true
+	
+	self.update_suitable_bet()
 	
 	await ROOT.get_tree().create_timer(1).timeout
 	self.update_game_state()
+	#if g.v.game_manager.enable_sound:
+		#$AudioClockTick.play()
 
 var is_showing_pn_bet = false
 func update_game_state():
@@ -985,7 +1012,7 @@ func update_game_state():
 		)
 		var remain = game_logic.time_end_bet - g.v.game_manager.get_timestamp_server()
 		tw_bet.parallel().tween_method(update_bet_time, 100.0, 0.0, remain)
-		self.bet_pn.visible = true
+		self.bet_pn.visible = g.v.sette_mezzo_mgr.is_me_in_game()
 		self.is_showing_pn_bet = true
 		self.bet_progress_time.visible = true
 		
@@ -1006,8 +1033,8 @@ func update_game_state():
 					user_bet_node,
 					"modulate:a",
 					0,
-					0.5
-				)
+					0.2
+				).set_delay(1.3)
 				tw_bet_n.tween_callback(
 					func():
 						user_bet_node.visible = false

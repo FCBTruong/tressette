@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://6mwjo3fjpdd3"]
+[gd_scene load_steps=24 format=3 uid="uid://6mwjo3fjpdd3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/settemezzo_player.gd" id="1_qmmjy"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_sbcn4"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="6_rsse8"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="7_us3mp"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="8_8shjw"]
+[ext_resource type="Texture2D" uid="uid://b0kfn073sb074" path="res://assets/images/lobby/circles/loading_avatar.png" id="9_cismx"]
 [ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="9_wp0jc"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="10_5wuyx"]
 [ext_resource type="Texture2D" uid="uid://drmwf5psvwa1h" path="res://assets/images/lobby/user_info_gui/vip_icon.png" id="11_dv45j"]
@@ -297,8 +298,6 @@ flat = true
 script = ExtResource("8_8shjw")
 
 [node name="TimeProgressBar" type="TextureProgressBar" parent="MainPn"]
-visible = false
-self_modulate = Color(1, 0.888832, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -317,10 +316,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 step = 0.001
-value = 100.0
+value = 50.0
 fill_mode = 5
 nine_patch_stretch = true
-texture_progress = ExtResource("9_wp0jc")
+texture_progress = ExtResource("9_cismx")
 
 [node name="VipIcon" type="TextureRect" parent="MainPn"]
 material = SubResource("ShaderMaterial_rpnew")

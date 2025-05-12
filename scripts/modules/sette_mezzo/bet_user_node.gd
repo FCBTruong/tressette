@@ -38,7 +38,7 @@ func update_bet(bet: int, p = null):
 			var des_p = icon_chip.global_position
 			des_p.x += 20
 			des_p.y += 20
-			var time_move = 0.4
+			var time_move = 0.3
 			tw.parallel().tween_property(
 				sprite,
 				"global_position",
@@ -68,14 +68,14 @@ func update_bet(bet: int, p = null):
 				# last
 				tw.parallel().tween_method(
 					self.on_running_update_bet, current_bet, bet, 
-					0.5).set_delay(delay + time_move)
+					0.2).set_delay(delay + time_move)
 				tw.parallel().tween_callback(
 					func():
 						current_bet = bet
 						self.label.text = StringUtils.symbol_number(bet)
 				).set_delay(delay + time_move + 0.5)
 			
-			delay += 0.1
+			delay += 0.05
 	else:	
 		current_bet = bet
 		# effect fly and show bet

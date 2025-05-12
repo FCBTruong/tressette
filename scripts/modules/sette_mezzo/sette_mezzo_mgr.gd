@@ -173,7 +173,7 @@ func _handle_user_leave_match(payload: PackedByteArray):
 			user.uid = -1
 	
 	# reload
-	board_scene.on_update_players()
+	board_scene.on_update_players(uid)
 	
 	
 func get_user(uid: int) -> UserData:
@@ -261,7 +261,9 @@ func _handle_user_join_match(payload: PackedByteArray):
 			# update info
 			user.uid = uid
 			user.name = name
+			user.game_data = UserGameData.new()
 			user.game_data.team_id = team_id
+			user.game_data.is_in_game = not self.is_game_started()
 			user.avatar = avatar
 			user.gold = gold
 			
@@ -271,7 +273,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 	# reload
 	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is SetteMezzoScene:
-		cur_scene.on_update_players()
+		cur_scene.on_update_players(uid)
 	
 func action_hit():
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.SETTE_MEZZO_ACTION_HIT, [])
@@ -426,11 +428,13 @@ func _handle_start_betting(payload):
 	self.time_end_bet = pkg.get_time_end_bet()
 	self.time_bet_total = self.time_end_bet - g.v.game_manager.get_timestamp_server()
 	var scene = g.v.scene_manager.get_current_scene()
-	if scene is SetteMezzoScene:
-		scene.on_start_betting()
+	
 	for p in match_data.users:
 		p.game_data.sette_bet = 0
 		p.game_data.is_in_game = true
+		
+	if scene is SetteMezzoScene:
+		scene.on_start_betting()
 
 func send_bet(bet_value: int):
 	print("user bet::: ", bet_value)
@@ -455,3 +459,23 @@ func _received_user_bet(payload):
 	if scene is SetteMezzoScene:
 		scene.on_user_bet(uid, p.game_data.sette_bet)
 	pass
+
+
+func open_guide_gui():
+	return g.v.scene_manager.open_gui("res://scenes/sette_mezzo/SetteMezzoGuideGUI.tscn")
+
+func is_me_in_game():
+	if not match_data:
+		return false
+	for uid in self.playing_users:
+		if uid == g.v.player_info_mgr.get_user_id():
+			return true
+	return false
+	
+func is_game_started():
+	if not match_data:
+		return false
+	if self.match_data.state == MatchData.MATCH_STATE.PLAYING \
+		or self.match_data.state == MatchData.MATCH_STATE.BETTING:
+			return true
+	return false

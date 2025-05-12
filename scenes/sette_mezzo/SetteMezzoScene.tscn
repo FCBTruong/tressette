@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bjbyaluspvll3"]
+[gd_scene load_steps=44 format=3 uid="uid://bjbyaluspvll3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/sette_mezzo_scene.gd" id="1_gx0u6"]
 [ext_resource type="Texture2D" uid="uid://hjvfin0rocla" path="res://assets/images/board/sette_mezzo/bg.jpg" id="2_n181u"]
@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="30_61i65"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="31_0oam1"]
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="32_e8pgo"]
+[ext_resource type="AudioStream" uid="uid://g0su4roe1kup" path="res://assets/sounds/clock_tick_sound.mp3" id="33_87es2"]
 [ext_resource type="AudioStream" uid="uid://65ai1lcqaggo" path="res://assets/sounds/win_turn_sound.wav" id="33_683u7"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="34_h1l13"]
 
@@ -81,21 +82,21 @@ shadow_color = Color(0, 0, 0, 0.192157)
 shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1c8f8"]
-bg_color = Color(0.196078, 0.160784, 0.160784, 0.780392)
+bg_color = Color(0.374112, 0.415142, 0.377615, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 shadow_color = Color(0, 0, 0, 0.168627)
 shadow_size = 2
 shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyddj"]
-bg_color = Color(0.93108, 0.34484, 0.137946, 1)
+bg_color = Color(0.93108, 0.725848, 0.137946, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -240,6 +241,7 @@ theme_override_font_sizes/font_size = 16
 text = "BANKER"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="ExplosionBurst" parent="CanvasLayer/PlayGround/CenterPlayPn/Dealer" instance=ExtResource("9_j5fyy")]
 position = Vector2(45, 64)
@@ -433,9 +435,9 @@ vertical_alignment = 1
 [node name="BetUserNode3" type="Control" parent="CanvasLayer/PlayGround/CenterPlayPn"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 14.0
+offset_left = 36.0
 offset_top = 41.0
-offset_right = 314.0
+offset_right = 336.0
 offset_bottom = 81.0
 mouse_filter = 1
 script = ExtResource("9_rk0ug")
@@ -794,15 +796,17 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -199.0
-offset_top = -69.0
+offset_top = -47.0
 offset_right = 199.0
-offset_bottom = 55.0
+offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_h67wp")
 theme_override_font_sizes/font_size = 40
 text = "GAME_START"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="CountdownStartLb" type="Label" parent="CanvasLayer/PlayGround"]
 modulate = Color(0.985389, 0.754896, 0.291801, 1)
@@ -1495,6 +1499,10 @@ volume_db = 5.0
 [node name="AudioWinTurn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("33_683u7")
 volume_db = 1.0
+
+[node name="AudioClockTick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_87es2")
+volume_db = 12.0
 
 [node name="AudioPlayCard" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("34_h1l13")

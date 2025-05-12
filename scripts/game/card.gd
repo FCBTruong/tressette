@@ -149,7 +149,7 @@ func show_card(effect_flip: bool = false, callback = null):
 				func():
 					callback.call()
 			)
-func hide_card():
+func hide_card(time_flip = 0.5):
 	# Ensure no other tween is running
 	if tween and tween.is_running():
 		tween.kill()
@@ -157,7 +157,6 @@ func hide_card():
 	# Create a new tween
 	tween = create_tween()
 
-	var time_flip = 0.5
 	var halfway_time = time_flip / 2
 
 	# First part: Scale X to 0 (flip card to its edge)

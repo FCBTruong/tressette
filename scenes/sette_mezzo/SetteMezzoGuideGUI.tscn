@@ -1,0 +1,243 @@
+[gd_scene load_steps=6 format=3 uid="uid://2t0a82l1je3i"]
+
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="1_cdwb0"]
+[ext_resource type="Script" path="res://scripts/modules/sette_mezzo/sette_mezzo_guide_gui.gd" id="1_gmh45"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_xdocs"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="3_oc2vs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vt5cf"]
+bg_color = Color(0.516972, 0.397705, 0.287385, 1)
+
+[node name="SetteMezzoGuideGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gmh45")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.631373)
+
+[node name="Main" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vt5cf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 47.0
+offset_right = 826.0
+offset_bottom = 479.0
+
+[node name="Label" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.897137, 0.897137, 0.897137, 1)
+theme_override_fonts/font = ExtResource("1_cdwb0")
+theme_override_font_sizes/font_size = 24
+text = "SETTE_GUIDE_0"
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Label"]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -35.0
+offset_right = 124.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(0.995572, 0.855313, 0.222796, 1)
+theme_override_fonts/font = ExtResource("2_xdocs")
+theme_override_font_sizes/font_size = 28
+text = "Goal:"
+
+[node name="Control" type="Control" parent="Main/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.897137, 0.897137, 0.897137, 1)
+theme_override_fonts/font = ExtResource("1_cdwb0")
+theme_override_font_sizes/font_size = 24
+text = "SETTE_GUIDE_1"
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Label2"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -31.0
+offset_right = 123.0
+theme_override_colors/font_color = Color(0.995572, 0.855313, 0.222796, 1)
+theme_override_fonts/font = ExtResource("2_xdocs")
+theme_override_font_sizes/font_size = 28
+text = "Cards:"
+
+[node name="Control2" type="Control" parent="Main/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.897137, 0.897137, 0.897137, 1)
+theme_override_fonts/font = ExtResource("1_cdwb0")
+theme_override_font_sizes/font_size = 24
+text = "SETTE_GUIDE_2"
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Label3"]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -32.0
+offset_right = 124.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.995572, 0.855313, 0.222796, 1)
+theme_override_fonts/font = ExtResource("2_xdocs")
+theme_override_font_sizes/font_size = 28
+text = "How to Play:"
+
+[node name="Control3" type="Control" parent="Main/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Main/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.897137, 0.897137, 0.897137, 1)
+theme_override_fonts/font = ExtResource("1_cdwb0")
+theme_override_font_sizes/font_size = 24
+text = "SETTE_GUIDE_2"
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Label4"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -32.0
+offset_right = 127.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.995572, 0.855313, 0.222796, 1)
+theme_override_fonts/font = ExtResource("2_xdocs")
+theme_override_font_sizes/font_size = 28
+text = "Winner"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 47.0
+offset_right = 826.0
+offset_bottom = 479.0
+
+[node name="Label" type="Label" parent="Main/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.897137, 0.897137, 0.897137, 1)
+theme_override_fonts/font = ExtResource("1_cdwb0")
+theme_override_font_sizes/font_size = 24
+text = "SETTE_GUIDE_0"
+
+[node name="Label" type="Label" parent="Main/VBoxContainer2/Label"]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -35.0
+offset_right = 124.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(0.995572, 0.855313, 0.222796, 1)
+theme_override_fonts/font = ExtResource("2_xdocs")
+theme_override_font_sizes/font_size = 28
+text = "Goal:"
+
+[node name="Control" type="Control" parent="Main/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Main/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.897137, 0.897137, 0.897137, 1)
+theme_override_fonts/font = ExtResource("1_cdwb0")
+theme_override_font_sizes/font_size = 24
+text = "SETTE_GUIDE_1"
+
+[node name="Label" type="Label" parent="Main/VBoxContainer2/Label2"]
+layout_mode = 0
+offset_left = -45.0
+offset_top = -31.0
+offset_right = 123.0
+theme_override_colors/font_color = Color(0.995572, 0.855313, 0.222796, 1)
+theme_override_fonts/font = ExtResource("2_xdocs")
+theme_override_font_sizes/font_size = 28
+text = "Cards:"
+
+[node name="Control2" type="Control" parent="Main/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Main/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.897137, 0.897137, 0.897137, 1)
+theme_override_fonts/font = ExtResource("1_cdwb0")
+theme_override_font_sizes/font_size = 24
+text = "SETTE_GUIDE_2"
+
+[node name="Label" type="Label" parent="Main/VBoxContainer2/Label3"]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -32.0
+offset_right = 124.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.995572, 0.855313, 0.222796, 1)
+theme_override_fonts/font = ExtResource("2_xdocs")
+theme_override_font_sizes/font_size = 28
+text = "How to Play:"
+
+[node name="Control3" type="Control" parent="Main/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Main/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.897137, 0.897137, 0.897137, 1)
+theme_override_fonts/font = ExtResource("1_cdwb0")
+theme_override_font_sizes/font_size = 24
+text = "SETTE_GUIDE_2"
+
+[node name="Label" type="Label" parent="Main/VBoxContainer2/Label4"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -32.0
+offset_right = 127.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.995572, 0.855313, 0.222796, 1)
+theme_override_fonts/font = ExtResource("2_xdocs")
+theme_override_font_sizes/font_size = 28
+text = "Winner"
+
+[node name="Button" type="Button" parent="Main"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 768.0
+offset_top = -11.0
+offset_right = 818.0
+offset_bottom = 39.0
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="Main/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_oc2vs")
+expand_mode = 1
+
+[connection signal="pressed" from="Main/Button" to="." method="on_close"]

@@ -53,7 +53,7 @@ func switch_scene(new_scene_path: String) -> void:
 	else:
 		scene = load(new_scene_path)
 		scene_nodes[new_scene_path] = scene
-		
+
 	if tween_trans_scene and tween_trans_scene.is_running():
 		tween_trans_scene.kill()
 		if old_scene and is_instance_valid(_cur_scene):
