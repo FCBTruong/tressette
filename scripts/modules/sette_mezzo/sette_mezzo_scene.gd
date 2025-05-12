@@ -502,7 +502,7 @@ func remove_all_current_cards(eff = false):
 	
 	for card in list:
 		if eff:
-			var dl = 0.2
+			var dl = 0
 			tw.tween_property(
 				card,
 				"global_position",
@@ -518,10 +518,9 @@ func remove_all_current_cards(eff = false):
 			tw.tween_property(
 				card,
 				"rotation_degrees",
-				-180,
+				-30,
 				0.4
 			).set_delay(dl)
-			card.hide_card(0.4)
 			tw.tween_callback(
 				func():
 					card.queue_free()
@@ -942,7 +941,7 @@ func on_end_game(uids, is_wins, golds):
 	for x in range(len(uids)):
 		if uids[x] == g.v.player_info_mgr.get_user_id():
 			if is_wins[x]:
-				g.v.sound_manager.play_win_congrat_sound()
+				g.v.sound_manager.play_win_sette_mezzo_sound()
 	
 	for p in list_players:
 		p.update_state_ingame()
@@ -962,6 +961,7 @@ func on_end_game(uids, is_wins, golds):
 	reset_scores()
 	self.remove_all_current_cards(true)
 func user_stand(uid):
+	g.v.sound_manager.play_stop_sound()
 	if uid == g.v.game_constants.BANKER_DEFAULT_UID:
 		icon_banker_stand.visible = true
 		icon_banker_stand.modulate.a = 1

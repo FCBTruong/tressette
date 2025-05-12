@@ -204,7 +204,7 @@ func _start_game(payload: PackedByteArray):
 	dealer_cards = []
 	var i = 0
 	var card_deal = []
-	playing_users.clear()
+
 	for uid in uids:
 		var a = SetteDealCard.new()
 		a.uid = uid
@@ -216,7 +216,6 @@ func _start_game(payload: PackedByteArray):
 			continue
 		var p = get_user(uid)
 		p.game_data.cards = [cards[i]]
-		playing_users.append(uid)
 		i += 1
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is SetteMezzoScene:
@@ -429,9 +428,11 @@ func _handle_start_betting(payload):
 	self.time_bet_total = self.time_end_bet - g.v.game_manager.get_timestamp_server()
 	var scene = g.v.scene_manager.get_current_scene()
 	
+	playing_users.clear()
 	for p in match_data.users:
 		p.game_data.sette_bet = 0
 		p.game_data.is_in_game = true
+		playing_users.append(p.uid)
 		
 	if scene is SetteMezzoScene:
 		scene.on_start_betting()

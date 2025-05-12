@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/lobby/guide_gui.gd" id="1_1mjrk"]
 [ext_resource type="Texture2D" uid="uid://cnbar72oe1dav" path="res://assets/images/card_tressette/classic/12.png" id="2_m2d06"]
+[ext_resource type="Texture2D" uid="uid://cne3uht787npy" path="res://assets/images/dialog/bg_2.png" id="2_sjod5"]
 [ext_resource type="Texture2D" uid="uid://biy1c0pi2unn2" path="res://assets/images/card_tressette/classic/16.png" id="3_dafih"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_gvjlj"]
 [ext_resource type="Texture2D" uid="uid://dyn4is37a3ufv" path="res://assets/images/card_tressette/classic/20.png" id="4_f3b6x"]
@@ -22,18 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://cmtfqx8k4e5hh" path="res://assets/images/card_tressette/classic/9.png" id="17_tqcw4"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="21_dgt1r"]
 [ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="22_qtxu7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ap7gx"]
-bg_color = Color(0.673111, 0.443396, 0.272368, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.0553428, 0.0469474, 0.0364065, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4qms"]
 shader = ExtResource("9_i8dyd")
@@ -77,7 +66,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.76)
 
-[node name="MainPn" type="Panel" parent="."]
+[node name="MainPn" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_sjod5")
+
+[node name="Content" type="Control" parent="MainPn"]
 custom_minimum_size = Vector2(950, 520)
 layout_mode = 1
 anchors_preset = 8
@@ -91,9 +95,8 @@ offset_right = 475.0
 offset_bottom = 260.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ap7gx")
 
-[node name="Page2" type="Control" parent="MainPn"]
+[node name="Page2" type="Control" parent="MainPn/Content"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,7 +104,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CardStrongPn" type="HBoxContainer" parent="MainPn/Page2"]
+[node name="CardStrongPn" type="HBoxContainer" parent="MainPn/Content/Page2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -116,76 +119,76 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="CardStrong0" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong0" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("2_m2d06")
 expand_mode = 1
 
-[node name="CardStrong1" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong1" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("3_dafih")
 expand_mode = 1
 
-[node name="CardStrong2" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong2" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("4_f3b6x")
 expand_mode = 1
 
-[node name="CardStrong3" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong3" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("5_tksor")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="MainPn/Page2/CardStrongPn"]
+[node name="Control" type="Control" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
-[node name="CardStrong4" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong4" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("6_furuv")
 expand_mode = 1
 
-[node name="CardStrong5" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong5" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("7_4s5tw")
 expand_mode = 1
 
-[node name="CardStrong6" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong6" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("8_ttw65")
 expand_mode = 1
 
-[node name="Control2" type="Control" parent="MainPn/Page2/CardStrongPn"]
+[node name="Control2" type="Control" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
-[node name="CardStrong7" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong7" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 material = SubResource("ShaderMaterial_b4qms")
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("10_o4nmy")
 expand_mode = 1
 
-[node name="CardStrong8" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong8" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("11_knq73")
 expand_mode = 1
 
-[node name="CardStrong9" type="TextureRect" parent="MainPn/Page2/CardStrongPn"]
+[node name="CardStrong9" type="TextureRect" parent="MainPn/Content/Page2/CardStrongPn"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("12_5eg2x")
 expand_mode = 1
 
-[node name="ValuePn" type="Control" parent="MainPn/Page2"]
+[node name="ValuePn" type="Control" parent="MainPn/Content/Page2"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -196,7 +199,7 @@ offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel3" type="Panel" parent="MainPn/Page2/ValuePn"]
+[node name="Panel3" type="Panel" parent="MainPn/Content/Page2/ValuePn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -210,7 +213,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MainPn/Page2/ValuePn/Panel3"]
+[node name="Label" type="Label" parent="MainPn/Content/Page2/ValuePn/Panel3"]
 self_modulate = Color(1, 1, 1, 0.845)
 layout_mode = 1
 anchors_preset = 8
@@ -231,7 +234,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Panel2" type="Panel" parent="MainPn/Page2/ValuePn"]
+[node name="Panel2" type="Panel" parent="MainPn/Content/Page2/ValuePn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -245,7 +248,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MainPn/Page2/ValuePn/Panel2"]
+[node name="Label" type="Label" parent="MainPn/Content/Page2/ValuePn/Panel2"]
 self_modulate = Color(1, 1, 1, 0.845)
 layout_mode = 1
 anchors_preset = 8
@@ -266,7 +269,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Panel4" type="Panel" parent="MainPn/Page2/ValuePn"]
+[node name="Panel4" type="Panel" parent="MainPn/Content/Page2/ValuePn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -281,7 +284,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3t42a")
 
-[node name="Label" type="Label" parent="MainPn/Page2/ValuePn/Panel4"]
+[node name="Label" type="Label" parent="MainPn/Content/Page2/ValuePn/Panel4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -301,7 +304,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
 
-[node name="Panel" type="Panel" parent="MainPn/Page2/ValuePn"]
+[node name="Panel" type="Panel" parent="MainPn/Content/Page2/ValuePn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -315,7 +318,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MainPn/Page2/ValuePn/Panel"]
+[node name="Label" type="Label" parent="MainPn/Content/Page2/ValuePn/Panel"]
 self_modulate = Color(1, 1, 1, 0.845)
 layout_mode = 1
 anchors_preset = 8
@@ -336,7 +339,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="StrongPn" type="Control" parent="MainPn/Page2"]
+[node name="StrongPn" type="Control" parent="MainPn/Content/Page2"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 anchors_preset = 14
@@ -348,7 +351,7 @@ offset_bottom = -134.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label2" type="Label" parent="MainPn/Page2/StrongPn"]
+[node name="Label2" type="Label" parent="MainPn/Content/Page2/StrongPn"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -358,11 +361,12 @@ offset_top = -14.0
 offset_right = 163.0
 offset_bottom = 14.0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 22
 text = "LOWEST"
 
-[node name="Label" type="Label" parent="MainPn/Page2/StrongPn"]
+[node name="Label" type="Label" parent="MainPn/Content/Page2/StrongPn"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -375,12 +379,13 @@ offset_right = -50.0
 offset_bottom = 14.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 22
 text = "STRONGEST"
 horizontal_alignment = 2
 
-[node name="ColorRect" type="ColorRect" parent="MainPn/Page2/StrongPn"]
+[node name="ColorRect" type="ColorRect" parent="MainPn/Content/Page2/StrongPn"]
 modulate = Color(0.47624, 0.241252, 0.241252, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -395,7 +400,7 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="TextureRect" parent="MainPn/Page2/StrongPn/ColorRect"]
+[node name="ColorRect" type="TextureRect" parent="MainPn/Content/Page2/StrongPn/ColorRect"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -412,25 +417,25 @@ rotation = 1.5708
 texture = ExtResource("13_me2py")
 expand_mode = 1
 
-[node name="Napoli2" type="Control" parent="MainPn/Page2"]
+[node name="Napoli2" type="Control" parent="MainPn/Content/Page2"]
 anchors_preset = 0
 offset_left = 3.0
 offset_top = 332.0
 offset_right = 43.0
 offset_bottom = 372.0
 
-[node name="Napoli" type="Label" parent="MainPn/Page2/Napoli2"]
-self_modulate = Color(1, 0.913725, 0.403922, 1)
+[node name="Napoli" type="Label" parent="MainPn/Content/Page2/Napoli2"]
 layout_mode = 0
 offset_left = 42.0
 offset_right = 414.0
 offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "NAPOLI"
 uppercase = true
 
-[node name="Label2" type="Label" parent="MainPn/Page2/Napoli2"]
+[node name="Label2" type="Label" parent="MainPn/Content/Page2/Napoli2"]
 self_modulate = Color(1, 1, 1, 0.898)
 layout_mode = 1
 anchors_preset = 8
@@ -444,11 +449,12 @@ offset_right = 940.0
 offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 23
 text = "NAPOLI_TIP"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPn/Page2/Napoli2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPn/Content/Page2/Napoli2"]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 0
 offset_left = 127.0
@@ -456,26 +462,26 @@ offset_top = 48.0
 offset_right = 375.0
 offset_bottom = 168.0
 
-[node name="NapoliCard0" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
+[node name="NapoliCard0" type="TextureRect" parent="MainPn/Content/Page2/Napoli2/HBoxContainer"]
 material = SubResource("ShaderMaterial_ccdio")
 custom_minimum_size = Vector2(80, 120)
 layout_mode = 2
 texture = ExtResource("15_bd7yw")
 expand_mode = 1
 
-[node name="NapoliCard1" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
+[node name="NapoliCard1" type="TextureRect" parent="MainPn/Content/Page2/Napoli2/HBoxContainer"]
 custom_minimum_size = Vector2(80, 120)
 layout_mode = 2
 texture = ExtResource("16_g3bi1")
 expand_mode = 1
 
-[node name="NapoliCard2" type="TextureRect" parent="MainPn/Page2/Napoli2/HBoxContainer"]
+[node name="NapoliCard2" type="TextureRect" parent="MainPn/Content/Page2/Napoli2/HBoxContainer"]
 custom_minimum_size = Vector2(80, 120)
 layout_mode = 2
 texture = ExtResource("17_tqcw4")
 expand_mode = 1
 
-[node name="PanelNapoliBtn" parent="MainPn/Page2/Napoli2" instance=ExtResource("15_pant2")]
+[node name="PanelNapoliBtn" parent="MainPn/Content/Page2/Napoli2" instance=ExtResource("15_pant2")]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 1
 offset_left = 541.0
@@ -483,7 +489,7 @@ offset_top = 85.0
 offset_right = 631.0
 offset_bottom = 99.0
 
-[node name="ColorRect" type="ColorRect" parent="MainPn/Page2/Napoli2"]
+[node name="ColorRect" type="ColorRect" parent="MainPn/Content/Page2/Napoli2"]
 modulate = Color(0.47451, 0.243137, 0.243137, 1)
 layout_mode = 0
 offset_left = 404.0
@@ -491,7 +497,7 @@ offset_top = 101.0
 offset_right = 504.0
 offset_bottom = 121.0
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/Page2/Napoli2/ColorRect"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/Content/Page2/Napoli2/ColorRect"]
 layout_mode = 0
 offset_left = 120.0
 offset_top = -9.0
@@ -501,19 +507,20 @@ rotation = 1.5708
 texture = ExtResource("13_me2py")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MainPn/Page2/Napoli2"]
-self_modulate = Color(1, 1, 1, 0.704)
+[node name="Label" type="Label" parent="MainPn/Content/Page2/Napoli2"]
 layout_mode = 0
 offset_left = 693.0
 offset_top = 94.0
 offset_right = 883.0
 offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "PLUS_1_POINT"
 vertical_alignment = 1
 
-[node name="Page1" type="Control" parent="MainPn"]
+[node name="Page1" type="Control" parent="MainPn/Content"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -521,8 +528,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label2" type="Label" parent="MainPn/Page1"]
-self_modulate = Color(1, 1, 1, 0.898)
+[node name="Label2" type="Label" parent="MainPn/Content/Page1"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -535,35 +541,36 @@ offset_right = -15.0
 offset_bottom = -92.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 26
 text = "GOAL_CONTENT"
 
-[node name="Label" type="Label" parent="MainPn/Page1"]
-self_modulate = Color(1, 0.915489, 0.404641, 1)
+[node name="Label" type="Label" parent="MainPn/Content/Page1"]
 layout_mode = 0
 offset_left = 83.0
 offset_top = 97.0
 offset_right = 160.0
 offset_bottom = 133.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "GOAL"
 uppercase = true
 
-[node name="Label3" type="Label" parent="MainPn/Page1"]
-self_modulate = Color(1, 0.915489, 0.404641, 1)
+[node name="Label3" type="Label" parent="MainPn/Content/Page1"]
 layout_mode = 0
 offset_left = 83.0
 offset_top = 196.0
 offset_right = 248.0
 offset_bottom = 232.0
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 28
 text = "GAME_FLOW"
 uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainPn/Page1/Label3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPn/Content/Page1/Label3"]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 47.0
@@ -571,42 +578,42 @@ offset_right = 851.0
 offset_bottom = 247.0
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.898)
+[node name="Label" type="Label" parent="MainPn/Content/Page1/Label3/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_1"
 
-[node name="Label2" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.898)
+[node name="Label2" type="Label" parent="MainPn/Content/Page1/Label3/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_2"
 
-[node name="Label3" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.898)
+[node name="Label3" type="Label" parent="MainPn/Content/Page1/Label3/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_3"
 
-[node name="Label4" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.898)
+[node name="Label4" type="Label" parent="MainPn/Content/Page1/Label3/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_4"
 
-[node name="Label5" type="Label" parent="MainPn/Page1/Label3/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.898)
+[node name="Label5" type="Label" parent="MainPn/Content/Page1/Label3/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
 theme_override_fonts/font = ExtResource("21_dgt1r")
 theme_override_font_sizes/font_size = 26
 text = "GAME_FLOW_STEP_5"
 
-[node name="PreviousBtn" type="Button" parent="MainPn"]
+[node name="PreviousBtn" type="Button" parent="MainPn/Content"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 offset_left = -69.0
@@ -616,8 +623,8 @@ offset_bottom = 284.0
 flat = true
 script = ExtResource("3_gvjlj")
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/PreviousBtn"]
-self_modulate = Color(0, 0.934474, 0.273379, 1)
+[node name="TextureRect" type="TextureRect" parent="MainPn/Content/PreviousBtn"]
+self_modulate = Color(0.815686, 0.694118, 0.160784, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -635,8 +642,7 @@ pivot_offset = Vector2(25, 25)
 texture = ExtResource("4_n0hxl")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MainPn"]
-self_modulate = Color(1, 0.777996, 0.111986, 1)
+[node name="Label" type="Label" parent="MainPn/Content"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -646,6 +652,7 @@ offset_top = 23.0
 offset_right = 135.0
 offset_bottom = 59.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_fonts/font = ExtResource("14_dofd2")
 theme_override_font_sizes/font_size = 35
 text = "HOW_TO_PLAY_TRES"
@@ -653,7 +660,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="NextBtn" type="Button" parent="MainPn"]
+[node name="NextBtn" type="Button" parent="MainPn/Content"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 0
 offset_left = 957.0
@@ -663,8 +670,8 @@ offset_bottom = 272.0
 flat = true
 script = ExtResource("3_gvjlj")
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/NextBtn"]
-self_modulate = Color(0, 0.934474, 0.273379, 1)
+[node name="TextureRect" type="TextureRect" parent="MainPn/Content/NextBtn"]
+self_modulate = Color(0.815673, 0.693635, 0.161079, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -680,7 +687,7 @@ grow_vertical = 2
 texture = ExtResource("4_n0hxl")
 expand_mode = 1
 
-[node name="CloseBtn" type="Button" parent="MainPn"]
+[node name="CloseBtn" type="Button" parent="MainPn/Content"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
 offset_left = 918.0
@@ -690,13 +697,13 @@ offset_bottom = 39.0
 flat = true
 script = ExtResource("3_gvjlj")
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/Content/CloseBtn"]
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 50.0
 texture = ExtResource("22_qtxu7")
 expand_mode = 1
 
-[connection signal="pressed" from="MainPn/PreviousBtn" to="." method="_click_previous_page"]
-[connection signal="pressed" from="MainPn/NextBtn" to="." method="_click_next_page"]
-[connection signal="pressed" from="MainPn/CloseBtn" to="." method="on_close"]
+[connection signal="pressed" from="MainPn/Content/PreviousBtn" to="." method="_click_previous_page"]
+[connection signal="pressed" from="MainPn/Content/NextBtn" to="." method="_click_next_page"]
+[connection signal="pressed" from="MainPn/Content/CloseBtn" to="." method="on_close"]

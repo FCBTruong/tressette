@@ -61,6 +61,7 @@ func update_bet(bet: int, p = null):
 			
 			tw.parallel().tween_callback(
 				func():
+					g.v.sound_manager.play_coin_hit_sound()
 					sprite.queue_free()
 			).set_delay(delay + time_move + 0.1)
 			
@@ -72,7 +73,7 @@ func update_bet(bet: int, p = null):
 				tw.parallel().tween_callback(
 					func():
 						current_bet = bet
-						self.label.text = StringUtils.symbol_number(bet)
+						self.label.text = StringUtils.point_number(bet)
 				).set_delay(delay + time_move + 0.5)
 			
 			delay += 0.05
