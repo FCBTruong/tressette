@@ -43,11 +43,11 @@ func _on_receive_info(bytes: PackedByteArray):
 	time_show_ads = packet.get_time_show_ads()
 	login_type = packet.get_login_type()
 	time_ads_reward = packet.get_time_ads_reward()
-	#time_ads_reward = g.v.game_manager.get_timestamp_server() + 3000
-	#if time_ads_reward == -1:
-		#enable_ads_reward = false
-	#else:
-		#enable_ads_reward = true
+	if time_ads_reward == -1:
+		enable_ads_reward = false
+	else:
+		enable_ads_reward = true
+		
 	my_user_data.is_verified = login_type != g.v.game_constants.LOGIN_TYPE.GUEST
 	
 	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
