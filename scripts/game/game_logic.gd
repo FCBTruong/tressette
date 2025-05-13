@@ -70,7 +70,8 @@ func _handle_user_leave_match(payload: PackedByteArray):
 				func ():
 					g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
 				func ():
-					board_scene.exit_game(),
+					board_scene.exit_game()
+					g.v.player_info_mgr.check_and_show_offer(),
 				true
 			)
 		else:

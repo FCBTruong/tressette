@@ -87,7 +87,8 @@ func set_user_data(user_dt: UserData) -> void:
 	avatar_img.set_avatar(user_data.avatar)
 	
 func update_state_ingame():
-	if not user_data:
+	if not user_data or user_data.uid == -1:
+		self.modulate.a = 1
 		return
 	var g_mgr = g.v.sette_mezzo_mgr
 	var is_game_playing = false

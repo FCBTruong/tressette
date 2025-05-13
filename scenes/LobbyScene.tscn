@@ -1,7 +1,7 @@
 [gd_scene load_steps=50 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
-[ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="2_4au8t"]
+[ext_resource type="Texture2D" uid="uid://cx6qbrregb73n" path="res://assets/images/lobby.jpg" id="2_k5oqt"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_x7pan"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_a6ucd"]
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
@@ -213,7 +213,7 @@ pivot_offset = Vector2(575, 324)
 size_flags_horizontal = 6
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.0
-texture = ExtResource("2_4au8t")
+texture = ExtResource("2_k5oqt")
 expand_mode = 1
 stretch_mode = 6
 

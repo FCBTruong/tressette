@@ -161,19 +161,22 @@ func _handle_user_leave_match(payload: PackedByteArray):
 				func ():
 					g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
 				func ():
-					board_scene.exit_game(),
+					board_scene.exit_game()
+					g.v.player_info_mgr.check_and_show_offer(),
+					
+					# show offer
 				true
 			)
 		else:
 			board_scene.exit_game()
 		return
+	
+	# reload
+	board_scene.on_user_leave(uid)
 	for user in match_data.users:
 		if user.uid == uid:
 			# update info
 			user.uid = -1
-	
-	# reload
-	board_scene.on_update_players(uid)
 	
 	
 func get_user(uid: int) -> UserData:
@@ -265,9 +268,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 			user.avatar = avatar
 			user.gold = gold
 			
-	for user in match_data.users:
-		print('debug seat', user.game_data.seat_id)
-	
+
 	# reload
 	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is SetteMezzoScene:

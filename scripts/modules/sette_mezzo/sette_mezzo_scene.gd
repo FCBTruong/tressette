@@ -98,7 +98,7 @@ func _ready() -> void:
 	action_btn_pn.z_index = 200
 	auto_play_pn.z_index = 300
 			
-	g.v.sound_manager.play_music_board()
+	g.v.sound_manager.play_music_sette_mezzo()
 	#show_prepare_start()
 
 @onready var bet_bar = find_child("BetBar")
@@ -351,6 +351,13 @@ func on_update_players(uid = -1):
 		list_players[i].set_user_data(info)
 		list_players[i].update_state_ingame()
 	update_player_seat()
+
+func on_user_leave(uid):
+	for p in list_players:
+		if p.user_data.uid == uid:
+			p.set_user_data(UserData.new(-1, ''))
+			p.update_state_ingame()
+			break
 	
 # Function to create players
 func _create_players(player_count: int) -> void:
@@ -1034,7 +1041,7 @@ func update_game_state():
 					"modulate:a",
 					0,
 					0.2
-				).set_delay(1.3)
+				).set_delay(1)
 				tw_bet_n.tween_callback(
 					func():
 						user_bet_node.visible = false

@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://coalpvybk074r"]
+[gd_scene load_steps=14 format=3 uid="uid://coalpvybk074r"]
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/table_node.gd" id="1_d11nj"]
-[ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_hp4ed"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="2_3wqxv"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_c3fu3"]
 [ext_resource type="Texture2D" uid="uid://roswew5btpo" path="res://assets/images/lobby/people_icon.png" id="3_wpwhv"]
@@ -42,15 +41,6 @@ offset_right = 441.0
 offset_bottom = 240.0
 mouse_filter = 2
 script = ExtResource("1_d11nj")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 0
-offset_left = -427.0
-offset_top = -163.0
-offset_right = 773.0
-offset_bottom = 437.0
-texture = ExtResource("1_hp4ed")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

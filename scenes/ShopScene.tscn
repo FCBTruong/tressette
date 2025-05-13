@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dre6witgv0vxh"]
 
-[ext_resource type="Texture2D" uid="uid://th0o30mpx2dw" path="res://assets/images/lobby.png" id="1_4bwsr"]
 [ext_resource type="Script" path="res://scripts/modules/shop/shop_scene.gd" id="1_lrbfb"]
+[ext_resource type="Texture2D" uid="uid://cx6qbrregb73n" path="res://assets/images/lobby.jpg" id="2_wx4ry"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_45jny"]
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="4_uct0t"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="5_f2kdc"]
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_4bwsr")
+texture = ExtResource("2_wx4ry")
 expand_mode = 1
 stretch_mode = 6
 

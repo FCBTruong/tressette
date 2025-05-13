@@ -111,6 +111,11 @@ func _on_update_money(bytes: PackedByteArray):
 	my_user_data.gold = packet.get_gold()
 	print('_on_update_money', my_user_data.gold)
 	g.v.signal_bus.emit_signal_global('on_update_money')
+
+func check_and_show_offer():
+	if not self.has_first_buy:
+		return
+	g.v.popup_mgr.add_popup("res://scenes/lobby/FirstBuyGUI.tscn")
 	
 func on_update_avatar(avatar: String):
 	my_user_data.avatar = avatar
