@@ -8,14 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://dmdvm1nrf0ws5" path="res://scenes/board/QuickChatNode.tscn" id="7_fi4nl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s5gj3"]
-bg_color = Color(0.130018, 0.10575, 0.0829654, 1)
+bg_color = Color(0.856405, 0.736347, 0.571822, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.423529, 0.243137, 0.168627, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2roa"]
-bg_color = Color(0.920897, 0.808673, 0.623968, 1)
+bg_color = Color(0.945098, 0.839216, 0.694118, 1)
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 shadow_color = Color(0, 0, 0, 0.2)
@@ -23,7 +28,7 @@ shadow_size = 2
 shadow_offset = Vector2(2, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p0y5"]
-bg_color = Color(0.516972, 0.192166, 0.0578934, 1)
+bg_color = Color(0.423529, 0.243137, 0.168627, 1)
 shadow_color = Color(0.354044, 0.354044, 0.354044, 0.2)
 shadow_size = 4
 shadow_offset = Vector2(0, 2)
@@ -33,7 +38,7 @@ shadow_offset = Vector2(0, 2)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq2y8"]
 content_margin_left = 20.0
 content_margin_right = 30.0
-bg_color = Color(0.951446, 0.710978, 0.528909, 0.862745)
+bg_color = Color(0.854902, 0.670588, 0.482353, 1)
 corner_radius_bottom_right = 5
 shadow_color = Color(0.483028, 0.483028, 0.483028, 0.1)
 shadow_size = 5
@@ -96,9 +101,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -126.0
-offset_top = 12.0
+offset_top = 20.0
 offset_right = 124.0
-offset_bottom = 62.0
+offset_bottom = 70.0
 grow_horizontal = 2
 theme_override_constants/separation = 10
 
@@ -136,7 +141,7 @@ offset_right = 22.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.941176)
+theme_override_colors/font_color = Color(0.964706, 0.87451, 0.752941, 1)
 theme_override_fonts/font = ExtResource("4_htv7n")
 theme_override_font_sizes/font_size = 30
 text = "ROOM"
@@ -193,8 +198,8 @@ layout_mode = 2
 offset_right = 500.0
 offset_bottom = 60.0
 size_flags_horizontal = 3
-theme_override_colors/font_placeholder_color = Color(0.537338, 0.287368, 0.197993, 0.862745)
-theme_override_colors/font_color = Color(0.700265, 0.269481, 0.0784197, 1)
+theme_override_colors/font_placeholder_color = Color(0.403922, 0.2, 0.0901961, 1)
+theme_override_colors/font_color = Color(0.403922, 0.2, 0.0901961, 1)
 theme_override_fonts/font = ExtResource("4_htv7n")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fwea3")
@@ -219,7 +224,7 @@ flat = true
 script = ExtResource("3_jsdfg")
 
 [node name="TextureRect" type="TextureRect" parent="MainPn/VBoxContainer/HBoxContainer/LineEdit/SubmitBtn"]
-self_modulate = Color(0.598, 0.133, 0.106, 0.717)
+self_modulate = Color(0.517647, 0.321569, 0.243137, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

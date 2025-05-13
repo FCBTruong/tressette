@@ -104,7 +104,7 @@ func play_music_sette_mezzo():
 	if not g.v.game_manager.enable_music:
 		return
 	stop_music()
-	music_player.volume_db = -10
+	music_player.volume_db = -2
 	music_player.stream = sette_mezzo_music
 	music_player.stream.loop = true
 	music_player.play()

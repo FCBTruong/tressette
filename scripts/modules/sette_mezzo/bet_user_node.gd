@@ -17,6 +17,7 @@ func update_bet(bet: int, p = null):
 		main.visible = false
 	else:
 		main.visible = true
+	await get_tree().process_frame
 	if p != null:
 		if tw and tw.is_running():
 			tw.kill()

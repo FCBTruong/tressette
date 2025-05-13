@@ -395,6 +395,8 @@ func _handle_end_game(payload):
 		var gold = player_golds[i]
 		var uid = uids[i]
 		var u = get_user(uid)
+		if not u:
+			continue
 		u.gold = gold
 		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [uid])
 	

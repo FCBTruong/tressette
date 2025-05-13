@@ -88,7 +88,7 @@ func set_user_data(user_dt: UserData) -> void:
 	
 func update_state_ingame():
 	if not user_data or user_data.uid == -1:
-		self.modulate.a = 1
+		#self.main_pn.modulate.a = 1
 		return
 	var g_mgr = g.v.sette_mezzo_mgr
 	var is_game_playing = false
@@ -96,9 +96,9 @@ func update_state_ingame():
 		or g_mgr.match_data.state == MatchData.MATCH_STATE.BETTING:
 			is_game_playing = true
 	if is_game_playing and not user_data.game_data.is_in_game:
-		self.modulate.a = 0.5
+		self.main_pn.modulate.a = 0.5
 	else:
-		self.modulate.a = 1
+		self.main_pn.modulate.a = 1
 
 func _update_gold():
 	gold_lb.text = _get_gold_str(user_data.gold)
