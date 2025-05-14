@@ -1,8 +1,7 @@
 [config]
 name="InAppStore"
 
-binary.debug="inappstore.debug.a"
-binary.release="inappstore.release.a"
+binary="inappstore.a"
 
 initialization="register_inappstore_types"
 deinitialization="unregister_inappstore_types"
