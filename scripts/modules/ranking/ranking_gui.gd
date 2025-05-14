@@ -13,6 +13,8 @@ var main_pos
 var ranking_player_scene = preload("res://scenes/ranking/RankingPlayer.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ProjectSettings.set_setting("application/run/target_fps", 120)
+
 	main_pos = main_pn.position
 	for i in range(10):
 		var n = ranking_player_scene.instantiate()
@@ -26,6 +28,7 @@ func on_show():
 	if tween and tween.is_running():
 		tween.kill()
 	tween = create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
 	main_pn.position.y = main_pos.y - 600
 	tween.parallel().tween_property(main_pn, 'position', main_pos, 0.4)
 

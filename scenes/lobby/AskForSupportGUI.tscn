@@ -113,6 +113,7 @@ texture = ExtResource("4_uiixc")
 expand_mode = 1
 
 [node name="Label2" type="Label" parent="MainPn"]
+layout_mode = 0
 offset_left = 69.0
 offset_top = 86.5
 offset_right = 669.0
