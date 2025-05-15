@@ -6823,6 +6823,11 @@ class SetteMezzoBetting:
 		service.field = _time_end_bet
 		data[_time_end_bet.tag] = service
 		
+		_playing_uids = PBField.new("playing_uids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 2, true, [])
+		service = PBServiceField.new()
+		service.field = _playing_uids
+		data[_playing_uids.tag] = service
+		
 	var data = {}
 	
 	var _time_end_bet: PBField
@@ -6833,6 +6838,15 @@ class SetteMezzoBetting:
 		_time_end_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_time_end_bet(value : int) -> void:
 		_time_end_bet.value = value
+	
+	var _playing_uids: PBField
+	func get_playing_uids() -> Array:
+		return _playing_uids.value
+	func clear_playing_uids() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_playing_uids.value = []
+	func add_playing_uids(value : int) -> void:
+		_playing_uids.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

@@ -176,7 +176,7 @@ func _handle_user_leave_match(payload: PackedByteArray):
 	for user in match_data.users:
 		if user.uid == uid:
 			# update info
-			user.uid = -1
+			user.uid = -1	
 	
 	
 func get_user(uid: int) -> UserData:
@@ -430,11 +430,7 @@ func _handle_start_betting(payload):
 	self.time_bet_total = self.time_end_bet - g.v.game_manager.get_timestamp_server()
 	var scene = g.v.scene_manager.get_current_scene()
 	
-	playing_users.clear()
-	for p in match_data.users:
-		p.game_data.sette_bet = 0
-		p.game_data.is_in_game = true
-		playing_users.append(p.uid)
+	playing_users = pkg.get_playing_uids()
 		
 	if scene is SetteMezzoScene:
 		scene.on_start_betting()

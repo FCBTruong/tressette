@@ -40,6 +40,9 @@ func handle_version_and_open_login(payload) -> void:
 		server_forced_version = pkg.get_android_forced_update_version()
 		server_remind_version = pkg.get_android_remind_update_version()
 		reviewing_version = -1
+		
+	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
+		my_code_version = server_app_version
 
 	if my_code_version >= server_app_version:
 		# Version OK
