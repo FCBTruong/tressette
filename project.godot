@@ -41,11 +41,7 @@ common/snap_controls_to_pixels=false
 
 locale/translations=PackedStringArray("res://localization/localize.csv", "res://localization/localize.en.translation", "res://localization/localize.it.translation", "res://localization/localize.vi.translation")
 
-[physics]
-
-common/physics_interpolation=true
-
 [rendering]
 
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
