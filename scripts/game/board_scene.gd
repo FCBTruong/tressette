@@ -432,21 +432,28 @@ func play_my_card(id: int, auto: bool = false):
 	var rot = deg_to_rad(rot_degrees)
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
+	print("my turnnnnnds")
+	var start_pos = card.global_position
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
-	tween.parallel().tween_property(card, "global_position",p_place_world, 0.5).set_trans(Tween.TRANS_SINE)
-	tween.parallel().tween_property(card, "rotation",0, 0.3)
-	tween.parallel().tween_property(card, "scale", 
-		Vector2(SCALE_CARD_NORMAL * 1.5, SCALE_CARD_NORMAL * 1.5), 0.3).set_ease(Tween.EASE_OUT)\
-			.set_trans(Tween.TRANS_SINE)
-			
+	var direction = (p_place_world - start_pos).normalized()
+	var mid_pos = start_pos.lerp(p_place_world, 0.25)
+	tween.parallel().tween_property(card, "global_position", p_place_world, 0.5)
+	tween.parallel().tween_property(card, "rotation_degrees", 0, 0.5)
+	
 	tween.parallel().tween_callback(
 		func():
 			card.shadow.visible = true
 	).set_delay(0.3)
 	
-	tween.parallel().tween_property(card, "scale", 
-		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)
+	var t2 = create_tween()
+	t2.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	t2.tween_property(card, "scale", 
+		Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL) * 1.5, 0.2).set_ease(Tween.EASE_OUT)
+			
+	t2.tween_property(card, "scale", 
+		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3).set_ease(Tween.EASE_IN)
 	# send to server
+	
 	if not auto:
 		game_logic.match_data.current_turn = -1
 		g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
