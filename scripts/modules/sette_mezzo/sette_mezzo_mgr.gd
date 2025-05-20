@@ -430,6 +430,9 @@ func _handle_start_betting(payload):
 	self.time_bet_total = self.time_end_bet - g.v.game_manager.get_timestamp_server()
 	var scene = g.v.scene_manager.get_current_scene()
 	
+	for p in match_data.users:
+		p.game_data.sette_bet = 0
+	
 	playing_users = pkg.get_playing_uids()
 		
 	if scene is SetteMezzoScene:
