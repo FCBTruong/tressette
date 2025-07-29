@@ -12,10 +12,8 @@ func _ready() -> void:
 	g.v.sound_manager.play_music_lobby()
 	_do_effect()
 	on_update_gui()
-	update_lobby_friends()
 	g.v.friend_mgr.send_friend_list()
 	g.v.signal_bus.connect_global('on_update_money', Callable(self, "_on_update_money"))
-	g.v.signal_bus.connect_global('update_friend_list', Callable(self, 'update_lobby_friends'))
 	g.v.signal_bus.connect_global('update_friend_requests', Callable(self, '_update_friend_requests'))
 	
 	# check claim support
@@ -77,7 +75,6 @@ func _ready() -> void:
 		self.sette_mezzo_btn.visible = true
 		
 @onready var watch_ads_btn = find_child("WatchAdsBtn")
-@onready var left_panel = find_child('LeftPanel')
 @onready var play_container = find_child('PlayContainer')
 @onready var bg = find_child('Background')
 @onready var panel_info = find_child('PanelInfo')
@@ -91,13 +88,9 @@ func _ready() -> void:
 @onready var mobile_web_pn = find_child("MobileWebPn")
 @onready var offer_first_btn = find_child("OfferFirstBtn")
 func _do_effect() -> void:
-	var left_panel_defaultpos = left_panel.position
 	var play_container_defaultpos = play_container.position
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	# Animate left_panel (Move left and back to original position)
-	left_panel.position.x -= 200
-	tween.parallel().tween_property(left_panel, "position", left_panel_defaultpos, 0.5)
 
 	# Animate play_container (Move right and back to original position)
 	play_container.position.x += 200
@@ -157,20 +150,6 @@ func open_shop():
 	g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE)
 
 var friend_lobby_scene = preload("res://scenes/lobby/FriendLobbyNode.tscn")
-@onready var lobby_friend_list = find_child('LobbyFriendList')	
-func update_lobby_friends():
-	for c in lobby_friend_list.get_children():
-		if c.name == 'NofriendBtn':
-			continue
-		c.queue_free()
-	for f in g.v.friend_mgr.friends:
-		var n = friend_lobby_scene.instantiate()
-		lobby_friend_list.add_child(n)
-		n.set_info(f)
-	if len(g.v.friend_mgr.friends) == 0:
-		nofriend_btn.visible = true
-	else:
-		nofriend_btn.visible = false
 		
 func _update_friend_requests():
 	friend_img_hot.visible = len(g.v.friend_mgr.requests) > 0

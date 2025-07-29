@@ -69,28 +69,8 @@ func effect_fly_coin_bet_table(img: String, num: int, start_pos: Vector2, des_po
 			'modulate:a', 1, 0.01
 		).set_delay((delay))
 		
-		var pot_pos = Vector2(0, 0)
-		if board_scene:
-			pot_pos = NodeUtils.get_center_position(board_scene.pot_value_lb)
-		tween.tween_interval(0)
-		tween.parallel().tween_property(
-			node,
-			'global_position', pot_pos, 0.3
-		).set_delay(0.3)
-		tween.parallel().tween_property(
-			node,
-			'scale', Vector2(0.8, 0.8), 0.3
-		).set_delay(0.3)
-		tween.tween_interval(0)
-		tween.tween_callback(
-			func():
-				if node:
-					node.queue_free
-					g.v.sound_manager.play_coin_hit_sound()
-				)
 		
-		if should_call and i == num - 1:
-			tween.tween_callback(board_scene.on_finish_effect_contribute_pot)
+		
 
 		tween.tween_callback(node.queue_free)
 		

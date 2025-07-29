@@ -37,7 +37,6 @@ var in_game_chat_gui
 @onready var evaluate_lb = find_child('EvaluateLb')
 @onready var back_btn = find_child("BackBtn")
 @onready var bet_lb = find_child("BetLb")
-@onready var pot_value_lb:Label = find_child("PotValueLb")
 @onready var center_play_pn_pos
 @onready var game_start_lb = find_child("GameStartLb")
 @onready var round_lb = find_child("RoundLb")
@@ -49,7 +48,6 @@ var in_game_chat_gui
 @onready var auto_play_pn = find_child("AutoPlayPn")
 var pn_highlight_napoli = preload("res://scenes/board/NapoliCardHighlight.tscn")
 @onready var bet_info_pn = find_child("BetInfoPn")
-@onready var pot_pn = find_child("PotPn")
 @onready var score_pn = find_child("ScorePn")
 @onready var deco_2v2 = find_child("Deco2vs2")
 const DEFAULT_CARD_Z_INDEX = 10
@@ -95,11 +93,6 @@ func _ready() -> void:
 	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
 	_on_screen_resized()
-	
-	pot_pn.visible = true
-	if g.v.app_version.is_in_review():
-		self.bet_info_pn.visible = false
-		pot_pn.visible = false
 		
 		
 	napoli_btn.visible = false 
@@ -189,7 +182,6 @@ func _on_enter():
 			
 	self.update_team_scores()
 	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
-	pot_value_lb.text = StringUtils.point_number(game_logic.match_data.pot_value)
 	
 	var str_reach_win = tr("REACH_POINT_TO_WIN")
 	str_reach_win = str_reach_win.replace("#point", str(game_logic.match_data.point_to_win / 3))
@@ -241,7 +233,6 @@ func continue_play():
 	_update_display_score(false, 0)
 	opponent_score_sub.visible = false
 	my_score_sub.visible = false
-	pot_value_lb.text = '0'
 	round_lb.text = ''
 
 func _update_current_round():
@@ -758,6 +749,8 @@ func deal_my_cards(cards) -> void:
 	if tween_deal_2 and tween_deal_2.is_running():
 		tween_deal_2.kill()
 	tween_deal_2 = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	
+	var x = 0
 	for p in list_players:
 		if p.user_data.uid == g.v.player_info_mgr.my_user_data.uid:
 			continue
@@ -779,9 +772,24 @@ func deal_my_cards(cards) -> void:
 			tween_deal_2.parallel().tween_callback(
 				func():
 					instance.queue_free()			
+					if game_logic.IS_VIEWING == true:
+						if i == 9 and x == 0:
+							cardback_node.visible = true
+							# effect move cardbacknode
+							var tw = create_tween()
+							tw.tween_property(
+								cardback_node,
+								"position",
+								cardback_node_default_pos,
+								0.3
+							).set_delay(0.3)
+							tw.tween_callback(
+								func():
+									update_remain_cards()
+							)
 			).set_delay(delay_2 + 0.3)
 			delay_2 += 0.1
-			
+		x += 1
 		
 	#tween.tween_callback(set_process.bind(true))
 	#tween.tween_property(self, "sine_offset_mult", anim_offset_y, 1.5).from(0.0)
@@ -929,7 +937,7 @@ func _effect_draw_card(uid, card_id):
 	var rot_radians: float = new_rotates[des_i]
 
 	# Animate pos
-	var delay = TIME_VIEW_CARD - 0.2
+	var delay = TIME_VIEW_CARD
 
 	tween.parallel().tween_property(instance, "global_position", final_pos, 0.4).set_delay(delay)
 	tween.parallel().tween_property(instance, "scale", Vector2(SCALE_CARD_NORMAL, SCALE_CARD_NORMAL), 0.4).set_delay(delay)
@@ -1033,15 +1041,7 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_W:
-				g.v.effect_mgr.effect_fly_object(
-					"res://assets/images/lobby/icon_gold.png",
-					5,
-					pot_pn.global_position,
-					Vector2(500, 500),
-					0.6,
-					0.6
-				)
-				#show_prepare_start()
+				
 				return
 				#_effect_evaluate()
 				self.list_players[0].show_emotion(4)
@@ -1092,6 +1092,7 @@ func _open_guide_gui() -> void:
 	g.v.game_manager.open_guide_gui()
 	
 func _effect_pot_contribute():
+	return
 	if g.v.app_version.is_in_review():
 		return
 	center_play_pn_pos = NodeUtils.get_center_position(center_play_pn)
@@ -1114,13 +1115,7 @@ func _effect_pot_contribute():
 	pass
 	
 func on_finish_effect_contribute_pot():
-	var cur_pot_value =  StringUtils.convert_point_string_to_int(pot_value_lb.text)
-	print('curreent pot', cur_pot_value)
-	var new_pot_value =  game_logic.match_data.pot_value
-	
-	
-	var pot_tween = create_tween()
-	pot_tween.tween_method(_set_int_to_text.bind(pot_value_lb, false), cur_pot_value, new_pot_value, 0.4)
+	return
 
 func _set_int_to_text(value: int, label, add: bool = false) -> void:
 	var str = StringUtils.point_number(value)
@@ -1321,15 +1316,6 @@ func hide_function_btns() -> void:
 
 var anim_cup_scene = preload("res://scenes/board/AnimCupWin.tscn")
 func end_game():
-	if pot_pn.visible:
-		var cur_pot_value =  StringUtils.convert_point_string_to_int(pot_value_lb.text)
-		
-		var pot_tween = create_tween()
-		pot_tween.tween_method(_set_int_to_text.bind(pot_value_lb, false), cur_pot_value, 0, 0.4)
-		
-		# effect get pot
-		var p_pot = pot_pn.global_position
-		p_pot += Vector2(50, 50)
 	for p in self.list_players:
 		if p.user_data.game_data.team_id == game_logic.match_result.win_team_id:
 			var anim_cup = anim_cup_scene.instantiate()

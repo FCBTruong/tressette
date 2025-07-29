@@ -8,12 +8,10 @@ extends Node
 @onready var vortex = find_child("Vortex")
 @onready var avatar_img = find_child('AvatarImg')
 @onready var emo_icon = find_child('EmoPlayer')
-@onready var gold_lb = find_child("GoldLb")
 @onready var bonus_info_pn = find_child("BonusInfo")
 @onready var bonus_txt_lb = find_child("BonusTxtLb")
 @onready var red_dot = find_child("RedDot")
 @onready var bonus_info_colour = find_child("BonusInfoColour")
-@onready var gold_pn = find_child("GoldPn")
 @onready var name_pn = find_child("NamePn")
 @onready var name_lb = find_child("NameLb")
 @onready var chat_tooltip = find_child("ChatTooltip")
@@ -22,12 +20,6 @@ var default_pos_bonus
 var is_me: bool = false
 func _ready() -> void:
 	chat_tooltip.visible = false
-	if g.v.app_version.is_in_review():
-		gold_pn.visible = false
-		name_pn.visible = true
-	else:
-		gold_pn.visible = true
-		name_pn.visible = false
 	#effect_add_score(5)
 	emo_icon.visible = false
 	time_progress_bar.visible = false
@@ -81,7 +73,7 @@ func set_user_data(user_dt: UserData) -> void:
 	avatar_img.set_avatar(user_data.avatar)
 
 func _update_gold():
-	gold_lb.text = _get_gold_str(user_data.gold)
+	return
 
 func update_points_display(effect_add = false):
 	pass

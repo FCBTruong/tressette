@@ -9,6 +9,7 @@ var my_idx: int = 0 # in list users
 var match_result = MatchData.MatchResult.new()
 var is_registered_leave = false
 var my_team_id: int
+var IS_VIEWING = false
 
 func get_list_player() -> Array[UserData]:
 	return match_data.users
@@ -173,6 +174,11 @@ func _handle_game_info(payload: PackedByteArray):
 	var user_points = pkg.get_user_points()
 	var team_ids = pkg.get_team_ids()
 	var is_vips = pkg.get_is_vips()
+	
+	if g.v.player_info_mgr.my_user_data.uid in uids:
+		IS_VIEWING = false
+	else:
+		IS_VIEWING= true 
 	
 	var users: Array[UserData] = []
 	
@@ -480,20 +486,24 @@ func _handle_end_game(payload: PackedByteArray):
 	var gold_win_score = pkg.get_gold_win_score()
 	
 	match_result = MatchData.MatchResult.new()
-	match_result.is_win = get_user(g.v.player_info_mgr.my_user_data.uid).game_data.team_id \
-		== win_team_id
+	if not IS_VIEWING:
+		match_result.is_win = get_user(g.v.player_info_mgr.my_user_data.uid).game_data.team_id \
+			== win_team_id
+		match_result.my_team_id = get_user(g.v.player_info_mgr.my_user_data.uid).game_data.team_id
+	else:
+		match_result.is_win = 0 == win_team_id
+		match_result.my_team_id = 0
 	if match_result.is_win:
 		g.v.ranking_mgr.user_win_game()
 		match_result.gold_win = match_data.pot_value / (match_data.player_mode / 2) + gold_win_score
 	else:
 		match_result.gold_lose = gold_changes[my_idx]
 	match_result.win_team_id = win_team_id
-	match_result.my_team_id = get_user(g.v.player_info_mgr.my_user_data.uid).game_data.team_id
 	match_result.my_team_score = get_my_team_score()
 	match_result.opp_score = get_opponent_team_score()
 	# update my user info
 	g.v.game_manager.LAST_GAME_IS_WIN = false
-	if match_result.is_win:
+	if match_result.is_win and not IS_VIEWING:
 		g.v.player_info_mgr.my_user_data.win_count += 1
 		g.v.game_manager.LAST_GAME_IS_WIN = true
 	g.v.player_info_mgr.my_user_data.game_count += 1

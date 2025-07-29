@@ -11,6 +11,7 @@ var progress_bar
 var version = 2
 var is_local = false
 func _init():
+	return # NOT USE CDN ANYMORE
 	if OS.get_name() == "macOS":
 		is_local = true
 		return
@@ -29,6 +30,10 @@ func _init():
 		ProjectSettings.load_resource_pack(save_path)
 
 func _ready() -> void:
+	await get_tree().process_frame
+	_init_game() # not use CDN anymore
+	return
+	
 	get_tree().current_scene.find_child("DownloadPn").visible = false
 	add_child(http_request)
 	print("root game....")
