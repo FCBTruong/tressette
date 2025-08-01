@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b161g5v12vysn"
-path="res://.godot/imported/table.png-233210408195af836c0ecaaf42c0128c.ctex"
+uid="uid://day7d10iwkc8y"
+path="res://.godot/imported/avatar_15.png-7c56a9a4545b572534ac8542b8b536b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/board/sette_mezzo/table.png"
-dest_files=["res://.godot/imported/table.png-233210408195af836c0ecaaf42c0128c.ctex"]
+source_file="res://assets/images/lobby/avatars/avatar_15.png"
+dest_files=["res://.godot/imported/avatar_15.png-7c56a9a4545b572534ac8542b8b536b2.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

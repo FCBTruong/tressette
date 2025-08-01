@@ -57,7 +57,7 @@ func set_card(card_id: int):
 	
 func turn_face_down():
 	face_state = g.v.game_constants.CARD_FACE_STATE.DOWN
-	var path = "res://assets/images/card_tressette/card_back.png"
+	var path = "res://assets/images/card_tressette/card_back_03.png"
 	_load_texture(path)
 	
 	self.card_image.self_modulate = Color("#ffffff")

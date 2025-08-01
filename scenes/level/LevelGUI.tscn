@@ -22,3 +22,41 @@ offset_right = 350.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+clip_contents = false
+layout_mode = 0
+offset_left = 115.0
+offset_top = 126.0
+offset_right = 515.0
+offset_bottom = 326.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1000, 20)
+layout_mode = 2
+show_percentage = false
+
+[node name="Control" type="Control" parent="Panel/ScrollContainer/HBoxContainer/ProgressBar"]
+anchors_preset = 0
+offset_left = 35.0
+offset_top = 30.0
+offset_right = 35.0
+offset_bottom = 30.0
+
+[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/ProgressBar/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Lv.1"

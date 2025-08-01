@@ -33,7 +33,6 @@ var did_show_start_eff = false
 @onready var chat_btn_reddot = chat_btn.find_child('RedDot')
 @onready var waiting_other_lb = find_child('WaitingOtherLb')
 @onready var back_btn = find_child("BackBtn")
-@onready var bet_lb = find_child("BetLb")
 @onready var pot_value_lb:Label = find_child("PotValueLb")
 @onready var center_play_pn_pos
 @onready var game_start_lb = find_child("GameStartLb")
@@ -70,7 +69,6 @@ var bet_expect = 0
 func _ready() -> void:	
 	did_show_start_eff = false
 	action_btn_pn.visible = false
-	self.bet_pn.visible = false 
 	self.bet_user_node_0.visible = false
 	self.bet_user_node_1.visible = false
 	self.bet_user_node_2.visible = false
@@ -117,24 +115,16 @@ func _get_bet_range() -> Dictionary:
 	}
 
 func update_suitable_bet() -> void:
-	var bet: Dictionary = _get_bet_range()
-	var sette_mezzo_bet_scale = g.v.game_server_config.sette_mezzo_bet_scale
-	bet_expect = clamp(int(bet["gold"] / (sette_mezzo_bet_scale / 2)), bet["min"], bet["max"])
-	var percent: float = (float(bet_expect - bet["min"]) / float(bet["range"]) * 100.0) if bet["range"] > 0 else 0.0
-	bet_bar.value = percent
-	bet_lb.text = StringUtils.symbol_number(bet_expect)
+	return
 
 func _on_slider_drag_started():
 	last_time_touch_bet = g.v.game_manager.get_timestamp_client()
 	print("User started touching the slider")
 	
 func _on_slider_bet_changed(value: float) -> void:
-	var bet: Dictionary = _get_bet_range()
-	bet_expect = int(bet["min"] + (value / 100.0 * bet["range"])) if bet["range"] > 0 else bet["min"]
-	bet_lb.text = StringUtils.symbol_number(bet_expect)
+	return
 
 func bet_all_in():
-	self.bet_pn.visible = false
 	# send bet all in
 	bet_expect = g.v.player_info_mgr.my_user_data.gold
 	g.v.sette_mezzo_mgr.send_bet(bet_expect)
@@ -405,7 +395,6 @@ func _get_seat_position(mode_player: int, seat_id: int):
 			return seat_pos3.global_position
 	return null
 
-@onready var bet_pn = find_child("BetPn")
 var last_time_touch_bet = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -1016,16 +1005,9 @@ func update_game_state():
 	var state = self.game_logic.match_data.state
 	if state == MatchData.MATCH_STATE.BETTING:
 		var tw_bet = create_tween()
-		self.bet_pn.modulate.a = 0
-		tw_bet.parallel().tween_property(
-			self.bet_pn,
-			"modulate:a",
-			1,
-			0.3
-		)
+
 		var remain = game_logic.time_end_bet - g.v.game_manager.get_timestamp_server()
 		tw_bet.parallel().tween_method(update_bet_time, 100.0, 0.0, remain)
-		self.bet_pn.visible = g.v.sette_mezzo_mgr.is_me_in_game()
 		self.is_showing_pn_bet = true
 		self.bet_progress_time.visible = true
 		
@@ -1059,20 +1041,6 @@ func update_game_state():
 			var user_bet_node = get_bet_user_node_by_seat(seat_id)	
 			user_bet_node.visible = false
 			
-	if state != MatchData.MATCH_STATE.BETTING:
-		self.bet_progress_time.visible = false
-		if self.is_showing_pn_bet:
-			var tw_bet = create_tween()
-			tw_bet.tween_property(
-				self.bet_pn,
-				"modulate:a",
-				0,
-				0.3
-			)
-			tw_bet.tween_callback(
-				func():
-					self.bet_pn.visible = false
-			)
 	
 			
 
