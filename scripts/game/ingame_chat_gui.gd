@@ -134,18 +134,18 @@ func on_show():
 		0.3
 	)
 	quick_chat.visible = true
-	quick_chat.position.x = quick_chat_pos.x + 100
-	quick_chat.modulate.a = 0
-	tween.parallel().tween_property(
-		quick_chat,
-		'position:x',
-		quick_chat_pos.x,0.3
-	).set_delay(0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property(
-		quick_chat,
-		'modulate:a',
-		1,0.3
-	).set_delay(0.3)
+	#quick_chat.position.x = quick_chat_pos.x + 100
+	#quick_chat.modulate.a = 0
+	#tween.parallel().tween_property(
+		#quick_chat,
+		#'position:x',
+		#quick_chat_pos.x,0.3
+	#).set_delay(0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	#tween.parallel().tween_property(
+		#quick_chat,
+		#'modulate:a',
+		#1,0.3
+	#).set_delay(0.3)
 	pass
 func on_hide():
 	quick_chat.visible = false

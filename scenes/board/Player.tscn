@@ -1,28 +1,24 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvggiqkn2bjut"]
+[gd_scene load_steps=26 format=3 uid="uid://dvggiqkn2bjut"]
 
 [ext_resource type="Script" path="res://scripts/game/player.gd" id="1_phee0"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_2fpyj"]
 [ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="3_lqea4"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_tcukj"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="3_tw46g"]
+[ext_resource type="Texture2D" uid="uid://bp6kti3au5fyr" path="res://assets/images/lobby/triangle.png" id="4_h8ypu"]
 [ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="5_6p0k0"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_tnwwa"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="6_lqmp5"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="9_55w0l"]
-[ext_resource type="Texture2D" uid="uid://bsfmna1hqw3oi" path="res://assets/images/board/chat_arrow.png" id="9_u71qq"]
 [ext_resource type="Texture2D" uid="uid://b0kfn073sb074" path="res://assets/images/lobby/circles/loading_avatar.png" id="9_uidpq"]
 [ext_resource type="Texture2D" uid="uid://drmwf5psvwa1h" path="res://assets/images/lobby/user_info_gui/vip_icon.png" id="10_avxb6"]
 [ext_resource type="Texture2D" uid="uid://dekvp4vpshah1" path="res://assets/images/board/empty_slot_icon.png" id="10_dudm3"]
 [ext_resource type="Texture2D" uid="uid://bawb2sb1ilo1l" path="res://assets/images/lobby/plus_icon.png" id="11_7d5ia"]
+[ext_resource type="Texture2D" uid="uid://cq8okqg6hg6s" path="res://assets/images/board/down_arrow_seat.png" id="14_3x84p"]
 [ext_resource type="PackedScene" uid="uid://ctoy0ted0cg1q" path="res://scenes/board/EmoPlayer.tscn" id="14_4bldu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuo70"]
 bg_color = Color(0.95484, 0.95484, 0.95484, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.42193, 0.108296, 0.108296, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
@@ -61,6 +57,43 @@ shader_parameter/highlight_strength = 0.5
 shader_parameter/color_mode_toggle = false
 shader_parameter/is_horizontal = true
 shader_parameter/delay = 4.0
+
+[sub_resource type="Animation" id="Animation_l0lgi"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(15, -4), Vector2(15, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_p3g0g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_58tro"]
+_data = {
+"RESET": SubResource("Animation_p3g0g"),
+"idle": SubResource("Animation_l0lgi")
+}
 
 [node name="Player" type="Node2D"]
 position = Vector2(465, 470)
@@ -112,6 +145,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="ChatTooltip/Panel"]
+modulate = Color(0.952941, 0.952941, 0.952941, 1)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -119,15 +153,18 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -12.0
-offset_top = -2.0
+offset_top = -4.0
 offset_right = 13.0
-offset_bottom = 18.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("9_u71qq")
+rotation = 3.14159
+pivot_offset = Vector2(12, 10)
+texture = ExtResource("4_h8ypu")
 expand_mode = 1
 
 [node name="MainPn" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -281,7 +318,6 @@ texture = ExtResource("10_avxb6")
 expand_mode = 1
 
 [node name="EmptySlot" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -346,8 +382,57 @@ grow_vertical = 2
 texture = ExtResource("10_dudm3")
 expand_mode = 1
 
+[node name="JoinBtn" type="Button" parent="EmptySlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("5_tnwwa")
+
+[node name="TextureRect" type="TextureRect" parent="EmptySlot/JoinBtn"]
+modulate = Color(0.121569, 0.203922, 0.129412, 0.623529)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 45.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_lqmp5")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="EmptySlot/JoinBtn"]
+self_modulate = Color(0.924291, 0.834135, 0.0123282, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -36.5655
+offset_right = 30.0
+offset_bottom = 23.4345
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_3x84p")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EmptySlot/JoinBtn/TextureRect2"]
+libraries = {
+"": SubResource("AnimationLibrary_58tro")
+}
+autoplay = "idle"
+
 [node name="EmoPlayer" parent="." instance=ExtResource("14_4bldu")]
-visible = true
 
 [node name="RedDot" type="TextureRect" parent="."]
 self_modulate = Color(0.924291, 0, 0, 1)
@@ -360,3 +445,4 @@ expand_mode = 1
 
 [connection signal="pressed" from="MainPn/AvatarCircle/InfoBtn" to="." method="_show_info"]
 [connection signal="pressed" from="EmptySlot/InviteBtn" to="." method="_click_open_invite_gui"]
+[connection signal="pressed" from="EmptySlot/JoinBtn" to="." method="_click_join_game"]

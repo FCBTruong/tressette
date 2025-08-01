@@ -118,10 +118,13 @@ func _ready() -> void:
 	#show_prepare_start()
 	
 	# check game is waiting and not enough players -> show ads
-	if g.v.game_manager.is_enable_ads() and g.v.player_info_mgr.my_user_data.game_count > 2:
-		if not game_logic.check_enough_players_room():
-			g.admob_mgr._on_interstitial_pressed()
+	#if g.v.game_manager.is_enable_ads() and g.v.player_info_mgr.my_user_data.game_count > 2:
+		#if not game_logic.check_enough_players_room():
+			#g.admob_mgr._on_interstitial_pressed()
 	
+	self.visitor_pn.visible = false
+	for v in self.game_logic.match_data.viewers:
+		self.on_new_viewer(v.uid, v.avatar, v.name)
 
 var is_showing_ads_banner = false
 func set_up_ads_banner(show: bool):
@@ -296,7 +299,7 @@ func on_update_players():
 	var i = 0
 
 	for info in players_info:
-		list_players[i].set_user_data(info)
+		list_players[i].set_user_data(info, game_logic.IS_VIEWING)
 		i += 1
 	update_player_seat()
 
@@ -1350,9 +1353,13 @@ func stop_alarm_clock():
 
 var viewer_node = preload("res://scenes/board/ViewerNode.tscn")
 func on_new_viewer(uid: int, avatar, name):
+	self.visitor_pn.visible = true
 	var v = viewer_node.instantiate()
 	vbox_viewer.add_child(v)
 	v.set_info(uid, avatar, name)
+	pass
+
+func show_viewer_pn():
 	pass
 
 func on_viewer_stop(uid):
@@ -1360,3 +1367,12 @@ func on_viewer_stop(uid):
 		if v.uid == uid:
 			v.queue_free()
 			break
+
+
+func hide_viewer_pn() -> void:
+	self.visitor_pn.visible = false
+	pass
+
+func stop_view_join_game() -> void:
+	g.v.game_manager.join_game_by_id(self.game_logic.match_data.match_id)
+	pass

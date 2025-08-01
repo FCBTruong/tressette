@@ -1583,6 +1583,21 @@ class GameInfo:
 		service.field = _is_vips
 		data[_is_vips.tag] = service
 		
+		_viewer_uids = PBField.new("viewer_uids", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 24, true, [])
+		service = PBServiceField.new()
+		service.field = _viewer_uids
+		data[_viewer_uids.tag] = service
+		
+		_viewer_avatars = PBField.new("viewer_avatars", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 25, true, [])
+		service = PBServiceField.new()
+		service.field = _viewer_avatars
+		data[_viewer_avatars.tag] = service
+		
+		_viewer_names = PBField.new("viewer_names", PB_DATA_TYPE.STRING, PB_RULE.REPEATED, 26, true, [])
+		service = PBServiceField.new()
+		service.field = _viewer_names
+		data[_viewer_names.tag] = service
+		
 	var data = {}
 	
 	var _match_id: PBField
@@ -1791,6 +1806,33 @@ class GameInfo:
 		_is_vips.value = []
 	func add_is_vips(value : bool) -> void:
 		_is_vips.value.append(value)
+	
+	var _viewer_uids: PBField
+	func get_viewer_uids() -> Array:
+		return _viewer_uids.value
+	func clear_viewer_uids() -> void:
+		data[24].state = PB_SERVICE_STATE.UNFILLED
+		_viewer_uids.value = []
+	func add_viewer_uids(value : int) -> void:
+		_viewer_uids.value.append(value)
+	
+	var _viewer_avatars: PBField
+	func get_viewer_avatars() -> Array:
+		return _viewer_avatars.value
+	func clear_viewer_avatars() -> void:
+		data[25].state = PB_SERVICE_STATE.UNFILLED
+		_viewer_avatars.value = []
+	func add_viewer_avatars(value : String) -> void:
+		_viewer_avatars.value.append(value)
+	
+	var _viewer_names: PBField
+	func get_viewer_names() -> Array:
+		return _viewer_names.value
+	func clear_viewer_names() -> void:
+		data[26].state = PB_SERVICE_STATE.UNFILLED
+		_viewer_names.value = []
+	func add_viewer_names(value : String) -> void:
+		_viewer_names.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

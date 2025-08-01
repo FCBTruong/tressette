@@ -3,9 +3,11 @@ extends Node
 @onready var avatar_img = find_child("AvatarImg")
 @onready var emo_icon = find_child("EmoPlayer")
 @onready var chat_lb = find_child("ChatLb")
+@onready var chat_pn = find_child("ChatPn")
 var uid: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	chat_pn.visible = false
 	pass # Replace with function body.
 
 
@@ -22,9 +24,26 @@ func set_info(uid: int, avatar, name):
 func click_avatar():
 	g.v.friend_mgr.search_friend(self.uid)
 	pass
-	
+
+var tw_chat
 func on_chat(msg):
 	chat_lb.text = msg
+	await get_tree().process_frame
+	chat_pn.visible = true
+	chat_pn.modulate.a = 1
+	
+	chat_pn.size.x = 50 + chat_lb.size.x
+	
+	if tw_chat and tw_chat.is_running():
+		tw_chat.kill()
+	tw_chat = create_tween()
+	tw_chat.tween_property(
+		chat_pn,
+		"modulate:a",
+		0,
+		0.3
+	).set_delay(2)
+	
 	pass
 	
 var tween_emo

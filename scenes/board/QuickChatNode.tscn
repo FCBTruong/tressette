@@ -5,13 +5,11 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_ullgl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e6yh"]
-bg_color = Color(0.517647, 0.321569, 0.243137, 1)
+bg_color = Color(0.517647, 0.321569, 0.243137, 0.235294)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-shadow_color = Color(0, 0, 0, 0.435294)
-shadow_size = 2
 
 [node name="QuickChatNode" type="Panel"]
 custom_minimum_size = Vector2(250, 50)
@@ -35,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.859799, 0.735324, 0.599534, 1)
+theme_override_colors/font_color = Color(0.533943, 0.287862, 0.0194119, 1)
 theme_override_fonts/font = ExtResource("2_olrc5")
 theme_override_font_sizes/font_size = 20
 text = "I have a good hand! 😉"

@@ -167,7 +167,7 @@ func _handle_register_leave_game(payload: PackedByteArray):
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is BoardScene:
 		scene.update_register_leave_state()
-	
+
 func _handle_game_info(payload: PackedByteArray):
 	g.v.game_manager.CURRENT_GAME_PLAY = 0
 	g.v.scene_manager.clear_loading()
@@ -244,6 +244,17 @@ func _handle_game_info(payload: PackedByteArray):
 	
 	var my_cards = pkg.get_my_cards()
 	_update_my_cards(my_cards)
+	
+	var viewer_uids = pkg.get_viewer_uids()
+	var viewer_avts = pkg.get_viewer_avatars()
+	var viewer_names = pkg.get_viewer_names()
+	for j in len(viewer_uids):
+		var v_uid = viewer_uids[j]
+		var userdata = UserData.new(v_uid, '')
+		userdata.avatar = viewer_avts[j]
+		userdata.name = viewer_names[j]
+		match_data.viewers.append(userdata)
+		
 	
 	g.v.scene_manager.switch_scene("res://scenes/BoardScene.tscn")
 
@@ -470,7 +481,8 @@ func _handle_newhand(payload: PackedByteArray):
 	
 	self.hand_suit = -1
 	
-	g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
+	if is_instance_valid(g.v.scene_manager.INSTANCES.BOARD_SCENE):
+		g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
 
 
 func _handle_draw_card(payload: PackedByteArray):

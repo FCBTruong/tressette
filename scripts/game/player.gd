@@ -16,6 +16,8 @@ extends Node
 @onready var name_lb = find_child("NameLb")
 @onready var chat_tooltip = find_child("ChatTooltip")
 @onready var vip_icon = find_child("VipIcon")
+@onready var invite_btn = find_child("InviteBtn")
+@onready var join_btn = find_child("JoinBtn")
 var default_pos_bonus
 var is_me: bool = false
 func _ready() -> void:
@@ -35,11 +37,17 @@ var user_data: UserData
 
 
 # Function to update properties
-func set_user_data(user_dt: UserData) -> void:
+func set_user_data(user_dt: UserData, is_viewing: bool = false) -> void:
 	user_data = user_dt
 	if not user_data or user_data.uid == -1:
 		main_pn.visible = false
 		empty_slot.visible = true
+		if is_viewing:
+			self.invite_btn.visible = false
+			self.join_btn.visible = true
+		else:
+			self.invite_btn.visible = true
+			self.join_btn.visible = false
 		return
 	red_dot.visible = false
 
@@ -198,6 +206,12 @@ func _get_gold_str(gold) -> String:
 
 func _click_open_invite_gui() -> void:
 	g.v.scene_manager.open_gui("res://scenes/board/FriendInviteGUI.tscn")
+	pass
+	
+func _click_join_game() -> void:
+	var scene = g.v.scene_manager.get_current_scene()
+	if scene is BoardScene:
+		scene.stop_view_join_game()
 	pass
 	
 var tw_bonus
