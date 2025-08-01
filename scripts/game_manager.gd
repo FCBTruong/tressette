@@ -129,8 +129,6 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			
 				
 		g.v.game_constants.CMDs.TABLE_LIST:
-			if g.v.app_version.is_in_review():
-				return 
 			var pkg = g.v.game_constants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)
 			var table_ids = pkg.get_table_ids()

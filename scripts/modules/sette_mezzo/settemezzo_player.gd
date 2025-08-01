@@ -13,7 +13,6 @@ extends Node
 @onready var bonus_txt_lb = find_child("BonusTxtLb")
 @onready var red_dot = find_child("RedDot")
 @onready var bonus_info_colour = find_child("BonusInfoColour")
-@onready var gold_pn = find_child("GoldPn")
 @onready var name_pn = find_child("NamePn")
 @onready var name_lb = find_child("NameLb")
 @onready var chat_tooltip = find_child("ChatTooltip")
@@ -26,12 +25,9 @@ const TIME_THINKING_IN_TURN = 10
 var default_pos_eff_gold
 func _ready() -> void:
 	chat_tooltip.visible = false
-	if g.v.app_version.is_in_review():
-		gold_pn.visible = false
-		name_pn.visible = true
-	else:
-		gold_pn.visible = true
-		name_pn.visible = false
+
+	name_pn.visible = true
+
 	#effect_add_score(5)
 	emo_icon.visible = false
 	time_progress_bar.visible = false
@@ -101,7 +97,7 @@ func update_state_ingame():
 		self.main_pn.modulate.a = 1
 
 func _update_gold():
-	gold_lb.text = _get_gold_str(user_data.gold)
+	return
 
 func update_points_display(effect_add = false):
 	pass

@@ -36,7 +36,6 @@ var in_game_chat_gui
 @onready var waiting_other_lb = find_child('WaitingOtherLb')
 @onready var evaluate_lb = find_child('EvaluateLb')
 @onready var back_btn = find_child("BackBtn")
-@onready var bet_lb = find_child("BetLb")
 @onready var center_play_pn_pos
 @onready var game_start_lb = find_child("GameStartLb")
 @onready var round_lb = find_child("RoundLb")
@@ -47,7 +46,6 @@ var in_game_chat_gui
 @onready var reach_point_win_lb = find_child("ReachPointWinLb")
 @onready var auto_play_pn = find_child("AutoPlayPn")
 var pn_highlight_napoli = preload("res://scenes/board/NapoliCardHighlight.tscn")
-@onready var bet_info_pn = find_child("BetInfoPn")
 @onready var score_pn = find_child("ScorePn")
 @onready var deco_2v2 = find_child("Deco2vs2")
 const DEFAULT_CARD_Z_INDEX = 10
@@ -79,6 +77,9 @@ var is_showing_functions = false
 @onready var btn_show_func_bar = find_child("ShowFunctionBtn")
 @onready var emo_chat = find_child("EmoChat")
 @onready var ads_banner_pn = find_child("AdsBannerPn")
+@onready var vbox_viewer = find_child("VboxViewer")
+@onready var visitor_pn = find_child("VisitorPn")
+
 var cardback_node_default_pos
 var remain_card_pn
 func _ready() -> void:	
@@ -181,7 +182,6 @@ func _on_enter():
 		on_user_turn()
 			
 	self.update_team_scores()
-	bet_lb.text = tr("BET") + ": " + StringUtils.symbol_number(game_logic.match_data.bet)
 	
 	var str_reach_win = tr("REACH_POINT_TO_WIN")
 	str_reach_win = str_reach_win.replace("#point", str(game_logic.match_data.point_to_win / 3))
@@ -821,7 +821,7 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 	tween.parallel().tween_property(card_instance, "global_position",p_place_world, 0.5).set_trans(Tween.TRANS_SINE)
 	#tween.parallel().tween_property(card_instance, "rotation", rot, 0.3)
 	tween.parallel().tween_property(card_instance, "scale", 
-		Vector2(SCALE_CARD_NORMAL * 1.1, SCALE_CARD_NORMAL * 1.1), 0.3)\
+		Vector2(SCALE_CARD_NORMAL * 1.05, SCALE_CARD_NORMAL * 1.05), 0.4)\
 			.set_trans(Tween.TRANS_SINE)
 			
 	tween.parallel().tween_callback(
@@ -1000,9 +1000,19 @@ func on_show_chat_gui():
 
 func on_new_chat_message(uid, message):
 	g.v.sound_manager.play_notification_alert()
+	
+	var found = false
 	for p in list_players:
 		if p.user_data.uid == uid:
 			p.on_chat(message)
+			found = true
+			break
+			
+	if not found:
+		for v in vbox_viewer.get_children():
+			if v.uid == uid:
+				v.on_chat(message)
+				break
 	
 	if not in_game_chat_gui:
 		return
@@ -1013,6 +1023,13 @@ func on_new_chat_emo(uid, emo):
 	var p = get_player_node_by_uid(uid)
 	if p:
 		p.show_emotion(emo)
+	else:
+		# try to find viewer node
+		for v in vbox_viewer.get_children():
+			if v.uid == uid:
+				v.show_emotion(emo)
+				break
+		pass
 	
 func _effect_evaluate(text = 'Fantastic!'):
 	#var screen_size = DisplayServer.window_get_size()
@@ -1330,3 +1347,16 @@ func on_alarm_clock():
 func stop_alarm_clock():
 	is_alarming_clock = false
 	$AudioClockTick.stop()
+
+var viewer_node = preload("res://scenes/board/ViewerNode.tscn")
+func on_new_viewer(uid: int, avatar, name):
+	var v = viewer_node.instantiate()
+	vbox_viewer.add_child(v)
+	v.set_info(uid, avatar, name)
+	pass
+
+func on_viewer_stop(uid):
+	for v in self.vbox_viewer.get_children():
+		if v.uid == uid:
+			v.queue_free()
+			break

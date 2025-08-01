@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=54 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://by85h0wu67f1a" path="res://assets/images/board/emoticon.png" id="12_cc6ty"]
 [ext_resource type="Texture2D" uid="uid://d3so2iryojgej" path="res://assets/images/board/battle_icon.png" id="12_v447i"]
 [ext_resource type="PackedScene" uid="uid://bwlkcma7c0pa3" path="res://scenes/board/PanelNapoliBtn.tscn" id="13_6bu1m"]
-[ext_resource type="Texture2D" uid="uid://dfrywon3i1nx6" path="res://assets/images/lobby/info_icon.png" id="14_4pw0j"]
 [ext_resource type="Texture2D" uid="uid://v20b0tyl7vei" path="res://assets/images/board/guide_btn.png" id="14_arj4s"]
 [ext_resource type="Texture2D" uid="uid://ccq1m054wgoom" path="res://assets/images/board/settings_btn.png" id="15_fl0rb"]
 [ext_resource type="Texture2D" uid="uid://d1cv761bu0g1a" path="res://assets/images/board/game_start.png" id="15_fu0n4"]
@@ -31,6 +30,7 @@
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="23_5xkug"]
 [ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="24_gd8ru"]
 [ext_resource type="PackedScene" uid="uid://d3phqitk2yrkh" path="res://scenes/board/EmoChat.tscn" id="27_8g18i"]
+[ext_resource type="Texture2D" uid="uid://ciag7udxsmr8c" path="res://assets/images/board/icon_viewer.png" id="27_sb6tw"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
 [ext_resource type="AudioStream" uid="uid://g0su4roe1kup" path="res://assets/sounds/clock_tick_sound.mp3" id="33_2tsyk"]
 
@@ -207,6 +207,19 @@ shader_parameter/is_horizontal = true
 shader_parameter/delay = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23sef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4smk3"]
+bg_color = Color(0, 0, 0, 0.160784)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.119835, 0.0957759, 0.0957759, 0)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t6yy"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -1213,50 +1226,6 @@ grow_horizontal = 0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="BetInfoPn" type="HBoxContainer" parent="RightTopPanel"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-offset_left = 171.0
-offset_top = 125.0
-offset_right = 371.0
-offset_bottom = 157.0
-mouse_filter = 2
-alignment = 2
-
-[node name="InfoBetBtn" type="Button" parent="RightTopPanel/BetInfoPn"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-flat = true
-script = ExtResource("7_gov4p")
-
-[node name="TextureRect" type="TextureRect" parent="RightTopPanel/BetInfoPn/InfoBetBtn"]
-self_modulate = Color(1, 1, 1, 0.705882)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.5
-offset_top = -18.0
-offset_right = 17.5
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("14_4pw0j")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="BetLb" type="Label" parent="RightTopPanel/BetInfoPn"]
-modulate = Color(1, 0.972549, 0.945098, 0.368627)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_2a7pa")
-theme_override_font_sizes/font_size = 20
-text = "BET: 100K"
-horizontal_alignment = 2
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [node name="RoomIdLb" type="Label" parent="RightTopPanel"]
 layout_mode = 1
 anchors_preset = -1
@@ -1618,6 +1587,92 @@ theme_override_font_sizes/font_size = 23
 text = "RETURN_TO_TABLE"
 horizontal_alignment = 1
 
+[node name="VisitorPn" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 39.0
+offset_top = 189.0
+offset_right = 129.0
+offset_bottom = 439.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4smk3")
+
+[node name="TextureRect" type="TextureRect" parent="VisitorPn"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = -42.0
+offset_right = 67.0
+offset_bottom = -2.0
+texture = ExtResource("27_sb6tw")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="VisitorPn"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 67.0
+offset_right = 133.0
+offset_bottom = 107.0
+script = ExtResource("7_gov4p")
+
+[node name="TextureRect" type="TextureRect" parent="VisitorPn/Button"]
+modulate = Color(0.761363, 0.761363, 0.761363, 0.545098)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(15, 15)
+texture = ExtResource("4_ei7ic")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="VisitorPn"]
+clip_children = 1
+custom_minimum_size = Vector2(500, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -70.0
+offset_right = 150.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VisitorPn/Control"]
+clip_contents = false
+custom_minimum_size = Vector2(60, 230)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -115.0
+offset_right = 30.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 3
+
+[node name="VboxViewer" type="VBoxContainer" parent="VisitorPn/Control/ScrollContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
 [node name="PnHighlightNapoli" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 1587.0
@@ -1652,7 +1707,6 @@ volume_db = 12.0
 [connection signal="pressed" from="HideFunctionBtn" to="." method="hide_function_btns"]
 [connection signal="pressed" from="ShowFunctionBtn" to="." method="show_function_btns"]
 [connection signal="pressed" from="ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
-[connection signal="pressed" from="RightTopPanel/BetInfoPn/InfoBetBtn" to="." method="_click_show_info_bet"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer/RankingBtn" to="." method="_click_ranking"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer/SettingBtn" to="." method="_open_settings_gui"]

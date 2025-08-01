@@ -966,7 +966,8 @@ func on_end_game(uids, is_wins, golds):
 				if is_win:
 					var anim_cup = anim_cup_scene.instantiate()
 					p.add_child(anim_cup)
-				p.eff_win_gold(gold)
+				if gold != 0:
+					p.eff_win_gold(gold)
 	
 	await ROOT.get_tree().create_timer(1).timeout
 	reset_scores()
@@ -996,6 +997,7 @@ func user_stand(uid):
 		p.effect_user_stand()
 
 func on_start_betting():
+	return
 	if not self.did_show_start_eff:
 		game_start_lb.text = tr("GAME_START")
 		_eff_text_middle()

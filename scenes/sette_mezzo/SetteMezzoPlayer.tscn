@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://6mwjo3fjpdd3"]
+[gd_scene load_steps=23 format=3 uid="uid://6mwjo3fjpdd3"]
 
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/settemezzo_player.gd" id="1_qmmjy"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_sbcn4"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_7cgks"]
 [ext_resource type="Texture2D" uid="uid://bsfmna1hqw3oi" path="res://assets/images/board/chat_arrow.png" id="4_v7o1b"]
 [ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="5_17hie"]
-[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="6_rsse8"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="7_us3mp"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="8_8shjw"]
 [ext_resource type="Texture2D" uid="uid://b0kfn073sb074" path="res://assets/images/lobby/circles/loading_avatar.png" id="9_cismx"]
@@ -216,58 +215,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_7cgks")
 theme_override_font_sizes/font_size = 20
 text = "+1 Last Trick"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GoldPn" type="Panel" parent="MainPn"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = 31.0
-offset_right = 54.0
-offset_bottom = 61.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_sjdqh")
-
-[node name="TextureRect" type="TextureRect" parent="MainPn/GoldPn"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -127.0
-offset_top = -18.0
-offset_right = -92.0
-offset_bottom = 17.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("6_rsse8")
-expand_mode = 1
-
-[node name="GoldLb" type="Label" parent="MainPn/GoldPn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -14.0
-offset_right = 55.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_7cgks")
-theme_override_font_sizes/font_size = 18
-text = "1.00000"
 horizontal_alignment = 1
 vertical_alignment = 1
 

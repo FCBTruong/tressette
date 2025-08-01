@@ -148,9 +148,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -65.0
+offset_left = -73.0
 offset_top = 31.0
-offset_right = 65.0
+offset_right = 77.0
 offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -347,6 +347,7 @@ texture = ExtResource("10_dudm3")
 expand_mode = 1
 
 [node name="EmoPlayer" parent="." instance=ExtResource("14_4bldu")]
+visible = true
 
 [node name="RedDot" type="TextureRect" parent="."]
 self_modulate = Color(0.924291, 0, 0, 1)

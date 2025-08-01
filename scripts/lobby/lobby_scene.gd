@@ -3,6 +3,10 @@ extends Control
 class_name LobbyScene
 var did_share_session
 @onready var sette_mezzo_btn = find_child("SetteMezzoBtn")
+@onready var exp_bar = find_child("ExpBar")
+@onready var level_lb = find_child("LevelLbHead")
+@onready var name_lb = find_child("NameLb")
+@onready var vbox_tables = find_child("VBoxTables")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_size = DisplayServer.window_get_size()
@@ -74,12 +78,13 @@ func _ready() -> void:
 	else:
 		self.sette_mezzo_btn.visible = true
 		
+	self.update_level_exp()
+	g.v.signal_bus.connect_global('update_table_list',Callable(self, "_update_table_list"))
+	g.v.game_manager.send_get_table_list()
+		
 @onready var watch_ads_btn = find_child("WatchAdsBtn")
 @onready var play_container = find_child('PlayContainer')
 @onready var bg = find_child('Background')
-@onready var panel_info = find_child('PanelInfo')
-@onready var gold_lb:Label = panel_info.find_child('GoldLb')
-@onready var name_lb:Label = panel_info.find_child('NameLb')
 @onready var avatar_img = find_child('Avatar')
 @onready var friend_btn = find_child('FriendBtn')
 @onready var friend_img_hot = friend_btn.find_child('ImgHot')
@@ -106,12 +111,12 @@ func _do_effect() -> void:
 	mobile_web_pn.visible = g.v.config.get_platform() == g.v.config.PLATFORMS.WEB
 
 func _on_update_money():
-	gold_lb.text = StringUtils.point_number(g.v.player_info_mgr.my_user_data.gold)
+	return
 
 func on_update_gui():
 	_on_update_money()
-	name_lb.text = str(g.v.player_info_mgr.my_user_data.name)
 	_update_friend_requests()
+	name_lb.text = g.v.player_info_mgr.my_user_data.name
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -228,3 +233,43 @@ func play_sette_mezzo():
 
 func open_fb_group():
 	OS.shell_open("https://www.facebook.com/share/g/1ALgWc7Lg9/")
+
+
+func update_level_exp():
+	var level = g.v.game_server_config.convert_exp_to_level(g.v.player_info_mgr.my_user_data.exp)
+	if g.v.game_server_config.is_max_level(level):
+		exp_bar.value = 100
+	else:
+		var a = g.v.game_server_config.exp_levels[level - 1]
+		var b = g.v.game_server_config.exp_levels[level]
+		var cur = g.v.player_info_mgr.my_user_data.exp - a
+		var des = b - a
+		exp_bar.value = cur * 1.0 / des * 100
+	self.level_lb.text = "Lv." + str(level)
+
+
+var table_node_scene = preload("res://scenes/lobby/rooms/TableNode.tscn")
+func _update_table_list():
+	for c in vbox_tables.get_children():
+		c.queue_free()
+	for i in range(len(g.v.game_manager.table_list)):
+		var table = g.v.game_manager.table_list[i]
+		var table_node_inst = table_node_scene.instantiate()  # Create a new player instance
+		table_node_inst.name = "TableNode%d" % i  # Name the player nodes uniquely
+	
+		vbox_tables.add_child(table_node_inst)
+		table_node_inst.set_info(table)
+
+var last_time_refresh_tb = 0
+func refresh_list_table():
+	var now = g.v.game_manager.get_timestamp_client()
+	if last_time_refresh_tb + 1 > now:
+		print("too fast")
+		return
+	last_time_refresh_tb = now
+	g.v.game_manager.send_get_table_list()
+
+func _auto_refresh_list_table():
+	print("auto refresh list table")
+	g.v.game_manager.send_get_table_list()
+	pass

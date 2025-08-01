@@ -51,8 +51,37 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_handle_cheat_view_card_bot(payload)
 		g.v.game_constants.CMDs.GAME_ACTION_NAPOLI:
 			_handle_receive_napoli(payload)
+		g.v.game_constants.CMDs.USER_STOP_VIEW:
+			_handle_user_stop_view(payload)
+		g.v.game_constants.CMDs.NEW_USER_VIEW_GAME:
+			_handle_new_user_view_game(payload)
 
-
+func _handle_new_user_view_game(payload: PackedByteArray):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.NewUserView.new()
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	var avatar = pkg.get_avatar()
+	var name = pkg.get_name()
+	
+	var board_scene = g.v.scene_manager.get_current_scene()
+	if board_scene is BoardScene:
+		board_scene.on_new_viewer(uid, avatar, name)
+		return
+func _handle_user_stop_view(payload: PackedByteArray):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.UserStopView.new()
+	var result_code = pkg.from_bytes(payload)
+	var uid = pkg.get_uid()
+	var board_scene = g.v.scene_manager.get_current_scene()
+	if not board_scene is BoardScene:
+		return
+	if uid == g.v.player_info_mgr.get_user_id():
+		# leave table
+		
+		board_scene.exit_game()
+	else:
+		board_scene.on_viewer_stop(uid)
+	pass
+	
 func _handle_user_leave_match(payload: PackedByteArray):
 	if not match_data:
 		return
@@ -267,7 +296,7 @@ func _handle_play_card(payload: PackedByteArray):
 		card_win_id = pkg.get_win_card()
 		var is_end_round = pkg.get_is_end_round()
 		await ROOT.get_tree().create_timer(0.65).timeout
-		if scene and scene is BoardScene:
+		if is_instance_valid(scene) and scene is BoardScene:
 			scene.on_finishhand(0.5, is_end_round)
 
 

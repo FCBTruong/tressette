@@ -6965,4 +6965,114 @@ class ViewGame:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class UserStopView:
+	func _init():
+		var service
+		
+		_uid = PBField.new("uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _uid
+		data[_uid.tag] = service
+		
+	var data = {}
+	
+	var _uid: PBField
+	func get_uid() -> int:
+		return _uid.value
+	func clear_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_uid(value : int) -> void:
+		_uid.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class NewUserView:
+	func _init():
+		var service
+		
+		_uid = PBField.new("uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _uid
+		data[_uid.tag] = service
+		
+		_avatar = PBField.new("avatar", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _avatar
+		data[_avatar.tag] = service
+		
+		_name = PBField.new("name", PB_DATA_TYPE.STRING, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.STRING])
+		service = PBServiceField.new()
+		service.field = _name
+		data[_name.tag] = service
+		
+	var data = {}
+	
+	var _uid: PBField
+	func get_uid() -> int:
+		return _uid.value
+	func clear_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_uid(value : int) -> void:
+		_uid.value = value
+	
+	var _avatar: PBField
+	func get_avatar() -> String:
+		return _avatar.value
+	func clear_avatar() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_avatar.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_avatar(value : String) -> void:
+		_avatar.value = value
+	
+	var _name: PBField
+	func get_name() -> String:
+		return _name.value
+	func clear_name() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_name.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
+	func set_name(value : String) -> void:
+		_name.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

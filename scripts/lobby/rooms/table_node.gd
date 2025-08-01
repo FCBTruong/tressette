@@ -1,8 +1,10 @@
 extends Node
 
-@onready var bet_lb = find_child("BetLb")
 @onready var player_icon = find_child('PlayerIcon')
-@onready var full_icon = find_child("FullIcon")
+@onready var icon_vs1 = find_child("IconVs1")
+@onready var icon_vs2 = find_child("IconVs2")
+@onready var view_btn = find_child("ViewBtn")
+@onready var play_btn = find_child("PlayBtn")
 var _info: TableInfo
 var slots = []
 # Called when the node enters the scene tree for the first time.
@@ -18,26 +20,26 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-@onready var game_lb = find_child("GameLb")
 func set_info(table: TableInfo):
 	self._info = table
-	self.bet_lb.text = StringUtils.point_number(table.bet)
 
 	if table.player_mode < 4:
 		slots[2].visible = false
 		slots[3].visible = false
+		icon_vs2.visible = false
+		icon_vs1.visible = true
 	else:
 		slots[2].visible = true
 		slots[3].visible = true
+		icon_vs2.visible = true
+		icon_vs1.visible = false
 	
 	if table.num_player == table.player_mode:
-		full_icon.visible = true
+		self.view_btn.visible = true
+		self.play_btn.visible = false
 	else:
-		full_icon.visible = false
-	if table.game_mode == g.v.game_constants.GAME_MODE.TRESSETTE:
-		game_lb.text = "Tressette"
-	else:
-		game_lb.text = "Sette e Mezzo"
+		self.view_btn.visible = false
+		self.play_btn.visible = true
 	
 	for i in range(len(table.player_uids)):
 		var uid = table.player_uids[i]
@@ -56,9 +58,27 @@ func _click_play():
 			tr("ROOM_IS_FULL")
 		)
 		return
-	# check if enough gold
-	if self._info.bet * g.v.game_server_config.bet_multiplier_min > \
-		g.v.player_info_mgr.my_user_data.gold:
-		g.v.game_manager.show_not_gold_recommend_shop()
-		return
+
 	g.v.game_manager.join_game_by_id(self._info.match_id)
+
+func _click_view():
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ViewGame.new()
+	pkg.set_match_id(self._info.match_id)
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.VIEW_GAME, pkg.to_bytes())
+	return
+	
+func click_user1():
+	var uid = _info.player_uids[0]
+	g.v.friend_mgr.search_friend(uid)
+		
+func click_user2():
+	var uid = _info.player_uids[1]
+	g.v.friend_mgr.search_friend(uid)
+		
+func click_user3():
+	var uid = _info.player_uids[2]
+	g.v.friend_mgr.search_friend(uid)
+		
+func click_user4():
+	var uid = _info.player_uids[3]
+	g.v.friend_mgr.search_friend(uid)
