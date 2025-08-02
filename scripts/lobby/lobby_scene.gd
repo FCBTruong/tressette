@@ -19,11 +19,6 @@ func _ready() -> void:
 	g.v.friend_mgr.send_friend_list()
 	g.v.signal_bus.connect_global('on_update_money', Callable(self, "_on_update_money"))
 	g.v.signal_bus.connect_global('update_friend_requests', Callable(self, '_update_friend_requests'))
-	
-	# check claim support
-	if g.v.player_info_mgr.my_user_data.gold < \
-		g.v.game_server_config.min_gold_play and g.v.player_info_mgr.support_num > 0:
-			g.v.game_manager.send_claim_support()
 			
 	var store_rate = g.v.storage_cache.fetch("store_rating2", 0)
 	if store_rate == 0:
@@ -144,7 +139,8 @@ func _open_tables_scene():
 func _open_mail_gui():
 	g.v.scene_manager.show_toast(tr('FEATURE_COMING_SOON'))
 	
-func _open_customer_service_gui():
+func _open_inventory():
+	#pass
 	g.v.scene_manager.open_gui("res://scenes/customer_service/CustomerServiceGUI.tscn")
 
 func _click_mission_btn():

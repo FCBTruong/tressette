@@ -43,6 +43,8 @@ func _on_receive_info(bytes: PackedByteArray):
 	time_show_ads = packet.get_time_show_ads()
 	login_type = packet.get_login_type()
 	time_ads_reward = packet.get_time_ads_reward()
+	my_user_data.avatar_frame = packet.get_avatar_frame()
+	#my_user_data.avatar_frame = g.v.game_constants.AVATAR_FRAME_IDS.VICTORY
 	if time_ads_reward == -1:
 		enable_ads_reward = false
 	else:

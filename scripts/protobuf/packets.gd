@@ -1270,6 +1270,11 @@ class UserInfo:
 		service.field = _add_for_user_support
 		data[_add_for_user_support.tag] = service
 		
+		_avatar_frame = PBField.new("avatar_frame", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 20, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _avatar_frame
+		data[_avatar_frame.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1443,6 +1448,15 @@ class UserInfo:
 	func set_add_for_user_support(value : bool) -> void:
 		_add_for_user_support.value = value
 	
+	var _avatar_frame: PBField
+	func get_avatar_frame() -> int:
+		return _avatar_frame.value
+	func clear_avatar_frame() -> void:
+		data[20].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frame.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_avatar_frame(value : int) -> void:
+		_avatar_frame.value = value
+	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
 		
@@ -1597,6 +1611,16 @@ class GameInfo:
 		service = PBServiceField.new()
 		service.field = _viewer_names
 		data[_viewer_names.tag] = service
+		
+		_avatar_frames = PBField.new("avatar_frames", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 27, true, [])
+		service = PBServiceField.new()
+		service.field = _avatar_frames
+		data[_avatar_frames.tag] = service
+		
+		_viewer_avatar_frames = PBField.new("viewer_avatar_frames", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 28, true, [])
+		service = PBServiceField.new()
+		service.field = _viewer_avatar_frames
+		data[_viewer_avatar_frames.tag] = service
 		
 	var data = {}
 	
@@ -1834,6 +1858,24 @@ class GameInfo:
 	func add_viewer_names(value : String) -> void:
 		_viewer_names.value.append(value)
 	
+	var _avatar_frames: PBField
+	func get_avatar_frames() -> Array:
+		return _avatar_frames.value
+	func clear_avatar_frames() -> void:
+		data[27].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frames.value = []
+	func add_avatar_frames(value : int) -> void:
+		_avatar_frames.value.append(value)
+	
+	var _viewer_avatar_frames: PBField
+	func get_viewer_avatar_frames() -> Array:
+		return _viewer_avatar_frames.value
+	func clear_viewer_avatar_frames() -> void:
+		data[28].state = PB_SERVICE_STATE.UNFILLED
+		_viewer_avatar_frames.value = []
+	func add_viewer_avatar_frames(value : int) -> void:
+		_viewer_avatar_frames.value.append(value)
+	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
 		
@@ -1935,6 +1977,11 @@ class NewUserJoinMatch:
 		service.field = _is_vip
 		data[_is_vip.tag] = service
 		
+		_avatar_frame = PBField.new("avatar_frame", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _avatar_frame
+		data[_avatar_frame.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1999,6 +2046,15 @@ class NewUserJoinMatch:
 		_is_vip.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
 	func set_is_vip(value : bool) -> void:
 		_is_vip.value = value
+	
+	var _avatar_frame: PBField
+	func get_avatar_frame() -> int:
+		return _avatar_frame.value
+	func clear_avatar_frame() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frame.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_avatar_frame(value : int) -> void:
+		_avatar_frame.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2601,40 +2657,20 @@ class GeneralInfo:
 		service.field = _time_thinking_in_turn
 		data[_time_thinking_in_turn.tag] = service
 		
-		_tressette_bets = PBField.new("tressette_bets", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
-		service = PBServiceField.new()
-		service.field = _tressette_bets
-		data[_tressette_bets.tag] = service
-		
-		_bet_multiplier_min = PBField.new("bet_multiplier_min", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
-		service = PBServiceField.new()
-		service.field = _bet_multiplier_min
-		data[_bet_multiplier_min.tag] = service
-		
-		_exp_levels = PBField.new("exp_levels", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 5, true, [])
+		_exp_levels = PBField.new("exp_levels", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
 		service = PBServiceField.new()
 		service.field = _exp_levels
 		data[_exp_levels.tag] = service
 		
-		_fee_mode_no_bet = PBField.new("fee_mode_no_bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		_fee_mode_no_bet = PBField.new("fee_mode_no_bet", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
 		service.field = _fee_mode_no_bet
 		data[_fee_mode_no_bet.tag] = service
 		
-		_enable_ads = PBField.new("enable_ads", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 7, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		_enable_ads = PBField.new("enable_ads", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
 		service = PBServiceField.new()
 		service.field = _enable_ads
 		data[_enable_ads.tag] = service
-		
-		_sette_mezzo_bet_scale = PBField.new("sette_mezzo_bet_scale", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
-		service = PBServiceField.new()
-		service.field = _sette_mezzo_bet_scale
-		data[_sette_mezzo_bet_scale.tag] = service
-		
-		_min_gold_play_sette_mezzo = PBField.new("min_gold_play_sette_mezzo", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 9, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
-		service = PBServiceField.new()
-		service.field = _min_gold_play_sette_mezzo
-		data[_min_gold_play_sette_mezzo.tag] = service
 		
 	var data = {}
 	
@@ -2656,29 +2692,11 @@ class GeneralInfo:
 	func set_time_thinking_in_turn(value : int) -> void:
 		_time_thinking_in_turn.value = value
 	
-	var _tressette_bets: PBField
-	func get_tressette_bets() -> Array:
-		return _tressette_bets.value
-	func clear_tressette_bets() -> void:
-		data[3].state = PB_SERVICE_STATE.UNFILLED
-		_tressette_bets.value = []
-	func add_tressette_bets(value : int) -> void:
-		_tressette_bets.value.append(value)
-	
-	var _bet_multiplier_min: PBField
-	func get_bet_multiplier_min() -> int:
-		return _bet_multiplier_min.value
-	func clear_bet_multiplier_min() -> void:
-		data[4].state = PB_SERVICE_STATE.UNFILLED
-		_bet_multiplier_min.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
-	func set_bet_multiplier_min(value : int) -> void:
-		_bet_multiplier_min.value = value
-	
 	var _exp_levels: PBField
 	func get_exp_levels() -> Array:
 		return _exp_levels.value
 	func clear_exp_levels() -> void:
-		data[5].state = PB_SERVICE_STATE.UNFILLED
+		data[3].state = PB_SERVICE_STATE.UNFILLED
 		_exp_levels.value = []
 	func add_exp_levels(value : int) -> void:
 		_exp_levels.value.append(value)
@@ -2687,7 +2705,7 @@ class GeneralInfo:
 	func get_fee_mode_no_bet() -> int:
 		return _fee_mode_no_bet.value
 	func clear_fee_mode_no_bet() -> void:
-		data[6].state = PB_SERVICE_STATE.UNFILLED
+		data[4].state = PB_SERVICE_STATE.UNFILLED
 		_fee_mode_no_bet.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_fee_mode_no_bet(value : int) -> void:
 		_fee_mode_no_bet.value = value
@@ -2696,28 +2714,10 @@ class GeneralInfo:
 	func get_enable_ads() -> bool:
 		return _enable_ads.value
 	func clear_enable_ads() -> void:
-		data[7].state = PB_SERVICE_STATE.UNFILLED
+		data[5].state = PB_SERVICE_STATE.UNFILLED
 		_enable_ads.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
 	func set_enable_ads(value : bool) -> void:
 		_enable_ads.value = value
-	
-	var _sette_mezzo_bet_scale: PBField
-	func get_sette_mezzo_bet_scale() -> int:
-		return _sette_mezzo_bet_scale.value
-	func clear_sette_mezzo_bet_scale() -> void:
-		data[8].state = PB_SERVICE_STATE.UNFILLED
-		_sette_mezzo_bet_scale.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
-	func set_sette_mezzo_bet_scale(value : int) -> void:
-		_sette_mezzo_bet_scale.value = value
-	
-	var _min_gold_play_sette_mezzo: PBField
-	func get_min_gold_play_sette_mezzo() -> int:
-		return _min_gold_play_sette_mezzo.value
-	func clear_min_gold_play_sette_mezzo() -> void:
-		data[9].state = PB_SERVICE_STATE.UNFILLED
-		_min_gold_play_sette_mezzo.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
-	func set_min_gold_play_sette_mezzo(value : int) -> void:
-		_min_gold_play_sette_mezzo.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3207,6 +3207,11 @@ class TableList:
 		service.field = _game_modes
 		data[_game_modes.tag] = service
 		
+		_avatar_frames = PBField.new("avatar_frames", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 8, true, [])
+		service = PBServiceField.new()
+		service.field = _avatar_frames
+		data[_avatar_frames.tag] = service
+		
 	var data = {}
 	
 	var _table_ids: PBField
@@ -3271,6 +3276,15 @@ class TableList:
 		_game_modes.value = []
 	func add_game_modes(value : int) -> void:
 		_game_modes.value.append(value)
+	
+	var _avatar_frames: PBField
+	func get_avatar_frames() -> Array:
+		return _avatar_frames.value
+	func clear_avatar_frames() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frames.value = []
+	func add_avatar_frames(value : int) -> void:
+		_avatar_frames.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3692,6 +3706,11 @@ class SearchFriendResponse:
 		service.field = _is_verified
 		data[_is_verified.tag] = service
 		
+		_avatar_frame = PBField.new("avatar_frame", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 11, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _avatar_frame
+		data[_avatar_frame.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -3783,6 +3802,15 @@ class SearchFriendResponse:
 		_is_verified.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
 	func set_is_verified(value : bool) -> void:
 		_is_verified.value = value
+	
+	var _avatar_frame: PBField
+	func get_avatar_frame() -> int:
+		return _avatar_frame.value
+	func clear_avatar_frame() -> void:
+		data[11].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frame.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_avatar_frame(value : int) -> void:
+		_avatar_frame.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3885,6 +3913,11 @@ class FriendList:
 		service.field = _is_playings
 		data[_is_playings.tag] = service
 		
+		_avatar_frames = PBField.new("avatar_frames", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 8, true, [])
+		service = PBServiceField.new()
+		service.field = _avatar_frames
+		data[_avatar_frames.tag] = service
+		
 	var data = {}
 	
 	var _uids: PBField
@@ -3949,6 +3982,15 @@ class FriendList:
 		_is_playings.value = []
 	func add_is_playings(value : bool) -> void:
 		_is_playings.value.append(value)
+	
+	var _avatar_frames: PBField
+	func get_avatar_frames() -> Array:
+		return _avatar_frames.value
+	func clear_avatar_frames() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frames.value = []
+	func add_avatar_frames(value : int) -> void:
+		_avatar_frames.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4359,6 +4401,11 @@ class FriendRequestAccepted:
 		service.field = _gold
 		data[_gold.tag] = service
 		
+		_avatar_frame = PBField.new("avatar_frame", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 6, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _avatar_frame
+		data[_avatar_frame.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -4405,6 +4452,15 @@ class FriendRequestAccepted:
 		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_gold(value : int) -> void:
 		_gold.value = value
+	
+	var _avatar_frame: PBField
+	func get_avatar_frame() -> int:
+		return _avatar_frame.value
+	func clear_avatar_frame() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frame.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_avatar_frame(value : int) -> void:
+		_avatar_frame.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -4456,6 +4512,11 @@ class RecommendFriends:
 		service.field = _golds
 		data[_golds.tag] = service
 		
+		_avatar_frames = PBField.new("avatar_frames", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 6, true, [])
+		service = PBServiceField.new()
+		service.field = _avatar_frames
+		data[_avatar_frames.tag] = service
+		
 	var data = {}
 	
 	var _uids: PBField
@@ -4502,6 +4563,15 @@ class RecommendFriends:
 		_golds.value = []
 	func add_golds(value : int) -> void:
 		_golds.value.append(value)
+	
+	var _avatar_frames: PBField
+	func get_avatar_frames() -> Array:
+		return _avatar_frames.value
+	func clear_avatar_frames() -> void:
+		data[6].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frames.value = []
+	func add_avatar_frames(value : int) -> void:
+		_avatar_frames.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -7067,6 +7137,11 @@ class NewUserView:
 		service.field = _name
 		data[_name.tag] = service
 		
+		_avatar_frame = PBField.new("avatar_frame", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _avatar_frame
+		data[_avatar_frame.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -7095,6 +7170,15 @@ class NewUserView:
 		_name.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_name(value : String) -> void:
 		_name.value = value
+	
+	var _avatar_frame: PBField
+	func get_avatar_frame() -> int:
+		return _avatar_frame.value
+	func clear_avatar_frame() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frame.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_avatar_frame(value : int) -> void:
+		_avatar_frame.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

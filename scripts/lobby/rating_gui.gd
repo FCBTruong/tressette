@@ -37,6 +37,7 @@ func rate_5():
 	_finish_rating()
 	
 func rate_4():
+	g.v.native_mgr.rate_app()
 	_finish_rating()
 	
 func rate_3():

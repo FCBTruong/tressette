@@ -32,6 +32,7 @@ func _show_popup():
 @onready var vip_icon = find_child("VipIcon")
 @onready var link_acc_btn = find_child("LinkAccBtn")
 @onready var verified_icon = find_child("VerifiedIcon")
+@onready var avatar_frame = find_child("AvatarFrame")
 var is_me: bool = false
 var _info:UserData = null
 func _ready() -> void:
@@ -55,6 +56,7 @@ func set_info(info: UserData):
 	if _info.uid == g.v.player_info_mgr.my_user_data.uid:
 		avt_edit_btn.visible = true
 		avatar_img.set_me()
+		avatar_frame.set_me()
 		is_me = true
 		
 		var time_remain = int(g.v.player_info_mgr.time_show_ads - g.v.game_manager.get_timestamp_server())
@@ -85,6 +87,7 @@ func set_info(info: UserData):
 		hbox_premium.visible = false
 		avt_edit_btn.visible = false
 		avatar_img.set_avatar(_info.avatar)
+		avatar_frame.update_frame_by_id(_info.avatar_frame)
 		is_me = false
 		head_pn.self_modulate = Color('#0b000056')
 	

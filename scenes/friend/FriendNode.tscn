@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="1_68n2p"]
 [ext_resource type="Script" path="res://scripts/modules/friend/friend_node.gd" id="1_ii6gu"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="3_2r7jm"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_sopwt"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_svbc0"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kam2u"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="6_mmqap"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="7_v67t5"]
 [ext_resource type="Texture2D" uid="uid://bm7mhnrkhp63u" path="res://assets/images/lobby/friend_remove_btn.png" id="9_eygm3"]
 [ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="9_xujkd"]
@@ -73,24 +73,6 @@ expand_mode = 1
 script = ExtResource("4_svbc0")
 is_me = false
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Avatar"]
-self_modulate = Color(0.264567, 0.260417, 0.442296, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = -41.0
-offset_right = 41.0
-offset_bottom = 41.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("3_sopwt")
-expand_mode = 1
-
 [node name="InfoBtn" type="Button" parent="Panel/HBoxContainer/Avatar"]
 layout_mode = 1
 anchors_preset = 15
@@ -101,6 +83,17 @@ grow_vertical = 2
 mouse_filter = 1
 flat = true
 script = ExtResource("6_kam2u")
+
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Avatar" instance=ExtResource("6_mmqap")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
 
 [node name="Control2" type="Control" parent="Panel/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)

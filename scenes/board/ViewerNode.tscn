@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvohv0wdpebrc"]
+[gd_scene load_steps=8 format=3 uid="uid://bvohv0wdpebrc"]
 
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="1_cmvf8"]
 [ext_resource type="Script" path="res://scripts/game/viewer_node.gd" id="1_upmxg"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_7a43j"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_gdvnj"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="4_pf1is"]
 [ext_resource type="PackedScene" uid="uid://ctoy0ted0cg1q" path="res://scenes/board/EmoPlayer.tscn" id="4_tyij8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwtx0"]
@@ -47,6 +48,13 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="AvatarFrame" parent="." instance=ExtResource("4_pf1is")]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(0.6, 0.6)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://coalpvybk074r"]
+[gd_scene load_steps=12 format=3 uid="uid://coalpvybk074r"]
 
 [ext_resource type="Script" path="res://scripts/lobby/rooms/table_node.gd" id="1_d11nj"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="2_3wqxv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="5_ujqb8"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="7_2obxu"]
 [ext_resource type="Texture2D" uid="uid://teun5qbwsk0g" path="res://assets/images/lobby/empty_slot_icon.png" id="7_nphfa"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="8_r2rrg"]
 [ext_resource type="Texture2D" uid="uid://baqeo8fn0qpy6" path="res://assets/images/board/vs.png" id="8_wbf2d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aig1"]
@@ -200,6 +201,17 @@ offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot1" instance=ExtResource("8_r2rrg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
 [node name="Button" type="Button" parent="Panel/HBoxContainer/Slot1"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
@@ -259,6 +271,17 @@ offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot2" instance=ExtResource("8_r2rrg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
 [node name="Button" type="Button" parent="Panel/HBoxContainer/Slot2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
@@ -317,6 +340,17 @@ offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot3" instance=ExtResource("8_r2rrg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
 [node name="Button" type="Button" parent="Panel/HBoxContainer/Slot3"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
@@ -367,6 +401,17 @@ offset_right = 25.0
 offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot4" instance=ExtResource("8_r2rrg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 
 [node name="Button" type="Button" parent="Panel/HBoxContainer/Slot4"]
 custom_minimum_size = Vector2(50, 50)

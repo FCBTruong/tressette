@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=49 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://cx6qbrregb73n" path="res://assets/images/lobby.jpg" id="2_k5oqt"]
@@ -16,15 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_pgu6f"]
 [ext_resource type="Texture2D" uid="uid://c7k46ho0kya87" path="res://assets/images/card_tressette/modern/card_24.png" id="12_255aa"]
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="12_hwrjc"]
-[ext_resource type="Texture2D" uid="uid://dnlceqnhdp1qw" path="res://assets/images/lobby/buttons/support_btn.png" id="12_lt7d0"]
 [ext_resource type="Texture2D" uid="uid://dcgslu7rw0vn1" path="res://assets/images/lobby/buttons/guide_btn.png" id="13_t7q2e"]
 [ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="13_wu0dj"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
 [ext_resource type="Texture2D" uid="uid://b0oyopl34mjy7" path="res://assets/images/lobby/buttons/friend_btn.png" id="16_iw3ky"]
+[ext_resource type="Texture2D" uid="uid://cjvl0gkvick8q" path="res://assets/images/lobby/buttons/inventory_btn.png" id="17_ftiv5"]
 [ext_resource type="Texture2D" uid="uid://durbnkdnqppsc" path="res://assets/images/lobby/buttons/shop_btn.png" id="18_db14g"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="23_1xub8"]
-[ext_resource type="Texture2D" uid="uid://bvuciak7xffia" path="res://assets/images/items/frames/frame_01.png" id="24_far5p"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="24_nhqpo"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="24_yht0g"]
 [ext_resource type="Texture2D" uid="uid://c3cvhcijeqyq6" path="res://assets/images/lobby/chplay_color_icon.png" id="25_f38q8"]
 [ext_resource type="Texture2D" uid="uid://bl4mmldeh4mqd" path="res://assets/images/lobby/btn_watch_ads.png" id="25_iyd1h"]
 [ext_resource type="Shader" path="res://shaders/gray.gdshader" id="26_bbl5h"]
@@ -566,7 +565,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="SupportBtn" type="Button" parent="RightTopPanel/HBoxContainer2/Control3"]
+[node name="InventoryBtn" type="Button" parent="RightTopPanel/HBoxContainer2/Control3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -583,7 +582,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer2/Control3/SupportBtn"]
+[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer2/Control3/InventoryBtn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -596,7 +595,7 @@ offset_right = 35.0
 offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("12_lt7d0")
+texture = ExtResource("17_ftiv5")
 expand_mode = 1
 
 [node name="Control5" type="Control" parent="RightTopPanel/HBoxContainer2"]
@@ -767,39 +766,17 @@ texture = ExtResource("4_cni6g")
 expand_mode = 1
 script = ExtResource("15_yoog2")
 
-[node name="TextureRect3" type="TextureRect" parent="PnInfo/AvatarBtn"]
+[node name="AvatarFrame" parent="PnInfo/AvatarBtn" instance=ExtResource("24_yht0g")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -72.0
-offset_top = -67.0
-offset_right = 68.0
-offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("24_far5p")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="PnInfo/AvatarBtn"]
-visible = false
-modulate = Color(0.191992, 0.182474, 0.309918, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -51.0
-offset_right = 51.0
-offset_bottom = 51.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("23_1xub8")
-expand_mode = 1
+scale = Vector2(1.05, 1.05)
+is_me = true
 
 [node name="NameLb" type="Label" parent="PnInfo"]
 layout_mode = 1
@@ -1078,7 +1055,7 @@ autostart = true
 [connection signal="pressed" from="PlayContainer/SetteMezzoBtn" to="." method="play_sette_mezzo"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control/SettingBtn" to="." method="_open_setting_gui"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control4/FriendBtn" to="." method="_open_friend_gui"]
-[connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control3/SupportBtn" to="." method="_open_customer_service_gui"]
+[connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control3/InventoryBtn" to="." method="_open_inventory"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control5/GuideBtn" to="." method="_click_guide_btn"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control2/ShopBtn" to="." method="open_shop"]
 [connection signal="pressed" from="RightTopPanel/WatchAdsBtn" to="." method="watch_ads_reward"]

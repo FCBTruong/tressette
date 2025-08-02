@@ -44,6 +44,7 @@ func set_info(table: TableInfo):
 	for i in range(len(table.player_uids)):
 		var uid = table.player_uids[i]
 		var avatar = table.player_avatars[i]
+		var avatar_frame = table.avatar_frames[i]
 		if i >= len(slots):
 			break
 		if uid == -1:
@@ -51,6 +52,7 @@ func set_info(table: TableInfo):
 			continue
 		slots[i].find_child("AvatarCircle").visible = true
 		slots[i].find_child("AvatarImg").set_avatar(avatar)
+		slots[i].find_child("AvatarFrame").update_frame_by_id(avatar_frame)
 
 func _click_play():
 	if self._info.num_player == self._info.player_mode:

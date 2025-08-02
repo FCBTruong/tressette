@@ -87,20 +87,6 @@ func send_quick_play() -> void:
 	if g.v.app_version.is_in_review():
 		g.v.scene_manager.open_gui('res://scenes/lobby/rooms/CreateTableGUI.tscn')
 		return
-	if g.v.player_info_mgr.my_user_data.gold < g.v.game_server_config.min_gold_play:
-		var str_noti = tr('NOT_ENOUGH_MIN_GOLD_PLAY_BUY')
-		str_noti = str_noti.replace("@num", StringUtils.point_number(g.v.game_server_config.min_gold_play))
-		g.v.scene_manager.show_dialog(
-				str_noti
-				,
-				func ():
-					g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
-				func ():
-					pass,
-				true
-			)
-			
-		return
 	g.v.scene_manager.add_loading(5)
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.QuickPlay.new()
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.QUICK_PLAY, pkg.to_bytes())
@@ -119,13 +105,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			print('delta timestamp server-client', delta)
 			g.v.game_manager.set_timestamp_server_delta(delta)
 			g.v.game_server_config.time_thinking_in_turn = pkg.get_time_thinking_in_turn() - 0.5 # client must play before that time
-			g.v.game_server_config.tressette_bets = pkg.get_tressette_bets()
-			g.v.game_server_config.bet_multiplier_min = pkg.get_bet_multiplier_min()
 			g.v.game_server_config.exp_levels = pkg.get_exp_levels()
 			g.v.game_server_config.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
-			g.v.game_server_config.min_gold_play = g.v.game_server_config.tressette_bets[0] * g.v.game_server_config.bet_multiplier_min
-			g.v.game_server_config.sette_mezzo_bet_scale = pkg.get_sette_mezzo_bet_scale()
-			g.v.game_server_config.min_gold_play_sette_mezzo = pkg.get_min_gold_play_sette_mezzo()
 			
 				
 		g.v.game_constants.CMDs.TABLE_LIST:
@@ -138,6 +119,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			var game_modes = pkg.get_game_modes()
 			var avatars = pkg.get_avatars()
 			var uids = pkg.get_player_uids()
+			var avatar_frames = pkg.get_avatar_frames()
 			table_list = []
 			
 			var j = 0
@@ -149,6 +131,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				table.player_mode = player_modes[i]
 				table.player_avatars = []
 				table.player_uids = []
+				table.avatar_frames = []
 				table.game_mode = game_modes[i]
 				table_list.append(table)
 				
@@ -157,6 +140,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 						break
 					table.player_uids.append(uids[j])
 					table.player_avatars.append(avatars[j])
+					table.avatar_frames.append(avatar_frames[j])
 					j += 1
 					
 				

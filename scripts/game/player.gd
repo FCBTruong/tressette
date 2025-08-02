@@ -18,6 +18,7 @@ extends Node
 @onready var vip_icon = find_child("VipIcon")
 @onready var invite_btn = find_child("InviteBtn")
 @onready var join_btn = find_child("JoinBtn")
+@onready var avatar_frame = find_child("AvatarFrame")
 var default_pos_bonus
 var is_me: bool = false
 func _ready() -> void:
@@ -67,6 +68,7 @@ func set_user_data(user_dt: UserData, is_viewing: bool = false) -> void:
 	if user_data.uid == g.v.player_info_mgr.my_user_data.uid:
 		is_me = true
 		avatar_img.set_me()
+		avatar_frame.set_me()
 	
 		# add red noti for if not yet click avatar pick
 		
@@ -77,8 +79,8 @@ func set_user_data(user_dt: UserData, is_viewing: bool = false) -> void:
 				
 	else:
 		is_me = false
-			
-	avatar_img.set_avatar(user_data.avatar)
+		avatar_frame.update_frame_by_id(user_data.avatar_frame)	
+		avatar_img.set_avatar(user_data.avatar)
 
 func _update_gold():
 	return

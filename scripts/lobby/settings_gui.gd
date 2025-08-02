@@ -116,3 +116,6 @@ func _click_privacy_policy():
 
 func _click_terms_of_service():
 	OS.shell_open(g.v.game_constants.TERMS_OF_SERVICE_URL)
+
+func _click_support():
+	g.v.scene_manager.open_gui("res://scenes/customer_service/CustomerServiceGUI.tscn")

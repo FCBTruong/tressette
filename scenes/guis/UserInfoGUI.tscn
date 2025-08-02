@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Texture2D" uid="uid://ceyy7y3k4olhi" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gnbuq"]
 [ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_228md"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_b03ik"]
@@ -16,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
 [ext_resource type="Texture2D" uid="uid://c1qpfhy0ay3r1" path="res://assets/images/lobby/edit_icon.png" id="13_f07n6"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="14_fxme8"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="14_gxqle"]
 [ext_resource type="Texture2D" uid="uid://drmwf5psvwa1h" path="res://assets/images/lobby/user_info_gui/vip_icon.png" id="15_s3gax"]
 [ext_resource type="Texture2D" uid="uid://bsk36sewe4nhv" path="res://assets/images/lobby/add_friend_icon_small.png" id="16_ao60i"]
@@ -584,16 +584,15 @@ grow_vertical = 2
 flat = true
 script = ExtResource("11_eoxhy")
 
-[node name="AvtBorder" type="TextureRect" parent="Control/MainPn/TextureRect2"]
-self_modulate = Color(0.147733, 0.225921, 0.547521, 1)
+[node name="AvatarFrame" parent="Control/MainPn/TextureRect2" instance=ExtResource("14_fxme8")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_gnbuq")
-expand_mode = 1
 
 [node name="VipIcon" type="TextureRect" parent="Control/MainPn/TextureRect2"]
 material = SubResource("ShaderMaterial_dwvhj")

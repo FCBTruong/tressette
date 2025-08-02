@@ -4,6 +4,7 @@ extends Node
 @onready var emo_icon = find_child("EmoPlayer")
 @onready var chat_lb = find_child("ChatLb")
 @onready var chat_pn = find_child("ChatPn")
+@onready var avatar_frame = find_child("AvatarFrame")
 var uid: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,9 +17,10 @@ func _process(delta: float) -> void:
 	pass
 
 
-func set_info(uid: int, avatar, name):
+func set_info(uid: int, avatar, name, frame_id):
 	self.uid = uid
 	avatar_img.set_avatar(avatar)
+	avatar_frame.update_frame_by_id(frame_id)
 	pass
 
 func click_avatar():

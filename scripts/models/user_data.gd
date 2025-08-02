@@ -13,6 +13,7 @@ extends Resource  # Use RefCounted for lightweight, reference-managed objects
 @export var exp: int
 @export var is_vip: bool
 @export var is_verified: bool
+@export var avatar_frame: int = g.v.game_constants.AVATAR_FRAME_IDS.DEFAULT
 
 func _init(uid: int, name: String) -> void:
 	self.uid = uid

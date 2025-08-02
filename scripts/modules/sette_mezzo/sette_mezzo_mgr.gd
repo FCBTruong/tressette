@@ -123,20 +123,6 @@ func _handle_game_info(payload):
 
 
 func quick_play():
-	if g.v.player_info_mgr.my_user_data.gold < g.v.game_server_config.min_gold_play_sette_mezzo:
-		var str_noti = tr('NOT_ENOUGH_MIN_GOLD_PLAY_BUY')
-		str_noti = str_noti.replace("@num", StringUtils.point_number(g.v.game_server_config.min_gold_play_sette_mezzo))
-		g.v.scene_manager.show_dialog(
-				str_noti
-				,
-				func ():
-					g.v.scene_manager.switch_scene(g.v.scene_manager.SHOP_SCENE),
-				func ():
-					pass,
-				true
-			)
-			
-		return
 	g.v.scene_manager.add_loading(3)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.SETTE_MEZZO_QUICK_PLAY, [])
 	pass

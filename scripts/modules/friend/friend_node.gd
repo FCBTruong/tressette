@@ -4,6 +4,7 @@ extends Node
 @onready var online_icon = find_child('OnlineIcon')
 @onready var name_lb = find_child("NameLb")
 @onready var gold_lb = find_child("GoldLb")
+@onready var avatar_frame = find_child("AvatarFrame")
 var _info = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +34,7 @@ func set_info(f: FriendModel):
 	avatar_img.set_avatar(f.avatar)
 	gold_lb.text = StringUtils.point_number(f.gold) #+ ' ₤'
 	online_icon.visible = f.is_online
+	avatar_frame.update_frame_by_id(f.avatar_frame)
 	
 func _click_info():
 	g.v.friend_mgr.search_friend(self._info.uid)

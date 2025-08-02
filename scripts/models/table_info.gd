@@ -9,6 +9,7 @@ var num_player: int
 var player_uids
 var player_avatars
 var game_mode: int
+var avatar_frames
 
 func _init() -> void:
 	pass

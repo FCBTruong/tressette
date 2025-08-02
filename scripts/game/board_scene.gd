@@ -124,7 +124,7 @@ func _ready() -> void:
 	
 	self.visitor_pn.visible = false
 	for v in self.game_logic.match_data.viewers:
-		self.on_new_viewer(v.uid, v.avatar, v.name)
+		self.on_new_viewer(v.uid, v.avatar, v.name, v.avatar_frame)
 
 var is_showing_ads_banner = false
 func set_up_ads_banner(show: bool):
@@ -1352,11 +1352,11 @@ func stop_alarm_clock():
 	$AudioClockTick.stop()
 
 var viewer_node = preload("res://scenes/board/ViewerNode.tscn")
-func on_new_viewer(uid: int, avatar, name):
+func on_new_viewer(uid: int, avatar, name, frame):
 	self.visitor_pn.visible = true
 	var v = viewer_node.instantiate()
 	vbox_viewer.add_child(v)
-	v.set_info(uid, avatar, name)
+	v.set_info(uid, avatar, name, frame)
 	pass
 
 func show_viewer_pn():

@@ -78,6 +78,8 @@ func auto_load_scripts():
 	var time_end_load = Time.get_ticks_msec()
 	print('timeloadd', time_end_load - time_start_load)
 	
+	g.v.inventory_mgr = InventoryMgr.new()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

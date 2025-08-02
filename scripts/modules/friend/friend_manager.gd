@@ -65,6 +65,7 @@ func _on_received_search_friend(payload):
 	user_data.win_count = win_count
 	user_data.game_count = game_count
 	user_data.is_verified = is_verified
+	user_data.avatar_frame = pkg.get_avatar_frame()
 	
 	var gui = await g.v.scene_manager.open_gui("res://scenes/guis/UserInfoGUI.tscn")
 	gui.set_info(user_data)
@@ -77,6 +78,7 @@ func _received_recommended_friends(payload):
 	var friend_levels = pkg.get_levels()
 	var friend_golds = pkg.get_golds()
 	var friend_avatars = pkg.get_avatars()
+	var avatar_frames = pkg.get_avatar_frames()
 	
 	self.recommend_friends.clear()
 	for i in range(len(friend_ids)):
@@ -86,6 +88,7 @@ func _received_recommended_friends(payload):
 		f.avatar = friend_avatars[i]
 		f.gold = friend_golds[i]
 		f.level = friend_levels[i]
+		f.avatar_frame = avatar_frames[i]
 		self.recommend_friends.append(f)
 		
 	print('list friends commended', len(self.recommend_friends))
@@ -102,6 +105,7 @@ func _on_received_list_friend(payload):
 	var friend_avatars = pkg.get_avatars()
 	var onlines = pkg.get_onlines()
 	var is_playings = pkg.get_is_playings()
+	var avatar_frames = pkg.get_avatar_frames()
 	
 	self.friends.clear()
 	for i in range(len(friend_ids)):
@@ -113,6 +117,7 @@ func _on_received_list_friend(payload):
 		f.level = friend_levels[i]
 		f.is_online = onlines[i]
 		f.is_playing = is_playings[i]
+		f.avatar_frame = avatar_frames[i]
 		self.friends.append(f)
 	
 	self.friends.sort_custom(_compare_friend_sort)
@@ -238,6 +243,7 @@ func _handle_new_friend_accepted(payload):
 	f.name = pkg.get_name()
 	f.gold = pkg.get_gold()
 	f.level = pkg.get_level()
+	f.avatar_frame = pkg.get_avatar_frame()
 	f.is_online = true # realtime -> always online
 	
 	self.friends.append(f)
