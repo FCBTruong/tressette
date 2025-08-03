@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bebwgbrt25gss" path="res://assets/images/ranking/clock.png" id="6_o834j"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="7_7rnl2"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="7_op2o4"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="8_15qgm"]
 [ext_resource type="Texture2D" uid="uid://j6ruq1mxhjbl" path="res://assets/images/lobby/avatars/avatar_12.png" id="8_uod5d"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="9_xnppf"]
 [ext_resource type="Texture2D" uid="uid://crcu74gubk26" path="res://assets/images/ranking/medal_1.png" id="10_7m5o3"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="11_ds1ti"]
 [ext_resource type="Texture2D" uid="uid://c87ibd7r6pw78" path="res://assets/images/ranking/medal_2.png" id="11_naqnt"]
@@ -1590,16 +1590,13 @@ texture = ExtResource("8_uod5d")
 expand_mode = 1
 script = ExtResource("7_7rnl2")
 
-[node name="TextureRect2" type="TextureRect" parent="MainPn/MyRankPn/Control"]
-self_modulate = Color(0.196466, 0.228046, 0.39817, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_xnppf")
-expand_mode = 1
+[node name="AvatarFrame" parent="MainPn/MyRankPn" instance=ExtResource("8_15qgm")]
+offset_left = 103.0
+offset_top = 35.0
+offset_right = 103.0
+offset_bottom = 35.0
+scale = Vector2(0.52, 0.52)
+is_me = true
 
 [node name="RankLb" type="Label" parent="MainPn/MyRankPn"]
 layout_mode = 1

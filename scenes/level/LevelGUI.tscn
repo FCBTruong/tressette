@@ -1,4 +1,29 @@
-[gd_scene format=3 uid="uid://gli5cw6bylqr"]
+[gd_scene load_steps=11 format=3 uid="uid://gli5cw6bylqr"]
+
+[ext_resource type="Script" path="res://scenes/level/level_gui.gd" id="1_rdsod"]
+[ext_resource type="Script" path="res://scenes/level/scroll_container.gd" id="2_05jmx"]
+[ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_opqx1"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_pxckn"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_0e5wh"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="5_1repu"]
+[ext_resource type="PackedScene" uid="uid://bv0r0jtdlda5q" path="res://scenes/level/LevelNode.tscn" id="6_464s1"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="6_bwjy8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43scx"]
+bg_color = Color(0.269186, 0.258514, 0.258514, 0.764706)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jafj2"]
+bg_color = Color(0.128979, 0.757969, 0.0524805, 0.529412)
+corner_radius_top_left = 5
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 5
 
 [node name="LevelGui" type="Control"]
 layout_mode = 3
@@ -8,8 +33,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_rdsod")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPn" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,40 +57,124 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
-clip_contents = false
+[node name="TextureRect" type="TextureRect" parent="MainPn"]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 126.0
-offset_right = 515.0
-offset_bottom = 326.0
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
+offset_right = 700.0
+offset_bottom = 400.0
+texture = ExtResource("2_opqx1")
+expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ProgressBar" type="ProgressBar" parent="Panel/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(1000, 20)
-layout_mode = 2
-show_percentage = false
-
-[node name="Control" type="Control" parent="Panel/ScrollContainer/HBoxContainer/ProgressBar"]
-anchors_preset = 0
-offset_left = 35.0
-offset_top = 30.0
-offset_right = 35.0
-offset_bottom = 30.0
-
-[node name="Label" type="Label" parent="Panel/ScrollContainer/HBoxContainer/ProgressBar/Control"]
+[node name="Title" type="Label" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
+offset_left = -160.0
+offset_top = 23.0
+offset_right = 161.0
+offset_bottom = 59.0
 grow_horizontal = 2
-text = "Lv.1"
+theme_override_colors/font_color = Color(1, 0.796834, 0.565765, 1)
+theme_override_fonts/font = ExtResource("3_pxckn")
+theme_override_font_sizes/font_size = 35
+text = "LEVEL_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -320.0
+offset_right = 335.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+script = ExtResource("2_05jmx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPn/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="MainPn/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(4100, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MainPn/ScrollContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(4000, 20)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_right = 1900.0
+offset_bottom = 10.0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_43scx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jafj2")
+value = 1.0
+show_percentage = false
+
+[node name="RewardLevelNode" parent="MainPn/ScrollContainer/HBoxContainer/Control/ProgressBar" instance=ExtResource("6_464s1")]
+offset_left = 138.0
+offset_top = 8.0
+offset_right = 138.0
+offset_bottom = 8.0
+
+[node name="Title2" type="Label" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -46.0
+offset_right = 161.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.737255)
+theme_override_fonts/font = ExtResource("6_bwjy8")
+theme_override_font_sizes/font_size = 20
+text = "LEVEL_NOTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="MainPn"]
+layout_mode = 0
+offset_left = 653.0
+offset_top = -1.0
+offset_right = 703.0
+offset_bottom = 49.0
+flat = true
+script = ExtResource("4_0e5wh")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_1repu")
+expand_mode = 1
+
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]

@@ -16,6 +16,7 @@ class RankingPlayer:
 	var avatar: String
 	var reward: int
 	var score: int
+	var avatar_frame: int
 	
 var list_users = []
 func get_reward(rank):
@@ -41,6 +42,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			var names = pkg.get_names()
 			var avatars = pkg.get_avatars()
 			var scores = pkg.get_scores()
+			var avatar_frames = pkg.get_avatar_frames()
 			for i in range(len(uids)):
 				var r = RankingPlayer.new()
 				r.rank = i + 1
@@ -48,6 +50,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				r.avatar = avatars[i]
 				r.score = scores[i]
 				r.uid = uids[i]
+				r.avatar_frame = avatar_frames[i]
 				
 				list_users.append(r)
 			pass

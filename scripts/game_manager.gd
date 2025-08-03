@@ -17,6 +17,7 @@ var did_show_guide_new_user = false
 var type_delete_login
 var CURRENT_GAME_PLAY = 0 # tressette, 1 is sette mezzo
 var game_th = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("GameManagerReady")
@@ -107,6 +108,25 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			g.v.game_server_config.time_thinking_in_turn = pkg.get_time_thinking_in_turn() - 0.5 # client must play before that time
 			g.v.game_server_config.exp_levels = pkg.get_exp_levels()
 			g.v.game_server_config.fee_mode_no_bet = pkg.get_fee_mode_no_bet()
+			
+			var level_rewards_pkg = pkg.get_level_rewards()
+			g.v.game_server_config.level_rewards = []
+			for l in level_rewards_pkg:
+				
+				var obj = {}
+				g.v.game_server_config.level_rewards.append(obj)
+				obj["level"] = l.get_level()
+				obj["gold"] = l.get_gold()
+				obj["items"] = []
+				var b = l.get_items()
+				for bi in b:
+					var t = bi
+					var m = {
+						"item_id": t.get_item_id(),
+						"duration": t.get_duration()
+					}
+					obj["items"].append(m)
+				
 			
 				
 		g.v.game_constants.CMDs.TABLE_LIST:

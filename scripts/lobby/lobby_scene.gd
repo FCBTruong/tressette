@@ -269,3 +269,6 @@ func _auto_refresh_list_table():
 	print("auto refresh list table")
 	g.v.game_manager.send_get_table_list()
 	pass
+
+func _click_open_level_gui():
+	g.v.scene_manager.open_gui('res://scenes/level/LevelGUI.tscn')

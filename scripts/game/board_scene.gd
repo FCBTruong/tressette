@@ -94,6 +94,8 @@ func _ready() -> void:
 	center_play_pn_default_pos = center_play_pn.position
 	get_tree().get_root().connect("size_changed", _on_screen_resized)
 	_on_screen_resized()
+	
+	self.cardback_node.find_child("CardBack").texture = load(g.v.inventory_mgr.get_current_cardback())
 		
 		
 	napoli_btn.visible = false 

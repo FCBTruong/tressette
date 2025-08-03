@@ -36,6 +36,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	my_user_data.win_count = packet.get_win_count()
 	my_user_data.game_count = packet.get_game_count()
 	my_user_data.exp = packet.get_exp()
+	#my_user_data.exp = 5033
 	my_user_data.avatar_third_party = packet.get_avatar_third_party()
 	support_num = packet.get_support_num()
 	startup_gold = packet.get_startup_gold()

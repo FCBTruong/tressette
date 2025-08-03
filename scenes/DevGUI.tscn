@@ -100,7 +100,7 @@ layout_mode = 2
 text = "Cheat EXP:"
 horizontal_alignment = 2
 
-[node name="LineEdit" type="LineEdit" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
+[node name="LineEditExp" type="LineEdit" parent="CanvasLayer/MainPn/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 placeholder_text = "exp"
@@ -229,6 +229,7 @@ mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2mr3y")
 
 [connection signal="pressed" from="CanvasLayer/MainPn/VBoxContainer/HBoxContainer2/CheatGoldBtn" to="." method="_click_cheat_goldbtn"]
+[connection signal="pressed" from="CanvasLayer/MainPn/VBoxContainer/HBoxContainer/CheatExpBtn" to="." method="_on_cheat_exp_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainPn/Button" to="." method="_click_add_bot"]
 [connection signal="pressed" from="CanvasLayer/MainPn/Button2" to="." method="_test_share_app"]
 [connection signal="pressed" from="CanvasLayer/MainPn/AdsBtn" to="." method="_click_ads"]

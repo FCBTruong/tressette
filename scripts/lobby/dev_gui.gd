@@ -3,6 +3,7 @@ extends Node
 @onready var fps_lb = find_child('FpsLb')
 @onready var main_pn = find_child("MainPn")
 @onready var line_edit_gold = find_child("LineEditGold")
+@onready var line_edit_exp = find_child("LineEditExp")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	main_pn.visible = false
@@ -24,9 +25,7 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_T:
-				var pkg = g.v.game_constants.PROTOBUF.PACKETS.ViewGame.new()
-				pkg.set_match_id(1000)
-				g.v.game_client.send_packet(g.v.game_constants.CMDs.VIEW_GAME, pkg.to_bytes())
+				g.v.scene_manager.open_gui('res://scenes/level/LevelGUI.tscn')
 				return
 				#var pkg = g.v.game_constants.PROTOBUF.PACKETS.PaymentAppleConsume.new()
 				#pkg.set_pack_id('pack_01')
@@ -108,3 +107,13 @@ func _click_ads():
 	g.v.native_mgr.rate_app()
 	return
 	g.admob_mgr._on_interstitial_pressed()
+
+
+func _on_cheat_exp_btn_pressed() -> void:
+	var gold = int(line_edit_exp.text)
+	print('exppp', gold)
+	
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.CheatExpUser.new()
+	pkg.set_exp(gold)
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CHEAT_EXP_USER, pkg.to_bytes())
+	pass # Replace with function body.

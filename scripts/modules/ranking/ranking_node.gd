@@ -7,6 +7,7 @@ extends Node
 @onready var rank_anim = find_child("RankAnim")
 @onready var reward_pn = find_child("Reward")
 @onready var reward_lb = find_child("RewardLb")
+@onready var avatar_frame = find_child("AvatarFrame")
 # Called when the node enters the scene tree for the first time.
 var info
 func _ready() -> void:
@@ -27,6 +28,7 @@ func set_info(inf):
 		
 	name_lb.text = StringUtils.sub_string(inf.name, 25)
 	avt_img.set_avatar(inf.avatar)
+	avatar_frame.update_frame_by_id(inf.avatar_frame)
 	
 	inf.reward = g.v.ranking_mgr.get_reward(inf.rank)
 	reward_pn.visible = inf.reward > 0

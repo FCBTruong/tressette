@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="2_olwc2"]
 [ext_resource type="Texture2D" uid="uid://j6ruq1mxhjbl" path="res://assets/images/lobby/avatars/avatar_12.png" id="3_pubst"]
 [ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_fsdod"]
-[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="4_ksvuo"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="5_rcnjh"]
 [ext_resource type="Texture2D" uid="uid://crcu74gubk26" path="res://assets/images/ranking/medal_1.png" id="6_ikanp"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kpbx5"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="7_0ckxj"]
@@ -1347,16 +1347,16 @@ expand_mode = 1
 script = ExtResource("4_fsdod")
 is_me = false
 
-[node name="TextureRect2" type="TextureRect" parent="Control"]
-self_modulate = Color(0.196466, 0.228046, 0.39817, 1)
+[node name="AvatarFrame" parent="Control" instance=ExtResource("5_rcnjh")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_ksvuo")
-expand_mode = 1
+scale = Vector2(0.5, 0.5)
 
 [node name="InfoBtn" type="Button" parent="Control"]
 layout_mode = 1
