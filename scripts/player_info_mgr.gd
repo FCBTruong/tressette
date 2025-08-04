@@ -19,6 +19,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			_on_receive_info(payload)
 		g.v.game_constants.CMDs.UPDATE_MONEY:
 			_on_update_money(payload)
+		g.v.game_constants.CMDs.UPDATE_EXP:
+			_on_update_exp(payload)
 			
 		g.v.game_constants.CMDs.UPDATE_ADS:
 			receive_update_ads(payload)
@@ -149,3 +151,9 @@ func _handle_ask_for_support():
 
 func get_my_level():
 	return g.v.game_server_config.convert_exp_to_level(my_user_data.exp)
+	
+func _on_update_exp(bytes: PackedByteArray):
+	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateExp.new()
+	packet.from_bytes(bytes)
+	my_user_data.exp = packet.get_exp()
+	g.v.signal_bus.emit_signal_global('on_update_exp')

@@ -40,6 +40,7 @@ func on_receive_packet(cmd_id: int, payload: PackedByteArray):
 			g.v.friend_mgr.on_receive(cmd_id, payload)
 			g.v.sette_mezzo_mgr.on_receive(cmd_id, payload)
 			g.v.ranking_mgr.on_receive(cmd_id, payload)
+			g.v.inventory_mgr.on_receive(cmd_id, payload)
 			pass
 		
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=3 uid="uid://byq6wg8u4cwhi"]
+[gd_scene load_steps=195 format=3 uid="uid://byq6wg8u4cwhi"]
 
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="1_1mn3d"]
 [ext_resource type="Script" path="res://scripts/modules/ranking/ranking_node.gd" id="1_ex1ii"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kpbx5"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="7_0ckxj"]
 [ext_resource type="Texture2D" uid="uid://c87ibd7r6pw78" path="res://assets/images/ranking/medal_2.png" id="7_q6ri7"]
+[ext_resource type="Texture2D" uid="uid://cwuxp4ucp2g41" path="res://assets/images/items/frames/frame_victory.png" id="8_2b2bu"]
 [ext_resource type="Texture2D" uid="uid://bijkfs3m0gpkp" path="res://assets/images/ranking/medal_3.png" id="8_g7rxp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m53oq"]
@@ -1382,7 +1383,7 @@ offset_bottom = 13.0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_1mn3d")
 theme_override_font_sizes/font_size = 23
-text = "Truong Nguyen"
+text = "Truong Nguyen g"
 vertical_alignment = 1
 
 [node name="RankLb" type="Label" parent="."]
@@ -1417,15 +1418,35 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
 
+[node name="AvatarReward" type="TextureRect" parent="Reward"]
+layout_mode = 2
+texture = ExtResource("8_2b2bu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ExpireLb" type="Label" parent="Reward/AvatarReward"]
+layout_mode = 2
+offset_left = -76.0
+offset_top = 7.0
+offset_right = -4.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(1, 0.91292, 0.779502, 1)
+theme_override_fonts/font = ExtResource("1_1mn3d")
+theme_override_font_sizes/font_size = 20
+text = "7 days"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="RewardLb" type="Label" parent="Reward"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.91292, 0.779502, 1)
 theme_override_fonts/font = ExtResource("1_1mn3d")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "100M"
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="Reward"]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 mouse_filter = 2
 
@@ -1452,9 +1473,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -235.0
+offset_left = -276.0
 offset_top = -13.0
-offset_right = -169.0
+offset_right = -210.0
 offset_bottom = 13.0
 grow_horizontal = 0
 grow_vertical = 2

@@ -7496,4 +7496,103 @@ class ClaimRewardLevel:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class UserInventory:
+	func _init():
+		var service
+		
+		_items = PBField.new("items", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 1, true, [])
+		service = PBServiceField.new()
+		service.field = _items
+		service.func_ref = Callable(self, "add_items")
+		data[_items.tag] = service
+		
+	var data = {}
+	
+	var _items: PBField
+	func get_items() -> Array:
+		return _items.value
+	func clear_items() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_items.value = []
+	func add_items() -> InvetoryItem:
+		var element = InvetoryItem.new()
+		_items.value.append(element)
+		return element
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class InvetoryItem:
+	func _init():
+		var service
+		
+		_item_id = PBField.new("item_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _item_id
+		data[_item_id.tag] = service
+		
+		_expire_time = PBField.new("expire_time", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _expire_time
+		data[_expire_time.tag] = service
+		
+	var data = {}
+	
+	var _item_id: PBField
+	func get_item_id() -> int:
+		return _item_id.value
+	func clear_item_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_item_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_item_id(value : int) -> void:
+		_item_id.value = value
+	
+	var _expire_time: PBField
+	func get_expire_time() -> int:
+		return _expire_time.value
+	func clear_expire_time() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_expire_time.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_expire_time(value : int) -> void:
+		_expire_time.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

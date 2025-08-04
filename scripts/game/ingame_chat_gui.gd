@@ -28,19 +28,7 @@ func _ready():
 	line_edit_size = line_edit.size
 	input_field.connect("text_submitted", Callable(self, "text_submitted"))
 	
-	for c in quick_list.get_children():
-		c.queue_free()
 	
-	var quick_chat_node = load("res://scenes/board/QuickChatNode.tscn")
-	for i in range(6):
-		var n = quick_chat_node.instantiate()
-		quick_list.add_child(n)
-		if is_sette_mezzo:
-			n.set_text(tr("SETTE_QUICK_CHAT_" + str(i)))
-		else:
-			n.set_text(tr("QUICK_CHAT_" + str(i)))
-		n.parent = self
-
 func _process(delta):
 	if g.v.config.get_platform() == Config.PLATFORMS.WEB or g.v.config.get_platform() == Config.PLATFORMS.MAC_OS:
 		return

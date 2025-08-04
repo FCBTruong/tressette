@@ -48,6 +48,7 @@ var in_game_chat_gui
 var pn_highlight_napoli = preload("res://scenes/board/NapoliCardHighlight.tscn")
 @onready var score_pn = find_child("ScorePn")
 @onready var deco_2v2 = find_child("Deco2vs2")
+@onready var watching_lb = find_child("WatchingLb")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -191,6 +192,11 @@ func _on_enter():
 	var str_reach_win = tr("REACH_POINT_TO_WIN")
 	str_reach_win = str_reach_win.replace("#point", str(game_logic.match_data.point_to_win / 3))
 	self.reach_point_win_lb.text = str_reach_win
+	
+	if game_logic.IS_VIEWING:
+		watching_lb.visible = true
+	else:
+		watching_lb.visible = false
 	
 func update_cards_on_table():
 	remove_all_current_cards()

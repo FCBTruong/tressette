@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=3 uid="uid://vamttrvpw2gb"]
+[gd_scene load_steps=193 format=3 uid="uid://vamttrvpw2gb"]
 
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="1_0a8ja"]
 [ext_resource type="Script" path="res://scripts/modules/ranking/ranking_result.gd" id="1_mpp1x"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="4_20d4n"]
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="5_b8dbn"]
 [ext_resource type="Texture2D" uid="uid://crcu74gubk26" path="res://assets/images/ranking/medal_1.png" id="5_daypd"]
+[ext_resource type="Texture2D" uid="uid://cwuxp4ucp2g41" path="res://assets/images/items/frames/frame_victory.png" id="6_7abhy"]
 [ext_resource type="Texture2D" uid="uid://c87ibd7r6pw78" path="res://assets/images/ranking/medal_2.png" id="6_jlt8c"]
 [ext_resource type="Texture2D" uid="uid://bijkfs3m0gpkp" path="res://assets/images/ranking/medal_3.png" id="7_jyinh"]
 
@@ -1424,10 +1425,21 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPn"]
 layout_mode = 0
-offset_left = 220.0
+offset_left = 184.0
 offset_top = 190.0
-offset_right = 389.0
+offset_right = 411.0
 offset_bottom = 230.0
+alignment = 1
+
+[node name="AvatarReward" type="TextureRect" parent="MainPn/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_7abhy")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
 
 [node name="RewardLb" type="Label" parent="MainPn/HBoxContainer"]
 layout_mode = 2

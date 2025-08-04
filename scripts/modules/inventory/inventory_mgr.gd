@@ -6,6 +6,11 @@ var current_cardback: int = g.v.game_constants.CARDBACK_IDS.CAT
 
 func get_current_cardback() -> String:
 	return get_image_cardback(current_cardback)
+	
+func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
+	match cmd_id:
+		g.v.game_constants.CMDs.USER_INVENTORY:
+			_handle_user_inventory(payload)
 
 func get_image_cardback(id):
 	match id:
@@ -44,3 +49,18 @@ func get_image_item(item_id: int) -> String:
 
 func get_icon_crypstal():
 	return "res://assets/images/lobby/icon_gold.png"
+
+var my_items = []
+func _handle_user_inventory(payload):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.UserInventory.new()
+	var result_code = pkg.from_bytes(payload)
+	var items = pkg.get_items()
+	my_items = []
+	for item in items:
+		var item_id = item.get_item_id()
+		var expire_time = item.get_expire_time()
+		my_items.append({
+			"item_id": item_id,
+			"expire_time": expire_time
+		})
+	print("lennn my items", len(my_items))

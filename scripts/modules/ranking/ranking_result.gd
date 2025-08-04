@@ -29,10 +29,12 @@ func set_info(season_id, rank, gold_reward):
 		rank_lb.visible = false
 		rank_anim.visible = true
 		rank_anim.play(str(rank))
+		find_child("AvatarReward").visible = true
 	else:
 		rank_lb.visible = true
 		rank_anim.visible = false
 		rank_lb.text = str(rank)
+		find_child("AvatarReward").visible = false
 	reward_lb.text = StringUtils.point_number(gold_reward)
 
 func click_claim():
