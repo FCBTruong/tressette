@@ -6,6 +6,7 @@ var support_num = 0
 var startup_gold = 0
 var time_show_ads = 0
 var has_first_buy: bool = false
+var claimed_levels = []
 func get_user_id():
 	return my_user_data.uid
 	
@@ -45,6 +46,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	login_type = packet.get_login_type()
 	time_ads_reward = packet.get_time_ads_reward()
 	my_user_data.avatar_frame = packet.get_avatar_frame()
+	claimed_levels = packet.get_claimed_levels()
 	#my_user_data.avatar_frame = g.v.game_constants.AVATAR_FRAME_IDS.VICTORY
 	if time_ads_reward == -1:
 		enable_ads_reward = false
@@ -144,3 +146,6 @@ func _handle_ask_for_support():
 	
 	g.v.popup_mgr.add_popup("res://scenes/lobby/AskForSupportGUI.tscn")
 	pass
+
+func get_my_level():
+	return g.v.game_server_config.convert_exp_to_level(my_user_data.exp)

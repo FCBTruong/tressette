@@ -5,14 +5,24 @@ extends Control
 @onready var received_icon = find_child("ReceivedIcon")
 @onready var receive_btn = find_child("ReceiveBtn")
 # Called when the node enters the scene tree for the first time.
+var _info
 func _ready() -> void:
 	pass # Replace with function body.
 
 var reward_node = preload("res://scenes/level/LevelRewardNode.tscn")
 func set_info(inf):
 	level_lb.text = "Lv." + str(inf["level"])
+	_info = inf
 	
-	var status = 0
+	var level = g.v.player_info_mgr.get_my_level()
+	var status
+	if inf["level"] > level:
+		status = 0
+	else:
+		if inf["level"] in g.v.player_info_mgr.claimed_levels:
+			status = 2 # claimed
+		else:
+			status = 1
 	if status == 0:
 		received_icon.visible = false
 		receive_btn.visible = false
@@ -44,4 +54,6 @@ func set_info(inf):
 	
 	
 func click_claim():
-	pass
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ClaimRewardLevel.new()
+	pkg.set_level(_info["level"])
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CLAIM_REWARD_LEVEL, pkg.to_bytes())

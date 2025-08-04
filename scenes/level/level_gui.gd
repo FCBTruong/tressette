@@ -27,10 +27,9 @@ func _ready() -> void:
 	var cur_exp = g.v.player_info_mgr.my_user_data.exp
 	var max_exp = g.v.game_server_config.total_all_exp()
 	var p = cur_exp * 1.0 / max_exp * 100
-	print("Debugg", cur_exp," ", max_exp," ", p)
 	progress_bar.value = 1
 	
-	var level = g.v.game_server_config.convert_exp_to_level(g.v.player_info_mgr.my_user_data.exp)
+	var level = g.v.player_info_mgr.get_my_level()
 	if g.v.game_server_config.is_max_level(level):
 		progress_bar.value = 100
 	else:
@@ -39,7 +38,11 @@ func _ready() -> void:
 		var cur = g.v.player_info_mgr.my_user_data.exp - a
 		var des = b - a
 		progress_bar.value = cur * 1.0 / des + level
+		
+	update_should_scroll()
 
+func update_should_scroll():
+	pass
 var reward_level_node_scene = preload("res://scenes/level/LevelNode.tscn")
 
 

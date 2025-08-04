@@ -1275,6 +1275,11 @@ class UserInfo:
 		service.field = _avatar_frame
 		data[_avatar_frame.tag] = service
 		
+		_claimed_levels = PBField.new("claimed_levels", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 21, true, [])
+		service = PBServiceField.new()
+		service.field = _claimed_levels
+		data[_claimed_levels.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1456,6 +1461,15 @@ class UserInfo:
 		_avatar_frame.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_avatar_frame(value : int) -> void:
 		_avatar_frame.value = value
+	
+	var _claimed_levels: PBField
+	func get_claimed_levels() -> Array:
+		return _claimed_levels.value
+	func clear_claimed_levels() -> void:
+		data[21].state = PB_SERVICE_STATE.UNFILLED
+		_claimed_levels.value = []
+	func add_claimed_levels(value : int) -> void:
+		_claimed_levels.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -7419,6 +7433,47 @@ class UpdateExp:
 		_exp.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT64]
 	func set_exp(value : int) -> void:
 		_exp.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class ClaimRewardLevel:
+	func _init():
+		var service
+		
+		_level = PBField.new("level", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _level
+		data[_level.tag] = service
+		
+	var data = {}
+	
+	var _level: PBField
+	func get_level() -> int:
+		return _level.value
+	func clear_level() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_level.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_level(value : int) -> void:
+		_level.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
