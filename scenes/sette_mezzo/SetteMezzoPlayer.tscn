@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/modules/sette_mezzo/settemezzo_player.gd" id="1_qmmjy"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_sbcn4"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_7cgks"]
-[ext_resource type="Texture2D" uid="uid://bsfmna1hqw3oi" path="res://assets/images/board/chat_arrow.png" id="4_v7o1b"]
+[ext_resource type="Texture2D" uid="uid://bp6kti3au5fyr" path="res://assets/images/lobby/triangle.png" id="4_fxgrv"]
 [ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="5_17hie"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="7_us3mp"]
 [ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="8_04r2s"]
@@ -20,10 +20,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuo70"]
 bg_color = Color(0.95484, 0.95484, 0.95484, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
 border_color = Color(0.42193, 0.108296, 0.108296, 1)
 corner_radius_top_left = 30
 corner_radius_top_right = 30
@@ -113,6 +109,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="ChatTooltip/Panel"]
+modulate = Color(0.952941, 0.952941, 0.952941, 1)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -120,12 +117,14 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -12.0
-offset_top = -2.0
-offset_right = 13.0
-offset_bottom = 18.0
+offset_top = -3.0
+offset_right = 12.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("4_v7o1b")
+rotation = 3.14159
+pivot_offset = Vector2(12, 10)
+texture = ExtResource("4_fxgrv")
 expand_mode = 1
 
 [node name="MainPn" type="Control" parent="."]
@@ -373,6 +372,7 @@ texture = ExtResource("15_ofkkm")
 expand_mode = 1
 
 [node name="IconStand" type="TextureRect" parent="."]
+visible = false
 offset_left = -50.0
 offset_top = -81.0
 offset_right = 40.0

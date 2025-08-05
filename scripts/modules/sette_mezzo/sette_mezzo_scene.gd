@@ -985,61 +985,11 @@ func user_stand(uid):
 	if p:
 		p.effect_user_stand()
 
-func on_start_betting():
-	return
-	if not self.did_show_start_eff:
-		game_start_lb.text = tr("GAME_START")
-		_eff_text_middle()
-		self.did_show_start_eff = true
-	
-	self.update_suitable_bet()
-	
-	await ROOT.get_tree().create_timer(1).timeout
-	self.update_game_state()
-	#if g.v.game_manager.enable_sound:
-		#$AudioClockTick.play()
-
 var is_showing_pn_bet = false
 func update_game_state():
-	self.action_btn_pn.visible = false
-	var state = self.game_logic.match_data.state
-	if state == MatchData.MATCH_STATE.BETTING:
-		var tw_bet = create_tween()
+	return
+		
 
-		var remain = game_logic.time_end_bet - g.v.game_manager.get_timestamp_server()
-		tw_bet.parallel().tween_method(update_bet_time, 100.0, 0.0, remain)
-		self.is_showing_pn_bet = true
-		self.bet_progress_time.visible = true
-		
-		# update display current user bets
-		for p in list_players:
-			var seat_id = p.user_data.game_data.seat_id
-			var user_bet_node = get_bet_user_node_by_seat(seat_id)
-			user_bet_node.visible = true
-			user_bet_node.modulate.a = 1
-			user_bet_node.update_bet(p.user_data.game_data.sette_bet)
-	elif state == MatchData.MATCH_STATE.PLAYING:
-		for p in list_players:
-			var seat_id = p.user_data.game_data.seat_id
-			var user_bet_node = get_bet_user_node_by_seat(seat_id)
-			if user_bet_node.visible:
-				var tw_bet_n = create_tween()
-				tw_bet_n.tween_property(
-					user_bet_node,
-					"modulate:a",
-					0,
-					0.2
-				).set_delay(1)
-				tw_bet_n.tween_callback(
-					func():
-						user_bet_node.visible = false
-				)
-		
-	else:
-		for p in list_players:
-			var seat_id = p.user_data.game_data.seat_id
-			var user_bet_node = get_bet_user_node_by_seat(seat_id)	
-			user_bet_node.visible = false
 			
 	
 			

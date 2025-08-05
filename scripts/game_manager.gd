@@ -133,7 +133,6 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			var pkg = g.v.game_constants.PROTOBUF.PACKETS.TableList.new()
 			var result_code = pkg.from_bytes(payload)
 			var table_ids = pkg.get_table_ids()
-			var bets = pkg.get_bets()
 			var num_players = pkg.get_num_players()
 			var player_modes = pkg.get_player_modes()
 			var game_modes = pkg.get_game_modes()
@@ -146,7 +145,6 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			for i in range(len(table_ids)):
 				var table = TableInfo.new()
 				table.match_id = table_ids[i]
-				table.bet = bets[i]
 				table.num_player = num_players[i]
 				table.player_mode = player_modes[i]
 				table.player_avatars = []

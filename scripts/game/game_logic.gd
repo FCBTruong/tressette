@@ -177,7 +177,6 @@ func _handle_game_info(payload: PackedByteArray):
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.GameInfo.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data = MatchData.new()
-	match_data.bet = pkg.get_bet()
 	match_data.match_id = pkg.get_match_id()
 	match_data.game_mode = pkg.get_game_mode()
 	match_data.player_mode = pkg.get_player_mode()
@@ -189,7 +188,6 @@ func _handle_game_info(payload: PackedByteArray):
 	match_data.current_round = pkg.get_current_round()
 	match_data.hand_in_round = pkg.get_hand_in_round()
 	match_data.point_to_win = pkg.get_point_to_win()
-	match_data.enable_bet_win_score = pkg.get_enable_bet_win_score()
 	self.is_registered_leave = pkg.get_is_registered_leave()
 	self.hand_suit = pkg.get_hand_suit()
 	
@@ -347,7 +345,6 @@ func _start_game(payload: PackedByteArray):
 		return
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.StartGame.new()
 	var result_code = pkg.from_bytes(payload)
-	match_data.pot_value = pkg.get_pot_value()
 	match_data.state = MatchData.MATCH_STATE.PLAYING
 	reset_cards_compare()
 	
@@ -529,9 +526,7 @@ func _handle_end_game(payload: PackedByteArray):
 	var score_cards = pkg.get_score_cards()
 	var score_last_tricks = pkg.get_score_last_tricks()
 	var score_totals = pkg.get_score_totals()
-	var gold_changes = pkg.get_gold_changes()
 	var players_gold = pkg.get_players_gold()
-	var gold_win_score = pkg.get_gold_win_score()
 	
 	match_result = MatchData.MatchResult.new()
 	if not IS_VIEWING:
@@ -543,9 +538,7 @@ func _handle_end_game(payload: PackedByteArray):
 		match_result.my_team_id = 0
 	if match_result.is_win:
 		g.v.ranking_mgr.user_win_game()
-		match_result.gold_win = match_data.pot_value / (match_data.player_mode / 2) + gold_win_score
-	else:
-		match_result.gold_lose = gold_changes[my_idx]
+
 	match_result.win_team_id = win_team_id
 	match_result.my_team_score = get_my_team_score()
 	match_result.opp_score = get_opponent_team_score()
@@ -565,7 +558,7 @@ func _handle_end_game(payload: PackedByteArray):
 		score_data.score_card = score_cards[i]
 		score_data.score_last_trick = score_last_tricks[i]
 		score_data.score_total = score_totals[i]
-		match_result.players.append(score_data)
+		match_result.players.append(score_data)	
 		match_data.users[i].gold = players_gold[i]
 		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [match_data.users[i].uid])
 	
