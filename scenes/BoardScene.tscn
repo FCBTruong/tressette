@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene load_steps=55 format=3 uid="uid://ctmeyvn7w00v8"]
 
 [ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
+[ext_resource type="Texture2D" uid="uid://d2h542qrg8ekp" path="res://assets/images/items/carpets/carpet_napoli.png" id="9_7hlsl"]
 [ext_resource type="Shader" path="res://shaders/baletro_fire.gdshader" id="11_2rt0a"]
 [ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="11_8cjom"]
 [ext_resource type="Texture2D" uid="uid://c4n4ak32npep1" path="res://assets/images/board/layer_board_card.png" id="11_eum2r"]
@@ -438,6 +439,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kjq8g")
+
+[node name="CarpetImg" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_7hlsl")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Deco2vs2" type="Control" parent="PlayGround/CenterPlayPn/Panel2"]
 layout_mode = 1

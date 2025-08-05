@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bebfix1c1kukt"]
+[gd_scene load_steps=28 format=3 uid="uid://bebfix1c1kukt"]
 
 [ext_resource type="Script" path="res://scripts/game/game_result_gui.gd" id="1_fpth8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_2qycw"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://inorf6pkbk08" path="res://assets/images/lights/light_04.png" id="4_6sc0g"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_xsh0q"]
 [ext_resource type="Texture2D" uid="uid://1usgm64c5qwn" path="res://assets/images/board/game_result/icon_win.png" id="5_d5byi"]
-[ext_resource type="FontFile" uid="uid://bd5jdiriex7mw" path="res://assets/fonts/PoetsenOne-Regular.ttf" id="5_iqu72"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="5_oq6y8"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_c54ls"]
 [ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
@@ -16,24 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="7_tcbk3"]
 [ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="8_17kmu"]
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="12_tifh7"]
+[ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="17_l5vj0"]
+[ext_resource type="Texture2D" uid="uid://d3oypl62fdfj4" path="res://assets/images/board/game_result/exp_icon.png" id="17_nqlja"]
+[ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="17_qhloc"]
+[ext_resource type="Texture2D" uid="uid://qabrdus6wbh6" path="res://assets/images/board/game_result/winner_txt.png" id="17_qn74f"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="18_iwf68"]
+[ext_resource type="Texture2D" uid="uid://baqeo8fn0qpy6" path="res://assets/images/board/vs.png" id="18_llwbu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1xll"]
 bg_color = Color(0, 0, 0, 0.662745)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hag70"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11ngu"]
-bg_color = Color(0.52549, 0.52549, 0.54902, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.27258, 0.195571, 0.162283, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b34js"]
-bg_color = Color(0.764758, 0.764758, 0.764758, 1)
-shadow_color = Color(0, 0, 0, 0.439216)
-shadow_size = 4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jiyt7"]
 shader = ExtResource("2_wfunv")
@@ -50,6 +42,15 @@ colors = PackedColorArray(0.934474, 0.722009, 0.501038, 1, 0.90732, 0.455937, 0.
 gradient = SubResource("Gradient_56tgq")
 fill_from = Vector2(0.769596, 0.0261283)
 fill_to = Vector2(0.4038, 0.565321)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmurl"]
+shader = ExtResource("17_qhloc")
+shader_parameter/size_effect = 0.45
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/delay = 1.0
 
 [node name="GameResultGui" type="Control"]
 layout_mode = 3
@@ -71,7 +72,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y1xll")
 
 [node name="MainPn" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 230)
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -83,71 +84,49 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hag70")
 
-[node name="LosePn" type="Control" parent="MainPn"]
+[node name="WinPn" type="Control" parent="MainPn"]
+clip_children = 2
 light_mask = 7
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 26.0
-offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect2" type="Panel" parent="MainPn/LosePn"]
-custom_minimum_size = Vector2(0, 250)
+[node name="ColorRect" type="ColorRect" parent="MainPn/WinPn"]
+custom_minimum_size = Vector2(0, 270)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_11ngu")
+color = Color(0.849616, 0.70459, 0.539352, 1)
 
-[node name="ColorRect" type="Panel" parent="MainPn/LosePn"]
-custom_minimum_size = Vector2(0, 230)
+[node name="EffRotateLight" type="TextureRect" parent="MainPn/WinPn"]
+visible = false
+material = SubResource("ShaderMaterial_jiyt7")
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
+offset_top = 10.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_b34js")
+texture = SubResource("GradientTexture2D_il20s")
 
-[node name="GoldResultLose" type="Label" parent="MainPn/LosePn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -343.0
-offset_top = -43.0
-offset_right = 343.0
-offset_bottom = 37.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.29634, 0.29634, 0.29634, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("5_iqu72")
-theme_override_font_sizes/font_size = 60
-text = "100000"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="EffLose" type="Control" parent="MainPn/LosePn"]
+[node name="EffLose" type="Control" parent="MainPn/WinPn"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = -53.0
-offset_bottom = -53.0
+offset_top = -43.0
+offset_bottom = -43.0
 grow_horizontal = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MainPn/LosePn/EffLose"]
+[node name="TextureRect2" type="TextureRect" parent="MainPn/WinPn/EffLose"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -164,7 +143,7 @@ pivot_offset = Vector2(200, 200)
 texture = ExtResource("3_d31e7")
 expand_mode = 1
 
-[node name="TitleLbLose" type="Label" parent="MainPn/LosePn/EffLose/TextureRect2"]
+[node name="TitleLbLose" type="Label" parent="MainPn/WinPn/EffLose/TextureRect2"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -182,48 +161,8 @@ text = "YOU_LOSE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WinPn" type="Control" parent="MainPn"]
-clip_children = 2
-light_mask = 7
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="MainPn/WinPn"]
-custom_minimum_size = Vector2(0, 270)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.910714, 0.723064, 0.509261, 1)
-
-[node name="TextureRect3" type="TextureRect" parent="MainPn/WinPn"]
-self_modulate = Color(1, 1, 1, 0.6)
-layout_mode = 0
-offset_left = 364.0
-offset_top = -239.0
-offset_right = 814.0
-offset_bottom = 211.0
-texture = ExtResource("4_6sc0g")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="MainPn/WinPn"]
-material = SubResource("ShaderMaterial_jiyt7")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_il20s")
-
 [node name="EffWin" type="Control" parent="MainPn/WinPn"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -231,6 +170,16 @@ anchor_right = 0.5
 offset_top = -53.0
 offset_bottom = -53.0
 grow_horizontal = 2
+
+[node name="TextureRect3" type="TextureRect" parent="MainPn/WinPn/EffWin"]
+self_modulate = Color(1, 1, 1, 0.6)
+layout_mode = 0
+offset_left = -236.0
+offset_top = -186.0
+offset_right = 214.0
+offset_bottom = 264.0
+texture = ExtResource("4_6sc0g")
+expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="MainPn/WinPn/EffWin"]
 layout_mode = 1
@@ -267,42 +216,6 @@ text = "YOU_WIN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GoldResultWin" type="Label" parent="MainPn/WinPn"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -57.0
-offset_right = 26.0
-offset_bottom = 39.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.960162, 0.779502, 1)
-theme_override_fonts/font = ExtResource("5_iqu72")
-theme_override_font_sizes/font_size = 80
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MainPn/WinPn/GoldResultWin"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 14.0
-offset_top = -39.0
-offset_right = 94.0
-offset_bottom = 41.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("5_oq6y8")
-expand_mode = 1
-
 [node name="HBoxContainer" type="HBoxContainer" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 7
@@ -310,10 +223,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -155.0
-offset_top = 37.0
-offset_right = 155.0
-offset_bottom = 97.0
+offset_left = -180.0
+offset_top = 19.0
+offset_right = 180.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
@@ -478,14 +391,87 @@ vertical_alignment = 1
 position = Vector2(365, 258)
 
 [node name="CrownIcon" type="TextureRect" parent="MainPn"]
-visible = false
 layout_mode = 2
-offset_left = 416.0
-offset_top = 77.0
-offset_right = 466.0
-offset_bottom = 127.0
+offset_left = 256.0
+offset_top = 33.0
+offset_right = 306.0
+offset_bottom = 83.0
 texture = ExtResource("7_tcbk3")
 expand_mode = 1
+
+[node name="Panel" type="Panel" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -96.0
+offset_right = 160.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="OppScoreLb" type="Label" parent="MainPn/Panel"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -45.0
+offset_right = 50.0
+offset_bottom = 6.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.595041, 0.199639, 0.0490263, 0.87451)
+theme_override_fonts/font = ExtResource("6_c54ls")
+theme_override_font_sizes/font_size = 25
+text = "Rewards"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxRewards" type="HBoxContainer" parent="MainPn/Panel"]
+modulate = Color(1, 1, 1, 0.831373)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -50.0
+offset_right = 137.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="MainPn/Panel/HBoxRewards"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2qycw")
+theme_override_font_sizes/font_size = 25
+text = "100"
+
+[node name="TextureRect2" type="TextureRect" parent="MainPn/Panel/HBoxRewards"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+texture = ExtResource("17_nqlja")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MainPn/Panel/HBoxRewards"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2qycw")
+theme_override_font_sizes/font_size = 25
+text = "100"
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/Panel/HBoxRewards"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("5_oq6y8")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="HBoxScore" type="HBoxContainer" parent="MainPn"]
 modulate = Color(1, 1, 1, 0.831373)
@@ -495,35 +481,130 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -151.0
-offset_top = -56.0
-offset_right = 149.0
-offset_bottom = -6.0
+offset_left = -145.0
+offset_top = -202.0
+offset_right = 155.0
+offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(150, 25)
 alignment = 1
 
-[node name="MyTeamScoreLb" type="Label" parent="MainPn/HBoxScore"]
-self_modulate = Color(0.0332452, 0.530549, 0.157571, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_c54ls")
-theme_override_font_sizes/font_size = 40
-text = "20"
+[node name="TextureRect" type="TextureRect" parent="MainPn"]
+material = SubResource("ShaderMaterial_cmurl")
+layout_mode = 0
+offset_left = 418.0
+offset_top = 13.0
+offset_right = 518.0
+offset_bottom = 113.0
+texture = ExtResource("17_qn74f")
 
-[node name="MyTeamScoreLb2" type="Label" parent="MainPn/HBoxScore"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainPn"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxTeam" type="HBoxContainer" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -71.0
+offset_right = 254.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="MyTeamScoreLb" type="Label" parent="MainPn/HBoxTeam"]
+self_modulate = Color(0.177539, 0.415142, 0.236939, 1)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
-theme_override_font_sizes/font_size = 40
-text = ":"
+theme_override_font_sizes/font_size = 50
+text = "20"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OppScoreLb" type="Label" parent="MainPn/HBoxScore"]
+[node name="AvatarCircle4" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/AvatarCircle4" instance=ExtResource("18_iwf68")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="AvatarCircle3" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/AvatarCircle3" instance=ExtResource("18_iwf68")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxTeam"]
+layout_mode = 2
+texture = ExtResource("18_llwbu")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="AvatarCircle2" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/AvatarCircle2" instance=ExtResource("18_iwf68")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="AvatarCircle" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/AvatarCircle" instance=ExtResource("18_iwf68")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="OppScoreLb" type="Label" parent="MainPn/HBoxTeam"]
 self_modulate = Color(0.730814, 0.123833, 0.0626159, 1)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 50
 text = "20"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="MainPn/HBoxContainer/BtnExit" to="." method="_click_exit_game"]
 [connection signal="pressed" from="MainPn/HBoxContainer/BtnContinue" to="." method="_click_continue_play"]

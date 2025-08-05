@@ -16,14 +16,13 @@ var player_id = -1 # ref uid
 @onready var card_btn = find_child('CardBtn')
 var face_state = g.v.game_constants.CARD_FACE_STATE.DOWN
 @onready var hint_pn = find_child("HintPn")
-@onready var shadow = find_child("Shadow")
+
 @onready var star_icon = find_child("StarIcon")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	is_played = false
 	pos_card = card_image.position
 	hint_pn.visible = false
-	shadow.visible = false
 	star_icon.visible = false
 	g.v.signal_bus.connect_global("update_card_style", Callable(self, "_on_update_card_style"))
 	

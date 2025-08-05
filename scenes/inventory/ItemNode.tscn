@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://x601pb0ngi53"]
+
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="1_dodjc"]
+[ext_resource type="Texture2D" uid="uid://bvuciak7xffia" path="res://assets/images/items/frames/frame_01.png" id="1_lxbys"]
+
+[node name="ItemNode" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 286.0
+offset_top = 7.0
+offset_right = 386.0
+offset_bottom = 107.0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("1_dodjc")
+
+[node name="TextureRect" type="TextureRect" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lxbys")
+expand_mode = 1

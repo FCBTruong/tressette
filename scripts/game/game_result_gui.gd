@@ -8,8 +8,6 @@ var my_team_id
 @onready var MainPn = find_child('MainPn')
 @onready var players_pn = find_child("PlayersPn")
 @onready var crown_icon = find_child('CrownIcon')
-@onready var gold_result_lb_win = find_child("GoldResultWin")
-@onready var gold_result_lb_lose = find_child("GoldResultLose")
 @onready var player_result_node_scene = preload("res://scenes/board/PlayerResultNode.tscn")
 @onready var continue_timer = find_child("ContinueTimer")
 @onready var continue_time_lb = find_child("ContinueTimeLb")
@@ -29,13 +27,9 @@ func _ready() -> void:
 func on_show():
 	self.visible = true
 	hbox_score.position = hbox_score_default_pos
-	gold_result_lb_lose.visible = true
-	gold_result_lb_win.visible = true
 	hbox_score.visible = false
 	if g.v.app_version.is_in_review():
 		hbox_score.visible = true
-		gold_result_lb_lose.visible = false
-		gold_result_lb_win.visible = false
 		hbox_score.position.y = hbox_score_default_pos.y - 75
 		hbox_score.scale = Vector2(2,2)
 		#find_child("TitleLbLose").position.y += 170
@@ -77,19 +71,9 @@ func update_result(data: MatchData.MatchResult):
 	opp_score_lb.text = str(opp_score)
 	var gold_change = 0
 	if data.is_win:
-		gold_result_lb = gold_result_lb_win
-		gold_change = data.gold_win
-		# Set green border
-		win_pn.visible = true
-		lose_pn.visible = false
 		g.v.sound_manager.play_win_congrat_sound()
 	else:
-		gold_result_lb = gold_result_lb_lose
-		gold_change = data.gold_lose
 		g.v.sound_manager.play_lose_sound()
-		# Set green border
-		win_pn.visible = false
-		lose_pn.visible = true
 
 	
 	var tween_gold = create_tween()
@@ -105,6 +89,8 @@ func update_result(data: MatchData.MatchResult):
 	tween_gold.tween_method(set_int_to_text.bind(gold_result_lb, true), 0, gold_change, time_run)
 
 func set_int_to_text(value: int, label, add: bool = false) -> void:
+	if not is_instance_valid(label):
+		return
 	var str = ''
 	if value >= 0:
 		str = "+" + StringUtils.point_number(value)

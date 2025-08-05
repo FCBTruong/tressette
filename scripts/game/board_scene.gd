@@ -442,10 +442,7 @@ func play_my_card(id: int, auto: bool = false):
 	tween.parallel().tween_property(card, "global_position", p_place_world, 0.5)
 	tween.parallel().tween_property(card, "rotation_degrees", 0, 0.5)
 	
-	tween.parallel().tween_callback(
-		func():
-			card.shadow.visible = true
-	).set_delay(0.3)
+
 	
 	var t2 = create_tween()
 	t2.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -835,10 +832,6 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 		Vector2(SCALE_CARD_NORMAL * 1.05, SCALE_CARD_NORMAL * 1.05), 0.4)\
 			.set_trans(Tween.TRANS_SINE)
 			
-	tween.parallel().tween_callback(
-		func():
-			card_instance.shadow.visible = true
-	).set_delay(0.3)
 	
 	tween.parallel().tween_property(card_instance, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)

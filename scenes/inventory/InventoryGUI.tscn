@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=3 uid="uid://br03nfchjg02d"]
+
+[ext_resource type="Script" path="res://scenes/inventory/inventory_gui.gd" id="1_ne7d4"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="1_or6i4"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="2_2ihve"]
+[ext_resource type="PackedScene" uid="uid://x601pb0ngi53" path="res://scenes/inventory/ItemNode.tscn" id="2_56oft"]
+[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="5_o6rs7"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="6_tillx"]
+[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="6_y5n5l"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="7_ndbo4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q00is"]
+bg_color = Color(0, 0, 0, 0.713726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lefcs"]
+bg_color = Color(0.581464, 0.550688, 0.533556, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="InventoryGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ne7d4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q00is")
+
+[node name="MainPn" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -225.0
+offset_right = 400.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lefcs")
+current_tab = 0
+
+[node name="Avatar Frame" type="TabBar" parent="MainPn/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Panel" type="Panel" parent="MainPn/TabContainer/Avatar Frame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="MainPn/TabContainer/Avatar Frame/Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 12.0
+offset_right = 559.0
+offset_bottom = 412.0
+columns = 5
+
+[node name="ItemNode" parent="MainPn/TabContainer/Avatar Frame/Panel/GridContainer" instance=ExtResource("2_56oft")]
+layout_mode = 2
+
+[node name="ItemNode6" parent="MainPn/TabContainer/Avatar Frame/Panel/GridContainer" instance=ExtResource("2_56oft")]
+layout_mode = 2
+
+[node name="ItemNode5" parent="MainPn/TabContainer/Avatar Frame/Panel/GridContainer" instance=ExtResource("2_56oft")]
+layout_mode = 2
+
+[node name="ItemNode4" parent="MainPn/TabContainer/Avatar Frame/Panel/GridContainer" instance=ExtResource("2_56oft")]
+layout_mode = 2
+
+[node name="ItemNode3" parent="MainPn/TabContainer/Avatar Frame/Panel/GridContainer" instance=ExtResource("2_56oft")]
+layout_mode = 2
+
+[node name="ItemNode2" parent="MainPn/TabContainer/Avatar Frame/Panel/GridContainer" instance=ExtResource("2_56oft")]
+layout_mode = 2
+
+[node name="Card back" type="TabBar" parent="MainPn/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Avatar" type="TabBar" parent="MainPn/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="CloseBtn" type="Button" parent="MainPn"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 396.0
+offset_top = -197.0
+offset_right = 396.0
+offset_bottom = -197.0
+flat = true
+script = ExtResource("1_or6i4")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2ihve")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="MainPn"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = -166.0
+offset_right = 388.0
+offset_bottom = 234.0
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/Panel"]
+self_modulate = Color(0.520366, 0.520366, 0.520366, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 53.0
+offset_top = 31.0
+offset_right = -47.0
+offset_bottom = -269.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_o6rs7")
+expand_mode = 1
+
+[node name="AvatarImg" type="TextureRect" parent="MainPn/Panel/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_y5n5l")
+expand_mode = 1
+script = ExtResource("6_tillx")
+
+[node name="AvatarFrame" parent="MainPn/Panel" instance=ExtResource("7_ndbo4")]
+offset_left = 103.0
+offset_top = 81.0
+offset_right = 103.0
+offset_bottom = 81.0
+
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]

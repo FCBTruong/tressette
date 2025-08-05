@@ -1,16 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhgkntha63vqu"]
+[gd_scene load_steps=5 format=3 uid="uid://dhgkntha63vqu"]
 
 [ext_resource type="Script" path="res://scripts/game/card.gd" id="1_1xv6o"]
 [ext_resource type="Texture2D" uid="uid://oir8in6emjbh" path="res://assets/images/card_tressette/classic/1.png" id="2_o8dud"]
 [ext_resource type="Texture2D" uid="uid://bp6kti3au5fyr" path="res://assets/images/lobby/triangle.png" id="3_the30"]
 [ext_resource type="Texture2D" uid="uid://5e38l1pfgif4" path="res://assets/images/board/follow_card_icon.png" id="4_m8dyq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ptg7"]
-bg_color = Color(0.096, 0.096, 0.096, 0.25)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_1xv6o")
@@ -29,22 +22,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Shadow" type="Panel" parent="Main"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -84.0
-offset_right = 60.0
-offset_bottom = 92.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1ptg7")
 
 [node name="CardImage" type="TextureRect" parent="Main"]
 layout_mode = 1

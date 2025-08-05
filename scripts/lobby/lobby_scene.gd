@@ -141,7 +141,7 @@ func _open_mail_gui():
 	
 func _open_inventory():
 	#pass
-	g.v.scene_manager.open_gui("res://scenes/customer_service/CustomerServiceGUI.tscn")
+	g.v.scene_manager.open_gui("res://scenes/inventory/InventoryGUI.tscn")
 
 func _click_mission_btn():
 	#g.v.mission_mgr.open_mission_gui()
