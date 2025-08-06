@@ -4,6 +4,243 @@ class_name InventoryMgr
 
 var current_cardback: int = g.v.game_constants.CARDBACK_IDS.CAT
 
+var 	data = [
+		{
+			"item_id": 1000,
+			"expire_time": 3333333,
+			"name": "Basic frame",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 1001,
+			"expire_time": 3333333,
+			"name": "Basic frame",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 1002,
+			"expire_time": 3333333,
+			"name": "Basic frame",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 1003,
+			"expire_time": 3333333,
+			"name": "Basic frame",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 2000,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 2001,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 2002,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 2003,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 2004,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 4001,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 4002,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},{
+			"item_id": 4003,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 4004,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		},
+		{
+			"item_id": 4005,
+			"expire_time": 3333333,
+			"name": "Card back basic",
+			"description": "",
+			"shop": [
+				{
+					"duration": 7,
+					"price": 10000
+				},
+				{
+					"duration": 30,
+					"price": 20000
+				}
+			]
+		}
+	]
+
+var items: Array[InventoryItem] = []
+
+func _init() -> void:
+	for d in data:
+		var item = InventoryItem.new()
+		item.item_id = d["item_id"]
+		item.expire_time = d["expire_time"]
+		item.name = d["name"]
+		item.description = d["description"]
+		items.append(item)
+
 func get_current_cardback() -> String:
 	return get_image_cardback(current_cardback)
 	
@@ -30,13 +267,29 @@ func get_image_cardback(id):
 func get_image_avatar_frame(id):
 	match id:
 		g.v.game_constants.AVATAR_FRAME_IDS.DEFAULT:
-			return "res://assets/images/lobby/avatar_border.png"
+			return "res://assets/images/items/frames/frame_default.png"
 		g.v.game_constants.AVATAR_FRAME_IDS.SEASON:
 			return "res://assets/images/items/frames/frame_01.png"
 		g.v.game_constants.AVATAR_FRAME_IDS.VICTORY:
 			return "res://assets/images/items/frames/frame_victory.png"
 		g.v.game_constants.AVATAR_FRAME_IDS.VIP:
-			return "res://assets/images/items/frames/card_back_02.png"
+			return "res://assets/images/items/frames/frame_vip.png"
+	return ""
+	
+func get_image_carpet(id):
+	match id:
+		g.v.game_constants.CARPET_IDS.DEFAULT:
+			return ""
+		g.v.game_constants.CARPET_IDS.CLASSIC:
+			return "res://assets/images/items/carpets/carpet_classic.png"
+		g.v.game_constants.CARPET_IDS.ROMA_ANTICA:
+			return "res://assets/images/items/carpets/carpet_01.png"
+		g.v.game_constants.CARPET_IDS.VINTAGE_TRUCKER:
+			return "res://assets/images/items/carpets/carpet_vintage_trucker.png"
+		g.v.game_constants.CARPET_IDS.VIP:
+			return "res://assets/images/items/carpets/carpet_vip.png"
+		g.v.game_constants.CARPET_IDS.GLORIA_ROMANA:
+			return "res://assets/images/items/carpets/carpet_gloria_romana.png"
 	return ""
 	
 func get_image_item(item_id: int) -> String:
@@ -45,6 +298,8 @@ func get_image_item(item_id: int) -> String:
 		return get_image_cardback(item_id)
 	elif item_type == g.v.game_constants.AVATAR_FRAME_TYPE:
 		return get_image_avatar_frame(item_id)
+	elif item_type == g.v.game_constants.CARPET_TYPE:
+		return get_image_carpet(item_id)
 	return ""
 
 func get_icon_crypstal():

@@ -165,6 +165,15 @@ const AVATAR_FRAME_IDS = {
 	VIP = 1003,
 }
 
+const CARPET_IDS = {
+	DEFAULT = 4000,
+	ROMA_ANTICA = 4001,
+	CLASSIC = 4002,
+	VINTAGE_TRUCKER = 4003,
+	VIP = 4004,
+	GLORIA_ROMANA = 4005,
+}
+
 
 const CARDBACK_IDS = {
 	DEFAULT = 2000,
@@ -179,6 +188,10 @@ const AVATAR_PACKS = {
 	NATURE = 3001 # each pack includes 4 avatars
 }
 
+const CRYPSTAL_TYPE = 0
 const AVATAR_FRAME_TYPE = 1
 const CARDBACK_TYPE = 2
 const AVATAR_TYPE = 3
+const CARPET_TYPE = 4
+
+const ITEM_PERMANENT_TIME = -1
