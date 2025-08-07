@@ -10,3 +10,5 @@ func set_info(data: InventoryItem):
 	var img_path = g.v.inventory_mgr.get_image_item(data.item_id)
 	item_img.texture = load(img_path) 
 	
+func on_touch():
+	g.v.scene_manager.inventory_gui.on_preview_item(_info)

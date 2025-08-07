@@ -1288,6 +1288,7 @@ func show_function_btns():
 	).set_delay(1.5)
 	
 func hide_function_btns() -> void:
+	return
 	self.is_showing_functions = false
 	self.left_top_pn.visible = false
 	self.right_top_pn.visible = false

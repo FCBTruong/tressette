@@ -10,8 +10,15 @@ const TAB_CARDBACK = 1
 const TAB_AVATAR = 2
 const TAB_CARPET = 3
 var items = g.v.inventory_mgr.items
+var preview_info
+@onready var preview_name_lb = find_child("NameLb")
+@onready var preview_description_lb = find_child("DescriptionLb")
+@onready var preview_avatar_frame = find_child("AvatarFrame")
+@onready var preview_img = find_child("ImgPreview")
+@onready var avatar_pn = find_child("AvatarPn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	g.v.scene_manager.inventory_gui = self
 	var tween = create_tween()
 	main_pn.scale = Vector2(0, 0)
 	main_pn.modulate.a = 0
@@ -85,4 +92,25 @@ func _on_tab_container_tab_changed(tab: int) -> void:
 		_update_item_list_cardback()
 	elif tab == TAB_CARPET:
 		_update_item_list_carpet()
+	pass # Replace with function body.
+
+
+func on_preview_item(info: InventoryItem):
+	preview_name_lb.text = info.name
+	var type = info.item_id / 1000
+	if type == g.v.game_constants.AVATAR_FRAME_TYPE:
+		avatar_pn.visible = true
+		preview_img.visible = false
+		preview_avatar_frame.update_frame_by_id(info.item_id)
+	else:
+		preview_img.visible = true
+		var path = g.v.inventory_mgr.get_image_item(info.item_id)
+		preview_img.texture = load(path)
+		avatar_pn.visible = false
+	preview_info = info
+	pass
+
+
+func _on_use_btn_pressed() -> void:
+	# logic use item
 	pass # Replace with function body.

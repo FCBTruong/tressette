@@ -30,10 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="16_oiaq1"]
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="17_11riy"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="23_5xkug"]
-[ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="24_gd8ru"]
 [ext_resource type="PackedScene" uid="uid://d3phqitk2yrkh" path="res://scenes/board/EmoChat.tscn" id="27_8g18i"]
 [ext_resource type="Texture2D" uid="uid://ciag7udxsmr8c" path="res://assets/images/board/icon_viewer.png" id="27_sb6tw"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
+[ext_resource type="Texture2D" uid="uid://c6an5y8xj8baw" path="res://assets/images/lobby/buttons/brown_btn.png" id="28_pmwlt"]
 [ext_resource type="AudioStream" uid="uid://g0su4roe1kup" path="res://assets/sounds/clock_tick_sound.mp3" id="33_2tsyk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjq8g"]
@@ -227,7 +227,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hw1ge")
 expand_mode = 1
-stretch_mode = 6
 
 [node name="CupCoffee" type="TextureRect" parent="."]
 layout_mode = 1
@@ -1272,7 +1271,6 @@ texture = ExtResource("15_fl0rb")
 expand_mode = 1
 
 [node name="LeftTopPn" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 400.0
@@ -1506,7 +1504,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("24_gd8ru")
+texture = ExtResource("28_pmwlt")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="AutoPlayPn/ReturnTableBtn/TextureRect"]

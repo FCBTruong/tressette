@@ -16,6 +16,7 @@ var cur_scene_name = null
 var effect_layer = null
 var _cur_scene = null
 var scene_nodes = {}
+var inventory_gui = null
 
 var is_in_root = false
 var layer_gui: CanvasLayer

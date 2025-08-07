@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://br03nfchjg02d"]
+[gd_scene load_steps=16 format=3 uid="uid://br03nfchjg02d"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_gui.gd" id="1_ne7d4"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="1_or6i4"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="7_1eld4"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="7_d4d3f"]
 [ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="7_ndbo4"]
+[ext_resource type="Texture2D" uid="uid://dkua70e0nxvng" path="res://assets/images/items/carpets/carpet_01.png" id="7_yfc3b"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="9_ttmv5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q00is"]
@@ -233,6 +234,21 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ImgPreview" type="TextureRect" parent="MainPn/Panel"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 15.0
+offset_right = 100.0
+offset_bottom = 115.0
+grow_horizontal = 2
+texture = ExtResource("7_yfc3b")
+expand_mode = 2
+stretch_mode = 5
+
 [node name="UseBtn" type="Button" parent="MainPn/Panel"]
 layout_mode = 1
 anchors_preset = 8
@@ -300,6 +316,7 @@ offset_right = 100.0
 offset_bottom = 164.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("7_d4d3f")
+theme_override_font_sizes/font_size = 22
 text = "Victory Frame"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -397,10 +414,10 @@ text = "7 days"
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 376.0
-offset_top = -199.0
-offset_right = 376.0
-offset_bottom = -199.0
+offset_left = 373.0
+offset_top = -188.0
+offset_right = 373.0
+offset_bottom = -188.0
 flat = true
 script = ExtResource("1_or6i4")
 
@@ -415,4 +432,5 @@ texture = ExtResource("2_2ihve")
 expand_mode = 1
 
 [connection signal="tab_changed" from="MainPn/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="MainPn/Panel/UseBtn" to="." method="_on_use_btn_pressed"]
 [connection signal="pressed" from="MainPn/CloseBtn" to="." method="_on_close"]
