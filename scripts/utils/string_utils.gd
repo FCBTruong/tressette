@@ -50,8 +50,22 @@ static func convert_point_string_to_int(point_str: String) -> int:
 	# Convert the cleaned string to an integer
 	return cleaned_str.to_int()
 
+# hours:minutes:seconds
 static func format_time(time_remain: int) -> String:
 	var hours = time_remain / 3600
 	var minutes = (time_remain % 3600) / 60
 	var seconds = time_remain % 60
 	return "%02d:%02d:%02d" % [hours, minutes, seconds]
+
+# 10h:10h:10m:10s
+static func format_time2(time_remain: int) -> String:
+	var total_seconds = time_remain
+	var days = total_seconds / 86400
+	var hours = (total_seconds % 86400) / 3600
+	var minutes = (total_seconds % 3600) / 60
+	var seconds = total_seconds % 60
+
+	if days >= 1:
+		return "%dd:%02dh:%02dm" % [days, hours, minutes]
+	else:
+		return "%02dh:%02dm:%02ds" % [hours, minutes, seconds]

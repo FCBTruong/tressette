@@ -157,3 +157,6 @@ func _on_update_exp(bytes: PackedByteArray):
 	packet.from_bytes(bytes)
 	my_user_data.exp = packet.get_exp()
 	g.v.signal_bus.emit_signal_global('on_update_exp')
+	
+func update_using_frame(item_id):
+	self.my_user_data.avatar_frame = item_id

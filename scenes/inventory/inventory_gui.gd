@@ -112,5 +112,6 @@ func on_preview_item(info: InventoryItem):
 
 
 func _on_use_btn_pressed() -> void:
-	# logic use item
-	pass # Replace with function body.
+	if not preview_info:
+		return
+	g.v.inventory_mgr.use_item(preview_info.item_id)

@@ -6,10 +6,13 @@ var current_cardback: int = g.v.game_constants.CARDBACK_IDS.CAT
 
 var data_raw := load("res://scripts/modules/inventory/inventory.tres")
 var items: Array[InventoryItem] = []
+var map_item: Dictionary = {}
 
 func _init() -> void:
-	#var parsed = JSON.parse_string(data_raw)
-	#var data = parsed.data
+	pass
+
+func _load_base_item_config():
+	items.clear()
 	var data = data_raw.data
 	for d in data.items:
 		var item = InventoryItem.new()
@@ -18,6 +21,7 @@ func _init() -> void:
 		item.name = d["name"]
 		item.description = d["description"]
 		items.append(item)
+		map_item[item.item_id] = item
 
 func get_current_cardback() -> String:
 	return get_image_cardback(current_cardback)
@@ -84,16 +88,37 @@ func get_icon_crypstal():
 	return "res://assets/images/lobby/icon_gold.png"
 
 var my_items = []
+var key_cardback
 func _handle_user_inventory(payload):
+	_load_base_item_config()
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.UserInventory.new()
 	var result_code = pkg.from_bytes(payload)
 	var items = pkg.get_items()
-	my_items = []
 	for item in items:
 		var item_id = item.get_item_id()
 		var expire_time = item.get_expire_time()
-		my_items.append({
-			"item_id": item_id,
-			"expire_time": expire_time
-		})
-	print("lennn my items", len(my_items))
+		map_item[item_id].expire_time = expire_time
+		
+	key_cardback = "current_cardback" + str(g.v.player_info_mgr.get_user_id())
+	var current_cardback = g.v.storage_cache.fetch(key_cardback, g.v.game_constants.CARDBACK_IDS.DEFAULT)
+	# check if this current_cardback is out of time, try to use another cardback valid
+
+		
+
+func _refresh_my_item_data():
+	pass
+	
+	
+func use_item(item_id):
+	print("user use item: ", item_id)
+	var type = item_id / 1000
+	if type == g.v.game_constants.AVATAR_FRAME_TYPE:
+		g.v.player_info_mgr.update_using_frame(item_id)
+		var pkg = g.v.game_constants.PROTOBUF.PACKETS.UseItem.new()
+		pkg.set_item_id(item_id)
+		g.v.game_client.send_packet(g.v.game_constants.CMDs.USE_ITEM, pkg.to_bytes())
+	elif type == g.v.game_constants.CARDBACK_TYPE:
+		current_cardback = item_id
+		g.v.storage_cache.fetch(key_cardback, current_cardback)
+
+	pass
