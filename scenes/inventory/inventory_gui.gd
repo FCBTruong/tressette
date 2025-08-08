@@ -16,6 +16,9 @@ var preview_info
 @onready var preview_avatar_frame = find_child("AvatarFrame")
 @onready var preview_img = find_child("ImgPreview")
 @onready var avatar_pn = find_child("AvatarPn")
+@onready var buy_pn = find_child("BuyPn")
+@onready var use_btn = find_child("UseBtn")
+@onready var not_own_lb = find_child("NotOwnLb")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	g.v.scene_manager.inventory_gui = self
@@ -37,7 +40,7 @@ func _on_close():
 
  
 var item_node_scene = preload("res://scenes/inventory/ItemNode.tscn")
-func _update_item_list_avatar_frame():
+func _update_item_list_avatar_frame(pick_preview: bool = false):
 	for child in grid_container_avatar_frame.get_children():
 		child.queue_free()
 		
@@ -48,11 +51,11 @@ func _update_item_list_avatar_frame():
 		var n = item_node_scene.instantiate()
 		grid_container_avatar_frame.add_child(n)
 		n.set_info(item)
-		pass
-
-	pass
+		if pick_preview:
+			pick_preview = false
+			on_preview_item(n)
 	
-func _update_item_list_cardback():
+func _update_item_list_cardback(pick_preview: bool = false):
 	if not grid_container_cardback:
 		return
 	for child in grid_container_cardback.get_children():
@@ -65,11 +68,13 @@ func _update_item_list_cardback():
 		var n = item_node_scene.instantiate()
 		grid_container_cardback.add_child(n)
 		n.set_info(item)
-		pass
+		
+		if pick_preview:
+			pick_preview = false
+			on_preview_item(n)
 
-	pass
 
-func _update_item_list_carpet():
+func _update_item_list_carpet(pick_preview: bool = false):
 	if not grid_container_carpet:
 		return
 	for child in grid_container_carpet.get_children():
@@ -82,21 +87,27 @@ func _update_item_list_carpet():
 		var n = item_node_scene.instantiate()
 		grid_container_carpet.add_child(n)
 		n.set_info(item)
-		pass
+		if pick_preview:
+			pick_preview = false
+			on_preview_item(n)
 
-	pass
 func _on_tab_container_tab_changed(tab: int) -> void:
 	if tab == TAB_AVATAR_FRAME:
-		_update_item_list_avatar_frame()
+		_update_item_list_avatar_frame(true)
 	elif tab == TAB_CARDBACK:
-		_update_item_list_cardback()
+		_update_item_list_cardback(true)
 	elif tab == TAB_CARPET:
-		_update_item_list_carpet()
+		_update_item_list_carpet(true)
 	pass # Replace with function body.
 
-
-func on_preview_item(info: InventoryItem):
-	preview_name_lb.text = info.name
+var recent_preview_node
+func on_preview_item(item_node):
+	var info: InventoryItem = item_node.info
+	if is_instance_valid(recent_preview_node):
+		recent_preview_node.de_highlight()
+	item_node.on_highlight()
+	recent_preview_node = item_node
+	preview_name_lb.text = tr(info.name)
 	var type = info.item_id / 1000
 	if type == g.v.game_constants.AVATAR_FRAME_TYPE:
 		avatar_pn.visible = true
@@ -108,7 +119,19 @@ func on_preview_item(info: InventoryItem):
 		preview_img.texture = load(path)
 		avatar_pn.visible = false
 	preview_info = info
-	pass
+	preview_description_lb.text = tr(info.description)
+	
+	if info.expire_time == g.v.game_constants.ITEM_PERMANENT_TIME:
+		buy_pn.visible = false
+	else:
+		buy_pn.visible = true
+		
+	if info.is_own:
+		not_own_lb.visible = false
+		use_btn.visible = true
+	else:
+		not_own_lb.visible = true
+		use_btn.visible = false
 
 
 func _on_use_btn_pressed() -> void:

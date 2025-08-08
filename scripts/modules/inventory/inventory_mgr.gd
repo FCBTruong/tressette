@@ -3,6 +3,7 @@ class_name InventoryMgr
 
 
 var current_cardback: int = g.v.game_constants.CARDBACK_IDS.CAT
+var current_carpet: int = g.v.game_constants.CARPET_IDS.DEFAULT
 
 var data_raw := load("res://scripts/modules/inventory/inventory.tres")
 var items: Array[InventoryItem] = []
@@ -30,6 +31,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 	match cmd_id:
 		g.v.game_constants.CMDs.USER_INVENTORY:
 			_handle_user_inventory(payload)
+		g.v.game_constants.CMDs.USE_ITEM:
+			_handle_use_item(payload)
 
 func get_image_cardback(id):
 	match id:
@@ -61,7 +64,7 @@ func get_image_avatar_frame(id):
 func get_image_carpet(id):
 	match id:
 		g.v.game_constants.CARPET_IDS.DEFAULT:
-			return ""
+			return "res://assets/images/items/carpets/default.png"
 		g.v.game_constants.CARPET_IDS.CLASSIC:
 			return "res://assets/images/items/carpets/carpet_classic.png"
 		g.v.game_constants.CARPET_IDS.ROMA_ANTICA:
@@ -89,6 +92,7 @@ func get_icon_crypstal():
 
 var my_items = []
 var key_cardback
+var key_carpet
 func _handle_user_inventory(payload):
 	_load_base_item_config()
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.UserInventory.new()
@@ -100,9 +104,18 @@ func _handle_user_inventory(payload):
 		map_item[item_id].expire_time = expire_time
 		
 	key_cardback = "current_cardback" + str(g.v.player_info_mgr.get_user_id())
-	var current_cardback = g.v.storage_cache.fetch(key_cardback, g.v.game_constants.CARDBACK_IDS.DEFAULT)
+	key_carpet = "current_carpet" + str(g.v.player_info_mgr.get_user_id())
+	current_cardback = g.v.storage_cache.fetch(key_cardback, g.v.game_constants.CARDBACK_IDS.DEFAULT)
+	current_carpet = g.v.storage_cache.fetch(key_carpet, g.v.game_constants.CARPET_IDS.DEFAULT)
 	# check if this current_cardback is out of time, try to use another cardback valid
 
+func _handle_use_item(payload):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.UseItem.new()
+	var result_code = pkg.from_bytes(payload)
+	var item_id = pkg.get_item_id()
+	var type = item_id / 1000
+	if type == g.v.game_constants.AVATAR_FRAME_TYPE:
+		g.v.player_info_mgr.update_using_frame(item_id)
 		
 
 func _refresh_my_item_data():
@@ -113,12 +126,15 @@ func use_item(item_id):
 	print("user use item: ", item_id)
 	var type = item_id / 1000
 	if type == g.v.game_constants.AVATAR_FRAME_TYPE:
-		g.v.player_info_mgr.update_using_frame(item_id)
+		if item_id == g.v.player_info_mgr.my_user_data.avatar_frame:
+			return
 		var pkg = g.v.game_constants.PROTOBUF.PACKETS.UseItem.new()
 		pkg.set_item_id(item_id)
 		g.v.game_client.send_packet(g.v.game_constants.CMDs.USE_ITEM, pkg.to_bytes())
 	elif type == g.v.game_constants.CARDBACK_TYPE:
 		current_cardback = item_id
-		g.v.storage_cache.fetch(key_cardback, current_cardback)
-
+		g.v.storage_cache.store(key_cardback, current_cardback)
+	elif type == g.v.game_constants.CARPET_TYPE:
+		current_carpet = item_id
+		g.v.storage_cache.store(key_carpet, current_carpet)
 	pass

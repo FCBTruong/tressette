@@ -49,6 +49,7 @@ var pn_highlight_napoli = preload("res://scenes/board/NapoliCardHighlight.tscn")
 @onready var score_pn = find_child("ScorePn")
 @onready var deco_2v2 = find_child("Deco2vs2")
 @onready var watching_lb = find_child("WatchingLb")
+@onready var carpet_img = find_child("CarpetImg")
 const DEFAULT_CARD_Z_INDEX = 10
 const COMPARE_CARD_Z_INDEX = 100
 const WIN_CARD_Z_INDEX = 101
@@ -128,6 +129,16 @@ func _ready() -> void:
 	self.visitor_pn.visible = false
 	for v in self.game_logic.match_data.viewers:
 		self.on_new_viewer(v.uid, v.avatar, v.name, v.avatar_frame)
+		
+	# load carpet
+	if g.v.inventory_mgr.current_carpet == g.v.game_constants.CARPET_IDS.DEFAULT:
+		carpet_img.visible = false
+		pass
+	else:
+		var path = g.v.inventory_mgr.get_image_item(g.v.inventory_mgr.current_carpet)
+		carpet_img.texture = load(path)
+		carpet_img.visible = true
+		pass
 
 var is_showing_ads_banner = false
 func set_up_ads_banner(show: bool):
