@@ -28,7 +28,14 @@ func _input(event):
 		if event.pressed:
 			if event.keycode == KEY_T:
 				var rewards: Array[Reward] = [
-					Reward.new(g.v.game_constants.CRYPSTAL_TYPE, 1111)
+					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),
+					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),
+					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),
+					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),
+					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),
+					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),
+					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),
+					Reward.new(g.v.game_constants.CARDBACK_IDS.CAT, 1, 7)
 				]
 				var g = g.v.scene_manager.open_gui(
 					"res://scenes/lobby/ReceiveGiftGUI.tscn")
@@ -50,14 +57,23 @@ func _input(event):
 				var a = MatchData.MatchResultPlayer.new()
 				a.avatar = "1"
 				a.team_id = 0
+				a.avatar_frame = 1001
 				var b = MatchData.MatchResultPlayer.new()
-				b.avatar = "1"
+				b.avatar = "2"
 				b.team_id = 1
-				g.v.game_constants.game_logic.match_result.gold_win = 992822
-				g.v.game_constants.game_logic.match_result.gold_lose = -992822
+				b.avatar_frame = 1002
+				var rewards: Array[Reward] = [
+					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 10000),
+					Reward.new(g.v.game_constants.EXP_ITEM_ID, 100)
+				]
+				g.v.game_constants.game_logic.match_result.rewards = rewards
+				
+				g.v.game_constants.game_logic.match_result.win_team_id = 1
 				g.v.game_constants.game_logic.match_result.is_win = false
 				g.v.game_constants.game_logic.match_result.players.append(a)
 				g.v.game_constants.game_logic.match_result.players.append(b)
+				#g.v.game_constants.game_logic.match_result.players.append(a)
+				#g.v.game_constants.game_logic.match_result.players.append(b)
 				g.v.scene_manager.open_gui('res://scenes/board/GameResultGUI.tscn', true)
 				pass
 				g.v.scene_manager.clear_loading()

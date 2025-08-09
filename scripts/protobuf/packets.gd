@@ -7778,4 +7778,131 @@ class InvetoryShopPack:
 			return PB_ERR.PARSE_INCOMPLETE
 		return result
 	
+class ClaimRewardLevelResponse:
+	func _init():
+		var service
+		
+		_level = PBField.new("level", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _level
+		data[_level.tag] = service
+		
+		_gold = PBField.new("gold", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _gold
+		data[_gold.tag] = service
+		
+		_items = PBField.new("items", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _items
+		service.func_ref = Callable(self, "add_items")
+		data[_items.tag] = service
+		
+	var data = {}
+	
+	var _level: PBField
+	func get_level() -> int:
+		return _level.value
+	func clear_level() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_level.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_level(value : int) -> void:
+		_level.value = value
+	
+	var _gold: PBField
+	func get_gold() -> int:
+		return _gold.value
+	func clear_gold() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_gold.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_gold(value : int) -> void:
+		_gold.value = value
+	
+	var _items: PBField
+	func get_items() -> Array:
+		return _items.value
+	func clear_items() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_items.value = []
+	func add_items() -> RewardInventoryItem:
+		var element = RewardInventoryItem.new()
+		_items.value.append(element)
+		return element
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class RewardInventoryItem:
+	func _init():
+		var service
+		
+		_item_id = PBField.new("item_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _item_id
+		data[_item_id.tag] = service
+		
+		_duration = PBField.new("duration", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _duration
+		data[_duration.tag] = service
+		
+	var data = {}
+	
+	var _item_id: PBField
+	func get_item_id() -> int:
+		return _item_id.value
+	func clear_item_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_item_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_item_id(value : int) -> void:
+		_item_id.value = value
+	
+	var _duration: PBField
+	func get_duration() -> int:
+		return _duration.value
+	func clear_duration() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_duration.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_duration(value : int) -> void:
+		_duration.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
 ################ USER DATA END #################

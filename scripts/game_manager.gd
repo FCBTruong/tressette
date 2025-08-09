@@ -179,6 +179,8 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			receive_play_invite(payload)
 		g.v.game_constants.CMDs.CLAIM_ADS_REWARD:
 			receive_ads_reward(payload)
+		g.v.game_constants.CMDs.CLAIM_REWARD_LEVEL:
+			receive_reward_level(payload)
 		_:
 			g.v.game_constants.game_logic.on_receive(cmd_id, payload)
 	
@@ -364,8 +366,8 @@ func receive_ads_reward(payload):
 	g.v.player_info_mgr.time_ads_reward = pkg.get_time_ads_reward()
 	var str = tr("CLAIM_REWARD_SUCCESS")
 	
-	var rewards = [
-		Reward.new(g.v.game_constants.CRYPSTAL_TYPE, gold)
+	var rewards:Array[Reward] = [
+		Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, gold)
 	]
 	g.v.popup_mgr.add_popup(
 		"res://scenes/lobby/ReceiveGiftGUI.tscn",
@@ -376,3 +378,38 @@ func receive_ads_reward(payload):
 	var scene = g.v.scene_manager.get_current_scene()
 	if scene is LobbyScene:
 		scene.update_ads_reward_info()
+
+func receive_reward_level(payload):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ClaimRewardLevelResponse.new()
+	var result_code = pkg.from_bytes(payload)
+	var rewards: Array[Reward] = []
+	var gold = pkg.get_gold()
+	if gold > 0:
+		rewards.append(
+			Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, gold)
+		)
+		
+	var items = pkg.get_items()
+	for item in items:
+		var item_id = item.get_item_id()
+		var duration = item.get_duration()
+		rewards.append(
+			Reward.new(
+				item_id,
+				1,
+				duration
+			)
+		)
+	var g = g.v.scene_manager.open_gui(
+					"res://scenes/lobby/ReceiveGiftGUI.tscn")
+	g.set_info(tr("YOU_RECEIVED"), rewards)
+	
+func check_has_reward_level() -> bool:
+	for l in g.v.game_server_config.level_rewards:
+		var level = l['level']
+		if level > g.v.player_info_mgr.get_my_level():
+			break
+		if level not in g.v.player_info_mgr.claimed_levels:
+			return true
+			
+	return false

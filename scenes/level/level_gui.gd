@@ -2,6 +2,7 @@ extends Control
 
 @onready var main_pn = find_child("MainPn")
 @onready var progress_bar = find_child("ProgressBar")
+@onready var scroll_container = find_child("ScrollContainer")
 var step
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,15 +39,13 @@ func _ready() -> void:
 		var cur = g.v.player_info_mgr.my_user_data.exp - a
 		var des = b - a
 		progress_bar.value = cur * 1.0 / des + level
-	var scroll_container = find_child("ScrollContainer")
-	var vbar: ScrollBar = scroll_container.get_h_scroll_bar()
-	vbar.value = -300 +  vbar.min_value + (progress_bar.value * 1.0 / 100) * (vbar.max_value - vbar.min_value)
-	print("valueuuees", vbar.value, " ", vbar.max_value, " ", vbar.min_value)
 
 	update_should_scroll()
 
 func update_should_scroll():
-	pass
+	var vbar: ScrollBar = scroll_container.get_h_scroll_bar()
+	vbar.value = -300 +  vbar.min_value + (progress_bar.value * 1.0 / 100) * (vbar.max_value - vbar.min_value)
+	
 var reward_level_node_scene = preload("res://scenes/level/LevelNode.tscn")
 
 

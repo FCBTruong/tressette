@@ -107,6 +107,8 @@ func get_image_item(item_id: int) -> String:
 			var avt_third_party = g.v.player_info_mgr.my_user_data.avatar_third_party
 			return avt_third_party
 		return "res://assets/images/lobby/avatars/avatar_" + str(item_id) + ".png"
+	elif item_type == g.v.game_constants.CRYPSTAL_TYPE:
+		return "res://assets/images/lobby/icon_gold.png"
 	return ""
 
 func get_icon_crypstal():

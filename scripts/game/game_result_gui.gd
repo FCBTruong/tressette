@@ -6,8 +6,6 @@ var win_team_id
 var my_team_id
 @onready var TitleLb = find_child('TitleLb')
 @onready var MainPn = find_child('MainPn')
-@onready var players_pn = find_child("PlayersPn")
-@onready var crown_icon = find_child('CrownIcon')
 @onready var player_result_node_scene = preload("res://scenes/board/PlayerResultNode.tscn")
 @onready var continue_timer = find_child("ContinueTimer")
 @onready var continue_time_lb = find_child("ContinueTimeLb")
@@ -15,25 +13,23 @@ var my_team_id
 @onready var win_pn = find_child("WinPn")
 @onready var lose_pn = find_child("LosePn")
 @onready var eff_win = find_child("EffWin")
-var gold_result_lb = null
-@onready var hbox_score = find_child("HBoxScore")
+@onready var eff_lose = find_child("EffLose")
+
+
 @onready var my_team_score_lb = find_child("MyTeamScoreLb")
 @onready var opp_score_lb = find_child("OppScoreLb")
-var hbox_score_default_pos
+@onready var player1_team1 = find_child("Player1Team1")
+@onready var player2_team1 = find_child("Player2Team1")
+@onready var player1_team2 = find_child("Player1Team2")
+@onready var player2_team2 = find_child("Player2Team2")
+@onready var eff_rotate_light = find_child("EffRotateLight")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hbox_score_default_pos = hbox_score.position
 	pass
 func on_show():
 	self.visible = true
-	hbox_score.position = hbox_score_default_pos
-	hbox_score.visible = false
-	if g.v.app_version.is_in_review():
-		hbox_score.visible = true
-		hbox_score.position.y = hbox_score_default_pos.y - 75
-		hbox_score.scale = Vector2(2,2)
-		#find_child("TitleLbLose").position.y += 170
-		#find_child("TitleLb").position.y += 170
+
 	update_result(g.v.game_constants.game_logic.match_result)
 	
 	MainPn.scale = Vector2(0, 0)
@@ -41,10 +37,10 @@ func on_show():
 	tween.parallel().tween_property(MainPn, 'scale', Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
 	eff_win.scale = Vector2(3, 3)
-	tween.parallel().tween_property(eff_win, 'scale', Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_delay(0.5)
+	tween.parallel().tween_property(eff_win, 'scale', Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_delay(0.2)
 	
 	eff_win.modulate.a = 0
-	tween.parallel().tween_property(eff_win, 'modulate:a', 1, 0.5).set_delay(0.5)
+	tween.parallel().tween_property(eff_win, 'modulate:a', 1, 0.5).set_delay(0.2)
 		
 	
 	continue_time_node.visible = false
@@ -70,23 +66,61 @@ func update_result(data: MatchData.MatchResult):
 	my_team_score_lb.text = str(my_score)
 	opp_score_lb.text = str(opp_score)
 	var gold_change = 0
+	eff_win.visible = false
+	eff_lose.visible = false
 	if data.is_win:
 		g.v.sound_manager.play_win_congrat_sound()
+		eff_win.visible = true
+		eff_rotate_light.visible = true
 	else:
 		g.v.sound_manager.play_lose_sound()
+		eff_lose.visible = true
+		eff_rotate_light.visible = false
+	
+	var t1 = 0
+	var t2 = 0
+	player1_team1.visible = false
+	player2_team1.visible = false
+	player1_team2.visible = false
+	player2_team2.visible = false
+	player1_team1.find_child("WinnerImgDouble").visible = false
+	player1_team1.find_child("WinnerImg").visible = false
+	player1_team2.find_child("WinnerImgDouble").visible = false
+	player1_team2.find_child("WinnerImg").visible = false
+	var is_double = len(data.players) > 2
+	for p in data.players:
+		var n
+		if p.team_id == 0:
+			if t1 == 0:
+				n = player1_team1
+				t1 = 1
+				if p.team_id == data.win_team_id:
+					if is_double:
+						n.find_child("WinnerImgDouble").visible = true
+					else:
+						n.find_child("WinnerImg").visible = true
+			else:
+				n = player2_team1
+		else:
+			if t2 == 0:
+				t2 = 1
+				n = player1_team2
+				if p.team_id == data.win_team_id:
+					if is_double:
+						n.find_child("WinnerImgDouble").visible = true
+					else:
+						n.find_child("WinnerImg").visible = true
+			else:
+				n = player2_team2
+		n.visible = true
+		var avt_img = n.find_child("AvatarImg")
+		var avt_frame = n.find_child("AvatarFrame")
+		avt_img.set_avatar(p.avatar)
+		avt_frame.update_frame_by_id(p.avatar_frame)
+		pass
 
 	
-	var tween_gold = create_tween()
-	var time_run = 1.5
-	if abs(gold_change) > 10000000: # 10M
-		time_run = 1.5
-	elif abs(gold_change) > 5000000:
-		time_run = 1.2
-	elif abs(gold_change) >= 500000:
-		time_run = 1.1
-	else:
-		time_run = 1
-	tween_gold.tween_method(set_int_to_text.bind(gold_result_lb, true), 0, gold_change, time_run)
+
 
 func set_int_to_text(value: int, label, add: bool = false) -> void:
 	if not is_instance_valid(label):

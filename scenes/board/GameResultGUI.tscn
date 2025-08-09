@@ -12,7 +12,6 @@
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_c54ls"]
 [ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="7_11gwx"]
-[ext_resource type="Texture2D" uid="uid://ciq6qy7rwmv8n" path="res://assets/images/board/crown_icon.png" id="7_tcbk3"]
 [ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="8_17kmu"]
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="12_tifh7"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="17_l5vj0"]
@@ -42,6 +41,13 @@ colors = PackedColorArray(0.934474, 0.722009, 0.501038, 1, 0.90732, 0.455937, 0.
 gradient = SubResource("Gradient_56tgq")
 fill_from = Vector2(0.769596, 0.0261283)
 fill_to = Vector2(0.4038, 0.565321)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm2sr"]
+bg_color = Color(0, 0, 0, 0.647059)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmurl"]
 shader = ExtResource("17_qhloc")
@@ -389,15 +395,6 @@ vertical_alignment = 1
 [node name="BackgroundParticles" parent="MainPn" instance=ExtResource("2_t0g3t")]
 position = Vector2(365, 258)
 
-[node name="CrownIcon" type="TextureRect" parent="MainPn"]
-layout_mode = 2
-offset_left = 256.0
-offset_top = 33.0
-offset_right = 306.0
-offset_bottom = 83.0
-texture = ExtResource("7_tcbk3")
-expand_mode = 1
-
 [node name="Panel" type="Panel" parent="MainPn"]
 layout_mode = 1
 anchors_preset = 7
@@ -411,8 +408,9 @@ offset_right = 160.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xm2sr")
 
-[node name="OppScoreLb" type="Label" parent="MainPn/Panel"]
+[node name="Label" type="Label" parent="MainPn/Panel"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 5
@@ -426,7 +424,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.595041, 0.199639, 0.0490263, 0.87451)
 theme_override_fonts/font = ExtResource("6_c54ls")
 theme_override_font_sizes/font_size = 25
-text = "Rewards"
+text = "REWARDS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -472,36 +470,8 @@ texture = ExtResource("5_oq6y8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HBoxScore" type="HBoxContainer" parent="MainPn"]
-modulate = Color(1, 1, 1, 0.831373)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -145.0
-offset_top = -202.0
-offset_right = 155.0
-offset_bottom = -152.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(150, 25)
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MainPn"]
-material = SubResource("ShaderMaterial_cmurl")
-layout_mode = 0
-offset_left = 418.0
-offset_top = 13.0
-offset_right = 518.0
-offset_bottom = 113.0
-texture = ExtResource("17_qn74f")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainPn"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Control" type="Control" parent="MainPn/Panel/HBoxRewards"]
+layout_mode = 2
 
 [node name="HBoxTeam" type="HBoxContainer" parent="MainPn"]
 layout_mode = 1
@@ -519,57 +489,125 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="MyTeamScoreLb" type="Label" parent="MainPn/HBoxTeam"]
-self_modulate = Color(0.177539, 0.415142, 0.236939, 1)
+[node name="Player1Team1" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player1Team1" instance=ExtResource("18_iwf68")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="WinnerImg" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team1"]
+material = SubResource("ShaderMaterial_cmurl")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("17_qn74f")
+
+[node name="WinnerImgDouble" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team1"]
+material = SubResource("ShaderMaterial_cmurl")
+offset_left = 31.0
+offset_top = -70.0
+offset_right = 131.0
+offset_bottom = 30.0
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("17_qn74f")
+
+[node name="Player2Team1" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player2Team1" instance=ExtResource("18_iwf68")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="Control" type="Control" parent="MainPn/HBoxTeam"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainPn/HBoxTeam/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = -11.0
+offset_right = 108.0
+offset_bottom = 29.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="MyTeamScoreLb" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2"]
+self_modulate = Color(0.341176, 0.643137, 0, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 35
 text = "20"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="AvatarCircle4" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
-custom_minimum_size = Vector2(80, 0)
+[node name="MyTeamScoreLb2" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2"]
+self_modulate = Color(1, 1, 1, 0.564706)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_c54ls")
+theme_override_font_sizes/font_size = 35
+text = ":"
+horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="AvatarFrame" parent="MainPn/HBoxTeam/AvatarCircle4" instance=ExtResource("18_iwf68")]
+[node name="OppScoreLb" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2"]
+self_modulate = Color(0.880165, 0.212237, 0.144873, 1)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_c54ls")
+theme_override_font_sizes/font_size = 35
+text = "20"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxTeam/Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -64.0
+offset_right = 40.0
+offset_bottom = 16.0
 grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-
-[node name="AvatarCircle3" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="AvatarFrame" parent="MainPn/HBoxTeam/AvatarCircle3" instance=ExtResource("18_iwf68")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 0.8)
-
-[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxTeam"]
-layout_mode = 2
+grow_vertical = 0
 texture = ExtResource("18_llwbu")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="AvatarCircle2" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+[node name="Player1Team2" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="AvatarFrame" parent="MainPn/HBoxTeam/AvatarCircle2" instance=ExtResource("18_iwf68")]
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player1Team2" instance=ExtResource("18_iwf68")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -580,11 +618,35 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 
-[node name="AvatarCircle" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+[node name="WinnerImg" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team2"]
+material = SubResource("ShaderMaterial_cmurl")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = 30.0
+grow_horizontal = 2
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("17_qn74f")
+
+[node name="WinnerImgDouble" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team2"]
+material = SubResource("ShaderMaterial_cmurl")
+offset_left = 31.0
+offset_top = -70.0
+offset_right = 131.0
+offset_bottom = 30.0
+pivot_offset = Vector2(50, 50)
+texture = ExtResource("17_qn74f")
+
+[node name="Player2Team2" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+visible = false
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="AvatarFrame" parent="MainPn/HBoxTeam/AvatarCircle" instance=ExtResource("18_iwf68")]
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player2Team2" instance=ExtResource("18_iwf68")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -594,16 +656,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
-
-[node name="OppScoreLb" type="Label" parent="MainPn/HBoxTeam"]
-self_modulate = Color(0.730814, 0.123833, 0.0626159, 1)
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_c54ls")
-theme_override_font_sizes/font_size = 50
-text = "20"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="MainPn/HBoxContainer/BtnExit" to="." method="_click_exit_game"]
 [connection signal="pressed" from="MainPn/HBoxContainer/BtnContinue" to="." method="_click_continue_play"]

@@ -61,8 +61,8 @@ func _handle_payment_success(payload):
 	if pack_id == "first_buy_offer":
 		g.v.player_info_mgr.has_first_buy = false
 	
-	var rewards = [
-		Reward.new(g.v.game_constants.CRYPSTAL_TYPE, gold)
+	var rewards:Array[Reward] = [
+		Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, gold)
 	]
 	
 	g.v.popup_mgr.add_popup(

@@ -5,6 +5,8 @@ extends Node
 @onready var title_lb = find_child("TitleLb")
 @onready var gold_lb = find_child("GoldLb")
 
+var reward_node_scene = preload("res://scenes/lobby/RewardNode.tscn")
+@onready var list_pn = find_child("HBoxContainer")
 func _ready() -> void:
 
 	
@@ -20,6 +22,12 @@ func _ready() -> void:
 	
 func set_info(title, rewards: Array[Reward] = []):
 	self.title_lb.text = title
+	
+	NodeUtils.remove_all_child(list_pn)
+	for r in rewards:
+		var n = reward_node_scene.instantiate()
+		list_pn.add_child(n)
+		n.set_info(r)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

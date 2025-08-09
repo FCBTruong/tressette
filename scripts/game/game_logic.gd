@@ -555,6 +555,7 @@ func _handle_end_game(payload: PackedByteArray):
 		score_data.uid = match_data.users[i].uid
 		score_data.team_id = match_data.users[i].game_data.team_id
 		score_data.avatar = match_data.users[i].avatar
+		score_data.avatar_frame = match_data.users[i].avatar_frame
 		score_data.score_card = score_cards[i]
 		score_data.score_last_trick = score_last_tricks[i]
 		score_data.score_total = score_totals[i]

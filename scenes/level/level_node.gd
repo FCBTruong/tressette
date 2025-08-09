@@ -54,6 +54,9 @@ func set_info(inf):
 	
 	
 func click_claim():
+	g.v.player_info_mgr.claimed_levels.append(self._info["level"])
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ClaimRewardLevel.new()
 	pkg.set_level(_info["level"])
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.CLAIM_REWARD_LEVEL, pkg.to_bytes())
+	
+	self.set_info(self._info)

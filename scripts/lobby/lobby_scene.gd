@@ -76,6 +76,10 @@ func _ready() -> void:
 	self.update_level_exp()
 	g.v.signal_bus.connect_global('update_table_list',Callable(self, "_update_table_list"))
 	g.v.game_manager.send_get_table_list()
+	
+	if g.v.game_manager.check_has_reward_level():
+		g.v.popup_mgr.add_popup("res://scenes/lobby/level/LevelGUI.tscn")			
+
 		
 @onready var watch_ads_btn = find_child("WatchAdsBtn")
 @onready var play_container = find_child('PlayContainer')
