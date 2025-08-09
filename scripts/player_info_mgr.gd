@@ -127,6 +127,14 @@ func check_and_show_offer():
 func on_update_avatar(avatar: String):
 	my_user_data.avatar = avatar
 	g.v.signal_bus.emit_signal_global('on_changed_avatar')
+
+func on_update_avatar_by_id(avatar_id: int):
+	var avatar = str(avatar_id)
+	if avatar_id == -1:
+		avatar = g.v.player_info_mgr.my_user_data.avatar_third_party
+	
+	my_user_data.avatar = avatar
+	g.v.signal_bus.emit_signal_global('on_changed_avatar')
 	
 func receive_update_ads(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateAds.new()
@@ -160,3 +168,11 @@ func _on_update_exp(bytes: PackedByteArray):
 	
 func update_using_frame(item_id):
 	self.my_user_data.avatar_frame = item_id
+	g.v.signal_bus.emit_signal_global('on_changed_frame')
+	
+
+func get_avatar_id_using() -> int:
+	if my_user_data.avatar.contains("https://"):
+		return -1
+	else:
+		return int(my_user_data.avatar)

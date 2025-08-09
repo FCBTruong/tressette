@@ -106,6 +106,7 @@ func _on_received_list_friend(payload):
 	var onlines = pkg.get_onlines()
 	var is_playings = pkg.get_is_playings()
 	var avatar_frames = pkg.get_avatar_frames()
+	var last_online_times = pkg.get_last_online_times()
 	
 	self.friends.clear()
 	for i in range(len(friend_ids)):
@@ -118,6 +119,7 @@ func _on_received_list_friend(payload):
 		f.is_online = onlines[i]
 		f.is_playing = is_playings[i]
 		f.avatar_frame = avatar_frames[i]
+		f.last_online_time = last_online_times[i]
 		self.friends.append(f)
 	
 	self.friends.sort_custom(_compare_friend_sort)

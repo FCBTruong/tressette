@@ -4006,6 +4006,11 @@ class FriendList:
 		service.field = _avatar_frames
 		data[_avatar_frames.tag] = service
 		
+		_last_online_times = PBField.new("last_online_times", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 9, true, [])
+		service = PBServiceField.new()
+		service.field = _last_online_times
+		data[_last_online_times.tag] = service
+		
 	var data = {}
 	
 	var _uids: PBField
@@ -4079,6 +4084,15 @@ class FriendList:
 		_avatar_frames.value = []
 	func add_avatar_frames(value : int) -> void:
 		_avatar_frames.value.append(value)
+	
+	var _last_online_times: PBField
+	func get_last_online_times() -> Array:
+		return _last_online_times.value
+	func clear_last_online_times() -> void:
+		data[9].state = PB_SERVICE_STATE.UNFILLED
+		_last_online_times.value = []
+	func add_last_online_times(value : int) -> void:
+		_last_online_times.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -7461,6 +7475,287 @@ class UseItem:
 		_item_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_item_id(value : int) -> void:
 		_item_id.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class CheatItem:
+	func _init():
+		var service
+		
+		_item_id = PBField.new("item_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _item_id
+		data[_item_id.tag] = service
+		
+		_duration = PBField.new("duration", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _duration
+		data[_duration.tag] = service
+		
+	var data = {}
+	
+	var _item_id: PBField
+	func get_item_id() -> int:
+		return _item_id.value
+	func clear_item_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_item_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_item_id(value : int) -> void:
+		_item_id.value = value
+	
+	var _duration: PBField
+	func get_duration() -> int:
+		return _duration.value
+	func clear_duration() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_duration.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_duration(value : int) -> void:
+		_duration.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class BuyItem:
+	func _init():
+		var service
+		
+		_item_id = PBField.new("item_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _item_id
+		data[_item_id.tag] = service
+		
+		_pack_id = PBField.new("pack_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _pack_id
+		data[_pack_id.tag] = service
+		
+	var data = {}
+	
+	var _item_id: PBField
+	func get_item_id() -> int:
+		return _item_id.value
+	func clear_item_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_item_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_item_id(value : int) -> void:
+		_item_id.value = value
+	
+	var _pack_id: PBField
+	func get_pack_id() -> int:
+		return _pack_id.value
+	func clear_pack_id() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_pack_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_pack_id(value : int) -> void:
+		_pack_id.value = value
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class InventoryShopConfig:
+	func _init():
+		var service
+		
+		_items = PBField.new("items", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 1, true, [])
+		service = PBServiceField.new()
+		service.field = _items
+		service.func_ref = Callable(self, "add_items")
+		data[_items.tag] = service
+		
+	var data = {}
+	
+	var _items: PBField
+	func get_items() -> Array:
+		return _items.value
+	func clear_items() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_items.value = []
+	func add_items() -> InventoryShopItem:
+		var element = InventoryShopItem.new()
+		_items.value.append(element)
+		return element
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class InventoryShopItem:
+	func _init():
+		var service
+		
+		_item_id = PBField.new("item_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _item_id
+		data[_item_id.tag] = service
+		
+		_packs = PBField.new("packs", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 2, true, [])
+		service = PBServiceField.new()
+		service.field = _packs
+		service.func_ref = Callable(self, "add_packs")
+		data[_packs.tag] = service
+		
+	var data = {}
+	
+	var _item_id: PBField
+	func get_item_id() -> int:
+		return _item_id.value
+	func clear_item_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_item_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_item_id(value : int) -> void:
+		_item_id.value = value
+	
+	var _packs: PBField
+	func get_packs() -> Array:
+		return _packs.value
+	func clear_packs() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_packs.value = []
+	func add_packs() -> InvetoryShopPack:
+		var element = InvetoryShopPack.new()
+		_packs.value.append(element)
+		return element
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class InvetoryShopPack:
+	func _init():
+		var service
+		
+		_id = PBField.new("id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _id
+		data[_id.tag] = service
+		
+		_price = PBField.new("price", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _price
+		data[_price.tag] = service
+		
+		_duration = PBField.new("duration", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _duration
+		data[_duration.tag] = service
+		
+	var data = {}
+	
+	var _id: PBField
+	func get_id() -> int:
+		return _id.value
+	func clear_id() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_id(value : int) -> void:
+		_id.value = value
+	
+	var _price: PBField
+	func get_price() -> int:
+		return _price.value
+	func clear_price() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_price.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_price(value : int) -> void:
+		_price.value = value
+	
+	var _duration: PBField
+	func get_duration() -> int:
+		return _duration.value
+	func clear_duration() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_duration.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_duration(value : int) -> void:
+		_duration.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

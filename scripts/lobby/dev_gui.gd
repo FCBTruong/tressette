@@ -4,6 +4,8 @@ extends Node
 @onready var main_pn = find_child("MainPn")
 @onready var line_edit_gold = find_child("LineEditGold")
 @onready var line_edit_exp = find_child("LineEditExp")
+@onready var line_edit_item_type = find_child("LineEditItemType")
+@onready var line_edit_item_time = find_child("LineEditItemTime")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	main_pn.visible = false
@@ -117,3 +119,13 @@ func _on_cheat_exp_btn_pressed() -> void:
 	pkg.set_exp(gold)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.CHEAT_EXP_USER, pkg.to_bytes())
 	pass # Replace with function body.
+
+
+func _on_cheat_item_btn_pressed() -> void:
+	var type = int(line_edit_item_type.text)
+	var duration = int(line_edit_item_time.text)
+	
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.CheatItem.new()
+	pkg.set_item_id(type)
+	pkg.set_duration(duration)
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.CHEAT_ITEM, pkg.to_bytes())

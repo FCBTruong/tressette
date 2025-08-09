@@ -11,6 +11,7 @@ var frame_id: int = g.v.game_constants.AVATAR_FRAME_IDS.DEFAULT
 func _ready() -> void:
 	if is_me:
 		update_frame_by_id(g.v.player_info_mgr.my_user_data.avatar_frame)
+	g.v.signal_bus.connect_global('on_changed_frame', Callable(self, "on_changed_my_frame"))
 
 func set_me(me: bool = true):
 	is_me = me
@@ -35,3 +36,7 @@ func show_frame(fr):
 	frame_victory.visible = frame_victory == fr
 	frame_vip.visible = frame_vip == fr
 	frame1.visible = frame1 == fr
+
+func on_changed_my_frame():
+	if is_me:
+		update_frame_by_id(g.v.player_info_mgr.my_user_data.avatar_frame)

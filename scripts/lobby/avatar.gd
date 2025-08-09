@@ -30,6 +30,8 @@ func _process(delta: float) -> void:
 	pass
 
 func set_avatar(avatar: String):
+	if avatar == '-1':
+		avatar = g.v.player_info_mgr.my_user_data.avatar_third_party
 	# Check if the avatar is a URL (starts with "https")
 	if avatar.begins_with("https://"):
 		# Load from URL (requires an HTTP request)

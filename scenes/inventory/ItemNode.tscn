@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://x601pb0ngi53"]
+[gd_scene load_steps=7 format=3 uid="uid://x601pb0ngi53"]
 
 [ext_resource type="Script" path="res://scenes/inventory/inventory_item_node.gd" id="1_7oe0b"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="1_dodjc"]
 [ext_resource type="Texture2D" uid="uid://bvuciak7xffia" path="res://assets/images/items/frames/frame_01.png" id="1_lxbys"]
 [ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="4_dmvbb"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_i6v8n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jklwg"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -22,8 +23,8 @@ corner_radius_bottom_left = 3
 custom_minimum_size = Vector2(150, 150)
 offset_left = 286.0
 offset_top = 7.0
-offset_right = 386.0
-offset_bottom = 107.0
+offset_right = 436.0
+offset_bottom = 157.0
 mouse_filter = 2
 script = ExtResource("1_7oe0b")
 
@@ -54,14 +55,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -40.0
-offset_top = -49.0
+offset_top = -44.0
 offset_right = 40.0
-offset_bottom = 31.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_lxbys")
 expand_mode = 4
 stretch_mode = 5
+script = ExtResource("4_i6v8n")
+is_me = false
 
 [node name="Label" type="Label" parent="Main"]
 layout_mode = 1
@@ -94,4 +97,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jklwg")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="pressed" from="Main/Button" to="." method="on_touch"]
+[connection signal="timeout" from="Timer" to="." method="update_time_countdown"]
