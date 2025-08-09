@@ -363,10 +363,14 @@ func receive_ads_reward(payload):
 	var gold = pkg.get_gold()
 	g.v.player_info_mgr.time_ads_reward = pkg.get_time_ads_reward()
 	var str = tr("CLAIM_REWARD_SUCCESS")
+	
+	var rewards = [
+		Reward.new(g.v.game_constants.CRYPSTAL_TYPE, gold)
+	]
 	g.v.popup_mgr.add_popup(
 		"res://scenes/lobby/ReceiveGiftGUI.tscn",
 		"set_info",
-		[tr("YOU_RECEIVED"), gold],
+		[tr("YOU_RECEIVED"), rewards],
 		false
 	)
 	var scene = g.v.scene_manager.get_current_scene()

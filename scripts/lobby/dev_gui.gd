@@ -27,7 +27,13 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_T:
-				g.v.scene_manager.open_gui('res://scenes/level/LevelGUI.tscn')
+				var rewards: Array[Reward] = [
+					Reward.new(g.v.game_constants.CRYPSTAL_TYPE, 1111)
+				]
+				var g = g.v.scene_manager.open_gui(
+					"res://scenes/lobby/ReceiveGiftGUI.tscn")
+				g.set_info(tr("YOU_RECEIVED"), rewards)
+					
 				return
 				#var pkg = g.v.game_constants.PROTOBUF.PACKETS.PaymentAppleConsume.new()
 				#pkg.set_pack_id('pack_01')

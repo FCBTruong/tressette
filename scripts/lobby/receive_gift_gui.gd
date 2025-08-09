@@ -18,10 +18,9 @@ func _ready() -> void:
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.5)
 
 	
-func set_info(title, gold: int):
+func set_info(title, rewards: Array[Reward] = []):
 	self.title_lb.text = title
-	self.gold_lb.text = StringUtils.symbol_number(gold)
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

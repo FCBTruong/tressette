@@ -105,7 +105,6 @@ grow_vertical = 2
 color = Color(0.849616, 0.70459, 0.539352, 1)
 
 [node name="EffRotateLight" type="TextureRect" parent="MainPn/WinPn"]
-visible = false
 material = SubResource("ShaderMaterial_jiyt7")
 layout_mode = 1
 anchors_preset = 15
@@ -118,6 +117,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_il20s")
 
 [node name="EffLose" type="Control" parent="MainPn/WinPn"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -162,7 +162,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EffWin" type="Control" parent="MainPn/WinPn"]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

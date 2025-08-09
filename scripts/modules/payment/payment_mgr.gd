@@ -61,11 +61,14 @@ func _handle_payment_success(payload):
 	if pack_id == "first_buy_offer":
 		g.v.player_info_mgr.has_first_buy = false
 	
+	var rewards = [
+		Reward.new(g.v.game_constants.CRYPSTAL_TYPE, gold)
+	]
 	
 	g.v.popup_mgr.add_popup(
 		"res://scenes/lobby/ReceiveGiftGUI.tscn",
 		"set_info",
-		[tr("YOU_RECEIVED"), gold],
+		[tr("YOU_RECEIVED"), rewards],
 		false
 	)
 	return
