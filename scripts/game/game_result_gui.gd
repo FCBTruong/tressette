@@ -23,6 +23,7 @@ var my_team_id
 @onready var player1_team2 = find_child("Player1Team2")
 @onready var player2_team2 = find_child("Player2Team2")
 @onready var eff_rotate_light = find_child("EffRotateLight")
+@onready var hbox_rewards = find_child("HBoxRewards")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -117,9 +118,18 @@ func update_result(data: MatchData.MatchResult):
 		var avt_frame = n.find_child("AvatarFrame")
 		avt_img.set_avatar(p.avatar)
 		avt_frame.update_frame_by_id(p.avatar_frame)
-		pass
-
 	
+	NodeUtils.remove_all_child(hbox_rewards)
+	for r in data.rewards:
+		var n = result_reward_node_scene.instantiate()
+		hbox_rewards.add_child(n)
+		n.find_child("Label").text = StringUtils.point_number(r.value)
+		if r.duration > 0:
+			n.find_child("Label").text = str(r.duration) + " " + tr("DAYS")
+		n.find_child("TextureRect").texture = load(g.v.inventory_mgr.get_image_item(r.item_id))
+
+
+var result_reward_node_scene = preload("res://scenes/board/ResultRewardNode.tscn")	
 
 
 func set_int_to_text(value: int, label, add: bool = false) -> void:

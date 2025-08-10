@@ -64,12 +64,13 @@ func _input(event):
 				b.avatar_frame = 1002
 				var rewards: Array[Reward] = [
 					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 10000),
-					Reward.new(g.v.game_constants.EXP_ITEM_ID, 100)
+					Reward.new(g.v.game_constants.EXP_ITEM_ID, 100),
+					Reward.new(g.v.game_constants.AVATAR_FRAME_IDS.VICTORY, 7)
 				]
 				g.v.game_constants.game_logic.match_result.rewards = rewards
 				
 				g.v.game_constants.game_logic.match_result.win_team_id = 1
-				g.v.game_constants.game_logic.match_result.is_win = false
+				g.v.game_constants.game_logic.match_result.is_win = true
 				g.v.game_constants.game_logic.match_result.players.append(a)
 				g.v.game_constants.game_logic.match_result.players.append(b)
 				#g.v.game_constants.game_logic.match_result.players.append(a)

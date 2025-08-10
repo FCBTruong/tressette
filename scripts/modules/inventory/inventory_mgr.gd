@@ -109,6 +109,8 @@ func get_image_item(item_id: int) -> String:
 		return "res://assets/images/lobby/avatars/avatar_" + str(item_id) + ".png"
 	elif item_type == g.v.game_constants.CRYPSTAL_TYPE:
 		return "res://assets/images/lobby/icon_gold.png"
+	elif item_type == g.v.game_constants.EXP_TYPE:
+		return "res://assets/images/board/game_result/exp_icon.png"
 	return ""
 
 func get_icon_crypstal():

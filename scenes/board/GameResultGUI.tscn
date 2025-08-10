@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bebfix1c1kukt"]
+[gd_scene load_steps=27 format=3 uid="uid://bebfix1c1kukt"]
 
 [ext_resource type="Script" path="res://scripts/game/game_result_gui.gd" id="1_fpth8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_2qycw"]
@@ -8,14 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://inorf6pkbk08" path="res://assets/images/lights/light_04.png" id="4_6sc0g"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_xsh0q"]
 [ext_resource type="Texture2D" uid="uid://1usgm64c5qwn" path="res://assets/images/board/game_result/icon_win.png" id="5_d5byi"]
-[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="5_oq6y8"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_c54ls"]
 [ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="7_11gwx"]
 [ext_resource type="Texture2D" uid="uid://cavngn25pkhnp" path="res://assets/images/lobby/buttons/red_btn.png" id="8_17kmu"]
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="12_tifh7"]
+[ext_resource type="PackedScene" uid="uid://dxxn5ab0frjyc" path="res://scenes/board/ResultRewardNode.tscn" id="14_35h3i"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="17_l5vj0"]
-[ext_resource type="Texture2D" uid="uid://d3oypl62fdfj4" path="res://assets/images/board/game_result/exp_icon.png" id="17_nqlja"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="17_qhloc"]
 [ext_resource type="Texture2D" uid="uid://qabrdus6wbh6" path="res://assets/images/board/game_result/winner_txt.png" id="17_qn74f"]
 [ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="18_iwf68"]
@@ -442,35 +441,10 @@ offset_right = 137.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label2" type="Label" parent="MainPn/Panel/HBoxRewards"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_2qycw")
-theme_override_font_sizes/font_size = 25
-text = "100"
-
-[node name="TextureRect2" type="TextureRect" parent="MainPn/Panel/HBoxRewards"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-texture = ExtResource("17_nqlja")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="MainPn/Panel/HBoxRewards"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_2qycw")
-theme_override_font_sizes/font_size = 25
-text = "100"
-
-[node name="TextureRect" type="TextureRect" parent="MainPn/Panel/HBoxRewards"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-texture = ExtResource("5_oq6y8")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Control" type="Control" parent="MainPn/Panel/HBoxRewards"]
+[node name="ResultRewardNode" parent="MainPn/Panel/HBoxRewards" instance=ExtResource("14_35h3i")]
 layout_mode = 2
 
 [node name="HBoxTeam" type="HBoxContainer" parent="MainPn"]
