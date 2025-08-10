@@ -706,8 +706,11 @@ func deal_my_cards(cards) -> void:
 		a.y -= 70
 						
 		cardback_node.global_position = a
+		cardback_node.rotation_degrees = 180
 		cardback_node.visible = true
 		remain_card_pn.visible = false
+	var cardback_shadow = cardback_node.find_child("CardbackShadow")
+	cardback_shadow.visible = false
 	for i in range(number):
 		var instance = card_scene.instantiate()
 		play_ground.add_child(instance)
@@ -741,16 +744,23 @@ func deal_my_cards(cards) -> void:
 					if cardback_node.visible:
 						# effect move cardbacknode
 						var tw = create_tween()
-						tw.tween_property(
+						tw.parallel().tween_property(
 							cardback_node,
 							"position",
 							cardback_node_default_pos,
 							0.3
 						).set_delay(0.3)
-						tw.tween_callback(
+						tw.parallel().tween_property(
+							cardback_node,
+							"rotation_degrees",
+							0,
+							0.3
+						).set_delay(0.3)
+						tw.parallel().tween_callback(
 							func():
+								cardback_shadow.visible = true
 								update_remain_cards()
-						)
+						).set_delay(0.3 + 0.3)
 					
 				instance.visible = true
 				pass

@@ -73,9 +73,9 @@ func set_info(info: UserData):
 
 		else:
 			hbox_premium.visible = false
-		var is_clicked_pick_avatar = g.v.storage_cache.fetch("open_picking_avatar_gui", '0') == '1'
-		if not is_clicked_pick_avatar:
-			red_dot_avt.visible = true
+		#var is_clicked_pick_avatar = g.v.storage_cache.fetch("open_picking_avatar_gui", '0') == '1'
+		#if not is_clicked_pick_avatar:
+			#red_dot_avt.visible = true
 		
 		head_pn.self_modulate = Color('#429648ca')
 		
@@ -124,8 +124,8 @@ func _copy_uid() -> void:
 	pass
 	
 func _open_pick_avatar() -> void:
-	red_dot_avt.visible = false
-	g.v.scene_manager.open_gui('res://scenes/lobby/PickAvatarGUI.tscn')
+	#red_dot_avt.visible = false
+	g.v.scene_manager.open_gui('res://scenes/lobby/ChangeUserNameGUI.tscn')
 	
 func _send_request_friend():
 	g.v.friend_mgr.send_add_friend(self._info.uid)

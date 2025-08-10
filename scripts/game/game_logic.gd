@@ -549,6 +549,15 @@ func _handle_end_game(payload: PackedByteArray):
 		g.v.game_manager.LAST_GAME_IS_WIN = true
 	g.v.player_info_mgr.my_user_data.game_count += 1
 	
+	match_result.rewards.clear()
+	for r in pkg.get_rewards():
+		var a = Reward.new(
+			r.get_item_id(),
+			r.get_value(),
+			r.get_duration()
+		)
+		match_result.rewards.append(a)
+	
 	match_result.players.clear()
 	for i in range(len(match_data.users)):
 		var score_data = MatchData.MatchResultPlayer.new()

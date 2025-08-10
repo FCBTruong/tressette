@@ -2904,6 +2904,12 @@ class EndGame:
 		service.field = _players_gold
 		data[_players_gold.tag] = service
 		
+		_rewards = PBField.new("rewards", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 7, true, [])
+		service = PBServiceField.new()
+		service.field = _rewards
+		service.func_ref = Callable(self, "add_rewards")
+		data[_rewards.tag] = service
+		
 	var data = {}
 	
 	var _uids: PBField
@@ -2959,6 +2965,17 @@ class EndGame:
 		_players_gold.value = []
 	func add_players_gold(value : int) -> void:
 		_players_gold.value.append(value)
+	
+	var _rewards: PBField
+	func get_rewards() -> Array:
+		return _rewards.value
+	func clear_rewards() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_rewards.value = []
+	func add_rewards() -> RewardInventoryItem:
+		var element = RewardInventoryItem.new()
+		_rewards.value.append(element)
+		return element
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -7864,6 +7881,11 @@ class RewardInventoryItem:
 		service.field = _duration
 		data[_duration.tag] = service
 		
+		_value = PBField.new("value", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _value
+		data[_value.tag] = service
+		
 	var data = {}
 	
 	var _item_id: PBField
@@ -7883,6 +7905,15 @@ class RewardInventoryItem:
 		_duration.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_duration(value : int) -> void:
 		_duration.value = value
+	
+	var _value: PBField
+	func get_value() -> int:
+		return _value.value
+	func clear_value() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_value(value : int) -> void:
+		_value.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

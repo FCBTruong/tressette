@@ -395,6 +395,7 @@ vertical_alignment = 1
 position = Vector2(365, 258)
 
 [node name="Panel" type="Panel" parent="MainPn"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -494,6 +495,7 @@ texture = ExtResource("17_qn74f")
 
 [node name="WinnerImgDouble" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team1"]
 material = SubResource("ShaderMaterial_cmurl")
+layout_mode = 0
 offset_left = 31.0
 offset_top = -70.0
 offset_right = 131.0
@@ -608,6 +610,7 @@ texture = ExtResource("17_qn74f")
 
 [node name="WinnerImgDouble" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team2"]
 material = SubResource("ShaderMaterial_cmurl")
+layout_mode = 0
 offset_left = 31.0
 offset_top = -70.0
 offset_right = 131.0

@@ -100,8 +100,8 @@ func _on_receive_info(bytes: PackedByteArray):
 		g.v.popup_mgr.add_popup("res://scenes/lobby/WatchAdsGUI.tscn")
 		
 	# add popup change user name
-	if self.my_user_data.game_count > 3 and my_user_data.name == 'tressette player':
-		g.v.popup_mgr.add_popup("res://scenes/lobby/ChangeUserNameGUI.tscn")
+	#if self.my_user_data.game_count > 3 and my_user_data.name == 'tressette player':
+		#g.v.popup_mgr.add_popup("res://scenes/lobby/ChangeUserNameGUI.tscn")
 	
 	if self.my_user_data.game_count > 2 and not g.v.app_version.is_in_review():
 		var sette_times = g.v.storage_cache.fetch("sette_mezzo_play", 0)

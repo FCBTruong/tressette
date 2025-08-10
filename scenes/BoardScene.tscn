@@ -566,9 +566,10 @@ offset_left = 65.0
 offset_top = -16.0
 offset_right = 155.0
 offset_bottom = 114.0
+pivot_offset = Vector2(45, 65)
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="PlayGround/CenterPlayPn/CardbackPn"]
+[node name="CardbackShadow" type="Panel" parent="PlayGround/CenterPlayPn/CardbackPn"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -630,6 +631,7 @@ offset_right = 32.5
 offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(35, 50)
 texture = ExtResource("3_ncq5t")
 expand_mode = 1
 
