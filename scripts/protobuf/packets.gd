@@ -1280,6 +1280,11 @@ class UserInfo:
 		service.field = _claimed_levels
 		data[_claimed_levels.tag] = service
 		
+		_price_change_name = PBField.new("price_change_name", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 22, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _price_change_name
+		data[_price_change_name.tag] = service
+		
 	var data = {}
 	
 	var _uid: PBField
@@ -1470,6 +1475,15 @@ class UserInfo:
 		_claimed_levels.value = []
 	func add_claimed_levels(value : int) -> void:
 		_claimed_levels.value.append(value)
+	
+	var _price_change_name: PBField
+	func get_price_change_name() -> int:
+		return _price_change_name.value
+	func clear_price_change_name() -> void:
+		data[22].state = PB_SERVICE_STATE.UNFILLED
+		_price_change_name.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_price_change_name(value : int) -> void:
+		_price_change_name.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -7432,6 +7446,11 @@ class InvetoryItem:
 		service.field = _expire_time
 		data[_expire_time.tag] = service
 		
+		_value = PBField.new("value", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _value
+		data[_value.tag] = service
+		
 	var data = {}
 	
 	var _item_id: PBField
@@ -7451,6 +7470,15 @@ class InvetoryItem:
 		_expire_time.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_expire_time(value : int) -> void:
 		_expire_time.value = value
+	
+	var _value: PBField
+	func get_value() -> int:
+		return _value.value
+	func clear_value() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_value(value : int) -> void:
+		_value.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

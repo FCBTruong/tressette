@@ -139,6 +139,7 @@ offset_left = -27.0
 offset_top = -32.0
 offset_right = 27.0
 grow_horizontal = 2
+alignment = 1
 
 [node name="RenameCardLb" type="Label" parent="MainPn/Button2/HBoxContainer"]
 self_modulate = Color(1, 0.945618, 0.0988327, 1)

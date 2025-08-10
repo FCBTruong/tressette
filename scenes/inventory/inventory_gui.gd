@@ -6,10 +6,13 @@ extends Control
 @onready var grid_container_cardback: GridContainer = find_child("GridContainerCardBack")
 @onready var grid_container_carpet: GridContainer = find_child("GridContainerCarpet")
 @onready var grid_container_avatar: GridContainer = find_child("GridContainerAvatar")
+@onready var grid_container_items: GridContainer = find_child("GridContainerItems")
+
 const TAB_AVATAR_FRAME = 0
 const TAB_CARDBACK = 1
 const TAB_AVATAR = 2
 const TAB_CARPET = 3
+const TAB_ITEMS = 4 # others
 var items = g.v.inventory_mgr.items
 var preview_info
 @onready var preview_name_lb = find_child("NameLb")
@@ -102,6 +105,27 @@ func _update_item_list_carpet(pick_preview: bool = false, preview_item_id: int =
 				continue
 			pick_preview = false
 			on_preview_item(n)
+			
+func _update_item_list_items(pick_preview: bool = false, preview_item_id: int = -1):
+	if not grid_container_items:
+		return
+	for child in grid_container_items.get_children():
+		child.queue_free()
+		
+	for item in items:
+		var type = item.item_id / 1000
+		if type != g.v.game_constants.ITEM_TYPE_STACKABLE:
+			continue
+		if item.value == 0:
+			continue
+		var n = item_node_scene.instantiate()
+		grid_container_items.add_child(n)
+		n.set_info(item)
+		if pick_preview:
+			if preview_item_id != -1 and preview_item_id != item.item_id:
+				continue
+			pick_preview = false
+			on_preview_item(n)
 
 func _update_item_list_avatar(pick_preview: bool = false, preview_item_id: int = -1):
 	if not grid_container_avatar:
@@ -135,6 +159,8 @@ func _on_tab_container_tab_changed(tab: int, preview_item_id = -1) -> void:
 		_update_item_list_carpet(true, preview_item_id)
 	elif tab == TAB_AVATAR:
 		_update_item_list_avatar(true, preview_item_id)
+	elif tab == TAB_ITEMS:
+		_update_item_list_items(true, preview_item_id)
 	pass # Replace with function body.
 
 
@@ -213,8 +239,10 @@ func _on_use_btn_pressed() -> void:
 	if not preview_info:
 		return
 	g.v.inventory_mgr.use_item(preview_info.item_id)
-	self.use_btn.visible = false
-	self.in_use_lb.visible = true
+	var type = preview_info.item_id / 1000
+	if type != g.v.game_constants.ITEM_TYPE_STACKABLE:
+		self.use_btn.visible = false
+		self.in_use_lb.visible = true
 
 
 func _on_buy_btn_pressed() -> void:

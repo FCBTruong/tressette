@@ -79,7 +79,8 @@ func _ready() -> void:
 	
 	if g.v.game_manager.check_has_reward_level():
 		g.v.popup_mgr.add_popup("res://scenes/lobby/level/LevelGUI.tscn")			
-
+	
+	g.v.signal_bus.connect_global('on_changed_username', Callable(self, "on_update_username"))
 		
 @onready var watch_ads_btn = find_child("WatchAdsBtn")
 @onready var play_container = find_child('PlayContainer')
@@ -115,8 +116,7 @@ func _on_update_money():
 func on_update_gui():
 	_on_update_money()
 	_update_friend_requests()
-	name_lb.text = g.v.player_info_mgr.my_user_data.name
-
+	on_update_username()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -276,3 +276,8 @@ func _auto_refresh_list_table():
 
 func _click_open_level_gui():
 	g.v.scene_manager.open_gui('res://scenes/level/LevelGUI.tscn')
+
+
+
+func on_update_username():
+	name_lb.text = g.v.player_info_mgr.my_user_data.name

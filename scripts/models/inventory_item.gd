@@ -7,6 +7,7 @@ extends Resource  # Use RefCounted for lightweight, reference-managed objects
 @export var description: String
 @export var expire_time: int
 @export var shop: Array
+@export var value: int
 
 func _init() -> void:
 	pass

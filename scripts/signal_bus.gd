@@ -13,6 +13,7 @@ signal update_friend_requests
 signal update_card_style
 signal ingame_update_player_money
 signal on_changed_frame
+signal on_changed_username
 
 # Emit a signal globally with arguments
 func emit_signal_global(signal_name: String, args: Array = []) -> void:

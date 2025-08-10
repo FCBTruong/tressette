@@ -195,6 +195,29 @@ theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
+[node name="ITEMS_TAB" type="TabBar" parent="MainPn/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="Panel" type="Panel" parent="MainPn/TabContainer/ITEMS_TAB"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainerItems" type="GridContainer" parent="MainPn/TabContainer/ITEMS_TAB/Panel"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 468.0
+offset_bottom = 314.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
 [node name="Panel" type="Panel" parent="MainPn"]
 layout_mode = 0
 offset_left = 136.0

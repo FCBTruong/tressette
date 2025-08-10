@@ -7,6 +7,7 @@ var startup_gold = 0
 var time_show_ads = 0
 var has_first_buy: bool = false
 var claimed_levels = []
+var price_change_name = 0
 func get_user_id():
 	return my_user_data.uid
 	
@@ -49,6 +50,7 @@ func _on_receive_info(bytes: PackedByteArray):
 	time_ads_reward = packet.get_time_ads_reward()
 	my_user_data.avatar_frame = packet.get_avatar_frame()
 	claimed_levels = packet.get_claimed_levels()
+	price_change_name = packet.get_price_change_name()
 	#my_user_data.avatar_frame = g.v.game_constants.AVATAR_FRAME_IDS.VICTORY
 	if time_ads_reward == -1:
 		enable_ads_reward = false

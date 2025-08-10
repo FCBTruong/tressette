@@ -5,7 +5,7 @@ extends Panel
 func set_info(info: Reward):
 	var type = info.item_id / 1000
 	value_lb.text = str(info.value)
-	if type == g.v.game_constants.CRYPSTAL_TYPE:
+	if info.item_id == g.v.game_constants.CRYPSTAL_ITEM_ID:
 		value_lb.text = StringUtils.symbol_number(info.value)
 	else:
 		if info.duration > 0:

@@ -193,15 +193,13 @@ const AVATAR_PACKS = {
 }
 
 const CRYPSTAL_ITEM_ID = 3000
-const EXP_ITEM_ID = 6000
-const RENAME_CARD_ITEM_ID = 5000
+const EXP_ITEM_ID = 3001
+const RENAME_CARD_ITEM_ID = 3002
 
-const CRYPSTAL_TYPE = 3
 const AVATAR_FRAME_TYPE = 1
 const CARDBACK_TYPE = 2
 const AVATAR_TYPE = 0
 const CARPET_TYPE = 4
-const RENAME_CARD_TYPE = 5
-const EXP_TYPE = 6
+const ITEM_TYPE_STACKABLE = 3 # no expire time
 
 const ITEM_PERMANENT_TIME = -1

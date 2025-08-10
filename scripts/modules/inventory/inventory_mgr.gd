@@ -32,9 +32,19 @@ func _load_base_item_config():
 		item.item_id = a
 		item.expire_time = -1
 		item.name = "AVATAR"
+		item.value = 0
 		item.description = ""
 		items.append(item)
 		map_item[item.item_id] = item
+		
+	# item rename card
+	var item = InventoryItem.new()
+	item.item_id = g.v.game_constants.RENAME_CARD_ITEM_ID
+	item.expire_time = -1
+	item.name = "RENAME_CARD"
+	item.description = "DES_RENAME_CARD"
+	items.append(item)
+	map_item[item.item_id] = item
 
 func get_current_cardback() -> String:
 	return get_image_cardback(current_cardback)
@@ -107,10 +117,14 @@ func get_image_item(item_id: int) -> String:
 			var avt_third_party = g.v.player_info_mgr.my_user_data.avatar_third_party
 			return avt_third_party
 		return "res://assets/images/lobby/avatars/avatar_" + str(item_id) + ".png"
-	elif item_type == g.v.game_constants.CRYPSTAL_TYPE:
-		return "res://assets/images/lobby/icon_gold.png"
-	elif item_type == g.v.game_constants.EXP_TYPE:
-		return "res://assets/images/board/game_result/exp_icon.png"
+	else:
+		if item_id == g.v.game_constants.CRYPSTAL_ITEM_ID:
+			return "res://assets/images/lobby/icon_gold.png"
+		elif item_id == g.v.game_constants.EXP_ITEM_ID:
+			return "res://assets/images/board/game_result/exp_icon.png"
+		elif item_id == g.v.game_constants.RENAME_CARD_ITEM_ID:
+			return "res://assets/images/items/rename_card.png"
+
 	return ""
 
 func get_icon_crypstal():
@@ -127,7 +141,9 @@ func _handle_user_inventory(payload):
 	for item in items:
 		var item_id = item.get_item_id()
 		var expire_time = item.get_expire_time()
+		var value = item.get_value()
 		map_item[item_id].expire_time = expire_time
+		map_item[item_id].value = value
 		
 	key_cardback = "current_cardback" + str(g.v.player_info_mgr.get_user_id())
 	key_carpet = "current_carpet" + str(g.v.player_info_mgr.get_user_id())
@@ -195,6 +211,10 @@ func use_item(item_id):
 		var pkg = g.v.game_constants.PROTOBUF.PACKETS.ChangeAvatar.new()
 		pkg.set_avatar_id(item_id)
 		g.v.game_client.send_packet(g.v.game_constants.CMDs.CHANGE_AVATAR, pkg.to_bytes())
+	elif type == g.v.game_constants.ITEM_TYPE_STACKABLE:
+		if item_id == g.v.game_constants.RENAME_CARD_ITEM_ID:
+			g.v.scene_manager.open_gui('res://scenes/lobby/ChangeUserNameGUI.tscn')
+			return
 	pass
 
 
@@ -227,3 +247,8 @@ func get_shop_item(item_id) -> Array:
 	if shop_confg.has(item_id):
 		return shop_confg[item_id]
 	return []
+
+func get_rename_card_number():
+	if map_item.has(g.v.game_constants.RENAME_CARD_ITEM_ID):
+		return map_item[g.v.game_constants.RENAME_CARD_ITEM_ID].value
+	return 0

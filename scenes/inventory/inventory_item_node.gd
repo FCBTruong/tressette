@@ -16,23 +16,25 @@ func set_info(data: InventoryItem):
 	else:
 		var img_path = g.v.inventory_mgr.get_image_item(data.item_id)
 		item_img.texture = load(img_path) 
-	
-	if info.expire_time == g.v.game_constants.ITEM_PERMANENT_TIME: # -1
-		label.text = tr("PERMANENT")
+	if type == g.v.game_constants.ITEM_TYPE_STACKABLE:
+		label.text = StringUtils.point_number(data.value)
 	else:
-		if is_own:
-			update_time_countdown()
-			timer.start()
+		if info.expire_time == g.v.game_constants.ITEM_PERMANENT_TIME: # -1
+			label.text = tr("PERMANENT")
+		else:
+			if is_own:
+				update_time_countdown()
+				timer.start()
 
-	if not is_own:
-		self.main.modulate.a = 0.5
-		self.label.text = '-'
-	else:
-		self.main.modulate.a = 1
-	if type == g.v.game_constants.AVATAR_TYPE:
-		self.label.visible = false
-		self.custom_minimum_size = Vector2(87, 87)
-		item_img.position = main.size / 2 - item_img.size / 2
+		if not is_own:
+			self.main.modulate.a = 0.5
+			self.label.text = '-'
+		else:
+			self.main.modulate.a = 1
+		if type == g.v.game_constants.AVATAR_TYPE:
+			self.label.visible = false
+			self.custom_minimum_size = Vector2(87, 87)
+			item_img.position = main.size / 2 - item_img.size / 2
 	
 	
 func on_touch():
