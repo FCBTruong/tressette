@@ -34,7 +34,7 @@ func _click_ok():
 		return
 
 	# length check (3–20 characters)
-	if new_name.length() < 3 or new_name.length() > 25:
+	if new_name.length() < 3:
 		g.v.scene_manager.show_toast(tr("INVALID_USER_NAME"))
 		return
 

@@ -139,6 +139,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			var avatars = pkg.get_avatars()
 			var uids = pkg.get_player_uids()
 			var avatar_frames = pkg.get_avatar_frames()
+			var is_privates = pkg.get_is_private()
 			table_list = []
 			
 			var j = 0
@@ -151,6 +152,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				table.player_uids = []
 				table.avatar_frames = []
 				table.game_mode = game_modes[i]
+				table.is_private = is_privates[i]
 				table_list.append(table)
 				
 				for x in range(table.player_mode):
@@ -260,6 +262,10 @@ func join_game_by_id(id):
 	pkg.set_match_id(id)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.JOIN_TABLE_BY_ID, pkg.to_bytes())
 
+func view_game_by_id(id):
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ViewGame.new()
+	pkg.set_match_id(id)
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.VIEW_GAME, pkg.to_bytes())
 
 func send_invite_friend_play(uid):
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.InviteFriendPlay.new()

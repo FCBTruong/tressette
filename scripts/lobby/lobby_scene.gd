@@ -7,6 +7,7 @@ var did_share_session
 @onready var level_lb = find_child("LevelLbHead")
 @onready var name_lb = find_child("NameLb")
 @onready var vbox_tables = find_child("VBoxTables")
+@onready var lb_gold = find_child("GoldLb")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var screen_size = DisplayServer.window_get_size()
@@ -111,6 +112,7 @@ func _do_effect() -> void:
 	mobile_web_pn.visible = g.v.config.get_platform() == g.v.config.PLATFORMS.WEB
 
 func _on_update_money():
+	lb_gold.text = StringUtils.point_number(g.v.player_info_mgr.my_user_data.gold)
 	return
 
 func on_update_gui():
@@ -138,7 +140,9 @@ func _open_setting_gui():
 	g.v.scene_manager.open_gui("res://scenes/guis/SettingsGUI.tscn")
 	
 func _open_tables_scene():
-	g.v.scene_manager.switch_scene(g.v.scene_manager.TABLES_SCENE)
+	g.v.scene_manager.open_gui('res://scenes/lobby/rooms/CreateTableGUI.tscn')
+
+	#/.v.scene_manager.switch_scene(g.v.scene_manager.TABLES_SCENE)
 	
 func _open_mail_gui():
 	g.v.scene_manager.show_toast(tr('FEATURE_COMING_SOON'))
@@ -281,3 +285,9 @@ func _click_open_level_gui():
 
 func on_update_username():
 	name_lb.text = g.v.player_info_mgr.my_user_data.name
+
+
+func _click_join_room_by_id(text):
+	print('join table', text)
+	var room_id = int(text)
+	g.v.game_manager.join_game_by_id(room_id)

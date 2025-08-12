@@ -18,8 +18,7 @@ func _ready() -> void:
 		fee_lb.text = str
 	else:
 		fee_lb.visible = false
-		
-	self.bets = g.v.game_server_config.tressette_bets
+
 	var tween = create_tween()
 	main_pn.scale = Vector2(0, 0)
 	main_pn.modulate.a = 0
@@ -28,26 +27,6 @@ func _ready() -> void:
 		.set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.5)
 	
-	for b in bets:
-		option_bet.add_item(StringUtils.point_number(b) + ' ' + g.v.game_constants.LIRA_TEXT)
-		
-	# find suitable option 3 x bet <= my gold
-	var b_idx = find_largest_suitable_bet(g.v.player_info_mgr.my_user_data.gold)
-	option_bet.select(b_idx)
-	
-	if g.v.player_info_mgr.my_user_data.game_count < 5:
-		option_point.select(0)
-	
-func find_largest_suitable_bet(my_gold: int) -> int:
-	var best_idx = 0  # Default to 0 in case no valid bet is found
-	var largest_bet = -1
-
-	for i in range(bets.size()):
-		if g.v.game_server_config.bet_multiplier_min * bets[i] * 2 <= my_gold and bets[i] > largest_bet:
-			largest_bet = bets[i]
-			best_idx = i
-	return best_idx  
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

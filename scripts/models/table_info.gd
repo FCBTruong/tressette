@@ -10,6 +10,7 @@ var player_uids
 var player_avatars
 var game_mode: int
 var avatar_frames
+var is_private: bool
 
 func _init() -> void:
 	pass

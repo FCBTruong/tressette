@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=56 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://cx6qbrregb73n" path="res://assets/images/lobby.jpg" id="2_k5oqt"]
@@ -29,9 +29,12 @@
 [ext_resource type="Shader" path="res://shaders/gray.gdshader" id="26_bbl5h"]
 [ext_resource type="Texture2D" uid="uid://bwqoh74dqbxea" path="res://assets/images/login/gift_icon.png" id="26_di7a6"]
 [ext_resource type="Texture2D" uid="uid://ckmdrn8wnvvrj" path="res://assets/images/lobby/appstore_icon.png" id="26_p24wg"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="27_dqlu8"]
 [ext_resource type="Texture2D" uid="uid://chdb6xb0yq64c" path="res://assets/images/lobby/offers/offer_btn.png" id="28_50qpl"]
 [ext_resource type="PackedScene" uid="uid://coalpvybk074r" path="res://scenes/lobby/rooms/TableNode.tscn" id="32_mkgl5"]
 [ext_resource type="Texture2D" uid="uid://dawikose718v6" path="res://assets/images/lobby/btn_group_fb.png" id="32_yhted"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="33_xdvxi"]
+[ext_resource type="Texture2D" uid="uid://c2sg4foah440r" path="res://assets/images/search_icon_small.png" id="34_exti7"]
 
 [sub_resource type="Gradient" id="Gradient_e6ksn"]
 colors = PackedColorArray(1, 0.730178, 0.755568, 1, 1, 0.744725, 0.296128, 1)
@@ -188,6 +191,13 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yprj"]
+bg_color = Color(0.0383711, 0.0369761, 0.0369761, 0.564706)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hal5k"]
 bg_color = Color(0.0117647, 0.168627, 0.290196, 1)
 
@@ -202,6 +212,16 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hwr3p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icvos"]
+bg_color = Color(0.015, 0.015, 0.015, 0.306)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
 
 [node name="LobbyScene" type="Control"]
 layout_mode = 3
@@ -856,6 +876,52 @@ offset_bottom = 40.0
 texture = ExtResource("26_di7a6")
 expand_mode = 1
 
+[node name="GoldBg" type="Panel" parent="PnInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 30.0
+offset_right = 75.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8yprj")
+
+[node name="TextureRect" type="TextureRect" parent="PnInfo/GoldBg"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -2.0
+offset_right = 24.0
+offset_bottom = 38.0
+texture = ExtResource("27_dqlu8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldLb" type="Label" parent="PnInfo/GoldBg"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -20.5
+offset_right = 74.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_a6ucd")
+theme_override_font_sizes/font_size = 22
+text = "1.000.000
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BtnGroupFb" type="Button" parent="."]
 visible = false
 layout_mode = 1
@@ -1029,6 +1095,36 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ivuvr")
 
+[node name="LineEdit" type="LineEdit" parent="PnMatches"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -594.0
+offset_top = -47.0
+offset_right = -294.0
+offset_bottom = -7.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("33_xdvxi")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hwr3p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_icvos")
+placeholder_text = "JOIN_ROOM_BY_ID"
+virtual_keyboard_type = 2
+right_icon = ExtResource("34_exti7")
+
+[node name="CreateRoomBtn" type="Button" parent="PnMatches"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 0
+offset_left = 453.0
+offset_top = -47.0
+offset_right = 598.0
+offset_bottom = -7.0
+theme_override_fonts/font = ExtResource("24_nhqpo")
+theme_override_font_sizes/font_size = 20
+text = "CREATE_TABLE"
+script = ExtResource("3_x7pan")
+
 [node name="ScrollContainer" type="ScrollContainer" parent="PnMatches"]
 custom_minimum_size = Vector2(560, 380)
 layout_mode = 1
@@ -1083,4 +1179,6 @@ autostart = true
 [connection signal="pressed" from="BottomLeft/MobileWebPn/HBoxContainer/AppstoreBtn" to="." method="_click_open_appstore"]
 [connection signal="pressed" from="BottomLeft/HBoxContainer/LeaderboardBtn" to="." method="_click_ranking"]
 [connection signal="pressed" from="BottomLeft/HBoxContainer/OfferFirstBtn" to="." method="_click_offer_first_buy"]
+[connection signal="text_submitted" from="PnMatches/LineEdit" to="." method="_click_join_room_by_id"]
+[connection signal="pressed" from="PnMatches/CreateRoomBtn" to="." method="_open_tables_scene"]
 [connection signal="timeout" from="Timer" to="." method="_auto_refresh_list_table"]

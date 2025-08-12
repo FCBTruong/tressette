@@ -5,6 +5,7 @@ extends Node
 @onready var icon_vs2 = find_child("IconVs2")
 @onready var view_btn = find_child("ViewBtn")
 @onready var play_btn = find_child("PlayBtn")
+@onready var private_icon = find_child("PrivateIcon")
 var _info: TableInfo
 var slots = []
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +42,7 @@ func set_info(table: TableInfo):
 		self.view_btn.visible = false
 		self.play_btn.visible = true
 	
+	private_icon.visible = _info.is_private
 	for i in range(len(table.player_uids)):
 		var uid = table.player_uids[i]
 		var avatar = table.player_avatars[i]
@@ -60,14 +62,20 @@ func _click_play():
 			tr("ROOM_IS_FULL")
 		)
 		return
-
-	g.v.game_manager.join_game_by_id(self._info.match_id)
+		
+	if self._info.is_private:
+		var gui = g.v.scene_manager.open_gui("res://scenes/lobby/JoinPrivateTable.tscn")
+		gui.set_info(self._info.match_id, true)
+	else:
+		g.v.game_manager.join_game_by_id(self._info.match_id)
 
 func _click_view():
-	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ViewGame.new()
-	pkg.set_match_id(self._info.match_id)
-	g.v.game_client.send_packet(g.v.game_constants.CMDs.VIEW_GAME, pkg.to_bytes())
-	return
+	if self._info.is_private:
+		var gui = g.v.scene_manager.open_gui("res://scenes/lobby/JoinPrivateTable.tscn")
+		gui.set_info(self._info.match_id, false)
+	else:
+		g.v.game_manager.view_game_by_id(self._info.match_id)
+
 	
 func click_user1():
 	var uid = _info.player_uids[0]

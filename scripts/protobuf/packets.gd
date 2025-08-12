@@ -3357,6 +3357,11 @@ class TableList:
 		service.field = _avatar_frames
 		data[_avatar_frames.tag] = service
 		
+		_is_private = PBField.new("is_private", PB_DATA_TYPE.BOOL, PB_RULE.REPEATED, 8, true, [])
+		service = PBServiceField.new()
+		service.field = _is_private
+		data[_is_private.tag] = service
+		
 	var data = {}
 	
 	var _table_ids: PBField
@@ -3421,6 +3426,15 @@ class TableList:
 		_avatar_frames.value = []
 	func add_avatar_frames(value : int) -> void:
 		_avatar_frames.value.append(value)
+	
+	var _is_private: PBField
+	func get_is_private() -> Array:
+		return _is_private.value
+	func clear_is_private() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_is_private.value = []
+	func add_is_private(value : bool) -> void:
+		_is_private.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
