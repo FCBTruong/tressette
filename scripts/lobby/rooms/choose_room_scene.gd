@@ -10,10 +10,6 @@ var table_node_scene = preload("res://scenes/lobby/rooms/TableNode.tscn")  # Loa
 signal update_table_list
 
 func _ready() -> void:
-	if g.v.app_version.is_in_review():
-		create_table_btn.visible = false
-		return
-			
 	g.v.signal_bus.connect_global('update_table_list',Callable(self, "_update_table_list"))
 	g.v.game_manager.send_get_table_list()
 	g.v.signal_bus.emit_signal_global('update_table_list')
@@ -24,9 +20,6 @@ func _ready() -> void:
 
 func _update_table_list():
 	lb_empty.visible = true
-	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
-		if g.v.app_version.is_in_review():
-			return
 			
 	print('_update_table_list')
 	for child in table_pn.get_children():

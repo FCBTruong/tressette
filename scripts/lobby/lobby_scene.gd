@@ -69,10 +69,6 @@ func _ready() -> void:
 					)
 					pass
 			)
-	if g.v.app_version.is_in_review():
-		self.sette_mezzo_btn.visible = false
-	else:
-		self.sette_mezzo_btn.visible = true
 		
 	self.update_level_exp()
 	g.v.signal_bus.connect_global('update_table_list',Callable(self, "_update_table_list"))

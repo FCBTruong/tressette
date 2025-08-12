@@ -1057,11 +1057,6 @@ func on_new_chat_emo(uid, emo):
 		pass
 	
 func _effect_evaluate(text = 'Fantastic!'):
-	#var screen_size = DisplayServer.window_get_size()
-	#if screen_size.x / screen_size.y < 1.4 or g.v.app_version.is_in_review():
-		## because if in review, pot will be invisible
-		#evaluate_lb_default_pos = evaluate_ipad_pos_node.position
-		#evaluate_lb_default_pos -= evaluate_lb.size * evaluate_lb.scale / 2
 	evaluate_lb.text = text
 	var tween = create_tween()
 	evaluate_lb.modulate.a = 1

@@ -5,19 +5,16 @@ extends Node
 @onready var option_bet = find_child("OptionBet")
 @onready var option_player = find_child("OptionPlayer")
 @onready var private_check = find_child("PrivateCheck")
-@onready var bet_pn = find_child("BetPn")
 @onready var option_point = find_child("OptionPoints")
 @onready var fee_lb = find_child("FeeLb")
 var bets = [10000]
 func _ready() -> void:
-	if g.v.app_version.is_in_review():
-		bet_pn.visible = false
-		fee_lb.visible = true
-		var str = tr("FEE_CREATE")
-		str = str.replace("@num", StringUtils.symbol_number(g.v.game_server_config.fee_mode_no_bet))
-		fee_lb.text = str
-	else:
-		fee_lb.visible = false
+
+	fee_lb.visible = true
+	var str = tr("FEE_CREATE")
+	str = str.replace("@num", StringUtils.symbol_number(g.v.game_server_config.fee_mode_no_bet))
+	fee_lb.text = str
+
 
 	var tween = create_tween()
 	main_pn.scale = Vector2(0, 0)
@@ -36,21 +33,15 @@ func _on_close():
 
 func _on_create_table():
 	self._on_close()
-	if g.v.app_version.is_in_review():
-		if g.v.player_info_mgr.my_user_data.gold < g.v.game_server_config.fee_mode_no_bet:
-			g.v.game_manager.show_not_gold_recommend_shop()
-			return
-			
-	var a = option_bet.get_selected_id()
-	print("create table with bet id", a)
-	var bet = bets[a]
-	
-	if bet * g.v.game_server_config.bet_multiplier_min > g.v.player_info_mgr.my_user_data.gold:
+
+	if g.v.player_info_mgr.my_user_data.gold < g.v.game_server_config.fee_mode_no_bet:
 		g.v.game_manager.show_not_gold_recommend_shop()
 		return
+			
+
+
 	
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.CreateTable.new()
-	pkg.set_bet(bet)
 	
 	var player_mode = g.v.game_constants.PLAYER_MODE.SOLO
 	if option_player.get_selected_id() == 1:

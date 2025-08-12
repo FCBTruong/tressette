@@ -85,9 +85,6 @@ func get_token() -> String:
 	return _token
 	
 func send_quick_play() -> void:
-	if g.v.app_version.is_in_review():
-		g.v.scene_manager.open_gui('res://scenes/lobby/rooms/CreateTableGUI.tscn')
-		return
 	g.v.scene_manager.add_loading(5)
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.QuickPlay.new()
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.QUICK_PLAY, pkg.to_bytes())
