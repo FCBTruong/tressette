@@ -3219,6 +3219,12 @@ class PaymentSuccess:
 		service.field = _pack_id
 		data[_pack_id.tag] = service
 		
+		_items = PBField.new("items", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _items
+		service.func_ref = Callable(self, "add_items")
+		data[_items.tag] = service
+		
 	var data = {}
 	
 	var _gold: PBField
@@ -3238,6 +3244,17 @@ class PaymentSuccess:
 		_pack_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_pack_id(value : String) -> void:
 		_pack_id.value = value
+	
+	var _items: PBField
+	func get_items() -> Array:
+		return _items.value
+	func clear_items() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_items.value = []
+	func add_items() -> RewardInventoryItem:
+		var element = RewardInventoryItem.new()
+		_items.value.append(element)
+		return element
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3480,6 +3497,12 @@ class ShopConfig:
 		service.field = _pack_id_offer_first
 		data[_pack_id_offer_first.tag] = service
 		
+		_items_offer_first_buy = PBField.new("items_offer_first_buy", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 11, true, [])
+		service = PBServiceField.new()
+		service.field = _items_offer_first_buy
+		service.func_ref = Callable(self, "add_items_offer_first_buy")
+		data[_items_offer_first_buy.tag] = service
+		
 	var data = {}
 	
 	var _pack_ids: PBField
@@ -3571,6 +3594,17 @@ class ShopConfig:
 		_pack_id_offer_first.value = DEFAULT_VALUES_3[PB_DATA_TYPE.STRING]
 	func set_pack_id_offer_first(value : String) -> void:
 		_pack_id_offer_first.value = value
+	
+	var _items_offer_first_buy: PBField
+	func get_items_offer_first_buy() -> Array:
+		return _items_offer_first_buy.value
+	func clear_items_offer_first_buy() -> void:
+		data[11].state = PB_SERVICE_STATE.UNFILLED
+		_items_offer_first_buy.value = []
+	func add_items_offer_first_buy() -> RewardInventoryItem:
+		var element = RewardInventoryItem.new()
+		_items_offer_first_buy.value.append(element)
+		return element
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

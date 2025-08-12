@@ -3,9 +3,9 @@ extends Node
 @onready var main_pn = find_child("Main")
 @onready var price_lb = find_child("PriceLb")
 @onready var buy_pn_eff = find_child("BuyPnEff")
-@onready var gold_lb = find_child("GoldLb")
-@onready var no_ads_lb = find_child("NoAdsLb")
 @onready var time_lb = find_child("TimeLb")
+@onready var items_pn = find_child("ItemsPn")
+var offer_item_node_scene = preload("res://scenes/lobby/OfferItemNode.tscn")
 var info
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,11 +18,26 @@ func _ready() -> void:
 	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.5)
 	info = g.v.payment_mgr.offer_first_info
 	price_lb.text = g.v.payment_mgr.get_price_pack(info['pack_id'])
-	gold_lb.text = StringUtils.point_number(info['gold'])
-	var str = tr("NO_ADS_DAYS")
-	str = str.replace("@day", str(info['no_ads_days']))
-	no_ads_lb.text = str
-	pass # Replace with function body.
+	
+	#var str = tr("NO_ADS_DAYS")
+	#str = str.replace("@day", str(info['no_ads_days']))
+	#no_ads_lb.text = str
+	
+	NodeUtils.remove_all_child(self.items_pn)
+	
+	for r in info["rewards"]:
+		var n = offer_item_node_scene.instantiate()
+		items_pn.add_child(n)
+		var img = n.find_child("Img")
+		var lb = n.find_child("Lb")
+		img.texture = load(g.v.inventory_mgr.get_image_item(r.item_id))
+		
+		var type = r.item_id / 1000
+		var str = g.v.inventory_mgr.get_item_str(r.item_id, r.value, r.duration)
+			
+		lb.text = str
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

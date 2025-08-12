@@ -163,12 +163,23 @@ func _handle_shop_config(payload):
 			'currency': currencies[i],
 			'no_ads_days': no_ads_days[i]
 		})
-		
+	
+	var rewards: Array[Reward] = []
+	var a = pkg.get_items_offer_first_buy()
+	for item in a:
+		rewards.append(
+			Reward.new(
+				item.get_item_id(),
+				item.get_value(),
+				item.get_duration()
+			)
+		)
 	offer_first_info = {
 		'pack_id': pkg.get_pack_id_offer_first(),
 		'gold': pkg.get_gold_offer_first(),
 		'price': pkg.get_currency_offer_first(),
-		'no_ads_days': pkg.get_no_ads_day_offer_first()
+		'no_ads_days': pkg.get_no_ads_day_offer_first(),
+		'rewards': rewards
 	}
 	
 	

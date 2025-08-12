@@ -1437,10 +1437,6 @@ texture = ExtResource("6_7abhy")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Control2" type="Control" parent="MainPn/HBoxContainer"]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-
 [node name="RewardLb" type="Label" parent="MainPn/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.929412)

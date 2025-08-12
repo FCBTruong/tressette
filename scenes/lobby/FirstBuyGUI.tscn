@@ -8,8 +8,8 @@
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="4_q8y5m"]
 [ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="5_cc7ps"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="7_oouga"]
-[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="8_jcow4"]
 [ext_resource type="Texture2D" uid="uid://be3hpamk68mi0" path="res://assets/images/ad-blocker.png" id="9_al5fx"]
+[ext_resource type="PackedScene" uid="uid://dv1alggwyv3n4" path="res://scenes/lobby/OfferItemNode.tscn" id="9_bkdbi"]
 [ext_resource type="Texture2D" uid="uid://drmwf5psvwa1h" path="res://assets/images/lobby/user_info_gui/vip_icon.png" id="10_fthh0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewkb6"]
@@ -95,20 +95,101 @@ grow_vertical = 2
 texture = ExtResource("3_5riyn")
 expand_mode = 1
 
-[node name="BuyBtn" type="Button" parent="Main"]
-custom_minimum_size = Vector2(150, 60)
+[node name="ScrollContainer" type="ScrollContainer" parent="Main"]
+custom_minimum_size = Vector2(300, 240)
+layout_mode = 0
+offset_left = -189.0
+offset_top = -19.0
+offset_right = 111.0
+offset_bottom = 221.0
+vertical_scroll_mode = 3
+
+[node name="ItemsPn" type="VBoxContainer" parent="Main/ScrollContainer"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OfferItemNode" parent="Main/ScrollContainer/ItemsPn" instance=ExtResource("9_bkdbi")]
+layout_mode = 2
+
+[node name="NoAds" type="HBoxContainer" parent="Main/ScrollContainer/ItemsPn"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Main/ScrollContainer/ItemsPn/NoAds"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main/ScrollContainer/ItemsPn/NoAds/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -137.0
-offset_top = 190.0
-offset_right = 13.0
-offset_bottom = 250.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("9_al5fx")
+expand_mode = 1
+
+[node name="NoAdsLb" type="Label" parent="Main/ScrollContainer/ItemsPn/NoAds"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("2_optfb")
+theme_override_font_sizes/font_size = 28
+text = "30 days"
+
+[node name="VipPn" type="HBoxContainer" parent="Main/ScrollContainer/ItemsPn"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Main/ScrollContainer/ItemsPn/VipPn"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Main/ScrollContainer/ItemsPn/VipPn/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -32.5
+offset_right = 32.5
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_fthh0")
+expand_mode = 1
+
+[node name="VipLb" type="Label" parent="Main/ScrollContainer/ItemsPn/VipPn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
+theme_override_fonts/font = ExtResource("2_optfb")
+theme_override_font_sizes/font_size = 28
+text = "VIP_MEMBER"
+
+[node name="BuyBtn" type="Button" parent="Main"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = 232.0
+offset_right = 75.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 0
 flat = true
 script = ExtResource("2_7rpsx")
 
@@ -186,108 +267,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_cc7ps")
 expand_mode = 1
-
-[node name="ItemsPn" type="VBoxContainer" parent="Main"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 0
-offset_left = -191.0
-offset_top = -13.0
-offset_right = 9.0
-offset_bottom = 187.0
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Main/ItemsPn"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Main/ItemsPn/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Main/ItemsPn/HBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_jcow4")
-expand_mode = 1
-
-[node name="GoldLb" type="Label" parent="Main/ItemsPn/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
-theme_override_fonts/font = ExtResource("2_optfb")
-theme_override_font_sizes/font_size = 28
-text = "10M Gold"
-
-[node name="NoAds" type="HBoxContainer" parent="Main/ItemsPn"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Main/ItemsPn/NoAds"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Main/ItemsPn/NoAds/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_al5fx")
-expand_mode = 1
-
-[node name="NoAdsLb" type="Label" parent="Main/ItemsPn/NoAds"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
-theme_override_fonts/font = ExtResource("2_optfb")
-theme_override_font_sizes/font_size = 28
-text = "30 days"
-
-[node name="VipPn" type="HBoxContainer" parent="Main/ItemsPn"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Control" type="Control" parent="Main/ItemsPn/VipPn"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Main/ItemsPn/VipPn/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.5
-offset_top = -32.5
-offset_right = 32.5
-offset_bottom = 32.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_fthh0")
-expand_mode = 1
-
-[node name="VipLb" type="Label" parent="Main/ItemsPn/VipPn"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.396078, 0.211765, 0.0862745, 1)
-theme_override_fonts/font = ExtResource("2_optfb")
-theme_override_font_sizes/font_size = 28
-text = "VIP_MEMBER"
 
 [connection signal="pressed" from="Main/BuyBtn" to="." method="purchase"]
 [connection signal="pressed" from="Main/CloseBtn" to="." method="on_close"]

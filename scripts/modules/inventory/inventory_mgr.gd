@@ -252,3 +252,15 @@ func get_rename_card_number():
 	if map_item.has(g.v.game_constants.RENAME_CARD_ITEM_ID):
 		return map_item[g.v.game_constants.RENAME_CARD_ITEM_ID].value
 	return 0
+
+
+func get_item_str(item_id, value, duration):
+	var type = item_id / 1000
+	if type == g.v.game_constants.ITEM_TYPE_STACKABLE:
+		return StringUtils.point_number(value)
+	else:
+		if duration == g.v.game_constants.ITEM_PERMANENT_TIME:
+			return tr("PERMANENT")
+		else:
+			return str(duration) + " " + tr("DAYS")
+	

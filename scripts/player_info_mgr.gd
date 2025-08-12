@@ -68,7 +68,12 @@ func _on_receive_info(bytes: PackedByteArray):
 		
 		if time_end_offer < g.v.game_manager.get_timestamp_client():
 			if time_end_offer > g.v.game_manager.get_timestamp_client() - 86400:
-				has_first_buy = false
+				# fix this later
+				time_end_offer = g.v.game_manager.get_timestamp_client() + 86400
+				g.v.storage_cache.store("first_buy_offer_time" + str(self.get_user_id()), time_end_offer)
+
+				pass
+				#has_first_buy = false
 				# due to offer just expired, need to cooldown
 			else:
 				# regen time end offer
