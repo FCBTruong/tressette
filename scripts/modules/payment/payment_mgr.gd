@@ -64,6 +64,13 @@ func _handle_payment_success(payload):
 	var rewards:Array[Reward] = [
 		Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, gold)
 	]
+	var items = pkg.get_items()
+	for item in items:
+		rewards.append(
+			Reward.new(item.get_item_id(),
+			item.get_value(),
+			item.get_duration())
+		)
 	
 	g.v.popup_mgr.add_popup(
 		"res://scenes/lobby/ReceiveGiftGUI.tscn",
@@ -166,6 +173,15 @@ func _handle_shop_config(payload):
 	
 	var rewards: Array[Reward] = []
 	var a = pkg.get_items_offer_first_buy()
+	var gold_first_buy = pkg.get_gold_offer_first()
+	if gold_first_buy > 0:
+		rewards.append(
+			Reward.new(
+				g.v.game_constants.CRYPSTAL_ITEM_ID,
+				gold_first_buy,
+				0
+			)
+		)
 	for item in a:
 		rewards.append(
 			Reward.new(
@@ -176,7 +192,7 @@ func _handle_shop_config(payload):
 		)
 	offer_first_info = {
 		'pack_id': pkg.get_pack_id_offer_first(),
-		'gold': pkg.get_gold_offer_first(),
+		'gold': gold_first_buy,
 		'price': pkg.get_currency_offer_first(),
 		'no_ads_days': pkg.get_no_ads_day_offer_first(),
 		'rewards': rewards

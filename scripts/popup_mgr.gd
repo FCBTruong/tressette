@@ -41,7 +41,7 @@ func add_popup_intermediate(gui_path: String, func_name: String = '', params: Ar
 
 	
 func check_and_show():
-	return # test
+	#return # test
 	if cur_popup and is_instance_valid(cur_popup) and cur_popup.visible:
 		return
 	if len(arr_popups) == 0:

@@ -5,11 +5,8 @@ extends Panel
 func set_info(info: Reward):
 	var type = info.item_id / 1000
 	value_lb.text = str(info.value)
-	if info.item_id == g.v.game_constants.CRYPSTAL_ITEM_ID:
-		value_lb.text = StringUtils.symbol_number(info.value)
-	else:
-		if info.duration > 0:
-			value_lb.text = str(info.duration) + " " + tr("DAYS")
+	value_lb.text = g.v.inventory_mgr.get_item_str(info.item_id, info.value, info.duration)
+	
 	img.texture = load(g.v.inventory_mgr.get_image_item(info.item_id))
 	pass
 	

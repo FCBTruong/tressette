@@ -27,6 +27,11 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			if event.keycode == KEY_T:
+				g.v.popup_mgr.add_popup("res://scenes/ranking/RankingResult.tscn", "set_info", [10, 3, 122222])
+	
+				#g.v.game_client.send_packet(g.v.game_constants.CMDs.PAYMENT_TEST, [])
+	
+				return
 				var rewards: Array[Reward] = [
 					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),
 					Reward.new(g.v.game_constants.CRYPSTAL_ITEM_ID, 1111),

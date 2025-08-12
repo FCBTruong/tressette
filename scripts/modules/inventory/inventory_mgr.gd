@@ -140,6 +140,8 @@ func _handle_user_inventory(payload):
 	var items = pkg.get_items()
 	for item in items:
 		var item_id = item.get_item_id()
+		if not map_item.has(item_id):
+			continue
 		var expire_time = item.get_expire_time()
 		var value = item.get_value()
 		map_item[item_id].expire_time = expire_time
@@ -264,3 +266,5 @@ func get_item_str(item_id, value, duration):
 		else:
 			return str(duration) + " " + tr("DAYS")
 	
+func open_gui():
+	g.v.scene_manager.open_gui("res://scenes/inventory/InventoryGUI.tscn")
