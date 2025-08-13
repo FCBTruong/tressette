@@ -214,6 +214,8 @@ func _handle_game_info(payload: PackedByteArray):
 	var users: Array[UserData] = []
 	
 	my_idx = -1
+	if IS_VIEWING:
+		my_idx = 0
 	for i in range(len(uids)):
 		var uid = uids[i]
 		var userdata = UserData.new(uid, user_names[i])

@@ -50,10 +50,6 @@ func _on_create_table():
 	var is_private = private_check.is_pressed()
 	pkg.set_is_private(is_private)
 	
-	if g.v.app_version.is_in_review():
-		pkg.set_bet_mode(false)
-	else:
-		pkg.set_bet_mode(true)
 	var point_mode = 11
 	if option_point.get_selected_id() == 1:
 		point_mode = 21
