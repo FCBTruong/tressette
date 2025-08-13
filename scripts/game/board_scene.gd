@@ -806,16 +806,23 @@ func deal_my_cards(cards) -> void:
 							cardback_node.visible = true
 							# effect move cardbacknode
 							var tw = create_tween()
-							tw.tween_property(
+							tw.parallel().tween_property(
 								cardback_node,
 								"position",
 								cardback_node_default_pos,
 								0.3
 							).set_delay(0.3)
-							tw.tween_callback(
+							tw.parallel().tween_property(
+								cardback_node,
+								"rotation_degrees",
+								0,
+								0.3
+							).set_delay(0.3)
+							tw.parallel().tween_callback(
 								func():
+									cardback_shadow.visible = true
 									update_remain_cards()
-							)
+							).set_delay(0.3 + 0.3)
 			).set_delay(delay_2 + 0.3)
 			delay_2 += 0.1
 		x += 1
