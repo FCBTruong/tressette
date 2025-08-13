@@ -160,15 +160,27 @@ func _handle_shop_config(payload):
 	var prices = pkg.get_prices()
 	var currencies = pkg.get_currencies()
 	var no_ads_days = pkg.get_no_ads_days()
+	var details = pkg.get_details()
 	
 	shop_packs = []
 	for i in range(len(pack_ids)):
+		var detail = details[i]
+		var items: Array[Reward] = []
+		var a = detail.get_items()
+		for b in a:
+			var item = Reward.new(
+				b.get_item_id(),
+				b.get_value(),
+				b.get_duration()
+			)
+			items.append(item)
 		shop_packs.append({
 			'pack_id': pack_ids[i],
 			'gold': golds[i],
 			'price': prices[i],
 			'currency': currencies[i],
-			'no_ads_days': no_ads_days[i]
+			'no_ads_days': no_ads_days[i],
+			'items': items
 		})
 	
 	var rewards: Array[Reward] = []

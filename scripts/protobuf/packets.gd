@@ -3517,6 +3517,12 @@ class ShopConfig:
 		service.func_ref = Callable(self, "add_items_offer_first_buy")
 		data[_items_offer_first_buy.tag] = service
 		
+		_details = PBField.new("details", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 12, true, [])
+		service = PBServiceField.new()
+		service.field = _details
+		service.func_ref = Callable(self, "add_details")
+		data[_details.tag] = service
+		
 	var data = {}
 	
 	var _pack_ids: PBField
@@ -3618,6 +3624,61 @@ class ShopConfig:
 	func add_items_offer_first_buy() -> RewardInventoryItem:
 		var element = RewardInventoryItem.new()
 		_items_offer_first_buy.value.append(element)
+		return element
+	
+	var _details: PBField
+	func get_details() -> Array:
+		return _details.value
+	func clear_details() -> void:
+		data[12].state = PB_SERVICE_STATE.UNFILLED
+		_details.value = []
+	func add_details() -> DetailShopPack:
+		var element = DetailShopPack.new()
+		_details.value.append(element)
+		return element
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class DetailShopPack:
+	func _init():
+		var service
+		
+		_items = PBField.new("items", PB_DATA_TYPE.MESSAGE, PB_RULE.REPEATED, 1, true, [])
+		service = PBServiceField.new()
+		service.field = _items
+		service.func_ref = Callable(self, "add_items")
+		data[_items.tag] = service
+		
+	var data = {}
+	
+	var _items: PBField
+	func get_items() -> Array:
+		return _items.value
+	func clear_items() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_items.value = []
+	func add_items() -> RewardInventoryItem:
+		var element = RewardInventoryItem.new()
+		_items.value.append(element)
 		return element
 	
 	func _to_string() -> String:

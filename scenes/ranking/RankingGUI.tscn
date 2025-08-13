@@ -1686,7 +1686,8 @@ offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_ds1ti")
-expand_mode = 1
+expand_mode = 4
+stretch_mode = 5
 
 [node name="CloseBtn" type="Button" parent="MainPn"]
 layout_mode = 0

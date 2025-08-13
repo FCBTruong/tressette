@@ -75,7 +75,7 @@ func _ready() -> void:
 	g.v.game_manager.send_get_table_list()
 	
 	if g.v.game_manager.check_has_reward_level():
-		g.v.popup_mgr.add_popup("res://scenes/lobby/level/LevelGUI.tscn")			
+		g.v.popup_mgr.add_popup("res://scenes/level/LevelGUI.tscn")			
 	
 	g.v.signal_bus.connect_global('on_changed_username', Callable(self, "on_update_username"))
 		
@@ -230,10 +230,6 @@ func format_time(remain: int) -> String:
 
 func play_sette_mezzo():
 	g.v.sette_mezzo_mgr.quick_play()
-
-func open_fb_group():
-	OS.shell_open("https://www.facebook.com/share/g/1ALgWc7Lg9/")
-
 
 func update_level_exp():
 	var level = g.v.game_server_config.convert_exp_to_level(g.v.player_info_mgr.my_user_data.exp)

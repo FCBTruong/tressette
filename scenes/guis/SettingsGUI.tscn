@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxrhqd8w2syim"]
+[gd_scene load_steps=13 format=3 uid="uid://cxrhqd8w2syim"]
 
 [ext_resource type="Script" path="res://scripts/lobby/settings_gui.gd" id="1_h1gqm"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="2_kpywk"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_71xqs"]
 [ext_resource type="Texture2D" uid="uid://0ohtbsqbkssg" path="res://assets/images/card_tressette/modern/card_0.png" id="5_5y25g"]
 [ext_resource type="Texture2D" uid="uid://t4qbllnxmlnt" path="res://assets/images/card_tressette/classic/0.png" id="6_6qx2p"]
+[ext_resource type="Texture2D" uid="uid://dawikose718v6" path="res://assets/images/lobby/btn_group_fb.png" id="7_7p66w"]
 [ext_resource type="Texture2D" uid="uid://dnlceqnhdp1qw" path="res://assets/images/lobby/buttons/support_btn.png" id="7_w43mx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1m567"]
@@ -393,6 +394,29 @@ color = Color(1, 1, 1, 0.72)
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
+[node name="BtnGroupFb" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 171.0
+offset_top = 111.0
+offset_right = 271.0
+offset_bottom = 211.0
+grow_horizontal = 2
+flat = true
+script = ExtResource("2_txiv8")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/BtnGroupFb"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_7p66w")
+expand_mode = 1
+
 [node name="SupportBtn" type="Button" parent="CanvasLayer/Panel"]
 layout_mode = 0
 offset_left = 327.0
@@ -423,4 +447,5 @@ expand_mode = 1
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer2/Control2/LogoutBtn" to="CanvasLayer" method="_logout"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/PrivacyBtn" to="CanvasLayer" method="_click_privacy_policy"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/TermsBtn" to="CanvasLayer" method="_click_terms_of_service"]
+[connection signal="pressed" from="CanvasLayer/Panel/BtnGroupFb" to="CanvasLayer" method="open_fb_group"]
 [connection signal="pressed" from="CanvasLayer/Panel/SupportBtn" to="CanvasLayer" method="_click_support"]

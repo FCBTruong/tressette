@@ -119,3 +119,7 @@ func _click_terms_of_service():
 
 func _click_support():
 	g.v.scene_manager.open_gui("res://scenes/customer_service/CustomerServiceGUI.tscn")
+
+
+func open_fb_group():
+	OS.shell_open("https://www.facebook.com/share/g/1ALgWc7Lg9/")

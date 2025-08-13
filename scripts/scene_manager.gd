@@ -93,6 +93,7 @@ func open_gui(gui_path: String, cache=false):
 		gui = load(gui_path)
 		if gui == null:
 			print("Failed to load gui scene!")  # Check the console
+			return
 
 		gui_nodes[gui_path] = gui
 		
@@ -103,6 +104,9 @@ func open_gui(gui_path: String, cache=false):
 			if popup_instance.has_method("on_show"):
 				popup_instance.on_show()
 			return gui_caches[gui_path]
+			
+	if not is_instance_valid(gui):
+		return
 		
 	popup_instance = gui.instantiate()
 	layer_gui.add_child(popup_instance, 1)

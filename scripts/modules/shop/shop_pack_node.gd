@@ -6,9 +6,8 @@ extends Node
 @onready var apple_icon = find_child('AppleIcon')
 @onready var chplay_icon = find_child("ChplayIcon")
 @onready var paypal_icon = find_child("PaypalIcon")
-@onready var no_ads_pn = find_child("HBoxNoAds")
-@onready var no_ads_lb = find_child("NoAdsLb")
 @onready var gold_icon = find_child("GoldIcon")
+@onready var items_pn = find_child("ItemsPn")
 var info: PackInfo
 var index
 # Called when the node enters the scene tree for the first time.
@@ -37,19 +36,30 @@ func set_info(p_info, idx):
 	info.pack_id = p_info['pack_id']
 	info.gold = p_info['gold']
 	info.no_ads_days = p_info['no_ads_days']
-	if info.no_ads_days > 0:
-		no_ads_pn.visible = true
-		var str = tr("NO_ADS_DAYS")
-		str = str.replace("@day", str(info.no_ads_days))
-		no_ads_lb.text = str
-	else:
-		no_ads_pn.visible = false
-	print('set info pack', info.pack_id)
+
 	var price = g.v.payment_mgr.get_price_pack(info.pack_id)
 	price_lb.text = price
 	gold_lb.text = StringUtils.point_number(info.gold)
 	
 	gold_icon.texture = load("res://assets/images/lobby/shop/pack_0" + str(index + 1) + ".png")
 	
+	NodeUtils.remove_all_child(self.items_pn)
+	
+	var items = p_info['items'].duplicate(true)
+	if info.no_ads_days > 0:
+		items.append(
+			Reward.new(
+				g.v.game_constants.VIP_DAYS,
+				1,
+				info.no_ads_days
+			)
+		)
+	
+	for item in items:
+		var n = shop_item_node_scene.instantiate()
+		self.items_pn.add_child(n)
+		n.set_info(item)
+		pass
+var shop_item_node_scene = preload("res://scenes/shop/ShopItemNode.tscn")
 func _click_buy():
 	g.v.payment_mgr.buy_pack(info.pack_id)

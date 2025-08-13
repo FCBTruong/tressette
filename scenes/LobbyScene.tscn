@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=55 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://cx6qbrregb73n" path="res://assets/images/lobby.jpg" id="2_k5oqt"]
@@ -32,7 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="27_dqlu8"]
 [ext_resource type="Texture2D" uid="uid://chdb6xb0yq64c" path="res://assets/images/lobby/offers/offer_btn.png" id="28_50qpl"]
 [ext_resource type="PackedScene" uid="uid://coalpvybk074r" path="res://scenes/lobby/rooms/TableNode.tscn" id="32_mkgl5"]
-[ext_resource type="Texture2D" uid="uid://dawikose718v6" path="res://assets/images/lobby/btn_group_fb.png" id="32_yhted"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="33_xdvxi"]
 [ext_resource type="Texture2D" uid="uid://c2sg4foah440r" path="res://assets/images/search_icon_small.png" id="34_exti7"]
 
@@ -702,10 +701,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -674.0
-offset_top = 376.0
-offset_right = -573.999
-offset_bottom = 446.0
+offset_left = 596.0
+offset_top = -111.0
+offset_right = 696.001
+offset_bottom = -41.0
 grow_vertical = 0
 flat = true
 script = ExtResource("3_x7pan")
@@ -921,30 +920,6 @@ text = "1.000.000
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="BtnGroupFb" type="Button" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 39.0
-offset_top = -120.0
-offset_right = 139.0
-offset_bottom = -20.0
-grow_vertical = 0
-flat = true
-script = ExtResource("3_x7pan")
-
-[node name="TextureRect" type="TextureRect" parent="BtnGroupFb"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("32_yhted")
-expand_mode = 1
 
 [node name="BottomLeft" type="Control" parent="."]
 layout_mode = 1
@@ -1174,7 +1149,6 @@ autostart = true
 [connection signal="pressed" from="RightTopPanel/WatchAdsBtn" to="." method="watch_ads_reward"]
 [connection signal="pressed" from="PnInfo/AvatarBtn" to="." method="_open_user_info_gui"]
 [connection signal="pressed" from="PnInfo/ExpBar/LevelGiftBtn" to="." method="_click_open_level_gui"]
-[connection signal="pressed" from="BtnGroupFb" to="." method="open_fb_group"]
 [connection signal="pressed" from="BottomLeft/MobileWebPn/HBoxContainer/ChplayBtn" to="." method="_click_open_chplay"]
 [connection signal="pressed" from="BottomLeft/MobileWebPn/HBoxContainer/AppstoreBtn" to="." method="_click_open_appstore"]
 [connection signal="pressed" from="BottomLeft/HBoxContainer/LeaderboardBtn" to="." method="_click_ranking"]

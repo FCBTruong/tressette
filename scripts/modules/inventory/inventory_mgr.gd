@@ -154,6 +154,8 @@ func get_image_item(item_id: int) -> String:
 			return "res://assets/images/board/game_result/exp_icon.png"
 		elif item_id == g.v.game_constants.RENAME_CARD_ITEM_ID:
 			return "res://assets/images/items/rename_card.png"
+		elif item_id == g.v.game_constants.VIP_DAYS:
+			return 'res://assets/images/lobby/user_info_gui/vip_icon.png'
 
 	return ""
 

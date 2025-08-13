@@ -1,17 +1,17 @@
 [gd_scene load_steps=15 format=3 uid="uid://doyshtw1etx6n"]
 
-[ext_resource type="Script" path="res://scripts/modules/shop/shop_item_node.gd" id="1_ffhj8"]
+[ext_resource type="Script" path="res://scripts/modules/shop/shop_pack_node.gd" id="1_ffhj8"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_s4pv2"]
 [ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_eb3ac"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="3_hrwo0"]
-[ext_resource type="Texture2D" uid="uid://be3hpamk68mi0" path="res://assets/images/ad-blocker.png" id="4_om0jh"]
-[ext_resource type="Texture2D" uid="uid://c76fi5yva6ktd" path="res://assets/images/lobby/shop/pack_01.png" id="4_vge8k"]
+[ext_resource type="Texture2D" uid="uid://t2mtpbmg4af3" path="res://assets/images/lobby/shop/pack_01.png" id="4_vge8k"]
 [ext_resource type="Texture2D" uid="uid://dvkbr2jw0gmib" path="res://assets/images/login/apple_icon.png" id="5_hrp46"]
 [ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="5_n3q8i"]
 [ext_resource type="Texture2D" uid="uid://doxr31gm6ex1a" path="res://assets/images/lobby/chplay_icon.png" id="6_guew6"]
 [ext_resource type="FontFile" uid="uid://ch8lfqo6m5vrx" path="res://assets/fonts/roboto_condensed/RobotoCondensed-Bold.ttf" id="6_ws3r3"]
 [ext_resource type="Texture2D" uid="uid://bfb3pvm5odphn" path="res://assets/images/lobby/paypal_icon.png" id="7_i8nk8"]
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="7_yigor"]
+[ext_resource type="PackedScene" uid="uid://d4fps0us51b2t" path="res://scenes/shop/ShopItemNode.tscn" id="12_jad2h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1it3v"]
 bg_color = Color(0, 0, 0, 0.447059)
@@ -96,55 +96,6 @@ offset_right = 175.0
 offset_bottom = 98.0
 texture = ExtResource("4_vge8k")
 expand_mode = 1
-
-[node name="HBoxNoAds" type="HBoxContainer" parent="Main"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = 15.0
-offset_right = 100.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="NoAdsLb" type="Label" parent="Main/HBoxNoAds"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.956, 0.562, 0.967)
-theme_override_fonts/font = ExtResource("2_s4pv2")
-theme_override_font_sizes/font_size = 22
-text = "5 days"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="Main/HBoxNoAds"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="Main/HBoxNoAds/Control"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-texture = ExtResource("4_om0jh")
-expand_mode = 1
-stretch_mode = 4
 
 [node name="BuyBtn" type="Button" parent="Main"]
 custom_minimum_size = Vector2(150, 50)
@@ -235,5 +186,19 @@ theme_override_font_sizes/font_size = 22
 text = "10.000 VND"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main"]
+layout_mode = 0
+offset_top = 158.0
+offset_right = 200.0
+offset_bottom = 238.0
+vertical_scroll_mode = 3
+
+[node name="ItemsPn" type="VBoxContainer" parent="Main/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ShopItemNode" parent="Main/ScrollContainer/ItemsPn" instance=ExtResource("12_jad2h")]
+layout_mode = 2
 
 [connection signal="pressed" from="Main/BuyBtn" to="." method="_click_buy"]
