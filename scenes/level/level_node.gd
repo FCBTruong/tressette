@@ -48,9 +48,13 @@ func set_info(inf):
 			var duration = item["duration"]
 			var r = reward_node.instantiate()
 			vbox_gifts.add_child(r)
+			var reward_lb = r.find_child("RewardLb")
 			var txt = load(g.v.inventory_mgr.get_image_item(item_id))
 			r.find_child("RewardImg").texture = txt
-			r.find_child("RewardLb").text = str(duration) + " DAYS"
+			if duration == g.v.game_constants.ITEM_PERMANENT_TIME:
+				reward_lb.text = tr("PERMANENT")
+			else:
+				reward_lb.text = str(duration) + " DAYS"
 	
 	
 func click_claim():

@@ -9,7 +9,10 @@ func _ready() -> void:
 
 func set_info(s):
 	info = s
-	lb.text = str(s['duration']) + " " + tr("DAYS")
+	if s['duration'] == -1:
+		lb.text = tr("PERMANENT")
+	else:
+		lb.text = str(s['duration']) + " " + tr("DAYS")
 
 
 func _on_checkbox_pressed() -> void:

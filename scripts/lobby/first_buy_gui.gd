@@ -33,8 +33,11 @@ func _ready() -> void:
 		img.texture = load(g.v.inventory_mgr.get_image_item(r.item_id))
 		
 		var type = r.item_id / 1000
-		var str = g.v.inventory_mgr.get_item_str(r.item_id, r.value, r.duration)
-			
+		var str
+		if r.item_id == g.v.game_constants.CRYPSTAL_ITEM_ID:
+			str = g.v.inventory_mgr.get_item_str(r.item_id, r.value, r.duration)
+		else:
+			str = g.v.inventory_mgr.get_name_item(r.item_id)	
 		lb.text = str
 	
 	

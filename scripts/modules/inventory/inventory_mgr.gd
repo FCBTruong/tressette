@@ -12,7 +12,8 @@ var map_item: Dictionary = {}
 func _init() -> void:
 	pass
 const AVATAR_IDS = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
-
+const AVATAR_VIP = [14, 15, 16, 17, 18, 19, 20, 21]
+const PACK_AVATAR_ANIMAL = [14, 15, 16, 17]
 func _load_base_item_config():
 	items.clear()
 	var data = data_raw.data
@@ -34,9 +35,21 @@ func _load_base_item_config():
 		item.name = "AVATAR"
 		item.value = 0
 		item.description = ""
+		item.shop = self.get_shop_item(item.item_id)
+		
+		if a in AVATAR_VIP:
+			item.expire_time = 0
+			if a >= 14 and a <= 17:
+				item.name = "PACK_AVATAR_ANIMAL"
+				item.description = "DES_AVATAR_VIP"
+			elif a >= 18 and a <= 21:
+				item.name = "PACK_AVATAR_NATURE"
+				item.description = "DES_AVATAR_NATURE"
+			
 		items.append(item)
 		map_item[item.item_id] = item
 		
+	
 	# item rename card
 	var item = InventoryItem.new()
 	item.item_id = g.v.game_constants.RENAME_CARD_ITEM_ID
@@ -45,6 +58,13 @@ func _load_base_item_config():
 	item.description = "DES_RENAME_CARD"
 	items.append(item)
 	map_item[item.item_id] = item
+	
+	var item1 = InventoryItem.new()
+	item1.item_id = g.v.game_constants.PACK_AVATAR_ANIMAL
+	item1.expire_time = -1
+	item1.name = "PACK_AVATAR_ANIMAL"
+	item1.description = "DES_AVATAR_NATURE"
+	map_item[item1.item_id] = item1
 
 func get_current_cardback() -> String:
 	return get_image_cardback(current_cardback)
@@ -73,6 +93,8 @@ func get_image_cardback(id):
 			return "res://assets/images/card_tressette/card_back_05.png"
 		g.v.game_constants.CARDBACK_IDS.PIZZA:
 			return "res://assets/images/card_tressette/card_back_03.png"
+		g.v.game_constants.CARDBACK_IDS.NATURE:
+			return "res://assets/images/card_tressette/card_back_06.png"
 		_:
 			return "res://assets/images/card_tressette/card_back.png"  # fallback
 
@@ -86,6 +108,12 @@ func get_image_avatar_frame(id):
 			return "res://assets/images/items/frames/frame_victory.png"
 		g.v.game_constants.AVATAR_FRAME_IDS.VIP:
 			return "res://assets/images/items/frames/frame_vip.png"
+		g.v.game_constants.AVATAR_FRAME_IDS.LEVEL_50:
+			return "res://assets/images/items/frames/frame_lv50.png"
+		g.v.game_constants.AVATAR_FRAME_IDS.LEVEL_100:
+			return "res://assets/images/items/frames/frame_lv100.png"
+		g.v.game_constants.AVATAR_FRAME_IDS.GOLD:
+			return "res://assets/images/items/frames/frame_gold.png"
 	return ""
 	
 func get_image_carpet(id):
@@ -113,7 +141,9 @@ func get_image_item(item_id: int) -> String:
 	elif item_type == g.v.game_constants.CARPET_TYPE:
 		return get_image_carpet(item_id)
 	elif item_type == g.v.game_constants.AVATAR_TYPE:
-		if item_id == 0:
+		if item_id == g.v.game_constants.PACK_AVATAR_ANIMAL:
+			return "res://assets/images/lobby/avatars/pack_animal.png"
+		if item_id == -1:
 			var avt_third_party = g.v.player_info_mgr.my_user_data.avatar_third_party
 			return avt_third_party
 		return "res://assets/images/lobby/avatars/avatar_" + str(item_id) + ".png"
@@ -140,10 +170,17 @@ func _handle_user_inventory(payload):
 	var items = pkg.get_items()
 	for item in items:
 		var item_id = item.get_item_id()
-		if not map_item.has(item_id):
-			continue
 		var expire_time = item.get_expire_time()
 		var value = item.get_value()
+		
+		# in case it is pack avatar -> update for all items
+		if item_id == g.v.game_constants.PACK_AVATAR_ANIMAL:
+			for id in PACK_AVATAR_ANIMAL:
+				map_item[id].expire_time = expire_time
+				map_item[id].value = value
+				
+		if not map_item.has(item_id):
+			continue
 		map_item[item_id].expire_time = expire_time
 		map_item[item_id].value = value
 		
@@ -265,6 +302,14 @@ func get_item_str(item_id, value, duration):
 			return tr("PERMANENT")
 		else:
 			return str(duration) + " " + tr("DAYS")
+
+func get_name_item(item_id):
+	if map_item.has(item_id):
+		return tr(map_item[item_id].name)
+	return ""
 	
 func open_gui():
 	g.v.scene_manager.open_gui("res://scenes/inventory/InventoryGUI.tscn")
+
+func is_own_avatar(id):
+	return true
