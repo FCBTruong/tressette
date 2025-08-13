@@ -39,10 +39,11 @@
               "client_type": 3
             },
             {
-              "client_id": "100921837562-qcoblhgvoe6o6a08f2fb0lkbehrjdbc0.apps.googleusercontent.com",
+              "client_id": "100921837562-f973rr6r8a9r8chs4fi5qsa2d9kr7sft.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.clareentertainment.tressette"
+                "bundle_id": "com.clareentertainment.tressette",
+                "app_store_id": "6741761784"
               }
             }
           ]

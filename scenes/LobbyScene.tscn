@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b5dcg6pe5am20"]
+[gd_scene load_steps=54 format=3 uid="uid://b5dcg6pe5am20"]
 
 [ext_resource type="Script" path="res://scripts/lobby/lobby_scene.gd" id="1_wigpx"]
 [ext_resource type="Texture2D" uid="uid://cx6qbrregb73n" path="res://assets/images/lobby.jpg" id="2_k5oqt"]
@@ -31,7 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://ckmdrn8wnvvrj" path="res://assets/images/lobby/appstore_icon.png" id="26_p24wg"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="27_dqlu8"]
 [ext_resource type="Texture2D" uid="uid://chdb6xb0yq64c" path="res://assets/images/lobby/offers/offer_btn.png" id="28_50qpl"]
-[ext_resource type="PackedScene" uid="uid://coalpvybk074r" path="res://scenes/lobby/rooms/TableNode.tscn" id="32_mkgl5"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="33_xdvxi"]
 [ext_resource type="Texture2D" uid="uid://c2sg4foah440r" path="res://assets/images/search_icon_small.png" id="34_exti7"]
 
@@ -1119,21 +1118,6 @@ vertical_scroll_mode = 3
 [node name="VBoxTables" type="VBoxContainer" parent="PnMatches/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="TableNode5" parent="PnMatches/ScrollContainer/VBoxTables" instance=ExtResource("32_mkgl5")]
-layout_mode = 2
-
-[node name="TableNode4" parent="PnMatches/ScrollContainer/VBoxTables" instance=ExtResource("32_mkgl5")]
-layout_mode = 2
-
-[node name="TableNode3" parent="PnMatches/ScrollContainer/VBoxTables" instance=ExtResource("32_mkgl5")]
-layout_mode = 2
-
-[node name="TableNode2" parent="PnMatches/ScrollContainer/VBoxTables" instance=ExtResource("32_mkgl5")]
-layout_mode = 2
-
-[node name="TableNode" parent="PnMatches/ScrollContainer/VBoxTables" instance=ExtResource("32_mkgl5")]
-layout_mode = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
