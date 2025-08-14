@@ -69,13 +69,6 @@ func set_user_data(user_dt: UserData, is_viewing: bool = false) -> void:
 		is_me = true
 		avatar_img.set_me()
 		avatar_frame.set_me()
-	
-		# add red noti for if not yet click avatar pick
-		
-		if g.v.player_info_mgr.my_user_data.game_count < 10:
-			var is_clicked_pick_avatar = g.v.storage_cache.fetch("open_picking_avatar_gui", '0') == '1'
-			if not is_clicked_pick_avatar:
-				red_dot.visible = true
 				
 	else:
 		is_me = false
