@@ -26,6 +26,8 @@ The server operates as an authoritative source of truth, handling all game logic
 * **Client–Server Networking**
   Real-time communication between client and server with synchronized game state management.
 
+## Server: [FCBTruong/tressette_server](https://github.com/FCBTruong/tressette_server)
+
 You can play the game at: [https://tressette.clareentertainment.com/](https://tressette.clareentertainment.com/)
 or download it from Google Play and the App Store (search **Tressette Royal Online**).
 
@@ -40,5 +42,3 @@ or download it from Google Play and the App Store (search **Tressette Royal Onli
 Here are some screenshots:
 ![Screenshot 1](docs/assets/game_screen1.png)
 ![Screenshot 2](docs/assets/game_screen2.png)
-
-Server: [FCBTruong/tressette_server](https://github.com/FCBTruong/tressette_server)
