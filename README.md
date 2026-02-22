@@ -29,8 +29,8 @@ The server operates as an authoritative source of truth, handling all game logic
 You can play the game at: [https://tressette.clareentertainment.com/](https://tressette.clareentertainment.com/)
 or download it from Google Play and the App Store (search **Tressette Royal Online**).
 
-<video src="docs/assets/video.mp4" autoplay muted loop playsinline width="100%"></video>
 
+https://github.com/user-attachments/assets/88ef0b51-caa8-4605-b02b-749d10d66500
 <p align="center">
   <a href="https://youtu.be/zKZ15l_08L4" target="_blank">
     <img src="https://img.shields.io/badge/Watch%20Full%20Video-YouTube-red?style=for-the-badge&logo=youtube" />
