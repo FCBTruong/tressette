@@ -1,0 +1,142 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmxunk8bt3au4"]
+
+[ext_resource type="Script" path="res://scripts/lobby/ask_for_support_gui.gd" id="1_ovugs"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="2_6qgjt"]
+[ext_resource type="Texture2D" uid="uid://cne3uht787npy" path="res://assets/images/dialog/bg_2.png" id="2_uf88j"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="3_auhun"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_guk07"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_uiixc"]
+[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="7_3yhrw"]
+
+[node name="AskForSupportGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovugs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.682353)
+
+[node name="MainPn" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -365.5
+offset_top = -251.5
+offset_right = 365.5
+offset_bottom = 251.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uf88j")
+
+[node name="OkBtn" type="Button" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -103.5
+offset_right = 60.0
+offset_bottom = -43.5
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_auhun")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/OkBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6qgjt")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MainPn/OkBtn/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -15.5
+offset_right = 20.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.662745)
+theme_override_fonts/font = ExtResource("3_guk07")
+theme_override_font_sizes/font_size = 30
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="MainPn"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 675.0
+offset_top = 18.5
+offset_right = 715.0
+offset_bottom = 58.5
+flat = true
+script = ExtResource("3_auhun")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/CloseBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_uiixc")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="MainPn"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 86.5
+offset_right = 669.0
+offset_bottom = 136.5
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_guk07")
+theme_override_font_sizes/font_size = 29
+text = "TEXT_ASK_USER_PAY_HEAD"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="MainPn"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 178.5
+offset_right = 669.0
+offset_bottom = 478.5
+theme_override_colors/font_color = Color(0.176471, 0.105882, 0.0588235, 1)
+theme_override_fonts/font = ExtResource("7_3yhrw")
+theme_override_font_sizes/font_size = 28
+text = "TEXT_ASK_USER_PAY"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="MainPn/OkBtn" to="." method="_click_ok"]
+[connection signal="pressed" from="MainPn/CloseBtn" to="." method="_click_ok"]

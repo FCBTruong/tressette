@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn3qxwfq53i4f"]
-
-[ext_resource type="PackedScene" uid="uid://caewflltiu630" path="res://effects/2d_trail/preview/boid/boid_2d.tscn" id="2_4jnqk"]
-
-[node name="TrailNode" type="Node2D"]
-
-[node name="Boid2D" parent="." instance=ExtResource("2_4jnqk")]

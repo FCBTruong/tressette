@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://clg804j234apk"]
+
+[ext_resource type="Shader" path="res://effects/2d_trail/preview/material/light_radar.gdshader" id="1_vhgrp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vg355"]
+shader = ExtResource("1_vhgrp")
+shader_parameter/shine_num = 8.0
+shader_parameter/rotation_speed = 10.0
+shader_parameter/light_magnitude = 2.0
+shader_parameter/filter_distence = 1.0
+shader_parameter/filter_magnitude = 1.0
+shader_parameter/filter_minv = 0.75
+shader_parameter/cut_inner_radius = 0.1
+shader_parameter/color = Color(1, 0.897995, 0.687431, 1)
+shader_parameter/NOISE_speed = Vector2(0, 0)
+shader_parameter/NOISE_magnitude = 0.0
+
+[node name="EffectLightCard2" type="ColorRect"]
+material = SubResource("ShaderMaterial_vg355")
+offset_left = 55.0
+offset_top = -36.0
+offset_right = 555.0
+offset_bottom = 464.0
+mouse_filter = 2

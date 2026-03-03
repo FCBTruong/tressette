@@ -26,9 +26,6 @@ The server operates as an authoritative source of truth, handling all game logic
 * **Client–Server Networking**
   Real-time communication between client and server with synchronized game state management.
 
-## Server: 
-[FCBTruong/tressette_server](https://github.com/FCBTruong/tressette_server)
-
 ---
 ## Demo
 You can play the game at: [https://tressette.clareentertainment.com/](https://tressette.clareentertainment.com/)

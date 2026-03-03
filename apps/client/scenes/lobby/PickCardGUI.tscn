@@ -1,0 +1,197 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6hy8dh2s4uxv"]
+
+[ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="1_6oxsx"]
+[ext_resource type="Script" path="res://scripts/lobby/pick_card_gui.gd" id="1_lc57h"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="1_smo0x"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_cewnw"]
+[ext_resource type="Texture2D" uid="uid://0ohtbsqbkssg" path="res://assets/images/card_tressette/modern/card_0.png" id="3_o26po"]
+[ext_resource type="Texture2D" uid="uid://t4qbllnxmlnt" path="res://assets/images/card_tressette/classic/0.png" id="4_bii5o"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="5_vnrty"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfslb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.483838, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PickCardGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lc57h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.764706)
+
+[node name="MainPn" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6oxsx")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MainPn"]
+self_modulate = Color(0.988783, 0.718606, 0.53666, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.0
+offset_top = 30.0
+offset_right = 152.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_smo0x")
+theme_override_font_sizes/font_size = 30
+text = "CHOOSE_YOUR_CARD_STYLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -93.0
+offset_right = 115.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ClassicCardBtn" type="Button" parent="MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(105, 150)
+layout_mode = 2
+flat = true
+script = ExtResource("2_cewnw")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/ClassicCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bii5o")
+expand_mode = 1
+
+[node name="CheckIcon" type="Panel" parent="MainPn/HBoxContainer/ClassicCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dfslb")
+
+[node name="ModernCardBtn" type="Button" parent="MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(105, 150)
+layout_mode = 2
+flat = true
+script = ExtResource("2_cewnw")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/ModernCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_o26po")
+expand_mode = 1
+
+[node name="CheckIcon" type="Panel" parent="MainPn/HBoxContainer/ModernCardBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dfslb")
+
+[node name="OkBtn" type="Button" parent="MainPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -94.0
+offset_right = 75.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_cewnw")
+
+[node name="TextureRect" type="TextureRect" parent="MainPn/OkBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vnrty")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MainPn/OkBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_smo0x")
+theme_override_font_sizes/font_size = 35
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MainPn/HBoxContainer/ClassicCardBtn" to="." method="_click_classic"]
+[connection signal="pressed" from="MainPn/HBoxContainer/ModernCardBtn" to="." method="_click_modern"]
+[connection signal="pressed" from="MainPn/OkBtn" to="." method="_click_ok"]

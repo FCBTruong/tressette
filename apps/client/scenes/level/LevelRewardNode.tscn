@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://brk42m72tm6bc"]
+
+[ext_resource type="Texture2D" uid="uid://b72flv7vdmagc" path="res://assets/images/card_tressette/card_back_04.png" id="1_vwnq3"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_ecjc8"]
+
+[node name="LevelRewardNode" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="RewardImg" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_vwnq3")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="RewardLb" type="Label" parent="."]
+modulate = Color(0.934474, 0.734086, 0.33818, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ecjc8")
+theme_override_font_sizes/font_size = 20
+text = "7 Days"

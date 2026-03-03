@@ -1,0 +1,182 @@
+[gd_scene load_steps=9 format=3 uid="uid://hxhcl2lvd7qj"]
+
+[ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="1_t8h7q"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_gx2ns"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_abeha"]
+[ext_resource type="Script" path="res://addons/AdmobPlugin/Admob.gd" id="4_ttrxn"]
+[ext_resource type="Script" path="res://scripts/base/admob_mgr.gd" id="5_o620n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7gor"]
+bg_color = Color(0, 0, 0, 0.569)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twyde"]
+bg_color = Color(0.455874, 0.25342, 0.25342, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8dux"]
+bg_color = Color(0.093089, 0.856405, 0.241367, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="InitScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t8h7q")
+expand_mode = 1
+
+[node name="DownloadPn" type="Panel" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b7gor")
+
+[node name="DownloadPn" type="Control" parent="TextureRect/DownloadPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="TextureRect/DownloadPn/DownloadPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 27.0
+offset_right = 150.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_twyde")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a8dux")
+value = 30.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="TextureRect/DownloadPn/DownloadPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -44.0
+offset_right = 71.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_gx2ns")
+theme_override_font_sizes/font_size = 30
+text = "UPDATING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoInternet" type="Panel" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TextureRect/NoInternet"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "INTERNET_ISSUE"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.0
+offset_top = -63.0
+offset_right = 40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_abeha")
+theme_override_font_sizes/font_size = 23
+text = "Loading ..."
+
+[node name="Admob" type="Node" parent="."]
+script = ExtResource("4_ttrxn")
+is_real = true
+banner_position = 1
+debug_application_id = "ca-app-pub-3119270508535076~1753264471"
+debug_banner_id = "ca-app-pub-3940256099942544/9214589741"
+debug_interstitial_id = "ca-app-pub-3940256099942544/1033173712"
+debug_rewarded_id = "ca-app-pub-3940256099942544/5224354917"
+debug_rewarded_interstitial_id = "ca-app-pub-3940256099942544/5354046379"
+real_and_banner_id = "ca-app-pub-3119270508535076/8379216729"
+real_and_interstitial_id = "ca-app-pub-3119270508535076/6632489397"
+real_and_rewarded_id = "ca-app-pub-3119270508535076/7448444280"
+real_and_rewarded_interstitial_id = "ca-app-pub-3119270508535076/5319407722"
+real_ios_banner_id = "ca-app-pub-3119270508535076/6658240249"
+real_ios_interstitial_id = "ca-app-pub-3119270508535076/5807526725"
+real_ios_rewarded_id = "ca-app-pub-3119270508535076/7805136116"
+real_ios_rewarded_interstitial_id = "ca-app-pub-3119270508535076/3619512930"
+
+[node name="AdmobMgr" type="Node2D" parent="."]
+script = ExtResource("5_o620n")
+
+[connection signal="initialization_completed" from="Admob" to="AdmobMgr" method="_on_admob_initialization_completed"]
+[connection signal="rewarded_ad_user_earned_reward" from="Admob" to="AdmobMgr" method="_on_admob_rewarded_ad_user_earned_reward"]
+[connection signal="rewarded_interstitial_ad_user_earned_reward" from="Admob" to="AdmobMgr" method="_on_admob_rewarded_interstitial_ad_user_earned_reward"]

@@ -1,0 +1,782 @@
+[gd_scene load_steps=37 format=3 uid="uid://bajq0x8ksakrb"]
+
+[ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
+[ext_resource type="Texture2D" uid="uid://ceyy7y3k4olhi" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
+[ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_228md"]
+[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_b03ik"]
+[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_umvqn"]
+[ext_resource type="Texture2D" uid="uid://dua5jqujlm0kh" path="res://assets/images/lobby/user_info_gui/email.png" id="6_5upxd"]
+[ext_resource type="Texture2D" uid="uid://cr5rxwy32nhwn" path="res://assets/images/lobby/copying_icon.png" id="7_sq5rc"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="7_vm0bd"]
+[ext_resource type="Texture2D" uid="uid://dgiytxaol142g" path="res://assets/images/lobby/user_info_gui/verified_icon.png" id="7_y188f"]
+[ext_resource type="Texture2D" uid="uid://c5xihlabuct6y" path="res://assets/images/lobby/user_info_gui/level_icon.png" id="8_5e8xp"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="8_ngl8q"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
+[ext_resource type="Texture2D" uid="uid://c1qpfhy0ay3r1" path="res://assets/images/lobby/edit_icon.png" id="13_f07n6"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="14_fxme8"]
+[ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="14_gxqle"]
+[ext_resource type="Texture2D" uid="uid://drmwf5psvwa1h" path="res://assets/images/lobby/user_info_gui/vip_icon.png" id="15_s3gax"]
+[ext_resource type="Texture2D" uid="uid://bsk36sewe4nhv" path="res://assets/images/lobby/add_friend_icon_small.png" id="16_ao60i"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="17_65462"]
+[ext_resource type="Texture2D" uid="uid://bl5ci50kep8hk" path="res://assets/images/lobby/user_info_gui/friend_ok_icon.png" id="17_lnp64"]
+[ext_resource type="Texture2D" uid="uid://beksnb501alnd" path="res://assets/images/lobby/friend_reject_icon.png" id="18_jxtpp"]
+[ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="22_65kq0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yaus5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qp3k3"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh3o1"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v17p2"]
+bg_color = Color(0.0383711, 0.0369761, 0.0369761, 0.564706)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0uac"]
+bg_color = Color(0.266575, 0.266575, 0.266575, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y27un"]
+bg_color = Color(0, 0.528993, 0.00939041, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgqk0"]
+bg_color = Color(0.51525, 0.76071, 0.910714, 0.085)
+border_blend = true
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dwvhj"]
+shader = ExtResource("14_gxqle")
+shader_parameter/size_effect = 0.3
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/delay = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fk0a"]
+bg_color = Color(0, 0, 0, 0.404)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8i00h"]
+bg_color = Color(0.676505, 0.422111, 0.2337, 0.365)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2epfd"]
+bg_color = Color(0, 0.391381, 0.0161197, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qev7t"]
+bg_color = Color(0.102752, 0.57807, 0.195591, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cin67"]
+bg_color = Color(0.635773, 0.15064, 0.15064, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[node name="UserInfoGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_pd1jq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_yaus5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.615)
+
+[node name="MainPn" type="Control" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -220.0
+offset_right = 350.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(306, 189)
+
+[node name="Panel2" type="Panel" parent="Control/MainPn"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qp3k3")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/Panel2"]
+self_modulate = Color(0.591647, 0.591647, 0.591647, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mmkv0")
+expand_mode = 1
+
+[node name="HeadPn" type="Panel" parent="Control/MainPn"]
+self_modulate = Color(0.299735, 0.209004, 0.209004, 1)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qh3o1")
+
+[node name="CloseBtn" type="Button" parent="Control/MainPn/HeadPn"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -24.0
+offset_right = 56.0
+offset_bottom = 26.0
+grow_vertical = 2
+flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HeadPn/CloseBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_228md")
+expand_mode = 1
+
+[node name="GoldBg" type="Panel" parent="Control/MainPn/HeadPn"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -17.0
+offset_right = -10.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v17p2")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HeadPn/GoldBg"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -2.0
+offset_right = 24.0
+offset_bottom = 38.0
+texture = ExtResource("7_vm0bd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldLb" type="Label" parent="Control/MainPn/HeadPn/GoldBg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -20.5
+offset_right = 74.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "1.000.000
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UserNameLb" type="Label" parent="Control/MainPn"]
+modulate = Color(1, 1, 1, 0.928)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -115.0
+offset_right = 44.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.939613, 0.779502, 1)
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 28
+text = "Truong"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VerifiedIcon" type="TextureRect" parent="Control/MainPn/UserNameLb"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 42.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_y188f")
+expand_mode = 1
+
+[node name="ExpBar" type="ProgressBar" parent="Control/MainPn"]
+custom_minimum_size = Vector2(120, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -13.0
+offset_right = 75.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_g0uac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y27un")
+value = 50.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn/ExpBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -30.0
+offset_right = -10.0
+offset_bottom = 30.0
+grow_vertical = 2
+alignment = 2
+
+[node name="LevelLbHead" type="Label" parent="Control/MainPn/ExpBar/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_b03ik")
+text = "LEVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Control/MainPn/ExpBar/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/ExpBar/HBoxContainer/Control"]
+self_modulate = Color(1, 0.630315, 0.210633, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -35.0
+offset_right = 30.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_5e8xp")
+expand_mode = 1
+
+[node name="LevelLb" type="Label" parent="Control/MainPn/ExpBar/HBoxContainer/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.0
+offset_right = 14.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.683294, 0.316904, 0.141678, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 28
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExpLb" type="Label" parent="Control/MainPn/ExpBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = -17.0
+offset_right = 183.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 20
+text = "100/200"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -75.0
+offset_right = 82.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="UidLb2" type="Label" parent="Control/MainPn/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.891)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 18
+text = "UID:"
+
+[node name="UidLb" type="Label" parent="Control/MainPn/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.891)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 18
+text = "100000"
+
+[node name="CopyBtn" type="Button" parent="Control/MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HBoxContainer/CopyBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_sq5rc")
+expand_mode = 1
+
+[node name="PlayStatistic" type="Panel" parent="Control/MainPn"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sgqk0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MainPn/PlayStatistic"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -89.0
+offset_top = 23.0
+offset_right = 90.0
+offset_bottom = 83.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.7)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "TOTAL_MATCH"
+
+[node name="GameCountLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.7)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(1, 1, 1, 0.7)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "WIN_RATE"
+
+[node name="WinRateLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer2"]
+self_modulate = Color(1, 1, 1, 0.7)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "50%"
+
+[node name="HBoxPremium" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.994193, 1, 0.536171, 1)
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "PREMIUM"
+
+[node name="PremiumLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium"]
+self_modulate = Color(0.915, 1, 0.885, 0.98)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 22
+text = "10 days"
+
+[node name="TextureRect2" type="Control" parent="Control/MainPn"]
+self_modulate = Color(0.0156505, 0.030661, 0.394776, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -15.0
+offset_right = 50.0
+offset_bottom = 85.0
+grow_horizontal = 2
+
+[node name="AvatarNode" type="TextureRect" parent="Control/MainPn/TextureRect2"]
+self_modulate = Color(0.381198, 0.381198, 0.381198, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_aqih6")
+expand_mode = 1
+
+[node name="AvatarImg" type="TextureRect" parent="Control/MainPn/TextureRect2/AvatarNode"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_umvqn")
+expand_mode = 1
+script = ExtResource("11_tjqgq")
+is_me = false
+
+[node name="InfoBtn" type="Button" parent="Control/MainPn/TextureRect2/AvatarNode/AvatarImg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="AvatarFrame" parent="Control/MainPn/TextureRect2" instance=ExtResource("14_fxme8")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VipIcon" type="TextureRect" parent="Control/MainPn/TextureRect2"]
+material = SubResource("ShaderMaterial_dwvhj")
+layout_mode = 0
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 40.0
+offset_bottom = 38.0
+texture = ExtResource("15_s3gax")
+expand_mode = 1
+
+[node name="AvtEditBtn" type="Button" parent="Control/MainPn/TextureRect2"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 30.0
+offset_right = 143.0
+offset_bottom = 60.0
+flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/TextureRect2/AvtEditBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_f07n6")
+expand_mode = 1
+
+[node name="RedDotAvt" type="TextureRect" parent="Control/MainPn/TextureRect2/AvtEditBtn"]
+self_modulate = Color(0.95484, 0, 0, 1)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 12.0
+texture = ExtResource("17_65462")
+expand_mode = 1
+
+[node name="ButtonPn" type="HBoxContainer" parent="Control/MainPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -56.0
+offset_right = 58.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="MailBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+layout_mode = 2
+size_flags_vertical = 8
+icon = ExtResource("6_5upxd")
+flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="RequestFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_icons/icon = ExtResource("16_ao60i")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4fk0a")
+text = "ADD_FRIEND"
+script = ExtResource("11_eoxhy")
+
+[node name="FriendRequested" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_icons/icon = ExtResource("16_ao60i")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8i00h")
+text = "REQUESTED"
+
+[node name="FriendStatus" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_icons/icon = ExtResource("17_lnp64")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2epfd")
+text = "FRIENDS"
+
+[node name="AcceptFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_b03ik")
+theme_override_icons/icon = ExtResource("16_ao60i")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qev7t")
+text = "ACCEPT_FRIEND"
+script = ExtResource("11_eoxhy")
+
+[node name="RejectFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_b03ik")
+theme_override_icons/icon = ExtResource("18_jxtpp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cin67")
+script = ExtResource("11_eoxhy")
+
+[node name="LinkAccBtn" type="Button" parent="Control/MainPn"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -61.0
+offset_right = 60.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+flat = true
+script = ExtResource("11_eoxhy")
+
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/LinkAccBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_65kq0")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/MainPn/LinkAccBtn/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -13.0
+offset_right = 39.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_ngl8q")
+theme_override_font_sizes/font_size = 20
+text = "VERIFY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/MainPn/HeadPn/CloseBtn" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="Control/MainPn/HBoxContainer/CopyBtn" to="." method="_copy_uid"]
+[connection signal="pressed" from="Control/MainPn/TextureRect2/AvtEditBtn" to="." method="_open_pick_avatar"]
+[connection signal="pressed" from="Control/MainPn/ButtonPn/RequestFriendBtn" to="." method="_send_request_friend"]
+[connection signal="pressed" from="Control/MainPn/ButtonPn/AcceptFriendBtn" to="." method="_click_quick_accept_friend"]
+[connection signal="pressed" from="Control/MainPn/ButtonPn/RejectFriendBtn" to="." method="_click_quick_reject_friend"]
+[connection signal="pressed" from="Control/MainPn/LinkAccBtn" to="." method="_verify_account"]

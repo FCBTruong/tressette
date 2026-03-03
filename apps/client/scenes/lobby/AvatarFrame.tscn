@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmhvk6fq106oj"]
+
+[ext_resource type="Script" path="res://scripts/modules/inventory/avatar_frame.gd" id="1_kjs6s"]
+[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="1_xx5gl"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="2_67j1w"]
+[ext_resource type="Texture2D" uid="uid://l1mous717mam" path="res://assets/images/items/frames/frame_vip.png" id="3_ehqo8"]
+[ext_resource type="Texture2D" uid="uid://cwuxp4ucp2g41" path="res://assets/images/items/frames/frame_victory.png" id="5_c3nyp"]
+[ext_resource type="Texture2D" uid="uid://bvuciak7xffia" path="res://assets/images/items/frames/frame_01.png" id="6_871oq"]
+[ext_resource type="Texture2D" uid="uid://bnv7ouuu2ylg5" path="res://assets/images/items/frames/frame_lv50.png" id="6_ams47"]
+[ext_resource type="Texture2D" uid="uid://d22dx8kosjitj" path="res://assets/images/items/frames/frame_lv100.png" id="7_g4b3s"]
+[ext_resource type="Texture2D" uid="uid://b10mdtiyku8gc" path="res://assets/images/items/frames/frame_gold.png" id="9_ms153"]
+
+[node name="AvatarFrame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_kjs6s")
+
+[node name="test" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 49.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_67j1w")
+expand_mode = 1
+
+[node name="FrameVip" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_ehqo8")
+expand_mode = 1
+
+[node name="Frame1" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 65.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_871oq")
+expand_mode = 1
+
+[node name="Frame0" type="TextureRect" parent="."]
+self_modulate = Color(0.139701, 0.133553, 0.29634, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_xx5gl")
+expand_mode = 1
+
+[node name="FrameLv50" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -71.0
+offset_right = 72.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_ams47")
+expand_mode = 1
+
+[node name="FrameLv100" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -73.0
+offset_right = 77.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_g4b3s")
+expand_mode = 1
+
+[node name="FrameVictory" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -64.0
+offset_right = 70.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_c3nyp")
+expand_mode = 1
+
+[node name="FrameGold" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -76.0
+offset_right = 75.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_ms153")
+expand_mode = 1

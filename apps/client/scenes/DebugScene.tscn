@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://lho5rln1ahfk"]
+
+[ext_resource type="Script" path="res://scenes/debug_scene.gd" id="1_2bwb0"]
+[ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="2_g3mxf"]
+
+[node name="DebugScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2bwb0")
+
+[node name="Test" type="Sprite2D" parent="."]
+position = Vector2(152, 286)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_g3mxf")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 490.0
+offset_right = 189.0
+offset_bottom = 550.0
+text = "Test"
+
+[connection signal="pressed" from="Button" to="." method="test_run"]

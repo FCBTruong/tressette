@@ -1,0 +1,207 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwixv73ro3krf"]
+
+[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="1_68n2p"]
+[ext_resource type="Script" path="res://scripts/modules/friend/friend_node.gd" id="1_ii6gu"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="3_2r7jm"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_svbc0"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="6_kam2u"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="6_mmqap"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="7_v67t5"]
+[ext_resource type="Texture2D" uid="uid://bm7mhnrkhp63u" path="res://assets/images/lobby/friend_remove_btn.png" id="9_eygm3"]
+[ext_resource type="Texture2D" uid="uid://beowo6o3w764j" path="res://assets/images/lobby/lira_icon.png" id="9_xujkd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs4mr"]
+bg_color = Color(0.164, 0.164, 0.164, 0.52)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="FriendNode" type="VBoxContainer"]
+offset_right = 800.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_ii6gu")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xs4mr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Avatar" type="Control" parent="Panel/HBoxContainer"]
+clip_children = 1
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.73
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/HBoxContainer/Avatar"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2r7jm")
+expand_mode = 1
+
+[node name="AvatarImg" type="TextureRect" parent="Panel/HBoxContainer/Avatar/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_68n2p")
+expand_mode = 1
+script = ExtResource("4_svbc0")
+is_me = false
+
+[node name="InfoBtn" type="Button" parent="Panel/HBoxContainer/Avatar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("6_kam2u")
+
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Avatar" instance=ExtResource("6_mmqap")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.85, 0.85)
+
+[node name="Control2" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLb" type="Label" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.868)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_v67t5")
+theme_override_font_sizes/font_size = 25
+text = "Nguyen Huy Truong"
+
+[node name="Control" type="Control" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+
+[node name="OnlineIcon" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/Control"]
+modulate = Color(0.282975, 1, 0.462231, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2r7jm")
+expand_mode = 1
+
+[node name="GoldLb" type="Label" parent="Panel/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.868)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("7_v67t5")
+theme_override_font_sizes/font_size = 20
+text = "100.000.0"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/GoldLb"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -10.5
+offset_right = 21.0
+offset_bottom = 9.5
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("9_xujkd")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="LastOnlineLb" type="Label" parent="Panel/HBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.792157)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Online 5 minutues ago"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RemoveBtn" type="Button" parent="Panel/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("6_kam2u")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/HBoxContainer/RemoveBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_eygm3")
+expand_mode = 1
+
+[node name="Control3" type="Control" parent="Panel/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/HBoxContainer/Avatar/InfoBtn" to="." method="_click_info"]
+[connection signal="pressed" from="Panel/HBoxContainer/HBoxContainer/RemoveBtn" to="." method="_remove_friend"]

@@ -1,0 +1,262 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbba05disgqcx"]
+
+[ext_resource type="Script" path="res://scripts/lobby/account_delete_gui.gd" id="1_8yuwl"]
+[ext_resource type="Texture2D" uid="uid://b76ob8h0thaw8" path="res://assets/images/dialog/bg.png" id="2_fjmbb"]
+[ext_resource type="FontFile" uid="uid://cylpm0qnoh3vr" path="res://assets/fonts/signika/Signika-Medium.ttf" id="2_n25y3"]
+[ext_resource type="Texture2D" uid="uid://dp0kl6fp7nnws" path="res://assets/images/close-button.png" id="4_57ro7"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_4uoig"]
+[ext_resource type="FontFile" uid="uid://dec5ome6qoy4" path="res://assets/fonts/signika/Signika-Regular.ttf" id="6_sup7k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaxie"]
+bg_color = Color(0.768152, 0.363478, 0.16685, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svmta"]
+bg_color = Color(0.900531, 0.195604, 0.276887, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="AccountDeletion" type="Node2D"]
+script = ExtResource("1_8yuwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainPn" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.418536, 0.33726, 0.338263, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fjmbb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn"]
+self_modulate = Color(1, 0.489467, 0.36847, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_top = 26.0
+offset_right = 143.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_n25y3")
+theme_override_font_sizes/font_size = 30
+text = "ACCOUNT_DELETION"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/MainPn"]
+self_modulate = Color(1, 1, 1, 0.852)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -342.0
+offset_top = -154.0
+offset_right = 358.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_n25y3")
+theme_override_font_sizes/font_size = 22
+text = "ASK_SURE_DELETE"
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainPn"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 178.0
+offset_right = 563.0
+offset_bottom = 270.0
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.852)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n25y3")
+theme_override_font_sizes/font_size = 22
+text = "DELETE_NOTE_1"
+
+[node name="Label3" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.852)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n25y3")
+theme_override_font_sizes/font_size = 22
+text = "DELETE_NOTE_2"
+
+[node name="Label2" type="Label" parent="CanvasLayer/MainPn/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.852)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n25y3")
+theme_override_font_sizes/font_size = 22
+text = "DELETE_NOTE_3"
+
+[node name="CheckConfirm" type="CheckBox" parent="CanvasLayer/MainPn"]
+layout_mode = 2
+offset_left = 70.0
+offset_top = 322.0
+offset_right = 100.0
+offset_bottom = 352.0
+script = ExtResource("5_4uoig")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MainPn"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 325.0
+offset_right = 751.0
+offset_bottom = 385.0
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer2"]
+self_modulate = Color(1, 1, 1, 0.852)
+custom_minimum_size = Vector2(650, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_n25y3")
+theme_override_font_sizes/font_size = 20
+text = "CONFIRM_DELETE"
+autowrap_mode = 3
+
+[node name="CloseBtn" type="Button" parent="CanvasLayer/MainPn"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 736.0
+offset_top = 9.0
+offset_right = 786.0
+offset_bottom = 59.0
+flat = true
+script = ExtResource("5_4uoig")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainPn/CloseBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_57ro7")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainPn"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -60.0
+offset_right = 150.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="CancelBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+flat = true
+script = ExtResource("5_4uoig")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/HBoxContainer/CancelBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gaxie")
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/CancelBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -11.5
+offset_right = 28.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_sup7k")
+theme_override_font_sizes/font_size = 21
+text = "CANCEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeleteBtn" type="Button" parent="CanvasLayer/MainPn/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+flat = true
+script = ExtResource("5_4uoig")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MainPn/HBoxContainer/DeleteBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_svmta")
+
+[node name="Label" type="Label" parent="CanvasLayer/MainPn/HBoxContainer/DeleteBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -11.5
+offset_right = 28.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_sup7k")
+theme_override_font_sizes/font_size = 21
+text = "DELETE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/MainPn/CloseBtn" to="." method="_on_close"]
+[connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/CancelBtn" to="." method="_on_close"]
+[connection signal="pressed" from="CanvasLayer/MainPn/HBoxContainer/DeleteBtn" to="." method="_delete_account"]

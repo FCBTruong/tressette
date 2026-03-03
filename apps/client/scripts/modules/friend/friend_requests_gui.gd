@@ -1,0 +1,33 @@
+extends Node
+
+@onready var main_pn = find_child('MainPn')
+@onready var list_container = find_child('ListContainer')
+var friend_node_scene = preload("res://scenes/friend/FriendRequestNode.tscn")
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	var tween = create_tween()
+	main_pn.scale = Vector2(0, 0)
+	main_pn.modulate.a = 0.5
+	
+	tween.parallel().tween_property(main_pn, 'scale', Vector2(1, 1), 0.4).set_trans(Tween.TRANS_BACK) \
+		.set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(main_pn, 'modulate:a', 1, 0.4)
+	
+	_update_requests_list()
+	g.v.signal_bus.connect_global('update_friend_requests', Callable(self, '_update_requests_list'))
+
+func _update_requests_list():
+	for c in list_container.get_children():
+		c.queue_free()
+	for f in g.v.friend_mgr.requests:
+		var instance = friend_node_scene.instantiate()
+		list_container.add_child(instance)
+		instance.set_info(f)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_close():
+	self.get_parent().remove_child(self)

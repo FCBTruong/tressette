@@ -1,0 +1,179 @@
+[gd_scene load_steps=11 format=3 uid="uid://bufmkwwcovvdm"]
+
+[ext_resource type="Script" path="res://scripts/modules/friend/friend_request_node.gd" id="1_daw0j"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="1_i6mhq"]
+[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_42fsm"]
+[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_gvyii"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_fqgvw"]
+[ext_resource type="Texture2D" uid="uid://bq3rgtuk3jjpg" path="res://assets/images/lobby/check_icon.png" id="4_tfj5i"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_pu5sr"]
+[ext_resource type="Texture2D" uid="uid://cuodum7wf3mlx" path="res://assets/images/lobby/x_icon.png" id="5_tr680"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="9_bbcr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krlbo"]
+bg_color = Color(0.585175, 0.616421, 0.676505, 0.664)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="FriendRequestNode" type="Panel"]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 84.0
+offset_right = 250.0
+offset_bottom = 164.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_krlbo")
+script = ExtResource("1_daw0j")
+
+[node name="Avatar" type="Control" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -35.0
+offset_right = 77.0
+offset_bottom = 35.0
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Avatar"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_i6mhq")
+expand_mode = 1
+
+[node name="AvatarImg" type="TextureRect" parent="Avatar/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_42fsm")
+expand_mode = 1
+script = ExtResource("4_fqgvw")
+is_me = false
+
+[node name="InfoBtn" type="Button" parent="Avatar/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("5_pu5sr")
+
+[node name="TextureRect" type="TextureRect" parent="Avatar"]
+self_modulate = Color(0.143268, 0.130622, 0.367621, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_gvyii")
+expand_mode = 1
+
+[node name="AcceptBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -25.0
+offset_right = -78.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+flat = true
+script = ExtResource("5_pu5sr")
+
+[node name="TextureRect" type="TextureRect" parent="AcceptBtn"]
+modulate = Color(0.121853, 0.822461, 0.122654, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tfj5i")
+expand_mode = 1
+
+[node name="RejectBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -25.0
+offset_right = -7.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+flat = true
+script = ExtResource("5_pu5sr")
+
+[node name="TextureRect" type="TextureRect" parent="RejectBtn"]
+modulate = Color(0.901, 0.157, 0.157, 0.882)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tr680")
+expand_mode = 1
+
+[node name="NameLb" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 90.0
+offset_top = -16.0
+offset_right = 302.0
+offset_bottom = 16.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_bbcr6")
+theme_override_font_sizes/font_size = 25
+text = "Nguyen Huy Truong"
+vertical_alignment = 1
+
+[connection signal="pressed" from="Avatar/TextureRect2/InfoBtn" to="." method="_click_view_info"]
+[connection signal="pressed" from="AcceptBtn" to="." method="_on_accept"]
+[connection signal="pressed" from="RejectBtn" to="." method="_on_reject"]

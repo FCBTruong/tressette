@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://gd1jod3mrcan"]
+
+[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="1_ixgkt"]
+[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="2_trhkx"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="3_gprs8"]
+
+[node name="AvatarCircle" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.520366, 0.520366, 0.520366, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ixgkt")
+expand_mode = 1
+
+[node name="AvatarImg" type="TextureRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_trhkx")
+expand_mode = 1
+script = ExtResource("3_gprs8")
+is_me = false

@@ -1,0 +1,468 @@
+# Configure the logger
+
+import asyncio
+from enum import Enum
+import logging
+import random
+
+from src.base.logs.logs_mgr import write_log
+from src.base.network.packets import packet_pb2
+from src.config.settings import settings
+from src.game.game_vars import game_vars
+from src.game.cmds import CMDs
+from src.game.match import TRESSETTE_MODE, LeaveMatchErrors, Match, MatchState, PLAYER_SOLO_MODE, PLAYER_DUO_MODE, TressetteMatch
+from src.game.users_info_mgr import users_info_mgr
+from src.game.tressette_config import config as tress_config
+from src.game.modules.sette_mezzo.sette_mezzo_match import SetteMezzoMatch
+
+
+logging.basicConfig(
+    level=logging.INFO,  # Set logging level
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",  # Log format
+)
+logger = logging.getLogger("game_match")  # Name your logger
+
+class JoinMatchErrors(Enum):
+    SUCCESS = 0
+    MATCH_STARTED = 1
+    FULL_ROOM = 2
+    NOT_ENOUGH_GOLD = 3
+    ALREADY_IN_MATCH = 4
+    MATCH_NOT_FOUND = 5
+
+class MatchManager:
+    def __init__(self):
+        self.start_match_id = 1000
+        self.matches: dict[int, Match] = {}
+        self.user_matchids: dict[int, int] = {}
+        self.user_views: dict[int, int] = {}  # user_id -> match_id
+        self._task = None
+
+    def start(self):
+        """Starts the match manager loop."""
+        if self._task is None or self._task.done():
+            self._task = asyncio.create_task(self._loop())
+
+        # test
+        if settings.ENABLE_CHEAT:
+            logger.info("Cheat mode enabled, creating test matches.")
+            asyncio.create_task(self.test_create_match())
+    async def test_create_match(self):
+        # return
+        for _ in range(5):
+            match = await self._create_match(0, PLAYER_SOLO_MODE, _ % 2 == 0, 11)
+            await match.cheat_add_bot()
+            await match.cheat_add_bot()
+
+    def stop(self):
+        """Stops the match manager loop."""
+        if self._task:
+            self._task.cancel()
+
+    async def _loop(self):
+        """The main loop to manage matches."""
+        try:
+            while True:
+                for match in list(self.matches.values()):  # Use list() to avoid mutation issues.
+                    asyncio.create_task(self._run_match(match))  # Fire and forget
+                
+                await asyncio.sleep(0.5)
+        except asyncio.CancelledError:
+            logger.info("MatchManager loop has been stopped.")
+        except Exception as e:
+            logger.error(f"Unexpected error in MatchManager loop: {e}")
+
+    async def _run_match(self, match: Match):
+        """Run a single match loop and handle errors."""
+        try:
+            await match.loop()
+        except Exception as e:
+            logger.error(f"Error in match loop for match {match.match_id}: {e}")
+
+    async def _create_match(self, bet, player_mode = PLAYER_SOLO_MODE, is_private = False, point_mode = 11) -> Match:
+        match_id = self.start_match_id
+        logger.info(f"Creating match {match_id}")
+        match = TressetteMatch(match_id, bet, player_mode=player_mode, point_mode=point_mode)
+        match.set_public(not is_private)
+        self.matches[match_id] = match
+        self.start_match_id += 1
+        return match
+
+    async def create_sette_mezzo_match(self) -> Match:
+        match_id = self.start_match_id
+        logger.info(f"Creating match {match_id}")
+        match = SetteMezzoMatch(match_id)
+        self.matches[match_id] = match
+        self.start_match_id += 1
+        return match
+
+    async def received_create_table(self, uid, payload):
+        create_table_pkg = packet_pb2.CreateTable()
+        create_table_pkg.ParseFromString(payload)
+        player_mode = create_table_pkg.player_mode
+        point_mode = create_table_pkg.point_mode
+        is_private = create_table_pkg.is_private
+        if point_mode not in [11, 21]:
+            print(f"Invalid point mode {point_mode}")
+            return
+        
+        if player_mode != PLAYER_DUO_MODE and player_mode != PLAYER_SOLO_MODE:
+            print(f"Invalid player mode {player_mode}")
+            return
+        if player_mode == PLAYER_DUO_MODE:
+            # point need to be 21
+            point_mode = 21
+
+        # check if user has enough gold to create table this bet
+        user_info = await users_info_mgr.get_user_info(uid)
+        
+        if await self.is_user_in_match(uid):
+            return
+        
+        fee = tress_config.get("fee_mode_no_bet")
+        if user_info.gold < fee:
+            print(f"User {uid} tried to create a match with insufficient gold")
+            return
+        
+        # sub fee
+        user_info.gold -= fee
+        await user_info.commit_to_database('gold')
+        await user_info.send_update_money()
+        
+        match = await self._create_match(0, player_mode, is_private, point_mode)
+        await self.user_join_match(match, uid)
+
+    async def get_match(self, match_id):
+        return self.matches.get(match_id)
+
+    async def update_matches(self):
+        for match_id, match in self.matches.items():
+            match.update_state()
+
+    async def get_match_of_user(self, user_id) -> Match:
+        match_id = self.user_matchids.get(user_id)
+        if match_id:
+            return self.matches.get(match_id)
+        return None
+    
+    async def get_match_of_viewer(self, user_id) -> Match:
+        match_id = self.user_views.get(user_id)
+        if match_id:
+            return self.matches.get(match_id)
+        return None
+
+    def destroy_match(self, match_id):
+        print(f"End match {match_id}")
+        match = self.matches.get(match_id)
+        if match:
+            for player in match.players:
+                if player.uid in self.user_matchids:
+                    self.user_matchids.pop(player.uid)
+            self.matches.pop(match_id)
+            del match
+
+    async def is_user_in_match(self, user_id):
+        return user_id in self.user_matchids
+    
+    async def find_a_suitable_match_quickplay(self) -> Match:
+        best_match = None
+        should_choose_duo = random.choice([True, False]) # 50 %
+        
+        for match_id, match in self.matches.items():
+            # find terssette only
+            if match.game_mode != TRESSETTE_MODE:
+                continue
+            if not match.is_public:
+                continue
+    
+            if match.bet == 0:
+                # Bet = 0 is for review
+                continue
+
+            if match.player_mode == PLAYER_DUO_MODE and not should_choose_duo:
+                continue
+            if match.state == MatchState.WAITING and not match.check_room_full():
+                best_match = match
+                break
+                        
+        return best_match
+
+    
+    async def user_join_match(self, match: Match, uid: int):
+        # If is viewing a match, stop viewing first
+        if uid in self.user_views:
+            match_id = self.user_views.pop(uid)
+            is_same_match = match_id == match.match_id
+            existing_match = await self.get_match(match_id)
+            if existing_match:
+                await existing_match.user_stop_view(uid, not is_same_match)
+            
+        self.user_matchids[uid] = match.match_id
+        await match.user_join(uid)
+
+    async def handle_register_leave_match(self, uid: int, payload):
+        leave_pkg = packet_pb2.RegisterLeaveGame()
+        leave_pkg.ParseFromString(payload)
+        status = leave_pkg.status
+        
+        if uid in self.user_views:
+            # User is viewing a match, handle stop view
+            match_id = self.user_views.pop(uid)
+            match = await self.get_match(match_id)
+            if match:
+                await match.user_stop_view(uid) # will call back handle_user_stop_view
+            return
+
+        match = await self.get_match_of_user(uid)
+        if not match:
+            return
+        
+        if match.can_quit_game(uid):
+            await self.handle_user_leave_match(uid)
+            return
+        
+        if status == 0:
+            match.register_leave(uid)
+        else:
+            match.deregister_leave(uid)
+
+        await game_vars.get_game_client().send_packet(uid, CMDs.REGISTER_LEAVE_GAME, leave_pkg)
+
+
+    # USER officially leave match
+    async def handle_user_leave_match(self, uid: int, reason = 0) -> LeaveMatchErrors:
+        match_id = self.user_matchids.get(uid)
+
+        if not match_id:
+            return LeaveMatchErrors.NOT_IN_MATCH
+        
+        match = await self.get_match_of_user(uid)
+        if not match.can_quit_game(uid):
+            return LeaveMatchErrors.MATCH_STARTED
+        
+        await match.user_leave(uid, reason)
+        self.user_matchids.pop(uid)
+
+        if not match.check_has_real_players():
+            print('Destroy match', match_id)
+            self.destroy_match(match_id)
+
+        return LeaveMatchErrors.SUCCESS
+            
+    async def user_disconnect(self, uid: int):
+        is_in_match = await self.is_user_in_match(uid)
+        if is_in_match:
+            print(f"User {uid} is in a match, auto leave")
+            match = await self.get_match_of_user(uid)
+            if match.state == MatchState.WAITING:
+                await self.handle_user_leave_match(uid)
+        
+        # check if user is viewing a match
+        if uid in self.user_views:
+            match_id = self.user_views.get(uid)
+            match = await self.get_match(match_id)
+            if match:
+                await match.user_stop_view(uid) # will call back handle_user_stop_view
+    
+    # NOTE: This function should be called from the game match
+    async def handle_user_stop_view(self, uid: int):
+        if uid not in self.user_views:
+            return
+         
+        match_id = self.user_views.pop(uid)
+        match = await self.get_match(match_id)
+        if not match.check_has_real_players():
+            print('Destroy match', match_id)
+            self.destroy_match(match_id)
+            
+
+    async def user_play_card(self, uid: int, payload):
+        match = await self.get_match_of_user(uid)
+        if match:
+            await match.user_play_card(uid, payload)
+
+    async def receive_request_table_list(self, uid):
+        matches = await self._prioritize_matches(self.matches, uid)  
+        # priority table is waiting
+        match_ids = []
+        player_modes = []
+        num_players = []
+        game_modes = []
+        avatars = []
+        uids = []
+        avatar_frames = []
+        is_privates = []
+        print(f"Table list: {len(matches)} matches found")
+
+        for match in matches:
+            if match.game_mode != TRESSETTE_MODE:
+                continue
+            match_ids.append(match.match_id)
+            player_modes.append(match.player_mode)
+            num_players.append(match.get_num_players())
+            game_modes.append(match.game_mode)
+            is_privates.append(match.is_public is False)
+
+            for player in match.players:
+                avatars.append(player.avatar)
+                uids.append(player.uid)
+                avatar_frames.append(player.avatar_frame)
+
+        
+        print(f"Table list: {match_ids}")
+        pkg = packet_pb2.TableList()
+        pkg.table_ids.extend(match_ids)
+        pkg.player_modes.extend(player_modes)
+        pkg.num_players.extend(num_players)
+        pkg.game_modes.extend(game_modes)
+        pkg.avatars.extend(avatars)
+        pkg.player_uids.extend(uids)
+        pkg.avatar_frames.extend(avatar_frames)
+        pkg.is_private.extend(is_privates)
+
+        # pkg = packet_pb2.TableList()
+        # pkg.table_ids.extend([1, 2, 3, 4, 5,6,7])
+        # pkg.bets.extend([100000, 2000000, 300000, 400000, 5000000, 400000, 5000000])
+        # pkg.player_modes.extend([2,2,4,4,2,2,2])
+        # pkg.num_players.extend([1,2,1,2,1,2,2])
+        # pkg.game_modes.extend([1,0,0,1,1,1,1])
+        # pkg.avatars.extend(["1", "2", "3", "4", "5", "6", "7", "8"])
+        # pkg.player_uids.extend([1, 2, -1, -1, 5, 6, 7, 8])
+
+        await game_vars.get_game_client().send_packet(uid, CMDs.TABLE_LIST, pkg)
+
+    async def _prioritize_matches(self, matches: dict[int, Match], uid: int) -> list[Match]:
+        MAX_MATCHES = 20  # Limit of prioritized matches
+   
+        # Separate matches by state
+        waiting_matches = [match for match in matches.values() if match.state == MatchState.WAITING]
+        other_matches = [match for match in matches.values() if match.state != MatchState.WAITING]
+
+        # Combine matches, prioritizing waiting matches
+        prioritized_matches = waiting_matches + other_matches
+
+        # Return the top matches, limited to `MAX_MATCHES`
+        return prioritized_matches[:MAX_MATCHES]
+
+    async def join_match(self, uid, match_id):
+        match = await self.get_match(match_id)
+
+        # check other conditions to join match
+        if not match:
+            return
+        await self.user_join_match(match, uid)
+
+    async def _handle_case_bet_in_review(self, uid):
+        match = await self._create_match(0)
+        
+        print(f"User {uid} join match {match.match_id}")
+        await self.user_join_match(match, uid=uid)
+
+
+    async def _handle_quick_play(self, uid: int):
+        print(f"User {uid} quick play")
+        # STEP 1: CHECK IF USER IS IN A MATCH
+        match = await self.get_match_of_user(uid)
+        if match:
+            print(f"User {uid} is in a match, reconnecting")
+            await match.user_reconnect(uid)
+            return
+    
+        user = await users_info_mgr.get_user_info(uid)
+    
+        # STEP JOIN A MATCH
+        if user.game_count == 0:
+            # for new user, should create new match instead
+            match = await self._create_match(0, PLAYER_SOLO_MODE, False, 21)
+        else:
+            match = await self.find_a_suitable_match_quickplay()
+            if not match:
+                point_mode = random.choice([21])
+                match = await self._create_match(0, PLAYER_SOLO_MODE, False, point_mode)
+        
+        print(f"User {uid} join match {match.match_id}")
+        await self.user_join_match(match, uid=uid)
+
+        write_log(uid, "quick_play", "", [])
+    
+    
+    async def  _handle_user_join_by_match_id(self, uid, match_id):
+        # check if user is in a match
+        is_in_match = await self.is_user_in_match(uid)
+        if is_in_match:
+            await self._send_response_join_table(uid, JoinMatchErrors.ALREADY_IN_MATCH)
+            return
+
+        match = await self.get_match(match_id)
+        if not match:
+            await self._send_response_join_table(uid, JoinMatchErrors.MATCH_NOT_FOUND)
+            return
+        
+        if match.game_mode == TRESSETTE_MODE and match.state != MatchState.WAITING:
+            await self._send_response_join_table(uid, JoinMatchErrors.MATCH_STARTED)
+            return
+        
+        if match.check_room_full():
+            await self._send_response_join_table(uid, JoinMatchErrors.FULL_ROOM)
+            return
+       
+        await self.user_join_match(match, uid)
+
+    async def _send_response_join_table(self, uid, status):
+        join_pkg = packet_pb2.JoinTableResponse()
+        join_pkg.error = status.value
+        await game_vars.get_game_client().send_packet(uid, CMDs.JOIN_TABLE_BY_ID, join_pkg)
+
+    async def receive_user_join_match(self, uid, payload):
+        join_pkg = packet_pb2.JoinTableById()
+        join_pkg.ParseFromString(payload)
+        match_id = join_pkg.match_id
+        await self._handle_user_join_by_match_id(uid, match_id)
+
+    async def receive_quick_play(self, uid, payload):
+        quick_play_pkg = packet_pb2.QuickPlay()
+        quick_play_pkg.ParseFromString(payload)
+        await self._handle_quick_play(uid)
+
+    def find_largest_bet_below(self, expect_bet):
+        tresette_bets = tress_config.get("bets")
+        suitable_bet = tresette_bets[0]
+        
+        for bet in tresette_bets:
+            if bet <= expect_bet:
+                if suitable_bet is None or bet > suitable_bet:
+                    suitable_bet = bet
+        
+        return suitable_bet
+    
+    async def receive_game_action_napoli(self, uid, payload):
+        match = await self.get_match_of_user(uid)
+        if match:
+            await match.receive_game_action_napoli(uid, payload)
+
+    def get_gold_minimum_play(self):
+        return 0
+    
+    async def receive_user_return_to_table(self, uid):
+        match = await self.get_match_of_user(uid)
+        if match:
+            match.user_return_to_table(uid)
+
+    async def user_ready(self, uid):
+        match = await self.get_match_of_user(uid)
+        if match:
+            match.user_ready(uid)
+
+    async def view_game(self, uid, payload):
+        view_pkg = packet_pb2.ViewGame()
+        view_pkg.ParseFromString(payload)
+        match_id = view_pkg.match_id
+        match = await self.get_match(match_id)
+
+        if match:
+            self.user_views[uid] = match_id
+            await match.user_view_game(uid)
+
+            write_log(uid, "view_game", match_id, [])
+        else:
+            logger.warning(f"Match {match_id} not found for user {uid} to view game.")

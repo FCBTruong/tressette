@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv0r0jtdlda5q"]
+
+[ext_resource type="Script" path="res://scenes/level/level_node.gd" id="1_n2a83"]
+[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_yws55"]
+[ext_resource type="PackedScene" uid="uid://brk42m72tm6bc" path="res://scenes/level/LevelRewardNode.tscn" id="3_frbev"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="4_5drd6"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_mj80a"]
+[ext_resource type="Texture2D" uid="uid://ds4wxgebdh010" path="res://assets/images/lobby/check_icon_full.png" id="5_tmbdi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epn41"]
+bg_color = Color(0.60183, 0.270554, 0.0990599, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="LevelNode" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_n2a83")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_epn41")
+
+[node name="LevelLb" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.0
+offset_top = 38.0
+offset_right = 22.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.780392)
+theme_override_fonts/font = ExtResource("2_yws55")
+theme_override_font_sizes/font_size = 25
+text = "Lv.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VboxGifts" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = 76.0
+offset_right = 59.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LevelRewardNode" parent="VboxGifts" instance=ExtResource("3_frbev")]
+layout_mode = 2
+
+[node name="ReceiveBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = -54.0
+offset_right = 40.0
+offset_bottom = -14.0
+grow_horizontal = 2
+flat = true
+script = ExtResource("4_mj80a")
+
+[node name="TextureRect" type="TextureRect" parent="ReceiveBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_5drd6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="ReceiveBtn/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -11.5
+offset_right = 31.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.847059)
+theme_override_fonts/font = ExtResource("2_yws55")
+text = "CLAIM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReceivedIcon" type="TextureRect" parent="."]
+modulate = Color(0.72742, 0.251289, 0.251289, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -52.0
+offset_right = 15.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tmbdi")
+expand_mode = 1
+
+[connection signal="pressed" from="ReceiveBtn" to="." method="click_claim"]

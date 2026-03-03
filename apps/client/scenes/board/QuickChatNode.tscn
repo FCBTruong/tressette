@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmdvm1nrf0ws5"]
+
+[ext_resource type="Script" path="res://scripts/game/chat/quick_chat_node.gd" id="1_ut4tb"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_olrc5"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_ullgl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e6yh"]
+bg_color = Color(0.968418, 0.844832, 0.796281, 0.913725)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.516972, 0.41148, 0.41148, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="QuickChatNode" type="Panel"]
+custom_minimum_size = Vector2(200, 50)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3e6yh")
+script = ExtResource("1_ut4tb")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("2_ullgl")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.615407, 0.24302, 0.0446334, 1)
+theme_override_fonts/font = ExtResource("2_olrc5")
+theme_override_font_sizes/font_size = 18
+text = "I have a good hand! 😉"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_click_chat"]

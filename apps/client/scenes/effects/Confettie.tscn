@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=3 uid="uid://d154sihykop6v"]
+
+[ext_resource type="Script" path="res://scenes/effects/confettie.gd" id="1_sem6t"]
+
+[sub_resource type="Curve" id="Curve_cfw3j"]
+_data = [Vector2(0.00217865, 0.0169679), 0.0, 0.0, 0, 0, Vector2(1, 0.340649), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Confettie" type="Node2D"]
+position = Vector2(294, 345)
+script = ExtResource("1_sem6t")
+
+[node name="yellow5" type="CPUParticles2D" parent="."]
+amount = 30
+lifetime = 2.0
+explosiveness = 0.5
+randomness = 0.26
+lifetime_randomness = 0.06
+direction = Vector2(0, -1)
+gravity = Vector2(0, 150)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = 280.8
+angular_velocity_max = 280.8
+linear_accel_min = 50.0
+linear_accel_max = 100.0
+scale_amount_min = 20.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_cfw3j")
+color = Color(1, 0.845669, 0.0495088, 1)
+
+[node name="yellow4" type="CPUParticles2D" parent="."]
+amount = 30
+lifetime = 2.0
+explosiveness = 0.5
+randomness = 0.26
+lifetime_randomness = 0.06
+direction = Vector2(0, -1)
+gravity = Vector2(0, 150)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = 280.8
+angular_velocity_max = 280.8
+linear_accel_min = 50.0
+linear_accel_max = 100.0
+scale_amount_min = 20.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_cfw3j")
+color = Color(1, 0.247614, 0.0166262, 1)
+
+[node name="yellow3" type="CPUParticles2D" parent="."]
+amount = 30
+lifetime = 2.0
+explosiveness = 0.5
+randomness = 0.26
+lifetime_randomness = 0.06
+direction = Vector2(0, -1)
+gravity = Vector2(0, 150)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = 280.8
+angular_velocity_max = 280.8
+linear_accel_min = 50.0
+linear_accel_max = 100.0
+scale_amount_min = 20.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_cfw3j")
+
+[node name="yellow2" type="CPUParticles2D" parent="."]
+amount = 30
+lifetime = 2.0
+explosiveness = 0.5
+randomness = 0.26
+lifetime_randomness = 0.06
+direction = Vector2(0, -1)
+gravity = Vector2(0, 150)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = 280.8
+angular_velocity_max = 280.8
+linear_accel_min = 50.0
+linear_accel_max = 100.0
+scale_amount_min = 20.0
+scale_amount_max = 50.0
+scale_amount_curve = SubResource("Curve_cfw3j")
+color = Color(0.352048, 1, 0.319146, 1)

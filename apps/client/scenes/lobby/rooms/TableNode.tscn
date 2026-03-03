@@ -1,0 +1,468 @@
+[gd_scene load_steps=13 format=3 uid="uid://coalpvybk074r"]
+
+[ext_resource type="Script" path="res://scripts/lobby/rooms/table_node.gd" id="1_d11nj"]
+[ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="2_3wqxv"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_c3fu3"]
+[ext_resource type="Texture2D" uid="uid://roswew5btpo" path="res://assets/images/lobby/people_icon.png" id="3_wpwhv"]
+[ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="4_tmffe"]
+[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="5_ujqb8"]
+[ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="7_2obxu"]
+[ext_resource type="Texture2D" uid="uid://teun5qbwsk0g" path="res://assets/images/lobby/empty_slot_icon.png" id="7_nphfa"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="8_r2rrg"]
+[ext_resource type="Texture2D" uid="uid://baqeo8fn0qpy6" path="res://assets/images/board/vs.png" id="8_wbf2d"]
+[ext_resource type="Texture2D" uid="uid://b6pipwdwkmmbb" path="res://assets/images/lobby/lock_icon.png" id="11_e6rdb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aig1"]
+bg_color = Color(0.129412, 0.109804, 0.109804, 0.215686)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.39817, 0.245762, 0.142786, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="TableNode" type="Control"]
+custom_minimum_size = Vector2(560, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 441.0
+offset_top = 240.0
+offset_right = 441.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("1_d11nj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4aig1")
+
+[node name="ViewBtn" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 170.0
+offset_top = -20.0
+offset_right = 270.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("2_c3fu3")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/ViewBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tmffe")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Panel/ViewBtn/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -14.0
+offset_right = 24.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.862745)
+theme_override_fonts/font = ExtResource("2_3wqxv")
+theme_override_font_sizes/font_size = 20
+text = "VIEW"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="PlayBtn" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 170.0
+offset_top = -20.0
+offset_right = 270.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("2_c3fu3")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PlayBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ujqb8")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Panel/PlayBtn/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -14.0
+offset_right = 24.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.807843)
+theme_override_fonts/font = ExtResource("2_3wqxv")
+theme_override_font_sizes/font_size = 20
+text = "PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -30.0
+offset_right = 126.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Slot1" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_nphfa")
+expand_mode = 1
+
+[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot1" instance=ExtResource("7_2obxu")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot1" instance=ExtResource("8_r2rrg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot1"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("2_c3fu3")
+
+[node name="IconVs1" type="TextureRect" parent="Panel/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("8_wbf2d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot2" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_nphfa")
+expand_mode = 1
+
+[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot2" instance=ExtResource("7_2obxu")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot2" instance=ExtResource("8_r2rrg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("2_c3fu3")
+
+[node name="IconVs2" type="TextureRect" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("8_wbf2d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Slot3" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_nphfa")
+expand_mode = 1
+
+[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot3" instance=ExtResource("7_2obxu")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot3" instance=ExtResource("8_r2rrg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot3"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("2_c3fu3")
+
+[node name="Slot4" type="Control" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_nphfa")
+expand_mode = 1
+
+[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot4" instance=ExtResource("7_2obxu")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot4" instance=ExtResource("8_r2rrg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot4"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -25.0
+offset_right = -39.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("2_c3fu3")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel"]
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+offset_left = -28.0
+offset_top = 89.0
+offset_right = 154.0
+offset_bottom = 129.0
+theme_override_constants/separation = 10
+
+[node name="PlayerIcon" type="TextureRect" parent="Panel/HBoxContainer2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("3_wpwhv")
+expand_mode = 1
+
+[node name="PrivateIcon" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 30.0
+grow_vertical = 2
+texture = ExtResource("11_e6rdb")
+expand_mode = 1
+
+[connection signal="pressed" from="Panel/ViewBtn" to="." method="_click_view"]
+[connection signal="pressed" from="Panel/PlayBtn" to="." method="_click_play"]
+[connection signal="pressed" from="Panel/HBoxContainer/Slot1/Button" to="." method="click_user1"]
+[connection signal="pressed" from="Panel/HBoxContainer/Slot2/Button" to="." method="click_user2"]
+[connection signal="pressed" from="Panel/HBoxContainer/Slot3/Button" to="." method="click_user3"]
+[connection signal="pressed" from="Panel/HBoxContainer/Slot4/Button" to="." method="click_user4"]

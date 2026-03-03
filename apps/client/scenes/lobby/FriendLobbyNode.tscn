@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcebapnipusff"]
+
+[ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="1_0gmpe"]
+[ext_resource type="Script" path="res://scripts/modules/friend/friend_lobby_node.gd" id="1_gw2x1"]
+[ext_resource type="Texture2D" uid="uid://c6as2lp8ob0qr" path="res://assets/images/lobby/avatar_border.png" id="3_ff0s7"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="4_31e73"]
+[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="5_1gmnx"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_2i772"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_2k587"]
+[ext_resource type="SpriteFrames" uid="uid://mlfql0jumwpp" path="res://assets/animations/anim_playing.tres" id="8_it4el"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu0cq"]
+bg_color = Color(0.418536, 0.418536, 0.418536, 0.356863)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8u22g"]
+load_path = "res://.godot/imported/avatar_3.png-e5ac5722e6de0f96cd81bdc0216b4f4f.ctex"
+
+[node name="FriendlobbyNode" type="Panel"]
+custom_minimum_size = Vector2(250, 60)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uu0cq")
+script = ExtResource("1_gw2x1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0gmpe")
+expand_mode = 1
+
+[node name="AvatarImg" type="TextureRect" parent="HBoxContainer/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_8u22g")
+expand_mode = 1
+script = ExtResource("4_31e73")
+is_me = false
+
+[node name="InfoBtn" type="Button" parent="HBoxContainer/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("5_2i772")
+
+[node name="AvatarBorder" type="TextureRect" parent="HBoxContainer/Control"]
+self_modulate = Color(0.190071, 0.216316, 0.29634, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+texture = ExtResource("3_ff0s7")
+expand_mode = 1
+
+[node name="NameLb" type="Label" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.815)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2k587")
+theme_override_font_sizes/font_size = 20
+text = "FRIEND NAME"
+vertical_alignment = 1
+
+[node name="OnlineIcon" type="Control" parent="HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/OnlineIcon"]
+modulate = Color(0.0869777, 1, 0.0495088, 1)
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("5_1gmnx")
+expand_mode = 1
+
+[node name="AnimPlaying" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/AnimPlaying"]
+position = Vector2(24.5, 31)
+scale = Vector2(0.2, 0.2)
+sprite_frames = ExtResource("8_it4el")
+animation = &"new_animation"
+frame_progress = 0.349024
+
+[connection signal="pressed" from="HBoxContainer/Control/TextureRect/InfoBtn" to="." method="_click_info"]

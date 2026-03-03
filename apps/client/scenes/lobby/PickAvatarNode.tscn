@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6pf3hcone3fr"]
+
+[ext_resource type="Script" path="res://scripts/lobby/pick_avatar_node.gd" id="1_kk4ru"]
+[ext_resource type="Texture2D" uid="uid://ccsoww1j85ic" path="res://assets/images/lobby/avatars/avatar_1.png" id="1_rull3"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_02tf4"]
+[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="3_c53ak"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dswl4"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p784x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 13
+border_width_top = 13
+border_width_right = 13
+border_width_bottom = 13
+border_color = Color(0.279687, 1, 0.297514, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PickAvatarNode" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_kk4ru")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.394776, 0.394776, 0.394776, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dswl4")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+script = ExtResource("2_02tf4")
+
+[node name="AvatarImg" type="TextureRect" parent="Panel/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rull3")
+expand_mode = 1
+script = ExtResource("3_c53ak")
+is_me = false
+
+[node name="Highlight" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p784x")
+
+[connection signal="pressed" from="Panel/Button" to="." method="on_click"]

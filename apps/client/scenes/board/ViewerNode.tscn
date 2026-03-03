@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvohv0wdpebrc"]
+
+[ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="1_cmvf8"]
+[ext_resource type="Script" path="res://scripts/game/viewer_node.gd" id="1_upmxg"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="2_7a43j"]
+[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_gdvnj"]
+[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="4_pf1is"]
+[ext_resource type="PackedScene" uid="uid://ctoy0ted0cg1q" path="res://scenes/board/EmoPlayer.tscn" id="4_tyij8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwtx0"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.509804)
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+
+[node name="ViewerNode" type="Control"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_upmxg")
+
+[node name="ChatPn" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 10.0
+offset_right = 246.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwtx0")
+
+[node name="ChatLb" type="Label" parent="ChatPn"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 9.0
+offset_right = 68.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.780392)
+theme_override_fonts/font = ExtResource("2_7a43j")
+text = "Hello How are you?"
+vertical_alignment = 1
+
+[node name="AvatarCircle" parent="." instance=ExtResource("1_cmvf8")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="AvatarFrame" parent="." instance=ExtResource("4_pf1is")]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(0.6, 0.6)
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("2_gdvnj")
+
+[node name="EmoPlayer" parent="." instance=ExtResource("4_tyij8")]
+position = Vector2(30, 30)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="pressed" from="Button" to="." method="click_avatar"]
