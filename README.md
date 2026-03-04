@@ -39,6 +39,48 @@ https://github.com/user-attachments/assets/88ef0b51-caa8-4605-b02b-749d10d66500
   </a>
 </p>
 
-Here are some screenshots:
-![Screenshot 1](docs/assets/game_screen1.png)
-![Screenshot 2](docs/assets/game_screen2.png)
+## Screenshots
+
+1. Lobby
+
+![Screenshot 1](docs/assets/game_screen1.jpg)
+
+2. Playing
+
+![Screenshot 2](docs/assets/game_screen2.jpg)
+
+3. Spectating
+
+![Screenshot 3](docs/assets/game_screen5.jpg)
+
+4. Inventory
+
+![Screenshot 4](docs/assets/game_screen3.jpg)
+
+5. Ranking
+
+![Screenshot 5](docs/assets/game_screen6.jpg)
+
+6. Shop
+
+![Screenshot 6](docs/assets/game_screen4.jpg)
+
+7. Info
+
+![Screenshot 7](docs/assets/game_screen9.jpg)
+
+8. Friends
+
+![Screenshot 8](docs/assets/game_screen8.jpg)
+
+9. Chat
+
+![Screenshot 9](docs/assets/game_screen11.jpg)
+
+10. Interact
+
+![Screenshot 9](docs/assets/game_screen7.jpg)
+
+11. Level
+
+![Screenshot 9](docs/assets/game_screen10.jpg)

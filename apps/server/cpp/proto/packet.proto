@@ -1,0 +1,640 @@
+syntax = "proto3";
+
+message Empty {
+}
+
+message Packet {
+  string token = 1;
+  int32 cmd_id = 2;        // CMD ID
+  bytes payload = 3;       // Generic payload (serialized message)
+}
+
+message ChatMessage {
+  double abc = 1;
+  string username = 2;     // User's name
+  int64 level = 3;        // Level (using uint32 for single-byte values)
+  int64 gold = 4;         // Gold (using int32)
+  string abcd = 5;      // Chat message
+  bool is_active = 6;
+}
+
+
+message PingPong {
+  
+}
+
+message Login {
+  int32 type = 1;
+  string token = 2;
+  string device_model = 3;
+  string platform = 4;
+  string device_country = 5;
+  int32 app_version_code = 6;
+}
+
+message LoginFirebase {
+  int32 sub_type = 1;
+  string login_token = 2;
+  string guest_id = 3;
+}
+
+message Logout {
+
+}
+
+message LoginResponse {
+  int32 uid = 1;
+  string token = 2;
+  int32 error = 3;
+}
+
+message UserInfo {
+  int32 uid = 1;
+  string name = 2;
+  int64 gold = 3;
+  repeated int32 scores = 4;
+  repeated string names = 5;
+  int32 abc = 6;
+  string avatar = 7;
+  string avatar_third_party = 8;
+  int32 level = 9;
+  int32 support_num = 10;
+  int32 win_count = 11;
+  int32 game_count = 12;
+  int64 exp = 13;
+  int32 startup_gold = 14;
+  bool has_first_buy = 15;
+  int32 time_show_ads = 16;
+  int32 login_type = 17;
+  int32 time_ads_reward = 18;
+  bool add_for_user_support = 19;
+  int32 avatar_frame = 20;
+  repeated int32 claimed_levels = 21;
+  int32 price_change_name = 22;
+}
+
+message GameInfo {
+  int32 match_id = 1;
+  int32 game_mode = 2;
+  int32 player_mode = 3;
+  repeated int32 uids = 4;
+  repeated int64 user_golds = 5;
+  repeated string user_names = 6;
+  repeated int32 cards_compare = 7;
+  int32 current_turn = 8;
+  int32 game_state = 9;
+  repeated int32 my_cards = 10;
+  int32 remain_cards = 11;
+  repeated int32 user_points = 12;
+  repeated int32 team_ids = 13;
+  int32 hand_suit = 14;
+  repeated string avatars = 15;
+  bool is_registered_leave = 16;
+  int64 pot_value = 17;
+  int32 current_round = 18;
+  int32 hand_in_round = 19;
+  int32 point_to_win = 20;
+  repeated bool is_vips = 21;
+  repeated int32 viewer_uids = 22;
+  repeated string viewer_avatars = 23;
+  repeated string viewer_names = 24;
+  repeated int32 avatar_frames = 25;
+  repeated int32 viewer_avatar_frames = 26;
+}
+
+message RegisterLeaveGame {
+  int32 status = 1;
+}
+
+message NewUserJoinMatch {
+  int32 uid = 1;
+  int64 gold = 2;
+  string name = 3;
+  int32 seat_server = 4;
+  int32 team_id = 5;
+  string avatar = 6;
+  bool is_vip = 7;
+  int32 avatar_frame = 8;
+}
+
+message UserLeaveMatch {
+  int32 uid = 1;
+  int32 reason = 2;
+}
+
+message DealCard {
+  repeated int32 cards = 1;
+  int32 remain_cards = 2;
+}
+
+message PlayCard {
+  int32 uid = 1;
+  int32 card_id = 2;
+  bool auto = 3;
+  int32 current_turn = 4;
+  int32 hand_suit = 5;
+  bool is_end_hand = 6;
+  int32 win_uid = 7;
+  int32 win_point = 8;
+  bool is_end_round = 9;
+  int32 win_card = 10;
+}
+
+message StartGame {
+  int32 pot_value = 1;
+  repeated int64 players_gold = 2;
+}
+
+message NewHand {
+  int32 current_turn = 1;
+  repeated int32 my_cards = 2;
+}
+
+message UpdateGamePoint {
+  repeated int32 points = 1;
+}
+
+message EndHand {
+  int32 win_uid = 1;
+  int32 win_card = 2;
+  repeated int32 user_points = 3;
+  int32 win_point = 4;
+  bool is_end_round = 5;
+}
+
+message DrawCard {
+  repeated int32 cards = 1;
+}
+
+
+message GeneralInfo {
+  int64 timestamp = 1;
+  int32 time_thinking_in_turn = 2;
+  repeated int32 exp_levels = 3;
+  int32 fee_mode_no_bet = 4;
+  bool enable_ads = 5;
+  repeated LevelReward level_rewards = 6; 
+}
+
+message LevelReward {
+  int32 level = 1;
+  int32 gold = 2;
+  repeated ItemReward items = 3;
+}
+
+message ItemReward {
+  int32 item_id = 1;
+  int32 duration = 2; 
+}
+
+
+message EndGame {
+  repeated int32 uids = 1;
+  int32 win_team_id = 6;
+  repeated int32 score_cards = 2;
+  repeated int32 score_last_tricks = 3;
+  repeated int32 score_totals = 4;
+  repeated int64 players_gold = 5;
+  repeated RewardInventoryItem rewards = 7;
+}
+
+message PrepareStartGame {
+  int32 time_start = 1;
+}
+
+message InGameChatMessage {
+  int32 uid = 1;
+  string chat_message = 2;
+}
+
+message PaymentGoogleConsume {
+  string purchase_token = 1;
+  int32 quantity = 2;
+  repeated string skus = 3;
+  string signature = 4;
+  string sku = 5;
+}
+
+message PaymentSuccess {
+  int64 gold = 1;
+  string pack_id = 2;
+  repeated RewardInventoryItem items = 3;
+}
+
+message UpdateMoney {
+  int64 gold = 1;
+}
+
+message TableList {
+  repeated int32 table_ids = 1;
+  repeated int32 num_players = 2;
+  repeated int32 player_modes = 3;
+  repeated int32 player_uids = 4;
+  repeated string avatars = 5;
+  repeated int32 game_modes = 6;
+  repeated int32 avatar_frames = 7;
+  repeated bool is_private = 8;
+}
+
+message ShopConfig {
+  repeated string pack_ids = 1;
+  repeated int64 golds = 2;
+  repeated double prices = 3;
+  repeated string currencies = 4;
+  repeated int32 no_ads_days = 5;
+  int32 gold_offer_first = 6;
+  int32 no_ads_day_offer_first = 7;
+  int32 price_offer_first = 8;
+  string currency_offer_first = 9;
+  string pack_id_offer_first = 10;
+  repeated RewardInventoryItem items_offer_first_buy = 11;
+  repeated DetailShopPack details = 12;
+}
+
+message DetailShopPack {
+  repeated RewardInventoryItem items = 1;
+}
+
+message GuestAccount {
+  string guest_id = 1;
+}
+
+message ChangeAvatar {
+  int32 avatar_id = 1;
+}
+
+message InGameChatEmoticon {
+  int32 uid = 1;
+  int32 emoticon = 2;
+}
+
+message SearchFriend {
+  int32 uid = 1;
+}
+
+message SearchFriendResponse {
+  int32 uid = 1;
+  int64 gold = 2;
+  string name = 3;
+  string avatar = 4;
+  int32 win_count = 5;
+  double game_count = 6;
+  int32 error = 7;
+  int32 level = 8;
+  int64 exp = 9;
+  bool is_verified = 10;
+  int32 avatar_frame = 11;
+}
+
+message CheatGoldUser {
+  int64 gold = 1;
+}
+
+message FriendList {
+  repeated int32 uids = 1;
+  repeated string names = 2;
+  repeated string avatars = 3;
+  repeated int32 levels = 4;
+  repeated int64 golds = 5;
+  repeated bool onlines = 6;
+  repeated bool is_playings = 7;
+  repeated int32 avatar_frames = 8;
+  repeated int32 last_online_times = 9;
+}
+
+message FriendRequests {
+  repeated int32 uids = 1;
+  repeated string names = 2;
+  repeated string avatars = 3;
+  repeated int32 levels = 4;
+  repeated int64 golds = 5;
+  repeated int32 sent_uids = 6;
+}
+
+message AddFriend {
+  int32 error = 1;
+  int32 uid = 2;
+}
+
+message RequestFriendAccept {
+  int32 uid = 1;
+  int32 action = 2;
+}
+
+message RemoveFriend {
+  int32 uid = 1;
+}
+
+message NewFriendRequest {
+  int32 uid = 1;
+  string avatar = 2;
+  string name = 3;
+  int32 level = 4;
+  int64 gold = 5;
+}
+
+message FriendRequestAccepted {
+  int32 uid = 1;
+  string name = 2;
+  string avatar = 3;
+  int32 level = 4;
+  int64 gold = 5;
+  int32 avatar_frame = 6;
+}
+
+message RecommendFriends {
+  repeated int32 uids = 1;
+  repeated string names = 2;
+  repeated string avatars = 3;
+  repeated int32 levels = 4;
+  repeated int64 golds = 5;
+  repeated int32 avatar_frames = 6;
+}
+
+message PaymentAppleConsume {
+  string pack_id = 1;
+  string receipt_data = 2;
+}
+
+message PaymentFinishedAppleTransaction {
+  string pack_id = 1;
+}
+
+message NewRound {
+  int32 current_round = 1;
+  int64 pot_value = 2;
+  repeated int64 players_gold = 3;
+}
+
+message CreateTable {
+  int32 bet = 1;
+  int32 player_mode = 2;
+  bool is_private = 3;
+  int32 point_mode = 4;
+  bool bet_mode = 5;
+}
+
+message JoinTableById {
+  int32 match_id = 1;
+}
+
+message JoinTableResponse {
+  int32 error = 1;
+}
+
+message ClaimSupport {
+  int32 support_amount = 1;
+}
+
+message AppCodeVersion {
+  int32 android_version = 1;
+  int32 android_forced_update_version = 2;
+  int32 android_remind_update_version = 3;
+
+  int32 ios_version = 4;
+  int32 ios_forced_update_version = 5;
+  int32 ios_remind_update_version = 6;
+  int32 ios_reviewing_version = 7;
+}
+
+message PlayCardResponse {
+  int32 status = 1;
+}
+
+message CheatViewCardBot {
+  repeated int32 cards = 1;
+}
+
+message InviteFriendPlay {
+  int32 uid = 1;
+  int32 room_id = 2;
+}
+
+message GameActionNapoli {
+  int32 uid = 1;
+  int32 point_add = 2;
+  repeated int32 suits = 3;
+}
+
+message CustomerServiceReport {
+  int32 report_type = 1;
+  string report_content = 2;
+}
+
+message AdminBroadcast {
+  string mes = 1;
+}
+
+message PaymentPaypalRequestOrder {
+  string pack_id = 1;
+}
+
+message PaymentPaypalOrder {
+  string order_url = 1;
+}
+
+message QuickPlay {
+}
+
+message SetteMezzoNewUserJoinMatch {
+  int32 uid = 1;
+  int64 gold = 2;
+  string name = 3;
+  int32 seat_server = 4;
+  int32 team_id = 5;
+  string avatar = 6;
+}
+
+message SetteMezzoPrepareStartGame {
+  int32 pot_value = 1;
+  repeated int64 players_gold = 2;
+}
+
+message SetteMezzoGameInfo {
+  int32 match_id = 1;
+  int32 game_mode = 2;
+  int32 player_mode = 3;
+  repeated int32 uids = 4;
+  repeated int64 user_golds = 5;
+  repeated string user_names = 6;
+  int32 banker_uid = 7;
+  int32 current_turn = 8;
+  int32 game_state = 9;
+  repeated int32 user_points = 11;
+  repeated int32 team_ids = 12;
+  int32 hand_suit = 13;
+  repeated string avatars = 14;
+  bool is_registered_leave = 15;
+  int32 bet = 16;
+  int64 pot_value = 17;
+  int32 current_round = 18;
+  int32 hand_in_round = 19;
+  repeated bool is_in_games = 20;
+  int32 play_turn_time = 21;
+  repeated bytes player_infos = 22;
+  repeated int32 banker_cards = 23;
+  repeated int64 player_bets = 24;
+  int32 time_end_bet = 25;
+}
+
+message SetteMezzoPlayerInfo {
+  repeated int32 card_ids = 1;
+}
+
+message SetteMezzoQuickPlay {
+}
+
+
+message SetteMezzoStartGame {
+  repeated int32 uids = 1;
+  repeated int32 cards = 2;
+}
+
+message RankingInfo {
+  int32 season_id = 1;
+  int32 time_start = 2;
+  int32 time_end = 3;
+  repeated int32 rewards = 4;
+  repeated int32 uids = 5;
+  repeated string avatars = 6;
+  repeated string names = 7;
+  repeated int32 scores = 8;
+  repeated int32 avatar_frames = 9;
+  int32 my_rank = 10;
+  int32 my_score = 11;
+}
+
+message RankingResult {
+  int32 season_id = 1;
+  int32 gold_reward = 2;
+  int32 rank = 3;
+}
+
+message RankingClaimReward {
+  int32 season_id = 1;
+}
+
+message UpdateAds {
+  int32 time_show_ads = 1;
+}
+
+message AdsReward {
+  int32 gold = 1;
+  int32 time_ads_reward = 2;
+}
+
+message ChangeUserName {
+  string name = 1;
+}
+
+message SetteMezzoActionHit {
+  int32 uid = 1;
+  int32 card_id = 2;
+}
+
+message SetteMezzoUpdateTurn {
+  int32 current_turn = 1;
+  int32 play_turn_time = 2;
+}
+
+message SetteMezzoActionStand {
+  int32 uid = 1;
+  int32 current_turn = 2;
+  int32 play_turn_time = 3;
+}
+
+message SetteMezzoEndGame {
+  repeated int32 uids = 1;
+  repeated int32 scores = 2;
+  repeated bool is_wins = 3;
+  repeated int64 golds_change = 4;
+  repeated int64 player_golds = 5;
+}
+
+message SetteMezzoShowBankerCard {
+  int32 card_id = 1;
+}
+
+message SetteMezzoUserBet {
+  int32 uid = 1;
+  int64 bet = 2;
+}
+
+message ViewGame {
+  int32 match_id = 1;
+}
+
+message UserStopView {
+  int32 uid = 1;
+}
+
+message NewUserView {
+  int32 uid = 1;
+  string avatar = 2;
+  string name = 3;
+  int32 avatar_frame = 4;
+}
+
+message CheatExpUser {
+  int32 exp = 1;
+}
+
+message UpdateExp {
+  int64 exp = 1;
+}
+
+message ClaimRewardLevel {
+  int32 level = 1;
+}
+
+message UserInventory {
+  repeated InvetoryItem items = 1; 
+}
+
+message InvetoryItem {
+  int32 item_id = 1;
+  int32 expire_time = 2;
+  int32 value = 3;
+}
+
+message UseItem {
+  int32 item_id = 1;
+}
+
+message CheatItem {
+  int32 item_id = 1;
+  int32 duration = 2;
+}
+
+message BuyItem {
+  int32 item_id = 1;
+  int32 pack_id = 2;
+}
+
+
+message InventoryShopConfig {
+  repeated InventoryShopItem items = 1;
+}
+
+message InventoryShopItem {
+  int32 item_id = 1;
+  repeated InvetoryShopPack packs = 2;
+}
+
+message InvetoryShopPack {
+  int32 id = 1;
+  int32 price = 2;
+  int32 duration = 3;
+}
+
+message ClaimRewardLevelResponse {
+  int32 level = 1;
+  int32 gold = 2;
+  repeated RewardInventoryItem items = 3;
+}
+
+message RewardInventoryItem {
+  int32 item_id = 1;
+  int32 duration = 2;
+  int32 value = 3;
+}

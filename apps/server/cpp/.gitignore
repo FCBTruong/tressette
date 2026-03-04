@@ -1,0 +1,11 @@
+/build/
+/out/
+/cmake-build-*/
+/CMakeFiles/
+/CMakeCache.txt
+/compile_commands.json
+/*.sln
+/*.vcxproj
+/*.vcxproj.filters
+/*.vcxproj.user
+/protbuf-3.20.3/
