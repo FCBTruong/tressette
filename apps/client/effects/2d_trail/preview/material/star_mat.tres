@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ck8g4wwxfhe7a"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ck8g4wwxfhe7a"]
 
-[ext_resource type="Shader" path="res://effects/2d_trail/preview/material/star.gdshader" id="1_p3m0s"]
+[ext_resource type="Shader" uid="uid://cx53d21hfum0v" path="res://effects/2d_trail/preview/material/star.gdshader" id="1_p3m0s"]
 
 [sub_resource type="Curve" id="Curve_1vpbo"]
 _data = [Vector2(0.48, 0), 0.0, 15.2177, 0, 0, Vector2(0.5, 1), 0.0, -8.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -13,6 +13,6 @@ curve = SubResource("Curve_1vpbo")
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_p3m0s")
+shader_parameter/rings_ease_sampler = SubResource("CurveTexture_3ml1e")
 shader_parameter/shine_color = Color(0.771546, 0.559632, 0.00775381, 1)
 shader_parameter/star_color = Color(1, 1, 1, 1)
-shader_parameter/rings_ease_sampler = SubResource("CurveTexture_3ml1e")

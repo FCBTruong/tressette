@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://hxhcl2lvd7qj"]
+[gd_scene format=3 uid="uid://hxhcl2lvd7qj"]
 
 [ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="1_t8h7q"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_gx2ns"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_abeha"]
-[ext_resource type="Script" path="res://addons/AdmobPlugin/Admob.gd" id="4_ttrxn"]
-[ext_resource type="Script" path="res://scripts/base/admob_mgr.gd" id="5_o620n"]
+[ext_resource type="Script" uid="uid://516367qjy1v2" path="res://addons/AdmobPlugin/Admob.gd" id="4_ttrxn"]
+[ext_resource type="Script" uid="uid://dlj5y62gscwqw" path="res://scripts/base/admob_mgr.gd" id="5_o620n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7gor"]
 bg_color = Color(0, 0, 0, 0.569)
@@ -27,7 +27,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="InitScene" type="Control"]
+[node name="InitScene" type="Control" unique_id=1259694916]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1976598387]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,7 +45,7 @@ grow_vertical = 2
 texture = ExtResource("1_t8h7q")
 expand_mode = 1
 
-[node name="DownloadPn" type="Panel" parent="TextureRect"]
+[node name="DownloadPn" type="Panel" parent="TextureRect" unique_id=125301093]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -55,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b7gor")
 
-[node name="DownloadPn" type="Control" parent="TextureRect/DownloadPn"]
+[node name="DownloadPn" type="Control" parent="TextureRect/DownloadPn" unique_id=1529461403]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,7 +69,7 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="TextureRect/DownloadPn/DownloadPn"]
+[node name="ProgressBar" type="ProgressBar" parent="TextureRect/DownloadPn/DownloadPn" unique_id=927189732]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -87,7 +87,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_a8dux")
 value = 30.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="TextureRect/DownloadPn/DownloadPn"]
+[node name="Label" type="Label" parent="TextureRect/DownloadPn/DownloadPn" unique_id=1037959388]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -106,7 +106,7 @@ text = "UPDATING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NoInternet" type="Panel" parent="TextureRect"]
+[node name="NoInternet" type="Panel" parent="TextureRect" unique_id=770654897]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -121,7 +121,7 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="TextureRect/NoInternet"]
+[node name="Label" type="Label" parent="TextureRect/NoInternet" unique_id=1848975096]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -139,7 +139,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Label" type="Label" parent="TextureRect" unique_id=1475269194]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -156,7 +156,7 @@ theme_override_fonts/font = ExtResource("3_abeha")
 theme_override_font_sizes/font_size = 23
 text = "Loading ..."
 
-[node name="Admob" type="Node" parent="."]
+[node name="Admob" type="Node" parent="." unique_id=1425250007]
 script = ExtResource("4_ttrxn")
 is_real = true
 banner_position = 1
@@ -174,7 +174,7 @@ real_ios_interstitial_id = "ca-app-pub-3119270508535076/5807526725"
 real_ios_rewarded_id = "ca-app-pub-3119270508535076/7805136116"
 real_ios_rewarded_interstitial_id = "ca-app-pub-3119270508535076/3619512930"
 
-[node name="AdmobMgr" type="Node2D" parent="."]
+[node name="AdmobMgr" type="Node2D" parent="." unique_id=735924934]
 script = ExtResource("5_o620n")
 
 [connection signal="initialization_completed" from="Admob" to="AdmobMgr" method="_on_admob_initialization_completed"]

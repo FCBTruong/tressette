@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://qrgqnpq1flde"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://qrgqnpq1flde"]
 
-[ext_resource type="Shader" path="res://effects/2d_trail/preview/material/star_trail.gdshader" id="1_bvw8n"]
+[ext_resource type="Shader" uid="uid://dlbm675so2f1b" path="res://effects/2d_trail/preview/material/star_trail.gdshader" id="1_bvw8n"]
 
 [sub_resource type="Curve" id="Curve_5ig3f"]
 _data = [Vector2(0, 0), 0.0, 5.25263, 0, 1, Vector2(0.190381, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.41939, 0.0, 0, 0]
@@ -26,7 +26,7 @@ gradient = SubResource("Gradient_irstq")
 
 [resource]
 shader = ExtResource("1_bvw8n")
-shader_parameter/deformation = 0.4
 shader_parameter/alpha_curve = SubResource("CurveTexture_4vhl0")
 shader_parameter/base_color = SubResource("GradientTexture1D_ld20n")
 shader_parameter/band_gradient = SubResource("CurveTexture_wd6un")
+shader_parameter/deformation = 0.4

@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Tressette Royal"
 run/main_scene="res://scenes/InitScene.tscn"
-config/features=PackedStringArray("4.3", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/bg_color=Color(0.343861, 0.147055, 0.147055, 1)
 boot_splash/image="res://icon.png"
 config/icon="res://icon.png"

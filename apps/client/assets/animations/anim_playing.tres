@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=116 format=3 uid="uid://mlfql0jumwpp"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://mlfql0jumwpp"]
 
 [ext_resource type="Texture2D" uid="uid://c6ob011ekxm2c" path="res://assets/animations/playing_card.png" id="1_6u4u3"]
 
