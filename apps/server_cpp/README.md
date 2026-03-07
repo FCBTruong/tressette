@@ -16,8 +16,6 @@ Rule of thumb:
 * `strand` → serialize async handlers
 * `mutex` → protect shared memory/data across threads
 
-So if your code uses both, the README should mention both.
-
 ## Flow Overview
 
 ![Network Flow](docs/NetworkGame.drawio.svg)
