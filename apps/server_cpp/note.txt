@@ -1,0 +1,41 @@
+Server
+  owns:
+    Listener
+    Router
+    SessionRegistry
+
+Listener
+  accepts socket
+  creates ClientSession(session_id)
+
+ClientSession
+  owns one websocket connection
+  knows:
+    session_id
+    optional uid
+    connection state
+  does:
+    read/write/close
+
+SessionRegistry
+  owns mappings:
+    session_id -> ClientSession
+    uid -> session_id
+  does:
+    register session
+    bind uid to session
+    unbind uid
+    find session by uid
+    send packet by uid
+
+Router
+  receives packet from ClientSession
+  dispatches by cmd_id
+
+AuthService
+  validates login
+  returns uid
+
+GameClient / PlayerGateway
+  high-level user flow
+  send GENERAL_INFO / USER_INFO / etc.

@@ -1,28 +1,41 @@
+// net/router.cpp
 #include "router.hpp"
-#include "client_session.hpp"
-#include <string>
-#include <iostream>
-#include "net/cmd.hpp"
-#include "packet.pb.h"
 
-static std::vector<uint8_t> to_bytes(const std::string& s) {
-    return std::vector<uint8_t>(s.begin(), s.end());
-}
+#include <iostream>
+#include <memory>
+#include <string>
+
+#include "auth/auth_service.hpp"
+#include "client_session.hpp"
+#include "cmd.hpp"
+#include "server.hpp"
+
+Router::Router(Server& server)
+    : server_(server) {}
 
 void Router::handle(const std::shared_ptr<ClientSession>& session, const Packet& packet) {
     std::cout << "Received packet from session " << session->session_id()
               << ": cmd_id=" << packet.cmd_id()
               << ", token=" << packet.token()
               << ", payload_size=" << packet.payload().size() << '\n';
-              
+
+    if (!server_.auth_service().is_authorized(*session, packet)) {
+        send_auth_error(session, packet.cmd_id());
+        return;
+    }
+
     switch (packet.cmd_id()) {
-        case Cmd::PING:
+        case Cmd::PING_PONG:
             handle_ping(session, packet);
             break;
         case Cmd::LOGIN:
             handle_login(session, packet);
             break;
         default:
+            int cmd_id = packet.cmd_id();
+            int uid = session->uid().value_or(0);
+
+            // Dispatch on received packet event to listeners
             std::cerr << "Unknown opcode from session " << session->session_id() << '\n';
             break;
     }
@@ -30,7 +43,7 @@ void Router::handle(const std::shared_ptr<ClientSession>& session, const Packet&
 
 void Router::handle_ping(const std::shared_ptr<ClientSession>& session, const Packet& /*packet*/) {
     Packet reply;
-    reply.set_cmd_id(Cmd::PONG);
+    reply.set_cmd_id(Cmd::PING_PONG);
     session->send(reply);
 }
 
@@ -41,16 +54,20 @@ void Router::handle_login(const std::shared_ptr<ClientSession>& session, const P
         return;
     }
 
-    std::cout << "Session " << session->session_id()
-              << " login token=" << login.token()
-              << ", platform=" << login.platform()
-              << ", device_model=" << login.device_model()
-              << '\n';
+    auto result = server_.auth_service().login(
+        login.token(),
+        login.platform(),
+        login.device_model());
 
     LoginResponse login_response;
-    login_response.set_uid(123);
-    login_response.set_token("server_token");
-    login_response.set_error(0);
+    login_response.set_error(result.error);
+
+    if (result.success) {
+        login_response.set_uid(result.uid);
+        login_response.set_token(result.session_token);
+
+        server_.session_registry().bind_uid(result.uid, session->session_id());
+    }
 
     std::string response_payload;
     if (!login_response.SerializeToString(&response_payload)) {
@@ -59,9 +76,25 @@ void Router::handle_login(const std::shared_ptr<ClientSession>& session, const P
     }
 
     Packet reply;
-    reply.set_token(packet.token());
     reply.set_cmd_id(Cmd::LOGIN);
+    reply.set_token(result.success ? result.session_token : "");
     reply.set_payload(response_payload);
+
+    session->send(reply);
+}
+
+void Router::send_auth_error(const std::shared_ptr<ClientSession>& session, int cmd_id) {
+    LoginResponse response;
+    response.set_error(401);
+
+    std::string payload;
+    if (!response.SerializeToString(&payload)) {
+        return;
+    }
+
+    Packet reply;
+    reply.set_cmd_id(cmd_id);
+    reply.set_payload(payload);
 
     session->send(reply);
 }

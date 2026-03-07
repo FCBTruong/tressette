@@ -1,9 +1,10 @@
 #pragma once
 
-#include <asio.hpp>
+#include <boost/asio.hpp>
 #include <cstdint>
 
-using asio::ip::tcp;
+namespace asio = boost::asio;
+using tcp = asio::ip::tcp;
 
 class Server;
 

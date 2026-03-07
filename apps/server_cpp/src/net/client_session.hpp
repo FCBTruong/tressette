@@ -1,15 +1,22 @@
 #pragma once
 
-#include <asio.hpp>
-#include <array>
+#include <boost/asio.hpp>
+#include <boost/beast/core.hpp>
+#include <boost/beast/websocket.hpp>
 #include <cstdint>
 #include <deque>
 #include <memory>
-#include <vector>
+#include <optional>
+#include <string>
+
+#include <google/protobuf/message.h>
 
 #include "packet.pb.h"
 
-using asio::ip::tcp;
+namespace asio = boost::asio;
+namespace beast = boost::beast;
+namespace websocket = boost::beast::websocket;
+using tcp = asio::ip::tcp;
 
 class Server;
 
@@ -19,23 +26,36 @@ public:
 
     void start();
     void send(const Packet& packet);
+    bool send_packet(int cmd_id, const google::protobuf::Message& msg);
     void close();
 
-    uint64_t session_id() const { return session_id_; }
+    uint64_t session_id() const;
+    std::optional<uint64_t> uid() const;
+
+    void bind_uid(uint64_t uid);
+    void clear_uid();
+
+    bool is_authenticated() const;
+    void clear_auth();
+
+    const std::string& session_token() const;
+    void set_session_token(std::string token);
 
 private:
-    void read_header();
-    void read_body(uint32_t payload_size);
+    void on_accept(beast::error_code ec);
+    void do_read();
     void do_write();
+    void do_close();
 
 private:
-    tcp::socket socket_;
-    uint64_t session_id_;
-    Server& server_;
+    websocket::stream<beast::tcp_stream> ws_;
+    beast::flat_buffer read_buffer_;
+    std::deque<std::string> write_queue_;
 
-    std::array<uint8_t, 4> header_buf_{};
-    std::vector<uint8_t> body_buf_;
-
-    std::deque<std::vector<uint8_t>> write_queue_;
+    uint64_t session_id_ = 0;
+    std::optional<uint64_t> uid_;
+    std::string session_token_;
     bool closed_ = false;
+
+    Server& server_;
 };

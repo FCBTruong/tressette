@@ -1,56 +1,54 @@
-#include <asio.hpp>
-#include <array>
+#include <boost/asio.hpp>
+#include <boost/beast/core.hpp>
+#include <boost/beast/websocket.hpp>
 #include <iostream>
 #include <string>
-#include <vector>
 
 #include "packet.pb.h"
 #include "net/cmd.hpp"
-#include "net/packet_framing.hpp"
 
-using asio::ip::tcp;
-
-static std::vector<uint8_t> to_bytes(const std::string& s) {
-    return std::vector<uint8_t>(s.begin(), s.end());
-}
+namespace asio = boost::asio;
+namespace beast = boost::beast;
+namespace websocket = boost::beast::websocket;
+using tcp = asio::ip::tcp;
 
 int main() {
     try {
         asio::io_context io;
 
-        tcp::socket socket(io);
-        socket.connect(tcp::endpoint(asio::ip::make_address("127.0.0.1"), 8000));
+        tcp::resolver resolver(io);
+        auto const results = resolver.resolve("127.0.0.1", "8000");
 
-        std::cout << "Connected to server\n";
+        websocket::stream<tcp::socket> ws(io);
 
+        asio::connect(ws.next_layer(), results.begin(), results.end());
+
+        ws.handshake("127.0.0.1", "/");
+
+        std::cout << "Connected to WebSocket server\n";
+
+        ws.binary(true);
+
+        // Send Ping packet
         Packet ping_packet;
-        ping_packet.set_cmd_id(Cmd::PING);
+        ping_packet.set_cmd_id(Cmd::PING_PONG);
 
-        std::string raw = ping_packet.SerializeAsString();
-        auto framed = frame_message(raw);
-        asio::write(socket, asio::buffer(framed));
+        std::string ping_bytes;
+        if (!ping_packet.SerializeToString(&ping_bytes)) {
+            throw std::runtime_error("Failed to serialize Ping packet");
+        }
 
+        ws.write(asio::buffer(ping_bytes));
         std::cout << "Sent Ping packet\n";
-        
-        // Read PING response
-        std::array<uint8_t, 4> header_buf{};
-        asio::read(socket, asio::buffer(header_buf));
 
-        uint32_t payload_size = 0;
-        if (!parse_size_header(header_buf.data(), payload_size)) {
-            std::cerr << "Failed to parse size header\n";
-            return 1;
-        }
+        // Read Ping response
+        beast::flat_buffer buffer;
+        ws.read(buffer);
 
-        if (payload_size == 0 || payload_size > 8 * 1024) {
-            std::cerr << "Invalid payload size: " << payload_size << '\n';
-            return 1;
-        }
-        std::vector<uint8_t> body_buf(payload_size);
-        asio::read(socket, asio::buffer(body_buf));
+        std::string response = beast::buffers_to_string(buffer.data());
 
         Packet ping_reply;
-        if (!ping_reply.ParseFromArray(body_buf.data(), static_cast<int>(body_buf.size()))) {
+        if (!ping_reply.ParseFromArray(response.data(), static_cast<int>(response.size()))) {
             std::cerr << "Failed to parse Ping reply Packet\n";
             return 1;
         }
@@ -60,7 +58,6 @@ int main() {
         std::cout << "  token = " << ping_reply.token() << '\n';
         std::cout << "  payload_size = " << ping_reply.payload().size() << '\n';
 
-        // Parse payload as PingPong
         PingPong pong;
         if (pong.ParseFromString(ping_reply.payload())) {
             std::cout << "  payload parsed as PingPong\n";
@@ -68,9 +65,7 @@ int main() {
             std::cout << "  payload is not valid PingPong\n";
         }
 
-        // Send packet LOGIN
-
-        // 1. Create Login message
+        // Send Login packet
         Login login;
         login.set_type(1);
         login.set_token("abc123");
@@ -79,30 +74,25 @@ int main() {
         login.set_device_country("VN");
         login.set_app_version_code(100);
 
-        // 2. Serialize Login message to string
         std::string login_bytes;
         if (!login.SerializeToString(&login_bytes)) {
             throw std::runtime_error("Failed to serialize Login");
         }
 
-        // 3. Create Packet with LOGIN command
         Packet packet;
         packet.set_token("session_token_here");
         packet.set_cmd_id(Cmd::LOGIN);
         packet.set_payload(login_bytes);
 
-        // 4. Serialize Packet to bytes
         std::string packet_bytes;
         if (!packet.SerializeToString(&packet_bytes)) {
             throw std::runtime_error("Failed to serialize Packet");
         }
 
-        // 5. Send Packet bytes to server
-        auto framed_packet = frame_message(packet_bytes);
-        asio::write(socket, asio::buffer(framed_packet));
+        ws.write(asio::buffer(packet_bytes));
         std::cout << "Sent Login packet\n";
 
-        socket.close();
+        ws.close(websocket::close_code::normal);
     } catch (const std::exception& e) {
         std::cerr << "Client error: " << e.what() << '\n';
         return 1;

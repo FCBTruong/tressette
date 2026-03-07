@@ -24,7 +24,7 @@ func on_ready():
 	if CURRENT_MODE == MODES.PRIVATE:	
 		WEBSOCKET_URL = "wss://tressette-dev.clareentertainment.com/ws"
 	elif CURRENT_MODE == MODES.LOCAL:
-		WEBSOCKET_URL = "ws://%s:%s/ws" % [SERVER_IP, SERVER_PORT]
+		WEBSOCKET_URL = "ws://%s:%s" % [SERVER_IP, SERVER_PORT]
 	else:
 		WEBSOCKET_URL = "wss://tressette-live.clareentertainment.com/ws"
 

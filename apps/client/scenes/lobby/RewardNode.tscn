@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq2dusym2iq1o"]
+[gd_scene format=3 uid="uid://bq2dusym2iq1o"]
 
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="1_u3e8y"]
-[ext_resource type="Script" path="res://scenes/lobby/reward_node.gd" id="1_uqk5b"]
+[ext_resource type="Script" uid="uid://b7tiosm3p34s1" path="res://scenes/lobby/reward_node.gd" id="1_uqk5b"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="2_1snol"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxqp6"]
@@ -11,7 +11,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="RewardNode" type="Panel"]
+[node name="RewardNode" type="Panel" unique_id=647078508]
 custom_minimum_size = Vector2(100, 0)
 offset_right = 100.0
 offset_bottom = 120.0
@@ -19,7 +19,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pxqp6")
 script = ExtResource("1_uqk5b")
 
-[node name="ValueLb" type="Label" parent="."]
+[node name="ValueLb" type="Label" parent="." unique_id=2024087636]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -39,7 +39,7 @@ text = "100M"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=824011200]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

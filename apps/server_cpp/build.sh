@@ -1,4 +1,4 @@
-cmake -S . -B build
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 cmake --build build --config Debug
 
 # Run the server

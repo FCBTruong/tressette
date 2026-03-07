@@ -12,6 +12,7 @@ void Listener::start() {
 
 void Listener::do_accept() {
     acceptor_.async_accept(
+        asio::make_strand(acceptor_.get_executor()),
         [this](std::error_code ec, tcp::socket socket) {
             if (!ec) {
                 server_.on_new_connection(std::move(socket));

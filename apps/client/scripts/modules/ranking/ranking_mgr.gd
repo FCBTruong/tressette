@@ -20,7 +20,7 @@ class RankingPlayer:
 	
 var list_users = []
 func get_reward(rank):
-	if rank - 1 < len(rewards):
+	if rank - 1 < len(rewards) and rank > 0:
 		return rewards[rank - 1]
 	return 0
 
