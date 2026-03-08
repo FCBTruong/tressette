@@ -25,7 +25,7 @@ public:
     ClientSession(tcp::socket socket, uint64_t session_id, Server& server);
 
     void start();
-    void send(const Packet& packet);
+    void send(const packet::Packet& packet);
     bool send_packet(int cmd_id, const google::protobuf::Message& msg);
     void close();
 

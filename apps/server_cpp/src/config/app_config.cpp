@@ -43,6 +43,6 @@ bool AppConfig::load() {
     return true;
 }
 
-const AppCodeVersion& AppConfig::app_code_version() const {
+const packet::AppCodeVersion& AppConfig::app_code_version() const {
     return app_code_version_;
 }

@@ -20,6 +20,7 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace _pb = ::PROTOBUF_NAMESPACE_ID;
 namespace _pbi = _pb::internal;
 
+namespace packet {
 PROTOBUF_CONSTEXPR Empty::Empty(
     ::_pbi::ConstantInitialized){}
 struct EmptyDefaultTypeInternal {
@@ -1492,1347 +1493,1350 @@ struct RewardInventoryItemDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RewardInventoryItemDefaultTypeInternal _RewardInventoryItem_default_instance_;
+}  // namespace packet
 static ::_pb::Metadata file_level_metadata_packet_2eproto[97];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_packet_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_packet_2eproto = nullptr;
 
 const uint32_t TableStruct_packet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Empty, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::Empty, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Packet, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::Packet, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Packet, token_),
-  PROTOBUF_FIELD_OFFSET(::Packet, cmd_id_),
-  PROTOBUF_FIELD_OFFSET(::Packet, payload_),
+  PROTOBUF_FIELD_OFFSET(::packet::Packet, token_),
+  PROTOBUF_FIELD_OFFSET(::packet::Packet, cmd_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::Packet, payload_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ChatMessage, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChatMessage, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ChatMessage, abc_),
-  PROTOBUF_FIELD_OFFSET(::ChatMessage, username_),
-  PROTOBUF_FIELD_OFFSET(::ChatMessage, level_),
-  PROTOBUF_FIELD_OFFSET(::ChatMessage, gold_),
-  PROTOBUF_FIELD_OFFSET(::ChatMessage, abcd_),
-  PROTOBUF_FIELD_OFFSET(::ChatMessage, is_active_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChatMessage, abc_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChatMessage, username_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChatMessage, level_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChatMessage, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChatMessage, abcd_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChatMessage, is_active_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PingPong, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PingPong, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Login, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::Login, type_),
-  PROTOBUF_FIELD_OFFSET(::Login, token_),
-  PROTOBUF_FIELD_OFFSET(::Login, device_model_),
-  PROTOBUF_FIELD_OFFSET(::Login, platform_),
-  PROTOBUF_FIELD_OFFSET(::Login, device_country_),
-  PROTOBUF_FIELD_OFFSET(::Login, app_version_code_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, type_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, token_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, device_model_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, platform_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, device_country_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, app_version_code_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::LoginFirebase, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::LoginFirebase, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::LoginFirebase, sub_type_),
-  PROTOBUF_FIELD_OFFSET(::LoginFirebase, login_token_),
-  PROTOBUF_FIELD_OFFSET(::LoginFirebase, guest_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::LoginFirebase, sub_type_),
+  PROTOBUF_FIELD_OFFSET(::packet::LoginFirebase, login_token_),
+  PROTOBUF_FIELD_OFFSET(::packet::LoginFirebase, guest_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::Logout, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::Logout, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::LoginResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::LoginResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::LoginResponse, uid_),
-  PROTOBUF_FIELD_OFFSET(::LoginResponse, token_),
-  PROTOBUF_FIELD_OFFSET(::LoginResponse, error_),
+  PROTOBUF_FIELD_OFFSET(::packet::LoginResponse, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::LoginResponse, token_),
+  PROTOBUF_FIELD_OFFSET(::packet::LoginResponse, error_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UserInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UserInfo, uid_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, name_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, gold_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, scores_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, names_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, abc_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, avatar_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, avatar_third_party_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, level_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, support_num_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, win_count_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, game_count_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, exp_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, startup_gold_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, has_first_buy_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, time_show_ads_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, login_type_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, time_ads_reward_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, add_for_user_support_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, avatar_frame_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, claimed_levels_),
-  PROTOBUF_FIELD_OFFSET(::UserInfo, price_change_name_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, name_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, scores_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, names_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, abc_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, avatar_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, avatar_third_party_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, level_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, support_num_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, win_count_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, game_count_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, exp_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, startup_gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, has_first_buy_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, time_show_ads_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, login_type_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, time_ads_reward_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, add_for_user_support_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, avatar_frame_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, claimed_levels_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInfo, price_change_name_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::GameInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::GameInfo, match_id_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, game_mode_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, player_mode_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, uids_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, user_golds_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, user_names_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, cards_compare_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, current_turn_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, game_state_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, my_cards_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, remain_cards_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, user_points_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, team_ids_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, hand_suit_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, avatars_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, is_registered_leave_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, pot_value_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, current_round_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, hand_in_round_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, point_to_win_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, is_vips_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, viewer_uids_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, viewer_avatars_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, viewer_names_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, avatar_frames_),
-  PROTOBUF_FIELD_OFFSET(::GameInfo, viewer_avatar_frames_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, match_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, game_mode_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, player_mode_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, user_golds_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, user_names_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, cards_compare_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, current_turn_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, game_state_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, my_cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, remain_cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, user_points_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, team_ids_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, hand_suit_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, avatars_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, is_registered_leave_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, pot_value_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, current_round_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, hand_in_round_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, point_to_win_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, is_vips_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, viewer_uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, viewer_avatars_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, viewer_names_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, avatar_frames_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameInfo, viewer_avatar_frames_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::RegisterLeaveGame, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::RegisterLeaveGame, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::RegisterLeaveGame, status_),
+  PROTOBUF_FIELD_OFFSET(::packet::RegisterLeaveGame, status_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, uid_),
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, gold_),
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, name_),
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, seat_server_),
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, team_id_),
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, avatar_),
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, is_vip_),
-  PROTOBUF_FIELD_OFFSET(::NewUserJoinMatch, avatar_frame_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, name_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, seat_server_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, team_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, avatar_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, is_vip_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserJoinMatch, avatar_frame_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UserLeaveMatch, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserLeaveMatch, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UserLeaveMatch, uid_),
-  PROTOBUF_FIELD_OFFSET(::UserLeaveMatch, reason_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserLeaveMatch, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserLeaveMatch, reason_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::DealCard, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::DealCard, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::DealCard, cards_),
-  PROTOBUF_FIELD_OFFSET(::DealCard, remain_cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::DealCard, cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::DealCard, remain_cards_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PlayCard, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PlayCard, uid_),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, card_id_),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, auto__),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, current_turn_),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, hand_suit_),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, is_end_hand_),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, win_uid_),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, win_point_),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, is_end_round_),
-  PROTOBUF_FIELD_OFFSET(::PlayCard, win_card_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, card_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, auto__),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, current_turn_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, hand_suit_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, is_end_hand_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, win_uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, win_point_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, is_end_round_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, win_card_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::StartGame, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::StartGame, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::StartGame, pot_value_),
-  PROTOBUF_FIELD_OFFSET(::StartGame, players_gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::StartGame, pot_value_),
+  PROTOBUF_FIELD_OFFSET(::packet::StartGame, players_gold_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::NewHand, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewHand, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::NewHand, current_turn_),
-  PROTOBUF_FIELD_OFFSET(::NewHand, my_cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewHand, current_turn_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewHand, my_cards_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UpdateGamePoint, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UpdateGamePoint, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UpdateGamePoint, points_),
+  PROTOBUF_FIELD_OFFSET(::packet::UpdateGamePoint, points_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::EndHand, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndHand, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::EndHand, win_uid_),
-  PROTOBUF_FIELD_OFFSET(::EndHand, win_card_),
-  PROTOBUF_FIELD_OFFSET(::EndHand, user_points_),
-  PROTOBUF_FIELD_OFFSET(::EndHand, win_point_),
-  PROTOBUF_FIELD_OFFSET(::EndHand, is_end_round_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndHand, win_uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndHand, win_card_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndHand, user_points_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndHand, win_point_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndHand, is_end_round_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::DrawCard, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::DrawCard, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::DrawCard, cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::DrawCard, cards_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::GeneralInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::GeneralInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::GeneralInfo, timestamp_),
-  PROTOBUF_FIELD_OFFSET(::GeneralInfo, time_thinking_in_turn_),
-  PROTOBUF_FIELD_OFFSET(::GeneralInfo, exp_levels_),
-  PROTOBUF_FIELD_OFFSET(::GeneralInfo, fee_mode_no_bet_),
-  PROTOBUF_FIELD_OFFSET(::GeneralInfo, enable_ads_),
-  PROTOBUF_FIELD_OFFSET(::GeneralInfo, level_rewards_),
+  PROTOBUF_FIELD_OFFSET(::packet::GeneralInfo, timestamp_),
+  PROTOBUF_FIELD_OFFSET(::packet::GeneralInfo, time_thinking_in_turn_),
+  PROTOBUF_FIELD_OFFSET(::packet::GeneralInfo, exp_levels_),
+  PROTOBUF_FIELD_OFFSET(::packet::GeneralInfo, fee_mode_no_bet_),
+  PROTOBUF_FIELD_OFFSET(::packet::GeneralInfo, enable_ads_),
+  PROTOBUF_FIELD_OFFSET(::packet::GeneralInfo, level_rewards_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::LevelReward, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::LevelReward, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::LevelReward, level_),
-  PROTOBUF_FIELD_OFFSET(::LevelReward, gold_),
-  PROTOBUF_FIELD_OFFSET(::LevelReward, items_),
+  PROTOBUF_FIELD_OFFSET(::packet::LevelReward, level_),
+  PROTOBUF_FIELD_OFFSET(::packet::LevelReward, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::LevelReward, items_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ItemReward, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ItemReward, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ItemReward, item_id_),
-  PROTOBUF_FIELD_OFFSET(::ItemReward, duration_),
+  PROTOBUF_FIELD_OFFSET(::packet::ItemReward, item_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::ItemReward, duration_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::EndGame, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndGame, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::EndGame, uids_),
-  PROTOBUF_FIELD_OFFSET(::EndGame, win_team_id_),
-  PROTOBUF_FIELD_OFFSET(::EndGame, score_cards_),
-  PROTOBUF_FIELD_OFFSET(::EndGame, score_last_tricks_),
-  PROTOBUF_FIELD_OFFSET(::EndGame, score_totals_),
-  PROTOBUF_FIELD_OFFSET(::EndGame, players_gold_),
-  PROTOBUF_FIELD_OFFSET(::EndGame, rewards_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndGame, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndGame, win_team_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndGame, score_cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndGame, score_last_tricks_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndGame, score_totals_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndGame, players_gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::EndGame, rewards_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PrepareStartGame, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PrepareStartGame, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PrepareStartGame, time_start_),
+  PROTOBUF_FIELD_OFFSET(::packet::PrepareStartGame, time_start_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::InGameChatMessage, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::InGameChatMessage, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::InGameChatMessage, uid_),
-  PROTOBUF_FIELD_OFFSET(::InGameChatMessage, chat_message_),
+  PROTOBUF_FIELD_OFFSET(::packet::InGameChatMessage, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::InGameChatMessage, chat_message_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PaymentGoogleConsume, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentGoogleConsume, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PaymentGoogleConsume, purchase_token_),
-  PROTOBUF_FIELD_OFFSET(::PaymentGoogleConsume, quantity_),
-  PROTOBUF_FIELD_OFFSET(::PaymentGoogleConsume, skus_),
-  PROTOBUF_FIELD_OFFSET(::PaymentGoogleConsume, signature_),
-  PROTOBUF_FIELD_OFFSET(::PaymentGoogleConsume, sku_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentGoogleConsume, purchase_token_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentGoogleConsume, quantity_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentGoogleConsume, skus_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentGoogleConsume, signature_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentGoogleConsume, sku_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PaymentSuccess, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentSuccess, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PaymentSuccess, gold_),
-  PROTOBUF_FIELD_OFFSET(::PaymentSuccess, pack_id_),
-  PROTOBUF_FIELD_OFFSET(::PaymentSuccess, items_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentSuccess, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentSuccess, pack_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentSuccess, items_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UpdateMoney, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UpdateMoney, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UpdateMoney, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::UpdateMoney, gold_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::TableList, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::TableList, table_ids_),
-  PROTOBUF_FIELD_OFFSET(::TableList, num_players_),
-  PROTOBUF_FIELD_OFFSET(::TableList, player_modes_),
-  PROTOBUF_FIELD_OFFSET(::TableList, player_uids_),
-  PROTOBUF_FIELD_OFFSET(::TableList, avatars_),
-  PROTOBUF_FIELD_OFFSET(::TableList, game_modes_),
-  PROTOBUF_FIELD_OFFSET(::TableList, avatar_frames_),
-  PROTOBUF_FIELD_OFFSET(::TableList, is_private_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, table_ids_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, num_players_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, player_modes_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, player_uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, avatars_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, game_modes_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, avatar_frames_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, is_private_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, pack_ids_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, golds_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, prices_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, currencies_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, no_ads_days_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, gold_offer_first_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, no_ads_day_offer_first_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, price_offer_first_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, currency_offer_first_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, pack_id_offer_first_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, items_offer_first_buy_),
-  PROTOBUF_FIELD_OFFSET(::ShopConfig, details_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, pack_ids_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, golds_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, prices_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, currencies_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, no_ads_days_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, gold_offer_first_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, no_ads_day_offer_first_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, price_offer_first_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, currency_offer_first_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, pack_id_offer_first_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, items_offer_first_buy_),
+  PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, details_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::DetailShopPack, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::DetailShopPack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::DetailShopPack, items_),
+  PROTOBUF_FIELD_OFFSET(::packet::DetailShopPack, items_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::GuestAccount, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::GuestAccount, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::GuestAccount, guest_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::GuestAccount, guest_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ChangeAvatar, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChangeAvatar, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ChangeAvatar, avatar_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChangeAvatar, avatar_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::InGameChatEmoticon, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::InGameChatEmoticon, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::InGameChatEmoticon, uid_),
-  PROTOBUF_FIELD_OFFSET(::InGameChatEmoticon, emoticon_),
+  PROTOBUF_FIELD_OFFSET(::packet::InGameChatEmoticon, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::InGameChatEmoticon, emoticon_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SearchFriend, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriend, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SearchFriend, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriend, uid_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, uid_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, gold_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, name_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, avatar_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, win_count_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, game_count_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, error_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, level_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, exp_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, is_verified_),
-  PROTOBUF_FIELD_OFFSET(::SearchFriendResponse, avatar_frame_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, name_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, avatar_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, win_count_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, game_count_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, error_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, level_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, exp_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, is_verified_),
+  PROTOBUF_FIELD_OFFSET(::packet::SearchFriendResponse, avatar_frame_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CheatGoldUser, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatGoldUser, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CheatGoldUser, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatGoldUser, gold_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::FriendList, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::FriendList, uids_),
-  PROTOBUF_FIELD_OFFSET(::FriendList, names_),
-  PROTOBUF_FIELD_OFFSET(::FriendList, avatars_),
-  PROTOBUF_FIELD_OFFSET(::FriendList, levels_),
-  PROTOBUF_FIELD_OFFSET(::FriendList, golds_),
-  PROTOBUF_FIELD_OFFSET(::FriendList, onlines_),
-  PROTOBUF_FIELD_OFFSET(::FriendList, is_playings_),
-  PROTOBUF_FIELD_OFFSET(::FriendList, avatar_frames_),
-  PROTOBUF_FIELD_OFFSET(::FriendList, last_online_times_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, names_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, avatars_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, levels_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, golds_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, onlines_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, is_playings_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, avatar_frames_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendList, last_online_times_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::FriendRequests, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequests, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::FriendRequests, uids_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequests, names_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequests, avatars_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequests, levels_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequests, golds_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequests, sent_uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequests, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequests, names_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequests, avatars_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequests, levels_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequests, golds_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequests, sent_uids_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::AddFriend, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::AddFriend, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::AddFriend, error_),
-  PROTOBUF_FIELD_OFFSET(::AddFriend, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::AddFriend, error_),
+  PROTOBUF_FIELD_OFFSET(::packet::AddFriend, uid_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::RequestFriendAccept, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::RequestFriendAccept, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::RequestFriendAccept, uid_),
-  PROTOBUF_FIELD_OFFSET(::RequestFriendAccept, action_),
+  PROTOBUF_FIELD_OFFSET(::packet::RequestFriendAccept, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::RequestFriendAccept, action_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::RemoveFriend, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::RemoveFriend, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::RemoveFriend, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::RemoveFriend, uid_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::NewFriendRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewFriendRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::NewFriendRequest, uid_),
-  PROTOBUF_FIELD_OFFSET(::NewFriendRequest, avatar_),
-  PROTOBUF_FIELD_OFFSET(::NewFriendRequest, name_),
-  PROTOBUF_FIELD_OFFSET(::NewFriendRequest, level_),
-  PROTOBUF_FIELD_OFFSET(::NewFriendRequest, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewFriendRequest, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewFriendRequest, avatar_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewFriendRequest, name_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewFriendRequest, level_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewFriendRequest, gold_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::FriendRequestAccepted, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequestAccepted, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::FriendRequestAccepted, uid_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequestAccepted, name_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequestAccepted, avatar_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequestAccepted, level_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequestAccepted, gold_),
-  PROTOBUF_FIELD_OFFSET(::FriendRequestAccepted, avatar_frame_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequestAccepted, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequestAccepted, name_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequestAccepted, avatar_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequestAccepted, level_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequestAccepted, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::FriendRequestAccepted, avatar_frame_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::RecommendFriends, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::RecommendFriends, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::RecommendFriends, uids_),
-  PROTOBUF_FIELD_OFFSET(::RecommendFriends, names_),
-  PROTOBUF_FIELD_OFFSET(::RecommendFriends, avatars_),
-  PROTOBUF_FIELD_OFFSET(::RecommendFriends, levels_),
-  PROTOBUF_FIELD_OFFSET(::RecommendFriends, golds_),
-  PROTOBUF_FIELD_OFFSET(::RecommendFriends, avatar_frames_),
+  PROTOBUF_FIELD_OFFSET(::packet::RecommendFriends, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::RecommendFriends, names_),
+  PROTOBUF_FIELD_OFFSET(::packet::RecommendFriends, avatars_),
+  PROTOBUF_FIELD_OFFSET(::packet::RecommendFriends, levels_),
+  PROTOBUF_FIELD_OFFSET(::packet::RecommendFriends, golds_),
+  PROTOBUF_FIELD_OFFSET(::packet::RecommendFriends, avatar_frames_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PaymentAppleConsume, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentAppleConsume, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PaymentAppleConsume, pack_id_),
-  PROTOBUF_FIELD_OFFSET(::PaymentAppleConsume, receipt_data_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentAppleConsume, pack_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentAppleConsume, receipt_data_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PaymentFinishedAppleTransaction, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentFinishedAppleTransaction, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PaymentFinishedAppleTransaction, pack_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentFinishedAppleTransaction, pack_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::NewRound, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewRound, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::NewRound, current_round_),
-  PROTOBUF_FIELD_OFFSET(::NewRound, pot_value_),
-  PROTOBUF_FIELD_OFFSET(::NewRound, players_gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewRound, current_round_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewRound, pot_value_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewRound, players_gold_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CreateTable, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::CreateTable, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CreateTable, bet_),
-  PROTOBUF_FIELD_OFFSET(::CreateTable, player_mode_),
-  PROTOBUF_FIELD_OFFSET(::CreateTable, is_private_),
-  PROTOBUF_FIELD_OFFSET(::CreateTable, point_mode_),
-  PROTOBUF_FIELD_OFFSET(::CreateTable, bet_mode_),
+  PROTOBUF_FIELD_OFFSET(::packet::CreateTable, bet_),
+  PROTOBUF_FIELD_OFFSET(::packet::CreateTable, player_mode_),
+  PROTOBUF_FIELD_OFFSET(::packet::CreateTable, is_private_),
+  PROTOBUF_FIELD_OFFSET(::packet::CreateTable, point_mode_),
+  PROTOBUF_FIELD_OFFSET(::packet::CreateTable, bet_mode_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::JoinTableById, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::JoinTableById, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::JoinTableById, match_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::JoinTableById, match_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::JoinTableResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::JoinTableResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::JoinTableResponse, error_),
+  PROTOBUF_FIELD_OFFSET(::packet::JoinTableResponse, error_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ClaimSupport, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ClaimSupport, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ClaimSupport, support_amount_),
+  PROTOBUF_FIELD_OFFSET(::packet::ClaimSupport, support_amount_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::AppCodeVersion, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::AppCodeVersion, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::AppCodeVersion, android_version_),
-  PROTOBUF_FIELD_OFFSET(::AppCodeVersion, android_forced_update_version_),
-  PROTOBUF_FIELD_OFFSET(::AppCodeVersion, android_remind_update_version_),
-  PROTOBUF_FIELD_OFFSET(::AppCodeVersion, ios_version_),
-  PROTOBUF_FIELD_OFFSET(::AppCodeVersion, ios_forced_update_version_),
-  PROTOBUF_FIELD_OFFSET(::AppCodeVersion, ios_remind_update_version_),
-  PROTOBUF_FIELD_OFFSET(::AppCodeVersion, ios_reviewing_version_),
+  PROTOBUF_FIELD_OFFSET(::packet::AppCodeVersion, android_version_),
+  PROTOBUF_FIELD_OFFSET(::packet::AppCodeVersion, android_forced_update_version_),
+  PROTOBUF_FIELD_OFFSET(::packet::AppCodeVersion, android_remind_update_version_),
+  PROTOBUF_FIELD_OFFSET(::packet::AppCodeVersion, ios_version_),
+  PROTOBUF_FIELD_OFFSET(::packet::AppCodeVersion, ios_forced_update_version_),
+  PROTOBUF_FIELD_OFFSET(::packet::AppCodeVersion, ios_remind_update_version_),
+  PROTOBUF_FIELD_OFFSET(::packet::AppCodeVersion, ios_reviewing_version_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PlayCardResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCardResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PlayCardResponse, status_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCardResponse, status_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CheatViewCardBot, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatViewCardBot, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CheatViewCardBot, cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatViewCardBot, cards_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::InviteFriendPlay, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::InviteFriendPlay, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::InviteFriendPlay, uid_),
-  PROTOBUF_FIELD_OFFSET(::InviteFriendPlay, room_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::InviteFriendPlay, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::InviteFriendPlay, room_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::GameActionNapoli, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameActionNapoli, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::GameActionNapoli, uid_),
-  PROTOBUF_FIELD_OFFSET(::GameActionNapoli, point_add_),
-  PROTOBUF_FIELD_OFFSET(::GameActionNapoli, suits_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameActionNapoli, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameActionNapoli, point_add_),
+  PROTOBUF_FIELD_OFFSET(::packet::GameActionNapoli, suits_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CustomerServiceReport, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::CustomerServiceReport, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CustomerServiceReport, report_type_),
-  PROTOBUF_FIELD_OFFSET(::CustomerServiceReport, report_content_),
+  PROTOBUF_FIELD_OFFSET(::packet::CustomerServiceReport, report_type_),
+  PROTOBUF_FIELD_OFFSET(::packet::CustomerServiceReport, report_content_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::AdminBroadcast, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::AdminBroadcast, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::AdminBroadcast, mes_),
+  PROTOBUF_FIELD_OFFSET(::packet::AdminBroadcast, mes_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PaymentPaypalRequestOrder, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentPaypalRequestOrder, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PaymentPaypalRequestOrder, pack_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentPaypalRequestOrder, pack_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::PaymentPaypalOrder, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentPaypalOrder, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::PaymentPaypalOrder, order_url_),
+  PROTOBUF_FIELD_OFFSET(::packet::PaymentPaypalOrder, order_url_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::QuickPlay, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::QuickPlay, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoNewUserJoinMatch, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoNewUserJoinMatch, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoNewUserJoinMatch, uid_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoNewUserJoinMatch, gold_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoNewUserJoinMatch, name_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoNewUserJoinMatch, seat_server_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoNewUserJoinMatch, team_id_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoNewUserJoinMatch, avatar_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoNewUserJoinMatch, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoNewUserJoinMatch, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoNewUserJoinMatch, name_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoNewUserJoinMatch, seat_server_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoNewUserJoinMatch, team_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoNewUserJoinMatch, avatar_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoPrepareStartGame, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoPrepareStartGame, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoPrepareStartGame, pot_value_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoPrepareStartGame, players_gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoPrepareStartGame, pot_value_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoPrepareStartGame, players_gold_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, match_id_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, game_mode_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, player_mode_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, uids_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, user_golds_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, user_names_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, banker_uid_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, current_turn_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, game_state_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, user_points_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, team_ids_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, hand_suit_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, avatars_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, is_registered_leave_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, bet_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, pot_value_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, current_round_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, hand_in_round_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, is_in_games_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, play_turn_time_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, player_infos_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, banker_cards_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, player_bets_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoGameInfo, time_end_bet_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, match_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, game_mode_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, player_mode_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, user_golds_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, user_names_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, banker_uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, current_turn_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, game_state_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, user_points_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, team_ids_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, hand_suit_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, avatars_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, is_registered_leave_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, bet_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, pot_value_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, current_round_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, hand_in_round_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, is_in_games_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, play_turn_time_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, player_infos_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, banker_cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, player_bets_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoGameInfo, time_end_bet_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoPlayerInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoPlayerInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoPlayerInfo, card_ids_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoPlayerInfo, card_ids_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoQuickPlay, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoQuickPlay, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoStartGame, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoStartGame, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoStartGame, uids_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoStartGame, cards_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoStartGame, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoStartGame, cards_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, season_id_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, time_start_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, time_end_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, rewards_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, uids_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, avatars_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, names_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, scores_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, avatar_frames_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, my_rank_),
-  PROTOBUF_FIELD_OFFSET(::RankingInfo, my_score_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, season_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, time_start_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, time_end_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, rewards_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, avatars_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, names_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, scores_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, avatar_frames_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, my_rank_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingInfo, my_score_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::RankingResult, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingResult, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::RankingResult, season_id_),
-  PROTOBUF_FIELD_OFFSET(::RankingResult, gold_reward_),
-  PROTOBUF_FIELD_OFFSET(::RankingResult, rank_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingResult, season_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingResult, gold_reward_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingResult, rank_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::RankingClaimReward, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingClaimReward, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::RankingClaimReward, season_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::RankingClaimReward, season_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UpdateAds, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UpdateAds, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UpdateAds, time_show_ads_),
+  PROTOBUF_FIELD_OFFSET(::packet::UpdateAds, time_show_ads_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::AdsReward, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::AdsReward, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::AdsReward, gold_),
-  PROTOBUF_FIELD_OFFSET(::AdsReward, time_ads_reward_),
+  PROTOBUF_FIELD_OFFSET(::packet::AdsReward, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::AdsReward, time_ads_reward_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ChangeUserName, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChangeUserName, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ChangeUserName, name_),
+  PROTOBUF_FIELD_OFFSET(::packet::ChangeUserName, name_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoActionHit, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoActionHit, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoActionHit, uid_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoActionHit, card_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoActionHit, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoActionHit, card_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoUpdateTurn, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoUpdateTurn, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoUpdateTurn, current_turn_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoUpdateTurn, play_turn_time_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoUpdateTurn, current_turn_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoUpdateTurn, play_turn_time_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoActionStand, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoActionStand, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoActionStand, uid_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoActionStand, current_turn_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoActionStand, play_turn_time_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoActionStand, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoActionStand, current_turn_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoActionStand, play_turn_time_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoEndGame, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoEndGame, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoEndGame, uids_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoEndGame, scores_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoEndGame, is_wins_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoEndGame, golds_change_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoEndGame, player_golds_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoEndGame, uids_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoEndGame, scores_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoEndGame, is_wins_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoEndGame, golds_change_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoEndGame, player_golds_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoShowBankerCard, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoShowBankerCard, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoShowBankerCard, card_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoShowBankerCard, card_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoUserBet, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoUserBet, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoUserBet, uid_),
-  PROTOBUF_FIELD_OFFSET(::SetteMezzoUserBet, bet_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoUserBet, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::SetteMezzoUserBet, bet_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ViewGame, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ViewGame, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ViewGame, match_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::ViewGame, match_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UserStopView, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserStopView, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UserStopView, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserStopView, uid_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::NewUserView, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserView, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::NewUserView, uid_),
-  PROTOBUF_FIELD_OFFSET(::NewUserView, avatar_),
-  PROTOBUF_FIELD_OFFSET(::NewUserView, name_),
-  PROTOBUF_FIELD_OFFSET(::NewUserView, avatar_frame_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserView, uid_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserView, avatar_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserView, name_),
+  PROTOBUF_FIELD_OFFSET(::packet::NewUserView, avatar_frame_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CheatExpUser, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatExpUser, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CheatExpUser, exp_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatExpUser, exp_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UpdateExp, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UpdateExp, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UpdateExp, exp_),
+  PROTOBUF_FIELD_OFFSET(::packet::UpdateExp, exp_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ClaimRewardLevel, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ClaimRewardLevel, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ClaimRewardLevel, level_),
+  PROTOBUF_FIELD_OFFSET(::packet::ClaimRewardLevel, level_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UserInventory, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInventory, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UserInventory, items_),
+  PROTOBUF_FIELD_OFFSET(::packet::UserInventory, items_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::InvetoryItem, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::InvetoryItem, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::InvetoryItem, item_id_),
-  PROTOBUF_FIELD_OFFSET(::InvetoryItem, expire_time_),
-  PROTOBUF_FIELD_OFFSET(::InvetoryItem, value_),
+  PROTOBUF_FIELD_OFFSET(::packet::InvetoryItem, item_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::InvetoryItem, expire_time_),
+  PROTOBUF_FIELD_OFFSET(::packet::InvetoryItem, value_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::UseItem, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::UseItem, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::UseItem, item_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::UseItem, item_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::CheatItem, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatItem, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::CheatItem, item_id_),
-  PROTOBUF_FIELD_OFFSET(::CheatItem, duration_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatItem, item_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::CheatItem, duration_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::BuyItem, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::BuyItem, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::BuyItem, item_id_),
-  PROTOBUF_FIELD_OFFSET(::BuyItem, pack_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::BuyItem, item_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::BuyItem, pack_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::InventoryShopConfig, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::InventoryShopConfig, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::InventoryShopConfig, items_),
+  PROTOBUF_FIELD_OFFSET(::packet::InventoryShopConfig, items_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::InventoryShopItem, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::InventoryShopItem, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::InventoryShopItem, item_id_),
-  PROTOBUF_FIELD_OFFSET(::InventoryShopItem, packs_),
+  PROTOBUF_FIELD_OFFSET(::packet::InventoryShopItem, item_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::InventoryShopItem, packs_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::InvetoryShopPack, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::InvetoryShopPack, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::InvetoryShopPack, id_),
-  PROTOBUF_FIELD_OFFSET(::InvetoryShopPack, price_),
-  PROTOBUF_FIELD_OFFSET(::InvetoryShopPack, duration_),
+  PROTOBUF_FIELD_OFFSET(::packet::InvetoryShopPack, id_),
+  PROTOBUF_FIELD_OFFSET(::packet::InvetoryShopPack, price_),
+  PROTOBUF_FIELD_OFFSET(::packet::InvetoryShopPack, duration_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::ClaimRewardLevelResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::ClaimRewardLevelResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ClaimRewardLevelResponse, level_),
-  PROTOBUF_FIELD_OFFSET(::ClaimRewardLevelResponse, gold_),
-  PROTOBUF_FIELD_OFFSET(::ClaimRewardLevelResponse, items_),
+  PROTOBUF_FIELD_OFFSET(::packet::ClaimRewardLevelResponse, level_),
+  PROTOBUF_FIELD_OFFSET(::packet::ClaimRewardLevelResponse, gold_),
+  PROTOBUF_FIELD_OFFSET(::packet::ClaimRewardLevelResponse, items_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::RewardInventoryItem, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::packet::RewardInventoryItem, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::RewardInventoryItem, item_id_),
-  PROTOBUF_FIELD_OFFSET(::RewardInventoryItem, duration_),
-  PROTOBUF_FIELD_OFFSET(::RewardInventoryItem, value_),
+  PROTOBUF_FIELD_OFFSET(::packet::RewardInventoryItem, item_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::RewardInventoryItem, duration_),
+  PROTOBUF_FIELD_OFFSET(::packet::RewardInventoryItem, value_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::Empty)},
-  { 6, -1, -1, sizeof(::Packet)},
-  { 15, -1, -1, sizeof(::ChatMessage)},
-  { 27, -1, -1, sizeof(::PingPong)},
-  { 33, -1, -1, sizeof(::Login)},
-  { 45, -1, -1, sizeof(::LoginFirebase)},
-  { 54, -1, -1, sizeof(::Logout)},
-  { 60, -1, -1, sizeof(::LoginResponse)},
-  { 69, -1, -1, sizeof(::UserInfo)},
-  { 97, -1, -1, sizeof(::GameInfo)},
-  { 129, -1, -1, sizeof(::RegisterLeaveGame)},
-  { 136, -1, -1, sizeof(::NewUserJoinMatch)},
-  { 150, -1, -1, sizeof(::UserLeaveMatch)},
-  { 158, -1, -1, sizeof(::DealCard)},
-  { 166, -1, -1, sizeof(::PlayCard)},
-  { 182, -1, -1, sizeof(::StartGame)},
-  { 190, -1, -1, sizeof(::NewHand)},
-  { 198, -1, -1, sizeof(::UpdateGamePoint)},
-  { 205, -1, -1, sizeof(::EndHand)},
-  { 216, -1, -1, sizeof(::DrawCard)},
-  { 223, -1, -1, sizeof(::GeneralInfo)},
-  { 235, -1, -1, sizeof(::LevelReward)},
-  { 244, -1, -1, sizeof(::ItemReward)},
-  { 252, -1, -1, sizeof(::EndGame)},
-  { 265, -1, -1, sizeof(::PrepareStartGame)},
-  { 272, -1, -1, sizeof(::InGameChatMessage)},
-  { 280, -1, -1, sizeof(::PaymentGoogleConsume)},
-  { 291, -1, -1, sizeof(::PaymentSuccess)},
-  { 300, -1, -1, sizeof(::UpdateMoney)},
-  { 307, -1, -1, sizeof(::TableList)},
-  { 321, -1, -1, sizeof(::ShopConfig)},
-  { 339, -1, -1, sizeof(::DetailShopPack)},
-  { 346, -1, -1, sizeof(::GuestAccount)},
-  { 353, -1, -1, sizeof(::ChangeAvatar)},
-  { 360, -1, -1, sizeof(::InGameChatEmoticon)},
-  { 368, -1, -1, sizeof(::SearchFriend)},
-  { 375, -1, -1, sizeof(::SearchFriendResponse)},
-  { 392, -1, -1, sizeof(::CheatGoldUser)},
-  { 399, -1, -1, sizeof(::FriendList)},
-  { 414, -1, -1, sizeof(::FriendRequests)},
-  { 426, -1, -1, sizeof(::AddFriend)},
-  { 434, -1, -1, sizeof(::RequestFriendAccept)},
-  { 442, -1, -1, sizeof(::RemoveFriend)},
-  { 449, -1, -1, sizeof(::NewFriendRequest)},
-  { 460, -1, -1, sizeof(::FriendRequestAccepted)},
-  { 472, -1, -1, sizeof(::RecommendFriends)},
-  { 484, -1, -1, sizeof(::PaymentAppleConsume)},
-  { 492, -1, -1, sizeof(::PaymentFinishedAppleTransaction)},
-  { 499, -1, -1, sizeof(::NewRound)},
-  { 508, -1, -1, sizeof(::CreateTable)},
-  { 519, -1, -1, sizeof(::JoinTableById)},
-  { 526, -1, -1, sizeof(::JoinTableResponse)},
-  { 533, -1, -1, sizeof(::ClaimSupport)},
-  { 540, -1, -1, sizeof(::AppCodeVersion)},
-  { 553, -1, -1, sizeof(::PlayCardResponse)},
-  { 560, -1, -1, sizeof(::CheatViewCardBot)},
-  { 567, -1, -1, sizeof(::InviteFriendPlay)},
-  { 575, -1, -1, sizeof(::GameActionNapoli)},
-  { 584, -1, -1, sizeof(::CustomerServiceReport)},
-  { 592, -1, -1, sizeof(::AdminBroadcast)},
-  { 599, -1, -1, sizeof(::PaymentPaypalRequestOrder)},
-  { 606, -1, -1, sizeof(::PaymentPaypalOrder)},
-  { 613, -1, -1, sizeof(::QuickPlay)},
-  { 619, -1, -1, sizeof(::SetteMezzoNewUserJoinMatch)},
-  { 631, -1, -1, sizeof(::SetteMezzoPrepareStartGame)},
-  { 639, -1, -1, sizeof(::SetteMezzoGameInfo)},
-  { 669, -1, -1, sizeof(::SetteMezzoPlayerInfo)},
-  { 676, -1, -1, sizeof(::SetteMezzoQuickPlay)},
-  { 682, -1, -1, sizeof(::SetteMezzoStartGame)},
-  { 690, -1, -1, sizeof(::RankingInfo)},
-  { 707, -1, -1, sizeof(::RankingResult)},
-  { 716, -1, -1, sizeof(::RankingClaimReward)},
-  { 723, -1, -1, sizeof(::UpdateAds)},
-  { 730, -1, -1, sizeof(::AdsReward)},
-  { 738, -1, -1, sizeof(::ChangeUserName)},
-  { 745, -1, -1, sizeof(::SetteMezzoActionHit)},
-  { 753, -1, -1, sizeof(::SetteMezzoUpdateTurn)},
-  { 761, -1, -1, sizeof(::SetteMezzoActionStand)},
-  { 770, -1, -1, sizeof(::SetteMezzoEndGame)},
-  { 781, -1, -1, sizeof(::SetteMezzoShowBankerCard)},
-  { 788, -1, -1, sizeof(::SetteMezzoUserBet)},
-  { 796, -1, -1, sizeof(::ViewGame)},
-  { 803, -1, -1, sizeof(::UserStopView)},
-  { 810, -1, -1, sizeof(::NewUserView)},
-  { 820, -1, -1, sizeof(::CheatExpUser)},
-  { 827, -1, -1, sizeof(::UpdateExp)},
-  { 834, -1, -1, sizeof(::ClaimRewardLevel)},
-  { 841, -1, -1, sizeof(::UserInventory)},
-  { 848, -1, -1, sizeof(::InvetoryItem)},
-  { 857, -1, -1, sizeof(::UseItem)},
-  { 864, -1, -1, sizeof(::CheatItem)},
-  { 872, -1, -1, sizeof(::BuyItem)},
-  { 880, -1, -1, sizeof(::InventoryShopConfig)},
-  { 887, -1, -1, sizeof(::InventoryShopItem)},
-  { 895, -1, -1, sizeof(::InvetoryShopPack)},
-  { 904, -1, -1, sizeof(::ClaimRewardLevelResponse)},
-  { 913, -1, -1, sizeof(::RewardInventoryItem)},
+  { 0, -1, -1, sizeof(::packet::Empty)},
+  { 6, -1, -1, sizeof(::packet::Packet)},
+  { 15, -1, -1, sizeof(::packet::ChatMessage)},
+  { 27, -1, -1, sizeof(::packet::PingPong)},
+  { 33, -1, -1, sizeof(::packet::Login)},
+  { 45, -1, -1, sizeof(::packet::LoginFirebase)},
+  { 54, -1, -1, sizeof(::packet::Logout)},
+  { 60, -1, -1, sizeof(::packet::LoginResponse)},
+  { 69, -1, -1, sizeof(::packet::UserInfo)},
+  { 97, -1, -1, sizeof(::packet::GameInfo)},
+  { 129, -1, -1, sizeof(::packet::RegisterLeaveGame)},
+  { 136, -1, -1, sizeof(::packet::NewUserJoinMatch)},
+  { 150, -1, -1, sizeof(::packet::UserLeaveMatch)},
+  { 158, -1, -1, sizeof(::packet::DealCard)},
+  { 166, -1, -1, sizeof(::packet::PlayCard)},
+  { 182, -1, -1, sizeof(::packet::StartGame)},
+  { 190, -1, -1, sizeof(::packet::NewHand)},
+  { 198, -1, -1, sizeof(::packet::UpdateGamePoint)},
+  { 205, -1, -1, sizeof(::packet::EndHand)},
+  { 216, -1, -1, sizeof(::packet::DrawCard)},
+  { 223, -1, -1, sizeof(::packet::GeneralInfo)},
+  { 235, -1, -1, sizeof(::packet::LevelReward)},
+  { 244, -1, -1, sizeof(::packet::ItemReward)},
+  { 252, -1, -1, sizeof(::packet::EndGame)},
+  { 265, -1, -1, sizeof(::packet::PrepareStartGame)},
+  { 272, -1, -1, sizeof(::packet::InGameChatMessage)},
+  { 280, -1, -1, sizeof(::packet::PaymentGoogleConsume)},
+  { 291, -1, -1, sizeof(::packet::PaymentSuccess)},
+  { 300, -1, -1, sizeof(::packet::UpdateMoney)},
+  { 307, -1, -1, sizeof(::packet::TableList)},
+  { 321, -1, -1, sizeof(::packet::ShopConfig)},
+  { 339, -1, -1, sizeof(::packet::DetailShopPack)},
+  { 346, -1, -1, sizeof(::packet::GuestAccount)},
+  { 353, -1, -1, sizeof(::packet::ChangeAvatar)},
+  { 360, -1, -1, sizeof(::packet::InGameChatEmoticon)},
+  { 368, -1, -1, sizeof(::packet::SearchFriend)},
+  { 375, -1, -1, sizeof(::packet::SearchFriendResponse)},
+  { 392, -1, -1, sizeof(::packet::CheatGoldUser)},
+  { 399, -1, -1, sizeof(::packet::FriendList)},
+  { 414, -1, -1, sizeof(::packet::FriendRequests)},
+  { 426, -1, -1, sizeof(::packet::AddFriend)},
+  { 434, -1, -1, sizeof(::packet::RequestFriendAccept)},
+  { 442, -1, -1, sizeof(::packet::RemoveFriend)},
+  { 449, -1, -1, sizeof(::packet::NewFriendRequest)},
+  { 460, -1, -1, sizeof(::packet::FriendRequestAccepted)},
+  { 472, -1, -1, sizeof(::packet::RecommendFriends)},
+  { 484, -1, -1, sizeof(::packet::PaymentAppleConsume)},
+  { 492, -1, -1, sizeof(::packet::PaymentFinishedAppleTransaction)},
+  { 499, -1, -1, sizeof(::packet::NewRound)},
+  { 508, -1, -1, sizeof(::packet::CreateTable)},
+  { 519, -1, -1, sizeof(::packet::JoinTableById)},
+  { 526, -1, -1, sizeof(::packet::JoinTableResponse)},
+  { 533, -1, -1, sizeof(::packet::ClaimSupport)},
+  { 540, -1, -1, sizeof(::packet::AppCodeVersion)},
+  { 553, -1, -1, sizeof(::packet::PlayCardResponse)},
+  { 560, -1, -1, sizeof(::packet::CheatViewCardBot)},
+  { 567, -1, -1, sizeof(::packet::InviteFriendPlay)},
+  { 575, -1, -1, sizeof(::packet::GameActionNapoli)},
+  { 584, -1, -1, sizeof(::packet::CustomerServiceReport)},
+  { 592, -1, -1, sizeof(::packet::AdminBroadcast)},
+  { 599, -1, -1, sizeof(::packet::PaymentPaypalRequestOrder)},
+  { 606, -1, -1, sizeof(::packet::PaymentPaypalOrder)},
+  { 613, -1, -1, sizeof(::packet::QuickPlay)},
+  { 619, -1, -1, sizeof(::packet::SetteMezzoNewUserJoinMatch)},
+  { 631, -1, -1, sizeof(::packet::SetteMezzoPrepareStartGame)},
+  { 639, -1, -1, sizeof(::packet::SetteMezzoGameInfo)},
+  { 669, -1, -1, sizeof(::packet::SetteMezzoPlayerInfo)},
+  { 676, -1, -1, sizeof(::packet::SetteMezzoQuickPlay)},
+  { 682, -1, -1, sizeof(::packet::SetteMezzoStartGame)},
+  { 690, -1, -1, sizeof(::packet::RankingInfo)},
+  { 707, -1, -1, sizeof(::packet::RankingResult)},
+  { 716, -1, -1, sizeof(::packet::RankingClaimReward)},
+  { 723, -1, -1, sizeof(::packet::UpdateAds)},
+  { 730, -1, -1, sizeof(::packet::AdsReward)},
+  { 738, -1, -1, sizeof(::packet::ChangeUserName)},
+  { 745, -1, -1, sizeof(::packet::SetteMezzoActionHit)},
+  { 753, -1, -1, sizeof(::packet::SetteMezzoUpdateTurn)},
+  { 761, -1, -1, sizeof(::packet::SetteMezzoActionStand)},
+  { 770, -1, -1, sizeof(::packet::SetteMezzoEndGame)},
+  { 781, -1, -1, sizeof(::packet::SetteMezzoShowBankerCard)},
+  { 788, -1, -1, sizeof(::packet::SetteMezzoUserBet)},
+  { 796, -1, -1, sizeof(::packet::ViewGame)},
+  { 803, -1, -1, sizeof(::packet::UserStopView)},
+  { 810, -1, -1, sizeof(::packet::NewUserView)},
+  { 820, -1, -1, sizeof(::packet::CheatExpUser)},
+  { 827, -1, -1, sizeof(::packet::UpdateExp)},
+  { 834, -1, -1, sizeof(::packet::ClaimRewardLevel)},
+  { 841, -1, -1, sizeof(::packet::UserInventory)},
+  { 848, -1, -1, sizeof(::packet::InvetoryItem)},
+  { 857, -1, -1, sizeof(::packet::UseItem)},
+  { 864, -1, -1, sizeof(::packet::CheatItem)},
+  { 872, -1, -1, sizeof(::packet::BuyItem)},
+  { 880, -1, -1, sizeof(::packet::InventoryShopConfig)},
+  { 887, -1, -1, sizeof(::packet::InventoryShopItem)},
+  { 895, -1, -1, sizeof(::packet::InvetoryShopPack)},
+  { 904, -1, -1, sizeof(::packet::ClaimRewardLevelResponse)},
+  { 913, -1, -1, sizeof(::packet::RewardInventoryItem)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-  &::_Empty_default_instance_._instance,
-  &::_Packet_default_instance_._instance,
-  &::_ChatMessage_default_instance_._instance,
-  &::_PingPong_default_instance_._instance,
-  &::_Login_default_instance_._instance,
-  &::_LoginFirebase_default_instance_._instance,
-  &::_Logout_default_instance_._instance,
-  &::_LoginResponse_default_instance_._instance,
-  &::_UserInfo_default_instance_._instance,
-  &::_GameInfo_default_instance_._instance,
-  &::_RegisterLeaveGame_default_instance_._instance,
-  &::_NewUserJoinMatch_default_instance_._instance,
-  &::_UserLeaveMatch_default_instance_._instance,
-  &::_DealCard_default_instance_._instance,
-  &::_PlayCard_default_instance_._instance,
-  &::_StartGame_default_instance_._instance,
-  &::_NewHand_default_instance_._instance,
-  &::_UpdateGamePoint_default_instance_._instance,
-  &::_EndHand_default_instance_._instance,
-  &::_DrawCard_default_instance_._instance,
-  &::_GeneralInfo_default_instance_._instance,
-  &::_LevelReward_default_instance_._instance,
-  &::_ItemReward_default_instance_._instance,
-  &::_EndGame_default_instance_._instance,
-  &::_PrepareStartGame_default_instance_._instance,
-  &::_InGameChatMessage_default_instance_._instance,
-  &::_PaymentGoogleConsume_default_instance_._instance,
-  &::_PaymentSuccess_default_instance_._instance,
-  &::_UpdateMoney_default_instance_._instance,
-  &::_TableList_default_instance_._instance,
-  &::_ShopConfig_default_instance_._instance,
-  &::_DetailShopPack_default_instance_._instance,
-  &::_GuestAccount_default_instance_._instance,
-  &::_ChangeAvatar_default_instance_._instance,
-  &::_InGameChatEmoticon_default_instance_._instance,
-  &::_SearchFriend_default_instance_._instance,
-  &::_SearchFriendResponse_default_instance_._instance,
-  &::_CheatGoldUser_default_instance_._instance,
-  &::_FriendList_default_instance_._instance,
-  &::_FriendRequests_default_instance_._instance,
-  &::_AddFriend_default_instance_._instance,
-  &::_RequestFriendAccept_default_instance_._instance,
-  &::_RemoveFriend_default_instance_._instance,
-  &::_NewFriendRequest_default_instance_._instance,
-  &::_FriendRequestAccepted_default_instance_._instance,
-  &::_RecommendFriends_default_instance_._instance,
-  &::_PaymentAppleConsume_default_instance_._instance,
-  &::_PaymentFinishedAppleTransaction_default_instance_._instance,
-  &::_NewRound_default_instance_._instance,
-  &::_CreateTable_default_instance_._instance,
-  &::_JoinTableById_default_instance_._instance,
-  &::_JoinTableResponse_default_instance_._instance,
-  &::_ClaimSupport_default_instance_._instance,
-  &::_AppCodeVersion_default_instance_._instance,
-  &::_PlayCardResponse_default_instance_._instance,
-  &::_CheatViewCardBot_default_instance_._instance,
-  &::_InviteFriendPlay_default_instance_._instance,
-  &::_GameActionNapoli_default_instance_._instance,
-  &::_CustomerServiceReport_default_instance_._instance,
-  &::_AdminBroadcast_default_instance_._instance,
-  &::_PaymentPaypalRequestOrder_default_instance_._instance,
-  &::_PaymentPaypalOrder_default_instance_._instance,
-  &::_QuickPlay_default_instance_._instance,
-  &::_SetteMezzoNewUserJoinMatch_default_instance_._instance,
-  &::_SetteMezzoPrepareStartGame_default_instance_._instance,
-  &::_SetteMezzoGameInfo_default_instance_._instance,
-  &::_SetteMezzoPlayerInfo_default_instance_._instance,
-  &::_SetteMezzoQuickPlay_default_instance_._instance,
-  &::_SetteMezzoStartGame_default_instance_._instance,
-  &::_RankingInfo_default_instance_._instance,
-  &::_RankingResult_default_instance_._instance,
-  &::_RankingClaimReward_default_instance_._instance,
-  &::_UpdateAds_default_instance_._instance,
-  &::_AdsReward_default_instance_._instance,
-  &::_ChangeUserName_default_instance_._instance,
-  &::_SetteMezzoActionHit_default_instance_._instance,
-  &::_SetteMezzoUpdateTurn_default_instance_._instance,
-  &::_SetteMezzoActionStand_default_instance_._instance,
-  &::_SetteMezzoEndGame_default_instance_._instance,
-  &::_SetteMezzoShowBankerCard_default_instance_._instance,
-  &::_SetteMezzoUserBet_default_instance_._instance,
-  &::_ViewGame_default_instance_._instance,
-  &::_UserStopView_default_instance_._instance,
-  &::_NewUserView_default_instance_._instance,
-  &::_CheatExpUser_default_instance_._instance,
-  &::_UpdateExp_default_instance_._instance,
-  &::_ClaimRewardLevel_default_instance_._instance,
-  &::_UserInventory_default_instance_._instance,
-  &::_InvetoryItem_default_instance_._instance,
-  &::_UseItem_default_instance_._instance,
-  &::_CheatItem_default_instance_._instance,
-  &::_BuyItem_default_instance_._instance,
-  &::_InventoryShopConfig_default_instance_._instance,
-  &::_InventoryShopItem_default_instance_._instance,
-  &::_InvetoryShopPack_default_instance_._instance,
-  &::_ClaimRewardLevelResponse_default_instance_._instance,
-  &::_RewardInventoryItem_default_instance_._instance,
+  &::packet::_Empty_default_instance_._instance,
+  &::packet::_Packet_default_instance_._instance,
+  &::packet::_ChatMessage_default_instance_._instance,
+  &::packet::_PingPong_default_instance_._instance,
+  &::packet::_Login_default_instance_._instance,
+  &::packet::_LoginFirebase_default_instance_._instance,
+  &::packet::_Logout_default_instance_._instance,
+  &::packet::_LoginResponse_default_instance_._instance,
+  &::packet::_UserInfo_default_instance_._instance,
+  &::packet::_GameInfo_default_instance_._instance,
+  &::packet::_RegisterLeaveGame_default_instance_._instance,
+  &::packet::_NewUserJoinMatch_default_instance_._instance,
+  &::packet::_UserLeaveMatch_default_instance_._instance,
+  &::packet::_DealCard_default_instance_._instance,
+  &::packet::_PlayCard_default_instance_._instance,
+  &::packet::_StartGame_default_instance_._instance,
+  &::packet::_NewHand_default_instance_._instance,
+  &::packet::_UpdateGamePoint_default_instance_._instance,
+  &::packet::_EndHand_default_instance_._instance,
+  &::packet::_DrawCard_default_instance_._instance,
+  &::packet::_GeneralInfo_default_instance_._instance,
+  &::packet::_LevelReward_default_instance_._instance,
+  &::packet::_ItemReward_default_instance_._instance,
+  &::packet::_EndGame_default_instance_._instance,
+  &::packet::_PrepareStartGame_default_instance_._instance,
+  &::packet::_InGameChatMessage_default_instance_._instance,
+  &::packet::_PaymentGoogleConsume_default_instance_._instance,
+  &::packet::_PaymentSuccess_default_instance_._instance,
+  &::packet::_UpdateMoney_default_instance_._instance,
+  &::packet::_TableList_default_instance_._instance,
+  &::packet::_ShopConfig_default_instance_._instance,
+  &::packet::_DetailShopPack_default_instance_._instance,
+  &::packet::_GuestAccount_default_instance_._instance,
+  &::packet::_ChangeAvatar_default_instance_._instance,
+  &::packet::_InGameChatEmoticon_default_instance_._instance,
+  &::packet::_SearchFriend_default_instance_._instance,
+  &::packet::_SearchFriendResponse_default_instance_._instance,
+  &::packet::_CheatGoldUser_default_instance_._instance,
+  &::packet::_FriendList_default_instance_._instance,
+  &::packet::_FriendRequests_default_instance_._instance,
+  &::packet::_AddFriend_default_instance_._instance,
+  &::packet::_RequestFriendAccept_default_instance_._instance,
+  &::packet::_RemoveFriend_default_instance_._instance,
+  &::packet::_NewFriendRequest_default_instance_._instance,
+  &::packet::_FriendRequestAccepted_default_instance_._instance,
+  &::packet::_RecommendFriends_default_instance_._instance,
+  &::packet::_PaymentAppleConsume_default_instance_._instance,
+  &::packet::_PaymentFinishedAppleTransaction_default_instance_._instance,
+  &::packet::_NewRound_default_instance_._instance,
+  &::packet::_CreateTable_default_instance_._instance,
+  &::packet::_JoinTableById_default_instance_._instance,
+  &::packet::_JoinTableResponse_default_instance_._instance,
+  &::packet::_ClaimSupport_default_instance_._instance,
+  &::packet::_AppCodeVersion_default_instance_._instance,
+  &::packet::_PlayCardResponse_default_instance_._instance,
+  &::packet::_CheatViewCardBot_default_instance_._instance,
+  &::packet::_InviteFriendPlay_default_instance_._instance,
+  &::packet::_GameActionNapoli_default_instance_._instance,
+  &::packet::_CustomerServiceReport_default_instance_._instance,
+  &::packet::_AdminBroadcast_default_instance_._instance,
+  &::packet::_PaymentPaypalRequestOrder_default_instance_._instance,
+  &::packet::_PaymentPaypalOrder_default_instance_._instance,
+  &::packet::_QuickPlay_default_instance_._instance,
+  &::packet::_SetteMezzoNewUserJoinMatch_default_instance_._instance,
+  &::packet::_SetteMezzoPrepareStartGame_default_instance_._instance,
+  &::packet::_SetteMezzoGameInfo_default_instance_._instance,
+  &::packet::_SetteMezzoPlayerInfo_default_instance_._instance,
+  &::packet::_SetteMezzoQuickPlay_default_instance_._instance,
+  &::packet::_SetteMezzoStartGame_default_instance_._instance,
+  &::packet::_RankingInfo_default_instance_._instance,
+  &::packet::_RankingResult_default_instance_._instance,
+  &::packet::_RankingClaimReward_default_instance_._instance,
+  &::packet::_UpdateAds_default_instance_._instance,
+  &::packet::_AdsReward_default_instance_._instance,
+  &::packet::_ChangeUserName_default_instance_._instance,
+  &::packet::_SetteMezzoActionHit_default_instance_._instance,
+  &::packet::_SetteMezzoUpdateTurn_default_instance_._instance,
+  &::packet::_SetteMezzoActionStand_default_instance_._instance,
+  &::packet::_SetteMezzoEndGame_default_instance_._instance,
+  &::packet::_SetteMezzoShowBankerCard_default_instance_._instance,
+  &::packet::_SetteMezzoUserBet_default_instance_._instance,
+  &::packet::_ViewGame_default_instance_._instance,
+  &::packet::_UserStopView_default_instance_._instance,
+  &::packet::_NewUserView_default_instance_._instance,
+  &::packet::_CheatExpUser_default_instance_._instance,
+  &::packet::_UpdateExp_default_instance_._instance,
+  &::packet::_ClaimRewardLevel_default_instance_._instance,
+  &::packet::_UserInventory_default_instance_._instance,
+  &::packet::_InvetoryItem_default_instance_._instance,
+  &::packet::_UseItem_default_instance_._instance,
+  &::packet::_CheatItem_default_instance_._instance,
+  &::packet::_BuyItem_default_instance_._instance,
+  &::packet::_InventoryShopConfig_default_instance_._instance,
+  &::packet::_InventoryShopItem_default_instance_._instance,
+  &::packet::_InvetoryShopPack_default_instance_._instance,
+  &::packet::_ClaimRewardLevelResponse_default_instance_._instance,
+  &::packet::_RewardInventoryItem_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_packet_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014packet.proto\"\007\n\005Empty\"8\n\006Packet\022\r\n\005tok"
-  "en\030\001 \001(\t\022\016\n\006cmd_id\030\002 \001(\005\022\017\n\007payload\030\003 \001("
-  "\014\"j\n\013ChatMessage\022\013\n\003abc\030\001 \001(\001\022\020\n\010usernam"
-  "e\030\002 \001(\t\022\r\n\005level\030\003 \001(\003\022\014\n\004gold\030\004 \001(\003\022\014\n\004"
-  "abcd\030\005 \001(\t\022\021\n\tis_active\030\006 \001(\010\"\n\n\010PingPon"
-  "g\"~\n\005Login\022\014\n\004type\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\022"
-  "\024\n\014device_model\030\003 \001(\t\022\020\n\010platform\030\004 \001(\t\022"
-  "\026\n\016device_country\030\005 \001(\t\022\030\n\020app_version_c"
-  "ode\030\006 \001(\005\"H\n\rLoginFirebase\022\020\n\010sub_type\030\001"
-  " \001(\005\022\023\n\013login_token\030\002 \001(\t\022\020\n\010guest_id\030\003 "
-  "\001(\t\"\010\n\006Logout\":\n\rLoginResponse\022\013\n\003uid\030\001 "
-  "\001(\005\022\r\n\005token\030\002 \001(\t\022\r\n\005error\030\003 \001(\005\"\273\003\n\010Us"
-  "erInfo\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004gol"
-  "d\030\003 \001(\003\022\016\n\006scores\030\004 \003(\005\022\r\n\005names\030\005 \003(\t\022\013"
-  "\n\003abc\030\006 \001(\005\022\016\n\006avatar\030\007 \001(\t\022\032\n\022avatar_th"
-  "ird_party\030\010 \001(\t\022\r\n\005level\030\t \001(\005\022\023\n\013suppor"
-  "t_num\030\n \001(\005\022\021\n\twin_count\030\013 \001(\005\022\022\n\ngame_c"
-  "ount\030\014 \001(\005\022\013\n\003exp\030\r \001(\003\022\024\n\014startup_gold\030"
-  "\016 \001(\005\022\025\n\rhas_first_buy\030\017 \001(\010\022\025\n\rtime_sho"
-  "w_ads\030\020 \001(\005\022\022\n\nlogin_type\030\021 \001(\005\022\027\n\017time_"
-  "ads_reward\030\022 \001(\005\022\034\n\024add_for_user_support"
-  "\030\023 \001(\010\022\024\n\014avatar_frame\030\024 \001(\005\022\026\n\016claimed_"
-  "levels\030\025 \003(\005\022\031\n\021price_change_name\030\026 \001(\005\""
-  "\253\004\n\010GameInfo\022\020\n\010match_id\030\001 \001(\005\022\021\n\tgame_m"
-  "ode\030\002 \001(\005\022\023\n\013player_mode\030\003 \001(\005\022\014\n\004uids\030\004"
-  " \003(\005\022\022\n\nuser_golds\030\005 \003(\003\022\022\n\nuser_names\030\006"
-  " \003(\t\022\025\n\rcards_compare\030\007 \003(\005\022\024\n\014current_t"
-  "urn\030\010 \001(\005\022\022\n\ngame_state\030\t \001(\005\022\020\n\010my_card"
-  "s\030\n \003(\005\022\024\n\014remain_cards\030\013 \001(\005\022\023\n\013user_po"
-  "ints\030\014 \003(\005\022\020\n\010team_ids\030\r \003(\005\022\021\n\thand_sui"
-  "t\030\016 \001(\005\022\017\n\007avatars\030\017 \003(\t\022\033\n\023is_registere"
-  "d_leave\030\020 \001(\010\022\021\n\tpot_value\030\021 \001(\003\022\025\n\rcurr"
-  "ent_round\030\022 \001(\005\022\025\n\rhand_in_round\030\023 \001(\005\022\024"
-  "\n\014point_to_win\030\024 \001(\005\022\017\n\007is_vips\030\025 \003(\010\022\023\n"
-  "\013viewer_uids\030\026 \003(\005\022\026\n\016viewer_avatars\030\027 \003"
-  "(\t\022\024\n\014viewer_names\030\030 \003(\t\022\025\n\ravatar_frame"
-  "s\030\031 \003(\005\022\034\n\024viewer_avatar_frames\030\032 \003(\005\"#\n"
-  "\021RegisterLeaveGame\022\016\n\006status\030\001 \001(\005\"\227\001\n\020N"
-  "ewUserJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004gold\030\002 \001"
-  "(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030\004 \001(\005\022\017\n"
-  "\007team_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\022\016\n\006is_vip"
-  "\030\007 \001(\010\022\024\n\014avatar_frame\030\010 \001(\005\"-\n\016UserLeav"
-  "eMatch\022\013\n\003uid\030\001 \001(\005\022\016\n\006reason\030\002 \001(\005\"/\n\010D"
-  "ealCard\022\r\n\005cards\030\001 \003(\005\022\024\n\014remain_cards\030\002"
-  " \001(\005\"\300\001\n\010PlayCard\022\013\n\003uid\030\001 \001(\005\022\017\n\007card_i"
-  "d\030\002 \001(\005\022\014\n\004auto\030\003 \001(\010\022\024\n\014current_turn\030\004 "
-  "\001(\005\022\021\n\thand_suit\030\005 \001(\005\022\023\n\013is_end_hand\030\006 "
-  "\001(\010\022\017\n\007win_uid\030\007 \001(\005\022\021\n\twin_point\030\010 \001(\005\022"
-  "\024\n\014is_end_round\030\t \001(\010\022\020\n\010win_card\030\n \001(\005\""
-  "4\n\tStartGame\022\021\n\tpot_value\030\001 \001(\005\022\024\n\014playe"
-  "rs_gold\030\002 \003(\003\"1\n\007NewHand\022\024\n\014current_turn"
-  "\030\001 \001(\005\022\020\n\010my_cards\030\002 \003(\005\"!\n\017UpdateGamePo"
-  "int\022\016\n\006points\030\001 \003(\005\"j\n\007EndHand\022\017\n\007win_ui"
-  "d\030\001 \001(\005\022\020\n\010win_card\030\002 \001(\005\022\023\n\013user_points"
-  "\030\003 \003(\005\022\021\n\twin_point\030\004 \001(\005\022\024\n\014is_end_roun"
-  "d\030\005 \001(\010\"\031\n\010DrawCard\022\r\n\005cards\030\001 \003(\005\"\245\001\n\013G"
-  "eneralInfo\022\021\n\ttimestamp\030\001 \001(\003\022\035\n\025time_th"
-  "inking_in_turn\030\002 \001(\005\022\022\n\nexp_levels\030\003 \003(\005"
-  "\022\027\n\017fee_mode_no_bet\030\004 \001(\005\022\022\n\nenable_ads\030"
-  "\005 \001(\010\022#\n\rlevel_rewards\030\006 \003(\0132\014.LevelRewa"
-  "rd\"F\n\013LevelReward\022\r\n\005level\030\001 \001(\005\022\014\n\004gold"
-  "\030\002 \001(\005\022\032\n\005items\030\003 \003(\0132\013.ItemReward\"/\n\nIt"
-  "emReward\022\017\n\007item_id\030\001 \001(\005\022\020\n\010duration\030\002 "
-  "\001(\005\"\257\001\n\007EndGame\022\014\n\004uids\030\001 \003(\005\022\023\n\013win_tea"
-  "m_id\030\006 \001(\005\022\023\n\013score_cards\030\002 \003(\005\022\031\n\021score"
-  "_last_tricks\030\003 \003(\005\022\024\n\014score_totals\030\004 \003(\005"
-  "\022\024\n\014players_gold\030\005 \003(\003\022%\n\007rewards\030\007 \003(\0132"
-  "\024.RewardInventoryItem\"&\n\020PrepareStartGam"
-  "e\022\022\n\ntime_start\030\001 \001(\005\"6\n\021InGameChatMessa"
-  "ge\022\013\n\003uid\030\001 \001(\005\022\024\n\014chat_message\030\002 \001(\t\"n\n"
-  "\024PaymentGoogleConsume\022\026\n\016purchase_token\030"
-  "\001 \001(\t\022\020\n\010quantity\030\002 \001(\005\022\014\n\004skus\030\003 \003(\t\022\021\n"
-  "\tsignature\030\004 \001(\t\022\013\n\003sku\030\005 \001(\t\"T\n\016Payment"
-  "Success\022\014\n\004gold\030\001 \001(\003\022\017\n\007pack_id\030\002 \001(\t\022#"
-  "\n\005items\030\003 \003(\0132\024.RewardInventoryItem\"\033\n\013U"
-  "pdateMoney\022\014\n\004gold\030\001 \001(\003\"\256\001\n\tTableList\022\021"
-  "\n\ttable_ids\030\001 \003(\005\022\023\n\013num_players\030\002 \003(\005\022\024"
-  "\n\014player_modes\030\003 \003(\005\022\023\n\013player_uids\030\004 \003("
-  "\005\022\017\n\007avatars\030\005 \003(\t\022\022\n\ngame_modes\030\006 \003(\005\022\025"
-  "\n\ravatar_frames\030\007 \003(\005\022\022\n\nis_private\030\010 \003("
-  "\010\"\315\002\n\nShopConfig\022\020\n\010pack_ids\030\001 \003(\t\022\r\n\005go"
-  "lds\030\002 \003(\003\022\016\n\006prices\030\003 \003(\001\022\022\n\ncurrencies\030"
-  "\004 \003(\t\022\023\n\013no_ads_days\030\005 \003(\005\022\030\n\020gold_offer"
-  "_first\030\006 \001(\005\022\036\n\026no_ads_day_offer_first\030\007"
-  " \001(\005\022\031\n\021price_offer_first\030\010 \001(\005\022\034\n\024curre"
-  "ncy_offer_first\030\t \001(\t\022\033\n\023pack_id_offer_f"
-  "irst\030\n \001(\t\0223\n\025items_offer_first_buy\030\013 \003("
-  "\0132\024.RewardInventoryItem\022 \n\007details\030\014 \003(\013"
-  "2\017.DetailShopPack\"5\n\016DetailShopPack\022#\n\005i"
-  "tems\030\001 \003(\0132\024.RewardInventoryItem\" \n\014Gues"
-  "tAccount\022\020\n\010guest_id\030\001 \001(\t\"!\n\014ChangeAvat"
-  "ar\022\021\n\tavatar_id\030\001 \001(\005\"3\n\022InGameChatEmoti"
-  "con\022\013\n\003uid\030\001 \001(\005\022\020\n\010emoticon\030\002 \001(\005\"\033\n\014Se"
-  "archFriend\022\013\n\003uid\030\001 \001(\005\"\314\001\n\024SearchFriend"
-  "Response\022\013\n\003uid\030\001 \001(\005\022\014\n\004gold\030\002 \001(\003\022\014\n\004n"
-  "ame\030\003 \001(\t\022\016\n\006avatar\030\004 \001(\t\022\021\n\twin_count\030\005"
-  " \001(\005\022\022\n\ngame_count\030\006 \001(\001\022\r\n\005error\030\007 \001(\005\022"
-  "\r\n\005level\030\010 \001(\005\022\013\n\003exp\030\t \001(\003\022\023\n\013is_verifi"
-  "ed\030\n \001(\010\022\024\n\014avatar_frame\030\013 \001(\005\"\035\n\rCheatG"
-  "oldUser\022\014\n\004gold\030\001 \001(\003\"\261\001\n\nFriendList\022\014\n\004"
+  "\n\014packet.proto\022\006packet\"\007\n\005Empty\"8\n\006Packe"
+  "t\022\r\n\005token\030\001 \001(\t\022\016\n\006cmd_id\030\002 \001(\005\022\017\n\007payl"
+  "oad\030\003 \001(\014\"j\n\013ChatMessage\022\013\n\003abc\030\001 \001(\001\022\020\n"
+  "\010username\030\002 \001(\t\022\r\n\005level\030\003 \001(\003\022\014\n\004gold\030\004"
+  " \001(\003\022\014\n\004abcd\030\005 \001(\t\022\021\n\tis_active\030\006 \001(\010\"\n\n"
+  "\010PingPong\"~\n\005Login\022\014\n\004type\030\001 \001(\005\022\r\n\005toke"
+  "n\030\002 \001(\t\022\024\n\014device_model\030\003 \001(\t\022\020\n\010platfor"
+  "m\030\004 \001(\t\022\026\n\016device_country\030\005 \001(\t\022\030\n\020app_v"
+  "ersion_code\030\006 \001(\005\"H\n\rLoginFirebase\022\020\n\010su"
+  "b_type\030\001 \001(\005\022\023\n\013login_token\030\002 \001(\t\022\020\n\010gue"
+  "st_id\030\003 \001(\t\"\010\n\006Logout\":\n\rLoginResponse\022\013"
+  "\n\003uid\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\022\r\n\005error\030\003 \001("
+  "\005\"\273\003\n\010UserInfo\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001("
+  "\t\022\014\n\004gold\030\003 \001(\003\022\016\n\006scores\030\004 \003(\005\022\r\n\005names"
+  "\030\005 \003(\t\022\013\n\003abc\030\006 \001(\005\022\016\n\006avatar\030\007 \001(\t\022\032\n\022a"
+  "vatar_third_party\030\010 \001(\t\022\r\n\005level\030\t \001(\005\022\023"
+  "\n\013support_num\030\n \001(\005\022\021\n\twin_count\030\013 \001(\005\022\022"
+  "\n\ngame_count\030\014 \001(\005\022\013\n\003exp\030\r \001(\003\022\024\n\014start"
+  "up_gold\030\016 \001(\005\022\025\n\rhas_first_buy\030\017 \001(\010\022\025\n\r"
+  "time_show_ads\030\020 \001(\005\022\022\n\nlogin_type\030\021 \001(\005\022"
+  "\027\n\017time_ads_reward\030\022 \001(\005\022\034\n\024add_for_user"
+  "_support\030\023 \001(\010\022\024\n\014avatar_frame\030\024 \001(\005\022\026\n\016"
+  "claimed_levels\030\025 \003(\005\022\031\n\021price_change_nam"
+  "e\030\026 \001(\005\"\253\004\n\010GameInfo\022\020\n\010match_id\030\001 \001(\005\022\021"
+  "\n\tgame_mode\030\002 \001(\005\022\023\n\013player_mode\030\003 \001(\005\022\014"
+  "\n\004uids\030\004 \003(\005\022\022\n\nuser_golds\030\005 \003(\003\022\022\n\nuser"
+  "_names\030\006 \003(\t\022\025\n\rcards_compare\030\007 \003(\005\022\024\n\014c"
+  "urrent_turn\030\010 \001(\005\022\022\n\ngame_state\030\t \001(\005\022\020\n"
+  "\010my_cards\030\n \003(\005\022\024\n\014remain_cards\030\013 \001(\005\022\023\n"
+  "\013user_points\030\014 \003(\005\022\020\n\010team_ids\030\r \003(\005\022\021\n\t"
+  "hand_suit\030\016 \001(\005\022\017\n\007avatars\030\017 \003(\t\022\033\n\023is_r"
+  "egistered_leave\030\020 \001(\010\022\021\n\tpot_value\030\021 \001(\003"
+  "\022\025\n\rcurrent_round\030\022 \001(\005\022\025\n\rhand_in_round"
+  "\030\023 \001(\005\022\024\n\014point_to_win\030\024 \001(\005\022\017\n\007is_vips\030"
+  "\025 \003(\010\022\023\n\013viewer_uids\030\026 \003(\005\022\026\n\016viewer_ava"
+  "tars\030\027 \003(\t\022\024\n\014viewer_names\030\030 \003(\t\022\025\n\ravat"
+  "ar_frames\030\031 \003(\005\022\034\n\024viewer_avatar_frames\030"
+  "\032 \003(\005\"#\n\021RegisterLeaveGame\022\016\n\006status\030\001 \001"
+  "(\005\"\227\001\n\020NewUserJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004"
+  "gold\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030"
+  "\004 \001(\005\022\017\n\007team_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\022\016"
+  "\n\006is_vip\030\007 \001(\010\022\024\n\014avatar_frame\030\010 \001(\005\"-\n\016"
+  "UserLeaveMatch\022\013\n\003uid\030\001 \001(\005\022\016\n\006reason\030\002 "
+  "\001(\005\"/\n\010DealCard\022\r\n\005cards\030\001 \003(\005\022\024\n\014remain"
+  "_cards\030\002 \001(\005\"\300\001\n\010PlayCard\022\013\n\003uid\030\001 \001(\005\022\017"
+  "\n\007card_id\030\002 \001(\005\022\014\n\004auto\030\003 \001(\010\022\024\n\014current"
+  "_turn\030\004 \001(\005\022\021\n\thand_suit\030\005 \001(\005\022\023\n\013is_end"
+  "_hand\030\006 \001(\010\022\017\n\007win_uid\030\007 \001(\005\022\021\n\twin_poin"
+  "t\030\010 \001(\005\022\024\n\014is_end_round\030\t \001(\010\022\020\n\010win_car"
+  "d\030\n \001(\005\"4\n\tStartGame\022\021\n\tpot_value\030\001 \001(\005\022"
+  "\024\n\014players_gold\030\002 \003(\003\"1\n\007NewHand\022\024\n\014curr"
+  "ent_turn\030\001 \001(\005\022\020\n\010my_cards\030\002 \003(\005\"!\n\017Upda"
+  "teGamePoint\022\016\n\006points\030\001 \003(\005\"j\n\007EndHand\022\017"
+  "\n\007win_uid\030\001 \001(\005\022\020\n\010win_card\030\002 \001(\005\022\023\n\013use"
+  "r_points\030\003 \003(\005\022\021\n\twin_point\030\004 \001(\005\022\024\n\014is_"
+  "end_round\030\005 \001(\010\"\031\n\010DrawCard\022\r\n\005cards\030\001 \003"
+  "(\005\"\254\001\n\013GeneralInfo\022\021\n\ttimestamp\030\001 \001(\003\022\035\n"
+  "\025time_thinking_in_turn\030\002 \001(\005\022\022\n\nexp_leve"
+  "ls\030\003 \003(\005\022\027\n\017fee_mode_no_bet\030\004 \001(\005\022\022\n\nena"
+  "ble_ads\030\005 \001(\010\022*\n\rlevel_rewards\030\006 \003(\0132\023.p"
+  "acket.LevelReward\"M\n\013LevelReward\022\r\n\005leve"
+  "l\030\001 \001(\005\022\014\n\004gold\030\002 \001(\005\022!\n\005items\030\003 \003(\0132\022.p"
+  "acket.ItemReward\"/\n\nItemReward\022\017\n\007item_i"
+  "d\030\001 \001(\005\022\020\n\010duration\030\002 \001(\005\"\266\001\n\007EndGame\022\014\n"
+  "\004uids\030\001 \003(\005\022\023\n\013win_team_id\030\006 \001(\005\022\023\n\013scor"
+  "e_cards\030\002 \003(\005\022\031\n\021score_last_tricks\030\003 \003(\005"
+  "\022\024\n\014score_totals\030\004 \003(\005\022\024\n\014players_gold\030\005"
+  " \003(\003\022,\n\007rewards\030\007 \003(\0132\033.packet.RewardInv"
+  "entoryItem\"&\n\020PrepareStartGame\022\022\n\ntime_s"
+  "tart\030\001 \001(\005\"6\n\021InGameChatMessage\022\013\n\003uid\030\001"
+  " \001(\005\022\024\n\014chat_message\030\002 \001(\t\"n\n\024PaymentGoo"
+  "gleConsume\022\026\n\016purchase_token\030\001 \001(\t\022\020\n\010qu"
+  "antity\030\002 \001(\005\022\014\n\004skus\030\003 \003(\t\022\021\n\tsignature\030"
+  "\004 \001(\t\022\013\n\003sku\030\005 \001(\t\"[\n\016PaymentSuccess\022\014\n\004"
+  "gold\030\001 \001(\003\022\017\n\007pack_id\030\002 \001(\t\022*\n\005items\030\003 \003"
+  "(\0132\033.packet.RewardInventoryItem\"\033\n\013Updat"
+  "eMoney\022\014\n\004gold\030\001 \001(\003\"\256\001\n\tTableList\022\021\n\tta"
+  "ble_ids\030\001 \003(\005\022\023\n\013num_players\030\002 \003(\005\022\024\n\014pl"
+  "ayer_modes\030\003 \003(\005\022\023\n\013player_uids\030\004 \003(\005\022\017\n"
+  "\007avatars\030\005 \003(\t\022\022\n\ngame_modes\030\006 \003(\005\022\025\n\rav"
+  "atar_frames\030\007 \003(\005\022\022\n\nis_private\030\010 \003(\010\"\333\002"
+  "\n\nShopConfig\022\020\n\010pack_ids\030\001 \003(\t\022\r\n\005golds\030"
+  "\002 \003(\003\022\016\n\006prices\030\003 \003(\001\022\022\n\ncurrencies\030\004 \003("
+  "\t\022\023\n\013no_ads_days\030\005 \003(\005\022\030\n\020gold_offer_fir"
+  "st\030\006 \001(\005\022\036\n\026no_ads_day_offer_first\030\007 \001(\005"
+  "\022\031\n\021price_offer_first\030\010 \001(\005\022\034\n\024currency_"
+  "offer_first\030\t \001(\t\022\033\n\023pack_id_offer_first"
+  "\030\n \001(\t\022:\n\025items_offer_first_buy\030\013 \003(\0132\033."
+  "packet.RewardInventoryItem\022\'\n\007details\030\014 "
+  "\003(\0132\026.packet.DetailShopPack\"<\n\016DetailSho"
+  "pPack\022*\n\005items\030\001 \003(\0132\033.packet.RewardInve"
+  "ntoryItem\" \n\014GuestAccount\022\020\n\010guest_id\030\001 "
+  "\001(\t\"!\n\014ChangeAvatar\022\021\n\tavatar_id\030\001 \001(\005\"3"
+  "\n\022InGameChatEmoticon\022\013\n\003uid\030\001 \001(\005\022\020\n\010emo"
+  "ticon\030\002 \001(\005\"\033\n\014SearchFriend\022\013\n\003uid\030\001 \001(\005"
+  "\"\314\001\n\024SearchFriendResponse\022\013\n\003uid\030\001 \001(\005\022\014"
+  "\n\004gold\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\016\n\006avatar\030\004 \001"
+  "(\t\022\021\n\twin_count\030\005 \001(\005\022\022\n\ngame_count\030\006 \001("
+  "\001\022\r\n\005error\030\007 \001(\005\022\r\n\005level\030\010 \001(\005\022\013\n\003exp\030\t"
+  " \001(\003\022\023\n\013is_verified\030\n \001(\010\022\024\n\014avatar_fram"
+  "e\030\013 \001(\005\"\035\n\rCheatGoldUser\022\014\n\004gold\030\001 \001(\003\"\261"
+  "\001\n\nFriendList\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003"
+  "(\t\022\017\n\007avatars\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005g"
+  "olds\030\005 \003(\003\022\017\n\007onlines\030\006 \003(\010\022\023\n\013is_playin"
+  "gs\030\007 \003(\010\022\025\n\ravatar_frames\030\010 \003(\005\022\031\n\021last_"
+  "online_times\030\t \003(\005\"p\n\016FriendRequests\022\014\n\004"
   "uids\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007avatars\030\003 \003"
-  "(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\017\n\007onl"
-  "ines\030\006 \003(\010\022\023\n\013is_playings\030\007 \003(\010\022\025\n\ravata"
-  "r_frames\030\010 \003(\005\022\031\n\021last_online_times\030\t \003("
-  "\005\"p\n\016FriendRequests\022\014\n\004uids\030\001 \003(\005\022\r\n\005nam"
-  "es\030\002 \003(\t\022\017\n\007avatars\030\003 \003(\t\022\016\n\006levels\030\004 \003("
-  "\005\022\r\n\005golds\030\005 \003(\003\022\021\n\tsent_uids\030\006 \003(\005\"\'\n\tA"
-  "ddFriend\022\r\n\005error\030\001 \001(\005\022\013\n\003uid\030\002 \001(\005\"2\n\023"
-  "RequestFriendAccept\022\013\n\003uid\030\001 \001(\005\022\016\n\006acti"
-  "on\030\002 \001(\005\"\033\n\014RemoveFriend\022\013\n\003uid\030\001 \001(\005\"Z\n"
-  "\020NewFriendRequest\022\013\n\003uid\030\001 \001(\005\022\016\n\006avatar"
-  "\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\014\n\004g"
-  "old\030\005 \001(\003\"u\n\025FriendRequestAccepted\022\013\n\003ui"
-  "d\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\r\n"
-  "\005level\030\004 \001(\005\022\014\n\004gold\030\005 \001(\003\022\024\n\014avatar_fra"
-  "me\030\006 \001(\005\"v\n\020RecommendFriends\022\014\n\004uids\030\001 \003"
-  "(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007avatars\030\003 \003(\t\022\016\n\006le"
-  "vels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\025\n\ravatar_fram"
-  "es\030\006 \003(\005\"<\n\023PaymentAppleConsume\022\017\n\007pack_"
-  "id\030\001 \001(\t\022\024\n\014receipt_data\030\002 \001(\t\"2\n\037Paymen"
-  "tFinishedAppleTransaction\022\017\n\007pack_id\030\001 \001"
-  "(\t\"J\n\010NewRound\022\025\n\rcurrent_round\030\001 \001(\005\022\021\n"
-  "\tpot_value\030\002 \001(\003\022\024\n\014players_gold\030\003 \003(\003\"i"
-  "\n\013CreateTable\022\013\n\003bet\030\001 \001(\005\022\023\n\013player_mod"
-  "e\030\002 \001(\005\022\022\n\nis_private\030\003 \001(\010\022\022\n\npoint_mod"
-  "e\030\004 \001(\005\022\020\n\010bet_mode\030\005 \001(\010\"!\n\rJoinTableBy"
-  "Id\022\020\n\010match_id\030\001 \001(\005\"\"\n\021JoinTableRespons"
-  "e\022\r\n\005error\030\001 \001(\005\"&\n\014ClaimSupport\022\026\n\016supp"
-  "ort_amount\030\001 \001(\005\"\361\001\n\016AppCodeVersion\022\027\n\017a"
-  "ndroid_version\030\001 \001(\005\022%\n\035android_forced_u"
-  "pdate_version\030\002 \001(\005\022%\n\035android_remind_up"
-  "date_version\030\003 \001(\005\022\023\n\013ios_version\030\004 \001(\005\022"
-  "!\n\031ios_forced_update_version\030\005 \001(\005\022!\n\031io"
-  "s_remind_update_version\030\006 \001(\005\022\035\n\025ios_rev"
-  "iewing_version\030\007 \001(\005\"\"\n\020PlayCardResponse"
-  "\022\016\n\006status\030\001 \001(\005\"!\n\020CheatViewCardBot\022\r\n\005"
-  "cards\030\001 \003(\005\"0\n\020InviteFriendPlay\022\013\n\003uid\030\001"
-  " \001(\005\022\017\n\007room_id\030\002 \001(\005\"A\n\020GameActionNapol"
-  "i\022\013\n\003uid\030\001 \001(\005\022\021\n\tpoint_add\030\002 \001(\005\022\r\n\005sui"
-  "ts\030\003 \003(\005\"D\n\025CustomerServiceReport\022\023\n\013rep"
-  "ort_type\030\001 \001(\005\022\026\n\016report_content\030\002 \001(\t\"\035"
-  "\n\016AdminBroadcast\022\013\n\003mes\030\001 \001(\t\",\n\031Payment"
-  "PaypalRequestOrder\022\017\n\007pack_id\030\001 \001(\t\"\'\n\022P"
-  "aymentPaypalOrder\022\021\n\torder_url\030\001 \001(\t\"\013\n\t"
-  "QuickPlay\"{\n\032SetteMezzoNewUserJoinMatch\022"
-  "\013\n\003uid\030\001 \001(\005\022\014\n\004gold\030\002 \001(\003\022\014\n\004name\030\003 \001(\t"
-  "\022\023\n\013seat_server\030\004 \001(\005\022\017\n\007team_id\030\005 \001(\005\022\016"
-  "\n\006avatar\030\006 \001(\t\"E\n\032SetteMezzoPrepareStart"
-  "Game\022\021\n\tpot_value\030\001 \001(\005\022\024\n\014players_gold\030"
-  "\002 \003(\003\"\374\003\n\022SetteMezzoGameInfo\022\020\n\010match_id"
-  "\030\001 \001(\005\022\021\n\tgame_mode\030\002 \001(\005\022\023\n\013player_mode"
-  "\030\003 \001(\005\022\014\n\004uids\030\004 \003(\005\022\022\n\nuser_golds\030\005 \003(\003"
-  "\022\022\n\nuser_names\030\006 \003(\t\022\022\n\nbanker_uid\030\007 \001(\005"
-  "\022\024\n\014current_turn\030\010 \001(\005\022\022\n\ngame_state\030\t \001"
-  "(\005\022\023\n\013user_points\030\013 \003(\005\022\020\n\010team_ids\030\014 \003("
-  "\005\022\021\n\thand_suit\030\r \001(\005\022\017\n\007avatars\030\016 \003(\t\022\033\n"
-  "\023is_registered_leave\030\017 \001(\010\022\013\n\003bet\030\020 \001(\005\022"
-  "\021\n\tpot_value\030\021 \001(\003\022\025\n\rcurrent_round\030\022 \001("
-  "\005\022\025\n\rhand_in_round\030\023 \001(\005\022\023\n\013is_in_games\030"
-  "\024 \003(\010\022\026\n\016play_turn_time\030\025 \001(\005\022\024\n\014player_"
-  "infos\030\026 \003(\014\022\024\n\014banker_cards\030\027 \003(\005\022\023\n\013pla"
-  "yer_bets\030\030 \003(\003\022\024\n\014time_end_bet\030\031 \001(\005\"(\n\024"
-  "SetteMezzoPlayerInfo\022\020\n\010card_ids\030\001 \003(\005\"\025"
-  "\n\023SetteMezzoQuickPlay\"2\n\023SetteMezzoStart"
-  "Game\022\014\n\004uids\030\001 \003(\005\022\r\n\005cards\030\002 \003(\005\"\317\001\n\013Ra"
-  "nkingInfo\022\021\n\tseason_id\030\001 \001(\005\022\022\n\ntime_sta"
-  "rt\030\002 \001(\005\022\020\n\010time_end\030\003 \001(\005\022\017\n\007rewards\030\004 "
-  "\003(\005\022\014\n\004uids\030\005 \003(\005\022\017\n\007avatars\030\006 \003(\t\022\r\n\005na"
-  "mes\030\007 \003(\t\022\016\n\006scores\030\010 \003(\005\022\025\n\ravatar_fram"
-  "es\030\t \003(\005\022\017\n\007my_rank\030\n \001(\005\022\020\n\010my_score\030\013 "
-  "\001(\005\"E\n\rRankingResult\022\021\n\tseason_id\030\001 \001(\005\022"
-  "\023\n\013gold_reward\030\002 \001(\005\022\014\n\004rank\030\003 \001(\005\"\'\n\022Ra"
-  "nkingClaimReward\022\021\n\tseason_id\030\001 \001(\005\"\"\n\tU"
-  "pdateAds\022\025\n\rtime_show_ads\030\001 \001(\005\"2\n\tAdsRe"
-  "ward\022\014\n\004gold\030\001 \001(\005\022\027\n\017time_ads_reward\030\002 "
-  "\001(\005\"\036\n\016ChangeUserName\022\014\n\004name\030\001 \001(\t\"3\n\023S"
-  "etteMezzoActionHit\022\013\n\003uid\030\001 \001(\005\022\017\n\007card_"
-  "id\030\002 \001(\005\"D\n\024SetteMezzoUpdateTurn\022\024\n\014curr"
-  "ent_turn\030\001 \001(\005\022\026\n\016play_turn_time\030\002 \001(\005\"R"
-  "\n\025SetteMezzoActionStand\022\013\n\003uid\030\001 \001(\005\022\024\n\014"
-  "current_turn\030\002 \001(\005\022\026\n\016play_turn_time\030\003 \001"
-  "(\005\"n\n\021SetteMezzoEndGame\022\014\n\004uids\030\001 \003(\005\022\016\n"
-  "\006scores\030\002 \003(\005\022\017\n\007is_wins\030\003 \003(\010\022\024\n\014golds_"
-  "change\030\004 \003(\003\022\024\n\014player_golds\030\005 \003(\003\"+\n\030Se"
-  "tteMezzoShowBankerCard\022\017\n\007card_id\030\001 \001(\005\""
-  "-\n\021SetteMezzoUserBet\022\013\n\003uid\030\001 \001(\005\022\013\n\003bet"
-  "\030\002 \001(\003\"\034\n\010ViewGame\022\020\n\010match_id\030\001 \001(\005\"\033\n\014"
-  "UserStopView\022\013\n\003uid\030\001 \001(\005\"N\n\013NewUserView"
-  "\022\013\n\003uid\030\001 \001(\005\022\016\n\006avatar\030\002 \001(\t\022\014\n\004name\030\003 "
-  "\001(\t\022\024\n\014avatar_frame\030\004 \001(\005\"\033\n\014CheatExpUse"
-  "r\022\013\n\003exp\030\001 \001(\005\"\030\n\tUpdateExp\022\013\n\003exp\030\001 \001(\003"
-  "\"!\n\020ClaimRewardLevel\022\r\n\005level\030\001 \001(\005\"-\n\rU"
-  "serInventory\022\034\n\005items\030\001 \003(\0132\r.InvetoryIt"
-  "em\"C\n\014InvetoryItem\022\017\n\007item_id\030\001 \001(\005\022\023\n\013e"
-  "xpire_time\030\002 \001(\005\022\r\n\005value\030\003 \001(\005\"\032\n\007UseIt"
-  "em\022\017\n\007item_id\030\001 \001(\005\".\n\tCheatItem\022\017\n\007item"
-  "_id\030\001 \001(\005\022\020\n\010duration\030\002 \001(\005\"+\n\007BuyItem\022\017"
-  "\n\007item_id\030\001 \001(\005\022\017\n\007pack_id\030\002 \001(\005\"8\n\023Inve"
-  "ntoryShopConfig\022!\n\005items\030\001 \003(\0132\022.Invento"
-  "ryShopItem\"F\n\021InventoryShopItem\022\017\n\007item_"
-  "id\030\001 \001(\005\022 \n\005packs\030\002 \003(\0132\021.InvetoryShopPa"
-  "ck\"\?\n\020InvetoryShopPack\022\n\n\002id\030\001 \001(\005\022\r\n\005pr"
-  "ice\030\002 \001(\005\022\020\n\010duration\030\003 \001(\005\"\\\n\030ClaimRewa"
-  "rdLevelResponse\022\r\n\005level\030\001 \001(\005\022\014\n\004gold\030\002"
-  " \001(\005\022#\n\005items\030\003 \003(\0132\024.RewardInventoryIte"
-  "m\"G\n\023RewardInventoryItem\022\017\n\007item_id\030\001 \001("
-  "\005\022\020\n\010duration\030\002 \001(\005\022\r\n\005value\030\003 \001(\005b\006prot"
-  "o3"
+  "(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\021\n\tsen"
+  "t_uids\030\006 \003(\005\"\'\n\tAddFriend\022\r\n\005error\030\001 \001(\005"
+  "\022\013\n\003uid\030\002 \001(\005\"2\n\023RequestFriendAccept\022\013\n\003"
+  "uid\030\001 \001(\005\022\016\n\006action\030\002 \001(\005\"\033\n\014RemoveFrien"
+  "d\022\013\n\003uid\030\001 \001(\005\"Z\n\020NewFriendRequest\022\013\n\003ui"
+  "d\030\001 \001(\005\022\016\n\006avatar\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\r\n"
+  "\005level\030\004 \001(\005\022\014\n\004gold\030\005 \001(\003\"u\n\025FriendRequ"
+  "estAccepted\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\016"
+  "\n\006avatar\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\014\n\004gold\030\005 "
+  "\001(\003\022\024\n\014avatar_frame\030\006 \001(\005\"v\n\020RecommendFr"
+  "iends\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007av"
+  "atars\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003"
+  "(\003\022\025\n\ravatar_frames\030\006 \003(\005\"<\n\023PaymentAppl"
+  "eConsume\022\017\n\007pack_id\030\001 \001(\t\022\024\n\014receipt_dat"
+  "a\030\002 \001(\t\"2\n\037PaymentFinishedAppleTransacti"
+  "on\022\017\n\007pack_id\030\001 \001(\t\"J\n\010NewRound\022\025\n\rcurre"
+  "nt_round\030\001 \001(\005\022\021\n\tpot_value\030\002 \001(\003\022\024\n\014pla"
+  "yers_gold\030\003 \003(\003\"i\n\013CreateTable\022\013\n\003bet\030\001 "
+  "\001(\005\022\023\n\013player_mode\030\002 \001(\005\022\022\n\nis_private\030\003"
+  " \001(\010\022\022\n\npoint_mode\030\004 \001(\005\022\020\n\010bet_mode\030\005 \001"
+  "(\010\"!\n\rJoinTableById\022\020\n\010match_id\030\001 \001(\005\"\"\n"
+  "\021JoinTableResponse\022\r\n\005error\030\001 \001(\005\"&\n\014Cla"
+  "imSupport\022\026\n\016support_amount\030\001 \001(\005\"\361\001\n\016Ap"
+  "pCodeVersion\022\027\n\017android_version\030\001 \001(\005\022%\n"
+  "\035android_forced_update_version\030\002 \001(\005\022%\n\035"
+  "android_remind_update_version\030\003 \001(\005\022\023\n\013i"
+  "os_version\030\004 \001(\005\022!\n\031ios_forced_update_ve"
+  "rsion\030\005 \001(\005\022!\n\031ios_remind_update_version"
+  "\030\006 \001(\005\022\035\n\025ios_reviewing_version\030\007 \001(\005\"\"\n"
+  "\020PlayCardResponse\022\016\n\006status\030\001 \001(\005\"!\n\020Che"
+  "atViewCardBot\022\r\n\005cards\030\001 \003(\005\"0\n\020InviteFr"
+  "iendPlay\022\013\n\003uid\030\001 \001(\005\022\017\n\007room_id\030\002 \001(\005\"A"
+  "\n\020GameActionNapoli\022\013\n\003uid\030\001 \001(\005\022\021\n\tpoint"
+  "_add\030\002 \001(\005\022\r\n\005suits\030\003 \003(\005\"D\n\025CustomerSer"
+  "viceReport\022\023\n\013report_type\030\001 \001(\005\022\026\n\016repor"
+  "t_content\030\002 \001(\t\"\035\n\016AdminBroadcast\022\013\n\003mes"
+  "\030\001 \001(\t\",\n\031PaymentPaypalRequestOrder\022\017\n\007p"
+  "ack_id\030\001 \001(\t\"\'\n\022PaymentPaypalOrder\022\021\n\tor"
+  "der_url\030\001 \001(\t\"\013\n\tQuickPlay\"{\n\032SetteMezzo"
+  "NewUserJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004gold\030\002 "
+  "\001(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030\004 \001(\005\022\017"
+  "\n\007team_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\"E\n\032Sette"
+  "MezzoPrepareStartGame\022\021\n\tpot_value\030\001 \001(\005"
+  "\022\024\n\014players_gold\030\002 \003(\003\"\374\003\n\022SetteMezzoGam"
+  "eInfo\022\020\n\010match_id\030\001 \001(\005\022\021\n\tgame_mode\030\002 \001"
+  "(\005\022\023\n\013player_mode\030\003 \001(\005\022\014\n\004uids\030\004 \003(\005\022\022\n"
+  "\nuser_golds\030\005 \003(\003\022\022\n\nuser_names\030\006 \003(\t\022\022\n"
+  "\nbanker_uid\030\007 \001(\005\022\024\n\014current_turn\030\010 \001(\005\022"
+  "\022\n\ngame_state\030\t \001(\005\022\023\n\013user_points\030\013 \003(\005"
+  "\022\020\n\010team_ids\030\014 \003(\005\022\021\n\thand_suit\030\r \001(\005\022\017\n"
+  "\007avatars\030\016 \003(\t\022\033\n\023is_registered_leave\030\017 "
+  "\001(\010\022\013\n\003bet\030\020 \001(\005\022\021\n\tpot_value\030\021 \001(\003\022\025\n\rc"
+  "urrent_round\030\022 \001(\005\022\025\n\rhand_in_round\030\023 \001("
+  "\005\022\023\n\013is_in_games\030\024 \003(\010\022\026\n\016play_turn_time"
+  "\030\025 \001(\005\022\024\n\014player_infos\030\026 \003(\014\022\024\n\014banker_c"
+  "ards\030\027 \003(\005\022\023\n\013player_bets\030\030 \003(\003\022\024\n\014time_"
+  "end_bet\030\031 \001(\005\"(\n\024SetteMezzoPlayerInfo\022\020\n"
+  "\010card_ids\030\001 \003(\005\"\025\n\023SetteMezzoQuickPlay\"2"
+  "\n\023SetteMezzoStartGame\022\014\n\004uids\030\001 \003(\005\022\r\n\005c"
+  "ards\030\002 \003(\005\"\317\001\n\013RankingInfo\022\021\n\tseason_id\030"
+  "\001 \001(\005\022\022\n\ntime_start\030\002 \001(\005\022\020\n\010time_end\030\003 "
+  "\001(\005\022\017\n\007rewards\030\004 \003(\005\022\014\n\004uids\030\005 \003(\005\022\017\n\007av"
+  "atars\030\006 \003(\t\022\r\n\005names\030\007 \003(\t\022\016\n\006scores\030\010 \003"
+  "(\005\022\025\n\ravatar_frames\030\t \003(\005\022\017\n\007my_rank\030\n \001"
+  "(\005\022\020\n\010my_score\030\013 \001(\005\"E\n\rRankingResult\022\021\n"
+  "\tseason_id\030\001 \001(\005\022\023\n\013gold_reward\030\002 \001(\005\022\014\n"
+  "\004rank\030\003 \001(\005\"\'\n\022RankingClaimReward\022\021\n\tsea"
+  "son_id\030\001 \001(\005\"\"\n\tUpdateAds\022\025\n\rtime_show_a"
+  "ds\030\001 \001(\005\"2\n\tAdsReward\022\014\n\004gold\030\001 \001(\005\022\027\n\017t"
+  "ime_ads_reward\030\002 \001(\005\"\036\n\016ChangeUserName\022\014"
+  "\n\004name\030\001 \001(\t\"3\n\023SetteMezzoActionHit\022\013\n\003u"
+  "id\030\001 \001(\005\022\017\n\007card_id\030\002 \001(\005\"D\n\024SetteMezzoU"
+  "pdateTurn\022\024\n\014current_turn\030\001 \001(\005\022\026\n\016play_"
+  "turn_time\030\002 \001(\005\"R\n\025SetteMezzoActionStand"
+  "\022\013\n\003uid\030\001 \001(\005\022\024\n\014current_turn\030\002 \001(\005\022\026\n\016p"
+  "lay_turn_time\030\003 \001(\005\"n\n\021SetteMezzoEndGame"
+  "\022\014\n\004uids\030\001 \003(\005\022\016\n\006scores\030\002 \003(\005\022\017\n\007is_win"
+  "s\030\003 \003(\010\022\024\n\014golds_change\030\004 \003(\003\022\024\n\014player_"
+  "golds\030\005 \003(\003\"+\n\030SetteMezzoShowBankerCard\022"
+  "\017\n\007card_id\030\001 \001(\005\"-\n\021SetteMezzoUserBet\022\013\n"
+  "\003uid\030\001 \001(\005\022\013\n\003bet\030\002 \001(\003\"\034\n\010ViewGame\022\020\n\010m"
+  "atch_id\030\001 \001(\005\"\033\n\014UserStopView\022\013\n\003uid\030\001 \001"
+  "(\005\"N\n\013NewUserView\022\013\n\003uid\030\001 \001(\005\022\016\n\006avatar"
+  "\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\024\n\014avatar_frame\030\004 \001"
+  "(\005\"\033\n\014CheatExpUser\022\013\n\003exp\030\001 \001(\005\"\030\n\tUpdat"
+  "eExp\022\013\n\003exp\030\001 \001(\003\"!\n\020ClaimRewardLevel\022\r\n"
+  "\005level\030\001 \001(\005\"4\n\rUserInventory\022#\n\005items\030\001"
+  " \003(\0132\024.packet.InvetoryItem\"C\n\014InvetoryIt"
+  "em\022\017\n\007item_id\030\001 \001(\005\022\023\n\013expire_time\030\002 \001(\005"
+  "\022\r\n\005value\030\003 \001(\005\"\032\n\007UseItem\022\017\n\007item_id\030\001 "
+  "\001(\005\".\n\tCheatItem\022\017\n\007item_id\030\001 \001(\005\022\020\n\010dur"
+  "ation\030\002 \001(\005\"+\n\007BuyItem\022\017\n\007item_id\030\001 \001(\005\022"
+  "\017\n\007pack_id\030\002 \001(\005\"\?\n\023InventoryShopConfig\022"
+  "(\n\005items\030\001 \003(\0132\031.packet.InventoryShopIte"
+  "m\"M\n\021InventoryShopItem\022\017\n\007item_id\030\001 \001(\005\022"
+  "\'\n\005packs\030\002 \003(\0132\030.packet.InvetoryShopPack"
+  "\"\?\n\020InvetoryShopPack\022\n\n\002id\030\001 \001(\005\022\r\n\005pric"
+  "e\030\002 \001(\005\022\020\n\010duration\030\003 \001(\005\"c\n\030ClaimReward"
+  "LevelResponse\022\r\n\005level\030\001 \001(\005\022\014\n\004gold\030\002 \001"
+  "(\005\022*\n\005items\030\003 \003(\0132\033.packet.RewardInvento"
+  "ryItem\"G\n\023RewardInventoryItem\022\017\n\007item_id"
+  "\030\001 \001(\005\022\020\n\010duration\030\002 \001(\005\022\r\n\005value\030\003 \001(\005b"
+  "\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_packet_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_packet_2eproto = {
-    false, false, 8282, descriptor_table_protodef_packet_2eproto,
+    false, false, 8367, descriptor_table_protodef_packet_2eproto,
     "packet.proto",
     &descriptor_table_packet_2eproto_once, nullptr, 0, 97,
     schemas, file_default_instances, TableStruct_packet_2eproto::offsets,
@@ -2845,6 +2849,7 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_packet_2
 
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_packet_2eproto(&descriptor_table_packet_2eproto);
+namespace packet {
 
 // ===================================================================
 
@@ -2855,12 +2860,12 @@ class Empty::_Internal {
 Empty::Empty(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
-  // @@protoc_insertion_point(arena_constructor:Empty)
+  // @@protoc_insertion_point(arena_constructor:packet.Empty)
 }
 Empty::Empty(const Empty& from)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:Empty)
+  // @@protoc_insertion_point(copy_constructor:packet.Empty)
 }
 
 
@@ -2895,7 +2900,7 @@ Packet::Packet(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:Packet)
+  // @@protoc_insertion_point(arena_constructor:packet.Packet)
 }
 Packet::Packet(const Packet& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -2917,7 +2922,7 @@ Packet::Packet(const Packet& from)
       GetArenaForAllocation());
   }
   cmd_id_ = from.cmd_id_;
-  // @@protoc_insertion_point(copy_constructor:Packet)
+  // @@protoc_insertion_point(copy_constructor:packet.Packet)
 }
 
 inline void Packet::SharedCtor() {
@@ -2933,7 +2938,7 @@ cmd_id_ = 0;
 }
 
 Packet::~Packet() {
-  // @@protoc_insertion_point(destructor:Packet)
+  // @@protoc_insertion_point(destructor:packet.Packet)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -2952,7 +2957,7 @@ void Packet::SetCachedSize(int size) const {
 }
 
 void Packet::Clear() {
-// @@protoc_insertion_point(message_clear_start:Packet)
+// @@protoc_insertion_point(message_clear_start:packet.Packet)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -2975,7 +2980,7 @@ const char* Packet::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_token();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "Packet.token"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.Packet.token"));
         } else
           goto handle_unusual;
         continue;
@@ -3021,7 +3026,7 @@ failure:
 
 uint8_t* Packet::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Packet)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.Packet)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3030,7 +3035,7 @@ uint8_t* Packet::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Packet.token");
+      "packet.Packet.token");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_token(), target);
   }
@@ -3051,12 +3056,12 @@ uint8_t* Packet::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Packet)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.Packet)
   return target;
 }
 
 size_t Packet::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Packet)
+// @@protoc_insertion_point(message_byte_size_start:packet.Packet)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -3099,7 +3104,7 @@ void Packet::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void Packet::MergeFrom(const Packet& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Packet)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.Packet)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3117,7 +3122,7 @@ void Packet::MergeFrom(const Packet& from) {
 }
 
 void Packet::CopyFrom(const Packet& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Packet)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.Packet)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3159,7 +3164,7 @@ ChatMessage::ChatMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ChatMessage)
+  // @@protoc_insertion_point(arena_constructor:packet.ChatMessage)
 }
 ChatMessage::ChatMessage(const ChatMessage& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -3183,7 +3188,7 @@ ChatMessage::ChatMessage(const ChatMessage& from)
   ::memcpy(&abc_, &from.abc_,
     static_cast<size_t>(reinterpret_cast<char*>(&is_active_) -
     reinterpret_cast<char*>(&abc_)) + sizeof(is_active_));
-  // @@protoc_insertion_point(copy_constructor:ChatMessage)
+  // @@protoc_insertion_point(copy_constructor:packet.ChatMessage)
 }
 
 inline void ChatMessage::SharedCtor() {
@@ -3202,7 +3207,7 @@ abcd_.InitDefault();
 }
 
 ChatMessage::~ChatMessage() {
-  // @@protoc_insertion_point(destructor:ChatMessage)
+  // @@protoc_insertion_point(destructor:packet.ChatMessage)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -3221,7 +3226,7 @@ void ChatMessage::SetCachedSize(int size) const {
 }
 
 void ChatMessage::Clear() {
-// @@protoc_insertion_point(message_clear_start:ChatMessage)
+// @@protoc_insertion_point(message_clear_start:packet.ChatMessage)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3254,7 +3259,7 @@ const char* ChatMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
           auto str = _internal_mutable_username();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "ChatMessage.username"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.ChatMessage.username"));
         } else
           goto handle_unusual;
         continue;
@@ -3280,7 +3285,7 @@ const char* ChatMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
           auto str = _internal_mutable_abcd();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "ChatMessage.abcd"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.ChatMessage.abcd"));
         } else
           goto handle_unusual;
         continue;
@@ -3317,7 +3322,7 @@ failure:
 
 uint8_t* ChatMessage::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ChatMessage)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ChatMessage)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3336,7 +3341,7 @@ uint8_t* ChatMessage::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_username().data(), static_cast<int>(this->_internal_username().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "ChatMessage.username");
+      "packet.ChatMessage.username");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_username(), target);
   }
@@ -3358,7 +3363,7 @@ uint8_t* ChatMessage::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_abcd().data(), static_cast<int>(this->_internal_abcd().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "ChatMessage.abcd");
+      "packet.ChatMessage.abcd");
     target = stream->WriteStringMaybeAliased(
         5, this->_internal_abcd(), target);
   }
@@ -3373,12 +3378,12 @@ uint8_t* ChatMessage::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ChatMessage)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ChatMessage)
   return target;
 }
 
 size_t ChatMessage::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ChatMessage)
+// @@protoc_insertion_point(message_byte_size_start:packet.ChatMessage)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -3440,7 +3445,7 @@ void ChatMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ChatMessage::MergeFrom(const ChatMessage& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ChatMessage)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ChatMessage)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3471,7 +3476,7 @@ void ChatMessage::MergeFrom(const ChatMessage& from) {
 }
 
 void ChatMessage::CopyFrom(const ChatMessage& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ChatMessage)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ChatMessage)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3517,12 +3522,12 @@ class PingPong::_Internal {
 PingPong::PingPong(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
-  // @@protoc_insertion_point(arena_constructor:PingPong)
+  // @@protoc_insertion_point(arena_constructor:packet.PingPong)
 }
 PingPong::PingPong(const PingPong& from)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:PingPong)
+  // @@protoc_insertion_point(copy_constructor:packet.PingPong)
 }
 
 
@@ -3557,7 +3562,7 @@ Login::Login(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:Login)
+  // @@protoc_insertion_point(arena_constructor:packet.Login)
 }
 Login::Login(const Login& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -3597,7 +3602,7 @@ Login::Login(const Login& from)
   ::memcpy(&type_, &from.type_,
     static_cast<size_t>(reinterpret_cast<char*>(&app_version_code_) -
     reinterpret_cast<char*>(&type_)) + sizeof(app_version_code_));
-  // @@protoc_insertion_point(copy_constructor:Login)
+  // @@protoc_insertion_point(copy_constructor:packet.Login)
 }
 
 inline void Login::SharedCtor() {
@@ -3624,7 +3629,7 @@ device_country_.InitDefault();
 }
 
 Login::~Login() {
-  // @@protoc_insertion_point(destructor:Login)
+  // @@protoc_insertion_point(destructor:packet.Login)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -3645,7 +3650,7 @@ void Login::SetCachedSize(int size) const {
 }
 
 void Login::Clear() {
-// @@protoc_insertion_point(message_clear_start:Login)
+// @@protoc_insertion_point(message_clear_start:packet.Login)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -3680,7 +3685,7 @@ const char* Login::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_token();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "Login.token"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.Login.token"));
         } else
           goto handle_unusual;
         continue;
@@ -3690,7 +3695,7 @@ const char* Login::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_device_model();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "Login.device_model"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.Login.device_model"));
         } else
           goto handle_unusual;
         continue;
@@ -3700,7 +3705,7 @@ const char* Login::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_platform();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "Login.platform"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.Login.platform"));
         } else
           goto handle_unusual;
         continue;
@@ -3710,7 +3715,7 @@ const char* Login::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
           auto str = _internal_mutable_device_country();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "Login.device_country"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.Login.device_country"));
         } else
           goto handle_unusual;
         continue;
@@ -3747,7 +3752,7 @@ failure:
 
 uint8_t* Login::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:Login)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.Login)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -3762,7 +3767,7 @@ uint8_t* Login::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Login.token");
+      "packet.Login.token");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_token(), target);
   }
@@ -3772,7 +3777,7 @@ uint8_t* Login::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_device_model().data(), static_cast<int>(this->_internal_device_model().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Login.device_model");
+      "packet.Login.device_model");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_device_model(), target);
   }
@@ -3782,7 +3787,7 @@ uint8_t* Login::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_platform().data(), static_cast<int>(this->_internal_platform().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Login.platform");
+      "packet.Login.platform");
     target = stream->WriteStringMaybeAliased(
         4, this->_internal_platform(), target);
   }
@@ -3792,7 +3797,7 @@ uint8_t* Login::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_device_country().data(), static_cast<int>(this->_internal_device_country().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Login.device_country");
+      "packet.Login.device_country");
     target = stream->WriteStringMaybeAliased(
         5, this->_internal_device_country(), target);
   }
@@ -3807,12 +3812,12 @@ uint8_t* Login::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Login)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.Login)
   return target;
 }
 
 size_t Login::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Login)
+// @@protoc_insertion_point(message_byte_size_start:packet.Login)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -3874,7 +3879,7 @@ void Login::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void Login::MergeFrom(const Login& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Login)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.Login)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -3901,7 +3906,7 @@ void Login::MergeFrom(const Login& from) {
 }
 
 void Login::CopyFrom(const Login& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Login)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.Login)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -3956,7 +3961,7 @@ LoginFirebase::LoginFirebase(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:LoginFirebase)
+  // @@protoc_insertion_point(arena_constructor:packet.LoginFirebase)
 }
 LoginFirebase::LoginFirebase(const LoginFirebase& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -3978,7 +3983,7 @@ LoginFirebase::LoginFirebase(const LoginFirebase& from)
       GetArenaForAllocation());
   }
   sub_type_ = from.sub_type_;
-  // @@protoc_insertion_point(copy_constructor:LoginFirebase)
+  // @@protoc_insertion_point(copy_constructor:packet.LoginFirebase)
 }
 
 inline void LoginFirebase::SharedCtor() {
@@ -3994,7 +3999,7 @@ sub_type_ = 0;
 }
 
 LoginFirebase::~LoginFirebase() {
-  // @@protoc_insertion_point(destructor:LoginFirebase)
+  // @@protoc_insertion_point(destructor:packet.LoginFirebase)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -4013,7 +4018,7 @@ void LoginFirebase::SetCachedSize(int size) const {
 }
 
 void LoginFirebase::Clear() {
-// @@protoc_insertion_point(message_clear_start:LoginFirebase)
+// @@protoc_insertion_point(message_clear_start:packet.LoginFirebase)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4044,7 +4049,7 @@ const char* LoginFirebase::_InternalParse(const char* ptr, ::_pbi::ParseContext*
           auto str = _internal_mutable_login_token();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "LoginFirebase.login_token"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.LoginFirebase.login_token"));
         } else
           goto handle_unusual;
         continue;
@@ -4054,7 +4059,7 @@ const char* LoginFirebase::_InternalParse(const char* ptr, ::_pbi::ParseContext*
           auto str = _internal_mutable_guest_id();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "LoginFirebase.guest_id"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.LoginFirebase.guest_id"));
         } else
           goto handle_unusual;
         continue;
@@ -4083,7 +4088,7 @@ failure:
 
 uint8_t* LoginFirebase::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:LoginFirebase)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.LoginFirebase)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -4098,7 +4103,7 @@ uint8_t* LoginFirebase::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_login_token().data(), static_cast<int>(this->_internal_login_token().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "LoginFirebase.login_token");
+      "packet.LoginFirebase.login_token");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_login_token(), target);
   }
@@ -4108,7 +4113,7 @@ uint8_t* LoginFirebase::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_guest_id().data(), static_cast<int>(this->_internal_guest_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "LoginFirebase.guest_id");
+      "packet.LoginFirebase.guest_id");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_guest_id(), target);
   }
@@ -4117,12 +4122,12 @@ uint8_t* LoginFirebase::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:LoginFirebase)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.LoginFirebase)
   return target;
 }
 
 size_t LoginFirebase::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:LoginFirebase)
+// @@protoc_insertion_point(message_byte_size_start:packet.LoginFirebase)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -4165,7 +4170,7 @@ void LoginFirebase::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void LoginFirebase::MergeFrom(const LoginFirebase& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:LoginFirebase)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.LoginFirebase)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -4183,7 +4188,7 @@ void LoginFirebase::MergeFrom(const LoginFirebase& from) {
 }
 
 void LoginFirebase::CopyFrom(const LoginFirebase& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:LoginFirebase)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.LoginFirebase)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -4224,12 +4229,12 @@ class Logout::_Internal {
 Logout::Logout(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
-  // @@protoc_insertion_point(arena_constructor:Logout)
+  // @@protoc_insertion_point(arena_constructor:packet.Logout)
 }
 Logout::Logout(const Logout& from)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:Logout)
+  // @@protoc_insertion_point(copy_constructor:packet.Logout)
 }
 
 
@@ -4264,7 +4269,7 @@ LoginResponse::LoginResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:LoginResponse)
+  // @@protoc_insertion_point(arena_constructor:packet.LoginResponse)
 }
 LoginResponse::LoginResponse(const LoginResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -4280,7 +4285,7 @@ LoginResponse::LoginResponse(const LoginResponse& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&error_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(error_));
-  // @@protoc_insertion_point(copy_constructor:LoginResponse)
+  // @@protoc_insertion_point(copy_constructor:packet.LoginResponse)
 }
 
 inline void LoginResponse::SharedCtor() {
@@ -4295,7 +4300,7 @@ token_.InitDefault();
 }
 
 LoginResponse::~LoginResponse() {
-  // @@protoc_insertion_point(destructor:LoginResponse)
+  // @@protoc_insertion_point(destructor:packet.LoginResponse)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -4313,7 +4318,7 @@ void LoginResponse::SetCachedSize(int size) const {
 }
 
 void LoginResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:LoginResponse)
+// @@protoc_insertion_point(message_clear_start:packet.LoginResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4345,7 +4350,7 @@ const char* LoginResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext*
           auto str = _internal_mutable_token();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "LoginResponse.token"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.LoginResponse.token"));
         } else
           goto handle_unusual;
         continue;
@@ -4382,7 +4387,7 @@ failure:
 
 uint8_t* LoginResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:LoginResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.LoginResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -4397,7 +4402,7 @@ uint8_t* LoginResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "LoginResponse.token");
+      "packet.LoginResponse.token");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_token(), target);
   }
@@ -4412,12 +4417,12 @@ uint8_t* LoginResponse::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:LoginResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.LoginResponse)
   return target;
 }
 
 size_t LoginResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:LoginResponse)
+// @@protoc_insertion_point(message_byte_size_start:packet.LoginResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -4458,7 +4463,7 @@ void LoginResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void LoginResponse::MergeFrom(const LoginResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:LoginResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.LoginResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -4476,7 +4481,7 @@ void LoginResponse::MergeFrom(const LoginResponse& from) {
 }
 
 void LoginResponse::CopyFrom(const LoginResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:LoginResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.LoginResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -4522,7 +4527,7 @@ UserInfo::UserInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   names_(arena),
   claimed_levels_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UserInfo)
+  // @@protoc_insertion_point(arena_constructor:packet.UserInfo)
 }
 UserInfo::UserInfo(const UserInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -4557,7 +4562,7 @@ UserInfo::UserInfo(const UserInfo& from)
   ::memcpy(&gold_, &from.gold_,
     static_cast<size_t>(reinterpret_cast<char*>(&price_change_name_) -
     reinterpret_cast<char*>(&gold_)) + sizeof(price_change_name_));
-  // @@protoc_insertion_point(copy_constructor:UserInfo)
+  // @@protoc_insertion_point(copy_constructor:packet.UserInfo)
 }
 
 inline void UserInfo::SharedCtor() {
@@ -4580,7 +4585,7 @@ avatar_third_party_.InitDefault();
 }
 
 UserInfo::~UserInfo() {
-  // @@protoc_insertion_point(destructor:UserInfo)
+  // @@protoc_insertion_point(destructor:packet.UserInfo)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -4600,7 +4605,7 @@ void UserInfo::SetCachedSize(int size) const {
 }
 
 void UserInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:UserInfo)
+// @@protoc_insertion_point(message_clear_start:packet.UserInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -4637,7 +4642,7 @@ const char* UserInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "UserInfo.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.UserInfo.name"));
         } else
           goto handle_unusual;
         continue;
@@ -4669,7 +4674,7 @@ const char* UserInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
             auto str = _internal_add_names();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "UserInfo.names"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.UserInfo.names"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else
@@ -4689,7 +4694,7 @@ const char* UserInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
           auto str = _internal_mutable_avatar();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "UserInfo.avatar"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.UserInfo.avatar"));
         } else
           goto handle_unusual;
         continue;
@@ -4699,7 +4704,7 @@ const char* UserInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
           auto str = _internal_mutable_avatar_third_party();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "UserInfo.avatar_third_party"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.UserInfo.avatar_third_party"));
         } else
           goto handle_unusual;
         continue;
@@ -4843,7 +4848,7 @@ failure:
 
 uint8_t* UserInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UserInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UserInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -4858,7 +4863,7 @@ uint8_t* UserInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "UserInfo.name");
+      "packet.UserInfo.name");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_name(), target);
   }
@@ -4884,7 +4889,7 @@ uint8_t* UserInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "UserInfo.names");
+      "packet.UserInfo.names");
     target = stream->WriteString(5, s, target);
   }
 
@@ -4899,7 +4904,7 @@ uint8_t* UserInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "UserInfo.avatar");
+      "packet.UserInfo.avatar");
     target = stream->WriteStringMaybeAliased(
         7, this->_internal_avatar(), target);
   }
@@ -4909,7 +4914,7 @@ uint8_t* UserInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_avatar_third_party().data(), static_cast<int>(this->_internal_avatar_third_party().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "UserInfo.avatar_third_party");
+      "packet.UserInfo.avatar_third_party");
     target = stream->WriteStringMaybeAliased(
         8, this->_internal_avatar_third_party(), target);
   }
@@ -5005,12 +5010,12 @@ uint8_t* UserInfo::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UserInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UserInfo)
   return target;
 }
 
 size_t UserInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UserInfo)
+// @@protoc_insertion_point(message_byte_size_start:packet.UserInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -5181,7 +5186,7 @@ void UserInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UserInfo::MergeFrom(const UserInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UserInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UserInfo)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -5250,7 +5255,7 @@ void UserInfo::MergeFrom(const UserInfo& from) {
 }
 
 void UserInfo::CopyFrom(const UserInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UserInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UserInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -5318,7 +5323,7 @@ GameInfo::GameInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   avatar_frames_(arena),
   viewer_avatar_frames_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:GameInfo)
+  // @@protoc_insertion_point(arena_constructor:packet.GameInfo)
 }
 GameInfo::GameInfo(const GameInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -5340,7 +5345,7 @@ GameInfo::GameInfo(const GameInfo& from)
   ::memcpy(&match_id_, &from.match_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&point_to_win_) -
     reinterpret_cast<char*>(&match_id_)) + sizeof(point_to_win_));
-  // @@protoc_insertion_point(copy_constructor:GameInfo)
+  // @@protoc_insertion_point(copy_constructor:packet.GameInfo)
 }
 
 inline void GameInfo::SharedCtor() {
@@ -5351,7 +5356,7 @@ inline void GameInfo::SharedCtor() {
 }
 
 GameInfo::~GameInfo() {
-  // @@protoc_insertion_point(destructor:GameInfo)
+  // @@protoc_insertion_point(destructor:packet.GameInfo)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -5368,7 +5373,7 @@ void GameInfo::SetCachedSize(int size) const {
 }
 
 void GameInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:GameInfo)
+// @@protoc_insertion_point(message_clear_start:packet.GameInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5454,7 +5459,7 @@ const char* GameInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
             auto str = _internal_add_user_names();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "GameInfo.user_names"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.GameInfo.user_names"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
         } else
@@ -5545,7 +5550,7 @@ const char* GameInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
             auto str = _internal_add_avatars();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "GameInfo.avatars"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.GameInfo.avatars"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<122>(ptr));
         } else
@@ -5622,7 +5627,7 @@ const char* GameInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
             auto str = _internal_add_viewer_avatars();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "GameInfo.viewer_avatars"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.GameInfo.viewer_avatars"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<186>(ptr));
         } else
@@ -5637,7 +5642,7 @@ const char* GameInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
             auto str = _internal_add_viewer_names();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "GameInfo.viewer_names"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.GameInfo.viewer_names"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<194>(ptr));
         } else
@@ -5690,7 +5695,7 @@ failure:
 
 uint8_t* GameInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:GameInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.GameInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -5736,7 +5741,7 @@ uint8_t* GameInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "GameInfo.user_names");
+      "packet.GameInfo.user_names");
     target = stream->WriteString(6, s, target);
   }
 
@@ -5806,7 +5811,7 @@ uint8_t* GameInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "GameInfo.avatars");
+      "packet.GameInfo.avatars");
     target = stream->WriteString(15, s, target);
   }
 
@@ -5860,7 +5865,7 @@ uint8_t* GameInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "GameInfo.viewer_avatars");
+      "packet.GameInfo.viewer_avatars");
     target = stream->WriteString(23, s, target);
   }
 
@@ -5870,7 +5875,7 @@ uint8_t* GameInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "GameInfo.viewer_names");
+      "packet.GameInfo.viewer_names");
     target = stream->WriteString(24, s, target);
   }
 
@@ -5896,12 +5901,12 @@ uint8_t* GameInfo::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GameInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.GameInfo)
   return target;
 }
 
 size_t GameInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:GameInfo)
+// @@protoc_insertion_point(message_byte_size_start:packet.GameInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -6162,7 +6167,7 @@ void GameInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void GameInfo::MergeFrom(const GameInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:GameInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.GameInfo)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -6221,7 +6226,7 @@ void GameInfo::MergeFrom(const GameInfo& from) {
 }
 
 void GameInfo::CopyFrom(const GameInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:GameInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.GameInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -6272,13 +6277,13 @@ RegisterLeaveGame::RegisterLeaveGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:RegisterLeaveGame)
+  // @@protoc_insertion_point(arena_constructor:packet.RegisterLeaveGame)
 }
 RegisterLeaveGame::RegisterLeaveGame(const RegisterLeaveGame& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   status_ = from.status_;
-  // @@protoc_insertion_point(copy_constructor:RegisterLeaveGame)
+  // @@protoc_insertion_point(copy_constructor:packet.RegisterLeaveGame)
 }
 
 inline void RegisterLeaveGame::SharedCtor() {
@@ -6286,7 +6291,7 @@ status_ = 0;
 }
 
 RegisterLeaveGame::~RegisterLeaveGame() {
-  // @@protoc_insertion_point(destructor:RegisterLeaveGame)
+  // @@protoc_insertion_point(destructor:packet.RegisterLeaveGame)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -6303,7 +6308,7 @@ void RegisterLeaveGame::SetCachedSize(int size) const {
 }
 
 void RegisterLeaveGame::Clear() {
-// @@protoc_insertion_point(message_clear_start:RegisterLeaveGame)
+// @@protoc_insertion_point(message_clear_start:packet.RegisterLeaveGame)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6351,7 +6356,7 @@ failure:
 
 uint8_t* RegisterLeaveGame::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RegisterLeaveGame)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.RegisterLeaveGame)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -6365,12 +6370,12 @@ uint8_t* RegisterLeaveGame::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RegisterLeaveGame)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.RegisterLeaveGame)
   return target;
 }
 
 size_t RegisterLeaveGame::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:RegisterLeaveGame)
+// @@protoc_insertion_point(message_byte_size_start:packet.RegisterLeaveGame)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -6399,7 +6404,7 @@ void RegisterLeaveGame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void RegisterLeaveGame::MergeFrom(const RegisterLeaveGame& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:RegisterLeaveGame)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.RegisterLeaveGame)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -6411,7 +6416,7 @@ void RegisterLeaveGame::MergeFrom(const RegisterLeaveGame& from) {
 }
 
 void RegisterLeaveGame::CopyFrom(const RegisterLeaveGame& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:RegisterLeaveGame)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.RegisterLeaveGame)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -6443,7 +6448,7 @@ NewUserJoinMatch::NewUserJoinMatch(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:NewUserJoinMatch)
+  // @@protoc_insertion_point(arena_constructor:packet.NewUserJoinMatch)
 }
 NewUserJoinMatch::NewUserJoinMatch(const NewUserJoinMatch& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -6467,7 +6472,7 @@ NewUserJoinMatch::NewUserJoinMatch(const NewUserJoinMatch& from)
   ::memcpy(&gold_, &from.gold_,
     static_cast<size_t>(reinterpret_cast<char*>(&avatar_frame_) -
     reinterpret_cast<char*>(&gold_)) + sizeof(avatar_frame_));
-  // @@protoc_insertion_point(copy_constructor:NewUserJoinMatch)
+  // @@protoc_insertion_point(copy_constructor:packet.NewUserJoinMatch)
 }
 
 inline void NewUserJoinMatch::SharedCtor() {
@@ -6486,7 +6491,7 @@ avatar_.InitDefault();
 }
 
 NewUserJoinMatch::~NewUserJoinMatch() {
-  // @@protoc_insertion_point(destructor:NewUserJoinMatch)
+  // @@protoc_insertion_point(destructor:packet.NewUserJoinMatch)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -6505,7 +6510,7 @@ void NewUserJoinMatch::SetCachedSize(int size) const {
 }
 
 void NewUserJoinMatch::Clear() {
-// @@protoc_insertion_point(message_clear_start:NewUserJoinMatch)
+// @@protoc_insertion_point(message_clear_start:packet.NewUserJoinMatch)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6546,7 +6551,7 @@ const char* NewUserJoinMatch::_InternalParse(const char* ptr, ::_pbi::ParseConte
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "NewUserJoinMatch.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.NewUserJoinMatch.name"));
         } else
           goto handle_unusual;
         continue;
@@ -6572,7 +6577,7 @@ const char* NewUserJoinMatch::_InternalParse(const char* ptr, ::_pbi::ParseConte
           auto str = _internal_mutable_avatar();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "NewUserJoinMatch.avatar"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.NewUserJoinMatch.avatar"));
         } else
           goto handle_unusual;
         continue;
@@ -6617,7 +6622,7 @@ failure:
 
 uint8_t* NewUserJoinMatch::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NewUserJoinMatch)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.NewUserJoinMatch)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -6638,7 +6643,7 @@ uint8_t* NewUserJoinMatch::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "NewUserJoinMatch.name");
+      "packet.NewUserJoinMatch.name");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_name(), target);
   }
@@ -6660,7 +6665,7 @@ uint8_t* NewUserJoinMatch::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "NewUserJoinMatch.avatar");
+      "packet.NewUserJoinMatch.avatar");
     target = stream->WriteStringMaybeAliased(
         6, this->_internal_avatar(), target);
   }
@@ -6681,12 +6686,12 @@ uint8_t* NewUserJoinMatch::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:NewUserJoinMatch)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.NewUserJoinMatch)
   return target;
 }
 
 size_t NewUserJoinMatch::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:NewUserJoinMatch)
+// @@protoc_insertion_point(message_byte_size_start:packet.NewUserJoinMatch)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -6754,7 +6759,7 @@ void NewUserJoinMatch::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void NewUserJoinMatch::MergeFrom(const NewUserJoinMatch& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:NewUserJoinMatch)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.NewUserJoinMatch)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -6787,7 +6792,7 @@ void NewUserJoinMatch::MergeFrom(const NewUserJoinMatch& from) {
 }
 
 void NewUserJoinMatch::CopyFrom(const NewUserJoinMatch& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:NewUserJoinMatch)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.NewUserJoinMatch)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -6834,7 +6839,7 @@ UserLeaveMatch::UserLeaveMatch(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UserLeaveMatch)
+  // @@protoc_insertion_point(arena_constructor:packet.UserLeaveMatch)
 }
 UserLeaveMatch::UserLeaveMatch(const UserLeaveMatch& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -6842,7 +6847,7 @@ UserLeaveMatch::UserLeaveMatch(const UserLeaveMatch& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&reason_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(reason_));
-  // @@protoc_insertion_point(copy_constructor:UserLeaveMatch)
+  // @@protoc_insertion_point(copy_constructor:packet.UserLeaveMatch)
 }
 
 inline void UserLeaveMatch::SharedCtor() {
@@ -6853,7 +6858,7 @@ inline void UserLeaveMatch::SharedCtor() {
 }
 
 UserLeaveMatch::~UserLeaveMatch() {
-  // @@protoc_insertion_point(destructor:UserLeaveMatch)
+  // @@protoc_insertion_point(destructor:packet.UserLeaveMatch)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -6870,7 +6875,7 @@ void UserLeaveMatch::SetCachedSize(int size) const {
 }
 
 void UserLeaveMatch::Clear() {
-// @@protoc_insertion_point(message_clear_start:UserLeaveMatch)
+// @@protoc_insertion_point(message_clear_start:packet.UserLeaveMatch)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -6928,7 +6933,7 @@ failure:
 
 uint8_t* UserLeaveMatch::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UserLeaveMatch)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UserLeaveMatch)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -6948,12 +6953,12 @@ uint8_t* UserLeaveMatch::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UserLeaveMatch)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UserLeaveMatch)
   return target;
 }
 
 size_t UserLeaveMatch::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UserLeaveMatch)
+// @@protoc_insertion_point(message_byte_size_start:packet.UserLeaveMatch)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -6987,7 +6992,7 @@ void UserLeaveMatch::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UserLeaveMatch::MergeFrom(const UserLeaveMatch& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UserLeaveMatch)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UserLeaveMatch)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -7002,7 +7007,7 @@ void UserLeaveMatch::MergeFrom(const UserLeaveMatch& from) {
 }
 
 void UserLeaveMatch::CopyFrom(const UserLeaveMatch& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UserLeaveMatch)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UserLeaveMatch)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -7040,14 +7045,14 @@ DealCard::DealCard(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   cards_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:DealCard)
+  // @@protoc_insertion_point(arena_constructor:packet.DealCard)
 }
 DealCard::DealCard(const DealCard& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       cards_(from.cards_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   remain_cards_ = from.remain_cards_;
-  // @@protoc_insertion_point(copy_constructor:DealCard)
+  // @@protoc_insertion_point(copy_constructor:packet.DealCard)
 }
 
 inline void DealCard::SharedCtor() {
@@ -7055,7 +7060,7 @@ remain_cards_ = 0;
 }
 
 DealCard::~DealCard() {
-  // @@protoc_insertion_point(destructor:DealCard)
+  // @@protoc_insertion_point(destructor:packet.DealCard)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -7072,7 +7077,7 @@ void DealCard::SetCachedSize(int size) const {
 }
 
 void DealCard::Clear() {
-// @@protoc_insertion_point(message_clear_start:DealCard)
+// @@protoc_insertion_point(message_clear_start:packet.DealCard)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7132,7 +7137,7 @@ failure:
 
 uint8_t* DealCard::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DealCard)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.DealCard)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -7155,12 +7160,12 @@ uint8_t* DealCard::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:DealCard)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.DealCard)
   return target;
 }
 
 size_t DealCard::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:DealCard)
+// @@protoc_insertion_point(message_byte_size_start:packet.DealCard)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -7203,7 +7208,7 @@ void DealCard::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void DealCard::MergeFrom(const DealCard& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:DealCard)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.DealCard)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -7216,7 +7221,7 @@ void DealCard::MergeFrom(const DealCard& from) {
 }
 
 void DealCard::CopyFrom(const DealCard& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:DealCard)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.DealCard)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -7249,7 +7254,7 @@ PlayCard::PlayCard(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PlayCard)
+  // @@protoc_insertion_point(arena_constructor:packet.PlayCard)
 }
 PlayCard::PlayCard(const PlayCard& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -7257,7 +7262,7 @@ PlayCard::PlayCard(const PlayCard& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&win_card_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(win_card_));
-  // @@protoc_insertion_point(copy_constructor:PlayCard)
+  // @@protoc_insertion_point(copy_constructor:packet.PlayCard)
 }
 
 inline void PlayCard::SharedCtor() {
@@ -7268,7 +7273,7 @@ inline void PlayCard::SharedCtor() {
 }
 
 PlayCard::~PlayCard() {
-  // @@protoc_insertion_point(destructor:PlayCard)
+  // @@protoc_insertion_point(destructor:packet.PlayCard)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -7285,7 +7290,7 @@ void PlayCard::SetCachedSize(int size) const {
 }
 
 void PlayCard::Clear() {
-// @@protoc_insertion_point(message_clear_start:PlayCard)
+// @@protoc_insertion_point(message_clear_start:packet.PlayCard)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7407,7 +7412,7 @@ failure:
 
 uint8_t* PlayCard::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlayCard)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PlayCard)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -7475,12 +7480,12 @@ uint8_t* PlayCard::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PlayCard)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PlayCard)
   return target;
 }
 
 size_t PlayCard::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PlayCard)
+// @@protoc_insertion_point(message_byte_size_start:packet.PlayCard)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -7554,7 +7559,7 @@ void PlayCard::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void PlayCard::MergeFrom(const PlayCard& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PlayCard)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PlayCard)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -7593,7 +7598,7 @@ void PlayCard::MergeFrom(const PlayCard& from) {
 }
 
 void PlayCard::CopyFrom(const PlayCard& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PlayCard)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PlayCard)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -7631,14 +7636,14 @@ StartGame::StartGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   players_gold_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:StartGame)
+  // @@protoc_insertion_point(arena_constructor:packet.StartGame)
 }
 StartGame::StartGame(const StartGame& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       players_gold_(from.players_gold_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   pot_value_ = from.pot_value_;
-  // @@protoc_insertion_point(copy_constructor:StartGame)
+  // @@protoc_insertion_point(copy_constructor:packet.StartGame)
 }
 
 inline void StartGame::SharedCtor() {
@@ -7646,7 +7651,7 @@ pot_value_ = 0;
 }
 
 StartGame::~StartGame() {
-  // @@protoc_insertion_point(destructor:StartGame)
+  // @@protoc_insertion_point(destructor:packet.StartGame)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -7663,7 +7668,7 @@ void StartGame::SetCachedSize(int size) const {
 }
 
 void StartGame::Clear() {
-// @@protoc_insertion_point(message_clear_start:StartGame)
+// @@protoc_insertion_point(message_clear_start:packet.StartGame)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7723,7 +7728,7 @@ failure:
 
 uint8_t* StartGame::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:StartGame)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.StartGame)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -7746,12 +7751,12 @@ uint8_t* StartGame::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:StartGame)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.StartGame)
   return target;
 }
 
 size_t StartGame::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:StartGame)
+// @@protoc_insertion_point(message_byte_size_start:packet.StartGame)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -7794,7 +7799,7 @@ void StartGame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void StartGame::MergeFrom(const StartGame& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:StartGame)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.StartGame)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -7807,7 +7812,7 @@ void StartGame::MergeFrom(const StartGame& from) {
 }
 
 void StartGame::CopyFrom(const StartGame& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:StartGame)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.StartGame)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -7841,14 +7846,14 @@ NewHand::NewHand(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   my_cards_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:NewHand)
+  // @@protoc_insertion_point(arena_constructor:packet.NewHand)
 }
 NewHand::NewHand(const NewHand& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       my_cards_(from.my_cards_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   current_turn_ = from.current_turn_;
-  // @@protoc_insertion_point(copy_constructor:NewHand)
+  // @@protoc_insertion_point(copy_constructor:packet.NewHand)
 }
 
 inline void NewHand::SharedCtor() {
@@ -7856,7 +7861,7 @@ current_turn_ = 0;
 }
 
 NewHand::~NewHand() {
-  // @@protoc_insertion_point(destructor:NewHand)
+  // @@protoc_insertion_point(destructor:packet.NewHand)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -7873,7 +7878,7 @@ void NewHand::SetCachedSize(int size) const {
 }
 
 void NewHand::Clear() {
-// @@protoc_insertion_point(message_clear_start:NewHand)
+// @@protoc_insertion_point(message_clear_start:packet.NewHand)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -7933,7 +7938,7 @@ failure:
 
 uint8_t* NewHand::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NewHand)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.NewHand)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -7956,12 +7961,12 @@ uint8_t* NewHand::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:NewHand)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.NewHand)
   return target;
 }
 
 size_t NewHand::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:NewHand)
+// @@protoc_insertion_point(message_byte_size_start:packet.NewHand)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -8004,7 +8009,7 @@ void NewHand::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void NewHand::MergeFrom(const NewHand& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:NewHand)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.NewHand)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -8017,7 +8022,7 @@ void NewHand::MergeFrom(const NewHand& from) {
 }
 
 void NewHand::CopyFrom(const NewHand& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:NewHand)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.NewHand)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -8051,20 +8056,20 @@ UpdateGamePoint::UpdateGamePoint(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   points_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UpdateGamePoint)
+  // @@protoc_insertion_point(arena_constructor:packet.UpdateGamePoint)
 }
 UpdateGamePoint::UpdateGamePoint(const UpdateGamePoint& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       points_(from.points_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:UpdateGamePoint)
+  // @@protoc_insertion_point(copy_constructor:packet.UpdateGamePoint)
 }
 
 inline void UpdateGamePoint::SharedCtor() {
 }
 
 UpdateGamePoint::~UpdateGamePoint() {
-  // @@protoc_insertion_point(destructor:UpdateGamePoint)
+  // @@protoc_insertion_point(destructor:packet.UpdateGamePoint)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -8081,7 +8086,7 @@ void UpdateGamePoint::SetCachedSize(int size) const {
 }
 
 void UpdateGamePoint::Clear() {
-// @@protoc_insertion_point(message_clear_start:UpdateGamePoint)
+// @@protoc_insertion_point(message_clear_start:packet.UpdateGamePoint)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -8132,7 +8137,7 @@ failure:
 
 uint8_t* UpdateGamePoint::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UpdateGamePoint)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UpdateGamePoint)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -8149,12 +8154,12 @@ uint8_t* UpdateGamePoint::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UpdateGamePoint)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UpdateGamePoint)
   return target;
 }
 
 size_t UpdateGamePoint::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UpdateGamePoint)
+// @@protoc_insertion_point(message_byte_size_start:packet.UpdateGamePoint)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -8192,7 +8197,7 @@ void UpdateGamePoint::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UpdateGamePoint::MergeFrom(const UpdateGamePoint& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UpdateGamePoint)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UpdateGamePoint)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -8202,7 +8207,7 @@ void UpdateGamePoint::MergeFrom(const UpdateGamePoint& from) {
 }
 
 void UpdateGamePoint::CopyFrom(const UpdateGamePoint& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UpdateGamePoint)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UpdateGamePoint)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -8235,7 +8240,7 @@ EndHand::EndHand(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   user_points_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:EndHand)
+  // @@protoc_insertion_point(arena_constructor:packet.EndHand)
 }
 EndHand::EndHand(const EndHand& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -8244,7 +8249,7 @@ EndHand::EndHand(const EndHand& from)
   ::memcpy(&win_uid_, &from.win_uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&is_end_round_) -
     reinterpret_cast<char*>(&win_uid_)) + sizeof(is_end_round_));
-  // @@protoc_insertion_point(copy_constructor:EndHand)
+  // @@protoc_insertion_point(copy_constructor:packet.EndHand)
 }
 
 inline void EndHand::SharedCtor() {
@@ -8255,7 +8260,7 @@ inline void EndHand::SharedCtor() {
 }
 
 EndHand::~EndHand() {
-  // @@protoc_insertion_point(destructor:EndHand)
+  // @@protoc_insertion_point(destructor:packet.EndHand)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -8272,7 +8277,7 @@ void EndHand::SetCachedSize(int size) const {
 }
 
 void EndHand::Clear() {
-// @@protoc_insertion_point(message_clear_start:EndHand)
+// @@protoc_insertion_point(message_clear_start:packet.EndHand)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -8358,7 +8363,7 @@ failure:
 
 uint8_t* EndHand::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:EndHand)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.EndHand)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -8399,12 +8404,12 @@ uint8_t* EndHand::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:EndHand)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.EndHand)
   return target;
 }
 
 size_t EndHand::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:EndHand)
+// @@protoc_insertion_point(message_byte_size_start:packet.EndHand)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -8462,7 +8467,7 @@ void EndHand::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void EndHand::MergeFrom(const EndHand& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:EndHand)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.EndHand)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -8484,7 +8489,7 @@ void EndHand::MergeFrom(const EndHand& from) {
 }
 
 void EndHand::CopyFrom(const EndHand& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:EndHand)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.EndHand)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -8523,20 +8528,20 @@ DrawCard::DrawCard(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   cards_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:DrawCard)
+  // @@protoc_insertion_point(arena_constructor:packet.DrawCard)
 }
 DrawCard::DrawCard(const DrawCard& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       cards_(from.cards_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:DrawCard)
+  // @@protoc_insertion_point(copy_constructor:packet.DrawCard)
 }
 
 inline void DrawCard::SharedCtor() {
 }
 
 DrawCard::~DrawCard() {
-  // @@protoc_insertion_point(destructor:DrawCard)
+  // @@protoc_insertion_point(destructor:packet.DrawCard)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -8553,7 +8558,7 @@ void DrawCard::SetCachedSize(int size) const {
 }
 
 void DrawCard::Clear() {
-// @@protoc_insertion_point(message_clear_start:DrawCard)
+// @@protoc_insertion_point(message_clear_start:packet.DrawCard)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -8604,7 +8609,7 @@ failure:
 
 uint8_t* DrawCard::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DrawCard)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.DrawCard)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -8621,12 +8626,12 @@ uint8_t* DrawCard::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:DrawCard)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.DrawCard)
   return target;
 }
 
 size_t DrawCard::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:DrawCard)
+// @@protoc_insertion_point(message_byte_size_start:packet.DrawCard)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -8664,7 +8669,7 @@ void DrawCard::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void DrawCard::MergeFrom(const DrawCard& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:DrawCard)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.DrawCard)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -8674,7 +8679,7 @@ void DrawCard::MergeFrom(const DrawCard& from) {
 }
 
 void DrawCard::CopyFrom(const DrawCard& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:DrawCard)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.DrawCard)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -8708,7 +8713,7 @@ GeneralInfo::GeneralInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   exp_levels_(arena),
   level_rewards_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:GeneralInfo)
+  // @@protoc_insertion_point(arena_constructor:packet.GeneralInfo)
 }
 GeneralInfo::GeneralInfo(const GeneralInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -8718,7 +8723,7 @@ GeneralInfo::GeneralInfo(const GeneralInfo& from)
   ::memcpy(&timestamp_, &from.timestamp_,
     static_cast<size_t>(reinterpret_cast<char*>(&enable_ads_) -
     reinterpret_cast<char*>(&timestamp_)) + sizeof(enable_ads_));
-  // @@protoc_insertion_point(copy_constructor:GeneralInfo)
+  // @@protoc_insertion_point(copy_constructor:packet.GeneralInfo)
 }
 
 inline void GeneralInfo::SharedCtor() {
@@ -8729,7 +8734,7 @@ inline void GeneralInfo::SharedCtor() {
 }
 
 GeneralInfo::~GeneralInfo() {
-  // @@protoc_insertion_point(destructor:GeneralInfo)
+  // @@protoc_insertion_point(destructor:packet.GeneralInfo)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -8746,7 +8751,7 @@ void GeneralInfo::SetCachedSize(int size) const {
 }
 
 void GeneralInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:GeneralInfo)
+// @@protoc_insertion_point(message_clear_start:packet.GeneralInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -8808,7 +8813,7 @@ const char* GeneralInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
         } else
           goto handle_unusual;
         continue;
-      // repeated .LevelReward level_rewards = 6;
+      // repeated .packet.LevelReward level_rewards = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           ptr -= 1;
@@ -8846,7 +8851,7 @@ failure:
 
 uint8_t* GeneralInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:GeneralInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.GeneralInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -8883,7 +8888,7 @@ uint8_t* GeneralInfo::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_enable_ads(), target);
   }
 
-  // repeated .LevelReward level_rewards = 6;
+  // repeated .packet.LevelReward level_rewards = 6;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_level_rewards_size()); i < n; i++) {
     const auto& repfield = this->_internal_level_rewards(i);
@@ -8895,12 +8900,12 @@ uint8_t* GeneralInfo::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GeneralInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.GeneralInfo)
   return target;
 }
 
 size_t GeneralInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:GeneralInfo)
+// @@protoc_insertion_point(message_byte_size_start:packet.GeneralInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -8921,7 +8926,7 @@ size_t GeneralInfo::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated .LevelReward level_rewards = 6;
+  // repeated .packet.LevelReward level_rewards = 6;
   total_size += 1UL * this->_internal_level_rewards_size();
   for (const auto& msg : this->level_rewards_) {
     total_size +=
@@ -8965,7 +8970,7 @@ void GeneralInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void GeneralInfo::MergeFrom(const GeneralInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:GeneralInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.GeneralInfo)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -8988,7 +8993,7 @@ void GeneralInfo::MergeFrom(const GeneralInfo& from) {
 }
 
 void GeneralInfo::CopyFrom(const GeneralInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:GeneralInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.GeneralInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -9028,7 +9033,7 @@ LevelReward::LevelReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   items_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:LevelReward)
+  // @@protoc_insertion_point(arena_constructor:packet.LevelReward)
 }
 LevelReward::LevelReward(const LevelReward& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -9037,7 +9042,7 @@ LevelReward::LevelReward(const LevelReward& from)
   ::memcpy(&level_, &from.level_,
     static_cast<size_t>(reinterpret_cast<char*>(&gold_) -
     reinterpret_cast<char*>(&level_)) + sizeof(gold_));
-  // @@protoc_insertion_point(copy_constructor:LevelReward)
+  // @@protoc_insertion_point(copy_constructor:packet.LevelReward)
 }
 
 inline void LevelReward::SharedCtor() {
@@ -9048,7 +9053,7 @@ inline void LevelReward::SharedCtor() {
 }
 
 LevelReward::~LevelReward() {
-  // @@protoc_insertion_point(destructor:LevelReward)
+  // @@protoc_insertion_point(destructor:packet.LevelReward)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -9065,7 +9070,7 @@ void LevelReward::SetCachedSize(int size) const {
 }
 
 void LevelReward::Clear() {
-// @@protoc_insertion_point(message_clear_start:LevelReward)
+// @@protoc_insertion_point(message_clear_start:packet.LevelReward)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9099,7 +9104,7 @@ const char* LevelReward::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
         } else
           goto handle_unusual;
         continue;
-      // repeated .ItemReward items = 3;
+      // repeated .packet.ItemReward items = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
@@ -9137,7 +9142,7 @@ failure:
 
 uint8_t* LevelReward::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:LevelReward)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.LevelReward)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -9153,7 +9158,7 @@ uint8_t* LevelReward::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_gold(), target);
   }
 
-  // repeated .ItemReward items = 3;
+  // repeated .packet.ItemReward items = 3;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
     const auto& repfield = this->_internal_items(i);
@@ -9165,19 +9170,19 @@ uint8_t* LevelReward::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:LevelReward)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.LevelReward)
   return target;
 }
 
 size_t LevelReward::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:LevelReward)
+// @@protoc_insertion_point(message_byte_size_start:packet.LevelReward)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .ItemReward items = 3;
+  // repeated .packet.ItemReward items = 3;
   total_size += 1UL * this->_internal_items_size();
   for (const auto& msg : this->items_) {
     total_size +=
@@ -9211,7 +9216,7 @@ void LevelReward::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void LevelReward::MergeFrom(const LevelReward& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:LevelReward)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.LevelReward)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -9227,7 +9232,7 @@ void LevelReward::MergeFrom(const LevelReward& from) {
 }
 
 void LevelReward::CopyFrom(const LevelReward& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:LevelReward)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.LevelReward)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -9265,7 +9270,7 @@ ItemReward::ItemReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ItemReward)
+  // @@protoc_insertion_point(arena_constructor:packet.ItemReward)
 }
 ItemReward::ItemReward(const ItemReward& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -9273,7 +9278,7 @@ ItemReward::ItemReward(const ItemReward& from)
   ::memcpy(&item_id_, &from.item_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&duration_) -
     reinterpret_cast<char*>(&item_id_)) + sizeof(duration_));
-  // @@protoc_insertion_point(copy_constructor:ItemReward)
+  // @@protoc_insertion_point(copy_constructor:packet.ItemReward)
 }
 
 inline void ItemReward::SharedCtor() {
@@ -9284,7 +9289,7 @@ inline void ItemReward::SharedCtor() {
 }
 
 ItemReward::~ItemReward() {
-  // @@protoc_insertion_point(destructor:ItemReward)
+  // @@protoc_insertion_point(destructor:packet.ItemReward)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -9301,7 +9306,7 @@ void ItemReward::SetCachedSize(int size) const {
 }
 
 void ItemReward::Clear() {
-// @@protoc_insertion_point(message_clear_start:ItemReward)
+// @@protoc_insertion_point(message_clear_start:packet.ItemReward)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9359,7 +9364,7 @@ failure:
 
 uint8_t* ItemReward::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ItemReward)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ItemReward)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -9379,12 +9384,12 @@ uint8_t* ItemReward::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ItemReward)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ItemReward)
   return target;
 }
 
 size_t ItemReward::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ItemReward)
+// @@protoc_insertion_point(message_byte_size_start:packet.ItemReward)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -9418,7 +9423,7 @@ void ItemReward::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ItemReward::MergeFrom(const ItemReward& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ItemReward)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ItemReward)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -9433,7 +9438,7 @@ void ItemReward::MergeFrom(const ItemReward& from) {
 }
 
 void ItemReward::CopyFrom(const ItemReward& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ItemReward)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ItemReward)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -9476,7 +9481,7 @@ EndGame::EndGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   players_gold_(arena),
   rewards_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:EndGame)
+  // @@protoc_insertion_point(arena_constructor:packet.EndGame)
 }
 EndGame::EndGame(const EndGame& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -9488,7 +9493,7 @@ EndGame::EndGame(const EndGame& from)
       rewards_(from.rewards_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   win_team_id_ = from.win_team_id_;
-  // @@protoc_insertion_point(copy_constructor:EndGame)
+  // @@protoc_insertion_point(copy_constructor:packet.EndGame)
 }
 
 inline void EndGame::SharedCtor() {
@@ -9496,7 +9501,7 @@ win_team_id_ = 0;
 }
 
 EndGame::~EndGame() {
-  // @@protoc_insertion_point(destructor:EndGame)
+  // @@protoc_insertion_point(destructor:packet.EndGame)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -9513,7 +9518,7 @@ void EndGame::SetCachedSize(int size) const {
 }
 
 void EndGame::Clear() {
-// @@protoc_insertion_point(message_clear_start:EndGame)
+// @@protoc_insertion_point(message_clear_start:packet.EndGame)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9597,7 +9602,7 @@ const char* EndGame::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) 
         } else
           goto handle_unusual;
         continue;
-      // repeated .RewardInventoryItem rewards = 7;
+      // repeated .packet.RewardInventoryItem rewards = 7;
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
           ptr -= 1;
@@ -9635,7 +9640,7 @@ failure:
 
 uint8_t* EndGame::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:EndGame)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.EndGame)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -9690,7 +9695,7 @@ uint8_t* EndGame::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(6, this->_internal_win_team_id(), target);
   }
 
-  // repeated .RewardInventoryItem rewards = 7;
+  // repeated .packet.RewardInventoryItem rewards = 7;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_rewards_size()); i < n; i++) {
     const auto& repfield = this->_internal_rewards(i);
@@ -9702,12 +9707,12 @@ uint8_t* EndGame::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:EndGame)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.EndGame)
   return target;
 }
 
 size_t EndGame::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:EndGame)
+// @@protoc_insertion_point(message_byte_size_start:packet.EndGame)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -9784,7 +9789,7 @@ size_t EndGame::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated .RewardInventoryItem rewards = 7;
+  // repeated .packet.RewardInventoryItem rewards = 7;
   total_size += 1UL * this->_internal_rewards_size();
   for (const auto& msg : this->rewards_) {
     total_size +=
@@ -9813,7 +9818,7 @@ void EndGame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void EndGame::MergeFrom(const EndGame& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:EndGame)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.EndGame)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -9831,7 +9836,7 @@ void EndGame::MergeFrom(const EndGame& from) {
 }
 
 void EndGame::CopyFrom(const EndGame& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:EndGame)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.EndGame)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -9869,13 +9874,13 @@ PrepareStartGame::PrepareStartGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PrepareStartGame)
+  // @@protoc_insertion_point(arena_constructor:packet.PrepareStartGame)
 }
 PrepareStartGame::PrepareStartGame(const PrepareStartGame& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   time_start_ = from.time_start_;
-  // @@protoc_insertion_point(copy_constructor:PrepareStartGame)
+  // @@protoc_insertion_point(copy_constructor:packet.PrepareStartGame)
 }
 
 inline void PrepareStartGame::SharedCtor() {
@@ -9883,7 +9888,7 @@ time_start_ = 0;
 }
 
 PrepareStartGame::~PrepareStartGame() {
-  // @@protoc_insertion_point(destructor:PrepareStartGame)
+  // @@protoc_insertion_point(destructor:packet.PrepareStartGame)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -9900,7 +9905,7 @@ void PrepareStartGame::SetCachedSize(int size) const {
 }
 
 void PrepareStartGame::Clear() {
-// @@protoc_insertion_point(message_clear_start:PrepareStartGame)
+// @@protoc_insertion_point(message_clear_start:packet.PrepareStartGame)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -9948,7 +9953,7 @@ failure:
 
 uint8_t* PrepareStartGame::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PrepareStartGame)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PrepareStartGame)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -9962,12 +9967,12 @@ uint8_t* PrepareStartGame::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PrepareStartGame)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PrepareStartGame)
   return target;
 }
 
 size_t PrepareStartGame::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PrepareStartGame)
+// @@protoc_insertion_point(message_byte_size_start:packet.PrepareStartGame)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -9996,7 +10001,7 @@ void PrepareStartGame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void PrepareStartGame::MergeFrom(const PrepareStartGame& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PrepareStartGame)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PrepareStartGame)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -10008,7 +10013,7 @@ void PrepareStartGame::MergeFrom(const PrepareStartGame& from) {
 }
 
 void PrepareStartGame::CopyFrom(const PrepareStartGame& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PrepareStartGame)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PrepareStartGame)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -10040,7 +10045,7 @@ InGameChatMessage::InGameChatMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:InGameChatMessage)
+  // @@protoc_insertion_point(arena_constructor:packet.InGameChatMessage)
 }
 InGameChatMessage::InGameChatMessage(const InGameChatMessage& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -10054,7 +10059,7 @@ InGameChatMessage::InGameChatMessage(const InGameChatMessage& from)
       GetArenaForAllocation());
   }
   uid_ = from.uid_;
-  // @@protoc_insertion_point(copy_constructor:InGameChatMessage)
+  // @@protoc_insertion_point(copy_constructor:packet.InGameChatMessage)
 }
 
 inline void InGameChatMessage::SharedCtor() {
@@ -10066,7 +10071,7 @@ uid_ = 0;
 }
 
 InGameChatMessage::~InGameChatMessage() {
-  // @@protoc_insertion_point(destructor:InGameChatMessage)
+  // @@protoc_insertion_point(destructor:packet.InGameChatMessage)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -10084,7 +10089,7 @@ void InGameChatMessage::SetCachedSize(int size) const {
 }
 
 void InGameChatMessage::Clear() {
-// @@protoc_insertion_point(message_clear_start:InGameChatMessage)
+// @@protoc_insertion_point(message_clear_start:packet.InGameChatMessage)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10114,7 +10119,7 @@ const char* InGameChatMessage::_InternalParse(const char* ptr, ::_pbi::ParseCont
           auto str = _internal_mutable_chat_message();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "InGameChatMessage.chat_message"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.InGameChatMessage.chat_message"));
         } else
           goto handle_unusual;
         continue;
@@ -10143,7 +10148,7 @@ failure:
 
 uint8_t* InGameChatMessage::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:InGameChatMessage)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.InGameChatMessage)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -10158,7 +10163,7 @@ uint8_t* InGameChatMessage::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_chat_message().data(), static_cast<int>(this->_internal_chat_message().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "InGameChatMessage.chat_message");
+      "packet.InGameChatMessage.chat_message");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_chat_message(), target);
   }
@@ -10167,12 +10172,12 @@ uint8_t* InGameChatMessage::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:InGameChatMessage)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.InGameChatMessage)
   return target;
 }
 
 size_t InGameChatMessage::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:InGameChatMessage)
+// @@protoc_insertion_point(message_byte_size_start:packet.InGameChatMessage)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -10208,7 +10213,7 @@ void InGameChatMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void InGameChatMessage::MergeFrom(const InGameChatMessage& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:InGameChatMessage)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.InGameChatMessage)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -10223,7 +10228,7 @@ void InGameChatMessage::MergeFrom(const InGameChatMessage& from) {
 }
 
 void InGameChatMessage::CopyFrom(const InGameChatMessage& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:InGameChatMessage)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.InGameChatMessage)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -10262,7 +10267,7 @@ PaymentGoogleConsume::PaymentGoogleConsume(::PROTOBUF_NAMESPACE_ID::Arena* arena
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   skus_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PaymentGoogleConsume)
+  // @@protoc_insertion_point(arena_constructor:packet.PaymentGoogleConsume)
 }
 PaymentGoogleConsume::PaymentGoogleConsume(const PaymentGoogleConsume& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -10293,7 +10298,7 @@ PaymentGoogleConsume::PaymentGoogleConsume(const PaymentGoogleConsume& from)
       GetArenaForAllocation());
   }
   quantity_ = from.quantity_;
-  // @@protoc_insertion_point(copy_constructor:PaymentGoogleConsume)
+  // @@protoc_insertion_point(copy_constructor:packet.PaymentGoogleConsume)
 }
 
 inline void PaymentGoogleConsume::SharedCtor() {
@@ -10313,7 +10318,7 @@ quantity_ = 0;
 }
 
 PaymentGoogleConsume::~PaymentGoogleConsume() {
-  // @@protoc_insertion_point(destructor:PaymentGoogleConsume)
+  // @@protoc_insertion_point(destructor:packet.PaymentGoogleConsume)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -10333,7 +10338,7 @@ void PaymentGoogleConsume::SetCachedSize(int size) const {
 }
 
 void PaymentGoogleConsume::Clear() {
-// @@protoc_insertion_point(message_clear_start:PaymentGoogleConsume)
+// @@protoc_insertion_point(message_clear_start:packet.PaymentGoogleConsume)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10358,7 +10363,7 @@ const char* PaymentGoogleConsume::_InternalParse(const char* ptr, ::_pbi::ParseC
           auto str = _internal_mutable_purchase_token();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentGoogleConsume.purchase_token"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentGoogleConsume.purchase_token"));
         } else
           goto handle_unusual;
         continue;
@@ -10379,7 +10384,7 @@ const char* PaymentGoogleConsume::_InternalParse(const char* ptr, ::_pbi::ParseC
             auto str = _internal_add_skus();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "PaymentGoogleConsume.skus"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentGoogleConsume.skus"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else
@@ -10391,7 +10396,7 @@ const char* PaymentGoogleConsume::_InternalParse(const char* ptr, ::_pbi::ParseC
           auto str = _internal_mutable_signature();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentGoogleConsume.signature"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentGoogleConsume.signature"));
         } else
           goto handle_unusual;
         continue;
@@ -10401,7 +10406,7 @@ const char* PaymentGoogleConsume::_InternalParse(const char* ptr, ::_pbi::ParseC
           auto str = _internal_mutable_sku();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentGoogleConsume.sku"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentGoogleConsume.sku"));
         } else
           goto handle_unusual;
         continue;
@@ -10430,7 +10435,7 @@ failure:
 
 uint8_t* PaymentGoogleConsume::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PaymentGoogleConsume)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PaymentGoogleConsume)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -10439,7 +10444,7 @@ uint8_t* PaymentGoogleConsume::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_purchase_token().data(), static_cast<int>(this->_internal_purchase_token().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentGoogleConsume.purchase_token");
+      "packet.PaymentGoogleConsume.purchase_token");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_purchase_token(), target);
   }
@@ -10456,7 +10461,7 @@ uint8_t* PaymentGoogleConsume::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentGoogleConsume.skus");
+      "packet.PaymentGoogleConsume.skus");
     target = stream->WriteString(3, s, target);
   }
 
@@ -10465,7 +10470,7 @@ uint8_t* PaymentGoogleConsume::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_signature().data(), static_cast<int>(this->_internal_signature().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentGoogleConsume.signature");
+      "packet.PaymentGoogleConsume.signature");
     target = stream->WriteStringMaybeAliased(
         4, this->_internal_signature(), target);
   }
@@ -10475,7 +10480,7 @@ uint8_t* PaymentGoogleConsume::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_sku().data(), static_cast<int>(this->_internal_sku().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentGoogleConsume.sku");
+      "packet.PaymentGoogleConsume.sku");
     target = stream->WriteStringMaybeAliased(
         5, this->_internal_sku(), target);
   }
@@ -10484,12 +10489,12 @@ uint8_t* PaymentGoogleConsume::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PaymentGoogleConsume)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PaymentGoogleConsume)
   return target;
 }
 
 size_t PaymentGoogleConsume::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PaymentGoogleConsume)
+// @@protoc_insertion_point(message_byte_size_start:packet.PaymentGoogleConsume)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -10547,7 +10552,7 @@ void PaymentGoogleConsume::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void PaymentGoogleConsume::MergeFrom(const PaymentGoogleConsume& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PaymentGoogleConsume)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PaymentGoogleConsume)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -10569,7 +10574,7 @@ void PaymentGoogleConsume::MergeFrom(const PaymentGoogleConsume& from) {
 }
 
 void PaymentGoogleConsume::CopyFrom(const PaymentGoogleConsume& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PaymentGoogleConsume)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PaymentGoogleConsume)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -10617,7 +10622,7 @@ PaymentSuccess::PaymentSuccess(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   items_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PaymentSuccess)
+  // @@protoc_insertion_point(arena_constructor:packet.PaymentSuccess)
 }
 PaymentSuccess::PaymentSuccess(const PaymentSuccess& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -10632,7 +10637,7 @@ PaymentSuccess::PaymentSuccess(const PaymentSuccess& from)
       GetArenaForAllocation());
   }
   gold_ = from.gold_;
-  // @@protoc_insertion_point(copy_constructor:PaymentSuccess)
+  // @@protoc_insertion_point(copy_constructor:packet.PaymentSuccess)
 }
 
 inline void PaymentSuccess::SharedCtor() {
@@ -10644,7 +10649,7 @@ gold_ = int64_t{0};
 }
 
 PaymentSuccess::~PaymentSuccess() {
-  // @@protoc_insertion_point(destructor:PaymentSuccess)
+  // @@protoc_insertion_point(destructor:packet.PaymentSuccess)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -10662,7 +10667,7 @@ void PaymentSuccess::SetCachedSize(int size) const {
 }
 
 void PaymentSuccess::Clear() {
-// @@protoc_insertion_point(message_clear_start:PaymentSuccess)
+// @@protoc_insertion_point(message_clear_start:packet.PaymentSuccess)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10693,11 +10698,11 @@ const char* PaymentSuccess::_InternalParse(const char* ptr, ::_pbi::ParseContext
           auto str = _internal_mutable_pack_id();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentSuccess.pack_id"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentSuccess.pack_id"));
         } else
           goto handle_unusual;
         continue;
-      // repeated .RewardInventoryItem items = 3;
+      // repeated .packet.RewardInventoryItem items = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
@@ -10735,7 +10740,7 @@ failure:
 
 uint8_t* PaymentSuccess::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PaymentSuccess)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PaymentSuccess)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -10750,12 +10755,12 @@ uint8_t* PaymentSuccess::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_pack_id().data(), static_cast<int>(this->_internal_pack_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentSuccess.pack_id");
+      "packet.PaymentSuccess.pack_id");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_pack_id(), target);
   }
 
-  // repeated .RewardInventoryItem items = 3;
+  // repeated .packet.RewardInventoryItem items = 3;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
     const auto& repfield = this->_internal_items(i);
@@ -10767,19 +10772,19 @@ uint8_t* PaymentSuccess::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PaymentSuccess)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PaymentSuccess)
   return target;
 }
 
 size_t PaymentSuccess::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PaymentSuccess)
+// @@protoc_insertion_point(message_byte_size_start:packet.PaymentSuccess)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .RewardInventoryItem items = 3;
+  // repeated .packet.RewardInventoryItem items = 3;
   total_size += 1UL * this->_internal_items_size();
   for (const auto& msg : this->items_) {
     total_size +=
@@ -10815,7 +10820,7 @@ void PaymentSuccess::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void PaymentSuccess::MergeFrom(const PaymentSuccess& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PaymentSuccess)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PaymentSuccess)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -10831,7 +10836,7 @@ void PaymentSuccess::MergeFrom(const PaymentSuccess& from) {
 }
 
 void PaymentSuccess::CopyFrom(const PaymentSuccess& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PaymentSuccess)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PaymentSuccess)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -10870,13 +10875,13 @@ UpdateMoney::UpdateMoney(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UpdateMoney)
+  // @@protoc_insertion_point(arena_constructor:packet.UpdateMoney)
 }
 UpdateMoney::UpdateMoney(const UpdateMoney& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   gold_ = from.gold_;
-  // @@protoc_insertion_point(copy_constructor:UpdateMoney)
+  // @@protoc_insertion_point(copy_constructor:packet.UpdateMoney)
 }
 
 inline void UpdateMoney::SharedCtor() {
@@ -10884,7 +10889,7 @@ gold_ = int64_t{0};
 }
 
 UpdateMoney::~UpdateMoney() {
-  // @@protoc_insertion_point(destructor:UpdateMoney)
+  // @@protoc_insertion_point(destructor:packet.UpdateMoney)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -10901,7 +10906,7 @@ void UpdateMoney::SetCachedSize(int size) const {
 }
 
 void UpdateMoney::Clear() {
-// @@protoc_insertion_point(message_clear_start:UpdateMoney)
+// @@protoc_insertion_point(message_clear_start:packet.UpdateMoney)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -10949,7 +10954,7 @@ failure:
 
 uint8_t* UpdateMoney::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UpdateMoney)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UpdateMoney)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -10963,12 +10968,12 @@ uint8_t* UpdateMoney::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UpdateMoney)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UpdateMoney)
   return target;
 }
 
 size_t UpdateMoney::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UpdateMoney)
+// @@protoc_insertion_point(message_byte_size_start:packet.UpdateMoney)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -10997,7 +11002,7 @@ void UpdateMoney::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UpdateMoney::MergeFrom(const UpdateMoney& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UpdateMoney)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UpdateMoney)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -11009,7 +11014,7 @@ void UpdateMoney::MergeFrom(const UpdateMoney& from) {
 }
 
 void UpdateMoney::CopyFrom(const UpdateMoney& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UpdateMoney)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UpdateMoney)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -11049,7 +11054,7 @@ TableList::TableList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   avatar_frames_(arena),
   is_private_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:TableList)
+  // @@protoc_insertion_point(arena_constructor:packet.TableList)
 }
 TableList::TableList(const TableList& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -11062,14 +11067,14 @@ TableList::TableList(const TableList& from)
       avatar_frames_(from.avatar_frames_),
       is_private_(from.is_private_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:TableList)
+  // @@protoc_insertion_point(copy_constructor:packet.TableList)
 }
 
 inline void TableList::SharedCtor() {
 }
 
 TableList::~TableList() {
-  // @@protoc_insertion_point(destructor:TableList)
+  // @@protoc_insertion_point(destructor:packet.TableList)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -11086,7 +11091,7 @@ void TableList::SetCachedSize(int size) const {
 }
 
 void TableList::Clear() {
-// @@protoc_insertion_point(message_clear_start:TableList)
+// @@protoc_insertion_point(message_clear_start:packet.TableList)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11161,7 +11166,7 @@ const char* TableList::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
             auto str = _internal_add_avatars();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "TableList.avatars"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.TableList.avatars"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
         } else
@@ -11225,7 +11230,7 @@ failure:
 
 uint8_t* TableList::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:TableList)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.TableList)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -11271,7 +11276,7 @@ uint8_t* TableList::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "TableList.avatars");
+      "packet.TableList.avatars");
     target = stream->WriteString(5, s, target);
   }
 
@@ -11302,12 +11307,12 @@ uint8_t* TableList::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:TableList)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.TableList)
   return target;
 }
 
 size_t TableList::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:TableList)
+// @@protoc_insertion_point(message_byte_size_start:packet.TableList)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -11434,7 +11439,7 @@ void TableList::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void TableList::MergeFrom(const TableList& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:TableList)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.TableList)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -11451,7 +11456,7 @@ void TableList::MergeFrom(const TableList& from) {
 }
 
 void TableList::CopyFrom(const TableList& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:TableList)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.TableList)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -11497,7 +11502,7 @@ ShopConfig::ShopConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   items_offer_first_buy_(arena),
   details_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ShopConfig)
+  // @@protoc_insertion_point(arena_constructor:packet.ShopConfig)
 }
 ShopConfig::ShopConfig(const ShopConfig& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -11528,7 +11533,7 @@ ShopConfig::ShopConfig(const ShopConfig& from)
   ::memcpy(&gold_offer_first_, &from.gold_offer_first_,
     static_cast<size_t>(reinterpret_cast<char*>(&price_offer_first_) -
     reinterpret_cast<char*>(&gold_offer_first_)) + sizeof(price_offer_first_));
-  // @@protoc_insertion_point(copy_constructor:ShopConfig)
+  // @@protoc_insertion_point(copy_constructor:packet.ShopConfig)
 }
 
 inline void ShopConfig::SharedCtor() {
@@ -11547,7 +11552,7 @@ pack_id_offer_first_.InitDefault();
 }
 
 ShopConfig::~ShopConfig() {
-  // @@protoc_insertion_point(destructor:ShopConfig)
+  // @@protoc_insertion_point(destructor:packet.ShopConfig)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -11566,7 +11571,7 @@ void ShopConfig::SetCachedSize(int size) const {
 }
 
 void ShopConfig::Clear() {
-// @@protoc_insertion_point(message_clear_start:ShopConfig)
+// @@protoc_insertion_point(message_clear_start:packet.ShopConfig)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -11601,7 +11606,7 @@ const char* ShopConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
             auto str = _internal_add_pack_ids();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "ShopConfig.pack_ids"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.ShopConfig.pack_ids"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
         } else
@@ -11638,7 +11643,7 @@ const char* ShopConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
             auto str = _internal_add_currencies();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "ShopConfig.currencies"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.ShopConfig.currencies"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else
@@ -11685,7 +11690,7 @@ const char* ShopConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
           auto str = _internal_mutable_currency_offer_first();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "ShopConfig.currency_offer_first"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.ShopConfig.currency_offer_first"));
         } else
           goto handle_unusual;
         continue;
@@ -11695,11 +11700,11 @@ const char* ShopConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
           auto str = _internal_mutable_pack_id_offer_first();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "ShopConfig.pack_id_offer_first"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.ShopConfig.pack_id_offer_first"));
         } else
           goto handle_unusual;
         continue;
-      // repeated .RewardInventoryItem items_offer_first_buy = 11;
+      // repeated .packet.RewardInventoryItem items_offer_first_buy = 11;
       case 11:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
           ptr -= 1;
@@ -11712,7 +11717,7 @@ const char* ShopConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
         } else
           goto handle_unusual;
         continue;
-      // repeated .DetailShopPack details = 12;
+      // repeated .packet.DetailShopPack details = 12;
       case 12:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
           ptr -= 1;
@@ -11750,7 +11755,7 @@ failure:
 
 uint8_t* ShopConfig::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ShopConfig)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ShopConfig)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -11760,7 +11765,7 @@ uint8_t* ShopConfig::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "ShopConfig.pack_ids");
+      "packet.ShopConfig.pack_ids");
     target = stream->WriteString(1, s, target);
   }
 
@@ -11784,7 +11789,7 @@ uint8_t* ShopConfig::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "ShopConfig.currencies");
+      "packet.ShopConfig.currencies");
     target = stream->WriteString(4, s, target);
   }
 
@@ -11820,7 +11825,7 @@ uint8_t* ShopConfig::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_currency_offer_first().data(), static_cast<int>(this->_internal_currency_offer_first().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "ShopConfig.currency_offer_first");
+      "packet.ShopConfig.currency_offer_first");
     target = stream->WriteStringMaybeAliased(
         9, this->_internal_currency_offer_first(), target);
   }
@@ -11830,12 +11835,12 @@ uint8_t* ShopConfig::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_pack_id_offer_first().data(), static_cast<int>(this->_internal_pack_id_offer_first().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "ShopConfig.pack_id_offer_first");
+      "packet.ShopConfig.pack_id_offer_first");
     target = stream->WriteStringMaybeAliased(
         10, this->_internal_pack_id_offer_first(), target);
   }
 
-  // repeated .RewardInventoryItem items_offer_first_buy = 11;
+  // repeated .packet.RewardInventoryItem items_offer_first_buy = 11;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_offer_first_buy_size()); i < n; i++) {
     const auto& repfield = this->_internal_items_offer_first_buy(i);
@@ -11843,7 +11848,7 @@ uint8_t* ShopConfig::_InternalSerialize(
         InternalWriteMessage(11, repfield, repfield.GetCachedSize(), target, stream);
   }
 
-  // repeated .DetailShopPack details = 12;
+  // repeated .packet.DetailShopPack details = 12;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_details_size()); i < n; i++) {
     const auto& repfield = this->_internal_details(i);
@@ -11855,12 +11860,12 @@ uint8_t* ShopConfig::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ShopConfig)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ShopConfig)
   return target;
 }
 
 size_t ShopConfig::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ShopConfig)
+// @@protoc_insertion_point(message_byte_size_start:packet.ShopConfig)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -11922,14 +11927,14 @@ size_t ShopConfig::ByteSizeLong() const {
     total_size += data_size;
   }
 
-  // repeated .RewardInventoryItem items_offer_first_buy = 11;
+  // repeated .packet.RewardInventoryItem items_offer_first_buy = 11;
   total_size += 1UL * this->_internal_items_offer_first_buy_size();
   for (const auto& msg : this->items_offer_first_buy_) {
     total_size +=
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
-  // repeated .DetailShopPack details = 12;
+  // repeated .packet.DetailShopPack details = 12;
   total_size += 1UL * this->_internal_details_size();
   for (const auto& msg : this->details_) {
     total_size +=
@@ -11982,7 +11987,7 @@ void ShopConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ShopConfig::MergeFrom(const ShopConfig& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ShopConfig)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ShopConfig)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -12013,7 +12018,7 @@ void ShopConfig::MergeFrom(const ShopConfig& from) {
 }
 
 void ShopConfig::CopyFrom(const ShopConfig& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ShopConfig)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ShopConfig)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -12068,20 +12073,20 @@ DetailShopPack::DetailShopPack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   items_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:DetailShopPack)
+  // @@protoc_insertion_point(arena_constructor:packet.DetailShopPack)
 }
 DetailShopPack::DetailShopPack(const DetailShopPack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       items_(from.items_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:DetailShopPack)
+  // @@protoc_insertion_point(copy_constructor:packet.DetailShopPack)
 }
 
 inline void DetailShopPack::SharedCtor() {
 }
 
 DetailShopPack::~DetailShopPack() {
-  // @@protoc_insertion_point(destructor:DetailShopPack)
+  // @@protoc_insertion_point(destructor:packet.DetailShopPack)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -12098,7 +12103,7 @@ void DetailShopPack::SetCachedSize(int size) const {
 }
 
 void DetailShopPack::Clear() {
-// @@protoc_insertion_point(message_clear_start:DetailShopPack)
+// @@protoc_insertion_point(message_clear_start:packet.DetailShopPack)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -12113,7 +12118,7 @@ const char* DetailShopPack::_InternalParse(const char* ptr, ::_pbi::ParseContext
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .RewardInventoryItem items = 1;
+      // repeated .packet.RewardInventoryItem items = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
@@ -12151,11 +12156,11 @@ failure:
 
 uint8_t* DetailShopPack::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:DetailShopPack)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.DetailShopPack)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .RewardInventoryItem items = 1;
+  // repeated .packet.RewardInventoryItem items = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
     const auto& repfield = this->_internal_items(i);
@@ -12167,19 +12172,19 @@ uint8_t* DetailShopPack::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:DetailShopPack)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.DetailShopPack)
   return target;
 }
 
 size_t DetailShopPack::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:DetailShopPack)
+// @@protoc_insertion_point(message_byte_size_start:packet.DetailShopPack)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .RewardInventoryItem items = 1;
+  // repeated .packet.RewardInventoryItem items = 1;
   total_size += 1UL * this->_internal_items_size();
   for (const auto& msg : this->items_) {
     total_size +=
@@ -12203,7 +12208,7 @@ void DetailShopPack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void DetailShopPack::MergeFrom(const DetailShopPack& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:DetailShopPack)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.DetailShopPack)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -12213,7 +12218,7 @@ void DetailShopPack::MergeFrom(const DetailShopPack& from) {
 }
 
 void DetailShopPack::CopyFrom(const DetailShopPack& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:DetailShopPack)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.DetailShopPack)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -12245,7 +12250,7 @@ GuestAccount::GuestAccount(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:GuestAccount)
+  // @@protoc_insertion_point(arena_constructor:packet.GuestAccount)
 }
 GuestAccount::GuestAccount(const GuestAccount& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -12258,7 +12263,7 @@ GuestAccount::GuestAccount(const GuestAccount& from)
     guest_id_.Set(from._internal_guest_id(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:GuestAccount)
+  // @@protoc_insertion_point(copy_constructor:packet.GuestAccount)
 }
 
 inline void GuestAccount::SharedCtor() {
@@ -12269,7 +12274,7 @@ guest_id_.InitDefault();
 }
 
 GuestAccount::~GuestAccount() {
-  // @@protoc_insertion_point(destructor:GuestAccount)
+  // @@protoc_insertion_point(destructor:packet.GuestAccount)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -12287,7 +12292,7 @@ void GuestAccount::SetCachedSize(int size) const {
 }
 
 void GuestAccount::Clear() {
-// @@protoc_insertion_point(message_clear_start:GuestAccount)
+// @@protoc_insertion_point(message_clear_start:packet.GuestAccount)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -12308,7 +12313,7 @@ const char* GuestAccount::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
           auto str = _internal_mutable_guest_id();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "GuestAccount.guest_id"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.GuestAccount.guest_id"));
         } else
           goto handle_unusual;
         continue;
@@ -12337,7 +12342,7 @@ failure:
 
 uint8_t* GuestAccount::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:GuestAccount)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.GuestAccount)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -12346,7 +12351,7 @@ uint8_t* GuestAccount::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_guest_id().data(), static_cast<int>(this->_internal_guest_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "GuestAccount.guest_id");
+      "packet.GuestAccount.guest_id");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_guest_id(), target);
   }
@@ -12355,12 +12360,12 @@ uint8_t* GuestAccount::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GuestAccount)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.GuestAccount)
   return target;
 }
 
 size_t GuestAccount::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:GuestAccount)
+// @@protoc_insertion_point(message_byte_size_start:packet.GuestAccount)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -12391,7 +12396,7 @@ void GuestAccount::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void GuestAccount::MergeFrom(const GuestAccount& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:GuestAccount)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.GuestAccount)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -12403,7 +12408,7 @@ void GuestAccount::MergeFrom(const GuestAccount& from) {
 }
 
 void GuestAccount::CopyFrom(const GuestAccount& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:GuestAccount)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.GuestAccount)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -12440,13 +12445,13 @@ ChangeAvatar::ChangeAvatar(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ChangeAvatar)
+  // @@protoc_insertion_point(arena_constructor:packet.ChangeAvatar)
 }
 ChangeAvatar::ChangeAvatar(const ChangeAvatar& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   avatar_id_ = from.avatar_id_;
-  // @@protoc_insertion_point(copy_constructor:ChangeAvatar)
+  // @@protoc_insertion_point(copy_constructor:packet.ChangeAvatar)
 }
 
 inline void ChangeAvatar::SharedCtor() {
@@ -12454,7 +12459,7 @@ avatar_id_ = 0;
 }
 
 ChangeAvatar::~ChangeAvatar() {
-  // @@protoc_insertion_point(destructor:ChangeAvatar)
+  // @@protoc_insertion_point(destructor:packet.ChangeAvatar)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -12471,7 +12476,7 @@ void ChangeAvatar::SetCachedSize(int size) const {
 }
 
 void ChangeAvatar::Clear() {
-// @@protoc_insertion_point(message_clear_start:ChangeAvatar)
+// @@protoc_insertion_point(message_clear_start:packet.ChangeAvatar)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -12519,7 +12524,7 @@ failure:
 
 uint8_t* ChangeAvatar::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ChangeAvatar)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ChangeAvatar)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -12533,12 +12538,12 @@ uint8_t* ChangeAvatar::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ChangeAvatar)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ChangeAvatar)
   return target;
 }
 
 size_t ChangeAvatar::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ChangeAvatar)
+// @@protoc_insertion_point(message_byte_size_start:packet.ChangeAvatar)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -12567,7 +12572,7 @@ void ChangeAvatar::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ChangeAvatar::MergeFrom(const ChangeAvatar& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ChangeAvatar)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ChangeAvatar)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -12579,7 +12584,7 @@ void ChangeAvatar::MergeFrom(const ChangeAvatar& from) {
 }
 
 void ChangeAvatar::CopyFrom(const ChangeAvatar& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ChangeAvatar)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ChangeAvatar)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -12611,7 +12616,7 @@ InGameChatEmoticon::InGameChatEmoticon(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:InGameChatEmoticon)
+  // @@protoc_insertion_point(arena_constructor:packet.InGameChatEmoticon)
 }
 InGameChatEmoticon::InGameChatEmoticon(const InGameChatEmoticon& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -12619,7 +12624,7 @@ InGameChatEmoticon::InGameChatEmoticon(const InGameChatEmoticon& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&emoticon_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(emoticon_));
-  // @@protoc_insertion_point(copy_constructor:InGameChatEmoticon)
+  // @@protoc_insertion_point(copy_constructor:packet.InGameChatEmoticon)
 }
 
 inline void InGameChatEmoticon::SharedCtor() {
@@ -12630,7 +12635,7 @@ inline void InGameChatEmoticon::SharedCtor() {
 }
 
 InGameChatEmoticon::~InGameChatEmoticon() {
-  // @@protoc_insertion_point(destructor:InGameChatEmoticon)
+  // @@protoc_insertion_point(destructor:packet.InGameChatEmoticon)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -12647,7 +12652,7 @@ void InGameChatEmoticon::SetCachedSize(int size) const {
 }
 
 void InGameChatEmoticon::Clear() {
-// @@protoc_insertion_point(message_clear_start:InGameChatEmoticon)
+// @@protoc_insertion_point(message_clear_start:packet.InGameChatEmoticon)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -12705,7 +12710,7 @@ failure:
 
 uint8_t* InGameChatEmoticon::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:InGameChatEmoticon)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.InGameChatEmoticon)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -12725,12 +12730,12 @@ uint8_t* InGameChatEmoticon::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:InGameChatEmoticon)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.InGameChatEmoticon)
   return target;
 }
 
 size_t InGameChatEmoticon::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:InGameChatEmoticon)
+// @@protoc_insertion_point(message_byte_size_start:packet.InGameChatEmoticon)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -12764,7 +12769,7 @@ void InGameChatEmoticon::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void InGameChatEmoticon::MergeFrom(const InGameChatEmoticon& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:InGameChatEmoticon)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.InGameChatEmoticon)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -12779,7 +12784,7 @@ void InGameChatEmoticon::MergeFrom(const InGameChatEmoticon& from) {
 }
 
 void InGameChatEmoticon::CopyFrom(const InGameChatEmoticon& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:InGameChatEmoticon)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.InGameChatEmoticon)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -12816,13 +12821,13 @@ SearchFriend::SearchFriend(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SearchFriend)
+  // @@protoc_insertion_point(arena_constructor:packet.SearchFriend)
 }
 SearchFriend::SearchFriend(const SearchFriend& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   uid_ = from.uid_;
-  // @@protoc_insertion_point(copy_constructor:SearchFriend)
+  // @@protoc_insertion_point(copy_constructor:packet.SearchFriend)
 }
 
 inline void SearchFriend::SharedCtor() {
@@ -12830,7 +12835,7 @@ uid_ = 0;
 }
 
 SearchFriend::~SearchFriend() {
-  // @@protoc_insertion_point(destructor:SearchFriend)
+  // @@protoc_insertion_point(destructor:packet.SearchFriend)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -12847,7 +12852,7 @@ void SearchFriend::SetCachedSize(int size) const {
 }
 
 void SearchFriend::Clear() {
-// @@protoc_insertion_point(message_clear_start:SearchFriend)
+// @@protoc_insertion_point(message_clear_start:packet.SearchFriend)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -12895,7 +12900,7 @@ failure:
 
 uint8_t* SearchFriend::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SearchFriend)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SearchFriend)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -12909,12 +12914,12 @@ uint8_t* SearchFriend::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SearchFriend)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SearchFriend)
   return target;
 }
 
 size_t SearchFriend::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SearchFriend)
+// @@protoc_insertion_point(message_byte_size_start:packet.SearchFriend)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -12943,7 +12948,7 @@ void SearchFriend::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SearchFriend::MergeFrom(const SearchFriend& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SearchFriend)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SearchFriend)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -12955,7 +12960,7 @@ void SearchFriend::MergeFrom(const SearchFriend& from) {
 }
 
 void SearchFriend::CopyFrom(const SearchFriend& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SearchFriend)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SearchFriend)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -12987,7 +12992,7 @@ SearchFriendResponse::SearchFriendResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SearchFriendResponse)
+  // @@protoc_insertion_point(arena_constructor:packet.SearchFriendResponse)
 }
 SearchFriendResponse::SearchFriendResponse(const SearchFriendResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -13011,7 +13016,7 @@ SearchFriendResponse::SearchFriendResponse(const SearchFriendResponse& from)
   ::memcpy(&gold_, &from.gold_,
     static_cast<size_t>(reinterpret_cast<char*>(&avatar_frame_) -
     reinterpret_cast<char*>(&gold_)) + sizeof(avatar_frame_));
-  // @@protoc_insertion_point(copy_constructor:SearchFriendResponse)
+  // @@protoc_insertion_point(copy_constructor:packet.SearchFriendResponse)
 }
 
 inline void SearchFriendResponse::SharedCtor() {
@@ -13030,7 +13035,7 @@ avatar_.InitDefault();
 }
 
 SearchFriendResponse::~SearchFriendResponse() {
-  // @@protoc_insertion_point(destructor:SearchFriendResponse)
+  // @@protoc_insertion_point(destructor:packet.SearchFriendResponse)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -13049,7 +13054,7 @@ void SearchFriendResponse::SetCachedSize(int size) const {
 }
 
 void SearchFriendResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:SearchFriendResponse)
+// @@protoc_insertion_point(message_clear_start:packet.SearchFriendResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -13090,7 +13095,7 @@ const char* SearchFriendResponse::_InternalParse(const char* ptr, ::_pbi::ParseC
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "SearchFriendResponse.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.SearchFriendResponse.name"));
         } else
           goto handle_unusual;
         continue;
@@ -13100,7 +13105,7 @@ const char* SearchFriendResponse::_InternalParse(const char* ptr, ::_pbi::ParseC
           auto str = _internal_mutable_avatar();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "SearchFriendResponse.avatar"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.SearchFriendResponse.avatar"));
         } else
           goto handle_unusual;
         continue;
@@ -13185,7 +13190,7 @@ failure:
 
 uint8_t* SearchFriendResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SearchFriendResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SearchFriendResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -13206,7 +13211,7 @@ uint8_t* SearchFriendResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "SearchFriendResponse.name");
+      "packet.SearchFriendResponse.name");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_name(), target);
   }
@@ -13216,7 +13221,7 @@ uint8_t* SearchFriendResponse::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "SearchFriendResponse.avatar");
+      "packet.SearchFriendResponse.avatar");
     target = stream->WriteStringMaybeAliased(
         4, this->_internal_avatar(), target);
   }
@@ -13271,12 +13276,12 @@ uint8_t* SearchFriendResponse::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SearchFriendResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SearchFriendResponse)
   return target;
 }
 
 size_t SearchFriendResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SearchFriendResponse)
+// @@protoc_insertion_point(message_byte_size_start:packet.SearchFriendResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -13363,7 +13368,7 @@ void SearchFriendResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SearchFriendResponse::MergeFrom(const SearchFriendResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SearchFriendResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SearchFriendResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -13409,7 +13414,7 @@ void SearchFriendResponse::MergeFrom(const SearchFriendResponse& from) {
 }
 
 void SearchFriendResponse::CopyFrom(const SearchFriendResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SearchFriendResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SearchFriendResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -13456,13 +13461,13 @@ CheatGoldUser::CheatGoldUser(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:CheatGoldUser)
+  // @@protoc_insertion_point(arena_constructor:packet.CheatGoldUser)
 }
 CheatGoldUser::CheatGoldUser(const CheatGoldUser& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   gold_ = from.gold_;
-  // @@protoc_insertion_point(copy_constructor:CheatGoldUser)
+  // @@protoc_insertion_point(copy_constructor:packet.CheatGoldUser)
 }
 
 inline void CheatGoldUser::SharedCtor() {
@@ -13470,7 +13475,7 @@ gold_ = int64_t{0};
 }
 
 CheatGoldUser::~CheatGoldUser() {
-  // @@protoc_insertion_point(destructor:CheatGoldUser)
+  // @@protoc_insertion_point(destructor:packet.CheatGoldUser)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -13487,7 +13492,7 @@ void CheatGoldUser::SetCachedSize(int size) const {
 }
 
 void CheatGoldUser::Clear() {
-// @@protoc_insertion_point(message_clear_start:CheatGoldUser)
+// @@protoc_insertion_point(message_clear_start:packet.CheatGoldUser)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -13535,7 +13540,7 @@ failure:
 
 uint8_t* CheatGoldUser::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:CheatGoldUser)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.CheatGoldUser)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -13549,12 +13554,12 @@ uint8_t* CheatGoldUser::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CheatGoldUser)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.CheatGoldUser)
   return target;
 }
 
 size_t CheatGoldUser::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CheatGoldUser)
+// @@protoc_insertion_point(message_byte_size_start:packet.CheatGoldUser)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -13583,7 +13588,7 @@ void CheatGoldUser::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void CheatGoldUser::MergeFrom(const CheatGoldUser& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CheatGoldUser)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.CheatGoldUser)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -13595,7 +13600,7 @@ void CheatGoldUser::MergeFrom(const CheatGoldUser& from) {
 }
 
 void CheatGoldUser::CopyFrom(const CheatGoldUser& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CheatGoldUser)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.CheatGoldUser)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -13636,7 +13641,7 @@ FriendList::FriendList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   avatar_frames_(arena),
   last_online_times_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:FriendList)
+  // @@protoc_insertion_point(arena_constructor:packet.FriendList)
 }
 FriendList::FriendList(const FriendList& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -13650,14 +13655,14 @@ FriendList::FriendList(const FriendList& from)
       avatar_frames_(from.avatar_frames_),
       last_online_times_(from.last_online_times_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:FriendList)
+  // @@protoc_insertion_point(copy_constructor:packet.FriendList)
 }
 
 inline void FriendList::SharedCtor() {
 }
 
 FriendList::~FriendList() {
-  // @@protoc_insertion_point(destructor:FriendList)
+  // @@protoc_insertion_point(destructor:packet.FriendList)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -13674,7 +13679,7 @@ void FriendList::SetCachedSize(int size) const {
 }
 
 void FriendList::Clear() {
-// @@protoc_insertion_point(message_clear_start:FriendList)
+// @@protoc_insertion_point(message_clear_start:packet.FriendList)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -13717,7 +13722,7 @@ const char* FriendList::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
             auto str = _internal_add_names();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "FriendList.names"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.FriendList.names"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else
@@ -13732,7 +13737,7 @@ const char* FriendList::_InternalParse(const char* ptr, ::_pbi::ParseContext* ct
             auto str = _internal_add_avatars();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "FriendList.avatars"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.FriendList.avatars"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else
@@ -13829,7 +13834,7 @@ failure:
 
 uint8_t* FriendList::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:FriendList)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.FriendList)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -13848,7 +13853,7 @@ uint8_t* FriendList::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "FriendList.names");
+      "packet.FriendList.names");
     target = stream->WriteString(2, s, target);
   }
 
@@ -13858,7 +13863,7 @@ uint8_t* FriendList::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "FriendList.avatars");
+      "packet.FriendList.avatars");
     target = stream->WriteString(3, s, target);
   }
 
@@ -13912,12 +13917,12 @@ uint8_t* FriendList::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:FriendList)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.FriendList)
   return target;
 }
 
 size_t FriendList::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:FriendList)
+// @@protoc_insertion_point(message_byte_size_start:packet.FriendList)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -14049,7 +14054,7 @@ void FriendList::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void FriendList::MergeFrom(const FriendList& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:FriendList)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.FriendList)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -14067,7 +14072,7 @@ void FriendList::MergeFrom(const FriendList& from) {
 }
 
 void FriendList::CopyFrom(const FriendList& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:FriendList)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.FriendList)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -14113,7 +14118,7 @@ FriendRequests::FriendRequests(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   golds_(arena),
   sent_uids_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:FriendRequests)
+  // @@protoc_insertion_point(arena_constructor:packet.FriendRequests)
 }
 FriendRequests::FriendRequests(const FriendRequests& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -14124,14 +14129,14 @@ FriendRequests::FriendRequests(const FriendRequests& from)
       golds_(from.golds_),
       sent_uids_(from.sent_uids_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:FriendRequests)
+  // @@protoc_insertion_point(copy_constructor:packet.FriendRequests)
 }
 
 inline void FriendRequests::SharedCtor() {
 }
 
 FriendRequests::~FriendRequests() {
-  // @@protoc_insertion_point(destructor:FriendRequests)
+  // @@protoc_insertion_point(destructor:packet.FriendRequests)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -14148,7 +14153,7 @@ void FriendRequests::SetCachedSize(int size) const {
 }
 
 void FriendRequests::Clear() {
-// @@protoc_insertion_point(message_clear_start:FriendRequests)
+// @@protoc_insertion_point(message_clear_start:packet.FriendRequests)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -14188,7 +14193,7 @@ const char* FriendRequests::_InternalParse(const char* ptr, ::_pbi::ParseContext
             auto str = _internal_add_names();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "FriendRequests.names"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.FriendRequests.names"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else
@@ -14203,7 +14208,7 @@ const char* FriendRequests::_InternalParse(const char* ptr, ::_pbi::ParseContext
             auto str = _internal_add_avatars();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "FriendRequests.avatars"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.FriendRequests.avatars"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else
@@ -14267,7 +14272,7 @@ failure:
 
 uint8_t* FriendRequests::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:FriendRequests)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.FriendRequests)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -14286,7 +14291,7 @@ uint8_t* FriendRequests::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "FriendRequests.names");
+      "packet.FriendRequests.names");
     target = stream->WriteString(2, s, target);
   }
 
@@ -14296,7 +14301,7 @@ uint8_t* FriendRequests::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "FriendRequests.avatars");
+      "packet.FriendRequests.avatars");
     target = stream->WriteString(3, s, target);
   }
 
@@ -14331,12 +14336,12 @@ uint8_t* FriendRequests::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:FriendRequests)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.FriendRequests)
   return target;
 }
 
 size_t FriendRequests::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:FriendRequests)
+// @@protoc_insertion_point(message_byte_size_start:packet.FriendRequests)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -14432,7 +14437,7 @@ void FriendRequests::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void FriendRequests::MergeFrom(const FriendRequests& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:FriendRequests)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.FriendRequests)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -14447,7 +14452,7 @@ void FriendRequests::MergeFrom(const FriendRequests& from) {
 }
 
 void FriendRequests::CopyFrom(const FriendRequests& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:FriendRequests)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.FriendRequests)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -14484,7 +14489,7 @@ AddFriend::AddFriend(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:AddFriend)
+  // @@protoc_insertion_point(arena_constructor:packet.AddFriend)
 }
 AddFriend::AddFriend(const AddFriend& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -14492,7 +14497,7 @@ AddFriend::AddFriend(const AddFriend& from)
   ::memcpy(&error_, &from.error_,
     static_cast<size_t>(reinterpret_cast<char*>(&uid_) -
     reinterpret_cast<char*>(&error_)) + sizeof(uid_));
-  // @@protoc_insertion_point(copy_constructor:AddFriend)
+  // @@protoc_insertion_point(copy_constructor:packet.AddFriend)
 }
 
 inline void AddFriend::SharedCtor() {
@@ -14503,7 +14508,7 @@ inline void AddFriend::SharedCtor() {
 }
 
 AddFriend::~AddFriend() {
-  // @@protoc_insertion_point(destructor:AddFriend)
+  // @@protoc_insertion_point(destructor:packet.AddFriend)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -14520,7 +14525,7 @@ void AddFriend::SetCachedSize(int size) const {
 }
 
 void AddFriend::Clear() {
-// @@protoc_insertion_point(message_clear_start:AddFriend)
+// @@protoc_insertion_point(message_clear_start:packet.AddFriend)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -14578,7 +14583,7 @@ failure:
 
 uint8_t* AddFriend::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:AddFriend)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.AddFriend)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -14598,12 +14603,12 @@ uint8_t* AddFriend::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:AddFriend)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.AddFriend)
   return target;
 }
 
 size_t AddFriend::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:AddFriend)
+// @@protoc_insertion_point(message_byte_size_start:packet.AddFriend)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -14637,7 +14642,7 @@ void AddFriend::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void AddFriend::MergeFrom(const AddFriend& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:AddFriend)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.AddFriend)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -14652,7 +14657,7 @@ void AddFriend::MergeFrom(const AddFriend& from) {
 }
 
 void AddFriend::CopyFrom(const AddFriend& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:AddFriend)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.AddFriend)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -14689,7 +14694,7 @@ RequestFriendAccept::RequestFriendAccept(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:RequestFriendAccept)
+  // @@protoc_insertion_point(arena_constructor:packet.RequestFriendAccept)
 }
 RequestFriendAccept::RequestFriendAccept(const RequestFriendAccept& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -14697,7 +14702,7 @@ RequestFriendAccept::RequestFriendAccept(const RequestFriendAccept& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&action_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(action_));
-  // @@protoc_insertion_point(copy_constructor:RequestFriendAccept)
+  // @@protoc_insertion_point(copy_constructor:packet.RequestFriendAccept)
 }
 
 inline void RequestFriendAccept::SharedCtor() {
@@ -14708,7 +14713,7 @@ inline void RequestFriendAccept::SharedCtor() {
 }
 
 RequestFriendAccept::~RequestFriendAccept() {
-  // @@protoc_insertion_point(destructor:RequestFriendAccept)
+  // @@protoc_insertion_point(destructor:packet.RequestFriendAccept)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -14725,7 +14730,7 @@ void RequestFriendAccept::SetCachedSize(int size) const {
 }
 
 void RequestFriendAccept::Clear() {
-// @@protoc_insertion_point(message_clear_start:RequestFriendAccept)
+// @@protoc_insertion_point(message_clear_start:packet.RequestFriendAccept)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -14783,7 +14788,7 @@ failure:
 
 uint8_t* RequestFriendAccept::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RequestFriendAccept)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.RequestFriendAccept)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -14803,12 +14808,12 @@ uint8_t* RequestFriendAccept::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RequestFriendAccept)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.RequestFriendAccept)
   return target;
 }
 
 size_t RequestFriendAccept::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:RequestFriendAccept)
+// @@protoc_insertion_point(message_byte_size_start:packet.RequestFriendAccept)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -14842,7 +14847,7 @@ void RequestFriendAccept::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void RequestFriendAccept::MergeFrom(const RequestFriendAccept& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:RequestFriendAccept)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.RequestFriendAccept)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -14857,7 +14862,7 @@ void RequestFriendAccept::MergeFrom(const RequestFriendAccept& from) {
 }
 
 void RequestFriendAccept::CopyFrom(const RequestFriendAccept& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:RequestFriendAccept)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.RequestFriendAccept)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -14894,13 +14899,13 @@ RemoveFriend::RemoveFriend(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:RemoveFriend)
+  // @@protoc_insertion_point(arena_constructor:packet.RemoveFriend)
 }
 RemoveFriend::RemoveFriend(const RemoveFriend& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   uid_ = from.uid_;
-  // @@protoc_insertion_point(copy_constructor:RemoveFriend)
+  // @@protoc_insertion_point(copy_constructor:packet.RemoveFriend)
 }
 
 inline void RemoveFriend::SharedCtor() {
@@ -14908,7 +14913,7 @@ uid_ = 0;
 }
 
 RemoveFriend::~RemoveFriend() {
-  // @@protoc_insertion_point(destructor:RemoveFriend)
+  // @@protoc_insertion_point(destructor:packet.RemoveFriend)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -14925,7 +14930,7 @@ void RemoveFriend::SetCachedSize(int size) const {
 }
 
 void RemoveFriend::Clear() {
-// @@protoc_insertion_point(message_clear_start:RemoveFriend)
+// @@protoc_insertion_point(message_clear_start:packet.RemoveFriend)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -14973,7 +14978,7 @@ failure:
 
 uint8_t* RemoveFriend::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RemoveFriend)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.RemoveFriend)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -14987,12 +14992,12 @@ uint8_t* RemoveFriend::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RemoveFriend)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.RemoveFriend)
   return target;
 }
 
 size_t RemoveFriend::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:RemoveFriend)
+// @@protoc_insertion_point(message_byte_size_start:packet.RemoveFriend)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -15021,7 +15026,7 @@ void RemoveFriend::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void RemoveFriend::MergeFrom(const RemoveFriend& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:RemoveFriend)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.RemoveFriend)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -15033,7 +15038,7 @@ void RemoveFriend::MergeFrom(const RemoveFriend& from) {
 }
 
 void RemoveFriend::CopyFrom(const RemoveFriend& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:RemoveFriend)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.RemoveFriend)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -15065,7 +15070,7 @@ NewFriendRequest::NewFriendRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:NewFriendRequest)
+  // @@protoc_insertion_point(arena_constructor:packet.NewFriendRequest)
 }
 NewFriendRequest::NewFriendRequest(const NewFriendRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -15089,7 +15094,7 @@ NewFriendRequest::NewFriendRequest(const NewFriendRequest& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&gold_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(gold_));
-  // @@protoc_insertion_point(copy_constructor:NewFriendRequest)
+  // @@protoc_insertion_point(copy_constructor:packet.NewFriendRequest)
 }
 
 inline void NewFriendRequest::SharedCtor() {
@@ -15108,7 +15113,7 @@ name_.InitDefault();
 }
 
 NewFriendRequest::~NewFriendRequest() {
-  // @@protoc_insertion_point(destructor:NewFriendRequest)
+  // @@protoc_insertion_point(destructor:packet.NewFriendRequest)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -15127,7 +15132,7 @@ void NewFriendRequest::SetCachedSize(int size) const {
 }
 
 void NewFriendRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:NewFriendRequest)
+// @@protoc_insertion_point(message_clear_start:packet.NewFriendRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -15160,7 +15165,7 @@ const char* NewFriendRequest::_InternalParse(const char* ptr, ::_pbi::ParseConte
           auto str = _internal_mutable_avatar();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "NewFriendRequest.avatar"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.NewFriendRequest.avatar"));
         } else
           goto handle_unusual;
         continue;
@@ -15170,7 +15175,7 @@ const char* NewFriendRequest::_InternalParse(const char* ptr, ::_pbi::ParseConte
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "NewFriendRequest.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.NewFriendRequest.name"));
         } else
           goto handle_unusual;
         continue;
@@ -15215,7 +15220,7 @@ failure:
 
 uint8_t* NewFriendRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NewFriendRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.NewFriendRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -15230,7 +15235,7 @@ uint8_t* NewFriendRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "NewFriendRequest.avatar");
+      "packet.NewFriendRequest.avatar");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_avatar(), target);
   }
@@ -15240,7 +15245,7 @@ uint8_t* NewFriendRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "NewFriendRequest.name");
+      "packet.NewFriendRequest.name");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_name(), target);
   }
@@ -15261,12 +15266,12 @@ uint8_t* NewFriendRequest::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:NewFriendRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.NewFriendRequest)
   return target;
 }
 
 size_t NewFriendRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:NewFriendRequest)
+// @@protoc_insertion_point(message_byte_size_start:packet.NewFriendRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -15319,7 +15324,7 @@ void NewFriendRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void NewFriendRequest::MergeFrom(const NewFriendRequest& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:NewFriendRequest)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.NewFriendRequest)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -15343,7 +15348,7 @@ void NewFriendRequest::MergeFrom(const NewFriendRequest& from) {
 }
 
 void NewFriendRequest::CopyFrom(const NewFriendRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:NewFriendRequest)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.NewFriendRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -15390,7 +15395,7 @@ FriendRequestAccepted::FriendRequestAccepted(::PROTOBUF_NAMESPACE_ID::Arena* are
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:FriendRequestAccepted)
+  // @@protoc_insertion_point(arena_constructor:packet.FriendRequestAccepted)
 }
 FriendRequestAccepted::FriendRequestAccepted(const FriendRequestAccepted& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -15414,7 +15419,7 @@ FriendRequestAccepted::FriendRequestAccepted(const FriendRequestAccepted& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&avatar_frame_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(avatar_frame_));
-  // @@protoc_insertion_point(copy_constructor:FriendRequestAccepted)
+  // @@protoc_insertion_point(copy_constructor:packet.FriendRequestAccepted)
 }
 
 inline void FriendRequestAccepted::SharedCtor() {
@@ -15433,7 +15438,7 @@ avatar_.InitDefault();
 }
 
 FriendRequestAccepted::~FriendRequestAccepted() {
-  // @@protoc_insertion_point(destructor:FriendRequestAccepted)
+  // @@protoc_insertion_point(destructor:packet.FriendRequestAccepted)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -15452,7 +15457,7 @@ void FriendRequestAccepted::SetCachedSize(int size) const {
 }
 
 void FriendRequestAccepted::Clear() {
-// @@protoc_insertion_point(message_clear_start:FriendRequestAccepted)
+// @@protoc_insertion_point(message_clear_start:packet.FriendRequestAccepted)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -15485,7 +15490,7 @@ const char* FriendRequestAccepted::_InternalParse(const char* ptr, ::_pbi::Parse
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "FriendRequestAccepted.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.FriendRequestAccepted.name"));
         } else
           goto handle_unusual;
         continue;
@@ -15495,7 +15500,7 @@ const char* FriendRequestAccepted::_InternalParse(const char* ptr, ::_pbi::Parse
           auto str = _internal_mutable_avatar();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "FriendRequestAccepted.avatar"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.FriendRequestAccepted.avatar"));
         } else
           goto handle_unusual;
         continue;
@@ -15548,7 +15553,7 @@ failure:
 
 uint8_t* FriendRequestAccepted::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:FriendRequestAccepted)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.FriendRequestAccepted)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -15563,7 +15568,7 @@ uint8_t* FriendRequestAccepted::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "FriendRequestAccepted.name");
+      "packet.FriendRequestAccepted.name");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_name(), target);
   }
@@ -15573,7 +15578,7 @@ uint8_t* FriendRequestAccepted::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "FriendRequestAccepted.avatar");
+      "packet.FriendRequestAccepted.avatar");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_avatar(), target);
   }
@@ -15600,12 +15605,12 @@ uint8_t* FriendRequestAccepted::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:FriendRequestAccepted)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.FriendRequestAccepted)
   return target;
 }
 
 size_t FriendRequestAccepted::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:FriendRequestAccepted)
+// @@protoc_insertion_point(message_byte_size_start:packet.FriendRequestAccepted)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -15663,7 +15668,7 @@ void FriendRequestAccepted::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void FriendRequestAccepted::MergeFrom(const FriendRequestAccepted& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:FriendRequestAccepted)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.FriendRequestAccepted)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -15690,7 +15695,7 @@ void FriendRequestAccepted::MergeFrom(const FriendRequestAccepted& from) {
 }
 
 void FriendRequestAccepted::CopyFrom(const FriendRequestAccepted& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:FriendRequestAccepted)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.FriendRequestAccepted)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -15743,7 +15748,7 @@ RecommendFriends::RecommendFriends(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   golds_(arena),
   avatar_frames_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:RecommendFriends)
+  // @@protoc_insertion_point(arena_constructor:packet.RecommendFriends)
 }
 RecommendFriends::RecommendFriends(const RecommendFriends& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -15754,14 +15759,14 @@ RecommendFriends::RecommendFriends(const RecommendFriends& from)
       golds_(from.golds_),
       avatar_frames_(from.avatar_frames_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:RecommendFriends)
+  // @@protoc_insertion_point(copy_constructor:packet.RecommendFriends)
 }
 
 inline void RecommendFriends::SharedCtor() {
 }
 
 RecommendFriends::~RecommendFriends() {
-  // @@protoc_insertion_point(destructor:RecommendFriends)
+  // @@protoc_insertion_point(destructor:packet.RecommendFriends)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -15778,7 +15783,7 @@ void RecommendFriends::SetCachedSize(int size) const {
 }
 
 void RecommendFriends::Clear() {
-// @@protoc_insertion_point(message_clear_start:RecommendFriends)
+// @@protoc_insertion_point(message_clear_start:packet.RecommendFriends)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -15818,7 +15823,7 @@ const char* RecommendFriends::_InternalParse(const char* ptr, ::_pbi::ParseConte
             auto str = _internal_add_names();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "RecommendFriends.names"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.RecommendFriends.names"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else
@@ -15833,7 +15838,7 @@ const char* RecommendFriends::_InternalParse(const char* ptr, ::_pbi::ParseConte
             auto str = _internal_add_avatars();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "RecommendFriends.avatars"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.RecommendFriends.avatars"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
         } else
@@ -15897,7 +15902,7 @@ failure:
 
 uint8_t* RecommendFriends::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RecommendFriends)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.RecommendFriends)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -15916,7 +15921,7 @@ uint8_t* RecommendFriends::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "RecommendFriends.names");
+      "packet.RecommendFriends.names");
     target = stream->WriteString(2, s, target);
   }
 
@@ -15926,7 +15931,7 @@ uint8_t* RecommendFriends::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "RecommendFriends.avatars");
+      "packet.RecommendFriends.avatars");
     target = stream->WriteString(3, s, target);
   }
 
@@ -15961,12 +15966,12 @@ uint8_t* RecommendFriends::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RecommendFriends)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.RecommendFriends)
   return target;
 }
 
 size_t RecommendFriends::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:RecommendFriends)
+// @@protoc_insertion_point(message_byte_size_start:packet.RecommendFriends)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -16062,7 +16067,7 @@ void RecommendFriends::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void RecommendFriends::MergeFrom(const RecommendFriends& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:RecommendFriends)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.RecommendFriends)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -16077,7 +16082,7 @@ void RecommendFriends::MergeFrom(const RecommendFriends& from) {
 }
 
 void RecommendFriends::CopyFrom(const RecommendFriends& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:RecommendFriends)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.RecommendFriends)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -16114,7 +16119,7 @@ PaymentAppleConsume::PaymentAppleConsume(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PaymentAppleConsume)
+  // @@protoc_insertion_point(arena_constructor:packet.PaymentAppleConsume)
 }
 PaymentAppleConsume::PaymentAppleConsume(const PaymentAppleConsume& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -16135,7 +16140,7 @@ PaymentAppleConsume::PaymentAppleConsume(const PaymentAppleConsume& from)
     receipt_data_.Set(from._internal_receipt_data(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:PaymentAppleConsume)
+  // @@protoc_insertion_point(copy_constructor:packet.PaymentAppleConsume)
 }
 
 inline void PaymentAppleConsume::SharedCtor() {
@@ -16150,7 +16155,7 @@ receipt_data_.InitDefault();
 }
 
 PaymentAppleConsume::~PaymentAppleConsume() {
-  // @@protoc_insertion_point(destructor:PaymentAppleConsume)
+  // @@protoc_insertion_point(destructor:packet.PaymentAppleConsume)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -16169,7 +16174,7 @@ void PaymentAppleConsume::SetCachedSize(int size) const {
 }
 
 void PaymentAppleConsume::Clear() {
-// @@protoc_insertion_point(message_clear_start:PaymentAppleConsume)
+// @@protoc_insertion_point(message_clear_start:packet.PaymentAppleConsume)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16191,7 +16196,7 @@ const char* PaymentAppleConsume::_InternalParse(const char* ptr, ::_pbi::ParseCo
           auto str = _internal_mutable_pack_id();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentAppleConsume.pack_id"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentAppleConsume.pack_id"));
         } else
           goto handle_unusual;
         continue;
@@ -16201,7 +16206,7 @@ const char* PaymentAppleConsume::_InternalParse(const char* ptr, ::_pbi::ParseCo
           auto str = _internal_mutable_receipt_data();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentAppleConsume.receipt_data"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentAppleConsume.receipt_data"));
         } else
           goto handle_unusual;
         continue;
@@ -16230,7 +16235,7 @@ failure:
 
 uint8_t* PaymentAppleConsume::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PaymentAppleConsume)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PaymentAppleConsume)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -16239,7 +16244,7 @@ uint8_t* PaymentAppleConsume::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_pack_id().data(), static_cast<int>(this->_internal_pack_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentAppleConsume.pack_id");
+      "packet.PaymentAppleConsume.pack_id");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_pack_id(), target);
   }
@@ -16249,7 +16254,7 @@ uint8_t* PaymentAppleConsume::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_receipt_data().data(), static_cast<int>(this->_internal_receipt_data().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentAppleConsume.receipt_data");
+      "packet.PaymentAppleConsume.receipt_data");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_receipt_data(), target);
   }
@@ -16258,12 +16263,12 @@ uint8_t* PaymentAppleConsume::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PaymentAppleConsume)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PaymentAppleConsume)
   return target;
 }
 
 size_t PaymentAppleConsume::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PaymentAppleConsume)
+// @@protoc_insertion_point(message_byte_size_start:packet.PaymentAppleConsume)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -16301,7 +16306,7 @@ void PaymentAppleConsume::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void PaymentAppleConsume::MergeFrom(const PaymentAppleConsume& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PaymentAppleConsume)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PaymentAppleConsume)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -16316,7 +16321,7 @@ void PaymentAppleConsume::MergeFrom(const PaymentAppleConsume& from) {
 }
 
 void PaymentAppleConsume::CopyFrom(const PaymentAppleConsume& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PaymentAppleConsume)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PaymentAppleConsume)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -16357,7 +16362,7 @@ PaymentFinishedAppleTransaction::PaymentFinishedAppleTransaction(::PROTOBUF_NAME
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PaymentFinishedAppleTransaction)
+  // @@protoc_insertion_point(arena_constructor:packet.PaymentFinishedAppleTransaction)
 }
 PaymentFinishedAppleTransaction::PaymentFinishedAppleTransaction(const PaymentFinishedAppleTransaction& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -16370,7 +16375,7 @@ PaymentFinishedAppleTransaction::PaymentFinishedAppleTransaction(const PaymentFi
     pack_id_.Set(from._internal_pack_id(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:PaymentFinishedAppleTransaction)
+  // @@protoc_insertion_point(copy_constructor:packet.PaymentFinishedAppleTransaction)
 }
 
 inline void PaymentFinishedAppleTransaction::SharedCtor() {
@@ -16381,7 +16386,7 @@ pack_id_.InitDefault();
 }
 
 PaymentFinishedAppleTransaction::~PaymentFinishedAppleTransaction() {
-  // @@protoc_insertion_point(destructor:PaymentFinishedAppleTransaction)
+  // @@protoc_insertion_point(destructor:packet.PaymentFinishedAppleTransaction)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -16399,7 +16404,7 @@ void PaymentFinishedAppleTransaction::SetCachedSize(int size) const {
 }
 
 void PaymentFinishedAppleTransaction::Clear() {
-// @@protoc_insertion_point(message_clear_start:PaymentFinishedAppleTransaction)
+// @@protoc_insertion_point(message_clear_start:packet.PaymentFinishedAppleTransaction)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16420,7 +16425,7 @@ const char* PaymentFinishedAppleTransaction::_InternalParse(const char* ptr, ::_
           auto str = _internal_mutable_pack_id();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentFinishedAppleTransaction.pack_id"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentFinishedAppleTransaction.pack_id"));
         } else
           goto handle_unusual;
         continue;
@@ -16449,7 +16454,7 @@ failure:
 
 uint8_t* PaymentFinishedAppleTransaction::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PaymentFinishedAppleTransaction)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PaymentFinishedAppleTransaction)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -16458,7 +16463,7 @@ uint8_t* PaymentFinishedAppleTransaction::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_pack_id().data(), static_cast<int>(this->_internal_pack_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentFinishedAppleTransaction.pack_id");
+      "packet.PaymentFinishedAppleTransaction.pack_id");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_pack_id(), target);
   }
@@ -16467,12 +16472,12 @@ uint8_t* PaymentFinishedAppleTransaction::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PaymentFinishedAppleTransaction)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PaymentFinishedAppleTransaction)
   return target;
 }
 
 size_t PaymentFinishedAppleTransaction::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PaymentFinishedAppleTransaction)
+// @@protoc_insertion_point(message_byte_size_start:packet.PaymentFinishedAppleTransaction)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -16503,7 +16508,7 @@ void PaymentFinishedAppleTransaction::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message
 
 
 void PaymentFinishedAppleTransaction::MergeFrom(const PaymentFinishedAppleTransaction& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PaymentFinishedAppleTransaction)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PaymentFinishedAppleTransaction)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -16515,7 +16520,7 @@ void PaymentFinishedAppleTransaction::MergeFrom(const PaymentFinishedAppleTransa
 }
 
 void PaymentFinishedAppleTransaction::CopyFrom(const PaymentFinishedAppleTransaction& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PaymentFinishedAppleTransaction)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PaymentFinishedAppleTransaction)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -16553,7 +16558,7 @@ NewRound::NewRound(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   players_gold_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:NewRound)
+  // @@protoc_insertion_point(arena_constructor:packet.NewRound)
 }
 NewRound::NewRound(const NewRound& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -16562,7 +16567,7 @@ NewRound::NewRound(const NewRound& from)
   ::memcpy(&pot_value_, &from.pot_value_,
     static_cast<size_t>(reinterpret_cast<char*>(&current_round_) -
     reinterpret_cast<char*>(&pot_value_)) + sizeof(current_round_));
-  // @@protoc_insertion_point(copy_constructor:NewRound)
+  // @@protoc_insertion_point(copy_constructor:packet.NewRound)
 }
 
 inline void NewRound::SharedCtor() {
@@ -16573,7 +16578,7 @@ inline void NewRound::SharedCtor() {
 }
 
 NewRound::~NewRound() {
-  // @@protoc_insertion_point(destructor:NewRound)
+  // @@protoc_insertion_point(destructor:packet.NewRound)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -16590,7 +16595,7 @@ void NewRound::SetCachedSize(int size) const {
 }
 
 void NewRound::Clear() {
-// @@protoc_insertion_point(message_clear_start:NewRound)
+// @@protoc_insertion_point(message_clear_start:packet.NewRound)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16660,7 +16665,7 @@ failure:
 
 uint8_t* NewRound::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NewRound)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.NewRound)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -16689,12 +16694,12 @@ uint8_t* NewRound::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:NewRound)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.NewRound)
   return target;
 }
 
 size_t NewRound::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:NewRound)
+// @@protoc_insertion_point(message_byte_size_start:packet.NewRound)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -16742,7 +16747,7 @@ void NewRound::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void NewRound::MergeFrom(const NewRound& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:NewRound)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.NewRound)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -16758,7 +16763,7 @@ void NewRound::MergeFrom(const NewRound& from) {
 }
 
 void NewRound::CopyFrom(const NewRound& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:NewRound)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.NewRound)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -16796,7 +16801,7 @@ CreateTable::CreateTable(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:CreateTable)
+  // @@protoc_insertion_point(arena_constructor:packet.CreateTable)
 }
 CreateTable::CreateTable(const CreateTable& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -16804,7 +16809,7 @@ CreateTable::CreateTable(const CreateTable& from)
   ::memcpy(&bet_, &from.bet_,
     static_cast<size_t>(reinterpret_cast<char*>(&bet_mode_) -
     reinterpret_cast<char*>(&bet_)) + sizeof(bet_mode_));
-  // @@protoc_insertion_point(copy_constructor:CreateTable)
+  // @@protoc_insertion_point(copy_constructor:packet.CreateTable)
 }
 
 inline void CreateTable::SharedCtor() {
@@ -16815,7 +16820,7 @@ inline void CreateTable::SharedCtor() {
 }
 
 CreateTable::~CreateTable() {
-  // @@protoc_insertion_point(destructor:CreateTable)
+  // @@protoc_insertion_point(destructor:packet.CreateTable)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -16832,7 +16837,7 @@ void CreateTable::SetCachedSize(int size) const {
 }
 
 void CreateTable::Clear() {
-// @@protoc_insertion_point(message_clear_start:CreateTable)
+// @@protoc_insertion_point(message_clear_start:packet.CreateTable)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -16914,7 +16919,7 @@ failure:
 
 uint8_t* CreateTable::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:CreateTable)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.CreateTable)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -16952,12 +16957,12 @@ uint8_t* CreateTable::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CreateTable)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.CreateTable)
   return target;
 }
 
 size_t CreateTable::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CreateTable)
+// @@protoc_insertion_point(message_byte_size_start:packet.CreateTable)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -17006,7 +17011,7 @@ void CreateTable::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void CreateTable::MergeFrom(const CreateTable& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CreateTable)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.CreateTable)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -17030,7 +17035,7 @@ void CreateTable::MergeFrom(const CreateTable& from) {
 }
 
 void CreateTable::CopyFrom(const CreateTable& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CreateTable)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.CreateTable)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -17067,13 +17072,13 @@ JoinTableById::JoinTableById(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:JoinTableById)
+  // @@protoc_insertion_point(arena_constructor:packet.JoinTableById)
 }
 JoinTableById::JoinTableById(const JoinTableById& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   match_id_ = from.match_id_;
-  // @@protoc_insertion_point(copy_constructor:JoinTableById)
+  // @@protoc_insertion_point(copy_constructor:packet.JoinTableById)
 }
 
 inline void JoinTableById::SharedCtor() {
@@ -17081,7 +17086,7 @@ match_id_ = 0;
 }
 
 JoinTableById::~JoinTableById() {
-  // @@protoc_insertion_point(destructor:JoinTableById)
+  // @@protoc_insertion_point(destructor:packet.JoinTableById)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -17098,7 +17103,7 @@ void JoinTableById::SetCachedSize(int size) const {
 }
 
 void JoinTableById::Clear() {
-// @@protoc_insertion_point(message_clear_start:JoinTableById)
+// @@protoc_insertion_point(message_clear_start:packet.JoinTableById)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -17146,7 +17151,7 @@ failure:
 
 uint8_t* JoinTableById::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:JoinTableById)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.JoinTableById)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -17160,12 +17165,12 @@ uint8_t* JoinTableById::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:JoinTableById)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.JoinTableById)
   return target;
 }
 
 size_t JoinTableById::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:JoinTableById)
+// @@protoc_insertion_point(message_byte_size_start:packet.JoinTableById)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -17194,7 +17199,7 @@ void JoinTableById::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void JoinTableById::MergeFrom(const JoinTableById& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:JoinTableById)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.JoinTableById)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -17206,7 +17211,7 @@ void JoinTableById::MergeFrom(const JoinTableById& from) {
 }
 
 void JoinTableById::CopyFrom(const JoinTableById& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:JoinTableById)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.JoinTableById)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -17238,13 +17243,13 @@ JoinTableResponse::JoinTableResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:JoinTableResponse)
+  // @@protoc_insertion_point(arena_constructor:packet.JoinTableResponse)
 }
 JoinTableResponse::JoinTableResponse(const JoinTableResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   error_ = from.error_;
-  // @@protoc_insertion_point(copy_constructor:JoinTableResponse)
+  // @@protoc_insertion_point(copy_constructor:packet.JoinTableResponse)
 }
 
 inline void JoinTableResponse::SharedCtor() {
@@ -17252,7 +17257,7 @@ error_ = 0;
 }
 
 JoinTableResponse::~JoinTableResponse() {
-  // @@protoc_insertion_point(destructor:JoinTableResponse)
+  // @@protoc_insertion_point(destructor:packet.JoinTableResponse)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -17269,7 +17274,7 @@ void JoinTableResponse::SetCachedSize(int size) const {
 }
 
 void JoinTableResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:JoinTableResponse)
+// @@protoc_insertion_point(message_clear_start:packet.JoinTableResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -17317,7 +17322,7 @@ failure:
 
 uint8_t* JoinTableResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:JoinTableResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.JoinTableResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -17331,12 +17336,12 @@ uint8_t* JoinTableResponse::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:JoinTableResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.JoinTableResponse)
   return target;
 }
 
 size_t JoinTableResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:JoinTableResponse)
+// @@protoc_insertion_point(message_byte_size_start:packet.JoinTableResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -17365,7 +17370,7 @@ void JoinTableResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void JoinTableResponse::MergeFrom(const JoinTableResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:JoinTableResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.JoinTableResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -17377,7 +17382,7 @@ void JoinTableResponse::MergeFrom(const JoinTableResponse& from) {
 }
 
 void JoinTableResponse::CopyFrom(const JoinTableResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:JoinTableResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.JoinTableResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -17409,13 +17414,13 @@ ClaimSupport::ClaimSupport(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ClaimSupport)
+  // @@protoc_insertion_point(arena_constructor:packet.ClaimSupport)
 }
 ClaimSupport::ClaimSupport(const ClaimSupport& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   support_amount_ = from.support_amount_;
-  // @@protoc_insertion_point(copy_constructor:ClaimSupport)
+  // @@protoc_insertion_point(copy_constructor:packet.ClaimSupport)
 }
 
 inline void ClaimSupport::SharedCtor() {
@@ -17423,7 +17428,7 @@ support_amount_ = 0;
 }
 
 ClaimSupport::~ClaimSupport() {
-  // @@protoc_insertion_point(destructor:ClaimSupport)
+  // @@protoc_insertion_point(destructor:packet.ClaimSupport)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -17440,7 +17445,7 @@ void ClaimSupport::SetCachedSize(int size) const {
 }
 
 void ClaimSupport::Clear() {
-// @@protoc_insertion_point(message_clear_start:ClaimSupport)
+// @@protoc_insertion_point(message_clear_start:packet.ClaimSupport)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -17488,7 +17493,7 @@ failure:
 
 uint8_t* ClaimSupport::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ClaimSupport)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ClaimSupport)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -17502,12 +17507,12 @@ uint8_t* ClaimSupport::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ClaimSupport)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ClaimSupport)
   return target;
 }
 
 size_t ClaimSupport::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ClaimSupport)
+// @@protoc_insertion_point(message_byte_size_start:packet.ClaimSupport)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -17536,7 +17541,7 @@ void ClaimSupport::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ClaimSupport::MergeFrom(const ClaimSupport& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ClaimSupport)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ClaimSupport)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -17548,7 +17553,7 @@ void ClaimSupport::MergeFrom(const ClaimSupport& from) {
 }
 
 void ClaimSupport::CopyFrom(const ClaimSupport& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ClaimSupport)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ClaimSupport)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -17580,7 +17585,7 @@ AppCodeVersion::AppCodeVersion(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:AppCodeVersion)
+  // @@protoc_insertion_point(arena_constructor:packet.AppCodeVersion)
 }
 AppCodeVersion::AppCodeVersion(const AppCodeVersion& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -17588,7 +17593,7 @@ AppCodeVersion::AppCodeVersion(const AppCodeVersion& from)
   ::memcpy(&android_version_, &from.android_version_,
     static_cast<size_t>(reinterpret_cast<char*>(&ios_reviewing_version_) -
     reinterpret_cast<char*>(&android_version_)) + sizeof(ios_reviewing_version_));
-  // @@protoc_insertion_point(copy_constructor:AppCodeVersion)
+  // @@protoc_insertion_point(copy_constructor:packet.AppCodeVersion)
 }
 
 inline void AppCodeVersion::SharedCtor() {
@@ -17599,7 +17604,7 @@ inline void AppCodeVersion::SharedCtor() {
 }
 
 AppCodeVersion::~AppCodeVersion() {
-  // @@protoc_insertion_point(destructor:AppCodeVersion)
+  // @@protoc_insertion_point(destructor:packet.AppCodeVersion)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -17616,7 +17621,7 @@ void AppCodeVersion::SetCachedSize(int size) const {
 }
 
 void AppCodeVersion::Clear() {
-// @@protoc_insertion_point(message_clear_start:AppCodeVersion)
+// @@protoc_insertion_point(message_clear_start:packet.AppCodeVersion)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -17714,7 +17719,7 @@ failure:
 
 uint8_t* AppCodeVersion::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:AppCodeVersion)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.AppCodeVersion)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -17764,12 +17769,12 @@ uint8_t* AppCodeVersion::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:AppCodeVersion)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.AppCodeVersion)
   return target;
 }
 
 size_t AppCodeVersion::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:AppCodeVersion)
+// @@protoc_insertion_point(message_byte_size_start:packet.AppCodeVersion)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -17828,7 +17833,7 @@ void AppCodeVersion::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void AppCodeVersion::MergeFrom(const AppCodeVersion& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:AppCodeVersion)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.AppCodeVersion)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -17858,7 +17863,7 @@ void AppCodeVersion::MergeFrom(const AppCodeVersion& from) {
 }
 
 void AppCodeVersion::CopyFrom(const AppCodeVersion& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:AppCodeVersion)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.AppCodeVersion)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -17895,13 +17900,13 @@ PlayCardResponse::PlayCardResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PlayCardResponse)
+  // @@protoc_insertion_point(arena_constructor:packet.PlayCardResponse)
 }
 PlayCardResponse::PlayCardResponse(const PlayCardResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   status_ = from.status_;
-  // @@protoc_insertion_point(copy_constructor:PlayCardResponse)
+  // @@protoc_insertion_point(copy_constructor:packet.PlayCardResponse)
 }
 
 inline void PlayCardResponse::SharedCtor() {
@@ -17909,7 +17914,7 @@ status_ = 0;
 }
 
 PlayCardResponse::~PlayCardResponse() {
-  // @@protoc_insertion_point(destructor:PlayCardResponse)
+  // @@protoc_insertion_point(destructor:packet.PlayCardResponse)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -17926,7 +17931,7 @@ void PlayCardResponse::SetCachedSize(int size) const {
 }
 
 void PlayCardResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:PlayCardResponse)
+// @@protoc_insertion_point(message_clear_start:packet.PlayCardResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -17974,7 +17979,7 @@ failure:
 
 uint8_t* PlayCardResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PlayCardResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PlayCardResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -17988,12 +17993,12 @@ uint8_t* PlayCardResponse::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PlayCardResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PlayCardResponse)
   return target;
 }
 
 size_t PlayCardResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PlayCardResponse)
+// @@protoc_insertion_point(message_byte_size_start:packet.PlayCardResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -18022,7 +18027,7 @@ void PlayCardResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void PlayCardResponse::MergeFrom(const PlayCardResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PlayCardResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PlayCardResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -18034,7 +18039,7 @@ void PlayCardResponse::MergeFrom(const PlayCardResponse& from) {
 }
 
 void PlayCardResponse::CopyFrom(const PlayCardResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PlayCardResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PlayCardResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -18067,20 +18072,20 @@ CheatViewCardBot::CheatViewCardBot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   cards_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:CheatViewCardBot)
+  // @@protoc_insertion_point(arena_constructor:packet.CheatViewCardBot)
 }
 CheatViewCardBot::CheatViewCardBot(const CheatViewCardBot& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       cards_(from.cards_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:CheatViewCardBot)
+  // @@protoc_insertion_point(copy_constructor:packet.CheatViewCardBot)
 }
 
 inline void CheatViewCardBot::SharedCtor() {
 }
 
 CheatViewCardBot::~CheatViewCardBot() {
-  // @@protoc_insertion_point(destructor:CheatViewCardBot)
+  // @@protoc_insertion_point(destructor:packet.CheatViewCardBot)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -18097,7 +18102,7 @@ void CheatViewCardBot::SetCachedSize(int size) const {
 }
 
 void CheatViewCardBot::Clear() {
-// @@protoc_insertion_point(message_clear_start:CheatViewCardBot)
+// @@protoc_insertion_point(message_clear_start:packet.CheatViewCardBot)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -18148,7 +18153,7 @@ failure:
 
 uint8_t* CheatViewCardBot::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:CheatViewCardBot)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.CheatViewCardBot)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -18165,12 +18170,12 @@ uint8_t* CheatViewCardBot::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CheatViewCardBot)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.CheatViewCardBot)
   return target;
 }
 
 size_t CheatViewCardBot::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CheatViewCardBot)
+// @@protoc_insertion_point(message_byte_size_start:packet.CheatViewCardBot)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -18208,7 +18213,7 @@ void CheatViewCardBot::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void CheatViewCardBot::MergeFrom(const CheatViewCardBot& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CheatViewCardBot)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.CheatViewCardBot)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -18218,7 +18223,7 @@ void CheatViewCardBot::MergeFrom(const CheatViewCardBot& from) {
 }
 
 void CheatViewCardBot::CopyFrom(const CheatViewCardBot& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CheatViewCardBot)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.CheatViewCardBot)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -18250,7 +18255,7 @@ InviteFriendPlay::InviteFriendPlay(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:InviteFriendPlay)
+  // @@protoc_insertion_point(arena_constructor:packet.InviteFriendPlay)
 }
 InviteFriendPlay::InviteFriendPlay(const InviteFriendPlay& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -18258,7 +18263,7 @@ InviteFriendPlay::InviteFriendPlay(const InviteFriendPlay& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&room_id_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(room_id_));
-  // @@protoc_insertion_point(copy_constructor:InviteFriendPlay)
+  // @@protoc_insertion_point(copy_constructor:packet.InviteFriendPlay)
 }
 
 inline void InviteFriendPlay::SharedCtor() {
@@ -18269,7 +18274,7 @@ inline void InviteFriendPlay::SharedCtor() {
 }
 
 InviteFriendPlay::~InviteFriendPlay() {
-  // @@protoc_insertion_point(destructor:InviteFriendPlay)
+  // @@protoc_insertion_point(destructor:packet.InviteFriendPlay)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -18286,7 +18291,7 @@ void InviteFriendPlay::SetCachedSize(int size) const {
 }
 
 void InviteFriendPlay::Clear() {
-// @@protoc_insertion_point(message_clear_start:InviteFriendPlay)
+// @@protoc_insertion_point(message_clear_start:packet.InviteFriendPlay)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -18344,7 +18349,7 @@ failure:
 
 uint8_t* InviteFriendPlay::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:InviteFriendPlay)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.InviteFriendPlay)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -18364,12 +18369,12 @@ uint8_t* InviteFriendPlay::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:InviteFriendPlay)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.InviteFriendPlay)
   return target;
 }
 
 size_t InviteFriendPlay::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:InviteFriendPlay)
+// @@protoc_insertion_point(message_byte_size_start:packet.InviteFriendPlay)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -18403,7 +18408,7 @@ void InviteFriendPlay::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void InviteFriendPlay::MergeFrom(const InviteFriendPlay& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:InviteFriendPlay)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.InviteFriendPlay)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -18418,7 +18423,7 @@ void InviteFriendPlay::MergeFrom(const InviteFriendPlay& from) {
 }
 
 void InviteFriendPlay::CopyFrom(const InviteFriendPlay& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:InviteFriendPlay)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.InviteFriendPlay)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -18456,7 +18461,7 @@ GameActionNapoli::GameActionNapoli(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   suits_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:GameActionNapoli)
+  // @@protoc_insertion_point(arena_constructor:packet.GameActionNapoli)
 }
 GameActionNapoli::GameActionNapoli(const GameActionNapoli& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -18465,7 +18470,7 @@ GameActionNapoli::GameActionNapoli(const GameActionNapoli& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&point_add_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(point_add_));
-  // @@protoc_insertion_point(copy_constructor:GameActionNapoli)
+  // @@protoc_insertion_point(copy_constructor:packet.GameActionNapoli)
 }
 
 inline void GameActionNapoli::SharedCtor() {
@@ -18476,7 +18481,7 @@ inline void GameActionNapoli::SharedCtor() {
 }
 
 GameActionNapoli::~GameActionNapoli() {
-  // @@protoc_insertion_point(destructor:GameActionNapoli)
+  // @@protoc_insertion_point(destructor:packet.GameActionNapoli)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -18493,7 +18498,7 @@ void GameActionNapoli::SetCachedSize(int size) const {
 }
 
 void GameActionNapoli::Clear() {
-// @@protoc_insertion_point(message_clear_start:GameActionNapoli)
+// @@protoc_insertion_point(message_clear_start:packet.GameActionNapoli)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -18563,7 +18568,7 @@ failure:
 
 uint8_t* GameActionNapoli::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:GameActionNapoli)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.GameActionNapoli)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -18592,12 +18597,12 @@ uint8_t* GameActionNapoli::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:GameActionNapoli)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.GameActionNapoli)
   return target;
 }
 
 size_t GameActionNapoli::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:GameActionNapoli)
+// @@protoc_insertion_point(message_byte_size_start:packet.GameActionNapoli)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -18645,7 +18650,7 @@ void GameActionNapoli::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void GameActionNapoli::MergeFrom(const GameActionNapoli& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:GameActionNapoli)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.GameActionNapoli)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -18661,7 +18666,7 @@ void GameActionNapoli::MergeFrom(const GameActionNapoli& from) {
 }
 
 void GameActionNapoli::CopyFrom(const GameActionNapoli& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:GameActionNapoli)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.GameActionNapoli)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -18699,7 +18704,7 @@ CustomerServiceReport::CustomerServiceReport(::PROTOBUF_NAMESPACE_ID::Arena* are
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:CustomerServiceReport)
+  // @@protoc_insertion_point(arena_constructor:packet.CustomerServiceReport)
 }
 CustomerServiceReport::CustomerServiceReport(const CustomerServiceReport& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -18713,7 +18718,7 @@ CustomerServiceReport::CustomerServiceReport(const CustomerServiceReport& from)
       GetArenaForAllocation());
   }
   report_type_ = from.report_type_;
-  // @@protoc_insertion_point(copy_constructor:CustomerServiceReport)
+  // @@protoc_insertion_point(copy_constructor:packet.CustomerServiceReport)
 }
 
 inline void CustomerServiceReport::SharedCtor() {
@@ -18725,7 +18730,7 @@ report_type_ = 0;
 }
 
 CustomerServiceReport::~CustomerServiceReport() {
-  // @@protoc_insertion_point(destructor:CustomerServiceReport)
+  // @@protoc_insertion_point(destructor:packet.CustomerServiceReport)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -18743,7 +18748,7 @@ void CustomerServiceReport::SetCachedSize(int size) const {
 }
 
 void CustomerServiceReport::Clear() {
-// @@protoc_insertion_point(message_clear_start:CustomerServiceReport)
+// @@protoc_insertion_point(message_clear_start:packet.CustomerServiceReport)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -18773,7 +18778,7 @@ const char* CustomerServiceReport::_InternalParse(const char* ptr, ::_pbi::Parse
           auto str = _internal_mutable_report_content();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "CustomerServiceReport.report_content"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.CustomerServiceReport.report_content"));
         } else
           goto handle_unusual;
         continue;
@@ -18802,7 +18807,7 @@ failure:
 
 uint8_t* CustomerServiceReport::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:CustomerServiceReport)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.CustomerServiceReport)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -18817,7 +18822,7 @@ uint8_t* CustomerServiceReport::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_report_content().data(), static_cast<int>(this->_internal_report_content().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "CustomerServiceReport.report_content");
+      "packet.CustomerServiceReport.report_content");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_report_content(), target);
   }
@@ -18826,12 +18831,12 @@ uint8_t* CustomerServiceReport::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CustomerServiceReport)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.CustomerServiceReport)
   return target;
 }
 
 size_t CustomerServiceReport::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CustomerServiceReport)
+// @@protoc_insertion_point(message_byte_size_start:packet.CustomerServiceReport)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -18867,7 +18872,7 @@ void CustomerServiceReport::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void CustomerServiceReport::MergeFrom(const CustomerServiceReport& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CustomerServiceReport)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.CustomerServiceReport)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -18882,7 +18887,7 @@ void CustomerServiceReport::MergeFrom(const CustomerServiceReport& from) {
 }
 
 void CustomerServiceReport::CopyFrom(const CustomerServiceReport& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CustomerServiceReport)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.CustomerServiceReport)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -18920,7 +18925,7 @@ AdminBroadcast::AdminBroadcast(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:AdminBroadcast)
+  // @@protoc_insertion_point(arena_constructor:packet.AdminBroadcast)
 }
 AdminBroadcast::AdminBroadcast(const AdminBroadcast& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -18933,7 +18938,7 @@ AdminBroadcast::AdminBroadcast(const AdminBroadcast& from)
     mes_.Set(from._internal_mes(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:AdminBroadcast)
+  // @@protoc_insertion_point(copy_constructor:packet.AdminBroadcast)
 }
 
 inline void AdminBroadcast::SharedCtor() {
@@ -18944,7 +18949,7 @@ mes_.InitDefault();
 }
 
 AdminBroadcast::~AdminBroadcast() {
-  // @@protoc_insertion_point(destructor:AdminBroadcast)
+  // @@protoc_insertion_point(destructor:packet.AdminBroadcast)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -18962,7 +18967,7 @@ void AdminBroadcast::SetCachedSize(int size) const {
 }
 
 void AdminBroadcast::Clear() {
-// @@protoc_insertion_point(message_clear_start:AdminBroadcast)
+// @@protoc_insertion_point(message_clear_start:packet.AdminBroadcast)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -18983,7 +18988,7 @@ const char* AdminBroadcast::_InternalParse(const char* ptr, ::_pbi::ParseContext
           auto str = _internal_mutable_mes();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "AdminBroadcast.mes"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.AdminBroadcast.mes"));
         } else
           goto handle_unusual;
         continue;
@@ -19012,7 +19017,7 @@ failure:
 
 uint8_t* AdminBroadcast::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:AdminBroadcast)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.AdminBroadcast)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -19021,7 +19026,7 @@ uint8_t* AdminBroadcast::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_mes().data(), static_cast<int>(this->_internal_mes().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "AdminBroadcast.mes");
+      "packet.AdminBroadcast.mes");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_mes(), target);
   }
@@ -19030,12 +19035,12 @@ uint8_t* AdminBroadcast::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:AdminBroadcast)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.AdminBroadcast)
   return target;
 }
 
 size_t AdminBroadcast::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:AdminBroadcast)
+// @@protoc_insertion_point(message_byte_size_start:packet.AdminBroadcast)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -19066,7 +19071,7 @@ void AdminBroadcast::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void AdminBroadcast::MergeFrom(const AdminBroadcast& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:AdminBroadcast)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.AdminBroadcast)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -19078,7 +19083,7 @@ void AdminBroadcast::MergeFrom(const AdminBroadcast& from) {
 }
 
 void AdminBroadcast::CopyFrom(const AdminBroadcast& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:AdminBroadcast)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.AdminBroadcast)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -19115,7 +19120,7 @@ PaymentPaypalRequestOrder::PaymentPaypalRequestOrder(::PROTOBUF_NAMESPACE_ID::Ar
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PaymentPaypalRequestOrder)
+  // @@protoc_insertion_point(arena_constructor:packet.PaymentPaypalRequestOrder)
 }
 PaymentPaypalRequestOrder::PaymentPaypalRequestOrder(const PaymentPaypalRequestOrder& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -19128,7 +19133,7 @@ PaymentPaypalRequestOrder::PaymentPaypalRequestOrder(const PaymentPaypalRequestO
     pack_id_.Set(from._internal_pack_id(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:PaymentPaypalRequestOrder)
+  // @@protoc_insertion_point(copy_constructor:packet.PaymentPaypalRequestOrder)
 }
 
 inline void PaymentPaypalRequestOrder::SharedCtor() {
@@ -19139,7 +19144,7 @@ pack_id_.InitDefault();
 }
 
 PaymentPaypalRequestOrder::~PaymentPaypalRequestOrder() {
-  // @@protoc_insertion_point(destructor:PaymentPaypalRequestOrder)
+  // @@protoc_insertion_point(destructor:packet.PaymentPaypalRequestOrder)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -19157,7 +19162,7 @@ void PaymentPaypalRequestOrder::SetCachedSize(int size) const {
 }
 
 void PaymentPaypalRequestOrder::Clear() {
-// @@protoc_insertion_point(message_clear_start:PaymentPaypalRequestOrder)
+// @@protoc_insertion_point(message_clear_start:packet.PaymentPaypalRequestOrder)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -19178,7 +19183,7 @@ const char* PaymentPaypalRequestOrder::_InternalParse(const char* ptr, ::_pbi::P
           auto str = _internal_mutable_pack_id();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentPaypalRequestOrder.pack_id"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentPaypalRequestOrder.pack_id"));
         } else
           goto handle_unusual;
         continue;
@@ -19207,7 +19212,7 @@ failure:
 
 uint8_t* PaymentPaypalRequestOrder::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PaymentPaypalRequestOrder)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PaymentPaypalRequestOrder)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -19216,7 +19221,7 @@ uint8_t* PaymentPaypalRequestOrder::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_pack_id().data(), static_cast<int>(this->_internal_pack_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentPaypalRequestOrder.pack_id");
+      "packet.PaymentPaypalRequestOrder.pack_id");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_pack_id(), target);
   }
@@ -19225,12 +19230,12 @@ uint8_t* PaymentPaypalRequestOrder::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PaymentPaypalRequestOrder)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PaymentPaypalRequestOrder)
   return target;
 }
 
 size_t PaymentPaypalRequestOrder::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PaymentPaypalRequestOrder)
+// @@protoc_insertion_point(message_byte_size_start:packet.PaymentPaypalRequestOrder)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -19261,7 +19266,7 @@ void PaymentPaypalRequestOrder::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void PaymentPaypalRequestOrder::MergeFrom(const PaymentPaypalRequestOrder& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PaymentPaypalRequestOrder)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PaymentPaypalRequestOrder)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -19273,7 +19278,7 @@ void PaymentPaypalRequestOrder::MergeFrom(const PaymentPaypalRequestOrder& from)
 }
 
 void PaymentPaypalRequestOrder::CopyFrom(const PaymentPaypalRequestOrder& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PaymentPaypalRequestOrder)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PaymentPaypalRequestOrder)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -19310,7 +19315,7 @@ PaymentPaypalOrder::PaymentPaypalOrder(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:PaymentPaypalOrder)
+  // @@protoc_insertion_point(arena_constructor:packet.PaymentPaypalOrder)
 }
 PaymentPaypalOrder::PaymentPaypalOrder(const PaymentPaypalOrder& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -19323,7 +19328,7 @@ PaymentPaypalOrder::PaymentPaypalOrder(const PaymentPaypalOrder& from)
     order_url_.Set(from._internal_order_url(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:PaymentPaypalOrder)
+  // @@protoc_insertion_point(copy_constructor:packet.PaymentPaypalOrder)
 }
 
 inline void PaymentPaypalOrder::SharedCtor() {
@@ -19334,7 +19339,7 @@ order_url_.InitDefault();
 }
 
 PaymentPaypalOrder::~PaymentPaypalOrder() {
-  // @@protoc_insertion_point(destructor:PaymentPaypalOrder)
+  // @@protoc_insertion_point(destructor:packet.PaymentPaypalOrder)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -19352,7 +19357,7 @@ void PaymentPaypalOrder::SetCachedSize(int size) const {
 }
 
 void PaymentPaypalOrder::Clear() {
-// @@protoc_insertion_point(message_clear_start:PaymentPaypalOrder)
+// @@protoc_insertion_point(message_clear_start:packet.PaymentPaypalOrder)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -19373,7 +19378,7 @@ const char* PaymentPaypalOrder::_InternalParse(const char* ptr, ::_pbi::ParseCon
           auto str = _internal_mutable_order_url();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "PaymentPaypalOrder.order_url"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.PaymentPaypalOrder.order_url"));
         } else
           goto handle_unusual;
         continue;
@@ -19402,7 +19407,7 @@ failure:
 
 uint8_t* PaymentPaypalOrder::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:PaymentPaypalOrder)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.PaymentPaypalOrder)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -19411,7 +19416,7 @@ uint8_t* PaymentPaypalOrder::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_order_url().data(), static_cast<int>(this->_internal_order_url().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "PaymentPaypalOrder.order_url");
+      "packet.PaymentPaypalOrder.order_url");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_order_url(), target);
   }
@@ -19420,12 +19425,12 @@ uint8_t* PaymentPaypalOrder::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:PaymentPaypalOrder)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.PaymentPaypalOrder)
   return target;
 }
 
 size_t PaymentPaypalOrder::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:PaymentPaypalOrder)
+// @@protoc_insertion_point(message_byte_size_start:packet.PaymentPaypalOrder)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -19456,7 +19461,7 @@ void PaymentPaypalOrder::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void PaymentPaypalOrder::MergeFrom(const PaymentPaypalOrder& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:PaymentPaypalOrder)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.PaymentPaypalOrder)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -19468,7 +19473,7 @@ void PaymentPaypalOrder::MergeFrom(const PaymentPaypalOrder& from) {
 }
 
 void PaymentPaypalOrder::CopyFrom(const PaymentPaypalOrder& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:PaymentPaypalOrder)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.PaymentPaypalOrder)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -19504,12 +19509,12 @@ class QuickPlay::_Internal {
 QuickPlay::QuickPlay(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
-  // @@protoc_insertion_point(arena_constructor:QuickPlay)
+  // @@protoc_insertion_point(arena_constructor:packet.QuickPlay)
 }
 QuickPlay::QuickPlay(const QuickPlay& from)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:QuickPlay)
+  // @@protoc_insertion_point(copy_constructor:packet.QuickPlay)
 }
 
 
@@ -19544,7 +19549,7 @@ SetteMezzoNewUserJoinMatch::SetteMezzoNewUserJoinMatch(::PROTOBUF_NAMESPACE_ID::
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoNewUserJoinMatch)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoNewUserJoinMatch)
 }
 SetteMezzoNewUserJoinMatch::SetteMezzoNewUserJoinMatch(const SetteMezzoNewUserJoinMatch& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -19568,7 +19573,7 @@ SetteMezzoNewUserJoinMatch::SetteMezzoNewUserJoinMatch(const SetteMezzoNewUserJo
   ::memcpy(&gold_, &from.gold_,
     static_cast<size_t>(reinterpret_cast<char*>(&team_id_) -
     reinterpret_cast<char*>(&gold_)) + sizeof(team_id_));
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoNewUserJoinMatch)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoNewUserJoinMatch)
 }
 
 inline void SetteMezzoNewUserJoinMatch::SharedCtor() {
@@ -19587,7 +19592,7 @@ avatar_.InitDefault();
 }
 
 SetteMezzoNewUserJoinMatch::~SetteMezzoNewUserJoinMatch() {
-  // @@protoc_insertion_point(destructor:SetteMezzoNewUserJoinMatch)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoNewUserJoinMatch)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -19606,7 +19611,7 @@ void SetteMezzoNewUserJoinMatch::SetCachedSize(int size) const {
 }
 
 void SetteMezzoNewUserJoinMatch::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoNewUserJoinMatch)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoNewUserJoinMatch)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -19647,7 +19652,7 @@ const char* SetteMezzoNewUserJoinMatch::_InternalParse(const char* ptr, ::_pbi::
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "SetteMezzoNewUserJoinMatch.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.SetteMezzoNewUserJoinMatch.name"));
         } else
           goto handle_unusual;
         continue;
@@ -19673,7 +19678,7 @@ const char* SetteMezzoNewUserJoinMatch::_InternalParse(const char* ptr, ::_pbi::
           auto str = _internal_mutable_avatar();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "SetteMezzoNewUserJoinMatch.avatar"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.SetteMezzoNewUserJoinMatch.avatar"));
         } else
           goto handle_unusual;
         continue;
@@ -19702,7 +19707,7 @@ failure:
 
 uint8_t* SetteMezzoNewUserJoinMatch::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoNewUserJoinMatch)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoNewUserJoinMatch)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -19723,7 +19728,7 @@ uint8_t* SetteMezzoNewUserJoinMatch::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "SetteMezzoNewUserJoinMatch.name");
+      "packet.SetteMezzoNewUserJoinMatch.name");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_name(), target);
   }
@@ -19745,7 +19750,7 @@ uint8_t* SetteMezzoNewUserJoinMatch::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "SetteMezzoNewUserJoinMatch.avatar");
+      "packet.SetteMezzoNewUserJoinMatch.avatar");
     target = stream->WriteStringMaybeAliased(
         6, this->_internal_avatar(), target);
   }
@@ -19754,12 +19759,12 @@ uint8_t* SetteMezzoNewUserJoinMatch::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoNewUserJoinMatch)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoNewUserJoinMatch)
   return target;
 }
 
 size_t SetteMezzoNewUserJoinMatch::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoNewUserJoinMatch)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoNewUserJoinMatch)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -19817,7 +19822,7 @@ void SetteMezzoNewUserJoinMatch::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoNewUserJoinMatch::MergeFrom(const SetteMezzoNewUserJoinMatch& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoNewUserJoinMatch)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoNewUserJoinMatch)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -19844,7 +19849,7 @@ void SetteMezzoNewUserJoinMatch::MergeFrom(const SetteMezzoNewUserJoinMatch& fro
 }
 
 void SetteMezzoNewUserJoinMatch::CopyFrom(const SetteMezzoNewUserJoinMatch& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoNewUserJoinMatch)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoNewUserJoinMatch)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -19892,14 +19897,14 @@ SetteMezzoPrepareStartGame::SetteMezzoPrepareStartGame(::PROTOBUF_NAMESPACE_ID::
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   players_gold_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoPrepareStartGame)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoPrepareStartGame)
 }
 SetteMezzoPrepareStartGame::SetteMezzoPrepareStartGame(const SetteMezzoPrepareStartGame& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       players_gold_(from.players_gold_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   pot_value_ = from.pot_value_;
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoPrepareStartGame)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoPrepareStartGame)
 }
 
 inline void SetteMezzoPrepareStartGame::SharedCtor() {
@@ -19907,7 +19912,7 @@ pot_value_ = 0;
 }
 
 SetteMezzoPrepareStartGame::~SetteMezzoPrepareStartGame() {
-  // @@protoc_insertion_point(destructor:SetteMezzoPrepareStartGame)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoPrepareStartGame)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -19924,7 +19929,7 @@ void SetteMezzoPrepareStartGame::SetCachedSize(int size) const {
 }
 
 void SetteMezzoPrepareStartGame::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoPrepareStartGame)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoPrepareStartGame)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -19984,7 +19989,7 @@ failure:
 
 uint8_t* SetteMezzoPrepareStartGame::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoPrepareStartGame)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoPrepareStartGame)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -20007,12 +20012,12 @@ uint8_t* SetteMezzoPrepareStartGame::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoPrepareStartGame)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoPrepareStartGame)
   return target;
 }
 
 size_t SetteMezzoPrepareStartGame::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoPrepareStartGame)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoPrepareStartGame)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -20055,7 +20060,7 @@ void SetteMezzoPrepareStartGame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoPrepareStartGame::MergeFrom(const SetteMezzoPrepareStartGame& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoPrepareStartGame)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoPrepareStartGame)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -20068,7 +20073,7 @@ void SetteMezzoPrepareStartGame::MergeFrom(const SetteMezzoPrepareStartGame& fro
 }
 
 void SetteMezzoPrepareStartGame::CopyFrom(const SetteMezzoPrepareStartGame& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoPrepareStartGame)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoPrepareStartGame)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -20111,7 +20116,7 @@ SetteMezzoGameInfo::SetteMezzoGameInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   banker_cards_(arena),
   player_bets_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoGameInfo)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoGameInfo)
 }
 SetteMezzoGameInfo::SetteMezzoGameInfo(const SetteMezzoGameInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -20129,7 +20134,7 @@ SetteMezzoGameInfo::SetteMezzoGameInfo(const SetteMezzoGameInfo& from)
   ::memcpy(&match_id_, &from.match_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&time_end_bet_) -
     reinterpret_cast<char*>(&match_id_)) + sizeof(time_end_bet_));
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoGameInfo)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoGameInfo)
 }
 
 inline void SetteMezzoGameInfo::SharedCtor() {
@@ -20140,7 +20145,7 @@ inline void SetteMezzoGameInfo::SharedCtor() {
 }
 
 SetteMezzoGameInfo::~SetteMezzoGameInfo() {
-  // @@protoc_insertion_point(destructor:SetteMezzoGameInfo)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoGameInfo)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -20157,7 +20162,7 @@ void SetteMezzoGameInfo::SetCachedSize(int size) const {
 }
 
 void SetteMezzoGameInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoGameInfo)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoGameInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -20239,7 +20244,7 @@ const char* SetteMezzoGameInfo::_InternalParse(const char* ptr, ::_pbi::ParseCon
             auto str = _internal_add_user_names();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "SetteMezzoGameInfo.user_names"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.SetteMezzoGameInfo.user_names"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
         } else
@@ -20308,7 +20313,7 @@ const char* SetteMezzoGameInfo::_InternalParse(const char* ptr, ::_pbi::ParseCon
             auto str = _internal_add_avatars();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "SetteMezzoGameInfo.avatars"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.SetteMezzoGameInfo.avatars"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<114>(ptr));
         } else
@@ -20442,7 +20447,7 @@ failure:
 
 uint8_t* SetteMezzoGameInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoGameInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoGameInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -20488,7 +20493,7 @@ uint8_t* SetteMezzoGameInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "SetteMezzoGameInfo.user_names");
+      "packet.SetteMezzoGameInfo.user_names");
     target = stream->WriteString(6, s, target);
   }
 
@@ -20540,7 +20545,7 @@ uint8_t* SetteMezzoGameInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "SetteMezzoGameInfo.avatars");
+      "packet.SetteMezzoGameInfo.avatars");
     target = stream->WriteString(14, s, target);
   }
 
@@ -20619,12 +20624,12 @@ uint8_t* SetteMezzoGameInfo::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoGameInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoGameInfo)
   return target;
 }
 
 size_t SetteMezzoGameInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoGameInfo)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoGameInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -20849,7 +20854,7 @@ void SetteMezzoGameInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoGameInfo::MergeFrom(const SetteMezzoGameInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoGameInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoGameInfo)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -20910,7 +20915,7 @@ void SetteMezzoGameInfo::MergeFrom(const SetteMezzoGameInfo& from) {
 }
 
 void SetteMezzoGameInfo::CopyFrom(const SetteMezzoGameInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoGameInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoGameInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -20958,20 +20963,20 @@ SetteMezzoPlayerInfo::SetteMezzoPlayerInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   card_ids_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoPlayerInfo)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoPlayerInfo)
 }
 SetteMezzoPlayerInfo::SetteMezzoPlayerInfo(const SetteMezzoPlayerInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       card_ids_(from.card_ids_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoPlayerInfo)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoPlayerInfo)
 }
 
 inline void SetteMezzoPlayerInfo::SharedCtor() {
 }
 
 SetteMezzoPlayerInfo::~SetteMezzoPlayerInfo() {
-  // @@protoc_insertion_point(destructor:SetteMezzoPlayerInfo)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoPlayerInfo)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -20988,7 +20993,7 @@ void SetteMezzoPlayerInfo::SetCachedSize(int size) const {
 }
 
 void SetteMezzoPlayerInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoPlayerInfo)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoPlayerInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -21039,7 +21044,7 @@ failure:
 
 uint8_t* SetteMezzoPlayerInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoPlayerInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoPlayerInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -21056,12 +21061,12 @@ uint8_t* SetteMezzoPlayerInfo::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoPlayerInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoPlayerInfo)
   return target;
 }
 
 size_t SetteMezzoPlayerInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoPlayerInfo)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoPlayerInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -21099,7 +21104,7 @@ void SetteMezzoPlayerInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoPlayerInfo::MergeFrom(const SetteMezzoPlayerInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoPlayerInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoPlayerInfo)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -21109,7 +21114,7 @@ void SetteMezzoPlayerInfo::MergeFrom(const SetteMezzoPlayerInfo& from) {
 }
 
 void SetteMezzoPlayerInfo::CopyFrom(const SetteMezzoPlayerInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoPlayerInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoPlayerInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -21140,12 +21145,12 @@ class SetteMezzoQuickPlay::_Internal {
 SetteMezzoQuickPlay::SetteMezzoQuickPlay(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoQuickPlay)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoQuickPlay)
 }
 SetteMezzoQuickPlay::SetteMezzoQuickPlay(const SetteMezzoQuickPlay& from)
   : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoQuickPlay)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoQuickPlay)
 }
 
 
@@ -21182,21 +21187,21 @@ SetteMezzoStartGame::SetteMezzoStartGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   uids_(arena),
   cards_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoStartGame)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoStartGame)
 }
 SetteMezzoStartGame::SetteMezzoStartGame(const SetteMezzoStartGame& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       uids_(from.uids_),
       cards_(from.cards_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoStartGame)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoStartGame)
 }
 
 inline void SetteMezzoStartGame::SharedCtor() {
 }
 
 SetteMezzoStartGame::~SetteMezzoStartGame() {
-  // @@protoc_insertion_point(destructor:SetteMezzoStartGame)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoStartGame)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -21213,7 +21218,7 @@ void SetteMezzoStartGame::SetCachedSize(int size) const {
 }
 
 void SetteMezzoStartGame::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoStartGame)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoStartGame)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -21276,7 +21281,7 @@ failure:
 
 uint8_t* SetteMezzoStartGame::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoStartGame)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoStartGame)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -21302,12 +21307,12 @@ uint8_t* SetteMezzoStartGame::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoStartGame)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoStartGame)
   return target;
 }
 
 size_t SetteMezzoStartGame::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoStartGame)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoStartGame)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -21359,7 +21364,7 @@ void SetteMezzoStartGame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoStartGame::MergeFrom(const SetteMezzoStartGame& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoStartGame)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoStartGame)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -21370,7 +21375,7 @@ void SetteMezzoStartGame::MergeFrom(const SetteMezzoStartGame& from) {
 }
 
 void SetteMezzoStartGame::CopyFrom(const SetteMezzoStartGame& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoStartGame)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoStartGame)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -21409,7 +21414,7 @@ RankingInfo::RankingInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   scores_(arena),
   avatar_frames_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:RankingInfo)
+  // @@protoc_insertion_point(arena_constructor:packet.RankingInfo)
 }
 RankingInfo::RankingInfo(const RankingInfo& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -21423,7 +21428,7 @@ RankingInfo::RankingInfo(const RankingInfo& from)
   ::memcpy(&season_id_, &from.season_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&my_score_) -
     reinterpret_cast<char*>(&season_id_)) + sizeof(my_score_));
-  // @@protoc_insertion_point(copy_constructor:RankingInfo)
+  // @@protoc_insertion_point(copy_constructor:packet.RankingInfo)
 }
 
 inline void RankingInfo::SharedCtor() {
@@ -21434,7 +21439,7 @@ inline void RankingInfo::SharedCtor() {
 }
 
 RankingInfo::~RankingInfo() {
-  // @@protoc_insertion_point(destructor:RankingInfo)
+  // @@protoc_insertion_point(destructor:packet.RankingInfo)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -21451,7 +21456,7 @@ void RankingInfo::SetCachedSize(int size) const {
 }
 
 void RankingInfo::Clear() {
-// @@protoc_insertion_point(message_clear_start:RankingInfo)
+// @@protoc_insertion_point(message_clear_start:packet.RankingInfo)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -21529,7 +21534,7 @@ const char* RankingInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
             auto str = _internal_add_avatars();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "RankingInfo.avatars"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.RankingInfo.avatars"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
         } else
@@ -21544,7 +21549,7 @@ const char* RankingInfo::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
             auto str = _internal_add_names();
             ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
             CHK_(ptr);
-            CHK_(::_pbi::VerifyUTF8(str, "RankingInfo.names"));
+            CHK_(::_pbi::VerifyUTF8(str, "packet.RankingInfo.names"));
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<58>(ptr));
         } else
@@ -21613,7 +21618,7 @@ failure:
 
 uint8_t* RankingInfo::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RankingInfo)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.RankingInfo)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -21659,7 +21664,7 @@ uint8_t* RankingInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "RankingInfo.avatars");
+      "packet.RankingInfo.avatars");
     target = stream->WriteString(6, s, target);
   }
 
@@ -21669,7 +21674,7 @@ uint8_t* RankingInfo::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "RankingInfo.names");
+      "packet.RankingInfo.names");
     target = stream->WriteString(7, s, target);
   }
 
@@ -21707,12 +21712,12 @@ uint8_t* RankingInfo::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RankingInfo)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.RankingInfo)
   return target;
 }
 
 size_t RankingInfo::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:RankingInfo)
+// @@protoc_insertion_point(message_byte_size_start:packet.RankingInfo)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -21833,7 +21838,7 @@ void RankingInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void RankingInfo::MergeFrom(const RankingInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:RankingInfo)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.RankingInfo)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -21863,7 +21868,7 @@ void RankingInfo::MergeFrom(const RankingInfo& from) {
 }
 
 void RankingInfo::CopyFrom(const RankingInfo& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:RankingInfo)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.RankingInfo)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -21906,7 +21911,7 @@ RankingResult::RankingResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:RankingResult)
+  // @@protoc_insertion_point(arena_constructor:packet.RankingResult)
 }
 RankingResult::RankingResult(const RankingResult& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -21914,7 +21919,7 @@ RankingResult::RankingResult(const RankingResult& from)
   ::memcpy(&season_id_, &from.season_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&rank_) -
     reinterpret_cast<char*>(&season_id_)) + sizeof(rank_));
-  // @@protoc_insertion_point(copy_constructor:RankingResult)
+  // @@protoc_insertion_point(copy_constructor:packet.RankingResult)
 }
 
 inline void RankingResult::SharedCtor() {
@@ -21925,7 +21930,7 @@ inline void RankingResult::SharedCtor() {
 }
 
 RankingResult::~RankingResult() {
-  // @@protoc_insertion_point(destructor:RankingResult)
+  // @@protoc_insertion_point(destructor:packet.RankingResult)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -21942,7 +21947,7 @@ void RankingResult::SetCachedSize(int size) const {
 }
 
 void RankingResult::Clear() {
-// @@protoc_insertion_point(message_clear_start:RankingResult)
+// @@protoc_insertion_point(message_clear_start:packet.RankingResult)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -22008,7 +22013,7 @@ failure:
 
 uint8_t* RankingResult::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RankingResult)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.RankingResult)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -22034,12 +22039,12 @@ uint8_t* RankingResult::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RankingResult)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.RankingResult)
   return target;
 }
 
 size_t RankingResult::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:RankingResult)
+// @@protoc_insertion_point(message_byte_size_start:packet.RankingResult)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -22078,7 +22083,7 @@ void RankingResult::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void RankingResult::MergeFrom(const RankingResult& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:RankingResult)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.RankingResult)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -22096,7 +22101,7 @@ void RankingResult::MergeFrom(const RankingResult& from) {
 }
 
 void RankingResult::CopyFrom(const RankingResult& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:RankingResult)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.RankingResult)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -22133,13 +22138,13 @@ RankingClaimReward::RankingClaimReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:RankingClaimReward)
+  // @@protoc_insertion_point(arena_constructor:packet.RankingClaimReward)
 }
 RankingClaimReward::RankingClaimReward(const RankingClaimReward& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   season_id_ = from.season_id_;
-  // @@protoc_insertion_point(copy_constructor:RankingClaimReward)
+  // @@protoc_insertion_point(copy_constructor:packet.RankingClaimReward)
 }
 
 inline void RankingClaimReward::SharedCtor() {
@@ -22147,7 +22152,7 @@ season_id_ = 0;
 }
 
 RankingClaimReward::~RankingClaimReward() {
-  // @@protoc_insertion_point(destructor:RankingClaimReward)
+  // @@protoc_insertion_point(destructor:packet.RankingClaimReward)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -22164,7 +22169,7 @@ void RankingClaimReward::SetCachedSize(int size) const {
 }
 
 void RankingClaimReward::Clear() {
-// @@protoc_insertion_point(message_clear_start:RankingClaimReward)
+// @@protoc_insertion_point(message_clear_start:packet.RankingClaimReward)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -22212,7 +22217,7 @@ failure:
 
 uint8_t* RankingClaimReward::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RankingClaimReward)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.RankingClaimReward)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -22226,12 +22231,12 @@ uint8_t* RankingClaimReward::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RankingClaimReward)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.RankingClaimReward)
   return target;
 }
 
 size_t RankingClaimReward::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:RankingClaimReward)
+// @@protoc_insertion_point(message_byte_size_start:packet.RankingClaimReward)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -22260,7 +22265,7 @@ void RankingClaimReward::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void RankingClaimReward::MergeFrom(const RankingClaimReward& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:RankingClaimReward)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.RankingClaimReward)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -22272,7 +22277,7 @@ void RankingClaimReward::MergeFrom(const RankingClaimReward& from) {
 }
 
 void RankingClaimReward::CopyFrom(const RankingClaimReward& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:RankingClaimReward)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.RankingClaimReward)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -22304,13 +22309,13 @@ UpdateAds::UpdateAds(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UpdateAds)
+  // @@protoc_insertion_point(arena_constructor:packet.UpdateAds)
 }
 UpdateAds::UpdateAds(const UpdateAds& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   time_show_ads_ = from.time_show_ads_;
-  // @@protoc_insertion_point(copy_constructor:UpdateAds)
+  // @@protoc_insertion_point(copy_constructor:packet.UpdateAds)
 }
 
 inline void UpdateAds::SharedCtor() {
@@ -22318,7 +22323,7 @@ time_show_ads_ = 0;
 }
 
 UpdateAds::~UpdateAds() {
-  // @@protoc_insertion_point(destructor:UpdateAds)
+  // @@protoc_insertion_point(destructor:packet.UpdateAds)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -22335,7 +22340,7 @@ void UpdateAds::SetCachedSize(int size) const {
 }
 
 void UpdateAds::Clear() {
-// @@protoc_insertion_point(message_clear_start:UpdateAds)
+// @@protoc_insertion_point(message_clear_start:packet.UpdateAds)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -22383,7 +22388,7 @@ failure:
 
 uint8_t* UpdateAds::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UpdateAds)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UpdateAds)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -22397,12 +22402,12 @@ uint8_t* UpdateAds::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UpdateAds)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UpdateAds)
   return target;
 }
 
 size_t UpdateAds::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UpdateAds)
+// @@protoc_insertion_point(message_byte_size_start:packet.UpdateAds)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -22431,7 +22436,7 @@ void UpdateAds::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UpdateAds::MergeFrom(const UpdateAds& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UpdateAds)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UpdateAds)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -22443,7 +22448,7 @@ void UpdateAds::MergeFrom(const UpdateAds& from) {
 }
 
 void UpdateAds::CopyFrom(const UpdateAds& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UpdateAds)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UpdateAds)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -22475,7 +22480,7 @@ AdsReward::AdsReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:AdsReward)
+  // @@protoc_insertion_point(arena_constructor:packet.AdsReward)
 }
 AdsReward::AdsReward(const AdsReward& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -22483,7 +22488,7 @@ AdsReward::AdsReward(const AdsReward& from)
   ::memcpy(&gold_, &from.gold_,
     static_cast<size_t>(reinterpret_cast<char*>(&time_ads_reward_) -
     reinterpret_cast<char*>(&gold_)) + sizeof(time_ads_reward_));
-  // @@protoc_insertion_point(copy_constructor:AdsReward)
+  // @@protoc_insertion_point(copy_constructor:packet.AdsReward)
 }
 
 inline void AdsReward::SharedCtor() {
@@ -22494,7 +22499,7 @@ inline void AdsReward::SharedCtor() {
 }
 
 AdsReward::~AdsReward() {
-  // @@protoc_insertion_point(destructor:AdsReward)
+  // @@protoc_insertion_point(destructor:packet.AdsReward)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -22511,7 +22516,7 @@ void AdsReward::SetCachedSize(int size) const {
 }
 
 void AdsReward::Clear() {
-// @@protoc_insertion_point(message_clear_start:AdsReward)
+// @@protoc_insertion_point(message_clear_start:packet.AdsReward)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -22569,7 +22574,7 @@ failure:
 
 uint8_t* AdsReward::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:AdsReward)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.AdsReward)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -22589,12 +22594,12 @@ uint8_t* AdsReward::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:AdsReward)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.AdsReward)
   return target;
 }
 
 size_t AdsReward::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:AdsReward)
+// @@protoc_insertion_point(message_byte_size_start:packet.AdsReward)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -22628,7 +22633,7 @@ void AdsReward::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void AdsReward::MergeFrom(const AdsReward& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:AdsReward)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.AdsReward)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -22643,7 +22648,7 @@ void AdsReward::MergeFrom(const AdsReward& from) {
 }
 
 void AdsReward::CopyFrom(const AdsReward& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:AdsReward)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.AdsReward)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -22680,7 +22685,7 @@ ChangeUserName::ChangeUserName(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ChangeUserName)
+  // @@protoc_insertion_point(arena_constructor:packet.ChangeUserName)
 }
 ChangeUserName::ChangeUserName(const ChangeUserName& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -22693,7 +22698,7 @@ ChangeUserName::ChangeUserName(const ChangeUserName& from)
     name_.Set(from._internal_name(), 
       GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:ChangeUserName)
+  // @@protoc_insertion_point(copy_constructor:packet.ChangeUserName)
 }
 
 inline void ChangeUserName::SharedCtor() {
@@ -22704,7 +22709,7 @@ name_.InitDefault();
 }
 
 ChangeUserName::~ChangeUserName() {
-  // @@protoc_insertion_point(destructor:ChangeUserName)
+  // @@protoc_insertion_point(destructor:packet.ChangeUserName)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -22722,7 +22727,7 @@ void ChangeUserName::SetCachedSize(int size) const {
 }
 
 void ChangeUserName::Clear() {
-// @@protoc_insertion_point(message_clear_start:ChangeUserName)
+// @@protoc_insertion_point(message_clear_start:packet.ChangeUserName)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -22743,7 +22748,7 @@ const char* ChangeUserName::_InternalParse(const char* ptr, ::_pbi::ParseContext
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "ChangeUserName.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.ChangeUserName.name"));
         } else
           goto handle_unusual;
         continue;
@@ -22772,7 +22777,7 @@ failure:
 
 uint8_t* ChangeUserName::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ChangeUserName)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ChangeUserName)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -22781,7 +22786,7 @@ uint8_t* ChangeUserName::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "ChangeUserName.name");
+      "packet.ChangeUserName.name");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_name(), target);
   }
@@ -22790,12 +22795,12 @@ uint8_t* ChangeUserName::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ChangeUserName)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ChangeUserName)
   return target;
 }
 
 size_t ChangeUserName::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ChangeUserName)
+// @@protoc_insertion_point(message_byte_size_start:packet.ChangeUserName)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -22826,7 +22831,7 @@ void ChangeUserName::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ChangeUserName::MergeFrom(const ChangeUserName& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ChangeUserName)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ChangeUserName)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -22838,7 +22843,7 @@ void ChangeUserName::MergeFrom(const ChangeUserName& from) {
 }
 
 void ChangeUserName::CopyFrom(const ChangeUserName& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ChangeUserName)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ChangeUserName)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -22875,7 +22880,7 @@ SetteMezzoActionHit::SetteMezzoActionHit(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoActionHit)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoActionHit)
 }
 SetteMezzoActionHit::SetteMezzoActionHit(const SetteMezzoActionHit& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -22883,7 +22888,7 @@ SetteMezzoActionHit::SetteMezzoActionHit(const SetteMezzoActionHit& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&card_id_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(card_id_));
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoActionHit)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoActionHit)
 }
 
 inline void SetteMezzoActionHit::SharedCtor() {
@@ -22894,7 +22899,7 @@ inline void SetteMezzoActionHit::SharedCtor() {
 }
 
 SetteMezzoActionHit::~SetteMezzoActionHit() {
-  // @@protoc_insertion_point(destructor:SetteMezzoActionHit)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoActionHit)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -22911,7 +22916,7 @@ void SetteMezzoActionHit::SetCachedSize(int size) const {
 }
 
 void SetteMezzoActionHit::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoActionHit)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoActionHit)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -22969,7 +22974,7 @@ failure:
 
 uint8_t* SetteMezzoActionHit::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoActionHit)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoActionHit)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -22989,12 +22994,12 @@ uint8_t* SetteMezzoActionHit::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoActionHit)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoActionHit)
   return target;
 }
 
 size_t SetteMezzoActionHit::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoActionHit)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoActionHit)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -23028,7 +23033,7 @@ void SetteMezzoActionHit::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoActionHit::MergeFrom(const SetteMezzoActionHit& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoActionHit)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoActionHit)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -23043,7 +23048,7 @@ void SetteMezzoActionHit::MergeFrom(const SetteMezzoActionHit& from) {
 }
 
 void SetteMezzoActionHit::CopyFrom(const SetteMezzoActionHit& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoActionHit)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoActionHit)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -23080,7 +23085,7 @@ SetteMezzoUpdateTurn::SetteMezzoUpdateTurn(::PROTOBUF_NAMESPACE_ID::Arena* arena
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoUpdateTurn)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoUpdateTurn)
 }
 SetteMezzoUpdateTurn::SetteMezzoUpdateTurn(const SetteMezzoUpdateTurn& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -23088,7 +23093,7 @@ SetteMezzoUpdateTurn::SetteMezzoUpdateTurn(const SetteMezzoUpdateTurn& from)
   ::memcpy(&current_turn_, &from.current_turn_,
     static_cast<size_t>(reinterpret_cast<char*>(&play_turn_time_) -
     reinterpret_cast<char*>(&current_turn_)) + sizeof(play_turn_time_));
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoUpdateTurn)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoUpdateTurn)
 }
 
 inline void SetteMezzoUpdateTurn::SharedCtor() {
@@ -23099,7 +23104,7 @@ inline void SetteMezzoUpdateTurn::SharedCtor() {
 }
 
 SetteMezzoUpdateTurn::~SetteMezzoUpdateTurn() {
-  // @@protoc_insertion_point(destructor:SetteMezzoUpdateTurn)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoUpdateTurn)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -23116,7 +23121,7 @@ void SetteMezzoUpdateTurn::SetCachedSize(int size) const {
 }
 
 void SetteMezzoUpdateTurn::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoUpdateTurn)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoUpdateTurn)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -23174,7 +23179,7 @@ failure:
 
 uint8_t* SetteMezzoUpdateTurn::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoUpdateTurn)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoUpdateTurn)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -23194,12 +23199,12 @@ uint8_t* SetteMezzoUpdateTurn::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoUpdateTurn)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoUpdateTurn)
   return target;
 }
 
 size_t SetteMezzoUpdateTurn::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoUpdateTurn)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoUpdateTurn)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -23233,7 +23238,7 @@ void SetteMezzoUpdateTurn::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoUpdateTurn::MergeFrom(const SetteMezzoUpdateTurn& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoUpdateTurn)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoUpdateTurn)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -23248,7 +23253,7 @@ void SetteMezzoUpdateTurn::MergeFrom(const SetteMezzoUpdateTurn& from) {
 }
 
 void SetteMezzoUpdateTurn::CopyFrom(const SetteMezzoUpdateTurn& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoUpdateTurn)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoUpdateTurn)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -23285,7 +23290,7 @@ SetteMezzoActionStand::SetteMezzoActionStand(::PROTOBUF_NAMESPACE_ID::Arena* are
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoActionStand)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoActionStand)
 }
 SetteMezzoActionStand::SetteMezzoActionStand(const SetteMezzoActionStand& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -23293,7 +23298,7 @@ SetteMezzoActionStand::SetteMezzoActionStand(const SetteMezzoActionStand& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&play_turn_time_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(play_turn_time_));
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoActionStand)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoActionStand)
 }
 
 inline void SetteMezzoActionStand::SharedCtor() {
@@ -23304,7 +23309,7 @@ inline void SetteMezzoActionStand::SharedCtor() {
 }
 
 SetteMezzoActionStand::~SetteMezzoActionStand() {
-  // @@protoc_insertion_point(destructor:SetteMezzoActionStand)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoActionStand)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -23321,7 +23326,7 @@ void SetteMezzoActionStand::SetCachedSize(int size) const {
 }
 
 void SetteMezzoActionStand::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoActionStand)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoActionStand)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -23387,7 +23392,7 @@ failure:
 
 uint8_t* SetteMezzoActionStand::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoActionStand)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoActionStand)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -23413,12 +23418,12 @@ uint8_t* SetteMezzoActionStand::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoActionStand)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoActionStand)
   return target;
 }
 
 size_t SetteMezzoActionStand::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoActionStand)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoActionStand)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -23457,7 +23462,7 @@ void SetteMezzoActionStand::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoActionStand::MergeFrom(const SetteMezzoActionStand& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoActionStand)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoActionStand)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -23475,7 +23480,7 @@ void SetteMezzoActionStand::MergeFrom(const SetteMezzoActionStand& from) {
 }
 
 void SetteMezzoActionStand::CopyFrom(const SetteMezzoActionStand& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoActionStand)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoActionStand)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -23517,7 +23522,7 @@ SetteMezzoEndGame::SetteMezzoEndGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   golds_change_(arena),
   player_golds_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoEndGame)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoEndGame)
 }
 SetteMezzoEndGame::SetteMezzoEndGame(const SetteMezzoEndGame& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -23527,14 +23532,14 @@ SetteMezzoEndGame::SetteMezzoEndGame(const SetteMezzoEndGame& from)
       golds_change_(from.golds_change_),
       player_golds_(from.player_golds_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoEndGame)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoEndGame)
 }
 
 inline void SetteMezzoEndGame::SharedCtor() {
 }
 
 SetteMezzoEndGame::~SetteMezzoEndGame() {
-  // @@protoc_insertion_point(destructor:SetteMezzoEndGame)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoEndGame)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -23551,7 +23556,7 @@ void SetteMezzoEndGame::SetCachedSize(int size) const {
 }
 
 void SetteMezzoEndGame::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoEndGame)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoEndGame)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -23650,7 +23655,7 @@ failure:
 
 uint8_t* SetteMezzoEndGame::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoEndGame)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoEndGame)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -23699,12 +23704,12 @@ uint8_t* SetteMezzoEndGame::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoEndGame)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoEndGame)
   return target;
 }
 
 size_t SetteMezzoEndGame::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoEndGame)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoEndGame)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -23795,7 +23800,7 @@ void SetteMezzoEndGame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoEndGame::MergeFrom(const SetteMezzoEndGame& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoEndGame)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoEndGame)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -23809,7 +23814,7 @@ void SetteMezzoEndGame::MergeFrom(const SetteMezzoEndGame& from) {
 }
 
 void SetteMezzoEndGame::CopyFrom(const SetteMezzoEndGame& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoEndGame)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoEndGame)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -23845,13 +23850,13 @@ SetteMezzoShowBankerCard::SetteMezzoShowBankerCard(::PROTOBUF_NAMESPACE_ID::Aren
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoShowBankerCard)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoShowBankerCard)
 }
 SetteMezzoShowBankerCard::SetteMezzoShowBankerCard(const SetteMezzoShowBankerCard& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   card_id_ = from.card_id_;
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoShowBankerCard)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoShowBankerCard)
 }
 
 inline void SetteMezzoShowBankerCard::SharedCtor() {
@@ -23859,7 +23864,7 @@ card_id_ = 0;
 }
 
 SetteMezzoShowBankerCard::~SetteMezzoShowBankerCard() {
-  // @@protoc_insertion_point(destructor:SetteMezzoShowBankerCard)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoShowBankerCard)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -23876,7 +23881,7 @@ void SetteMezzoShowBankerCard::SetCachedSize(int size) const {
 }
 
 void SetteMezzoShowBankerCard::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoShowBankerCard)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoShowBankerCard)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -23924,7 +23929,7 @@ failure:
 
 uint8_t* SetteMezzoShowBankerCard::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoShowBankerCard)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoShowBankerCard)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -23938,12 +23943,12 @@ uint8_t* SetteMezzoShowBankerCard::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoShowBankerCard)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoShowBankerCard)
   return target;
 }
 
 size_t SetteMezzoShowBankerCard::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoShowBankerCard)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoShowBankerCard)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -23972,7 +23977,7 @@ void SetteMezzoShowBankerCard::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoShowBankerCard::MergeFrom(const SetteMezzoShowBankerCard& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoShowBankerCard)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoShowBankerCard)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -23984,7 +23989,7 @@ void SetteMezzoShowBankerCard::MergeFrom(const SetteMezzoShowBankerCard& from) {
 }
 
 void SetteMezzoShowBankerCard::CopyFrom(const SetteMezzoShowBankerCard& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoShowBankerCard)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoShowBankerCard)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -24016,7 +24021,7 @@ SetteMezzoUserBet::SetteMezzoUserBet(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:SetteMezzoUserBet)
+  // @@protoc_insertion_point(arena_constructor:packet.SetteMezzoUserBet)
 }
 SetteMezzoUserBet::SetteMezzoUserBet(const SetteMezzoUserBet& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -24024,7 +24029,7 @@ SetteMezzoUserBet::SetteMezzoUserBet(const SetteMezzoUserBet& from)
   ::memcpy(&bet_, &from.bet_,
     static_cast<size_t>(reinterpret_cast<char*>(&uid_) -
     reinterpret_cast<char*>(&bet_)) + sizeof(uid_));
-  // @@protoc_insertion_point(copy_constructor:SetteMezzoUserBet)
+  // @@protoc_insertion_point(copy_constructor:packet.SetteMezzoUserBet)
 }
 
 inline void SetteMezzoUserBet::SharedCtor() {
@@ -24035,7 +24040,7 @@ inline void SetteMezzoUserBet::SharedCtor() {
 }
 
 SetteMezzoUserBet::~SetteMezzoUserBet() {
-  // @@protoc_insertion_point(destructor:SetteMezzoUserBet)
+  // @@protoc_insertion_point(destructor:packet.SetteMezzoUserBet)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -24052,7 +24057,7 @@ void SetteMezzoUserBet::SetCachedSize(int size) const {
 }
 
 void SetteMezzoUserBet::Clear() {
-// @@protoc_insertion_point(message_clear_start:SetteMezzoUserBet)
+// @@protoc_insertion_point(message_clear_start:packet.SetteMezzoUserBet)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -24110,7 +24115,7 @@ failure:
 
 uint8_t* SetteMezzoUserBet::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:SetteMezzoUserBet)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.SetteMezzoUserBet)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -24130,12 +24135,12 @@ uint8_t* SetteMezzoUserBet::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:SetteMezzoUserBet)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.SetteMezzoUserBet)
   return target;
 }
 
 size_t SetteMezzoUserBet::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:SetteMezzoUserBet)
+// @@protoc_insertion_point(message_byte_size_start:packet.SetteMezzoUserBet)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -24169,7 +24174,7 @@ void SetteMezzoUserBet::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void SetteMezzoUserBet::MergeFrom(const SetteMezzoUserBet& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:SetteMezzoUserBet)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.SetteMezzoUserBet)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -24184,7 +24189,7 @@ void SetteMezzoUserBet::MergeFrom(const SetteMezzoUserBet& from) {
 }
 
 void SetteMezzoUserBet::CopyFrom(const SetteMezzoUserBet& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:SetteMezzoUserBet)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.SetteMezzoUserBet)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -24221,13 +24226,13 @@ ViewGame::ViewGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ViewGame)
+  // @@protoc_insertion_point(arena_constructor:packet.ViewGame)
 }
 ViewGame::ViewGame(const ViewGame& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   match_id_ = from.match_id_;
-  // @@protoc_insertion_point(copy_constructor:ViewGame)
+  // @@protoc_insertion_point(copy_constructor:packet.ViewGame)
 }
 
 inline void ViewGame::SharedCtor() {
@@ -24235,7 +24240,7 @@ match_id_ = 0;
 }
 
 ViewGame::~ViewGame() {
-  // @@protoc_insertion_point(destructor:ViewGame)
+  // @@protoc_insertion_point(destructor:packet.ViewGame)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -24252,7 +24257,7 @@ void ViewGame::SetCachedSize(int size) const {
 }
 
 void ViewGame::Clear() {
-// @@protoc_insertion_point(message_clear_start:ViewGame)
+// @@protoc_insertion_point(message_clear_start:packet.ViewGame)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -24300,7 +24305,7 @@ failure:
 
 uint8_t* ViewGame::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ViewGame)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ViewGame)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -24314,12 +24319,12 @@ uint8_t* ViewGame::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ViewGame)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ViewGame)
   return target;
 }
 
 size_t ViewGame::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ViewGame)
+// @@protoc_insertion_point(message_byte_size_start:packet.ViewGame)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -24348,7 +24353,7 @@ void ViewGame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ViewGame::MergeFrom(const ViewGame& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ViewGame)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ViewGame)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -24360,7 +24365,7 @@ void ViewGame::MergeFrom(const ViewGame& from) {
 }
 
 void ViewGame::CopyFrom(const ViewGame& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ViewGame)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ViewGame)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -24392,13 +24397,13 @@ UserStopView::UserStopView(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UserStopView)
+  // @@protoc_insertion_point(arena_constructor:packet.UserStopView)
 }
 UserStopView::UserStopView(const UserStopView& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   uid_ = from.uid_;
-  // @@protoc_insertion_point(copy_constructor:UserStopView)
+  // @@protoc_insertion_point(copy_constructor:packet.UserStopView)
 }
 
 inline void UserStopView::SharedCtor() {
@@ -24406,7 +24411,7 @@ uid_ = 0;
 }
 
 UserStopView::~UserStopView() {
-  // @@protoc_insertion_point(destructor:UserStopView)
+  // @@protoc_insertion_point(destructor:packet.UserStopView)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -24423,7 +24428,7 @@ void UserStopView::SetCachedSize(int size) const {
 }
 
 void UserStopView::Clear() {
-// @@protoc_insertion_point(message_clear_start:UserStopView)
+// @@protoc_insertion_point(message_clear_start:packet.UserStopView)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -24471,7 +24476,7 @@ failure:
 
 uint8_t* UserStopView::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UserStopView)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UserStopView)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -24485,12 +24490,12 @@ uint8_t* UserStopView::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UserStopView)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UserStopView)
   return target;
 }
 
 size_t UserStopView::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UserStopView)
+// @@protoc_insertion_point(message_byte_size_start:packet.UserStopView)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -24519,7 +24524,7 @@ void UserStopView::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UserStopView::MergeFrom(const UserStopView& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UserStopView)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UserStopView)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -24531,7 +24536,7 @@ void UserStopView::MergeFrom(const UserStopView& from) {
 }
 
 void UserStopView::CopyFrom(const UserStopView& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UserStopView)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UserStopView)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -24563,7 +24568,7 @@ NewUserView::NewUserView(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:NewUserView)
+  // @@protoc_insertion_point(arena_constructor:packet.NewUserView)
 }
 NewUserView::NewUserView(const NewUserView& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -24587,7 +24592,7 @@ NewUserView::NewUserView(const NewUserView& from)
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&avatar_frame_) -
     reinterpret_cast<char*>(&uid_)) + sizeof(avatar_frame_));
-  // @@protoc_insertion_point(copy_constructor:NewUserView)
+  // @@protoc_insertion_point(copy_constructor:packet.NewUserView)
 }
 
 inline void NewUserView::SharedCtor() {
@@ -24606,7 +24611,7 @@ name_.InitDefault();
 }
 
 NewUserView::~NewUserView() {
-  // @@protoc_insertion_point(destructor:NewUserView)
+  // @@protoc_insertion_point(destructor:packet.NewUserView)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -24625,7 +24630,7 @@ void NewUserView::SetCachedSize(int size) const {
 }
 
 void NewUserView::Clear() {
-// @@protoc_insertion_point(message_clear_start:NewUserView)
+// @@protoc_insertion_point(message_clear_start:packet.NewUserView)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -24658,7 +24663,7 @@ const char* NewUserView::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
           auto str = _internal_mutable_avatar();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "NewUserView.avatar"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.NewUserView.avatar"));
         } else
           goto handle_unusual;
         continue;
@@ -24668,7 +24673,7 @@ const char* NewUserView::_InternalParse(const char* ptr, ::_pbi::ParseContext* c
           auto str = _internal_mutable_name();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "NewUserView.name"));
+          CHK_(::_pbi::VerifyUTF8(str, "packet.NewUserView.name"));
         } else
           goto handle_unusual;
         continue;
@@ -24705,7 +24710,7 @@ failure:
 
 uint8_t* NewUserView::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:NewUserView)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.NewUserView)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -24720,7 +24725,7 @@ uint8_t* NewUserView::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_avatar().data(), static_cast<int>(this->_internal_avatar().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "NewUserView.avatar");
+      "packet.NewUserView.avatar");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_avatar(), target);
   }
@@ -24730,7 +24735,7 @@ uint8_t* NewUserView::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "NewUserView.name");
+      "packet.NewUserView.name");
     target = stream->WriteStringMaybeAliased(
         3, this->_internal_name(), target);
   }
@@ -24745,12 +24750,12 @@ uint8_t* NewUserView::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:NewUserView)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.NewUserView)
   return target;
 }
 
 size_t NewUserView::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:NewUserView)
+// @@protoc_insertion_point(message_byte_size_start:packet.NewUserView)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -24798,7 +24803,7 @@ void NewUserView::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void NewUserView::MergeFrom(const NewUserView& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:NewUserView)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.NewUserView)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -24819,7 +24824,7 @@ void NewUserView::MergeFrom(const NewUserView& from) {
 }
 
 void NewUserView::CopyFrom(const NewUserView& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:NewUserView)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.NewUserView)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -24866,13 +24871,13 @@ CheatExpUser::CheatExpUser(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:CheatExpUser)
+  // @@protoc_insertion_point(arena_constructor:packet.CheatExpUser)
 }
 CheatExpUser::CheatExpUser(const CheatExpUser& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   exp_ = from.exp_;
-  // @@protoc_insertion_point(copy_constructor:CheatExpUser)
+  // @@protoc_insertion_point(copy_constructor:packet.CheatExpUser)
 }
 
 inline void CheatExpUser::SharedCtor() {
@@ -24880,7 +24885,7 @@ exp_ = 0;
 }
 
 CheatExpUser::~CheatExpUser() {
-  // @@protoc_insertion_point(destructor:CheatExpUser)
+  // @@protoc_insertion_point(destructor:packet.CheatExpUser)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -24897,7 +24902,7 @@ void CheatExpUser::SetCachedSize(int size) const {
 }
 
 void CheatExpUser::Clear() {
-// @@protoc_insertion_point(message_clear_start:CheatExpUser)
+// @@protoc_insertion_point(message_clear_start:packet.CheatExpUser)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -24945,7 +24950,7 @@ failure:
 
 uint8_t* CheatExpUser::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:CheatExpUser)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.CheatExpUser)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -24959,12 +24964,12 @@ uint8_t* CheatExpUser::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CheatExpUser)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.CheatExpUser)
   return target;
 }
 
 size_t CheatExpUser::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CheatExpUser)
+// @@protoc_insertion_point(message_byte_size_start:packet.CheatExpUser)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -24993,7 +24998,7 @@ void CheatExpUser::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void CheatExpUser::MergeFrom(const CheatExpUser& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CheatExpUser)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.CheatExpUser)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -25005,7 +25010,7 @@ void CheatExpUser::MergeFrom(const CheatExpUser& from) {
 }
 
 void CheatExpUser::CopyFrom(const CheatExpUser& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CheatExpUser)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.CheatExpUser)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -25037,13 +25042,13 @@ UpdateExp::UpdateExp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UpdateExp)
+  // @@protoc_insertion_point(arena_constructor:packet.UpdateExp)
 }
 UpdateExp::UpdateExp(const UpdateExp& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   exp_ = from.exp_;
-  // @@protoc_insertion_point(copy_constructor:UpdateExp)
+  // @@protoc_insertion_point(copy_constructor:packet.UpdateExp)
 }
 
 inline void UpdateExp::SharedCtor() {
@@ -25051,7 +25056,7 @@ exp_ = int64_t{0};
 }
 
 UpdateExp::~UpdateExp() {
-  // @@protoc_insertion_point(destructor:UpdateExp)
+  // @@protoc_insertion_point(destructor:packet.UpdateExp)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -25068,7 +25073,7 @@ void UpdateExp::SetCachedSize(int size) const {
 }
 
 void UpdateExp::Clear() {
-// @@protoc_insertion_point(message_clear_start:UpdateExp)
+// @@protoc_insertion_point(message_clear_start:packet.UpdateExp)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -25116,7 +25121,7 @@ failure:
 
 uint8_t* UpdateExp::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UpdateExp)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UpdateExp)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -25130,12 +25135,12 @@ uint8_t* UpdateExp::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UpdateExp)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UpdateExp)
   return target;
 }
 
 size_t UpdateExp::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UpdateExp)
+// @@protoc_insertion_point(message_byte_size_start:packet.UpdateExp)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -25164,7 +25169,7 @@ void UpdateExp::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UpdateExp::MergeFrom(const UpdateExp& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UpdateExp)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UpdateExp)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -25176,7 +25181,7 @@ void UpdateExp::MergeFrom(const UpdateExp& from) {
 }
 
 void UpdateExp::CopyFrom(const UpdateExp& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UpdateExp)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UpdateExp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -25208,13 +25213,13 @@ ClaimRewardLevel::ClaimRewardLevel(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ClaimRewardLevel)
+  // @@protoc_insertion_point(arena_constructor:packet.ClaimRewardLevel)
 }
 ClaimRewardLevel::ClaimRewardLevel(const ClaimRewardLevel& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   level_ = from.level_;
-  // @@protoc_insertion_point(copy_constructor:ClaimRewardLevel)
+  // @@protoc_insertion_point(copy_constructor:packet.ClaimRewardLevel)
 }
 
 inline void ClaimRewardLevel::SharedCtor() {
@@ -25222,7 +25227,7 @@ level_ = 0;
 }
 
 ClaimRewardLevel::~ClaimRewardLevel() {
-  // @@protoc_insertion_point(destructor:ClaimRewardLevel)
+  // @@protoc_insertion_point(destructor:packet.ClaimRewardLevel)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -25239,7 +25244,7 @@ void ClaimRewardLevel::SetCachedSize(int size) const {
 }
 
 void ClaimRewardLevel::Clear() {
-// @@protoc_insertion_point(message_clear_start:ClaimRewardLevel)
+// @@protoc_insertion_point(message_clear_start:packet.ClaimRewardLevel)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -25287,7 +25292,7 @@ failure:
 
 uint8_t* ClaimRewardLevel::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ClaimRewardLevel)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ClaimRewardLevel)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -25301,12 +25306,12 @@ uint8_t* ClaimRewardLevel::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ClaimRewardLevel)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ClaimRewardLevel)
   return target;
 }
 
 size_t ClaimRewardLevel::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ClaimRewardLevel)
+// @@protoc_insertion_point(message_byte_size_start:packet.ClaimRewardLevel)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -25335,7 +25340,7 @@ void ClaimRewardLevel::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ClaimRewardLevel::MergeFrom(const ClaimRewardLevel& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ClaimRewardLevel)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ClaimRewardLevel)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -25347,7 +25352,7 @@ void ClaimRewardLevel::MergeFrom(const ClaimRewardLevel& from) {
 }
 
 void ClaimRewardLevel::CopyFrom(const ClaimRewardLevel& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ClaimRewardLevel)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ClaimRewardLevel)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -25380,20 +25385,20 @@ UserInventory::UserInventory(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   items_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UserInventory)
+  // @@protoc_insertion_point(arena_constructor:packet.UserInventory)
 }
 UserInventory::UserInventory(const UserInventory& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       items_(from.items_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:UserInventory)
+  // @@protoc_insertion_point(copy_constructor:packet.UserInventory)
 }
 
 inline void UserInventory::SharedCtor() {
 }
 
 UserInventory::~UserInventory() {
-  // @@protoc_insertion_point(destructor:UserInventory)
+  // @@protoc_insertion_point(destructor:packet.UserInventory)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -25410,7 +25415,7 @@ void UserInventory::SetCachedSize(int size) const {
 }
 
 void UserInventory::Clear() {
-// @@protoc_insertion_point(message_clear_start:UserInventory)
+// @@protoc_insertion_point(message_clear_start:packet.UserInventory)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -25425,7 +25430,7 @@ const char* UserInventory::_InternalParse(const char* ptr, ::_pbi::ParseContext*
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .InvetoryItem items = 1;
+      // repeated .packet.InvetoryItem items = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
@@ -25463,11 +25468,11 @@ failure:
 
 uint8_t* UserInventory::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UserInventory)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UserInventory)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .InvetoryItem items = 1;
+  // repeated .packet.InvetoryItem items = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
     const auto& repfield = this->_internal_items(i);
@@ -25479,19 +25484,19 @@ uint8_t* UserInventory::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UserInventory)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UserInventory)
   return target;
 }
 
 size_t UserInventory::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UserInventory)
+// @@protoc_insertion_point(message_byte_size_start:packet.UserInventory)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .InvetoryItem items = 1;
+  // repeated .packet.InvetoryItem items = 1;
   total_size += 1UL * this->_internal_items_size();
   for (const auto& msg : this->items_) {
     total_size +=
@@ -25515,7 +25520,7 @@ void UserInventory::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UserInventory::MergeFrom(const UserInventory& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UserInventory)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UserInventory)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -25525,7 +25530,7 @@ void UserInventory::MergeFrom(const UserInventory& from) {
 }
 
 void UserInventory::CopyFrom(const UserInventory& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UserInventory)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UserInventory)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -25557,7 +25562,7 @@ InvetoryItem::InvetoryItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:InvetoryItem)
+  // @@protoc_insertion_point(arena_constructor:packet.InvetoryItem)
 }
 InvetoryItem::InvetoryItem(const InvetoryItem& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -25565,7 +25570,7 @@ InvetoryItem::InvetoryItem(const InvetoryItem& from)
   ::memcpy(&item_id_, &from.item_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&value_) -
     reinterpret_cast<char*>(&item_id_)) + sizeof(value_));
-  // @@protoc_insertion_point(copy_constructor:InvetoryItem)
+  // @@protoc_insertion_point(copy_constructor:packet.InvetoryItem)
 }
 
 inline void InvetoryItem::SharedCtor() {
@@ -25576,7 +25581,7 @@ inline void InvetoryItem::SharedCtor() {
 }
 
 InvetoryItem::~InvetoryItem() {
-  // @@protoc_insertion_point(destructor:InvetoryItem)
+  // @@protoc_insertion_point(destructor:packet.InvetoryItem)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -25593,7 +25598,7 @@ void InvetoryItem::SetCachedSize(int size) const {
 }
 
 void InvetoryItem::Clear() {
-// @@protoc_insertion_point(message_clear_start:InvetoryItem)
+// @@protoc_insertion_point(message_clear_start:packet.InvetoryItem)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -25659,7 +25664,7 @@ failure:
 
 uint8_t* InvetoryItem::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:InvetoryItem)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.InvetoryItem)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -25685,12 +25690,12 @@ uint8_t* InvetoryItem::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:InvetoryItem)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.InvetoryItem)
   return target;
 }
 
 size_t InvetoryItem::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:InvetoryItem)
+// @@protoc_insertion_point(message_byte_size_start:packet.InvetoryItem)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -25729,7 +25734,7 @@ void InvetoryItem::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void InvetoryItem::MergeFrom(const InvetoryItem& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:InvetoryItem)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.InvetoryItem)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -25747,7 +25752,7 @@ void InvetoryItem::MergeFrom(const InvetoryItem& from) {
 }
 
 void InvetoryItem::CopyFrom(const InvetoryItem& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:InvetoryItem)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.InvetoryItem)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -25784,13 +25789,13 @@ UseItem::UseItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:UseItem)
+  // @@protoc_insertion_point(arena_constructor:packet.UseItem)
 }
 UseItem::UseItem(const UseItem& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   item_id_ = from.item_id_;
-  // @@protoc_insertion_point(copy_constructor:UseItem)
+  // @@protoc_insertion_point(copy_constructor:packet.UseItem)
 }
 
 inline void UseItem::SharedCtor() {
@@ -25798,7 +25803,7 @@ item_id_ = 0;
 }
 
 UseItem::~UseItem() {
-  // @@protoc_insertion_point(destructor:UseItem)
+  // @@protoc_insertion_point(destructor:packet.UseItem)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -25815,7 +25820,7 @@ void UseItem::SetCachedSize(int size) const {
 }
 
 void UseItem::Clear() {
-// @@protoc_insertion_point(message_clear_start:UseItem)
+// @@protoc_insertion_point(message_clear_start:packet.UseItem)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -25863,7 +25868,7 @@ failure:
 
 uint8_t* UseItem::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:UseItem)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.UseItem)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -25877,12 +25882,12 @@ uint8_t* UseItem::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:UseItem)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.UseItem)
   return target;
 }
 
 size_t UseItem::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:UseItem)
+// @@protoc_insertion_point(message_byte_size_start:packet.UseItem)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -25911,7 +25916,7 @@ void UseItem::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void UseItem::MergeFrom(const UseItem& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:UseItem)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.UseItem)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -25923,7 +25928,7 @@ void UseItem::MergeFrom(const UseItem& from) {
 }
 
 void UseItem::CopyFrom(const UseItem& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:UseItem)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.UseItem)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -25955,7 +25960,7 @@ CheatItem::CheatItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:CheatItem)
+  // @@protoc_insertion_point(arena_constructor:packet.CheatItem)
 }
 CheatItem::CheatItem(const CheatItem& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -25963,7 +25968,7 @@ CheatItem::CheatItem(const CheatItem& from)
   ::memcpy(&item_id_, &from.item_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&duration_) -
     reinterpret_cast<char*>(&item_id_)) + sizeof(duration_));
-  // @@protoc_insertion_point(copy_constructor:CheatItem)
+  // @@protoc_insertion_point(copy_constructor:packet.CheatItem)
 }
 
 inline void CheatItem::SharedCtor() {
@@ -25974,7 +25979,7 @@ inline void CheatItem::SharedCtor() {
 }
 
 CheatItem::~CheatItem() {
-  // @@protoc_insertion_point(destructor:CheatItem)
+  // @@protoc_insertion_point(destructor:packet.CheatItem)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -25991,7 +25996,7 @@ void CheatItem::SetCachedSize(int size) const {
 }
 
 void CheatItem::Clear() {
-// @@protoc_insertion_point(message_clear_start:CheatItem)
+// @@protoc_insertion_point(message_clear_start:packet.CheatItem)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -26049,7 +26054,7 @@ failure:
 
 uint8_t* CheatItem::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:CheatItem)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.CheatItem)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -26069,12 +26074,12 @@ uint8_t* CheatItem::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:CheatItem)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.CheatItem)
   return target;
 }
 
 size_t CheatItem::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:CheatItem)
+// @@protoc_insertion_point(message_byte_size_start:packet.CheatItem)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -26108,7 +26113,7 @@ void CheatItem::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void CheatItem::MergeFrom(const CheatItem& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CheatItem)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.CheatItem)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -26123,7 +26128,7 @@ void CheatItem::MergeFrom(const CheatItem& from) {
 }
 
 void CheatItem::CopyFrom(const CheatItem& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:CheatItem)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.CheatItem)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -26160,7 +26165,7 @@ BuyItem::BuyItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:BuyItem)
+  // @@protoc_insertion_point(arena_constructor:packet.BuyItem)
 }
 BuyItem::BuyItem(const BuyItem& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -26168,7 +26173,7 @@ BuyItem::BuyItem(const BuyItem& from)
   ::memcpy(&item_id_, &from.item_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&pack_id_) -
     reinterpret_cast<char*>(&item_id_)) + sizeof(pack_id_));
-  // @@protoc_insertion_point(copy_constructor:BuyItem)
+  // @@protoc_insertion_point(copy_constructor:packet.BuyItem)
 }
 
 inline void BuyItem::SharedCtor() {
@@ -26179,7 +26184,7 @@ inline void BuyItem::SharedCtor() {
 }
 
 BuyItem::~BuyItem() {
-  // @@protoc_insertion_point(destructor:BuyItem)
+  // @@protoc_insertion_point(destructor:packet.BuyItem)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -26196,7 +26201,7 @@ void BuyItem::SetCachedSize(int size) const {
 }
 
 void BuyItem::Clear() {
-// @@protoc_insertion_point(message_clear_start:BuyItem)
+// @@protoc_insertion_point(message_clear_start:packet.BuyItem)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -26254,7 +26259,7 @@ failure:
 
 uint8_t* BuyItem::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:BuyItem)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.BuyItem)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -26274,12 +26279,12 @@ uint8_t* BuyItem::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:BuyItem)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.BuyItem)
   return target;
 }
 
 size_t BuyItem::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:BuyItem)
+// @@protoc_insertion_point(message_byte_size_start:packet.BuyItem)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -26313,7 +26318,7 @@ void BuyItem::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void BuyItem::MergeFrom(const BuyItem& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:BuyItem)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.BuyItem)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -26328,7 +26333,7 @@ void BuyItem::MergeFrom(const BuyItem& from) {
 }
 
 void BuyItem::CopyFrom(const BuyItem& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:BuyItem)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.BuyItem)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -26366,20 +26371,20 @@ InventoryShopConfig::InventoryShopConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   items_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:InventoryShopConfig)
+  // @@protoc_insertion_point(arena_constructor:packet.InventoryShopConfig)
 }
 InventoryShopConfig::InventoryShopConfig(const InventoryShopConfig& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       items_(from.items_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:InventoryShopConfig)
+  // @@protoc_insertion_point(copy_constructor:packet.InventoryShopConfig)
 }
 
 inline void InventoryShopConfig::SharedCtor() {
 }
 
 InventoryShopConfig::~InventoryShopConfig() {
-  // @@protoc_insertion_point(destructor:InventoryShopConfig)
+  // @@protoc_insertion_point(destructor:packet.InventoryShopConfig)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -26396,7 +26401,7 @@ void InventoryShopConfig::SetCachedSize(int size) const {
 }
 
 void InventoryShopConfig::Clear() {
-// @@protoc_insertion_point(message_clear_start:InventoryShopConfig)
+// @@protoc_insertion_point(message_clear_start:packet.InventoryShopConfig)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -26411,7 +26416,7 @@ const char* InventoryShopConfig::_InternalParse(const char* ptr, ::_pbi::ParseCo
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .InventoryShopItem items = 1;
+      // repeated .packet.InventoryShopItem items = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
@@ -26449,11 +26454,11 @@ failure:
 
 uint8_t* InventoryShopConfig::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:InventoryShopConfig)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.InventoryShopConfig)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .InventoryShopItem items = 1;
+  // repeated .packet.InventoryShopItem items = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
     const auto& repfield = this->_internal_items(i);
@@ -26465,19 +26470,19 @@ uint8_t* InventoryShopConfig::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:InventoryShopConfig)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.InventoryShopConfig)
   return target;
 }
 
 size_t InventoryShopConfig::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:InventoryShopConfig)
+// @@protoc_insertion_point(message_byte_size_start:packet.InventoryShopConfig)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .InventoryShopItem items = 1;
+  // repeated .packet.InventoryShopItem items = 1;
   total_size += 1UL * this->_internal_items_size();
   for (const auto& msg : this->items_) {
     total_size +=
@@ -26501,7 +26506,7 @@ void InventoryShopConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void InventoryShopConfig::MergeFrom(const InventoryShopConfig& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:InventoryShopConfig)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.InventoryShopConfig)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -26511,7 +26516,7 @@ void InventoryShopConfig::MergeFrom(const InventoryShopConfig& from) {
 }
 
 void InventoryShopConfig::CopyFrom(const InventoryShopConfig& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:InventoryShopConfig)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.InventoryShopConfig)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -26544,14 +26549,14 @@ InventoryShopItem::InventoryShopItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   packs_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:InventoryShopItem)
+  // @@protoc_insertion_point(arena_constructor:packet.InventoryShopItem)
 }
 InventoryShopItem::InventoryShopItem(const InventoryShopItem& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       packs_(from.packs_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   item_id_ = from.item_id_;
-  // @@protoc_insertion_point(copy_constructor:InventoryShopItem)
+  // @@protoc_insertion_point(copy_constructor:packet.InventoryShopItem)
 }
 
 inline void InventoryShopItem::SharedCtor() {
@@ -26559,7 +26564,7 @@ item_id_ = 0;
 }
 
 InventoryShopItem::~InventoryShopItem() {
-  // @@protoc_insertion_point(destructor:InventoryShopItem)
+  // @@protoc_insertion_point(destructor:packet.InventoryShopItem)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -26576,7 +26581,7 @@ void InventoryShopItem::SetCachedSize(int size) const {
 }
 
 void InventoryShopItem::Clear() {
-// @@protoc_insertion_point(message_clear_start:InventoryShopItem)
+// @@protoc_insertion_point(message_clear_start:packet.InventoryShopItem)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -26600,7 +26605,7 @@ const char* InventoryShopItem::_InternalParse(const char* ptr, ::_pbi::ParseCont
         } else
           goto handle_unusual;
         continue;
-      // repeated .InvetoryShopPack packs = 2;
+      // repeated .packet.InvetoryShopPack packs = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr -= 1;
@@ -26638,7 +26643,7 @@ failure:
 
 uint8_t* InventoryShopItem::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:InventoryShopItem)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.InventoryShopItem)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -26648,7 +26653,7 @@ uint8_t* InventoryShopItem::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_item_id(), target);
   }
 
-  // repeated .InvetoryShopPack packs = 2;
+  // repeated .packet.InvetoryShopPack packs = 2;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_packs_size()); i < n; i++) {
     const auto& repfield = this->_internal_packs(i);
@@ -26660,19 +26665,19 @@ uint8_t* InventoryShopItem::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:InventoryShopItem)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.InventoryShopItem)
   return target;
 }
 
 size_t InventoryShopItem::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:InventoryShopItem)
+// @@protoc_insertion_point(message_byte_size_start:packet.InventoryShopItem)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .InvetoryShopPack packs = 2;
+  // repeated .packet.InvetoryShopPack packs = 2;
   total_size += 1UL * this->_internal_packs_size();
   for (const auto& msg : this->packs_) {
     total_size +=
@@ -26701,7 +26706,7 @@ void InventoryShopItem::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void InventoryShopItem::MergeFrom(const InventoryShopItem& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:InventoryShopItem)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.InventoryShopItem)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -26714,7 +26719,7 @@ void InventoryShopItem::MergeFrom(const InventoryShopItem& from) {
 }
 
 void InventoryShopItem::CopyFrom(const InventoryShopItem& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:InventoryShopItem)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.InventoryShopItem)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -26747,7 +26752,7 @@ InvetoryShopPack::InvetoryShopPack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:InvetoryShopPack)
+  // @@protoc_insertion_point(arena_constructor:packet.InvetoryShopPack)
 }
 InvetoryShopPack::InvetoryShopPack(const InvetoryShopPack& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -26755,7 +26760,7 @@ InvetoryShopPack::InvetoryShopPack(const InvetoryShopPack& from)
   ::memcpy(&id_, &from.id_,
     static_cast<size_t>(reinterpret_cast<char*>(&duration_) -
     reinterpret_cast<char*>(&id_)) + sizeof(duration_));
-  // @@protoc_insertion_point(copy_constructor:InvetoryShopPack)
+  // @@protoc_insertion_point(copy_constructor:packet.InvetoryShopPack)
 }
 
 inline void InvetoryShopPack::SharedCtor() {
@@ -26766,7 +26771,7 @@ inline void InvetoryShopPack::SharedCtor() {
 }
 
 InvetoryShopPack::~InvetoryShopPack() {
-  // @@protoc_insertion_point(destructor:InvetoryShopPack)
+  // @@protoc_insertion_point(destructor:packet.InvetoryShopPack)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -26783,7 +26788,7 @@ void InvetoryShopPack::SetCachedSize(int size) const {
 }
 
 void InvetoryShopPack::Clear() {
-// @@protoc_insertion_point(message_clear_start:InvetoryShopPack)
+// @@protoc_insertion_point(message_clear_start:packet.InvetoryShopPack)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -26849,7 +26854,7 @@ failure:
 
 uint8_t* InvetoryShopPack::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:InvetoryShopPack)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.InvetoryShopPack)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -26875,12 +26880,12 @@ uint8_t* InvetoryShopPack::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:InvetoryShopPack)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.InvetoryShopPack)
   return target;
 }
 
 size_t InvetoryShopPack::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:InvetoryShopPack)
+// @@protoc_insertion_point(message_byte_size_start:packet.InvetoryShopPack)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -26919,7 +26924,7 @@ void InvetoryShopPack::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void InvetoryShopPack::MergeFrom(const InvetoryShopPack& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:InvetoryShopPack)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.InvetoryShopPack)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -26937,7 +26942,7 @@ void InvetoryShopPack::MergeFrom(const InvetoryShopPack& from) {
 }
 
 void InvetoryShopPack::CopyFrom(const InvetoryShopPack& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:InvetoryShopPack)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.InvetoryShopPack)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -26975,7 +26980,7 @@ ClaimRewardLevelResponse::ClaimRewardLevelResponse(::PROTOBUF_NAMESPACE_ID::Aren
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   items_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:ClaimRewardLevelResponse)
+  // @@protoc_insertion_point(arena_constructor:packet.ClaimRewardLevelResponse)
 }
 ClaimRewardLevelResponse::ClaimRewardLevelResponse(const ClaimRewardLevelResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -26984,7 +26989,7 @@ ClaimRewardLevelResponse::ClaimRewardLevelResponse(const ClaimRewardLevelRespons
   ::memcpy(&level_, &from.level_,
     static_cast<size_t>(reinterpret_cast<char*>(&gold_) -
     reinterpret_cast<char*>(&level_)) + sizeof(gold_));
-  // @@protoc_insertion_point(copy_constructor:ClaimRewardLevelResponse)
+  // @@protoc_insertion_point(copy_constructor:packet.ClaimRewardLevelResponse)
 }
 
 inline void ClaimRewardLevelResponse::SharedCtor() {
@@ -26995,7 +27000,7 @@ inline void ClaimRewardLevelResponse::SharedCtor() {
 }
 
 ClaimRewardLevelResponse::~ClaimRewardLevelResponse() {
-  // @@protoc_insertion_point(destructor:ClaimRewardLevelResponse)
+  // @@protoc_insertion_point(destructor:packet.ClaimRewardLevelResponse)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -27012,7 +27017,7 @@ void ClaimRewardLevelResponse::SetCachedSize(int size) const {
 }
 
 void ClaimRewardLevelResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:ClaimRewardLevelResponse)
+// @@protoc_insertion_point(message_clear_start:packet.ClaimRewardLevelResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -27046,7 +27051,7 @@ const char* ClaimRewardLevelResponse::_InternalParse(const char* ptr, ::_pbi::Pa
         } else
           goto handle_unusual;
         continue;
-      // repeated .RewardInventoryItem items = 3;
+      // repeated .packet.RewardInventoryItem items = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr -= 1;
@@ -27084,7 +27089,7 @@ failure:
 
 uint8_t* ClaimRewardLevelResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:ClaimRewardLevelResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ClaimRewardLevelResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -27100,7 +27105,7 @@ uint8_t* ClaimRewardLevelResponse::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_gold(), target);
   }
 
-  // repeated .RewardInventoryItem items = 3;
+  // repeated .packet.RewardInventoryItem items = 3;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
     const auto& repfield = this->_internal_items(i);
@@ -27112,19 +27117,19 @@ uint8_t* ClaimRewardLevelResponse::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ClaimRewardLevelResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ClaimRewardLevelResponse)
   return target;
 }
 
 size_t ClaimRewardLevelResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ClaimRewardLevelResponse)
+// @@protoc_insertion_point(message_byte_size_start:packet.ClaimRewardLevelResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .RewardInventoryItem items = 3;
+  // repeated .packet.RewardInventoryItem items = 3;
   total_size += 1UL * this->_internal_items_size();
   for (const auto& msg : this->items_) {
     total_size +=
@@ -27158,7 +27163,7 @@ void ClaimRewardLevelResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void ClaimRewardLevelResponse::MergeFrom(const ClaimRewardLevelResponse& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ClaimRewardLevelResponse)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ClaimRewardLevelResponse)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -27174,7 +27179,7 @@ void ClaimRewardLevelResponse::MergeFrom(const ClaimRewardLevelResponse& from) {
 }
 
 void ClaimRewardLevelResponse::CopyFrom(const ClaimRewardLevelResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ClaimRewardLevelResponse)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ClaimRewardLevelResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -27212,7 +27217,7 @@ RewardInventoryItem::RewardInventoryItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:RewardInventoryItem)
+  // @@protoc_insertion_point(arena_constructor:packet.RewardInventoryItem)
 }
 RewardInventoryItem::RewardInventoryItem(const RewardInventoryItem& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
@@ -27220,7 +27225,7 @@ RewardInventoryItem::RewardInventoryItem(const RewardInventoryItem& from)
   ::memcpy(&item_id_, &from.item_id_,
     static_cast<size_t>(reinterpret_cast<char*>(&value_) -
     reinterpret_cast<char*>(&item_id_)) + sizeof(value_));
-  // @@protoc_insertion_point(copy_constructor:RewardInventoryItem)
+  // @@protoc_insertion_point(copy_constructor:packet.RewardInventoryItem)
 }
 
 inline void RewardInventoryItem::SharedCtor() {
@@ -27231,7 +27236,7 @@ inline void RewardInventoryItem::SharedCtor() {
 }
 
 RewardInventoryItem::~RewardInventoryItem() {
-  // @@protoc_insertion_point(destructor:RewardInventoryItem)
+  // @@protoc_insertion_point(destructor:packet.RewardInventoryItem)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -27248,7 +27253,7 @@ void RewardInventoryItem::SetCachedSize(int size) const {
 }
 
 void RewardInventoryItem::Clear() {
-// @@protoc_insertion_point(message_clear_start:RewardInventoryItem)
+// @@protoc_insertion_point(message_clear_start:packet.RewardInventoryItem)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -27314,7 +27319,7 @@ failure:
 
 uint8_t* RewardInventoryItem::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:RewardInventoryItem)
+  // @@protoc_insertion_point(serialize_to_array_start:packet.RewardInventoryItem)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -27340,12 +27345,12 @@ uint8_t* RewardInventoryItem::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:RewardInventoryItem)
+  // @@protoc_insertion_point(serialize_to_array_end:packet.RewardInventoryItem)
   return target;
 }
 
 size_t RewardInventoryItem::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:RewardInventoryItem)
+// @@protoc_insertion_point(message_byte_size_start:packet.RewardInventoryItem)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -27384,7 +27389,7 @@ void RewardInventoryItem::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void RewardInventoryItem::MergeFrom(const RewardInventoryItem& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:RewardInventoryItem)
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.RewardInventoryItem)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -27402,7 +27407,7 @@ void RewardInventoryItem::MergeFrom(const RewardInventoryItem& from) {
 }
 
 void RewardInventoryItem::CopyFrom(const RewardInventoryItem& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:RewardInventoryItem)
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.RewardInventoryItem)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -27430,394 +27435,395 @@ void RewardInventoryItem::InternalSwap(RewardInventoryItem* other) {
 }
 
 // @@protoc_insertion_point(namespace_scope)
+}  // namespace packet
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::Empty*
-Arena::CreateMaybeMessage< ::Empty >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Empty >(arena);
-}
-template<> PROTOBUF_NOINLINE ::Packet*
-Arena::CreateMaybeMessage< ::Packet >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Packet >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ChatMessage*
-Arena::CreateMaybeMessage< ::ChatMessage >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ChatMessage >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PingPong*
-Arena::CreateMaybeMessage< ::PingPong >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PingPong >(arena);
-}
-template<> PROTOBUF_NOINLINE ::Login*
-Arena::CreateMaybeMessage< ::Login >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Login >(arena);
-}
-template<> PROTOBUF_NOINLINE ::LoginFirebase*
-Arena::CreateMaybeMessage< ::LoginFirebase >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::LoginFirebase >(arena);
-}
-template<> PROTOBUF_NOINLINE ::Logout*
-Arena::CreateMaybeMessage< ::Logout >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::Logout >(arena);
-}
-template<> PROTOBUF_NOINLINE ::LoginResponse*
-Arena::CreateMaybeMessage< ::LoginResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::LoginResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UserInfo*
-Arena::CreateMaybeMessage< ::UserInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UserInfo >(arena);
-}
-template<> PROTOBUF_NOINLINE ::GameInfo*
-Arena::CreateMaybeMessage< ::GameInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::GameInfo >(arena);
-}
-template<> PROTOBUF_NOINLINE ::RegisterLeaveGame*
-Arena::CreateMaybeMessage< ::RegisterLeaveGame >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::RegisterLeaveGame >(arena);
-}
-template<> PROTOBUF_NOINLINE ::NewUserJoinMatch*
-Arena::CreateMaybeMessage< ::NewUserJoinMatch >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::NewUserJoinMatch >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UserLeaveMatch*
-Arena::CreateMaybeMessage< ::UserLeaveMatch >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UserLeaveMatch >(arena);
-}
-template<> PROTOBUF_NOINLINE ::DealCard*
-Arena::CreateMaybeMessage< ::DealCard >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::DealCard >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PlayCard*
-Arena::CreateMaybeMessage< ::PlayCard >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PlayCard >(arena);
-}
-template<> PROTOBUF_NOINLINE ::StartGame*
-Arena::CreateMaybeMessage< ::StartGame >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::StartGame >(arena);
-}
-template<> PROTOBUF_NOINLINE ::NewHand*
-Arena::CreateMaybeMessage< ::NewHand >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::NewHand >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UpdateGamePoint*
-Arena::CreateMaybeMessage< ::UpdateGamePoint >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UpdateGamePoint >(arena);
-}
-template<> PROTOBUF_NOINLINE ::EndHand*
-Arena::CreateMaybeMessage< ::EndHand >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::EndHand >(arena);
-}
-template<> PROTOBUF_NOINLINE ::DrawCard*
-Arena::CreateMaybeMessage< ::DrawCard >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::DrawCard >(arena);
-}
-template<> PROTOBUF_NOINLINE ::GeneralInfo*
-Arena::CreateMaybeMessage< ::GeneralInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::GeneralInfo >(arena);
-}
-template<> PROTOBUF_NOINLINE ::LevelReward*
-Arena::CreateMaybeMessage< ::LevelReward >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::LevelReward >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ItemReward*
-Arena::CreateMaybeMessage< ::ItemReward >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ItemReward >(arena);
-}
-template<> PROTOBUF_NOINLINE ::EndGame*
-Arena::CreateMaybeMessage< ::EndGame >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::EndGame >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PrepareStartGame*
-Arena::CreateMaybeMessage< ::PrepareStartGame >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PrepareStartGame >(arena);
-}
-template<> PROTOBUF_NOINLINE ::InGameChatMessage*
-Arena::CreateMaybeMessage< ::InGameChatMessage >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::InGameChatMessage >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PaymentGoogleConsume*
-Arena::CreateMaybeMessage< ::PaymentGoogleConsume >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PaymentGoogleConsume >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PaymentSuccess*
-Arena::CreateMaybeMessage< ::PaymentSuccess >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PaymentSuccess >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UpdateMoney*
-Arena::CreateMaybeMessage< ::UpdateMoney >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UpdateMoney >(arena);
-}
-template<> PROTOBUF_NOINLINE ::TableList*
-Arena::CreateMaybeMessage< ::TableList >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::TableList >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ShopConfig*
-Arena::CreateMaybeMessage< ::ShopConfig >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ShopConfig >(arena);
-}
-template<> PROTOBUF_NOINLINE ::DetailShopPack*
-Arena::CreateMaybeMessage< ::DetailShopPack >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::DetailShopPack >(arena);
-}
-template<> PROTOBUF_NOINLINE ::GuestAccount*
-Arena::CreateMaybeMessage< ::GuestAccount >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::GuestAccount >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ChangeAvatar*
-Arena::CreateMaybeMessage< ::ChangeAvatar >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ChangeAvatar >(arena);
-}
-template<> PROTOBUF_NOINLINE ::InGameChatEmoticon*
-Arena::CreateMaybeMessage< ::InGameChatEmoticon >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::InGameChatEmoticon >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SearchFriend*
-Arena::CreateMaybeMessage< ::SearchFriend >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SearchFriend >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SearchFriendResponse*
-Arena::CreateMaybeMessage< ::SearchFriendResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SearchFriendResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::CheatGoldUser*
-Arena::CreateMaybeMessage< ::CheatGoldUser >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::CheatGoldUser >(arena);
-}
-template<> PROTOBUF_NOINLINE ::FriendList*
-Arena::CreateMaybeMessage< ::FriendList >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::FriendList >(arena);
-}
-template<> PROTOBUF_NOINLINE ::FriendRequests*
-Arena::CreateMaybeMessage< ::FriendRequests >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::FriendRequests >(arena);
-}
-template<> PROTOBUF_NOINLINE ::AddFriend*
-Arena::CreateMaybeMessage< ::AddFriend >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::AddFriend >(arena);
-}
-template<> PROTOBUF_NOINLINE ::RequestFriendAccept*
-Arena::CreateMaybeMessage< ::RequestFriendAccept >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::RequestFriendAccept >(arena);
-}
-template<> PROTOBUF_NOINLINE ::RemoveFriend*
-Arena::CreateMaybeMessage< ::RemoveFriend >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::RemoveFriend >(arena);
-}
-template<> PROTOBUF_NOINLINE ::NewFriendRequest*
-Arena::CreateMaybeMessage< ::NewFriendRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::NewFriendRequest >(arena);
-}
-template<> PROTOBUF_NOINLINE ::FriendRequestAccepted*
-Arena::CreateMaybeMessage< ::FriendRequestAccepted >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::FriendRequestAccepted >(arena);
-}
-template<> PROTOBUF_NOINLINE ::RecommendFriends*
-Arena::CreateMaybeMessage< ::RecommendFriends >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::RecommendFriends >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PaymentAppleConsume*
-Arena::CreateMaybeMessage< ::PaymentAppleConsume >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PaymentAppleConsume >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PaymentFinishedAppleTransaction*
-Arena::CreateMaybeMessage< ::PaymentFinishedAppleTransaction >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PaymentFinishedAppleTransaction >(arena);
-}
-template<> PROTOBUF_NOINLINE ::NewRound*
-Arena::CreateMaybeMessage< ::NewRound >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::NewRound >(arena);
-}
-template<> PROTOBUF_NOINLINE ::CreateTable*
-Arena::CreateMaybeMessage< ::CreateTable >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::CreateTable >(arena);
-}
-template<> PROTOBUF_NOINLINE ::JoinTableById*
-Arena::CreateMaybeMessage< ::JoinTableById >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::JoinTableById >(arena);
-}
-template<> PROTOBUF_NOINLINE ::JoinTableResponse*
-Arena::CreateMaybeMessage< ::JoinTableResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::JoinTableResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ClaimSupport*
-Arena::CreateMaybeMessage< ::ClaimSupport >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ClaimSupport >(arena);
-}
-template<> PROTOBUF_NOINLINE ::AppCodeVersion*
-Arena::CreateMaybeMessage< ::AppCodeVersion >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::AppCodeVersion >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PlayCardResponse*
-Arena::CreateMaybeMessage< ::PlayCardResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PlayCardResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::CheatViewCardBot*
-Arena::CreateMaybeMessage< ::CheatViewCardBot >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::CheatViewCardBot >(arena);
-}
-template<> PROTOBUF_NOINLINE ::InviteFriendPlay*
-Arena::CreateMaybeMessage< ::InviteFriendPlay >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::InviteFriendPlay >(arena);
-}
-template<> PROTOBUF_NOINLINE ::GameActionNapoli*
-Arena::CreateMaybeMessage< ::GameActionNapoli >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::GameActionNapoli >(arena);
-}
-template<> PROTOBUF_NOINLINE ::CustomerServiceReport*
-Arena::CreateMaybeMessage< ::CustomerServiceReport >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::CustomerServiceReport >(arena);
-}
-template<> PROTOBUF_NOINLINE ::AdminBroadcast*
-Arena::CreateMaybeMessage< ::AdminBroadcast >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::AdminBroadcast >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PaymentPaypalRequestOrder*
-Arena::CreateMaybeMessage< ::PaymentPaypalRequestOrder >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PaymentPaypalRequestOrder >(arena);
-}
-template<> PROTOBUF_NOINLINE ::PaymentPaypalOrder*
-Arena::CreateMaybeMessage< ::PaymentPaypalOrder >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::PaymentPaypalOrder >(arena);
-}
-template<> PROTOBUF_NOINLINE ::QuickPlay*
-Arena::CreateMaybeMessage< ::QuickPlay >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::QuickPlay >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoNewUserJoinMatch*
-Arena::CreateMaybeMessage< ::SetteMezzoNewUserJoinMatch >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoNewUserJoinMatch >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoPrepareStartGame*
-Arena::CreateMaybeMessage< ::SetteMezzoPrepareStartGame >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoPrepareStartGame >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoGameInfo*
-Arena::CreateMaybeMessage< ::SetteMezzoGameInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoGameInfo >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoPlayerInfo*
-Arena::CreateMaybeMessage< ::SetteMezzoPlayerInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoPlayerInfo >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoQuickPlay*
-Arena::CreateMaybeMessage< ::SetteMezzoQuickPlay >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoQuickPlay >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoStartGame*
-Arena::CreateMaybeMessage< ::SetteMezzoStartGame >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoStartGame >(arena);
-}
-template<> PROTOBUF_NOINLINE ::RankingInfo*
-Arena::CreateMaybeMessage< ::RankingInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::RankingInfo >(arena);
-}
-template<> PROTOBUF_NOINLINE ::RankingResult*
-Arena::CreateMaybeMessage< ::RankingResult >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::RankingResult >(arena);
-}
-template<> PROTOBUF_NOINLINE ::RankingClaimReward*
-Arena::CreateMaybeMessage< ::RankingClaimReward >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::RankingClaimReward >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UpdateAds*
-Arena::CreateMaybeMessage< ::UpdateAds >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UpdateAds >(arena);
-}
-template<> PROTOBUF_NOINLINE ::AdsReward*
-Arena::CreateMaybeMessage< ::AdsReward >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::AdsReward >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ChangeUserName*
-Arena::CreateMaybeMessage< ::ChangeUserName >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ChangeUserName >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoActionHit*
-Arena::CreateMaybeMessage< ::SetteMezzoActionHit >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoActionHit >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoUpdateTurn*
-Arena::CreateMaybeMessage< ::SetteMezzoUpdateTurn >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoUpdateTurn >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoActionStand*
-Arena::CreateMaybeMessage< ::SetteMezzoActionStand >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoActionStand >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoEndGame*
-Arena::CreateMaybeMessage< ::SetteMezzoEndGame >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoEndGame >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoShowBankerCard*
-Arena::CreateMaybeMessage< ::SetteMezzoShowBankerCard >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoShowBankerCard >(arena);
-}
-template<> PROTOBUF_NOINLINE ::SetteMezzoUserBet*
-Arena::CreateMaybeMessage< ::SetteMezzoUserBet >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::SetteMezzoUserBet >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ViewGame*
-Arena::CreateMaybeMessage< ::ViewGame >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ViewGame >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UserStopView*
-Arena::CreateMaybeMessage< ::UserStopView >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UserStopView >(arena);
-}
-template<> PROTOBUF_NOINLINE ::NewUserView*
-Arena::CreateMaybeMessage< ::NewUserView >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::NewUserView >(arena);
-}
-template<> PROTOBUF_NOINLINE ::CheatExpUser*
-Arena::CreateMaybeMessage< ::CheatExpUser >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::CheatExpUser >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UpdateExp*
-Arena::CreateMaybeMessage< ::UpdateExp >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UpdateExp >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ClaimRewardLevel*
-Arena::CreateMaybeMessage< ::ClaimRewardLevel >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ClaimRewardLevel >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UserInventory*
-Arena::CreateMaybeMessage< ::UserInventory >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UserInventory >(arena);
-}
-template<> PROTOBUF_NOINLINE ::InvetoryItem*
-Arena::CreateMaybeMessage< ::InvetoryItem >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::InvetoryItem >(arena);
-}
-template<> PROTOBUF_NOINLINE ::UseItem*
-Arena::CreateMaybeMessage< ::UseItem >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::UseItem >(arena);
-}
-template<> PROTOBUF_NOINLINE ::CheatItem*
-Arena::CreateMaybeMessage< ::CheatItem >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::CheatItem >(arena);
-}
-template<> PROTOBUF_NOINLINE ::BuyItem*
-Arena::CreateMaybeMessage< ::BuyItem >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::BuyItem >(arena);
-}
-template<> PROTOBUF_NOINLINE ::InventoryShopConfig*
-Arena::CreateMaybeMessage< ::InventoryShopConfig >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::InventoryShopConfig >(arena);
-}
-template<> PROTOBUF_NOINLINE ::InventoryShopItem*
-Arena::CreateMaybeMessage< ::InventoryShopItem >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::InventoryShopItem >(arena);
-}
-template<> PROTOBUF_NOINLINE ::InvetoryShopPack*
-Arena::CreateMaybeMessage< ::InvetoryShopPack >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::InvetoryShopPack >(arena);
-}
-template<> PROTOBUF_NOINLINE ::ClaimRewardLevelResponse*
-Arena::CreateMaybeMessage< ::ClaimRewardLevelResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::ClaimRewardLevelResponse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::RewardInventoryItem*
-Arena::CreateMaybeMessage< ::RewardInventoryItem >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::RewardInventoryItem >(arena);
+template<> PROTOBUF_NOINLINE ::packet::Empty*
+Arena::CreateMaybeMessage< ::packet::Empty >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::Empty >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::Packet*
+Arena::CreateMaybeMessage< ::packet::Packet >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::Packet >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ChatMessage*
+Arena::CreateMaybeMessage< ::packet::ChatMessage >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ChatMessage >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PingPong*
+Arena::CreateMaybeMessage< ::packet::PingPong >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PingPong >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::Login*
+Arena::CreateMaybeMessage< ::packet::Login >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::Login >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::LoginFirebase*
+Arena::CreateMaybeMessage< ::packet::LoginFirebase >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::LoginFirebase >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::Logout*
+Arena::CreateMaybeMessage< ::packet::Logout >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::Logout >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::LoginResponse*
+Arena::CreateMaybeMessage< ::packet::LoginResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::LoginResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UserInfo*
+Arena::CreateMaybeMessage< ::packet::UserInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UserInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::GameInfo*
+Arena::CreateMaybeMessage< ::packet::GameInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::GameInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::RegisterLeaveGame*
+Arena::CreateMaybeMessage< ::packet::RegisterLeaveGame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::RegisterLeaveGame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::NewUserJoinMatch*
+Arena::CreateMaybeMessage< ::packet::NewUserJoinMatch >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::NewUserJoinMatch >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UserLeaveMatch*
+Arena::CreateMaybeMessage< ::packet::UserLeaveMatch >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UserLeaveMatch >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::DealCard*
+Arena::CreateMaybeMessage< ::packet::DealCard >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::DealCard >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PlayCard*
+Arena::CreateMaybeMessage< ::packet::PlayCard >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PlayCard >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::StartGame*
+Arena::CreateMaybeMessage< ::packet::StartGame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::StartGame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::NewHand*
+Arena::CreateMaybeMessage< ::packet::NewHand >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::NewHand >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UpdateGamePoint*
+Arena::CreateMaybeMessage< ::packet::UpdateGamePoint >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UpdateGamePoint >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::EndHand*
+Arena::CreateMaybeMessage< ::packet::EndHand >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::EndHand >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::DrawCard*
+Arena::CreateMaybeMessage< ::packet::DrawCard >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::DrawCard >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::GeneralInfo*
+Arena::CreateMaybeMessage< ::packet::GeneralInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::GeneralInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::LevelReward*
+Arena::CreateMaybeMessage< ::packet::LevelReward >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::LevelReward >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ItemReward*
+Arena::CreateMaybeMessage< ::packet::ItemReward >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ItemReward >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::EndGame*
+Arena::CreateMaybeMessage< ::packet::EndGame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::EndGame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PrepareStartGame*
+Arena::CreateMaybeMessage< ::packet::PrepareStartGame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PrepareStartGame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::InGameChatMessage*
+Arena::CreateMaybeMessage< ::packet::InGameChatMessage >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::InGameChatMessage >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PaymentGoogleConsume*
+Arena::CreateMaybeMessage< ::packet::PaymentGoogleConsume >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PaymentGoogleConsume >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PaymentSuccess*
+Arena::CreateMaybeMessage< ::packet::PaymentSuccess >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PaymentSuccess >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UpdateMoney*
+Arena::CreateMaybeMessage< ::packet::UpdateMoney >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UpdateMoney >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::TableList*
+Arena::CreateMaybeMessage< ::packet::TableList >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::TableList >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ShopConfig*
+Arena::CreateMaybeMessage< ::packet::ShopConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ShopConfig >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::DetailShopPack*
+Arena::CreateMaybeMessage< ::packet::DetailShopPack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::DetailShopPack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::GuestAccount*
+Arena::CreateMaybeMessage< ::packet::GuestAccount >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::GuestAccount >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ChangeAvatar*
+Arena::CreateMaybeMessage< ::packet::ChangeAvatar >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ChangeAvatar >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::InGameChatEmoticon*
+Arena::CreateMaybeMessage< ::packet::InGameChatEmoticon >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::InGameChatEmoticon >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SearchFriend*
+Arena::CreateMaybeMessage< ::packet::SearchFriend >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SearchFriend >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SearchFriendResponse*
+Arena::CreateMaybeMessage< ::packet::SearchFriendResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SearchFriendResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::CheatGoldUser*
+Arena::CreateMaybeMessage< ::packet::CheatGoldUser >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::CheatGoldUser >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::FriendList*
+Arena::CreateMaybeMessage< ::packet::FriendList >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::FriendList >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::FriendRequests*
+Arena::CreateMaybeMessage< ::packet::FriendRequests >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::FriendRequests >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::AddFriend*
+Arena::CreateMaybeMessage< ::packet::AddFriend >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::AddFriend >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::RequestFriendAccept*
+Arena::CreateMaybeMessage< ::packet::RequestFriendAccept >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::RequestFriendAccept >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::RemoveFriend*
+Arena::CreateMaybeMessage< ::packet::RemoveFriend >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::RemoveFriend >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::NewFriendRequest*
+Arena::CreateMaybeMessage< ::packet::NewFriendRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::NewFriendRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::FriendRequestAccepted*
+Arena::CreateMaybeMessage< ::packet::FriendRequestAccepted >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::FriendRequestAccepted >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::RecommendFriends*
+Arena::CreateMaybeMessage< ::packet::RecommendFriends >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::RecommendFriends >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PaymentAppleConsume*
+Arena::CreateMaybeMessage< ::packet::PaymentAppleConsume >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PaymentAppleConsume >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PaymentFinishedAppleTransaction*
+Arena::CreateMaybeMessage< ::packet::PaymentFinishedAppleTransaction >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PaymentFinishedAppleTransaction >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::NewRound*
+Arena::CreateMaybeMessage< ::packet::NewRound >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::NewRound >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::CreateTable*
+Arena::CreateMaybeMessage< ::packet::CreateTable >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::CreateTable >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::JoinTableById*
+Arena::CreateMaybeMessage< ::packet::JoinTableById >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::JoinTableById >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::JoinTableResponse*
+Arena::CreateMaybeMessage< ::packet::JoinTableResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::JoinTableResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ClaimSupport*
+Arena::CreateMaybeMessage< ::packet::ClaimSupport >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ClaimSupport >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::AppCodeVersion*
+Arena::CreateMaybeMessage< ::packet::AppCodeVersion >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::AppCodeVersion >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PlayCardResponse*
+Arena::CreateMaybeMessage< ::packet::PlayCardResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PlayCardResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::CheatViewCardBot*
+Arena::CreateMaybeMessage< ::packet::CheatViewCardBot >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::CheatViewCardBot >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::InviteFriendPlay*
+Arena::CreateMaybeMessage< ::packet::InviteFriendPlay >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::InviteFriendPlay >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::GameActionNapoli*
+Arena::CreateMaybeMessage< ::packet::GameActionNapoli >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::GameActionNapoli >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::CustomerServiceReport*
+Arena::CreateMaybeMessage< ::packet::CustomerServiceReport >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::CustomerServiceReport >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::AdminBroadcast*
+Arena::CreateMaybeMessage< ::packet::AdminBroadcast >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::AdminBroadcast >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PaymentPaypalRequestOrder*
+Arena::CreateMaybeMessage< ::packet::PaymentPaypalRequestOrder >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PaymentPaypalRequestOrder >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::PaymentPaypalOrder*
+Arena::CreateMaybeMessage< ::packet::PaymentPaypalOrder >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::PaymentPaypalOrder >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::QuickPlay*
+Arena::CreateMaybeMessage< ::packet::QuickPlay >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::QuickPlay >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoNewUserJoinMatch*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoNewUserJoinMatch >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoNewUserJoinMatch >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoPrepareStartGame*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoPrepareStartGame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoPrepareStartGame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoGameInfo*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoGameInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoGameInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoPlayerInfo*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoPlayerInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoPlayerInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoQuickPlay*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoQuickPlay >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoQuickPlay >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoStartGame*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoStartGame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoStartGame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::RankingInfo*
+Arena::CreateMaybeMessage< ::packet::RankingInfo >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::RankingInfo >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::RankingResult*
+Arena::CreateMaybeMessage< ::packet::RankingResult >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::RankingResult >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::RankingClaimReward*
+Arena::CreateMaybeMessage< ::packet::RankingClaimReward >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::RankingClaimReward >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UpdateAds*
+Arena::CreateMaybeMessage< ::packet::UpdateAds >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UpdateAds >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::AdsReward*
+Arena::CreateMaybeMessage< ::packet::AdsReward >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::AdsReward >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ChangeUserName*
+Arena::CreateMaybeMessage< ::packet::ChangeUserName >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ChangeUserName >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoActionHit*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoActionHit >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoActionHit >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoUpdateTurn*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoUpdateTurn >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoUpdateTurn >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoActionStand*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoActionStand >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoActionStand >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoEndGame*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoEndGame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoEndGame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoShowBankerCard*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoShowBankerCard >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoShowBankerCard >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::SetteMezzoUserBet*
+Arena::CreateMaybeMessage< ::packet::SetteMezzoUserBet >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::SetteMezzoUserBet >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ViewGame*
+Arena::CreateMaybeMessage< ::packet::ViewGame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ViewGame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UserStopView*
+Arena::CreateMaybeMessage< ::packet::UserStopView >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UserStopView >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::NewUserView*
+Arena::CreateMaybeMessage< ::packet::NewUserView >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::NewUserView >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::CheatExpUser*
+Arena::CreateMaybeMessage< ::packet::CheatExpUser >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::CheatExpUser >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UpdateExp*
+Arena::CreateMaybeMessage< ::packet::UpdateExp >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UpdateExp >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ClaimRewardLevel*
+Arena::CreateMaybeMessage< ::packet::ClaimRewardLevel >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ClaimRewardLevel >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UserInventory*
+Arena::CreateMaybeMessage< ::packet::UserInventory >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UserInventory >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::InvetoryItem*
+Arena::CreateMaybeMessage< ::packet::InvetoryItem >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::InvetoryItem >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::UseItem*
+Arena::CreateMaybeMessage< ::packet::UseItem >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::UseItem >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::CheatItem*
+Arena::CreateMaybeMessage< ::packet::CheatItem >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::CheatItem >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::BuyItem*
+Arena::CreateMaybeMessage< ::packet::BuyItem >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::BuyItem >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::InventoryShopConfig*
+Arena::CreateMaybeMessage< ::packet::InventoryShopConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::InventoryShopConfig >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::InventoryShopItem*
+Arena::CreateMaybeMessage< ::packet::InventoryShopItem >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::InventoryShopItem >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::InvetoryShopPack*
+Arena::CreateMaybeMessage< ::packet::InvetoryShopPack >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::InvetoryShopPack >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ClaimRewardLevelResponse*
+Arena::CreateMaybeMessage< ::packet::ClaimRewardLevelResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ClaimRewardLevelResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::RewardInventoryItem*
+Arena::CreateMaybeMessage< ::packet::RewardInventoryItem >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::RewardInventoryItem >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

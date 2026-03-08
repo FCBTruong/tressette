@@ -7,8 +7,8 @@
 class AppConfig {
 public:
     bool load();
-    const AppCodeVersion& app_code_version() const;
+    const packet::AppCodeVersion& app_code_version() const;
 
 private:
-    AppCodeVersion app_code_version_;
+    packet::AppCodeVersion app_code_version_;
 };

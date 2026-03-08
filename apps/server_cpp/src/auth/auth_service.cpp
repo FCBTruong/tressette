@@ -36,7 +36,7 @@ LoginResult AuthService::login(
     return result;
 }
 
-bool AuthService::is_authorized(const ClientSession& session, const Packet& packet) const
+bool AuthService::is_authorized(const ClientSession& session, const packet::Packet& packet) const
 {
     if (!requires_auth(packet.cmd_id())) {
         return true;

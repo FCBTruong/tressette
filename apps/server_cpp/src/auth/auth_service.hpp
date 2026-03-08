@@ -5,9 +5,9 @@
 #include <string>
 #include <mutex>
 #include <unordered_map>
+#include "packet.pb.h"
 
 class ClientSession;
-class Packet;
 
 struct LoginResult {
     bool success = false;
@@ -27,7 +27,7 @@ public:
         const std::string& device_model);
 
     // Check whether this session is allowed to use the packet.
-    bool is_authorized(const ClientSession& session, const Packet& packet) const;
+    bool is_authorized(const ClientSession& session, const packet::Packet& packet) const;
 
     // Commands that do not require auth.
     bool requires_auth(int cmd_id) const;

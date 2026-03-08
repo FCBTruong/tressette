@@ -5,7 +5,12 @@
 #include <iostream>
 
 Server::Server(asio::io_context& io, uint16_t port)
-    : io_(io) {
+    : io_(io),
+      session_registry_(),
+      game_client_(session_registry_),
+      users_info_mgr_(),
+      match_registry_(game_client_, users_info_mgr_) // inject net sender into match system
+{
     if (!app_config_.load()) {
         throw std::runtime_error("Failed to load app config");
     }

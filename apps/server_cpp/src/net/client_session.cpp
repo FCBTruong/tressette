@@ -109,7 +109,7 @@ void ClientSession::do_read() {
 
             auto data = read_buffer_.data();
 
-            Packet packet;
+            packet::Packet packet;
             if (!packet.ParseFromArray(
                     beast::buffers_front(data).data(),
                     static_cast<int>(bytes_transferred))) {
@@ -129,7 +129,7 @@ void ClientSession::do_read() {
         });
 }
 
-void ClientSession::send(const Packet& packet) {
+void ClientSession::send(const packet::Packet& packet) {
     std::string packet_bytes;
     if (!packet.SerializeToString(&packet_bytes)) {
         std::cerr << "Failed to serialize protobuf Packet for session "
@@ -163,7 +163,7 @@ bool ClientSession::send_packet(int cmd_id, const google::protobuf::Message& msg
         return false;
     }
 
-    Packet packet;
+    packet::Packet packet;
     packet.set_cmd_id(cmd_id);
 
     if (!session_token_.empty()) {

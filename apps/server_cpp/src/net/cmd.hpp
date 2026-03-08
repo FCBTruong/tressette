@@ -1,3 +1,5 @@
+#pragma once
+
 enum Cmd {
     PING_PONG = 0,
     LOGIN = 1,

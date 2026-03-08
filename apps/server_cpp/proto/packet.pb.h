@@ -45,6 +45,7 @@ struct TableStruct_packet_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_packet_2eproto;
+namespace packet {
 class AddFriend;
 struct AddFriendDefaultTypeInternal;
 extern AddFriendDefaultTypeInternal _AddFriend_default_instance_;
@@ -336,110 +337,112 @@ extern UserStopViewDefaultTypeInternal _UserStopView_default_instance_;
 class ViewGame;
 struct ViewGameDefaultTypeInternal;
 extern ViewGameDefaultTypeInternal _ViewGame_default_instance_;
+}  // namespace packet
 PROTOBUF_NAMESPACE_OPEN
-template<> ::AddFriend* Arena::CreateMaybeMessage<::AddFriend>(Arena*);
-template<> ::AdminBroadcast* Arena::CreateMaybeMessage<::AdminBroadcast>(Arena*);
-template<> ::AdsReward* Arena::CreateMaybeMessage<::AdsReward>(Arena*);
-template<> ::AppCodeVersion* Arena::CreateMaybeMessage<::AppCodeVersion>(Arena*);
-template<> ::BuyItem* Arena::CreateMaybeMessage<::BuyItem>(Arena*);
-template<> ::ChangeAvatar* Arena::CreateMaybeMessage<::ChangeAvatar>(Arena*);
-template<> ::ChangeUserName* Arena::CreateMaybeMessage<::ChangeUserName>(Arena*);
-template<> ::ChatMessage* Arena::CreateMaybeMessage<::ChatMessage>(Arena*);
-template<> ::CheatExpUser* Arena::CreateMaybeMessage<::CheatExpUser>(Arena*);
-template<> ::CheatGoldUser* Arena::CreateMaybeMessage<::CheatGoldUser>(Arena*);
-template<> ::CheatItem* Arena::CreateMaybeMessage<::CheatItem>(Arena*);
-template<> ::CheatViewCardBot* Arena::CreateMaybeMessage<::CheatViewCardBot>(Arena*);
-template<> ::ClaimRewardLevel* Arena::CreateMaybeMessage<::ClaimRewardLevel>(Arena*);
-template<> ::ClaimRewardLevelResponse* Arena::CreateMaybeMessage<::ClaimRewardLevelResponse>(Arena*);
-template<> ::ClaimSupport* Arena::CreateMaybeMessage<::ClaimSupport>(Arena*);
-template<> ::CreateTable* Arena::CreateMaybeMessage<::CreateTable>(Arena*);
-template<> ::CustomerServiceReport* Arena::CreateMaybeMessage<::CustomerServiceReport>(Arena*);
-template<> ::DealCard* Arena::CreateMaybeMessage<::DealCard>(Arena*);
-template<> ::DetailShopPack* Arena::CreateMaybeMessage<::DetailShopPack>(Arena*);
-template<> ::DrawCard* Arena::CreateMaybeMessage<::DrawCard>(Arena*);
-template<> ::Empty* Arena::CreateMaybeMessage<::Empty>(Arena*);
-template<> ::EndGame* Arena::CreateMaybeMessage<::EndGame>(Arena*);
-template<> ::EndHand* Arena::CreateMaybeMessage<::EndHand>(Arena*);
-template<> ::FriendList* Arena::CreateMaybeMessage<::FriendList>(Arena*);
-template<> ::FriendRequestAccepted* Arena::CreateMaybeMessage<::FriendRequestAccepted>(Arena*);
-template<> ::FriendRequests* Arena::CreateMaybeMessage<::FriendRequests>(Arena*);
-template<> ::GameActionNapoli* Arena::CreateMaybeMessage<::GameActionNapoli>(Arena*);
-template<> ::GameInfo* Arena::CreateMaybeMessage<::GameInfo>(Arena*);
-template<> ::GeneralInfo* Arena::CreateMaybeMessage<::GeneralInfo>(Arena*);
-template<> ::GuestAccount* Arena::CreateMaybeMessage<::GuestAccount>(Arena*);
-template<> ::InGameChatEmoticon* Arena::CreateMaybeMessage<::InGameChatEmoticon>(Arena*);
-template<> ::InGameChatMessage* Arena::CreateMaybeMessage<::InGameChatMessage>(Arena*);
-template<> ::InventoryShopConfig* Arena::CreateMaybeMessage<::InventoryShopConfig>(Arena*);
-template<> ::InventoryShopItem* Arena::CreateMaybeMessage<::InventoryShopItem>(Arena*);
-template<> ::InvetoryItem* Arena::CreateMaybeMessage<::InvetoryItem>(Arena*);
-template<> ::InvetoryShopPack* Arena::CreateMaybeMessage<::InvetoryShopPack>(Arena*);
-template<> ::InviteFriendPlay* Arena::CreateMaybeMessage<::InviteFriendPlay>(Arena*);
-template<> ::ItemReward* Arena::CreateMaybeMessage<::ItemReward>(Arena*);
-template<> ::JoinTableById* Arena::CreateMaybeMessage<::JoinTableById>(Arena*);
-template<> ::JoinTableResponse* Arena::CreateMaybeMessage<::JoinTableResponse>(Arena*);
-template<> ::LevelReward* Arena::CreateMaybeMessage<::LevelReward>(Arena*);
-template<> ::Login* Arena::CreateMaybeMessage<::Login>(Arena*);
-template<> ::LoginFirebase* Arena::CreateMaybeMessage<::LoginFirebase>(Arena*);
-template<> ::LoginResponse* Arena::CreateMaybeMessage<::LoginResponse>(Arena*);
-template<> ::Logout* Arena::CreateMaybeMessage<::Logout>(Arena*);
-template<> ::NewFriendRequest* Arena::CreateMaybeMessage<::NewFriendRequest>(Arena*);
-template<> ::NewHand* Arena::CreateMaybeMessage<::NewHand>(Arena*);
-template<> ::NewRound* Arena::CreateMaybeMessage<::NewRound>(Arena*);
-template<> ::NewUserJoinMatch* Arena::CreateMaybeMessage<::NewUserJoinMatch>(Arena*);
-template<> ::NewUserView* Arena::CreateMaybeMessage<::NewUserView>(Arena*);
-template<> ::Packet* Arena::CreateMaybeMessage<::Packet>(Arena*);
-template<> ::PaymentAppleConsume* Arena::CreateMaybeMessage<::PaymentAppleConsume>(Arena*);
-template<> ::PaymentFinishedAppleTransaction* Arena::CreateMaybeMessage<::PaymentFinishedAppleTransaction>(Arena*);
-template<> ::PaymentGoogleConsume* Arena::CreateMaybeMessage<::PaymentGoogleConsume>(Arena*);
-template<> ::PaymentPaypalOrder* Arena::CreateMaybeMessage<::PaymentPaypalOrder>(Arena*);
-template<> ::PaymentPaypalRequestOrder* Arena::CreateMaybeMessage<::PaymentPaypalRequestOrder>(Arena*);
-template<> ::PaymentSuccess* Arena::CreateMaybeMessage<::PaymentSuccess>(Arena*);
-template<> ::PingPong* Arena::CreateMaybeMessage<::PingPong>(Arena*);
-template<> ::PlayCard* Arena::CreateMaybeMessage<::PlayCard>(Arena*);
-template<> ::PlayCardResponse* Arena::CreateMaybeMessage<::PlayCardResponse>(Arena*);
-template<> ::PrepareStartGame* Arena::CreateMaybeMessage<::PrepareStartGame>(Arena*);
-template<> ::QuickPlay* Arena::CreateMaybeMessage<::QuickPlay>(Arena*);
-template<> ::RankingClaimReward* Arena::CreateMaybeMessage<::RankingClaimReward>(Arena*);
-template<> ::RankingInfo* Arena::CreateMaybeMessage<::RankingInfo>(Arena*);
-template<> ::RankingResult* Arena::CreateMaybeMessage<::RankingResult>(Arena*);
-template<> ::RecommendFriends* Arena::CreateMaybeMessage<::RecommendFriends>(Arena*);
-template<> ::RegisterLeaveGame* Arena::CreateMaybeMessage<::RegisterLeaveGame>(Arena*);
-template<> ::RemoveFriend* Arena::CreateMaybeMessage<::RemoveFriend>(Arena*);
-template<> ::RequestFriendAccept* Arena::CreateMaybeMessage<::RequestFriendAccept>(Arena*);
-template<> ::RewardInventoryItem* Arena::CreateMaybeMessage<::RewardInventoryItem>(Arena*);
-template<> ::SearchFriend* Arena::CreateMaybeMessage<::SearchFriend>(Arena*);
-template<> ::SearchFriendResponse* Arena::CreateMaybeMessage<::SearchFriendResponse>(Arena*);
-template<> ::SetteMezzoActionHit* Arena::CreateMaybeMessage<::SetteMezzoActionHit>(Arena*);
-template<> ::SetteMezzoActionStand* Arena::CreateMaybeMessage<::SetteMezzoActionStand>(Arena*);
-template<> ::SetteMezzoEndGame* Arena::CreateMaybeMessage<::SetteMezzoEndGame>(Arena*);
-template<> ::SetteMezzoGameInfo* Arena::CreateMaybeMessage<::SetteMezzoGameInfo>(Arena*);
-template<> ::SetteMezzoNewUserJoinMatch* Arena::CreateMaybeMessage<::SetteMezzoNewUserJoinMatch>(Arena*);
-template<> ::SetteMezzoPlayerInfo* Arena::CreateMaybeMessage<::SetteMezzoPlayerInfo>(Arena*);
-template<> ::SetteMezzoPrepareStartGame* Arena::CreateMaybeMessage<::SetteMezzoPrepareStartGame>(Arena*);
-template<> ::SetteMezzoQuickPlay* Arena::CreateMaybeMessage<::SetteMezzoQuickPlay>(Arena*);
-template<> ::SetteMezzoShowBankerCard* Arena::CreateMaybeMessage<::SetteMezzoShowBankerCard>(Arena*);
-template<> ::SetteMezzoStartGame* Arena::CreateMaybeMessage<::SetteMezzoStartGame>(Arena*);
-template<> ::SetteMezzoUpdateTurn* Arena::CreateMaybeMessage<::SetteMezzoUpdateTurn>(Arena*);
-template<> ::SetteMezzoUserBet* Arena::CreateMaybeMessage<::SetteMezzoUserBet>(Arena*);
-template<> ::ShopConfig* Arena::CreateMaybeMessage<::ShopConfig>(Arena*);
-template<> ::StartGame* Arena::CreateMaybeMessage<::StartGame>(Arena*);
-template<> ::TableList* Arena::CreateMaybeMessage<::TableList>(Arena*);
-template<> ::UpdateAds* Arena::CreateMaybeMessage<::UpdateAds>(Arena*);
-template<> ::UpdateExp* Arena::CreateMaybeMessage<::UpdateExp>(Arena*);
-template<> ::UpdateGamePoint* Arena::CreateMaybeMessage<::UpdateGamePoint>(Arena*);
-template<> ::UpdateMoney* Arena::CreateMaybeMessage<::UpdateMoney>(Arena*);
-template<> ::UseItem* Arena::CreateMaybeMessage<::UseItem>(Arena*);
-template<> ::UserInfo* Arena::CreateMaybeMessage<::UserInfo>(Arena*);
-template<> ::UserInventory* Arena::CreateMaybeMessage<::UserInventory>(Arena*);
-template<> ::UserLeaveMatch* Arena::CreateMaybeMessage<::UserLeaveMatch>(Arena*);
-template<> ::UserStopView* Arena::CreateMaybeMessage<::UserStopView>(Arena*);
-template<> ::ViewGame* Arena::CreateMaybeMessage<::ViewGame>(Arena*);
+template<> ::packet::AddFriend* Arena::CreateMaybeMessage<::packet::AddFriend>(Arena*);
+template<> ::packet::AdminBroadcast* Arena::CreateMaybeMessage<::packet::AdminBroadcast>(Arena*);
+template<> ::packet::AdsReward* Arena::CreateMaybeMessage<::packet::AdsReward>(Arena*);
+template<> ::packet::AppCodeVersion* Arena::CreateMaybeMessage<::packet::AppCodeVersion>(Arena*);
+template<> ::packet::BuyItem* Arena::CreateMaybeMessage<::packet::BuyItem>(Arena*);
+template<> ::packet::ChangeAvatar* Arena::CreateMaybeMessage<::packet::ChangeAvatar>(Arena*);
+template<> ::packet::ChangeUserName* Arena::CreateMaybeMessage<::packet::ChangeUserName>(Arena*);
+template<> ::packet::ChatMessage* Arena::CreateMaybeMessage<::packet::ChatMessage>(Arena*);
+template<> ::packet::CheatExpUser* Arena::CreateMaybeMessage<::packet::CheatExpUser>(Arena*);
+template<> ::packet::CheatGoldUser* Arena::CreateMaybeMessage<::packet::CheatGoldUser>(Arena*);
+template<> ::packet::CheatItem* Arena::CreateMaybeMessage<::packet::CheatItem>(Arena*);
+template<> ::packet::CheatViewCardBot* Arena::CreateMaybeMessage<::packet::CheatViewCardBot>(Arena*);
+template<> ::packet::ClaimRewardLevel* Arena::CreateMaybeMessage<::packet::ClaimRewardLevel>(Arena*);
+template<> ::packet::ClaimRewardLevelResponse* Arena::CreateMaybeMessage<::packet::ClaimRewardLevelResponse>(Arena*);
+template<> ::packet::ClaimSupport* Arena::CreateMaybeMessage<::packet::ClaimSupport>(Arena*);
+template<> ::packet::CreateTable* Arena::CreateMaybeMessage<::packet::CreateTable>(Arena*);
+template<> ::packet::CustomerServiceReport* Arena::CreateMaybeMessage<::packet::CustomerServiceReport>(Arena*);
+template<> ::packet::DealCard* Arena::CreateMaybeMessage<::packet::DealCard>(Arena*);
+template<> ::packet::DetailShopPack* Arena::CreateMaybeMessage<::packet::DetailShopPack>(Arena*);
+template<> ::packet::DrawCard* Arena::CreateMaybeMessage<::packet::DrawCard>(Arena*);
+template<> ::packet::Empty* Arena::CreateMaybeMessage<::packet::Empty>(Arena*);
+template<> ::packet::EndGame* Arena::CreateMaybeMessage<::packet::EndGame>(Arena*);
+template<> ::packet::EndHand* Arena::CreateMaybeMessage<::packet::EndHand>(Arena*);
+template<> ::packet::FriendList* Arena::CreateMaybeMessage<::packet::FriendList>(Arena*);
+template<> ::packet::FriendRequestAccepted* Arena::CreateMaybeMessage<::packet::FriendRequestAccepted>(Arena*);
+template<> ::packet::FriendRequests* Arena::CreateMaybeMessage<::packet::FriendRequests>(Arena*);
+template<> ::packet::GameActionNapoli* Arena::CreateMaybeMessage<::packet::GameActionNapoli>(Arena*);
+template<> ::packet::GameInfo* Arena::CreateMaybeMessage<::packet::GameInfo>(Arena*);
+template<> ::packet::GeneralInfo* Arena::CreateMaybeMessage<::packet::GeneralInfo>(Arena*);
+template<> ::packet::GuestAccount* Arena::CreateMaybeMessage<::packet::GuestAccount>(Arena*);
+template<> ::packet::InGameChatEmoticon* Arena::CreateMaybeMessage<::packet::InGameChatEmoticon>(Arena*);
+template<> ::packet::InGameChatMessage* Arena::CreateMaybeMessage<::packet::InGameChatMessage>(Arena*);
+template<> ::packet::InventoryShopConfig* Arena::CreateMaybeMessage<::packet::InventoryShopConfig>(Arena*);
+template<> ::packet::InventoryShopItem* Arena::CreateMaybeMessage<::packet::InventoryShopItem>(Arena*);
+template<> ::packet::InvetoryItem* Arena::CreateMaybeMessage<::packet::InvetoryItem>(Arena*);
+template<> ::packet::InvetoryShopPack* Arena::CreateMaybeMessage<::packet::InvetoryShopPack>(Arena*);
+template<> ::packet::InviteFriendPlay* Arena::CreateMaybeMessage<::packet::InviteFriendPlay>(Arena*);
+template<> ::packet::ItemReward* Arena::CreateMaybeMessage<::packet::ItemReward>(Arena*);
+template<> ::packet::JoinTableById* Arena::CreateMaybeMessage<::packet::JoinTableById>(Arena*);
+template<> ::packet::JoinTableResponse* Arena::CreateMaybeMessage<::packet::JoinTableResponse>(Arena*);
+template<> ::packet::LevelReward* Arena::CreateMaybeMessage<::packet::LevelReward>(Arena*);
+template<> ::packet::Login* Arena::CreateMaybeMessage<::packet::Login>(Arena*);
+template<> ::packet::LoginFirebase* Arena::CreateMaybeMessage<::packet::LoginFirebase>(Arena*);
+template<> ::packet::LoginResponse* Arena::CreateMaybeMessage<::packet::LoginResponse>(Arena*);
+template<> ::packet::Logout* Arena::CreateMaybeMessage<::packet::Logout>(Arena*);
+template<> ::packet::NewFriendRequest* Arena::CreateMaybeMessage<::packet::NewFriendRequest>(Arena*);
+template<> ::packet::NewHand* Arena::CreateMaybeMessage<::packet::NewHand>(Arena*);
+template<> ::packet::NewRound* Arena::CreateMaybeMessage<::packet::NewRound>(Arena*);
+template<> ::packet::NewUserJoinMatch* Arena::CreateMaybeMessage<::packet::NewUserJoinMatch>(Arena*);
+template<> ::packet::NewUserView* Arena::CreateMaybeMessage<::packet::NewUserView>(Arena*);
+template<> ::packet::Packet* Arena::CreateMaybeMessage<::packet::Packet>(Arena*);
+template<> ::packet::PaymentAppleConsume* Arena::CreateMaybeMessage<::packet::PaymentAppleConsume>(Arena*);
+template<> ::packet::PaymentFinishedAppleTransaction* Arena::CreateMaybeMessage<::packet::PaymentFinishedAppleTransaction>(Arena*);
+template<> ::packet::PaymentGoogleConsume* Arena::CreateMaybeMessage<::packet::PaymentGoogleConsume>(Arena*);
+template<> ::packet::PaymentPaypalOrder* Arena::CreateMaybeMessage<::packet::PaymentPaypalOrder>(Arena*);
+template<> ::packet::PaymentPaypalRequestOrder* Arena::CreateMaybeMessage<::packet::PaymentPaypalRequestOrder>(Arena*);
+template<> ::packet::PaymentSuccess* Arena::CreateMaybeMessage<::packet::PaymentSuccess>(Arena*);
+template<> ::packet::PingPong* Arena::CreateMaybeMessage<::packet::PingPong>(Arena*);
+template<> ::packet::PlayCard* Arena::CreateMaybeMessage<::packet::PlayCard>(Arena*);
+template<> ::packet::PlayCardResponse* Arena::CreateMaybeMessage<::packet::PlayCardResponse>(Arena*);
+template<> ::packet::PrepareStartGame* Arena::CreateMaybeMessage<::packet::PrepareStartGame>(Arena*);
+template<> ::packet::QuickPlay* Arena::CreateMaybeMessage<::packet::QuickPlay>(Arena*);
+template<> ::packet::RankingClaimReward* Arena::CreateMaybeMessage<::packet::RankingClaimReward>(Arena*);
+template<> ::packet::RankingInfo* Arena::CreateMaybeMessage<::packet::RankingInfo>(Arena*);
+template<> ::packet::RankingResult* Arena::CreateMaybeMessage<::packet::RankingResult>(Arena*);
+template<> ::packet::RecommendFriends* Arena::CreateMaybeMessage<::packet::RecommendFriends>(Arena*);
+template<> ::packet::RegisterLeaveGame* Arena::CreateMaybeMessage<::packet::RegisterLeaveGame>(Arena*);
+template<> ::packet::RemoveFriend* Arena::CreateMaybeMessage<::packet::RemoveFriend>(Arena*);
+template<> ::packet::RequestFriendAccept* Arena::CreateMaybeMessage<::packet::RequestFriendAccept>(Arena*);
+template<> ::packet::RewardInventoryItem* Arena::CreateMaybeMessage<::packet::RewardInventoryItem>(Arena*);
+template<> ::packet::SearchFriend* Arena::CreateMaybeMessage<::packet::SearchFriend>(Arena*);
+template<> ::packet::SearchFriendResponse* Arena::CreateMaybeMessage<::packet::SearchFriendResponse>(Arena*);
+template<> ::packet::SetteMezzoActionHit* Arena::CreateMaybeMessage<::packet::SetteMezzoActionHit>(Arena*);
+template<> ::packet::SetteMezzoActionStand* Arena::CreateMaybeMessage<::packet::SetteMezzoActionStand>(Arena*);
+template<> ::packet::SetteMezzoEndGame* Arena::CreateMaybeMessage<::packet::SetteMezzoEndGame>(Arena*);
+template<> ::packet::SetteMezzoGameInfo* Arena::CreateMaybeMessage<::packet::SetteMezzoGameInfo>(Arena*);
+template<> ::packet::SetteMezzoNewUserJoinMatch* Arena::CreateMaybeMessage<::packet::SetteMezzoNewUserJoinMatch>(Arena*);
+template<> ::packet::SetteMezzoPlayerInfo* Arena::CreateMaybeMessage<::packet::SetteMezzoPlayerInfo>(Arena*);
+template<> ::packet::SetteMezzoPrepareStartGame* Arena::CreateMaybeMessage<::packet::SetteMezzoPrepareStartGame>(Arena*);
+template<> ::packet::SetteMezzoQuickPlay* Arena::CreateMaybeMessage<::packet::SetteMezzoQuickPlay>(Arena*);
+template<> ::packet::SetteMezzoShowBankerCard* Arena::CreateMaybeMessage<::packet::SetteMezzoShowBankerCard>(Arena*);
+template<> ::packet::SetteMezzoStartGame* Arena::CreateMaybeMessage<::packet::SetteMezzoStartGame>(Arena*);
+template<> ::packet::SetteMezzoUpdateTurn* Arena::CreateMaybeMessage<::packet::SetteMezzoUpdateTurn>(Arena*);
+template<> ::packet::SetteMezzoUserBet* Arena::CreateMaybeMessage<::packet::SetteMezzoUserBet>(Arena*);
+template<> ::packet::ShopConfig* Arena::CreateMaybeMessage<::packet::ShopConfig>(Arena*);
+template<> ::packet::StartGame* Arena::CreateMaybeMessage<::packet::StartGame>(Arena*);
+template<> ::packet::TableList* Arena::CreateMaybeMessage<::packet::TableList>(Arena*);
+template<> ::packet::UpdateAds* Arena::CreateMaybeMessage<::packet::UpdateAds>(Arena*);
+template<> ::packet::UpdateExp* Arena::CreateMaybeMessage<::packet::UpdateExp>(Arena*);
+template<> ::packet::UpdateGamePoint* Arena::CreateMaybeMessage<::packet::UpdateGamePoint>(Arena*);
+template<> ::packet::UpdateMoney* Arena::CreateMaybeMessage<::packet::UpdateMoney>(Arena*);
+template<> ::packet::UseItem* Arena::CreateMaybeMessage<::packet::UseItem>(Arena*);
+template<> ::packet::UserInfo* Arena::CreateMaybeMessage<::packet::UserInfo>(Arena*);
+template<> ::packet::UserInventory* Arena::CreateMaybeMessage<::packet::UserInventory>(Arena*);
+template<> ::packet::UserLeaveMatch* Arena::CreateMaybeMessage<::packet::UserLeaveMatch>(Arena*);
+template<> ::packet::UserStopView* Arena::CreateMaybeMessage<::packet::UserStopView>(Arena*);
+template<> ::packet::ViewGame* Arena::CreateMaybeMessage<::packet::ViewGame>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
+namespace packet {
 
 // ===================================================================
 
 class Empty final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:Empty) */ {
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:packet.Empty) */ {
  public:
   inline Empty() : Empty(nullptr) {}
   explicit PROTOBUF_CONSTEXPR Empty(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
@@ -527,7 +530,7 @@ class Empty final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Empty";
+    return "packet.Empty";
   }
   protected:
   explicit Empty(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -543,7 +546,7 @@ class Empty final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:Empty)
+  // @@protoc_insertion_point(class_scope:packet.Empty)
  private:
   class _Internal;
 
@@ -555,7 +558,7 @@ class Empty final :
 // -------------------------------------------------------------------
 
 class Packet final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Packet) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.Packet) */ {
  public:
   inline Packet() : Packet(nullptr) {}
   ~Packet() override;
@@ -656,7 +659,7 @@ class Packet final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Packet";
+    return "packet.Packet";
   }
   protected:
   explicit Packet(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -714,7 +717,7 @@ class Packet final :
   void _internal_set_cmd_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Packet)
+  // @@protoc_insertion_point(class_scope:packet.Packet)
  private:
   class _Internal;
 
@@ -730,7 +733,7 @@ class Packet final :
 // -------------------------------------------------------------------
 
 class ChatMessage final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ChatMessage) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ChatMessage) */ {
  public:
   inline ChatMessage() : ChatMessage(nullptr) {}
   ~ChatMessage() override;
@@ -831,7 +834,7 @@ class ChatMessage final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ChatMessage";
+    return "packet.ChatMessage";
   }
   protected:
   explicit ChatMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -919,7 +922,7 @@ class ChatMessage final :
   void _internal_set_is_active(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ChatMessage)
+  // @@protoc_insertion_point(class_scope:packet.ChatMessage)
  private:
   class _Internal;
 
@@ -938,7 +941,7 @@ class ChatMessage final :
 // -------------------------------------------------------------------
 
 class PingPong final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:PingPong) */ {
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:packet.PingPong) */ {
  public:
   inline PingPong() : PingPong(nullptr) {}
   explicit PROTOBUF_CONSTEXPR PingPong(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
@@ -1026,7 +1029,7 @@ class PingPong final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PingPong";
+    return "packet.PingPong";
   }
   protected:
   explicit PingPong(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1042,7 +1045,7 @@ class PingPong final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:PingPong)
+  // @@protoc_insertion_point(class_scope:packet.PingPong)
  private:
   class _Internal;
 
@@ -1054,7 +1057,7 @@ class PingPong final :
 // -------------------------------------------------------------------
 
 class Login final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Login) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.Login) */ {
  public:
   inline Login() : Login(nullptr) {}
   ~Login() override;
@@ -1155,7 +1158,7 @@ class Login final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Login";
+    return "packet.Login";
   }
   protected:
   explicit Login(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1253,7 +1256,7 @@ class Login final :
   void _internal_set_app_version_code(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:Login)
+  // @@protoc_insertion_point(class_scope:packet.Login)
  private:
   class _Internal;
 
@@ -1272,7 +1275,7 @@ class Login final :
 // -------------------------------------------------------------------
 
 class LoginFirebase final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:LoginFirebase) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.LoginFirebase) */ {
  public:
   inline LoginFirebase() : LoginFirebase(nullptr) {}
   ~LoginFirebase() override;
@@ -1373,7 +1376,7 @@ class LoginFirebase final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "LoginFirebase";
+    return "packet.LoginFirebase";
   }
   protected:
   explicit LoginFirebase(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1431,7 +1434,7 @@ class LoginFirebase final :
   void _internal_set_sub_type(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:LoginFirebase)
+  // @@protoc_insertion_point(class_scope:packet.LoginFirebase)
  private:
   class _Internal;
 
@@ -1447,7 +1450,7 @@ class LoginFirebase final :
 // -------------------------------------------------------------------
 
 class Logout final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:Logout) */ {
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:packet.Logout) */ {
  public:
   inline Logout() : Logout(nullptr) {}
   explicit PROTOBUF_CONSTEXPR Logout(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
@@ -1535,7 +1538,7 @@ class Logout final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "Logout";
+    return "packet.Logout";
   }
   protected:
   explicit Logout(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1551,7 +1554,7 @@ class Logout final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:Logout)
+  // @@protoc_insertion_point(class_scope:packet.Logout)
  private:
   class _Internal;
 
@@ -1563,7 +1566,7 @@ class Logout final :
 // -------------------------------------------------------------------
 
 class LoginResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:LoginResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.LoginResponse) */ {
  public:
   inline LoginResponse() : LoginResponse(nullptr) {}
   ~LoginResponse() override;
@@ -1664,7 +1667,7 @@ class LoginResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "LoginResponse";
+    return "packet.LoginResponse";
   }
   protected:
   explicit LoginResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1717,7 +1720,7 @@ class LoginResponse final :
   void _internal_set_error(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:LoginResponse)
+  // @@protoc_insertion_point(class_scope:packet.LoginResponse)
  private:
   class _Internal;
 
@@ -1733,7 +1736,7 @@ class LoginResponse final :
 // -------------------------------------------------------------------
 
 class UserInfo final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UserInfo) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UserInfo) */ {
  public:
   inline UserInfo() : UserInfo(nullptr) {}
   ~UserInfo() override;
@@ -1834,7 +1837,7 @@ class UserInfo final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UserInfo";
+    return "packet.UserInfo";
   }
   protected:
   explicit UserInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -2128,7 +2131,7 @@ class UserInfo final :
   void _internal_set_price_change_name(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:UserInfo)
+  // @@protoc_insertion_point(class_scope:packet.UserInfo)
  private:
   class _Internal;
 
@@ -2165,7 +2168,7 @@ class UserInfo final :
 // -------------------------------------------------------------------
 
 class GameInfo final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GameInfo) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.GameInfo) */ {
  public:
   inline GameInfo() : GameInfo(nullptr) {}
   ~GameInfo() override;
@@ -2266,7 +2269,7 @@ class GameInfo final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "GameInfo";
+    return "packet.GameInfo";
   }
   protected:
   explicit GameInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -2734,7 +2737,7 @@ class GameInfo final :
   void _internal_set_point_to_win(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:GameInfo)
+  // @@protoc_insertion_point(class_scope:packet.GameInfo)
  private:
   class _Internal;
 
@@ -2782,7 +2785,7 @@ class GameInfo final :
 // -------------------------------------------------------------------
 
 class RegisterLeaveGame final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RegisterLeaveGame) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.RegisterLeaveGame) */ {
  public:
   inline RegisterLeaveGame() : RegisterLeaveGame(nullptr) {}
   ~RegisterLeaveGame() override;
@@ -2883,7 +2886,7 @@ class RegisterLeaveGame final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RegisterLeaveGame";
+    return "packet.RegisterLeaveGame";
   }
   protected:
   explicit RegisterLeaveGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -2911,7 +2914,7 @@ class RegisterLeaveGame final :
   void _internal_set_status(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:RegisterLeaveGame)
+  // @@protoc_insertion_point(class_scope:packet.RegisterLeaveGame)
  private:
   class _Internal;
 
@@ -2925,7 +2928,7 @@ class RegisterLeaveGame final :
 // -------------------------------------------------------------------
 
 class NewUserJoinMatch final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NewUserJoinMatch) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.NewUserJoinMatch) */ {
  public:
   inline NewUserJoinMatch() : NewUserJoinMatch(nullptr) {}
   ~NewUserJoinMatch() override;
@@ -3026,7 +3029,7 @@ class NewUserJoinMatch final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "NewUserJoinMatch";
+    return "packet.NewUserJoinMatch";
   }
   protected:
   explicit NewUserJoinMatch(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -3134,7 +3137,7 @@ class NewUserJoinMatch final :
   void _internal_set_avatar_frame(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:NewUserJoinMatch)
+  // @@protoc_insertion_point(class_scope:packet.NewUserJoinMatch)
  private:
   class _Internal;
 
@@ -3155,7 +3158,7 @@ class NewUserJoinMatch final :
 // -------------------------------------------------------------------
 
 class UserLeaveMatch final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UserLeaveMatch) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UserLeaveMatch) */ {
  public:
   inline UserLeaveMatch() : UserLeaveMatch(nullptr) {}
   ~UserLeaveMatch() override;
@@ -3256,7 +3259,7 @@ class UserLeaveMatch final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UserLeaveMatch";
+    return "packet.UserLeaveMatch";
   }
   protected:
   explicit UserLeaveMatch(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -3294,7 +3297,7 @@ class UserLeaveMatch final :
   void _internal_set_reason(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:UserLeaveMatch)
+  // @@protoc_insertion_point(class_scope:packet.UserLeaveMatch)
  private:
   class _Internal;
 
@@ -3309,7 +3312,7 @@ class UserLeaveMatch final :
 // -------------------------------------------------------------------
 
 class DealCard final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:DealCard) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.DealCard) */ {
  public:
   inline DealCard() : DealCard(nullptr) {}
   ~DealCard() override;
@@ -3410,7 +3413,7 @@ class DealCard final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "DealCard";
+    return "packet.DealCard";
   }
   protected:
   explicit DealCard(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -3461,7 +3464,7 @@ class DealCard final :
   void _internal_set_remain_cards(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:DealCard)
+  // @@protoc_insertion_point(class_scope:packet.DealCard)
  private:
   class _Internal;
 
@@ -3477,7 +3480,7 @@ class DealCard final :
 // -------------------------------------------------------------------
 
 class PlayCard final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PlayCard) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PlayCard) */ {
  public:
   inline PlayCard() : PlayCard(nullptr) {}
   ~PlayCard() override;
@@ -3578,7 +3581,7 @@ class PlayCard final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PlayCard";
+    return "packet.PlayCard";
   }
   protected:
   explicit PlayCard(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -3696,7 +3699,7 @@ class PlayCard final :
   void _internal_set_win_card(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PlayCard)
+  // @@protoc_insertion_point(class_scope:packet.PlayCard)
  private:
   class _Internal;
 
@@ -3719,7 +3722,7 @@ class PlayCard final :
 // -------------------------------------------------------------------
 
 class StartGame final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:StartGame) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.StartGame) */ {
  public:
   inline StartGame() : StartGame(nullptr) {}
   ~StartGame() override;
@@ -3820,7 +3823,7 @@ class StartGame final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "StartGame";
+    return "packet.StartGame";
   }
   protected:
   explicit StartGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -3871,7 +3874,7 @@ class StartGame final :
   void _internal_set_pot_value(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:StartGame)
+  // @@protoc_insertion_point(class_scope:packet.StartGame)
  private:
   class _Internal;
 
@@ -3887,7 +3890,7 @@ class StartGame final :
 // -------------------------------------------------------------------
 
 class NewHand final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NewHand) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.NewHand) */ {
  public:
   inline NewHand() : NewHand(nullptr) {}
   ~NewHand() override;
@@ -3988,7 +3991,7 @@ class NewHand final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "NewHand";
+    return "packet.NewHand";
   }
   protected:
   explicit NewHand(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -4039,7 +4042,7 @@ class NewHand final :
   void _internal_set_current_turn(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:NewHand)
+  // @@protoc_insertion_point(class_scope:packet.NewHand)
  private:
   class _Internal;
 
@@ -4055,7 +4058,7 @@ class NewHand final :
 // -------------------------------------------------------------------
 
 class UpdateGamePoint final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UpdateGamePoint) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UpdateGamePoint) */ {
  public:
   inline UpdateGamePoint() : UpdateGamePoint(nullptr) {}
   ~UpdateGamePoint() override;
@@ -4156,7 +4159,7 @@ class UpdateGamePoint final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UpdateGamePoint";
+    return "packet.UpdateGamePoint";
   }
   protected:
   explicit UpdateGamePoint(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -4197,7 +4200,7 @@ class UpdateGamePoint final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_points();
 
-  // @@protoc_insertion_point(class_scope:UpdateGamePoint)
+  // @@protoc_insertion_point(class_scope:packet.UpdateGamePoint)
  private:
   class _Internal;
 
@@ -4212,7 +4215,7 @@ class UpdateGamePoint final :
 // -------------------------------------------------------------------
 
 class EndHand final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:EndHand) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.EndHand) */ {
  public:
   inline EndHand() : EndHand(nullptr) {}
   ~EndHand() override;
@@ -4313,7 +4316,7 @@ class EndHand final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "EndHand";
+    return "packet.EndHand";
   }
   protected:
   explicit EndHand(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -4394,7 +4397,7 @@ class EndHand final :
   void _internal_set_is_end_round(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:EndHand)
+  // @@protoc_insertion_point(class_scope:packet.EndHand)
  private:
   class _Internal;
 
@@ -4413,7 +4416,7 @@ class EndHand final :
 // -------------------------------------------------------------------
 
 class DrawCard final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:DrawCard) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.DrawCard) */ {
  public:
   inline DrawCard() : DrawCard(nullptr) {}
   ~DrawCard() override;
@@ -4514,7 +4517,7 @@ class DrawCard final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "DrawCard";
+    return "packet.DrawCard";
   }
   protected:
   explicit DrawCard(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -4555,7 +4558,7 @@ class DrawCard final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_cards();
 
-  // @@protoc_insertion_point(class_scope:DrawCard)
+  // @@protoc_insertion_point(class_scope:packet.DrawCard)
  private:
   class _Internal;
 
@@ -4570,7 +4573,7 @@ class DrawCard final :
 // -------------------------------------------------------------------
 
 class GeneralInfo final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GeneralInfo) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.GeneralInfo) */ {
  public:
   inline GeneralInfo() : GeneralInfo(nullptr) {}
   ~GeneralInfo() override;
@@ -4671,7 +4674,7 @@ class GeneralInfo final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "GeneralInfo";
+    return "packet.GeneralInfo";
   }
   protected:
   explicit GeneralInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -4717,22 +4720,22 @@ class GeneralInfo final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_exp_levels();
 
-  // repeated .LevelReward level_rewards = 6;
+  // repeated .packet.LevelReward level_rewards = 6;
   int level_rewards_size() const;
   private:
   int _internal_level_rewards_size() const;
   public:
   void clear_level_rewards();
-  ::LevelReward* mutable_level_rewards(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::LevelReward >*
+  ::packet::LevelReward* mutable_level_rewards(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::LevelReward >*
       mutable_level_rewards();
   private:
-  const ::LevelReward& _internal_level_rewards(int index) const;
-  ::LevelReward* _internal_add_level_rewards();
+  const ::packet::LevelReward& _internal_level_rewards(int index) const;
+  ::packet::LevelReward* _internal_add_level_rewards();
   public:
-  const ::LevelReward& level_rewards(int index) const;
-  ::LevelReward* add_level_rewards();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::LevelReward >&
+  const ::packet::LevelReward& level_rewards(int index) const;
+  ::packet::LevelReward* add_level_rewards();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::LevelReward >&
       level_rewards() const;
 
   // int64 timestamp = 1;
@@ -4771,7 +4774,7 @@ class GeneralInfo final :
   void _internal_set_enable_ads(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:GeneralInfo)
+  // @@protoc_insertion_point(class_scope:packet.GeneralInfo)
  private:
   class _Internal;
 
@@ -4780,7 +4783,7 @@ class GeneralInfo final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > exp_levels_;
   mutable std::atomic<int> _exp_levels_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::LevelReward > level_rewards_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::LevelReward > level_rewards_;
   int64_t timestamp_;
   int32_t time_thinking_in_turn_;
   int32_t fee_mode_no_bet_;
@@ -4791,7 +4794,7 @@ class GeneralInfo final :
 // -------------------------------------------------------------------
 
 class LevelReward final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:LevelReward) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.LevelReward) */ {
  public:
   inline LevelReward() : LevelReward(nullptr) {}
   ~LevelReward() override;
@@ -4892,7 +4895,7 @@ class LevelReward final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "LevelReward";
+    return "packet.LevelReward";
   }
   protected:
   explicit LevelReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -4913,22 +4916,22 @@ class LevelReward final :
     kLevelFieldNumber = 1,
     kGoldFieldNumber = 2,
   };
-  // repeated .ItemReward items = 3;
+  // repeated .packet.ItemReward items = 3;
   int items_size() const;
   private:
   int _internal_items_size() const;
   public:
   void clear_items();
-  ::ItemReward* mutable_items(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ItemReward >*
+  ::packet::ItemReward* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::ItemReward >*
       mutable_items();
   private:
-  const ::ItemReward& _internal_items(int index) const;
-  ::ItemReward* _internal_add_items();
+  const ::packet::ItemReward& _internal_items(int index) const;
+  ::packet::ItemReward* _internal_add_items();
   public:
-  const ::ItemReward& items(int index) const;
-  ::ItemReward* add_items();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ItemReward >&
+  const ::packet::ItemReward& items(int index) const;
+  ::packet::ItemReward* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::ItemReward >&
       items() const;
 
   // int32 level = 1;
@@ -4949,14 +4952,14 @@ class LevelReward final :
   void _internal_set_gold(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:LevelReward)
+  // @@protoc_insertion_point(class_scope:packet.LevelReward)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ItemReward > items_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::ItemReward > items_;
   int32_t level_;
   int32_t gold_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -4965,7 +4968,7 @@ class LevelReward final :
 // -------------------------------------------------------------------
 
 class ItemReward final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ItemReward) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ItemReward) */ {
  public:
   inline ItemReward() : ItemReward(nullptr) {}
   ~ItemReward() override;
@@ -5066,7 +5069,7 @@ class ItemReward final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ItemReward";
+    return "packet.ItemReward";
   }
   protected:
   explicit ItemReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -5104,7 +5107,7 @@ class ItemReward final :
   void _internal_set_duration(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ItemReward)
+  // @@protoc_insertion_point(class_scope:packet.ItemReward)
  private:
   class _Internal;
 
@@ -5119,7 +5122,7 @@ class ItemReward final :
 // -------------------------------------------------------------------
 
 class EndGame final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:EndGame) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.EndGame) */ {
  public:
   inline EndGame() : EndGame(nullptr) {}
   ~EndGame() override;
@@ -5220,7 +5223,7 @@ class EndGame final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "EndGame";
+    return "packet.EndGame";
   }
   protected:
   explicit EndGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -5355,22 +5358,22 @@ class EndGame final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
       mutable_players_gold();
 
-  // repeated .RewardInventoryItem rewards = 7;
+  // repeated .packet.RewardInventoryItem rewards = 7;
   int rewards_size() const;
   private:
   int _internal_rewards_size() const;
   public:
   void clear_rewards();
-  ::RewardInventoryItem* mutable_rewards(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+  ::packet::RewardInventoryItem* mutable_rewards(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
       mutable_rewards();
   private:
-  const ::RewardInventoryItem& _internal_rewards(int index) const;
-  ::RewardInventoryItem* _internal_add_rewards();
+  const ::packet::RewardInventoryItem& _internal_rewards(int index) const;
+  ::packet::RewardInventoryItem* _internal_add_rewards();
   public:
-  const ::RewardInventoryItem& rewards(int index) const;
-  ::RewardInventoryItem* add_rewards();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+  const ::packet::RewardInventoryItem& rewards(int index) const;
+  ::packet::RewardInventoryItem* add_rewards();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
       rewards() const;
 
   // int32 win_team_id = 6;
@@ -5382,7 +5385,7 @@ class EndGame final :
   void _internal_set_win_team_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:EndGame)
+  // @@protoc_insertion_point(class_scope:packet.EndGame)
  private:
   class _Internal;
 
@@ -5399,7 +5402,7 @@ class EndGame final :
   mutable std::atomic<int> _score_totals_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t > players_gold_;
   mutable std::atomic<int> _players_gold_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem > rewards_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem > rewards_;
   int32_t win_team_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
@@ -5407,7 +5410,7 @@ class EndGame final :
 // -------------------------------------------------------------------
 
 class PrepareStartGame final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PrepareStartGame) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PrepareStartGame) */ {
  public:
   inline PrepareStartGame() : PrepareStartGame(nullptr) {}
   ~PrepareStartGame() override;
@@ -5508,7 +5511,7 @@ class PrepareStartGame final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PrepareStartGame";
+    return "packet.PrepareStartGame";
   }
   protected:
   explicit PrepareStartGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -5536,7 +5539,7 @@ class PrepareStartGame final :
   void _internal_set_time_start(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PrepareStartGame)
+  // @@protoc_insertion_point(class_scope:packet.PrepareStartGame)
  private:
   class _Internal;
 
@@ -5550,7 +5553,7 @@ class PrepareStartGame final :
 // -------------------------------------------------------------------
 
 class InGameChatMessage final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:InGameChatMessage) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.InGameChatMessage) */ {
  public:
   inline InGameChatMessage() : InGameChatMessage(nullptr) {}
   ~InGameChatMessage() override;
@@ -5651,7 +5654,7 @@ class InGameChatMessage final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "InGameChatMessage";
+    return "packet.InGameChatMessage";
   }
   protected:
   explicit InGameChatMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -5694,7 +5697,7 @@ class InGameChatMessage final :
   void _internal_set_uid(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:InGameChatMessage)
+  // @@protoc_insertion_point(class_scope:packet.InGameChatMessage)
  private:
   class _Internal;
 
@@ -5709,7 +5712,7 @@ class InGameChatMessage final :
 // -------------------------------------------------------------------
 
 class PaymentGoogleConsume final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PaymentGoogleConsume) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PaymentGoogleConsume) */ {
  public:
   inline PaymentGoogleConsume() : PaymentGoogleConsume(nullptr) {}
   ~PaymentGoogleConsume() override;
@@ -5810,7 +5813,7 @@ class PaymentGoogleConsume final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PaymentGoogleConsume";
+    return "packet.PaymentGoogleConsume";
   }
   protected:
   explicit PaymentGoogleConsume(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -5908,7 +5911,7 @@ class PaymentGoogleConsume final :
   void _internal_set_quantity(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PaymentGoogleConsume)
+  // @@protoc_insertion_point(class_scope:packet.PaymentGoogleConsume)
  private:
   class _Internal;
 
@@ -5926,7 +5929,7 @@ class PaymentGoogleConsume final :
 // -------------------------------------------------------------------
 
 class PaymentSuccess final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PaymentSuccess) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PaymentSuccess) */ {
  public:
   inline PaymentSuccess() : PaymentSuccess(nullptr) {}
   ~PaymentSuccess() override;
@@ -6027,7 +6030,7 @@ class PaymentSuccess final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PaymentSuccess";
+    return "packet.PaymentSuccess";
   }
   protected:
   explicit PaymentSuccess(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -6048,22 +6051,22 @@ class PaymentSuccess final :
     kPackIdFieldNumber = 2,
     kGoldFieldNumber = 1,
   };
-  // repeated .RewardInventoryItem items = 3;
+  // repeated .packet.RewardInventoryItem items = 3;
   int items_size() const;
   private:
   int _internal_items_size() const;
   public:
   void clear_items();
-  ::RewardInventoryItem* mutable_items(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+  ::packet::RewardInventoryItem* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
       mutable_items();
   private:
-  const ::RewardInventoryItem& _internal_items(int index) const;
-  ::RewardInventoryItem* _internal_add_items();
+  const ::packet::RewardInventoryItem& _internal_items(int index) const;
+  ::packet::RewardInventoryItem* _internal_add_items();
   public:
-  const ::RewardInventoryItem& items(int index) const;
-  ::RewardInventoryItem* add_items();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+  const ::packet::RewardInventoryItem& items(int index) const;
+  ::packet::RewardInventoryItem* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
       items() const;
 
   // string pack_id = 2;
@@ -6089,14 +6092,14 @@ class PaymentSuccess final :
   void _internal_set_gold(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PaymentSuccess)
+  // @@protoc_insertion_point(class_scope:packet.PaymentSuccess)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem > items_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem > items_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr pack_id_;
   int64_t gold_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -6105,7 +6108,7 @@ class PaymentSuccess final :
 // -------------------------------------------------------------------
 
 class UpdateMoney final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UpdateMoney) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UpdateMoney) */ {
  public:
   inline UpdateMoney() : UpdateMoney(nullptr) {}
   ~UpdateMoney() override;
@@ -6206,7 +6209,7 @@ class UpdateMoney final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UpdateMoney";
+    return "packet.UpdateMoney";
   }
   protected:
   explicit UpdateMoney(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -6234,7 +6237,7 @@ class UpdateMoney final :
   void _internal_set_gold(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:UpdateMoney)
+  // @@protoc_insertion_point(class_scope:packet.UpdateMoney)
  private:
   class _Internal;
 
@@ -6248,7 +6251,7 @@ class UpdateMoney final :
 // -------------------------------------------------------------------
 
 class TableList final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:TableList) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.TableList) */ {
  public:
   inline TableList() : TableList(nullptr) {}
   ~TableList() override;
@@ -6349,7 +6352,7 @@ class TableList final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "TableList";
+    return "packet.TableList";
   }
   protected:
   explicit TableList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -6553,7 +6556,7 @@ class TableList final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
       mutable_is_private();
 
-  // @@protoc_insertion_point(class_scope:TableList)
+  // @@protoc_insertion_point(class_scope:packet.TableList)
  private:
   class _Internal;
 
@@ -6580,7 +6583,7 @@ class TableList final :
 // -------------------------------------------------------------------
 
 class ShopConfig final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ShopConfig) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ShopConfig) */ {
  public:
   inline ShopConfig() : ShopConfig(nullptr) {}
   ~ShopConfig() override;
@@ -6681,7 +6684,7 @@ class ShopConfig final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ShopConfig";
+    return "packet.ShopConfig";
   }
   protected:
   explicit ShopConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -6825,40 +6828,40 @@ class ShopConfig final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_no_ads_days();
 
-  // repeated .RewardInventoryItem items_offer_first_buy = 11;
+  // repeated .packet.RewardInventoryItem items_offer_first_buy = 11;
   int items_offer_first_buy_size() const;
   private:
   int _internal_items_offer_first_buy_size() const;
   public:
   void clear_items_offer_first_buy();
-  ::RewardInventoryItem* mutable_items_offer_first_buy(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+  ::packet::RewardInventoryItem* mutable_items_offer_first_buy(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
       mutable_items_offer_first_buy();
   private:
-  const ::RewardInventoryItem& _internal_items_offer_first_buy(int index) const;
-  ::RewardInventoryItem* _internal_add_items_offer_first_buy();
+  const ::packet::RewardInventoryItem& _internal_items_offer_first_buy(int index) const;
+  ::packet::RewardInventoryItem* _internal_add_items_offer_first_buy();
   public:
-  const ::RewardInventoryItem& items_offer_first_buy(int index) const;
-  ::RewardInventoryItem* add_items_offer_first_buy();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+  const ::packet::RewardInventoryItem& items_offer_first_buy(int index) const;
+  ::packet::RewardInventoryItem* add_items_offer_first_buy();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
       items_offer_first_buy() const;
 
-  // repeated .DetailShopPack details = 12;
+  // repeated .packet.DetailShopPack details = 12;
   int details_size() const;
   private:
   int _internal_details_size() const;
   public:
   void clear_details();
-  ::DetailShopPack* mutable_details(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DetailShopPack >*
+  ::packet::DetailShopPack* mutable_details(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::DetailShopPack >*
       mutable_details();
   private:
-  const ::DetailShopPack& _internal_details(int index) const;
-  ::DetailShopPack* _internal_add_details();
+  const ::packet::DetailShopPack& _internal_details(int index) const;
+  ::packet::DetailShopPack* _internal_add_details();
   public:
-  const ::DetailShopPack& details(int index) const;
-  ::DetailShopPack* add_details();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DetailShopPack >&
+  const ::packet::DetailShopPack& details(int index) const;
+  ::packet::DetailShopPack* add_details();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::DetailShopPack >&
       details() const;
 
   // string currency_offer_first = 9;
@@ -6916,7 +6919,7 @@ class ShopConfig final :
   void _internal_set_price_offer_first(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ShopConfig)
+  // @@protoc_insertion_point(class_scope:packet.ShopConfig)
  private:
   class _Internal;
 
@@ -6930,8 +6933,8 @@ class ShopConfig final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> currencies_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > no_ads_days_;
   mutable std::atomic<int> _no_ads_days_cached_byte_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem > items_offer_first_buy_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DetailShopPack > details_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem > items_offer_first_buy_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::DetailShopPack > details_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr currency_offer_first_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr pack_id_offer_first_;
   int32_t gold_offer_first_;
@@ -6943,7 +6946,7 @@ class ShopConfig final :
 // -------------------------------------------------------------------
 
 class DetailShopPack final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:DetailShopPack) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.DetailShopPack) */ {
  public:
   inline DetailShopPack() : DetailShopPack(nullptr) {}
   ~DetailShopPack() override;
@@ -7044,7 +7047,7 @@ class DetailShopPack final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "DetailShopPack";
+    return "packet.DetailShopPack";
   }
   protected:
   explicit DetailShopPack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -7063,39 +7066,39 @@ class DetailShopPack final :
   enum : int {
     kItemsFieldNumber = 1,
   };
-  // repeated .RewardInventoryItem items = 1;
+  // repeated .packet.RewardInventoryItem items = 1;
   int items_size() const;
   private:
   int _internal_items_size() const;
   public:
   void clear_items();
-  ::RewardInventoryItem* mutable_items(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+  ::packet::RewardInventoryItem* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
       mutable_items();
   private:
-  const ::RewardInventoryItem& _internal_items(int index) const;
-  ::RewardInventoryItem* _internal_add_items();
+  const ::packet::RewardInventoryItem& _internal_items(int index) const;
+  ::packet::RewardInventoryItem* _internal_add_items();
   public:
-  const ::RewardInventoryItem& items(int index) const;
-  ::RewardInventoryItem* add_items();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+  const ::packet::RewardInventoryItem& items(int index) const;
+  ::packet::RewardInventoryItem* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
       items() const;
 
-  // @@protoc_insertion_point(class_scope:DetailShopPack)
+  // @@protoc_insertion_point(class_scope:packet.DetailShopPack)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem > items_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem > items_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
 };
 // -------------------------------------------------------------------
 
 class GuestAccount final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GuestAccount) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.GuestAccount) */ {
  public:
   inline GuestAccount() : GuestAccount(nullptr) {}
   ~GuestAccount() override;
@@ -7196,7 +7199,7 @@ class GuestAccount final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "GuestAccount";
+    return "packet.GuestAccount";
   }
   protected:
   explicit GuestAccount(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -7229,7 +7232,7 @@ class GuestAccount final :
   std::string* _internal_mutable_guest_id();
   public:
 
-  // @@protoc_insertion_point(class_scope:GuestAccount)
+  // @@protoc_insertion_point(class_scope:packet.GuestAccount)
  private:
   class _Internal;
 
@@ -7243,7 +7246,7 @@ class GuestAccount final :
 // -------------------------------------------------------------------
 
 class ChangeAvatar final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ChangeAvatar) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ChangeAvatar) */ {
  public:
   inline ChangeAvatar() : ChangeAvatar(nullptr) {}
   ~ChangeAvatar() override;
@@ -7344,7 +7347,7 @@ class ChangeAvatar final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ChangeAvatar";
+    return "packet.ChangeAvatar";
   }
   protected:
   explicit ChangeAvatar(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -7372,7 +7375,7 @@ class ChangeAvatar final :
   void _internal_set_avatar_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ChangeAvatar)
+  // @@protoc_insertion_point(class_scope:packet.ChangeAvatar)
  private:
   class _Internal;
 
@@ -7386,7 +7389,7 @@ class ChangeAvatar final :
 // -------------------------------------------------------------------
 
 class InGameChatEmoticon final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:InGameChatEmoticon) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.InGameChatEmoticon) */ {
  public:
   inline InGameChatEmoticon() : InGameChatEmoticon(nullptr) {}
   ~InGameChatEmoticon() override;
@@ -7487,7 +7490,7 @@ class InGameChatEmoticon final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "InGameChatEmoticon";
+    return "packet.InGameChatEmoticon";
   }
   protected:
   explicit InGameChatEmoticon(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -7525,7 +7528,7 @@ class InGameChatEmoticon final :
   void _internal_set_emoticon(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:InGameChatEmoticon)
+  // @@protoc_insertion_point(class_scope:packet.InGameChatEmoticon)
  private:
   class _Internal;
 
@@ -7540,7 +7543,7 @@ class InGameChatEmoticon final :
 // -------------------------------------------------------------------
 
 class SearchFriend final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SearchFriend) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SearchFriend) */ {
  public:
   inline SearchFriend() : SearchFriend(nullptr) {}
   ~SearchFriend() override;
@@ -7641,7 +7644,7 @@ class SearchFriend final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SearchFriend";
+    return "packet.SearchFriend";
   }
   protected:
   explicit SearchFriend(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -7669,7 +7672,7 @@ class SearchFriend final :
   void _internal_set_uid(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SearchFriend)
+  // @@protoc_insertion_point(class_scope:packet.SearchFriend)
  private:
   class _Internal;
 
@@ -7683,7 +7686,7 @@ class SearchFriend final :
 // -------------------------------------------------------------------
 
 class SearchFriendResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SearchFriendResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SearchFriendResponse) */ {
  public:
   inline SearchFriendResponse() : SearchFriendResponse(nullptr) {}
   ~SearchFriendResponse() override;
@@ -7784,7 +7787,7 @@ class SearchFriendResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SearchFriendResponse";
+    return "packet.SearchFriendResponse";
   }
   protected:
   explicit SearchFriendResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -7922,7 +7925,7 @@ class SearchFriendResponse final :
   void _internal_set_avatar_frame(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SearchFriendResponse)
+  // @@protoc_insertion_point(class_scope:packet.SearchFriendResponse)
  private:
   class _Internal;
 
@@ -7946,7 +7949,7 @@ class SearchFriendResponse final :
 // -------------------------------------------------------------------
 
 class CheatGoldUser final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CheatGoldUser) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.CheatGoldUser) */ {
  public:
   inline CheatGoldUser() : CheatGoldUser(nullptr) {}
   ~CheatGoldUser() override;
@@ -8047,7 +8050,7 @@ class CheatGoldUser final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "CheatGoldUser";
+    return "packet.CheatGoldUser";
   }
   protected:
   explicit CheatGoldUser(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -8075,7 +8078,7 @@ class CheatGoldUser final :
   void _internal_set_gold(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:CheatGoldUser)
+  // @@protoc_insertion_point(class_scope:packet.CheatGoldUser)
  private:
   class _Internal;
 
@@ -8089,7 +8092,7 @@ class CheatGoldUser final :
 // -------------------------------------------------------------------
 
 class FriendList final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:FriendList) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.FriendList) */ {
  public:
   inline FriendList() : FriendList(nullptr) {}
   ~FriendList() override;
@@ -8190,7 +8193,7 @@ class FriendList final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "FriendList";
+    return "packet.FriendList";
   }
   protected:
   explicit FriendList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -8419,7 +8422,7 @@ class FriendList final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_last_online_times();
 
-  // @@protoc_insertion_point(class_scope:FriendList)
+  // @@protoc_insertion_point(class_scope:packet.FriendList)
  private:
   class _Internal;
 
@@ -8446,7 +8449,7 @@ class FriendList final :
 // -------------------------------------------------------------------
 
 class FriendRequests final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:FriendRequests) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.FriendRequests) */ {
  public:
   inline FriendRequests() : FriendRequests(nullptr) {}
   ~FriendRequests() override;
@@ -8547,7 +8550,7 @@ class FriendRequests final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "FriendRequests";
+    return "packet.FriendRequests";
   }
   protected:
   explicit FriendRequests(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -8707,7 +8710,7 @@ class FriendRequests final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_sent_uids();
 
-  // @@protoc_insertion_point(class_scope:FriendRequests)
+  // @@protoc_insertion_point(class_scope:packet.FriendRequests)
  private:
   class _Internal;
 
@@ -8730,7 +8733,7 @@ class FriendRequests final :
 // -------------------------------------------------------------------
 
 class AddFriend final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:AddFriend) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.AddFriend) */ {
  public:
   inline AddFriend() : AddFriend(nullptr) {}
   ~AddFriend() override;
@@ -8831,7 +8834,7 @@ class AddFriend final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "AddFriend";
+    return "packet.AddFriend";
   }
   protected:
   explicit AddFriend(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -8869,7 +8872,7 @@ class AddFriend final :
   void _internal_set_uid(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:AddFriend)
+  // @@protoc_insertion_point(class_scope:packet.AddFriend)
  private:
   class _Internal;
 
@@ -8884,7 +8887,7 @@ class AddFriend final :
 // -------------------------------------------------------------------
 
 class RequestFriendAccept final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RequestFriendAccept) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.RequestFriendAccept) */ {
  public:
   inline RequestFriendAccept() : RequestFriendAccept(nullptr) {}
   ~RequestFriendAccept() override;
@@ -8985,7 +8988,7 @@ class RequestFriendAccept final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RequestFriendAccept";
+    return "packet.RequestFriendAccept";
   }
   protected:
   explicit RequestFriendAccept(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -9023,7 +9026,7 @@ class RequestFriendAccept final :
   void _internal_set_action(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:RequestFriendAccept)
+  // @@protoc_insertion_point(class_scope:packet.RequestFriendAccept)
  private:
   class _Internal;
 
@@ -9038,7 +9041,7 @@ class RequestFriendAccept final :
 // -------------------------------------------------------------------
 
 class RemoveFriend final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RemoveFriend) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.RemoveFriend) */ {
  public:
   inline RemoveFriend() : RemoveFriend(nullptr) {}
   ~RemoveFriend() override;
@@ -9139,7 +9142,7 @@ class RemoveFriend final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RemoveFriend";
+    return "packet.RemoveFriend";
   }
   protected:
   explicit RemoveFriend(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -9167,7 +9170,7 @@ class RemoveFriend final :
   void _internal_set_uid(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:RemoveFriend)
+  // @@protoc_insertion_point(class_scope:packet.RemoveFriend)
  private:
   class _Internal;
 
@@ -9181,7 +9184,7 @@ class RemoveFriend final :
 // -------------------------------------------------------------------
 
 class NewFriendRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NewFriendRequest) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.NewFriendRequest) */ {
  public:
   inline NewFriendRequest() : NewFriendRequest(nullptr) {}
   ~NewFriendRequest() override;
@@ -9282,7 +9285,7 @@ class NewFriendRequest final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "NewFriendRequest";
+    return "packet.NewFriendRequest";
   }
   protected:
   explicit NewFriendRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -9360,7 +9363,7 @@ class NewFriendRequest final :
   void _internal_set_gold(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:NewFriendRequest)
+  // @@protoc_insertion_point(class_scope:packet.NewFriendRequest)
  private:
   class _Internal;
 
@@ -9378,7 +9381,7 @@ class NewFriendRequest final :
 // -------------------------------------------------------------------
 
 class FriendRequestAccepted final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:FriendRequestAccepted) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.FriendRequestAccepted) */ {
  public:
   inline FriendRequestAccepted() : FriendRequestAccepted(nullptr) {}
   ~FriendRequestAccepted() override;
@@ -9479,7 +9482,7 @@ class FriendRequestAccepted final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "FriendRequestAccepted";
+    return "packet.FriendRequestAccepted";
   }
   protected:
   explicit FriendRequestAccepted(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -9567,7 +9570,7 @@ class FriendRequestAccepted final :
   void _internal_set_avatar_frame(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:FriendRequestAccepted)
+  // @@protoc_insertion_point(class_scope:packet.FriendRequestAccepted)
  private:
   class _Internal;
 
@@ -9586,7 +9589,7 @@ class FriendRequestAccepted final :
 // -------------------------------------------------------------------
 
 class RecommendFriends final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RecommendFriends) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.RecommendFriends) */ {
  public:
   inline RecommendFriends() : RecommendFriends(nullptr) {}
   ~RecommendFriends() override;
@@ -9687,7 +9690,7 @@ class RecommendFriends final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RecommendFriends";
+    return "packet.RecommendFriends";
   }
   protected:
   explicit RecommendFriends(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -9847,7 +9850,7 @@ class RecommendFriends final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_avatar_frames();
 
-  // @@protoc_insertion_point(class_scope:RecommendFriends)
+  // @@protoc_insertion_point(class_scope:packet.RecommendFriends)
  private:
   class _Internal;
 
@@ -9870,7 +9873,7 @@ class RecommendFriends final :
 // -------------------------------------------------------------------
 
 class PaymentAppleConsume final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PaymentAppleConsume) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PaymentAppleConsume) */ {
  public:
   inline PaymentAppleConsume() : PaymentAppleConsume(nullptr) {}
   ~PaymentAppleConsume() override;
@@ -9971,7 +9974,7 @@ class PaymentAppleConsume final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PaymentAppleConsume";
+    return "packet.PaymentAppleConsume";
   }
   protected:
   explicit PaymentAppleConsume(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -10019,7 +10022,7 @@ class PaymentAppleConsume final :
   std::string* _internal_mutable_receipt_data();
   public:
 
-  // @@protoc_insertion_point(class_scope:PaymentAppleConsume)
+  // @@protoc_insertion_point(class_scope:packet.PaymentAppleConsume)
  private:
   class _Internal;
 
@@ -10034,7 +10037,7 @@ class PaymentAppleConsume final :
 // -------------------------------------------------------------------
 
 class PaymentFinishedAppleTransaction final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PaymentFinishedAppleTransaction) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PaymentFinishedAppleTransaction) */ {
  public:
   inline PaymentFinishedAppleTransaction() : PaymentFinishedAppleTransaction(nullptr) {}
   ~PaymentFinishedAppleTransaction() override;
@@ -10135,7 +10138,7 @@ class PaymentFinishedAppleTransaction final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PaymentFinishedAppleTransaction";
+    return "packet.PaymentFinishedAppleTransaction";
   }
   protected:
   explicit PaymentFinishedAppleTransaction(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -10168,7 +10171,7 @@ class PaymentFinishedAppleTransaction final :
   std::string* _internal_mutable_pack_id();
   public:
 
-  // @@protoc_insertion_point(class_scope:PaymentFinishedAppleTransaction)
+  // @@protoc_insertion_point(class_scope:packet.PaymentFinishedAppleTransaction)
  private:
   class _Internal;
 
@@ -10182,7 +10185,7 @@ class PaymentFinishedAppleTransaction final :
 // -------------------------------------------------------------------
 
 class NewRound final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NewRound) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.NewRound) */ {
  public:
   inline NewRound() : NewRound(nullptr) {}
   ~NewRound() override;
@@ -10283,7 +10286,7 @@ class NewRound final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "NewRound";
+    return "packet.NewRound";
   }
   protected:
   explicit NewRound(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -10344,7 +10347,7 @@ class NewRound final :
   void _internal_set_current_round(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:NewRound)
+  // @@protoc_insertion_point(class_scope:packet.NewRound)
  private:
   class _Internal;
 
@@ -10361,7 +10364,7 @@ class NewRound final :
 // -------------------------------------------------------------------
 
 class CreateTable final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CreateTable) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.CreateTable) */ {
  public:
   inline CreateTable() : CreateTable(nullptr) {}
   ~CreateTable() override;
@@ -10462,7 +10465,7 @@ class CreateTable final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "CreateTable";
+    return "packet.CreateTable";
   }
   protected:
   explicit CreateTable(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -10530,7 +10533,7 @@ class CreateTable final :
   void _internal_set_bet_mode(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:CreateTable)
+  // @@protoc_insertion_point(class_scope:packet.CreateTable)
  private:
   class _Internal;
 
@@ -10548,7 +10551,7 @@ class CreateTable final :
 // -------------------------------------------------------------------
 
 class JoinTableById final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:JoinTableById) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.JoinTableById) */ {
  public:
   inline JoinTableById() : JoinTableById(nullptr) {}
   ~JoinTableById() override;
@@ -10649,7 +10652,7 @@ class JoinTableById final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "JoinTableById";
+    return "packet.JoinTableById";
   }
   protected:
   explicit JoinTableById(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -10677,7 +10680,7 @@ class JoinTableById final :
   void _internal_set_match_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:JoinTableById)
+  // @@protoc_insertion_point(class_scope:packet.JoinTableById)
  private:
   class _Internal;
 
@@ -10691,7 +10694,7 @@ class JoinTableById final :
 // -------------------------------------------------------------------
 
 class JoinTableResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:JoinTableResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.JoinTableResponse) */ {
  public:
   inline JoinTableResponse() : JoinTableResponse(nullptr) {}
   ~JoinTableResponse() override;
@@ -10792,7 +10795,7 @@ class JoinTableResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "JoinTableResponse";
+    return "packet.JoinTableResponse";
   }
   protected:
   explicit JoinTableResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -10820,7 +10823,7 @@ class JoinTableResponse final :
   void _internal_set_error(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:JoinTableResponse)
+  // @@protoc_insertion_point(class_scope:packet.JoinTableResponse)
  private:
   class _Internal;
 
@@ -10834,7 +10837,7 @@ class JoinTableResponse final :
 // -------------------------------------------------------------------
 
 class ClaimSupport final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ClaimSupport) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ClaimSupport) */ {
  public:
   inline ClaimSupport() : ClaimSupport(nullptr) {}
   ~ClaimSupport() override;
@@ -10935,7 +10938,7 @@ class ClaimSupport final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ClaimSupport";
+    return "packet.ClaimSupport";
   }
   protected:
   explicit ClaimSupport(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -10963,7 +10966,7 @@ class ClaimSupport final :
   void _internal_set_support_amount(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ClaimSupport)
+  // @@protoc_insertion_point(class_scope:packet.ClaimSupport)
  private:
   class _Internal;
 
@@ -10977,7 +10980,7 @@ class ClaimSupport final :
 // -------------------------------------------------------------------
 
 class AppCodeVersion final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:AppCodeVersion) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.AppCodeVersion) */ {
  public:
   inline AppCodeVersion() : AppCodeVersion(nullptr) {}
   ~AppCodeVersion() override;
@@ -11078,7 +11081,7 @@ class AppCodeVersion final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "AppCodeVersion";
+    return "packet.AppCodeVersion";
   }
   protected:
   explicit AppCodeVersion(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -11166,7 +11169,7 @@ class AppCodeVersion final :
   void _internal_set_ios_reviewing_version(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:AppCodeVersion)
+  // @@protoc_insertion_point(class_scope:packet.AppCodeVersion)
  private:
   class _Internal;
 
@@ -11186,7 +11189,7 @@ class AppCodeVersion final :
 // -------------------------------------------------------------------
 
 class PlayCardResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PlayCardResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PlayCardResponse) */ {
  public:
   inline PlayCardResponse() : PlayCardResponse(nullptr) {}
   ~PlayCardResponse() override;
@@ -11287,7 +11290,7 @@ class PlayCardResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PlayCardResponse";
+    return "packet.PlayCardResponse";
   }
   protected:
   explicit PlayCardResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -11315,7 +11318,7 @@ class PlayCardResponse final :
   void _internal_set_status(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:PlayCardResponse)
+  // @@protoc_insertion_point(class_scope:packet.PlayCardResponse)
  private:
   class _Internal;
 
@@ -11329,7 +11332,7 @@ class PlayCardResponse final :
 // -------------------------------------------------------------------
 
 class CheatViewCardBot final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CheatViewCardBot) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.CheatViewCardBot) */ {
  public:
   inline CheatViewCardBot() : CheatViewCardBot(nullptr) {}
   ~CheatViewCardBot() override;
@@ -11430,7 +11433,7 @@ class CheatViewCardBot final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "CheatViewCardBot";
+    return "packet.CheatViewCardBot";
   }
   protected:
   explicit CheatViewCardBot(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -11471,7 +11474,7 @@ class CheatViewCardBot final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_cards();
 
-  // @@protoc_insertion_point(class_scope:CheatViewCardBot)
+  // @@protoc_insertion_point(class_scope:packet.CheatViewCardBot)
  private:
   class _Internal;
 
@@ -11486,7 +11489,7 @@ class CheatViewCardBot final :
 // -------------------------------------------------------------------
 
 class InviteFriendPlay final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:InviteFriendPlay) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.InviteFriendPlay) */ {
  public:
   inline InviteFriendPlay() : InviteFriendPlay(nullptr) {}
   ~InviteFriendPlay() override;
@@ -11587,7 +11590,7 @@ class InviteFriendPlay final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "InviteFriendPlay";
+    return "packet.InviteFriendPlay";
   }
   protected:
   explicit InviteFriendPlay(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -11625,7 +11628,7 @@ class InviteFriendPlay final :
   void _internal_set_room_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:InviteFriendPlay)
+  // @@protoc_insertion_point(class_scope:packet.InviteFriendPlay)
  private:
   class _Internal;
 
@@ -11640,7 +11643,7 @@ class InviteFriendPlay final :
 // -------------------------------------------------------------------
 
 class GameActionNapoli final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:GameActionNapoli) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.GameActionNapoli) */ {
  public:
   inline GameActionNapoli() : GameActionNapoli(nullptr) {}
   ~GameActionNapoli() override;
@@ -11741,7 +11744,7 @@ class GameActionNapoli final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "GameActionNapoli";
+    return "packet.GameActionNapoli";
   }
   protected:
   explicit GameActionNapoli(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -11802,7 +11805,7 @@ class GameActionNapoli final :
   void _internal_set_point_add(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:GameActionNapoli)
+  // @@protoc_insertion_point(class_scope:packet.GameActionNapoli)
  private:
   class _Internal;
 
@@ -11819,7 +11822,7 @@ class GameActionNapoli final :
 // -------------------------------------------------------------------
 
 class CustomerServiceReport final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CustomerServiceReport) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.CustomerServiceReport) */ {
  public:
   inline CustomerServiceReport() : CustomerServiceReport(nullptr) {}
   ~CustomerServiceReport() override;
@@ -11920,7 +11923,7 @@ class CustomerServiceReport final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "CustomerServiceReport";
+    return "packet.CustomerServiceReport";
   }
   protected:
   explicit CustomerServiceReport(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -11963,7 +11966,7 @@ class CustomerServiceReport final :
   void _internal_set_report_type(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:CustomerServiceReport)
+  // @@protoc_insertion_point(class_scope:packet.CustomerServiceReport)
  private:
   class _Internal;
 
@@ -11978,7 +11981,7 @@ class CustomerServiceReport final :
 // -------------------------------------------------------------------
 
 class AdminBroadcast final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:AdminBroadcast) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.AdminBroadcast) */ {
  public:
   inline AdminBroadcast() : AdminBroadcast(nullptr) {}
   ~AdminBroadcast() override;
@@ -12079,7 +12082,7 @@ class AdminBroadcast final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "AdminBroadcast";
+    return "packet.AdminBroadcast";
   }
   protected:
   explicit AdminBroadcast(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -12112,7 +12115,7 @@ class AdminBroadcast final :
   std::string* _internal_mutable_mes();
   public:
 
-  // @@protoc_insertion_point(class_scope:AdminBroadcast)
+  // @@protoc_insertion_point(class_scope:packet.AdminBroadcast)
  private:
   class _Internal;
 
@@ -12126,7 +12129,7 @@ class AdminBroadcast final :
 // -------------------------------------------------------------------
 
 class PaymentPaypalRequestOrder final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PaymentPaypalRequestOrder) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PaymentPaypalRequestOrder) */ {
  public:
   inline PaymentPaypalRequestOrder() : PaymentPaypalRequestOrder(nullptr) {}
   ~PaymentPaypalRequestOrder() override;
@@ -12227,7 +12230,7 @@ class PaymentPaypalRequestOrder final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PaymentPaypalRequestOrder";
+    return "packet.PaymentPaypalRequestOrder";
   }
   protected:
   explicit PaymentPaypalRequestOrder(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -12260,7 +12263,7 @@ class PaymentPaypalRequestOrder final :
   std::string* _internal_mutable_pack_id();
   public:
 
-  // @@protoc_insertion_point(class_scope:PaymentPaypalRequestOrder)
+  // @@protoc_insertion_point(class_scope:packet.PaymentPaypalRequestOrder)
  private:
   class _Internal;
 
@@ -12274,7 +12277,7 @@ class PaymentPaypalRequestOrder final :
 // -------------------------------------------------------------------
 
 class PaymentPaypalOrder final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:PaymentPaypalOrder) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.PaymentPaypalOrder) */ {
  public:
   inline PaymentPaypalOrder() : PaymentPaypalOrder(nullptr) {}
   ~PaymentPaypalOrder() override;
@@ -12375,7 +12378,7 @@ class PaymentPaypalOrder final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "PaymentPaypalOrder";
+    return "packet.PaymentPaypalOrder";
   }
   protected:
   explicit PaymentPaypalOrder(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -12408,7 +12411,7 @@ class PaymentPaypalOrder final :
   std::string* _internal_mutable_order_url();
   public:
 
-  // @@protoc_insertion_point(class_scope:PaymentPaypalOrder)
+  // @@protoc_insertion_point(class_scope:packet.PaymentPaypalOrder)
  private:
   class _Internal;
 
@@ -12422,7 +12425,7 @@ class PaymentPaypalOrder final :
 // -------------------------------------------------------------------
 
 class QuickPlay final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:QuickPlay) */ {
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:packet.QuickPlay) */ {
  public:
   inline QuickPlay() : QuickPlay(nullptr) {}
   explicit PROTOBUF_CONSTEXPR QuickPlay(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
@@ -12510,7 +12513,7 @@ class QuickPlay final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "QuickPlay";
+    return "packet.QuickPlay";
   }
   protected:
   explicit QuickPlay(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -12526,7 +12529,7 @@ class QuickPlay final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:QuickPlay)
+  // @@protoc_insertion_point(class_scope:packet.QuickPlay)
  private:
   class _Internal;
 
@@ -12538,7 +12541,7 @@ class QuickPlay final :
 // -------------------------------------------------------------------
 
 class SetteMezzoNewUserJoinMatch final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoNewUserJoinMatch) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoNewUserJoinMatch) */ {
  public:
   inline SetteMezzoNewUserJoinMatch() : SetteMezzoNewUserJoinMatch(nullptr) {}
   ~SetteMezzoNewUserJoinMatch() override;
@@ -12639,7 +12642,7 @@ class SetteMezzoNewUserJoinMatch final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoNewUserJoinMatch";
+    return "packet.SetteMezzoNewUserJoinMatch";
   }
   protected:
   explicit SetteMezzoNewUserJoinMatch(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -12727,7 +12730,7 @@ class SetteMezzoNewUserJoinMatch final :
   void _internal_set_team_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoNewUserJoinMatch)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoNewUserJoinMatch)
  private:
   class _Internal;
 
@@ -12746,7 +12749,7 @@ class SetteMezzoNewUserJoinMatch final :
 // -------------------------------------------------------------------
 
 class SetteMezzoPrepareStartGame final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoPrepareStartGame) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoPrepareStartGame) */ {
  public:
   inline SetteMezzoPrepareStartGame() : SetteMezzoPrepareStartGame(nullptr) {}
   ~SetteMezzoPrepareStartGame() override;
@@ -12847,7 +12850,7 @@ class SetteMezzoPrepareStartGame final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoPrepareStartGame";
+    return "packet.SetteMezzoPrepareStartGame";
   }
   protected:
   explicit SetteMezzoPrepareStartGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -12898,7 +12901,7 @@ class SetteMezzoPrepareStartGame final :
   void _internal_set_pot_value(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoPrepareStartGame)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoPrepareStartGame)
  private:
   class _Internal;
 
@@ -12914,7 +12917,7 @@ class SetteMezzoPrepareStartGame final :
 // -------------------------------------------------------------------
 
 class SetteMezzoGameInfo final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoGameInfo) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoGameInfo) */ {
  public:
   inline SetteMezzoGameInfo() : SetteMezzoGameInfo(nullptr) {}
   ~SetteMezzoGameInfo() override;
@@ -13015,7 +13018,7 @@ class SetteMezzoGameInfo final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoGameInfo";
+    return "packet.SetteMezzoGameInfo";
   }
   protected:
   explicit SetteMezzoGameInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -13409,7 +13412,7 @@ class SetteMezzoGameInfo final :
   void _internal_set_time_end_bet(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoGameInfo)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoGameInfo)
  private:
   class _Internal;
 
@@ -13452,7 +13455,7 @@ class SetteMezzoGameInfo final :
 // -------------------------------------------------------------------
 
 class SetteMezzoPlayerInfo final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoPlayerInfo) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoPlayerInfo) */ {
  public:
   inline SetteMezzoPlayerInfo() : SetteMezzoPlayerInfo(nullptr) {}
   ~SetteMezzoPlayerInfo() override;
@@ -13553,7 +13556,7 @@ class SetteMezzoPlayerInfo final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoPlayerInfo";
+    return "packet.SetteMezzoPlayerInfo";
   }
   protected:
   explicit SetteMezzoPlayerInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -13594,7 +13597,7 @@ class SetteMezzoPlayerInfo final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_card_ids();
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoPlayerInfo)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoPlayerInfo)
  private:
   class _Internal;
 
@@ -13609,7 +13612,7 @@ class SetteMezzoPlayerInfo final :
 // -------------------------------------------------------------------
 
 class SetteMezzoQuickPlay final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:SetteMezzoQuickPlay) */ {
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:packet.SetteMezzoQuickPlay) */ {
  public:
   inline SetteMezzoQuickPlay() : SetteMezzoQuickPlay(nullptr) {}
   explicit PROTOBUF_CONSTEXPR SetteMezzoQuickPlay(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
@@ -13697,7 +13700,7 @@ class SetteMezzoQuickPlay final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoQuickPlay";
+    return "packet.SetteMezzoQuickPlay";
   }
   protected:
   explicit SetteMezzoQuickPlay(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -13713,7 +13716,7 @@ class SetteMezzoQuickPlay final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoQuickPlay)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoQuickPlay)
  private:
   class _Internal;
 
@@ -13725,7 +13728,7 @@ class SetteMezzoQuickPlay final :
 // -------------------------------------------------------------------
 
 class SetteMezzoStartGame final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoStartGame) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoStartGame) */ {
  public:
   inline SetteMezzoStartGame() : SetteMezzoStartGame(nullptr) {}
   ~SetteMezzoStartGame() override;
@@ -13826,7 +13829,7 @@ class SetteMezzoStartGame final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoStartGame";
+    return "packet.SetteMezzoStartGame";
   }
   protected:
   explicit SetteMezzoStartGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -13890,7 +13893,7 @@ class SetteMezzoStartGame final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
       mutable_cards();
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoStartGame)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoStartGame)
  private:
   class _Internal;
 
@@ -13907,7 +13910,7 @@ class SetteMezzoStartGame final :
 // -------------------------------------------------------------------
 
 class RankingInfo final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RankingInfo) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.RankingInfo) */ {
  public:
   inline RankingInfo() : RankingInfo(nullptr) {}
   ~RankingInfo() override;
@@ -14008,7 +14011,7 @@ class RankingInfo final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RankingInfo";
+    return "packet.RankingInfo";
   }
   protected:
   explicit RankingInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -14218,7 +14221,7 @@ class RankingInfo final :
   void _internal_set_my_score(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:RankingInfo)
+  // @@protoc_insertion_point(class_scope:packet.RankingInfo)
  private:
   class _Internal;
 
@@ -14246,7 +14249,7 @@ class RankingInfo final :
 // -------------------------------------------------------------------
 
 class RankingResult final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RankingResult) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.RankingResult) */ {
  public:
   inline RankingResult() : RankingResult(nullptr) {}
   ~RankingResult() override;
@@ -14347,7 +14350,7 @@ class RankingResult final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RankingResult";
+    return "packet.RankingResult";
   }
   protected:
   explicit RankingResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -14395,7 +14398,7 @@ class RankingResult final :
   void _internal_set_rank(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:RankingResult)
+  // @@protoc_insertion_point(class_scope:packet.RankingResult)
  private:
   class _Internal;
 
@@ -14411,7 +14414,7 @@ class RankingResult final :
 // -------------------------------------------------------------------
 
 class RankingClaimReward final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RankingClaimReward) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.RankingClaimReward) */ {
  public:
   inline RankingClaimReward() : RankingClaimReward(nullptr) {}
   ~RankingClaimReward() override;
@@ -14512,7 +14515,7 @@ class RankingClaimReward final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RankingClaimReward";
+    return "packet.RankingClaimReward";
   }
   protected:
   explicit RankingClaimReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -14540,7 +14543,7 @@ class RankingClaimReward final :
   void _internal_set_season_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:RankingClaimReward)
+  // @@protoc_insertion_point(class_scope:packet.RankingClaimReward)
  private:
   class _Internal;
 
@@ -14554,7 +14557,7 @@ class RankingClaimReward final :
 // -------------------------------------------------------------------
 
 class UpdateAds final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UpdateAds) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UpdateAds) */ {
  public:
   inline UpdateAds() : UpdateAds(nullptr) {}
   ~UpdateAds() override;
@@ -14655,7 +14658,7 @@ class UpdateAds final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UpdateAds";
+    return "packet.UpdateAds";
   }
   protected:
   explicit UpdateAds(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -14683,7 +14686,7 @@ class UpdateAds final :
   void _internal_set_time_show_ads(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:UpdateAds)
+  // @@protoc_insertion_point(class_scope:packet.UpdateAds)
  private:
   class _Internal;
 
@@ -14697,7 +14700,7 @@ class UpdateAds final :
 // -------------------------------------------------------------------
 
 class AdsReward final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:AdsReward) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.AdsReward) */ {
  public:
   inline AdsReward() : AdsReward(nullptr) {}
   ~AdsReward() override;
@@ -14798,7 +14801,7 @@ class AdsReward final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "AdsReward";
+    return "packet.AdsReward";
   }
   protected:
   explicit AdsReward(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -14836,7 +14839,7 @@ class AdsReward final :
   void _internal_set_time_ads_reward(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:AdsReward)
+  // @@protoc_insertion_point(class_scope:packet.AdsReward)
  private:
   class _Internal;
 
@@ -14851,7 +14854,7 @@ class AdsReward final :
 // -------------------------------------------------------------------
 
 class ChangeUserName final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ChangeUserName) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ChangeUserName) */ {
  public:
   inline ChangeUserName() : ChangeUserName(nullptr) {}
   ~ChangeUserName() override;
@@ -14952,7 +14955,7 @@ class ChangeUserName final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ChangeUserName";
+    return "packet.ChangeUserName";
   }
   protected:
   explicit ChangeUserName(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -14985,7 +14988,7 @@ class ChangeUserName final :
   std::string* _internal_mutable_name();
   public:
 
-  // @@protoc_insertion_point(class_scope:ChangeUserName)
+  // @@protoc_insertion_point(class_scope:packet.ChangeUserName)
  private:
   class _Internal;
 
@@ -14999,7 +15002,7 @@ class ChangeUserName final :
 // -------------------------------------------------------------------
 
 class SetteMezzoActionHit final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoActionHit) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoActionHit) */ {
  public:
   inline SetteMezzoActionHit() : SetteMezzoActionHit(nullptr) {}
   ~SetteMezzoActionHit() override;
@@ -15100,7 +15103,7 @@ class SetteMezzoActionHit final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoActionHit";
+    return "packet.SetteMezzoActionHit";
   }
   protected:
   explicit SetteMezzoActionHit(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -15138,7 +15141,7 @@ class SetteMezzoActionHit final :
   void _internal_set_card_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoActionHit)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoActionHit)
  private:
   class _Internal;
 
@@ -15153,7 +15156,7 @@ class SetteMezzoActionHit final :
 // -------------------------------------------------------------------
 
 class SetteMezzoUpdateTurn final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoUpdateTurn) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoUpdateTurn) */ {
  public:
   inline SetteMezzoUpdateTurn() : SetteMezzoUpdateTurn(nullptr) {}
   ~SetteMezzoUpdateTurn() override;
@@ -15254,7 +15257,7 @@ class SetteMezzoUpdateTurn final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoUpdateTurn";
+    return "packet.SetteMezzoUpdateTurn";
   }
   protected:
   explicit SetteMezzoUpdateTurn(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -15292,7 +15295,7 @@ class SetteMezzoUpdateTurn final :
   void _internal_set_play_turn_time(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoUpdateTurn)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoUpdateTurn)
  private:
   class _Internal;
 
@@ -15307,7 +15310,7 @@ class SetteMezzoUpdateTurn final :
 // -------------------------------------------------------------------
 
 class SetteMezzoActionStand final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoActionStand) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoActionStand) */ {
  public:
   inline SetteMezzoActionStand() : SetteMezzoActionStand(nullptr) {}
   ~SetteMezzoActionStand() override;
@@ -15408,7 +15411,7 @@ class SetteMezzoActionStand final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoActionStand";
+    return "packet.SetteMezzoActionStand";
   }
   protected:
   explicit SetteMezzoActionStand(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -15456,7 +15459,7 @@ class SetteMezzoActionStand final :
   void _internal_set_play_turn_time(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoActionStand)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoActionStand)
  private:
   class _Internal;
 
@@ -15472,7 +15475,7 @@ class SetteMezzoActionStand final :
 // -------------------------------------------------------------------
 
 class SetteMezzoEndGame final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoEndGame) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoEndGame) */ {
  public:
   inline SetteMezzoEndGame() : SetteMezzoEndGame(nullptr) {}
   ~SetteMezzoEndGame() override;
@@ -15573,7 +15576,7 @@ class SetteMezzoEndGame final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoEndGame";
+    return "packet.SetteMezzoEndGame";
   }
   protected:
   explicit SetteMezzoEndGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -15706,7 +15709,7 @@ class SetteMezzoEndGame final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
       mutable_player_golds();
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoEndGame)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoEndGame)
  private:
   class _Internal;
 
@@ -15728,7 +15731,7 @@ class SetteMezzoEndGame final :
 // -------------------------------------------------------------------
 
 class SetteMezzoShowBankerCard final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoShowBankerCard) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoShowBankerCard) */ {
  public:
   inline SetteMezzoShowBankerCard() : SetteMezzoShowBankerCard(nullptr) {}
   ~SetteMezzoShowBankerCard() override;
@@ -15829,7 +15832,7 @@ class SetteMezzoShowBankerCard final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoShowBankerCard";
+    return "packet.SetteMezzoShowBankerCard";
   }
   protected:
   explicit SetteMezzoShowBankerCard(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -15857,7 +15860,7 @@ class SetteMezzoShowBankerCard final :
   void _internal_set_card_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoShowBankerCard)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoShowBankerCard)
  private:
   class _Internal;
 
@@ -15871,7 +15874,7 @@ class SetteMezzoShowBankerCard final :
 // -------------------------------------------------------------------
 
 class SetteMezzoUserBet final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:SetteMezzoUserBet) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.SetteMezzoUserBet) */ {
  public:
   inline SetteMezzoUserBet() : SetteMezzoUserBet(nullptr) {}
   ~SetteMezzoUserBet() override;
@@ -15972,7 +15975,7 @@ class SetteMezzoUserBet final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "SetteMezzoUserBet";
+    return "packet.SetteMezzoUserBet";
   }
   protected:
   explicit SetteMezzoUserBet(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -16010,7 +16013,7 @@ class SetteMezzoUserBet final :
   void _internal_set_uid(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:SetteMezzoUserBet)
+  // @@protoc_insertion_point(class_scope:packet.SetteMezzoUserBet)
  private:
   class _Internal;
 
@@ -16025,7 +16028,7 @@ class SetteMezzoUserBet final :
 // -------------------------------------------------------------------
 
 class ViewGame final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ViewGame) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ViewGame) */ {
  public:
   inline ViewGame() : ViewGame(nullptr) {}
   ~ViewGame() override;
@@ -16126,7 +16129,7 @@ class ViewGame final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ViewGame";
+    return "packet.ViewGame";
   }
   protected:
   explicit ViewGame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -16154,7 +16157,7 @@ class ViewGame final :
   void _internal_set_match_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ViewGame)
+  // @@protoc_insertion_point(class_scope:packet.ViewGame)
  private:
   class _Internal;
 
@@ -16168,7 +16171,7 @@ class ViewGame final :
 // -------------------------------------------------------------------
 
 class UserStopView final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UserStopView) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UserStopView) */ {
  public:
   inline UserStopView() : UserStopView(nullptr) {}
   ~UserStopView() override;
@@ -16269,7 +16272,7 @@ class UserStopView final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UserStopView";
+    return "packet.UserStopView";
   }
   protected:
   explicit UserStopView(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -16297,7 +16300,7 @@ class UserStopView final :
   void _internal_set_uid(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:UserStopView)
+  // @@protoc_insertion_point(class_scope:packet.UserStopView)
  private:
   class _Internal;
 
@@ -16311,7 +16314,7 @@ class UserStopView final :
 // -------------------------------------------------------------------
 
 class NewUserView final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NewUserView) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.NewUserView) */ {
  public:
   inline NewUserView() : NewUserView(nullptr) {}
   ~NewUserView() override;
@@ -16412,7 +16415,7 @@ class NewUserView final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "NewUserView";
+    return "packet.NewUserView";
   }
   protected:
   explicit NewUserView(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -16480,7 +16483,7 @@ class NewUserView final :
   void _internal_set_avatar_frame(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:NewUserView)
+  // @@protoc_insertion_point(class_scope:packet.NewUserView)
  private:
   class _Internal;
 
@@ -16497,7 +16500,7 @@ class NewUserView final :
 // -------------------------------------------------------------------
 
 class CheatExpUser final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CheatExpUser) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.CheatExpUser) */ {
  public:
   inline CheatExpUser() : CheatExpUser(nullptr) {}
   ~CheatExpUser() override;
@@ -16598,7 +16601,7 @@ class CheatExpUser final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "CheatExpUser";
+    return "packet.CheatExpUser";
   }
   protected:
   explicit CheatExpUser(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -16626,7 +16629,7 @@ class CheatExpUser final :
   void _internal_set_exp(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:CheatExpUser)
+  // @@protoc_insertion_point(class_scope:packet.CheatExpUser)
  private:
   class _Internal;
 
@@ -16640,7 +16643,7 @@ class CheatExpUser final :
 // -------------------------------------------------------------------
 
 class UpdateExp final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UpdateExp) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UpdateExp) */ {
  public:
   inline UpdateExp() : UpdateExp(nullptr) {}
   ~UpdateExp() override;
@@ -16741,7 +16744,7 @@ class UpdateExp final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UpdateExp";
+    return "packet.UpdateExp";
   }
   protected:
   explicit UpdateExp(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -16769,7 +16772,7 @@ class UpdateExp final :
   void _internal_set_exp(int64_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:UpdateExp)
+  // @@protoc_insertion_point(class_scope:packet.UpdateExp)
  private:
   class _Internal;
 
@@ -16783,7 +16786,7 @@ class UpdateExp final :
 // -------------------------------------------------------------------
 
 class ClaimRewardLevel final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ClaimRewardLevel) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ClaimRewardLevel) */ {
  public:
   inline ClaimRewardLevel() : ClaimRewardLevel(nullptr) {}
   ~ClaimRewardLevel() override;
@@ -16884,7 +16887,7 @@ class ClaimRewardLevel final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ClaimRewardLevel";
+    return "packet.ClaimRewardLevel";
   }
   protected:
   explicit ClaimRewardLevel(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -16912,7 +16915,7 @@ class ClaimRewardLevel final :
   void _internal_set_level(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ClaimRewardLevel)
+  // @@protoc_insertion_point(class_scope:packet.ClaimRewardLevel)
  private:
   class _Internal;
 
@@ -16926,7 +16929,7 @@ class ClaimRewardLevel final :
 // -------------------------------------------------------------------
 
 class UserInventory final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UserInventory) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UserInventory) */ {
  public:
   inline UserInventory() : UserInventory(nullptr) {}
   ~UserInventory() override;
@@ -17027,7 +17030,7 @@ class UserInventory final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UserInventory";
+    return "packet.UserInventory";
   }
   protected:
   explicit UserInventory(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -17046,39 +17049,39 @@ class UserInventory final :
   enum : int {
     kItemsFieldNumber = 1,
   };
-  // repeated .InvetoryItem items = 1;
+  // repeated .packet.InvetoryItem items = 1;
   int items_size() const;
   private:
   int _internal_items_size() const;
   public:
   void clear_items();
-  ::InvetoryItem* mutable_items(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryItem >*
+  ::packet::InvetoryItem* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryItem >*
       mutable_items();
   private:
-  const ::InvetoryItem& _internal_items(int index) const;
-  ::InvetoryItem* _internal_add_items();
+  const ::packet::InvetoryItem& _internal_items(int index) const;
+  ::packet::InvetoryItem* _internal_add_items();
   public:
-  const ::InvetoryItem& items(int index) const;
-  ::InvetoryItem* add_items();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryItem >&
+  const ::packet::InvetoryItem& items(int index) const;
+  ::packet::InvetoryItem* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryItem >&
       items() const;
 
-  // @@protoc_insertion_point(class_scope:UserInventory)
+  // @@protoc_insertion_point(class_scope:packet.UserInventory)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryItem > items_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryItem > items_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
 };
 // -------------------------------------------------------------------
 
 class InvetoryItem final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:InvetoryItem) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.InvetoryItem) */ {
  public:
   inline InvetoryItem() : InvetoryItem(nullptr) {}
   ~InvetoryItem() override;
@@ -17179,7 +17182,7 @@ class InvetoryItem final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "InvetoryItem";
+    return "packet.InvetoryItem";
   }
   protected:
   explicit InvetoryItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -17227,7 +17230,7 @@ class InvetoryItem final :
   void _internal_set_value(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:InvetoryItem)
+  // @@protoc_insertion_point(class_scope:packet.InvetoryItem)
  private:
   class _Internal;
 
@@ -17243,7 +17246,7 @@ class InvetoryItem final :
 // -------------------------------------------------------------------
 
 class UseItem final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:UseItem) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.UseItem) */ {
  public:
   inline UseItem() : UseItem(nullptr) {}
   ~UseItem() override;
@@ -17344,7 +17347,7 @@ class UseItem final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "UseItem";
+    return "packet.UseItem";
   }
   protected:
   explicit UseItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -17372,7 +17375,7 @@ class UseItem final :
   void _internal_set_item_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:UseItem)
+  // @@protoc_insertion_point(class_scope:packet.UseItem)
  private:
   class _Internal;
 
@@ -17386,7 +17389,7 @@ class UseItem final :
 // -------------------------------------------------------------------
 
 class CheatItem final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:CheatItem) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.CheatItem) */ {
  public:
   inline CheatItem() : CheatItem(nullptr) {}
   ~CheatItem() override;
@@ -17487,7 +17490,7 @@ class CheatItem final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "CheatItem";
+    return "packet.CheatItem";
   }
   protected:
   explicit CheatItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -17525,7 +17528,7 @@ class CheatItem final :
   void _internal_set_duration(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:CheatItem)
+  // @@protoc_insertion_point(class_scope:packet.CheatItem)
  private:
   class _Internal;
 
@@ -17540,7 +17543,7 @@ class CheatItem final :
 // -------------------------------------------------------------------
 
 class BuyItem final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:BuyItem) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.BuyItem) */ {
  public:
   inline BuyItem() : BuyItem(nullptr) {}
   ~BuyItem() override;
@@ -17641,7 +17644,7 @@ class BuyItem final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "BuyItem";
+    return "packet.BuyItem";
   }
   protected:
   explicit BuyItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -17679,7 +17682,7 @@ class BuyItem final :
   void _internal_set_pack_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:BuyItem)
+  // @@protoc_insertion_point(class_scope:packet.BuyItem)
  private:
   class _Internal;
 
@@ -17694,7 +17697,7 @@ class BuyItem final :
 // -------------------------------------------------------------------
 
 class InventoryShopConfig final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:InventoryShopConfig) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.InventoryShopConfig) */ {
  public:
   inline InventoryShopConfig() : InventoryShopConfig(nullptr) {}
   ~InventoryShopConfig() override;
@@ -17795,7 +17798,7 @@ class InventoryShopConfig final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "InventoryShopConfig";
+    return "packet.InventoryShopConfig";
   }
   protected:
   explicit InventoryShopConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -17814,39 +17817,39 @@ class InventoryShopConfig final :
   enum : int {
     kItemsFieldNumber = 1,
   };
-  // repeated .InventoryShopItem items = 1;
+  // repeated .packet.InventoryShopItem items = 1;
   int items_size() const;
   private:
   int _internal_items_size() const;
   public:
   void clear_items();
-  ::InventoryShopItem* mutable_items(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InventoryShopItem >*
+  ::packet::InventoryShopItem* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InventoryShopItem >*
       mutable_items();
   private:
-  const ::InventoryShopItem& _internal_items(int index) const;
-  ::InventoryShopItem* _internal_add_items();
+  const ::packet::InventoryShopItem& _internal_items(int index) const;
+  ::packet::InventoryShopItem* _internal_add_items();
   public:
-  const ::InventoryShopItem& items(int index) const;
-  ::InventoryShopItem* add_items();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InventoryShopItem >&
+  const ::packet::InventoryShopItem& items(int index) const;
+  ::packet::InventoryShopItem* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InventoryShopItem >&
       items() const;
 
-  // @@protoc_insertion_point(class_scope:InventoryShopConfig)
+  // @@protoc_insertion_point(class_scope:packet.InventoryShopConfig)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InventoryShopItem > items_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InventoryShopItem > items_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
 };
 // -------------------------------------------------------------------
 
 class InventoryShopItem final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:InventoryShopItem) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.InventoryShopItem) */ {
  public:
   inline InventoryShopItem() : InventoryShopItem(nullptr) {}
   ~InventoryShopItem() override;
@@ -17947,7 +17950,7 @@ class InventoryShopItem final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "InventoryShopItem";
+    return "packet.InventoryShopItem";
   }
   protected:
   explicit InventoryShopItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -17967,22 +17970,22 @@ class InventoryShopItem final :
     kPacksFieldNumber = 2,
     kItemIdFieldNumber = 1,
   };
-  // repeated .InvetoryShopPack packs = 2;
+  // repeated .packet.InvetoryShopPack packs = 2;
   int packs_size() const;
   private:
   int _internal_packs_size() const;
   public:
   void clear_packs();
-  ::InvetoryShopPack* mutable_packs(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryShopPack >*
+  ::packet::InvetoryShopPack* mutable_packs(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryShopPack >*
       mutable_packs();
   private:
-  const ::InvetoryShopPack& _internal_packs(int index) const;
-  ::InvetoryShopPack* _internal_add_packs();
+  const ::packet::InvetoryShopPack& _internal_packs(int index) const;
+  ::packet::InvetoryShopPack* _internal_add_packs();
   public:
-  const ::InvetoryShopPack& packs(int index) const;
-  ::InvetoryShopPack* add_packs();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryShopPack >&
+  const ::packet::InvetoryShopPack& packs(int index) const;
+  ::packet::InvetoryShopPack* add_packs();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryShopPack >&
       packs() const;
 
   // int32 item_id = 1;
@@ -17994,14 +17997,14 @@ class InventoryShopItem final :
   void _internal_set_item_id(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:InventoryShopItem)
+  // @@protoc_insertion_point(class_scope:packet.InventoryShopItem)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryShopPack > packs_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryShopPack > packs_;
   int32_t item_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
@@ -18009,7 +18012,7 @@ class InventoryShopItem final :
 // -------------------------------------------------------------------
 
 class InvetoryShopPack final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:InvetoryShopPack) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.InvetoryShopPack) */ {
  public:
   inline InvetoryShopPack() : InvetoryShopPack(nullptr) {}
   ~InvetoryShopPack() override;
@@ -18110,7 +18113,7 @@ class InvetoryShopPack final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "InvetoryShopPack";
+    return "packet.InvetoryShopPack";
   }
   protected:
   explicit InvetoryShopPack(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -18158,7 +18161,7 @@ class InvetoryShopPack final :
   void _internal_set_duration(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:InvetoryShopPack)
+  // @@protoc_insertion_point(class_scope:packet.InvetoryShopPack)
  private:
   class _Internal;
 
@@ -18174,7 +18177,7 @@ class InvetoryShopPack final :
 // -------------------------------------------------------------------
 
 class ClaimRewardLevelResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ClaimRewardLevelResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ClaimRewardLevelResponse) */ {
  public:
   inline ClaimRewardLevelResponse() : ClaimRewardLevelResponse(nullptr) {}
   ~ClaimRewardLevelResponse() override;
@@ -18275,7 +18278,7 @@ class ClaimRewardLevelResponse final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "ClaimRewardLevelResponse";
+    return "packet.ClaimRewardLevelResponse";
   }
   protected:
   explicit ClaimRewardLevelResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -18296,22 +18299,22 @@ class ClaimRewardLevelResponse final :
     kLevelFieldNumber = 1,
     kGoldFieldNumber = 2,
   };
-  // repeated .RewardInventoryItem items = 3;
+  // repeated .packet.RewardInventoryItem items = 3;
   int items_size() const;
   private:
   int _internal_items_size() const;
   public:
   void clear_items();
-  ::RewardInventoryItem* mutable_items(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+  ::packet::RewardInventoryItem* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
       mutable_items();
   private:
-  const ::RewardInventoryItem& _internal_items(int index) const;
-  ::RewardInventoryItem* _internal_add_items();
+  const ::packet::RewardInventoryItem& _internal_items(int index) const;
+  ::packet::RewardInventoryItem* _internal_add_items();
   public:
-  const ::RewardInventoryItem& items(int index) const;
-  ::RewardInventoryItem* add_items();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+  const ::packet::RewardInventoryItem& items(int index) const;
+  ::packet::RewardInventoryItem* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
       items() const;
 
   // int32 level = 1;
@@ -18332,14 +18335,14 @@ class ClaimRewardLevelResponse final :
   void _internal_set_gold(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:ClaimRewardLevelResponse)
+  // @@protoc_insertion_point(class_scope:packet.ClaimRewardLevelResponse)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem > items_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem > items_;
   int32_t level_;
   int32_t gold_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -18348,7 +18351,7 @@ class ClaimRewardLevelResponse final :
 // -------------------------------------------------------------------
 
 class RewardInventoryItem final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:RewardInventoryItem) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.RewardInventoryItem) */ {
  public:
   inline RewardInventoryItem() : RewardInventoryItem(nullptr) {}
   ~RewardInventoryItem() override;
@@ -18449,7 +18452,7 @@ class RewardInventoryItem final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "RewardInventoryItem";
+    return "packet.RewardInventoryItem";
   }
   protected:
   explicit RewardInventoryItem(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -18497,7 +18500,7 @@ class RewardInventoryItem final :
   void _internal_set_value(int32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:RewardInventoryItem)
+  // @@protoc_insertion_point(class_scope:packet.RewardInventoryItem)
  private:
   class _Internal;
 
@@ -18530,7 +18533,7 @@ inline void Packet::clear_token() {
   token_.ClearToEmpty();
 }
 inline const std::string& Packet::token() const {
-  // @@protoc_insertion_point(field_get:Packet.token)
+  // @@protoc_insertion_point(field_get:packet.Packet.token)
   return _internal_token();
 }
 template <typename ArgT0, typename... ArgT>
@@ -18538,11 +18541,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Packet::set_token(ArgT0&& arg0, ArgT... args) {
  
  token_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Packet.token)
+  // @@protoc_insertion_point(field_set:packet.Packet.token)
 }
 inline std::string* Packet::mutable_token() {
   std::string* _s = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:Packet.token)
+  // @@protoc_insertion_point(field_mutable:packet.Packet.token)
   return _s;
 }
 inline const std::string& Packet::_internal_token() const {
@@ -18557,7 +18560,7 @@ inline std::string* Packet::_internal_mutable_token() {
   return token_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Packet::release_token() {
-  // @@protoc_insertion_point(field_release:Packet.token)
+  // @@protoc_insertion_point(field_release:packet.Packet.token)
   return token_.Release();
 }
 inline void Packet::set_allocated_token(std::string* token) {
@@ -18572,7 +18575,7 @@ inline void Packet::set_allocated_token(std::string* token) {
     token_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Packet.token)
+  // @@protoc_insertion_point(field_set_allocated:packet.Packet.token)
 }
 
 // int32 cmd_id = 2;
@@ -18583,7 +18586,7 @@ inline int32_t Packet::_internal_cmd_id() const {
   return cmd_id_;
 }
 inline int32_t Packet::cmd_id() const {
-  // @@protoc_insertion_point(field_get:Packet.cmd_id)
+  // @@protoc_insertion_point(field_get:packet.Packet.cmd_id)
   return _internal_cmd_id();
 }
 inline void Packet::_internal_set_cmd_id(int32_t value) {
@@ -18592,7 +18595,7 @@ inline void Packet::_internal_set_cmd_id(int32_t value) {
 }
 inline void Packet::set_cmd_id(int32_t value) {
   _internal_set_cmd_id(value);
-  // @@protoc_insertion_point(field_set:Packet.cmd_id)
+  // @@protoc_insertion_point(field_set:packet.Packet.cmd_id)
 }
 
 // bytes payload = 3;
@@ -18600,7 +18603,7 @@ inline void Packet::clear_payload() {
   payload_.ClearToEmpty();
 }
 inline const std::string& Packet::payload() const {
-  // @@protoc_insertion_point(field_get:Packet.payload)
+  // @@protoc_insertion_point(field_get:packet.Packet.payload)
   return _internal_payload();
 }
 template <typename ArgT0, typename... ArgT>
@@ -18608,11 +18611,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Packet::set_payload(ArgT0&& arg0, ArgT... args) {
  
  payload_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Packet.payload)
+  // @@protoc_insertion_point(field_set:packet.Packet.payload)
 }
 inline std::string* Packet::mutable_payload() {
   std::string* _s = _internal_mutable_payload();
-  // @@protoc_insertion_point(field_mutable:Packet.payload)
+  // @@protoc_insertion_point(field_mutable:packet.Packet.payload)
   return _s;
 }
 inline const std::string& Packet::_internal_payload() const {
@@ -18627,7 +18630,7 @@ inline std::string* Packet::_internal_mutable_payload() {
   return payload_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Packet::release_payload() {
-  // @@protoc_insertion_point(field_release:Packet.payload)
+  // @@protoc_insertion_point(field_release:packet.Packet.payload)
   return payload_.Release();
 }
 inline void Packet::set_allocated_payload(std::string* payload) {
@@ -18642,7 +18645,7 @@ inline void Packet::set_allocated_payload(std::string* payload) {
     payload_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Packet.payload)
+  // @@protoc_insertion_point(field_set_allocated:packet.Packet.payload)
 }
 
 // -------------------------------------------------------------------
@@ -18657,7 +18660,7 @@ inline double ChatMessage::_internal_abc() const {
   return abc_;
 }
 inline double ChatMessage::abc() const {
-  // @@protoc_insertion_point(field_get:ChatMessage.abc)
+  // @@protoc_insertion_point(field_get:packet.ChatMessage.abc)
   return _internal_abc();
 }
 inline void ChatMessage::_internal_set_abc(double value) {
@@ -18666,7 +18669,7 @@ inline void ChatMessage::_internal_set_abc(double value) {
 }
 inline void ChatMessage::set_abc(double value) {
   _internal_set_abc(value);
-  // @@protoc_insertion_point(field_set:ChatMessage.abc)
+  // @@protoc_insertion_point(field_set:packet.ChatMessage.abc)
 }
 
 // string username = 2;
@@ -18674,7 +18677,7 @@ inline void ChatMessage::clear_username() {
   username_.ClearToEmpty();
 }
 inline const std::string& ChatMessage::username() const {
-  // @@protoc_insertion_point(field_get:ChatMessage.username)
+  // @@protoc_insertion_point(field_get:packet.ChatMessage.username)
   return _internal_username();
 }
 template <typename ArgT0, typename... ArgT>
@@ -18682,11 +18685,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void ChatMessage::set_username(ArgT0&& arg0, ArgT... args) {
  
  username_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:ChatMessage.username)
+  // @@protoc_insertion_point(field_set:packet.ChatMessage.username)
 }
 inline std::string* ChatMessage::mutable_username() {
   std::string* _s = _internal_mutable_username();
-  // @@protoc_insertion_point(field_mutable:ChatMessage.username)
+  // @@protoc_insertion_point(field_mutable:packet.ChatMessage.username)
   return _s;
 }
 inline const std::string& ChatMessage::_internal_username() const {
@@ -18701,7 +18704,7 @@ inline std::string* ChatMessage::_internal_mutable_username() {
   return username_.Mutable(GetArenaForAllocation());
 }
 inline std::string* ChatMessage::release_username() {
-  // @@protoc_insertion_point(field_release:ChatMessage.username)
+  // @@protoc_insertion_point(field_release:packet.ChatMessage.username)
   return username_.Release();
 }
 inline void ChatMessage::set_allocated_username(std::string* username) {
@@ -18716,7 +18719,7 @@ inline void ChatMessage::set_allocated_username(std::string* username) {
     username_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ChatMessage.username)
+  // @@protoc_insertion_point(field_set_allocated:packet.ChatMessage.username)
 }
 
 // int64 level = 3;
@@ -18727,7 +18730,7 @@ inline int64_t ChatMessage::_internal_level() const {
   return level_;
 }
 inline int64_t ChatMessage::level() const {
-  // @@protoc_insertion_point(field_get:ChatMessage.level)
+  // @@protoc_insertion_point(field_get:packet.ChatMessage.level)
   return _internal_level();
 }
 inline void ChatMessage::_internal_set_level(int64_t value) {
@@ -18736,7 +18739,7 @@ inline void ChatMessage::_internal_set_level(int64_t value) {
 }
 inline void ChatMessage::set_level(int64_t value) {
   _internal_set_level(value);
-  // @@protoc_insertion_point(field_set:ChatMessage.level)
+  // @@protoc_insertion_point(field_set:packet.ChatMessage.level)
 }
 
 // int64 gold = 4;
@@ -18747,7 +18750,7 @@ inline int64_t ChatMessage::_internal_gold() const {
   return gold_;
 }
 inline int64_t ChatMessage::gold() const {
-  // @@protoc_insertion_point(field_get:ChatMessage.gold)
+  // @@protoc_insertion_point(field_get:packet.ChatMessage.gold)
   return _internal_gold();
 }
 inline void ChatMessage::_internal_set_gold(int64_t value) {
@@ -18756,7 +18759,7 @@ inline void ChatMessage::_internal_set_gold(int64_t value) {
 }
 inline void ChatMessage::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:ChatMessage.gold)
+  // @@protoc_insertion_point(field_set:packet.ChatMessage.gold)
 }
 
 // string abcd = 5;
@@ -18764,7 +18767,7 @@ inline void ChatMessage::clear_abcd() {
   abcd_.ClearToEmpty();
 }
 inline const std::string& ChatMessage::abcd() const {
-  // @@protoc_insertion_point(field_get:ChatMessage.abcd)
+  // @@protoc_insertion_point(field_get:packet.ChatMessage.abcd)
   return _internal_abcd();
 }
 template <typename ArgT0, typename... ArgT>
@@ -18772,11 +18775,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void ChatMessage::set_abcd(ArgT0&& arg0, ArgT... args) {
  
  abcd_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:ChatMessage.abcd)
+  // @@protoc_insertion_point(field_set:packet.ChatMessage.abcd)
 }
 inline std::string* ChatMessage::mutable_abcd() {
   std::string* _s = _internal_mutable_abcd();
-  // @@protoc_insertion_point(field_mutable:ChatMessage.abcd)
+  // @@protoc_insertion_point(field_mutable:packet.ChatMessage.abcd)
   return _s;
 }
 inline const std::string& ChatMessage::_internal_abcd() const {
@@ -18791,7 +18794,7 @@ inline std::string* ChatMessage::_internal_mutable_abcd() {
   return abcd_.Mutable(GetArenaForAllocation());
 }
 inline std::string* ChatMessage::release_abcd() {
-  // @@protoc_insertion_point(field_release:ChatMessage.abcd)
+  // @@protoc_insertion_point(field_release:packet.ChatMessage.abcd)
   return abcd_.Release();
 }
 inline void ChatMessage::set_allocated_abcd(std::string* abcd) {
@@ -18806,7 +18809,7 @@ inline void ChatMessage::set_allocated_abcd(std::string* abcd) {
     abcd_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ChatMessage.abcd)
+  // @@protoc_insertion_point(field_set_allocated:packet.ChatMessage.abcd)
 }
 
 // bool is_active = 6;
@@ -18817,7 +18820,7 @@ inline bool ChatMessage::_internal_is_active() const {
   return is_active_;
 }
 inline bool ChatMessage::is_active() const {
-  // @@protoc_insertion_point(field_get:ChatMessage.is_active)
+  // @@protoc_insertion_point(field_get:packet.ChatMessage.is_active)
   return _internal_is_active();
 }
 inline void ChatMessage::_internal_set_is_active(bool value) {
@@ -18826,7 +18829,7 @@ inline void ChatMessage::_internal_set_is_active(bool value) {
 }
 inline void ChatMessage::set_is_active(bool value) {
   _internal_set_is_active(value);
-  // @@protoc_insertion_point(field_set:ChatMessage.is_active)
+  // @@protoc_insertion_point(field_set:packet.ChatMessage.is_active)
 }
 
 // -------------------------------------------------------------------
@@ -18845,7 +18848,7 @@ inline int32_t Login::_internal_type() const {
   return type_;
 }
 inline int32_t Login::type() const {
-  // @@protoc_insertion_point(field_get:Login.type)
+  // @@protoc_insertion_point(field_get:packet.Login.type)
   return _internal_type();
 }
 inline void Login::_internal_set_type(int32_t value) {
@@ -18854,7 +18857,7 @@ inline void Login::_internal_set_type(int32_t value) {
 }
 inline void Login::set_type(int32_t value) {
   _internal_set_type(value);
-  // @@protoc_insertion_point(field_set:Login.type)
+  // @@protoc_insertion_point(field_set:packet.Login.type)
 }
 
 // string token = 2;
@@ -18862,7 +18865,7 @@ inline void Login::clear_token() {
   token_.ClearToEmpty();
 }
 inline const std::string& Login::token() const {
-  // @@protoc_insertion_point(field_get:Login.token)
+  // @@protoc_insertion_point(field_get:packet.Login.token)
   return _internal_token();
 }
 template <typename ArgT0, typename... ArgT>
@@ -18870,11 +18873,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Login::set_token(ArgT0&& arg0, ArgT... args) {
  
  token_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Login.token)
+  // @@protoc_insertion_point(field_set:packet.Login.token)
 }
 inline std::string* Login::mutable_token() {
   std::string* _s = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:Login.token)
+  // @@protoc_insertion_point(field_mutable:packet.Login.token)
   return _s;
 }
 inline const std::string& Login::_internal_token() const {
@@ -18889,7 +18892,7 @@ inline std::string* Login::_internal_mutable_token() {
   return token_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Login::release_token() {
-  // @@protoc_insertion_point(field_release:Login.token)
+  // @@protoc_insertion_point(field_release:packet.Login.token)
   return token_.Release();
 }
 inline void Login::set_allocated_token(std::string* token) {
@@ -18904,7 +18907,7 @@ inline void Login::set_allocated_token(std::string* token) {
     token_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Login.token)
+  // @@protoc_insertion_point(field_set_allocated:packet.Login.token)
 }
 
 // string device_model = 3;
@@ -18912,7 +18915,7 @@ inline void Login::clear_device_model() {
   device_model_.ClearToEmpty();
 }
 inline const std::string& Login::device_model() const {
-  // @@protoc_insertion_point(field_get:Login.device_model)
+  // @@protoc_insertion_point(field_get:packet.Login.device_model)
   return _internal_device_model();
 }
 template <typename ArgT0, typename... ArgT>
@@ -18920,11 +18923,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Login::set_device_model(ArgT0&& arg0, ArgT... args) {
  
  device_model_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Login.device_model)
+  // @@protoc_insertion_point(field_set:packet.Login.device_model)
 }
 inline std::string* Login::mutable_device_model() {
   std::string* _s = _internal_mutable_device_model();
-  // @@protoc_insertion_point(field_mutable:Login.device_model)
+  // @@protoc_insertion_point(field_mutable:packet.Login.device_model)
   return _s;
 }
 inline const std::string& Login::_internal_device_model() const {
@@ -18939,7 +18942,7 @@ inline std::string* Login::_internal_mutable_device_model() {
   return device_model_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Login::release_device_model() {
-  // @@protoc_insertion_point(field_release:Login.device_model)
+  // @@protoc_insertion_point(field_release:packet.Login.device_model)
   return device_model_.Release();
 }
 inline void Login::set_allocated_device_model(std::string* device_model) {
@@ -18954,7 +18957,7 @@ inline void Login::set_allocated_device_model(std::string* device_model) {
     device_model_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Login.device_model)
+  // @@protoc_insertion_point(field_set_allocated:packet.Login.device_model)
 }
 
 // string platform = 4;
@@ -18962,7 +18965,7 @@ inline void Login::clear_platform() {
   platform_.ClearToEmpty();
 }
 inline const std::string& Login::platform() const {
-  // @@protoc_insertion_point(field_get:Login.platform)
+  // @@protoc_insertion_point(field_get:packet.Login.platform)
   return _internal_platform();
 }
 template <typename ArgT0, typename... ArgT>
@@ -18970,11 +18973,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Login::set_platform(ArgT0&& arg0, ArgT... args) {
  
  platform_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Login.platform)
+  // @@protoc_insertion_point(field_set:packet.Login.platform)
 }
 inline std::string* Login::mutable_platform() {
   std::string* _s = _internal_mutable_platform();
-  // @@protoc_insertion_point(field_mutable:Login.platform)
+  // @@protoc_insertion_point(field_mutable:packet.Login.platform)
   return _s;
 }
 inline const std::string& Login::_internal_platform() const {
@@ -18989,7 +18992,7 @@ inline std::string* Login::_internal_mutable_platform() {
   return platform_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Login::release_platform() {
-  // @@protoc_insertion_point(field_release:Login.platform)
+  // @@protoc_insertion_point(field_release:packet.Login.platform)
   return platform_.Release();
 }
 inline void Login::set_allocated_platform(std::string* platform) {
@@ -19004,7 +19007,7 @@ inline void Login::set_allocated_platform(std::string* platform) {
     platform_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Login.platform)
+  // @@protoc_insertion_point(field_set_allocated:packet.Login.platform)
 }
 
 // string device_country = 5;
@@ -19012,7 +19015,7 @@ inline void Login::clear_device_country() {
   device_country_.ClearToEmpty();
 }
 inline const std::string& Login::device_country() const {
-  // @@protoc_insertion_point(field_get:Login.device_country)
+  // @@protoc_insertion_point(field_get:packet.Login.device_country)
   return _internal_device_country();
 }
 template <typename ArgT0, typename... ArgT>
@@ -19020,11 +19023,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Login::set_device_country(ArgT0&& arg0, ArgT... args) {
  
  device_country_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:Login.device_country)
+  // @@protoc_insertion_point(field_set:packet.Login.device_country)
 }
 inline std::string* Login::mutable_device_country() {
   std::string* _s = _internal_mutable_device_country();
-  // @@protoc_insertion_point(field_mutable:Login.device_country)
+  // @@protoc_insertion_point(field_mutable:packet.Login.device_country)
   return _s;
 }
 inline const std::string& Login::_internal_device_country() const {
@@ -19039,7 +19042,7 @@ inline std::string* Login::_internal_mutable_device_country() {
   return device_country_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Login::release_device_country() {
-  // @@protoc_insertion_point(field_release:Login.device_country)
+  // @@protoc_insertion_point(field_release:packet.Login.device_country)
   return device_country_.Release();
 }
 inline void Login::set_allocated_device_country(std::string* device_country) {
@@ -19054,7 +19057,7 @@ inline void Login::set_allocated_device_country(std::string* device_country) {
     device_country_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:Login.device_country)
+  // @@protoc_insertion_point(field_set_allocated:packet.Login.device_country)
 }
 
 // int32 app_version_code = 6;
@@ -19065,7 +19068,7 @@ inline int32_t Login::_internal_app_version_code() const {
   return app_version_code_;
 }
 inline int32_t Login::app_version_code() const {
-  // @@protoc_insertion_point(field_get:Login.app_version_code)
+  // @@protoc_insertion_point(field_get:packet.Login.app_version_code)
   return _internal_app_version_code();
 }
 inline void Login::_internal_set_app_version_code(int32_t value) {
@@ -19074,7 +19077,7 @@ inline void Login::_internal_set_app_version_code(int32_t value) {
 }
 inline void Login::set_app_version_code(int32_t value) {
   _internal_set_app_version_code(value);
-  // @@protoc_insertion_point(field_set:Login.app_version_code)
+  // @@protoc_insertion_point(field_set:packet.Login.app_version_code)
 }
 
 // -------------------------------------------------------------------
@@ -19089,7 +19092,7 @@ inline int32_t LoginFirebase::_internal_sub_type() const {
   return sub_type_;
 }
 inline int32_t LoginFirebase::sub_type() const {
-  // @@protoc_insertion_point(field_get:LoginFirebase.sub_type)
+  // @@protoc_insertion_point(field_get:packet.LoginFirebase.sub_type)
   return _internal_sub_type();
 }
 inline void LoginFirebase::_internal_set_sub_type(int32_t value) {
@@ -19098,7 +19101,7 @@ inline void LoginFirebase::_internal_set_sub_type(int32_t value) {
 }
 inline void LoginFirebase::set_sub_type(int32_t value) {
   _internal_set_sub_type(value);
-  // @@protoc_insertion_point(field_set:LoginFirebase.sub_type)
+  // @@protoc_insertion_point(field_set:packet.LoginFirebase.sub_type)
 }
 
 // string login_token = 2;
@@ -19106,7 +19109,7 @@ inline void LoginFirebase::clear_login_token() {
   login_token_.ClearToEmpty();
 }
 inline const std::string& LoginFirebase::login_token() const {
-  // @@protoc_insertion_point(field_get:LoginFirebase.login_token)
+  // @@protoc_insertion_point(field_get:packet.LoginFirebase.login_token)
   return _internal_login_token();
 }
 template <typename ArgT0, typename... ArgT>
@@ -19114,11 +19117,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void LoginFirebase::set_login_token(ArgT0&& arg0, ArgT... args) {
  
  login_token_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:LoginFirebase.login_token)
+  // @@protoc_insertion_point(field_set:packet.LoginFirebase.login_token)
 }
 inline std::string* LoginFirebase::mutable_login_token() {
   std::string* _s = _internal_mutable_login_token();
-  // @@protoc_insertion_point(field_mutable:LoginFirebase.login_token)
+  // @@protoc_insertion_point(field_mutable:packet.LoginFirebase.login_token)
   return _s;
 }
 inline const std::string& LoginFirebase::_internal_login_token() const {
@@ -19133,7 +19136,7 @@ inline std::string* LoginFirebase::_internal_mutable_login_token() {
   return login_token_.Mutable(GetArenaForAllocation());
 }
 inline std::string* LoginFirebase::release_login_token() {
-  // @@protoc_insertion_point(field_release:LoginFirebase.login_token)
+  // @@protoc_insertion_point(field_release:packet.LoginFirebase.login_token)
   return login_token_.Release();
 }
 inline void LoginFirebase::set_allocated_login_token(std::string* login_token) {
@@ -19148,7 +19151,7 @@ inline void LoginFirebase::set_allocated_login_token(std::string* login_token) {
     login_token_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:LoginFirebase.login_token)
+  // @@protoc_insertion_point(field_set_allocated:packet.LoginFirebase.login_token)
 }
 
 // string guest_id = 3;
@@ -19156,7 +19159,7 @@ inline void LoginFirebase::clear_guest_id() {
   guest_id_.ClearToEmpty();
 }
 inline const std::string& LoginFirebase::guest_id() const {
-  // @@protoc_insertion_point(field_get:LoginFirebase.guest_id)
+  // @@protoc_insertion_point(field_get:packet.LoginFirebase.guest_id)
   return _internal_guest_id();
 }
 template <typename ArgT0, typename... ArgT>
@@ -19164,11 +19167,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void LoginFirebase::set_guest_id(ArgT0&& arg0, ArgT... args) {
  
  guest_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:LoginFirebase.guest_id)
+  // @@protoc_insertion_point(field_set:packet.LoginFirebase.guest_id)
 }
 inline std::string* LoginFirebase::mutable_guest_id() {
   std::string* _s = _internal_mutable_guest_id();
-  // @@protoc_insertion_point(field_mutable:LoginFirebase.guest_id)
+  // @@protoc_insertion_point(field_mutable:packet.LoginFirebase.guest_id)
   return _s;
 }
 inline const std::string& LoginFirebase::_internal_guest_id() const {
@@ -19183,7 +19186,7 @@ inline std::string* LoginFirebase::_internal_mutable_guest_id() {
   return guest_id_.Mutable(GetArenaForAllocation());
 }
 inline std::string* LoginFirebase::release_guest_id() {
-  // @@protoc_insertion_point(field_release:LoginFirebase.guest_id)
+  // @@protoc_insertion_point(field_release:packet.LoginFirebase.guest_id)
   return guest_id_.Release();
 }
 inline void LoginFirebase::set_allocated_guest_id(std::string* guest_id) {
@@ -19198,7 +19201,7 @@ inline void LoginFirebase::set_allocated_guest_id(std::string* guest_id) {
     guest_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:LoginFirebase.guest_id)
+  // @@protoc_insertion_point(field_set_allocated:packet.LoginFirebase.guest_id)
 }
 
 // -------------------------------------------------------------------
@@ -19217,7 +19220,7 @@ inline int32_t LoginResponse::_internal_uid() const {
   return uid_;
 }
 inline int32_t LoginResponse::uid() const {
-  // @@protoc_insertion_point(field_get:LoginResponse.uid)
+  // @@protoc_insertion_point(field_get:packet.LoginResponse.uid)
   return _internal_uid();
 }
 inline void LoginResponse::_internal_set_uid(int32_t value) {
@@ -19226,7 +19229,7 @@ inline void LoginResponse::_internal_set_uid(int32_t value) {
 }
 inline void LoginResponse::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:LoginResponse.uid)
+  // @@protoc_insertion_point(field_set:packet.LoginResponse.uid)
 }
 
 // string token = 2;
@@ -19234,7 +19237,7 @@ inline void LoginResponse::clear_token() {
   token_.ClearToEmpty();
 }
 inline const std::string& LoginResponse::token() const {
-  // @@protoc_insertion_point(field_get:LoginResponse.token)
+  // @@protoc_insertion_point(field_get:packet.LoginResponse.token)
   return _internal_token();
 }
 template <typename ArgT0, typename... ArgT>
@@ -19242,11 +19245,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void LoginResponse::set_token(ArgT0&& arg0, ArgT... args) {
  
  token_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:LoginResponse.token)
+  // @@protoc_insertion_point(field_set:packet.LoginResponse.token)
 }
 inline std::string* LoginResponse::mutable_token() {
   std::string* _s = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:LoginResponse.token)
+  // @@protoc_insertion_point(field_mutable:packet.LoginResponse.token)
   return _s;
 }
 inline const std::string& LoginResponse::_internal_token() const {
@@ -19261,7 +19264,7 @@ inline std::string* LoginResponse::_internal_mutable_token() {
   return token_.Mutable(GetArenaForAllocation());
 }
 inline std::string* LoginResponse::release_token() {
-  // @@protoc_insertion_point(field_release:LoginResponse.token)
+  // @@protoc_insertion_point(field_release:packet.LoginResponse.token)
   return token_.Release();
 }
 inline void LoginResponse::set_allocated_token(std::string* token) {
@@ -19276,7 +19279,7 @@ inline void LoginResponse::set_allocated_token(std::string* token) {
     token_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:LoginResponse.token)
+  // @@protoc_insertion_point(field_set_allocated:packet.LoginResponse.token)
 }
 
 // int32 error = 3;
@@ -19287,7 +19290,7 @@ inline int32_t LoginResponse::_internal_error() const {
   return error_;
 }
 inline int32_t LoginResponse::error() const {
-  // @@protoc_insertion_point(field_get:LoginResponse.error)
+  // @@protoc_insertion_point(field_get:packet.LoginResponse.error)
   return _internal_error();
 }
 inline void LoginResponse::_internal_set_error(int32_t value) {
@@ -19296,7 +19299,7 @@ inline void LoginResponse::_internal_set_error(int32_t value) {
 }
 inline void LoginResponse::set_error(int32_t value) {
   _internal_set_error(value);
-  // @@protoc_insertion_point(field_set:LoginResponse.error)
+  // @@protoc_insertion_point(field_set:packet.LoginResponse.error)
 }
 
 // -------------------------------------------------------------------
@@ -19311,7 +19314,7 @@ inline int32_t UserInfo::_internal_uid() const {
   return uid_;
 }
 inline int32_t UserInfo::uid() const {
-  // @@protoc_insertion_point(field_get:UserInfo.uid)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.uid)
   return _internal_uid();
 }
 inline void UserInfo::_internal_set_uid(int32_t value) {
@@ -19320,7 +19323,7 @@ inline void UserInfo::_internal_set_uid(int32_t value) {
 }
 inline void UserInfo::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:UserInfo.uid)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.uid)
 }
 
 // string name = 2;
@@ -19328,7 +19331,7 @@ inline void UserInfo::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& UserInfo::name() const {
-  // @@protoc_insertion_point(field_get:UserInfo.name)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -19336,11 +19339,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void UserInfo::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:UserInfo.name)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.name)
 }
 inline std::string* UserInfo::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:UserInfo.name)
+  // @@protoc_insertion_point(field_mutable:packet.UserInfo.name)
   return _s;
 }
 inline const std::string& UserInfo::_internal_name() const {
@@ -19355,7 +19358,7 @@ inline std::string* UserInfo::_internal_mutable_name() {
   return name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* UserInfo::release_name() {
-  // @@protoc_insertion_point(field_release:UserInfo.name)
+  // @@protoc_insertion_point(field_release:packet.UserInfo.name)
   return name_.Release();
 }
 inline void UserInfo::set_allocated_name(std::string* name) {
@@ -19370,7 +19373,7 @@ inline void UserInfo::set_allocated_name(std::string* name) {
     name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:UserInfo.name)
+  // @@protoc_insertion_point(field_set_allocated:packet.UserInfo.name)
 }
 
 // int64 gold = 3;
@@ -19381,7 +19384,7 @@ inline int64_t UserInfo::_internal_gold() const {
   return gold_;
 }
 inline int64_t UserInfo::gold() const {
-  // @@protoc_insertion_point(field_get:UserInfo.gold)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.gold)
   return _internal_gold();
 }
 inline void UserInfo::_internal_set_gold(int64_t value) {
@@ -19390,7 +19393,7 @@ inline void UserInfo::_internal_set_gold(int64_t value) {
 }
 inline void UserInfo::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:UserInfo.gold)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.gold)
 }
 
 // repeated int32 scores = 4;
@@ -19407,19 +19410,19 @@ inline int32_t UserInfo::_internal_scores(int index) const {
   return scores_.Get(index);
 }
 inline int32_t UserInfo::scores(int index) const {
-  // @@protoc_insertion_point(field_get:UserInfo.scores)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.scores)
   return _internal_scores(index);
 }
 inline void UserInfo::set_scores(int index, int32_t value) {
   scores_.Set(index, value);
-  // @@protoc_insertion_point(field_set:UserInfo.scores)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.scores)
 }
 inline void UserInfo::_internal_add_scores(int32_t value) {
   scores_.Add(value);
 }
 inline void UserInfo::add_scores(int32_t value) {
   _internal_add_scores(value);
-  // @@protoc_insertion_point(field_add:UserInfo.scores)
+  // @@protoc_insertion_point(field_add:packet.UserInfo.scores)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 UserInfo::_internal_scores() const {
@@ -19427,7 +19430,7 @@ UserInfo::_internal_scores() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 UserInfo::scores() const {
-  // @@protoc_insertion_point(field_list:UserInfo.scores)
+  // @@protoc_insertion_point(field_list:packet.UserInfo.scores)
   return _internal_scores();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -19436,7 +19439,7 @@ UserInfo::_internal_mutable_scores() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 UserInfo::mutable_scores() {
-  // @@protoc_insertion_point(field_mutable_list:UserInfo.scores)
+  // @@protoc_insertion_point(field_mutable_list:packet.UserInfo.scores)
   return _internal_mutable_scores();
 }
 
@@ -19452,66 +19455,66 @@ inline void UserInfo::clear_names() {
 }
 inline std::string* UserInfo::add_names() {
   std::string* _s = _internal_add_names();
-  // @@protoc_insertion_point(field_add_mutable:UserInfo.names)
+  // @@protoc_insertion_point(field_add_mutable:packet.UserInfo.names)
   return _s;
 }
 inline const std::string& UserInfo::_internal_names(int index) const {
   return names_.Get(index);
 }
 inline const std::string& UserInfo::names(int index) const {
-  // @@protoc_insertion_point(field_get:UserInfo.names)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.names)
   return _internal_names(index);
 }
 inline std::string* UserInfo::mutable_names(int index) {
-  // @@protoc_insertion_point(field_mutable:UserInfo.names)
+  // @@protoc_insertion_point(field_mutable:packet.UserInfo.names)
   return names_.Mutable(index);
 }
 inline void UserInfo::set_names(int index, const std::string& value) {
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:UserInfo.names)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.names)
 }
 inline void UserInfo::set_names(int index, std::string&& value) {
   names_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:UserInfo.names)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.names)
 }
 inline void UserInfo::set_names(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:UserInfo.names)
+  // @@protoc_insertion_point(field_set_char:packet.UserInfo.names)
 }
 inline void UserInfo::set_names(int index, const char* value, size_t size) {
   names_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:UserInfo.names)
+  // @@protoc_insertion_point(field_set_pointer:packet.UserInfo.names)
 }
 inline std::string* UserInfo::_internal_add_names() {
   return names_.Add();
 }
 inline void UserInfo::add_names(const std::string& value) {
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:UserInfo.names)
+  // @@protoc_insertion_point(field_add:packet.UserInfo.names)
 }
 inline void UserInfo::add_names(std::string&& value) {
   names_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:UserInfo.names)
+  // @@protoc_insertion_point(field_add:packet.UserInfo.names)
 }
 inline void UserInfo::add_names(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:UserInfo.names)
+  // @@protoc_insertion_point(field_add_char:packet.UserInfo.names)
 }
 inline void UserInfo::add_names(const char* value, size_t size) {
   names_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:UserInfo.names)
+  // @@protoc_insertion_point(field_add_pointer:packet.UserInfo.names)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 UserInfo::names() const {
-  // @@protoc_insertion_point(field_list:UserInfo.names)
+  // @@protoc_insertion_point(field_list:packet.UserInfo.names)
   return names_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 UserInfo::mutable_names() {
-  // @@protoc_insertion_point(field_mutable_list:UserInfo.names)
+  // @@protoc_insertion_point(field_mutable_list:packet.UserInfo.names)
   return &names_;
 }
 
@@ -19523,7 +19526,7 @@ inline int32_t UserInfo::_internal_abc() const {
   return abc_;
 }
 inline int32_t UserInfo::abc() const {
-  // @@protoc_insertion_point(field_get:UserInfo.abc)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.abc)
   return _internal_abc();
 }
 inline void UserInfo::_internal_set_abc(int32_t value) {
@@ -19532,7 +19535,7 @@ inline void UserInfo::_internal_set_abc(int32_t value) {
 }
 inline void UserInfo::set_abc(int32_t value) {
   _internal_set_abc(value);
-  // @@protoc_insertion_point(field_set:UserInfo.abc)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.abc)
 }
 
 // string avatar = 7;
@@ -19540,7 +19543,7 @@ inline void UserInfo::clear_avatar() {
   avatar_.ClearToEmpty();
 }
 inline const std::string& UserInfo::avatar() const {
-  // @@protoc_insertion_point(field_get:UserInfo.avatar)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.avatar)
   return _internal_avatar();
 }
 template <typename ArgT0, typename... ArgT>
@@ -19548,11 +19551,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void UserInfo::set_avatar(ArgT0&& arg0, ArgT... args) {
  
  avatar_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:UserInfo.avatar)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.avatar)
 }
 inline std::string* UserInfo::mutable_avatar() {
   std::string* _s = _internal_mutable_avatar();
-  // @@protoc_insertion_point(field_mutable:UserInfo.avatar)
+  // @@protoc_insertion_point(field_mutable:packet.UserInfo.avatar)
   return _s;
 }
 inline const std::string& UserInfo::_internal_avatar() const {
@@ -19567,7 +19570,7 @@ inline std::string* UserInfo::_internal_mutable_avatar() {
   return avatar_.Mutable(GetArenaForAllocation());
 }
 inline std::string* UserInfo::release_avatar() {
-  // @@protoc_insertion_point(field_release:UserInfo.avatar)
+  // @@protoc_insertion_point(field_release:packet.UserInfo.avatar)
   return avatar_.Release();
 }
 inline void UserInfo::set_allocated_avatar(std::string* avatar) {
@@ -19582,7 +19585,7 @@ inline void UserInfo::set_allocated_avatar(std::string* avatar) {
     avatar_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:UserInfo.avatar)
+  // @@protoc_insertion_point(field_set_allocated:packet.UserInfo.avatar)
 }
 
 // string avatar_third_party = 8;
@@ -19590,7 +19593,7 @@ inline void UserInfo::clear_avatar_third_party() {
   avatar_third_party_.ClearToEmpty();
 }
 inline const std::string& UserInfo::avatar_third_party() const {
-  // @@protoc_insertion_point(field_get:UserInfo.avatar_third_party)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.avatar_third_party)
   return _internal_avatar_third_party();
 }
 template <typename ArgT0, typename... ArgT>
@@ -19598,11 +19601,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void UserInfo::set_avatar_third_party(ArgT0&& arg0, ArgT... args) {
  
  avatar_third_party_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:UserInfo.avatar_third_party)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.avatar_third_party)
 }
 inline std::string* UserInfo::mutable_avatar_third_party() {
   std::string* _s = _internal_mutable_avatar_third_party();
-  // @@protoc_insertion_point(field_mutable:UserInfo.avatar_third_party)
+  // @@protoc_insertion_point(field_mutable:packet.UserInfo.avatar_third_party)
   return _s;
 }
 inline const std::string& UserInfo::_internal_avatar_third_party() const {
@@ -19617,7 +19620,7 @@ inline std::string* UserInfo::_internal_mutable_avatar_third_party() {
   return avatar_third_party_.Mutable(GetArenaForAllocation());
 }
 inline std::string* UserInfo::release_avatar_third_party() {
-  // @@protoc_insertion_point(field_release:UserInfo.avatar_third_party)
+  // @@protoc_insertion_point(field_release:packet.UserInfo.avatar_third_party)
   return avatar_third_party_.Release();
 }
 inline void UserInfo::set_allocated_avatar_third_party(std::string* avatar_third_party) {
@@ -19632,7 +19635,7 @@ inline void UserInfo::set_allocated_avatar_third_party(std::string* avatar_third
     avatar_third_party_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:UserInfo.avatar_third_party)
+  // @@protoc_insertion_point(field_set_allocated:packet.UserInfo.avatar_third_party)
 }
 
 // int32 level = 9;
@@ -19643,7 +19646,7 @@ inline int32_t UserInfo::_internal_level() const {
   return level_;
 }
 inline int32_t UserInfo::level() const {
-  // @@protoc_insertion_point(field_get:UserInfo.level)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.level)
   return _internal_level();
 }
 inline void UserInfo::_internal_set_level(int32_t value) {
@@ -19652,7 +19655,7 @@ inline void UserInfo::_internal_set_level(int32_t value) {
 }
 inline void UserInfo::set_level(int32_t value) {
   _internal_set_level(value);
-  // @@protoc_insertion_point(field_set:UserInfo.level)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.level)
 }
 
 // int32 support_num = 10;
@@ -19663,7 +19666,7 @@ inline int32_t UserInfo::_internal_support_num() const {
   return support_num_;
 }
 inline int32_t UserInfo::support_num() const {
-  // @@protoc_insertion_point(field_get:UserInfo.support_num)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.support_num)
   return _internal_support_num();
 }
 inline void UserInfo::_internal_set_support_num(int32_t value) {
@@ -19672,7 +19675,7 @@ inline void UserInfo::_internal_set_support_num(int32_t value) {
 }
 inline void UserInfo::set_support_num(int32_t value) {
   _internal_set_support_num(value);
-  // @@protoc_insertion_point(field_set:UserInfo.support_num)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.support_num)
 }
 
 // int32 win_count = 11;
@@ -19683,7 +19686,7 @@ inline int32_t UserInfo::_internal_win_count() const {
   return win_count_;
 }
 inline int32_t UserInfo::win_count() const {
-  // @@protoc_insertion_point(field_get:UserInfo.win_count)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.win_count)
   return _internal_win_count();
 }
 inline void UserInfo::_internal_set_win_count(int32_t value) {
@@ -19692,7 +19695,7 @@ inline void UserInfo::_internal_set_win_count(int32_t value) {
 }
 inline void UserInfo::set_win_count(int32_t value) {
   _internal_set_win_count(value);
-  // @@protoc_insertion_point(field_set:UserInfo.win_count)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.win_count)
 }
 
 // int32 game_count = 12;
@@ -19703,7 +19706,7 @@ inline int32_t UserInfo::_internal_game_count() const {
   return game_count_;
 }
 inline int32_t UserInfo::game_count() const {
-  // @@protoc_insertion_point(field_get:UserInfo.game_count)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.game_count)
   return _internal_game_count();
 }
 inline void UserInfo::_internal_set_game_count(int32_t value) {
@@ -19712,7 +19715,7 @@ inline void UserInfo::_internal_set_game_count(int32_t value) {
 }
 inline void UserInfo::set_game_count(int32_t value) {
   _internal_set_game_count(value);
-  // @@protoc_insertion_point(field_set:UserInfo.game_count)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.game_count)
 }
 
 // int64 exp = 13;
@@ -19723,7 +19726,7 @@ inline int64_t UserInfo::_internal_exp() const {
   return exp_;
 }
 inline int64_t UserInfo::exp() const {
-  // @@protoc_insertion_point(field_get:UserInfo.exp)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.exp)
   return _internal_exp();
 }
 inline void UserInfo::_internal_set_exp(int64_t value) {
@@ -19732,7 +19735,7 @@ inline void UserInfo::_internal_set_exp(int64_t value) {
 }
 inline void UserInfo::set_exp(int64_t value) {
   _internal_set_exp(value);
-  // @@protoc_insertion_point(field_set:UserInfo.exp)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.exp)
 }
 
 // int32 startup_gold = 14;
@@ -19743,7 +19746,7 @@ inline int32_t UserInfo::_internal_startup_gold() const {
   return startup_gold_;
 }
 inline int32_t UserInfo::startup_gold() const {
-  // @@protoc_insertion_point(field_get:UserInfo.startup_gold)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.startup_gold)
   return _internal_startup_gold();
 }
 inline void UserInfo::_internal_set_startup_gold(int32_t value) {
@@ -19752,7 +19755,7 @@ inline void UserInfo::_internal_set_startup_gold(int32_t value) {
 }
 inline void UserInfo::set_startup_gold(int32_t value) {
   _internal_set_startup_gold(value);
-  // @@protoc_insertion_point(field_set:UserInfo.startup_gold)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.startup_gold)
 }
 
 // bool has_first_buy = 15;
@@ -19763,7 +19766,7 @@ inline bool UserInfo::_internal_has_first_buy() const {
   return has_first_buy_;
 }
 inline bool UserInfo::has_first_buy() const {
-  // @@protoc_insertion_point(field_get:UserInfo.has_first_buy)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.has_first_buy)
   return _internal_has_first_buy();
 }
 inline void UserInfo::_internal_set_has_first_buy(bool value) {
@@ -19772,7 +19775,7 @@ inline void UserInfo::_internal_set_has_first_buy(bool value) {
 }
 inline void UserInfo::set_has_first_buy(bool value) {
   _internal_set_has_first_buy(value);
-  // @@protoc_insertion_point(field_set:UserInfo.has_first_buy)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.has_first_buy)
 }
 
 // int32 time_show_ads = 16;
@@ -19783,7 +19786,7 @@ inline int32_t UserInfo::_internal_time_show_ads() const {
   return time_show_ads_;
 }
 inline int32_t UserInfo::time_show_ads() const {
-  // @@protoc_insertion_point(field_get:UserInfo.time_show_ads)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.time_show_ads)
   return _internal_time_show_ads();
 }
 inline void UserInfo::_internal_set_time_show_ads(int32_t value) {
@@ -19792,7 +19795,7 @@ inline void UserInfo::_internal_set_time_show_ads(int32_t value) {
 }
 inline void UserInfo::set_time_show_ads(int32_t value) {
   _internal_set_time_show_ads(value);
-  // @@protoc_insertion_point(field_set:UserInfo.time_show_ads)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.time_show_ads)
 }
 
 // int32 login_type = 17;
@@ -19803,7 +19806,7 @@ inline int32_t UserInfo::_internal_login_type() const {
   return login_type_;
 }
 inline int32_t UserInfo::login_type() const {
-  // @@protoc_insertion_point(field_get:UserInfo.login_type)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.login_type)
   return _internal_login_type();
 }
 inline void UserInfo::_internal_set_login_type(int32_t value) {
@@ -19812,7 +19815,7 @@ inline void UserInfo::_internal_set_login_type(int32_t value) {
 }
 inline void UserInfo::set_login_type(int32_t value) {
   _internal_set_login_type(value);
-  // @@protoc_insertion_point(field_set:UserInfo.login_type)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.login_type)
 }
 
 // int32 time_ads_reward = 18;
@@ -19823,7 +19826,7 @@ inline int32_t UserInfo::_internal_time_ads_reward() const {
   return time_ads_reward_;
 }
 inline int32_t UserInfo::time_ads_reward() const {
-  // @@protoc_insertion_point(field_get:UserInfo.time_ads_reward)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.time_ads_reward)
   return _internal_time_ads_reward();
 }
 inline void UserInfo::_internal_set_time_ads_reward(int32_t value) {
@@ -19832,7 +19835,7 @@ inline void UserInfo::_internal_set_time_ads_reward(int32_t value) {
 }
 inline void UserInfo::set_time_ads_reward(int32_t value) {
   _internal_set_time_ads_reward(value);
-  // @@protoc_insertion_point(field_set:UserInfo.time_ads_reward)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.time_ads_reward)
 }
 
 // bool add_for_user_support = 19;
@@ -19843,7 +19846,7 @@ inline bool UserInfo::_internal_add_for_user_support() const {
   return add_for_user_support_;
 }
 inline bool UserInfo::add_for_user_support() const {
-  // @@protoc_insertion_point(field_get:UserInfo.add_for_user_support)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.add_for_user_support)
   return _internal_add_for_user_support();
 }
 inline void UserInfo::_internal_set_add_for_user_support(bool value) {
@@ -19852,7 +19855,7 @@ inline void UserInfo::_internal_set_add_for_user_support(bool value) {
 }
 inline void UserInfo::set_add_for_user_support(bool value) {
   _internal_set_add_for_user_support(value);
-  // @@protoc_insertion_point(field_set:UserInfo.add_for_user_support)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.add_for_user_support)
 }
 
 // int32 avatar_frame = 20;
@@ -19863,7 +19866,7 @@ inline int32_t UserInfo::_internal_avatar_frame() const {
   return avatar_frame_;
 }
 inline int32_t UserInfo::avatar_frame() const {
-  // @@protoc_insertion_point(field_get:UserInfo.avatar_frame)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.avatar_frame)
   return _internal_avatar_frame();
 }
 inline void UserInfo::_internal_set_avatar_frame(int32_t value) {
@@ -19872,7 +19875,7 @@ inline void UserInfo::_internal_set_avatar_frame(int32_t value) {
 }
 inline void UserInfo::set_avatar_frame(int32_t value) {
   _internal_set_avatar_frame(value);
-  // @@protoc_insertion_point(field_set:UserInfo.avatar_frame)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.avatar_frame)
 }
 
 // repeated int32 claimed_levels = 21;
@@ -19889,19 +19892,19 @@ inline int32_t UserInfo::_internal_claimed_levels(int index) const {
   return claimed_levels_.Get(index);
 }
 inline int32_t UserInfo::claimed_levels(int index) const {
-  // @@protoc_insertion_point(field_get:UserInfo.claimed_levels)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.claimed_levels)
   return _internal_claimed_levels(index);
 }
 inline void UserInfo::set_claimed_levels(int index, int32_t value) {
   claimed_levels_.Set(index, value);
-  // @@protoc_insertion_point(field_set:UserInfo.claimed_levels)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.claimed_levels)
 }
 inline void UserInfo::_internal_add_claimed_levels(int32_t value) {
   claimed_levels_.Add(value);
 }
 inline void UserInfo::add_claimed_levels(int32_t value) {
   _internal_add_claimed_levels(value);
-  // @@protoc_insertion_point(field_add:UserInfo.claimed_levels)
+  // @@protoc_insertion_point(field_add:packet.UserInfo.claimed_levels)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 UserInfo::_internal_claimed_levels() const {
@@ -19909,7 +19912,7 @@ UserInfo::_internal_claimed_levels() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 UserInfo::claimed_levels() const {
-  // @@protoc_insertion_point(field_list:UserInfo.claimed_levels)
+  // @@protoc_insertion_point(field_list:packet.UserInfo.claimed_levels)
   return _internal_claimed_levels();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -19918,7 +19921,7 @@ UserInfo::_internal_mutable_claimed_levels() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 UserInfo::mutable_claimed_levels() {
-  // @@protoc_insertion_point(field_mutable_list:UserInfo.claimed_levels)
+  // @@protoc_insertion_point(field_mutable_list:packet.UserInfo.claimed_levels)
   return _internal_mutable_claimed_levels();
 }
 
@@ -19930,7 +19933,7 @@ inline int32_t UserInfo::_internal_price_change_name() const {
   return price_change_name_;
 }
 inline int32_t UserInfo::price_change_name() const {
-  // @@protoc_insertion_point(field_get:UserInfo.price_change_name)
+  // @@protoc_insertion_point(field_get:packet.UserInfo.price_change_name)
   return _internal_price_change_name();
 }
 inline void UserInfo::_internal_set_price_change_name(int32_t value) {
@@ -19939,7 +19942,7 @@ inline void UserInfo::_internal_set_price_change_name(int32_t value) {
 }
 inline void UserInfo::set_price_change_name(int32_t value) {
   _internal_set_price_change_name(value);
-  // @@protoc_insertion_point(field_set:UserInfo.price_change_name)
+  // @@protoc_insertion_point(field_set:packet.UserInfo.price_change_name)
 }
 
 // -------------------------------------------------------------------
@@ -19954,7 +19957,7 @@ inline int32_t GameInfo::_internal_match_id() const {
   return match_id_;
 }
 inline int32_t GameInfo::match_id() const {
-  // @@protoc_insertion_point(field_get:GameInfo.match_id)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.match_id)
   return _internal_match_id();
 }
 inline void GameInfo::_internal_set_match_id(int32_t value) {
@@ -19963,7 +19966,7 @@ inline void GameInfo::_internal_set_match_id(int32_t value) {
 }
 inline void GameInfo::set_match_id(int32_t value) {
   _internal_set_match_id(value);
-  // @@protoc_insertion_point(field_set:GameInfo.match_id)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.match_id)
 }
 
 // int32 game_mode = 2;
@@ -19974,7 +19977,7 @@ inline int32_t GameInfo::_internal_game_mode() const {
   return game_mode_;
 }
 inline int32_t GameInfo::game_mode() const {
-  // @@protoc_insertion_point(field_get:GameInfo.game_mode)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.game_mode)
   return _internal_game_mode();
 }
 inline void GameInfo::_internal_set_game_mode(int32_t value) {
@@ -19983,7 +19986,7 @@ inline void GameInfo::_internal_set_game_mode(int32_t value) {
 }
 inline void GameInfo::set_game_mode(int32_t value) {
   _internal_set_game_mode(value);
-  // @@protoc_insertion_point(field_set:GameInfo.game_mode)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.game_mode)
 }
 
 // int32 player_mode = 3;
@@ -19994,7 +19997,7 @@ inline int32_t GameInfo::_internal_player_mode() const {
   return player_mode_;
 }
 inline int32_t GameInfo::player_mode() const {
-  // @@protoc_insertion_point(field_get:GameInfo.player_mode)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.player_mode)
   return _internal_player_mode();
 }
 inline void GameInfo::_internal_set_player_mode(int32_t value) {
@@ -20003,7 +20006,7 @@ inline void GameInfo::_internal_set_player_mode(int32_t value) {
 }
 inline void GameInfo::set_player_mode(int32_t value) {
   _internal_set_player_mode(value);
-  // @@protoc_insertion_point(field_set:GameInfo.player_mode)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.player_mode)
 }
 
 // repeated int32 uids = 4;
@@ -20020,19 +20023,19 @@ inline int32_t GameInfo::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t GameInfo::uids(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.uids)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.uids)
   return _internal_uids(index);
 }
 inline void GameInfo::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.uids)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.uids)
 }
 inline void GameInfo::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void GameInfo::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:GameInfo.uids)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::_internal_uids() const {
@@ -20040,7 +20043,7 @@ GameInfo::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::uids() const {
-  // @@protoc_insertion_point(field_list:GameInfo.uids)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -20049,7 +20052,7 @@ GameInfo::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameInfo::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.uids)
   return _internal_mutable_uids();
 }
 
@@ -20067,19 +20070,19 @@ inline int64_t GameInfo::_internal_user_golds(int index) const {
   return user_golds_.Get(index);
 }
 inline int64_t GameInfo::user_golds(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.user_golds)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.user_golds)
   return _internal_user_golds(index);
 }
 inline void GameInfo::set_user_golds(int index, int64_t value) {
   user_golds_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.user_golds)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.user_golds)
 }
 inline void GameInfo::_internal_add_user_golds(int64_t value) {
   user_golds_.Add(value);
 }
 inline void GameInfo::add_user_golds(int64_t value) {
   _internal_add_user_golds(value);
-  // @@protoc_insertion_point(field_add:GameInfo.user_golds)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.user_golds)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 GameInfo::_internal_user_golds() const {
@@ -20087,7 +20090,7 @@ GameInfo::_internal_user_golds() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 GameInfo::user_golds() const {
-  // @@protoc_insertion_point(field_list:GameInfo.user_golds)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.user_golds)
   return _internal_user_golds();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -20096,7 +20099,7 @@ GameInfo::_internal_mutable_user_golds() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 GameInfo::mutable_user_golds() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.user_golds)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.user_golds)
   return _internal_mutable_user_golds();
 }
 
@@ -20112,66 +20115,66 @@ inline void GameInfo::clear_user_names() {
 }
 inline std::string* GameInfo::add_user_names() {
   std::string* _s = _internal_add_user_names();
-  // @@protoc_insertion_point(field_add_mutable:GameInfo.user_names)
+  // @@protoc_insertion_point(field_add_mutable:packet.GameInfo.user_names)
   return _s;
 }
 inline const std::string& GameInfo::_internal_user_names(int index) const {
   return user_names_.Get(index);
 }
 inline const std::string& GameInfo::user_names(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.user_names)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.user_names)
   return _internal_user_names(index);
 }
 inline std::string* GameInfo::mutable_user_names(int index) {
-  // @@protoc_insertion_point(field_mutable:GameInfo.user_names)
+  // @@protoc_insertion_point(field_mutable:packet.GameInfo.user_names)
   return user_names_.Mutable(index);
 }
 inline void GameInfo::set_user_names(int index, const std::string& value) {
   user_names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:GameInfo.user_names)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.user_names)
 }
 inline void GameInfo::set_user_names(int index, std::string&& value) {
   user_names_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:GameInfo.user_names)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.user_names)
 }
 inline void GameInfo::set_user_names(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   user_names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:GameInfo.user_names)
+  // @@protoc_insertion_point(field_set_char:packet.GameInfo.user_names)
 }
 inline void GameInfo::set_user_names(int index, const char* value, size_t size) {
   user_names_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:GameInfo.user_names)
+  // @@protoc_insertion_point(field_set_pointer:packet.GameInfo.user_names)
 }
 inline std::string* GameInfo::_internal_add_user_names() {
   return user_names_.Add();
 }
 inline void GameInfo::add_user_names(const std::string& value) {
   user_names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:GameInfo.user_names)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.user_names)
 }
 inline void GameInfo::add_user_names(std::string&& value) {
   user_names_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:GameInfo.user_names)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.user_names)
 }
 inline void GameInfo::add_user_names(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   user_names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:GameInfo.user_names)
+  // @@protoc_insertion_point(field_add_char:packet.GameInfo.user_names)
 }
 inline void GameInfo::add_user_names(const char* value, size_t size) {
   user_names_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:GameInfo.user_names)
+  // @@protoc_insertion_point(field_add_pointer:packet.GameInfo.user_names)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 GameInfo::user_names() const {
-  // @@protoc_insertion_point(field_list:GameInfo.user_names)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.user_names)
   return user_names_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 GameInfo::mutable_user_names() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.user_names)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.user_names)
   return &user_names_;
 }
 
@@ -20189,19 +20192,19 @@ inline int32_t GameInfo::_internal_cards_compare(int index) const {
   return cards_compare_.Get(index);
 }
 inline int32_t GameInfo::cards_compare(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.cards_compare)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.cards_compare)
   return _internal_cards_compare(index);
 }
 inline void GameInfo::set_cards_compare(int index, int32_t value) {
   cards_compare_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.cards_compare)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.cards_compare)
 }
 inline void GameInfo::_internal_add_cards_compare(int32_t value) {
   cards_compare_.Add(value);
 }
 inline void GameInfo::add_cards_compare(int32_t value) {
   _internal_add_cards_compare(value);
-  // @@protoc_insertion_point(field_add:GameInfo.cards_compare)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.cards_compare)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::_internal_cards_compare() const {
@@ -20209,7 +20212,7 @@ GameInfo::_internal_cards_compare() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::cards_compare() const {
-  // @@protoc_insertion_point(field_list:GameInfo.cards_compare)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.cards_compare)
   return _internal_cards_compare();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -20218,7 +20221,7 @@ GameInfo::_internal_mutable_cards_compare() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameInfo::mutable_cards_compare() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.cards_compare)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.cards_compare)
   return _internal_mutable_cards_compare();
 }
 
@@ -20230,7 +20233,7 @@ inline int32_t GameInfo::_internal_current_turn() const {
   return current_turn_;
 }
 inline int32_t GameInfo::current_turn() const {
-  // @@protoc_insertion_point(field_get:GameInfo.current_turn)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.current_turn)
   return _internal_current_turn();
 }
 inline void GameInfo::_internal_set_current_turn(int32_t value) {
@@ -20239,7 +20242,7 @@ inline void GameInfo::_internal_set_current_turn(int32_t value) {
 }
 inline void GameInfo::set_current_turn(int32_t value) {
   _internal_set_current_turn(value);
-  // @@protoc_insertion_point(field_set:GameInfo.current_turn)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.current_turn)
 }
 
 // int32 game_state = 9;
@@ -20250,7 +20253,7 @@ inline int32_t GameInfo::_internal_game_state() const {
   return game_state_;
 }
 inline int32_t GameInfo::game_state() const {
-  // @@protoc_insertion_point(field_get:GameInfo.game_state)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.game_state)
   return _internal_game_state();
 }
 inline void GameInfo::_internal_set_game_state(int32_t value) {
@@ -20259,7 +20262,7 @@ inline void GameInfo::_internal_set_game_state(int32_t value) {
 }
 inline void GameInfo::set_game_state(int32_t value) {
   _internal_set_game_state(value);
-  // @@protoc_insertion_point(field_set:GameInfo.game_state)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.game_state)
 }
 
 // repeated int32 my_cards = 10;
@@ -20276,19 +20279,19 @@ inline int32_t GameInfo::_internal_my_cards(int index) const {
   return my_cards_.Get(index);
 }
 inline int32_t GameInfo::my_cards(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.my_cards)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.my_cards)
   return _internal_my_cards(index);
 }
 inline void GameInfo::set_my_cards(int index, int32_t value) {
   my_cards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.my_cards)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.my_cards)
 }
 inline void GameInfo::_internal_add_my_cards(int32_t value) {
   my_cards_.Add(value);
 }
 inline void GameInfo::add_my_cards(int32_t value) {
   _internal_add_my_cards(value);
-  // @@protoc_insertion_point(field_add:GameInfo.my_cards)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.my_cards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::_internal_my_cards() const {
@@ -20296,7 +20299,7 @@ GameInfo::_internal_my_cards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::my_cards() const {
-  // @@protoc_insertion_point(field_list:GameInfo.my_cards)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.my_cards)
   return _internal_my_cards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -20305,7 +20308,7 @@ GameInfo::_internal_mutable_my_cards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameInfo::mutable_my_cards() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.my_cards)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.my_cards)
   return _internal_mutable_my_cards();
 }
 
@@ -20317,7 +20320,7 @@ inline int32_t GameInfo::_internal_remain_cards() const {
   return remain_cards_;
 }
 inline int32_t GameInfo::remain_cards() const {
-  // @@protoc_insertion_point(field_get:GameInfo.remain_cards)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.remain_cards)
   return _internal_remain_cards();
 }
 inline void GameInfo::_internal_set_remain_cards(int32_t value) {
@@ -20326,7 +20329,7 @@ inline void GameInfo::_internal_set_remain_cards(int32_t value) {
 }
 inline void GameInfo::set_remain_cards(int32_t value) {
   _internal_set_remain_cards(value);
-  // @@protoc_insertion_point(field_set:GameInfo.remain_cards)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.remain_cards)
 }
 
 // repeated int32 user_points = 12;
@@ -20343,19 +20346,19 @@ inline int32_t GameInfo::_internal_user_points(int index) const {
   return user_points_.Get(index);
 }
 inline int32_t GameInfo::user_points(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.user_points)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.user_points)
   return _internal_user_points(index);
 }
 inline void GameInfo::set_user_points(int index, int32_t value) {
   user_points_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.user_points)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.user_points)
 }
 inline void GameInfo::_internal_add_user_points(int32_t value) {
   user_points_.Add(value);
 }
 inline void GameInfo::add_user_points(int32_t value) {
   _internal_add_user_points(value);
-  // @@protoc_insertion_point(field_add:GameInfo.user_points)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.user_points)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::_internal_user_points() const {
@@ -20363,7 +20366,7 @@ GameInfo::_internal_user_points() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::user_points() const {
-  // @@protoc_insertion_point(field_list:GameInfo.user_points)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.user_points)
   return _internal_user_points();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -20372,7 +20375,7 @@ GameInfo::_internal_mutable_user_points() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameInfo::mutable_user_points() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.user_points)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.user_points)
   return _internal_mutable_user_points();
 }
 
@@ -20390,19 +20393,19 @@ inline int32_t GameInfo::_internal_team_ids(int index) const {
   return team_ids_.Get(index);
 }
 inline int32_t GameInfo::team_ids(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.team_ids)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.team_ids)
   return _internal_team_ids(index);
 }
 inline void GameInfo::set_team_ids(int index, int32_t value) {
   team_ids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.team_ids)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.team_ids)
 }
 inline void GameInfo::_internal_add_team_ids(int32_t value) {
   team_ids_.Add(value);
 }
 inline void GameInfo::add_team_ids(int32_t value) {
   _internal_add_team_ids(value);
-  // @@protoc_insertion_point(field_add:GameInfo.team_ids)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.team_ids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::_internal_team_ids() const {
@@ -20410,7 +20413,7 @@ GameInfo::_internal_team_ids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::team_ids() const {
-  // @@protoc_insertion_point(field_list:GameInfo.team_ids)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.team_ids)
   return _internal_team_ids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -20419,7 +20422,7 @@ GameInfo::_internal_mutable_team_ids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameInfo::mutable_team_ids() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.team_ids)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.team_ids)
   return _internal_mutable_team_ids();
 }
 
@@ -20431,7 +20434,7 @@ inline int32_t GameInfo::_internal_hand_suit() const {
   return hand_suit_;
 }
 inline int32_t GameInfo::hand_suit() const {
-  // @@protoc_insertion_point(field_get:GameInfo.hand_suit)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.hand_suit)
   return _internal_hand_suit();
 }
 inline void GameInfo::_internal_set_hand_suit(int32_t value) {
@@ -20440,7 +20443,7 @@ inline void GameInfo::_internal_set_hand_suit(int32_t value) {
 }
 inline void GameInfo::set_hand_suit(int32_t value) {
   _internal_set_hand_suit(value);
-  // @@protoc_insertion_point(field_set:GameInfo.hand_suit)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.hand_suit)
 }
 
 // repeated string avatars = 15;
@@ -20455,66 +20458,66 @@ inline void GameInfo::clear_avatars() {
 }
 inline std::string* GameInfo::add_avatars() {
   std::string* _s = _internal_add_avatars();
-  // @@protoc_insertion_point(field_add_mutable:GameInfo.avatars)
+  // @@protoc_insertion_point(field_add_mutable:packet.GameInfo.avatars)
   return _s;
 }
 inline const std::string& GameInfo::_internal_avatars(int index) const {
   return avatars_.Get(index);
 }
 inline const std::string& GameInfo::avatars(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.avatars)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.avatars)
   return _internal_avatars(index);
 }
 inline std::string* GameInfo::mutable_avatars(int index) {
-  // @@protoc_insertion_point(field_mutable:GameInfo.avatars)
+  // @@protoc_insertion_point(field_mutable:packet.GameInfo.avatars)
   return avatars_.Mutable(index);
 }
 inline void GameInfo::set_avatars(int index, const std::string& value) {
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:GameInfo.avatars)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.avatars)
 }
 inline void GameInfo::set_avatars(int index, std::string&& value) {
   avatars_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:GameInfo.avatars)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.avatars)
 }
 inline void GameInfo::set_avatars(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:GameInfo.avatars)
+  // @@protoc_insertion_point(field_set_char:packet.GameInfo.avatars)
 }
 inline void GameInfo::set_avatars(int index, const char* value, size_t size) {
   avatars_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:GameInfo.avatars)
+  // @@protoc_insertion_point(field_set_pointer:packet.GameInfo.avatars)
 }
 inline std::string* GameInfo::_internal_add_avatars() {
   return avatars_.Add();
 }
 inline void GameInfo::add_avatars(const std::string& value) {
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:GameInfo.avatars)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.avatars)
 }
 inline void GameInfo::add_avatars(std::string&& value) {
   avatars_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:GameInfo.avatars)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.avatars)
 }
 inline void GameInfo::add_avatars(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:GameInfo.avatars)
+  // @@protoc_insertion_point(field_add_char:packet.GameInfo.avatars)
 }
 inline void GameInfo::add_avatars(const char* value, size_t size) {
   avatars_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:GameInfo.avatars)
+  // @@protoc_insertion_point(field_add_pointer:packet.GameInfo.avatars)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 GameInfo::avatars() const {
-  // @@protoc_insertion_point(field_list:GameInfo.avatars)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.avatars)
   return avatars_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 GameInfo::mutable_avatars() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.avatars)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.avatars)
   return &avatars_;
 }
 
@@ -20526,7 +20529,7 @@ inline bool GameInfo::_internal_is_registered_leave() const {
   return is_registered_leave_;
 }
 inline bool GameInfo::is_registered_leave() const {
-  // @@protoc_insertion_point(field_get:GameInfo.is_registered_leave)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.is_registered_leave)
   return _internal_is_registered_leave();
 }
 inline void GameInfo::_internal_set_is_registered_leave(bool value) {
@@ -20535,7 +20538,7 @@ inline void GameInfo::_internal_set_is_registered_leave(bool value) {
 }
 inline void GameInfo::set_is_registered_leave(bool value) {
   _internal_set_is_registered_leave(value);
-  // @@protoc_insertion_point(field_set:GameInfo.is_registered_leave)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.is_registered_leave)
 }
 
 // int64 pot_value = 17;
@@ -20546,7 +20549,7 @@ inline int64_t GameInfo::_internal_pot_value() const {
   return pot_value_;
 }
 inline int64_t GameInfo::pot_value() const {
-  // @@protoc_insertion_point(field_get:GameInfo.pot_value)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.pot_value)
   return _internal_pot_value();
 }
 inline void GameInfo::_internal_set_pot_value(int64_t value) {
@@ -20555,7 +20558,7 @@ inline void GameInfo::_internal_set_pot_value(int64_t value) {
 }
 inline void GameInfo::set_pot_value(int64_t value) {
   _internal_set_pot_value(value);
-  // @@protoc_insertion_point(field_set:GameInfo.pot_value)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.pot_value)
 }
 
 // int32 current_round = 18;
@@ -20566,7 +20569,7 @@ inline int32_t GameInfo::_internal_current_round() const {
   return current_round_;
 }
 inline int32_t GameInfo::current_round() const {
-  // @@protoc_insertion_point(field_get:GameInfo.current_round)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.current_round)
   return _internal_current_round();
 }
 inline void GameInfo::_internal_set_current_round(int32_t value) {
@@ -20575,7 +20578,7 @@ inline void GameInfo::_internal_set_current_round(int32_t value) {
 }
 inline void GameInfo::set_current_round(int32_t value) {
   _internal_set_current_round(value);
-  // @@protoc_insertion_point(field_set:GameInfo.current_round)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.current_round)
 }
 
 // int32 hand_in_round = 19;
@@ -20586,7 +20589,7 @@ inline int32_t GameInfo::_internal_hand_in_round() const {
   return hand_in_round_;
 }
 inline int32_t GameInfo::hand_in_round() const {
-  // @@protoc_insertion_point(field_get:GameInfo.hand_in_round)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.hand_in_round)
   return _internal_hand_in_round();
 }
 inline void GameInfo::_internal_set_hand_in_round(int32_t value) {
@@ -20595,7 +20598,7 @@ inline void GameInfo::_internal_set_hand_in_round(int32_t value) {
 }
 inline void GameInfo::set_hand_in_round(int32_t value) {
   _internal_set_hand_in_round(value);
-  // @@protoc_insertion_point(field_set:GameInfo.hand_in_round)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.hand_in_round)
 }
 
 // int32 point_to_win = 20;
@@ -20606,7 +20609,7 @@ inline int32_t GameInfo::_internal_point_to_win() const {
   return point_to_win_;
 }
 inline int32_t GameInfo::point_to_win() const {
-  // @@protoc_insertion_point(field_get:GameInfo.point_to_win)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.point_to_win)
   return _internal_point_to_win();
 }
 inline void GameInfo::_internal_set_point_to_win(int32_t value) {
@@ -20615,7 +20618,7 @@ inline void GameInfo::_internal_set_point_to_win(int32_t value) {
 }
 inline void GameInfo::set_point_to_win(int32_t value) {
   _internal_set_point_to_win(value);
-  // @@protoc_insertion_point(field_set:GameInfo.point_to_win)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.point_to_win)
 }
 
 // repeated bool is_vips = 21;
@@ -20632,19 +20635,19 @@ inline bool GameInfo::_internal_is_vips(int index) const {
   return is_vips_.Get(index);
 }
 inline bool GameInfo::is_vips(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.is_vips)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.is_vips)
   return _internal_is_vips(index);
 }
 inline void GameInfo::set_is_vips(int index, bool value) {
   is_vips_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.is_vips)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.is_vips)
 }
 inline void GameInfo::_internal_add_is_vips(bool value) {
   is_vips_.Add(value);
 }
 inline void GameInfo::add_is_vips(bool value) {
   _internal_add_is_vips(value);
-  // @@protoc_insertion_point(field_add:GameInfo.is_vips)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.is_vips)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 GameInfo::_internal_is_vips() const {
@@ -20652,7 +20655,7 @@ GameInfo::_internal_is_vips() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 GameInfo::is_vips() const {
-  // @@protoc_insertion_point(field_list:GameInfo.is_vips)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.is_vips)
   return _internal_is_vips();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
@@ -20661,7 +20664,7 @@ GameInfo::_internal_mutable_is_vips() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
 GameInfo::mutable_is_vips() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.is_vips)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.is_vips)
   return _internal_mutable_is_vips();
 }
 
@@ -20679,19 +20682,19 @@ inline int32_t GameInfo::_internal_viewer_uids(int index) const {
   return viewer_uids_.Get(index);
 }
 inline int32_t GameInfo::viewer_uids(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.viewer_uids)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.viewer_uids)
   return _internal_viewer_uids(index);
 }
 inline void GameInfo::set_viewer_uids(int index, int32_t value) {
   viewer_uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.viewer_uids)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.viewer_uids)
 }
 inline void GameInfo::_internal_add_viewer_uids(int32_t value) {
   viewer_uids_.Add(value);
 }
 inline void GameInfo::add_viewer_uids(int32_t value) {
   _internal_add_viewer_uids(value);
-  // @@protoc_insertion_point(field_add:GameInfo.viewer_uids)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.viewer_uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::_internal_viewer_uids() const {
@@ -20699,7 +20702,7 @@ GameInfo::_internal_viewer_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::viewer_uids() const {
-  // @@protoc_insertion_point(field_list:GameInfo.viewer_uids)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.viewer_uids)
   return _internal_viewer_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -20708,7 +20711,7 @@ GameInfo::_internal_mutable_viewer_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameInfo::mutable_viewer_uids() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.viewer_uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.viewer_uids)
   return _internal_mutable_viewer_uids();
 }
 
@@ -20724,66 +20727,66 @@ inline void GameInfo::clear_viewer_avatars() {
 }
 inline std::string* GameInfo::add_viewer_avatars() {
   std::string* _s = _internal_add_viewer_avatars();
-  // @@protoc_insertion_point(field_add_mutable:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_add_mutable:packet.GameInfo.viewer_avatars)
   return _s;
 }
 inline const std::string& GameInfo::_internal_viewer_avatars(int index) const {
   return viewer_avatars_.Get(index);
 }
 inline const std::string& GameInfo::viewer_avatars(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.viewer_avatars)
   return _internal_viewer_avatars(index);
 }
 inline std::string* GameInfo::mutable_viewer_avatars(int index) {
-  // @@protoc_insertion_point(field_mutable:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_mutable:packet.GameInfo.viewer_avatars)
   return viewer_avatars_.Mutable(index);
 }
 inline void GameInfo::set_viewer_avatars(int index, const std::string& value) {
   viewer_avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.viewer_avatars)
 }
 inline void GameInfo::set_viewer_avatars(int index, std::string&& value) {
   viewer_avatars_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.viewer_avatars)
 }
 inline void GameInfo::set_viewer_avatars(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   viewer_avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_set_char:packet.GameInfo.viewer_avatars)
 }
 inline void GameInfo::set_viewer_avatars(int index, const char* value, size_t size) {
   viewer_avatars_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_set_pointer:packet.GameInfo.viewer_avatars)
 }
 inline std::string* GameInfo::_internal_add_viewer_avatars() {
   return viewer_avatars_.Add();
 }
 inline void GameInfo::add_viewer_avatars(const std::string& value) {
   viewer_avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.viewer_avatars)
 }
 inline void GameInfo::add_viewer_avatars(std::string&& value) {
   viewer_avatars_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.viewer_avatars)
 }
 inline void GameInfo::add_viewer_avatars(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   viewer_avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_add_char:packet.GameInfo.viewer_avatars)
 }
 inline void GameInfo::add_viewer_avatars(const char* value, size_t size) {
   viewer_avatars_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_add_pointer:packet.GameInfo.viewer_avatars)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 GameInfo::viewer_avatars() const {
-  // @@protoc_insertion_point(field_list:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.viewer_avatars)
   return viewer_avatars_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 GameInfo::mutable_viewer_avatars() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.viewer_avatars)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.viewer_avatars)
   return &viewer_avatars_;
 }
 
@@ -20799,66 +20802,66 @@ inline void GameInfo::clear_viewer_names() {
 }
 inline std::string* GameInfo::add_viewer_names() {
   std::string* _s = _internal_add_viewer_names();
-  // @@protoc_insertion_point(field_add_mutable:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_add_mutable:packet.GameInfo.viewer_names)
   return _s;
 }
 inline const std::string& GameInfo::_internal_viewer_names(int index) const {
   return viewer_names_.Get(index);
 }
 inline const std::string& GameInfo::viewer_names(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.viewer_names)
   return _internal_viewer_names(index);
 }
 inline std::string* GameInfo::mutable_viewer_names(int index) {
-  // @@protoc_insertion_point(field_mutable:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_mutable:packet.GameInfo.viewer_names)
   return viewer_names_.Mutable(index);
 }
 inline void GameInfo::set_viewer_names(int index, const std::string& value) {
   viewer_names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.viewer_names)
 }
 inline void GameInfo::set_viewer_names(int index, std::string&& value) {
   viewer_names_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.viewer_names)
 }
 inline void GameInfo::set_viewer_names(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   viewer_names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_set_char:packet.GameInfo.viewer_names)
 }
 inline void GameInfo::set_viewer_names(int index, const char* value, size_t size) {
   viewer_names_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_set_pointer:packet.GameInfo.viewer_names)
 }
 inline std::string* GameInfo::_internal_add_viewer_names() {
   return viewer_names_.Add();
 }
 inline void GameInfo::add_viewer_names(const std::string& value) {
   viewer_names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.viewer_names)
 }
 inline void GameInfo::add_viewer_names(std::string&& value) {
   viewer_names_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.viewer_names)
 }
 inline void GameInfo::add_viewer_names(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   viewer_names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_add_char:packet.GameInfo.viewer_names)
 }
 inline void GameInfo::add_viewer_names(const char* value, size_t size) {
   viewer_names_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_add_pointer:packet.GameInfo.viewer_names)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 GameInfo::viewer_names() const {
-  // @@protoc_insertion_point(field_list:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.viewer_names)
   return viewer_names_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 GameInfo::mutable_viewer_names() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.viewer_names)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.viewer_names)
   return &viewer_names_;
 }
 
@@ -20876,19 +20879,19 @@ inline int32_t GameInfo::_internal_avatar_frames(int index) const {
   return avatar_frames_.Get(index);
 }
 inline int32_t GameInfo::avatar_frames(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.avatar_frames)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.avatar_frames)
   return _internal_avatar_frames(index);
 }
 inline void GameInfo::set_avatar_frames(int index, int32_t value) {
   avatar_frames_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.avatar_frames)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.avatar_frames)
 }
 inline void GameInfo::_internal_add_avatar_frames(int32_t value) {
   avatar_frames_.Add(value);
 }
 inline void GameInfo::add_avatar_frames(int32_t value) {
   _internal_add_avatar_frames(value);
-  // @@protoc_insertion_point(field_add:GameInfo.avatar_frames)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.avatar_frames)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::_internal_avatar_frames() const {
@@ -20896,7 +20899,7 @@ GameInfo::_internal_avatar_frames() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::avatar_frames() const {
-  // @@protoc_insertion_point(field_list:GameInfo.avatar_frames)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.avatar_frames)
   return _internal_avatar_frames();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -20905,7 +20908,7 @@ GameInfo::_internal_mutable_avatar_frames() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameInfo::mutable_avatar_frames() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.avatar_frames)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.avatar_frames)
   return _internal_mutable_avatar_frames();
 }
 
@@ -20923,19 +20926,19 @@ inline int32_t GameInfo::_internal_viewer_avatar_frames(int index) const {
   return viewer_avatar_frames_.Get(index);
 }
 inline int32_t GameInfo::viewer_avatar_frames(int index) const {
-  // @@protoc_insertion_point(field_get:GameInfo.viewer_avatar_frames)
+  // @@protoc_insertion_point(field_get:packet.GameInfo.viewer_avatar_frames)
   return _internal_viewer_avatar_frames(index);
 }
 inline void GameInfo::set_viewer_avatar_frames(int index, int32_t value) {
   viewer_avatar_frames_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameInfo.viewer_avatar_frames)
+  // @@protoc_insertion_point(field_set:packet.GameInfo.viewer_avatar_frames)
 }
 inline void GameInfo::_internal_add_viewer_avatar_frames(int32_t value) {
   viewer_avatar_frames_.Add(value);
 }
 inline void GameInfo::add_viewer_avatar_frames(int32_t value) {
   _internal_add_viewer_avatar_frames(value);
-  // @@protoc_insertion_point(field_add:GameInfo.viewer_avatar_frames)
+  // @@protoc_insertion_point(field_add:packet.GameInfo.viewer_avatar_frames)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::_internal_viewer_avatar_frames() const {
@@ -20943,7 +20946,7 @@ GameInfo::_internal_viewer_avatar_frames() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameInfo::viewer_avatar_frames() const {
-  // @@protoc_insertion_point(field_list:GameInfo.viewer_avatar_frames)
+  // @@protoc_insertion_point(field_list:packet.GameInfo.viewer_avatar_frames)
   return _internal_viewer_avatar_frames();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -20952,7 +20955,7 @@ GameInfo::_internal_mutable_viewer_avatar_frames() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameInfo::mutable_viewer_avatar_frames() {
-  // @@protoc_insertion_point(field_mutable_list:GameInfo.viewer_avatar_frames)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameInfo.viewer_avatar_frames)
   return _internal_mutable_viewer_avatar_frames();
 }
 
@@ -20968,7 +20971,7 @@ inline int32_t RegisterLeaveGame::_internal_status() const {
   return status_;
 }
 inline int32_t RegisterLeaveGame::status() const {
-  // @@protoc_insertion_point(field_get:RegisterLeaveGame.status)
+  // @@protoc_insertion_point(field_get:packet.RegisterLeaveGame.status)
   return _internal_status();
 }
 inline void RegisterLeaveGame::_internal_set_status(int32_t value) {
@@ -20977,7 +20980,7 @@ inline void RegisterLeaveGame::_internal_set_status(int32_t value) {
 }
 inline void RegisterLeaveGame::set_status(int32_t value) {
   _internal_set_status(value);
-  // @@protoc_insertion_point(field_set:RegisterLeaveGame.status)
+  // @@protoc_insertion_point(field_set:packet.RegisterLeaveGame.status)
 }
 
 // -------------------------------------------------------------------
@@ -20992,7 +20995,7 @@ inline int32_t NewUserJoinMatch::_internal_uid() const {
   return uid_;
 }
 inline int32_t NewUserJoinMatch::uid() const {
-  // @@protoc_insertion_point(field_get:NewUserJoinMatch.uid)
+  // @@protoc_insertion_point(field_get:packet.NewUserJoinMatch.uid)
   return _internal_uid();
 }
 inline void NewUserJoinMatch::_internal_set_uid(int32_t value) {
@@ -21001,7 +21004,7 @@ inline void NewUserJoinMatch::_internal_set_uid(int32_t value) {
 }
 inline void NewUserJoinMatch::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:NewUserJoinMatch.uid)
+  // @@protoc_insertion_point(field_set:packet.NewUserJoinMatch.uid)
 }
 
 // int64 gold = 2;
@@ -21012,7 +21015,7 @@ inline int64_t NewUserJoinMatch::_internal_gold() const {
   return gold_;
 }
 inline int64_t NewUserJoinMatch::gold() const {
-  // @@protoc_insertion_point(field_get:NewUserJoinMatch.gold)
+  // @@protoc_insertion_point(field_get:packet.NewUserJoinMatch.gold)
   return _internal_gold();
 }
 inline void NewUserJoinMatch::_internal_set_gold(int64_t value) {
@@ -21021,7 +21024,7 @@ inline void NewUserJoinMatch::_internal_set_gold(int64_t value) {
 }
 inline void NewUserJoinMatch::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:NewUserJoinMatch.gold)
+  // @@protoc_insertion_point(field_set:packet.NewUserJoinMatch.gold)
 }
 
 // string name = 3;
@@ -21029,7 +21032,7 @@ inline void NewUserJoinMatch::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& NewUserJoinMatch::name() const {
-  // @@protoc_insertion_point(field_get:NewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_get:packet.NewUserJoinMatch.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -21037,11 +21040,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void NewUserJoinMatch::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:NewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_set:packet.NewUserJoinMatch.name)
 }
 inline std::string* NewUserJoinMatch::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:NewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_mutable:packet.NewUserJoinMatch.name)
   return _s;
 }
 inline const std::string& NewUserJoinMatch::_internal_name() const {
@@ -21056,7 +21059,7 @@ inline std::string* NewUserJoinMatch::_internal_mutable_name() {
   return name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* NewUserJoinMatch::release_name() {
-  // @@protoc_insertion_point(field_release:NewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_release:packet.NewUserJoinMatch.name)
   return name_.Release();
 }
 inline void NewUserJoinMatch::set_allocated_name(std::string* name) {
@@ -21071,7 +21074,7 @@ inline void NewUserJoinMatch::set_allocated_name(std::string* name) {
     name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:NewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_set_allocated:packet.NewUserJoinMatch.name)
 }
 
 // int32 seat_server = 4;
@@ -21082,7 +21085,7 @@ inline int32_t NewUserJoinMatch::_internal_seat_server() const {
   return seat_server_;
 }
 inline int32_t NewUserJoinMatch::seat_server() const {
-  // @@protoc_insertion_point(field_get:NewUserJoinMatch.seat_server)
+  // @@protoc_insertion_point(field_get:packet.NewUserJoinMatch.seat_server)
   return _internal_seat_server();
 }
 inline void NewUserJoinMatch::_internal_set_seat_server(int32_t value) {
@@ -21091,7 +21094,7 @@ inline void NewUserJoinMatch::_internal_set_seat_server(int32_t value) {
 }
 inline void NewUserJoinMatch::set_seat_server(int32_t value) {
   _internal_set_seat_server(value);
-  // @@protoc_insertion_point(field_set:NewUserJoinMatch.seat_server)
+  // @@protoc_insertion_point(field_set:packet.NewUserJoinMatch.seat_server)
 }
 
 // int32 team_id = 5;
@@ -21102,7 +21105,7 @@ inline int32_t NewUserJoinMatch::_internal_team_id() const {
   return team_id_;
 }
 inline int32_t NewUserJoinMatch::team_id() const {
-  // @@protoc_insertion_point(field_get:NewUserJoinMatch.team_id)
+  // @@protoc_insertion_point(field_get:packet.NewUserJoinMatch.team_id)
   return _internal_team_id();
 }
 inline void NewUserJoinMatch::_internal_set_team_id(int32_t value) {
@@ -21111,7 +21114,7 @@ inline void NewUserJoinMatch::_internal_set_team_id(int32_t value) {
 }
 inline void NewUserJoinMatch::set_team_id(int32_t value) {
   _internal_set_team_id(value);
-  // @@protoc_insertion_point(field_set:NewUserJoinMatch.team_id)
+  // @@protoc_insertion_point(field_set:packet.NewUserJoinMatch.team_id)
 }
 
 // string avatar = 6;
@@ -21119,7 +21122,7 @@ inline void NewUserJoinMatch::clear_avatar() {
   avatar_.ClearToEmpty();
 }
 inline const std::string& NewUserJoinMatch::avatar() const {
-  // @@protoc_insertion_point(field_get:NewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_get:packet.NewUserJoinMatch.avatar)
   return _internal_avatar();
 }
 template <typename ArgT0, typename... ArgT>
@@ -21127,11 +21130,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void NewUserJoinMatch::set_avatar(ArgT0&& arg0, ArgT... args) {
  
  avatar_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:NewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_set:packet.NewUserJoinMatch.avatar)
 }
 inline std::string* NewUserJoinMatch::mutable_avatar() {
   std::string* _s = _internal_mutable_avatar();
-  // @@protoc_insertion_point(field_mutable:NewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_mutable:packet.NewUserJoinMatch.avatar)
   return _s;
 }
 inline const std::string& NewUserJoinMatch::_internal_avatar() const {
@@ -21146,7 +21149,7 @@ inline std::string* NewUserJoinMatch::_internal_mutable_avatar() {
   return avatar_.Mutable(GetArenaForAllocation());
 }
 inline std::string* NewUserJoinMatch::release_avatar() {
-  // @@protoc_insertion_point(field_release:NewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_release:packet.NewUserJoinMatch.avatar)
   return avatar_.Release();
 }
 inline void NewUserJoinMatch::set_allocated_avatar(std::string* avatar) {
@@ -21161,7 +21164,7 @@ inline void NewUserJoinMatch::set_allocated_avatar(std::string* avatar) {
     avatar_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:NewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_set_allocated:packet.NewUserJoinMatch.avatar)
 }
 
 // bool is_vip = 7;
@@ -21172,7 +21175,7 @@ inline bool NewUserJoinMatch::_internal_is_vip() const {
   return is_vip_;
 }
 inline bool NewUserJoinMatch::is_vip() const {
-  // @@protoc_insertion_point(field_get:NewUserJoinMatch.is_vip)
+  // @@protoc_insertion_point(field_get:packet.NewUserJoinMatch.is_vip)
   return _internal_is_vip();
 }
 inline void NewUserJoinMatch::_internal_set_is_vip(bool value) {
@@ -21181,7 +21184,7 @@ inline void NewUserJoinMatch::_internal_set_is_vip(bool value) {
 }
 inline void NewUserJoinMatch::set_is_vip(bool value) {
   _internal_set_is_vip(value);
-  // @@protoc_insertion_point(field_set:NewUserJoinMatch.is_vip)
+  // @@protoc_insertion_point(field_set:packet.NewUserJoinMatch.is_vip)
 }
 
 // int32 avatar_frame = 8;
@@ -21192,7 +21195,7 @@ inline int32_t NewUserJoinMatch::_internal_avatar_frame() const {
   return avatar_frame_;
 }
 inline int32_t NewUserJoinMatch::avatar_frame() const {
-  // @@protoc_insertion_point(field_get:NewUserJoinMatch.avatar_frame)
+  // @@protoc_insertion_point(field_get:packet.NewUserJoinMatch.avatar_frame)
   return _internal_avatar_frame();
 }
 inline void NewUserJoinMatch::_internal_set_avatar_frame(int32_t value) {
@@ -21201,7 +21204,7 @@ inline void NewUserJoinMatch::_internal_set_avatar_frame(int32_t value) {
 }
 inline void NewUserJoinMatch::set_avatar_frame(int32_t value) {
   _internal_set_avatar_frame(value);
-  // @@protoc_insertion_point(field_set:NewUserJoinMatch.avatar_frame)
+  // @@protoc_insertion_point(field_set:packet.NewUserJoinMatch.avatar_frame)
 }
 
 // -------------------------------------------------------------------
@@ -21216,7 +21219,7 @@ inline int32_t UserLeaveMatch::_internal_uid() const {
   return uid_;
 }
 inline int32_t UserLeaveMatch::uid() const {
-  // @@protoc_insertion_point(field_get:UserLeaveMatch.uid)
+  // @@protoc_insertion_point(field_get:packet.UserLeaveMatch.uid)
   return _internal_uid();
 }
 inline void UserLeaveMatch::_internal_set_uid(int32_t value) {
@@ -21225,7 +21228,7 @@ inline void UserLeaveMatch::_internal_set_uid(int32_t value) {
 }
 inline void UserLeaveMatch::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:UserLeaveMatch.uid)
+  // @@protoc_insertion_point(field_set:packet.UserLeaveMatch.uid)
 }
 
 // int32 reason = 2;
@@ -21236,7 +21239,7 @@ inline int32_t UserLeaveMatch::_internal_reason() const {
   return reason_;
 }
 inline int32_t UserLeaveMatch::reason() const {
-  // @@protoc_insertion_point(field_get:UserLeaveMatch.reason)
+  // @@protoc_insertion_point(field_get:packet.UserLeaveMatch.reason)
   return _internal_reason();
 }
 inline void UserLeaveMatch::_internal_set_reason(int32_t value) {
@@ -21245,7 +21248,7 @@ inline void UserLeaveMatch::_internal_set_reason(int32_t value) {
 }
 inline void UserLeaveMatch::set_reason(int32_t value) {
   _internal_set_reason(value);
-  // @@protoc_insertion_point(field_set:UserLeaveMatch.reason)
+  // @@protoc_insertion_point(field_set:packet.UserLeaveMatch.reason)
 }
 
 // -------------------------------------------------------------------
@@ -21266,19 +21269,19 @@ inline int32_t DealCard::_internal_cards(int index) const {
   return cards_.Get(index);
 }
 inline int32_t DealCard::cards(int index) const {
-  // @@protoc_insertion_point(field_get:DealCard.cards)
+  // @@protoc_insertion_point(field_get:packet.DealCard.cards)
   return _internal_cards(index);
 }
 inline void DealCard::set_cards(int index, int32_t value) {
   cards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:DealCard.cards)
+  // @@protoc_insertion_point(field_set:packet.DealCard.cards)
 }
 inline void DealCard::_internal_add_cards(int32_t value) {
   cards_.Add(value);
 }
 inline void DealCard::add_cards(int32_t value) {
   _internal_add_cards(value);
-  // @@protoc_insertion_point(field_add:DealCard.cards)
+  // @@protoc_insertion_point(field_add:packet.DealCard.cards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 DealCard::_internal_cards() const {
@@ -21286,7 +21289,7 @@ DealCard::_internal_cards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 DealCard::cards() const {
-  // @@protoc_insertion_point(field_list:DealCard.cards)
+  // @@protoc_insertion_point(field_list:packet.DealCard.cards)
   return _internal_cards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -21295,7 +21298,7 @@ DealCard::_internal_mutable_cards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 DealCard::mutable_cards() {
-  // @@protoc_insertion_point(field_mutable_list:DealCard.cards)
+  // @@protoc_insertion_point(field_mutable_list:packet.DealCard.cards)
   return _internal_mutable_cards();
 }
 
@@ -21307,7 +21310,7 @@ inline int32_t DealCard::_internal_remain_cards() const {
   return remain_cards_;
 }
 inline int32_t DealCard::remain_cards() const {
-  // @@protoc_insertion_point(field_get:DealCard.remain_cards)
+  // @@protoc_insertion_point(field_get:packet.DealCard.remain_cards)
   return _internal_remain_cards();
 }
 inline void DealCard::_internal_set_remain_cards(int32_t value) {
@@ -21316,7 +21319,7 @@ inline void DealCard::_internal_set_remain_cards(int32_t value) {
 }
 inline void DealCard::set_remain_cards(int32_t value) {
   _internal_set_remain_cards(value);
-  // @@protoc_insertion_point(field_set:DealCard.remain_cards)
+  // @@protoc_insertion_point(field_set:packet.DealCard.remain_cards)
 }
 
 // -------------------------------------------------------------------
@@ -21331,7 +21334,7 @@ inline int32_t PlayCard::_internal_uid() const {
   return uid_;
 }
 inline int32_t PlayCard::uid() const {
-  // @@protoc_insertion_point(field_get:PlayCard.uid)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.uid)
   return _internal_uid();
 }
 inline void PlayCard::_internal_set_uid(int32_t value) {
@@ -21340,7 +21343,7 @@ inline void PlayCard::_internal_set_uid(int32_t value) {
 }
 inline void PlayCard::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:PlayCard.uid)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.uid)
 }
 
 // int32 card_id = 2;
@@ -21351,7 +21354,7 @@ inline int32_t PlayCard::_internal_card_id() const {
   return card_id_;
 }
 inline int32_t PlayCard::card_id() const {
-  // @@protoc_insertion_point(field_get:PlayCard.card_id)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.card_id)
   return _internal_card_id();
 }
 inline void PlayCard::_internal_set_card_id(int32_t value) {
@@ -21360,7 +21363,7 @@ inline void PlayCard::_internal_set_card_id(int32_t value) {
 }
 inline void PlayCard::set_card_id(int32_t value) {
   _internal_set_card_id(value);
-  // @@protoc_insertion_point(field_set:PlayCard.card_id)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.card_id)
 }
 
 // bool auto = 3;
@@ -21371,7 +21374,7 @@ inline bool PlayCard::_internal_auto_() const {
   return auto__;
 }
 inline bool PlayCard::auto_() const {
-  // @@protoc_insertion_point(field_get:PlayCard.auto)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.auto)
   return _internal_auto_();
 }
 inline void PlayCard::_internal_set_auto_(bool value) {
@@ -21380,7 +21383,7 @@ inline void PlayCard::_internal_set_auto_(bool value) {
 }
 inline void PlayCard::set_auto_(bool value) {
   _internal_set_auto_(value);
-  // @@protoc_insertion_point(field_set:PlayCard.auto)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.auto)
 }
 
 // int32 current_turn = 4;
@@ -21391,7 +21394,7 @@ inline int32_t PlayCard::_internal_current_turn() const {
   return current_turn_;
 }
 inline int32_t PlayCard::current_turn() const {
-  // @@protoc_insertion_point(field_get:PlayCard.current_turn)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.current_turn)
   return _internal_current_turn();
 }
 inline void PlayCard::_internal_set_current_turn(int32_t value) {
@@ -21400,7 +21403,7 @@ inline void PlayCard::_internal_set_current_turn(int32_t value) {
 }
 inline void PlayCard::set_current_turn(int32_t value) {
   _internal_set_current_turn(value);
-  // @@protoc_insertion_point(field_set:PlayCard.current_turn)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.current_turn)
 }
 
 // int32 hand_suit = 5;
@@ -21411,7 +21414,7 @@ inline int32_t PlayCard::_internal_hand_suit() const {
   return hand_suit_;
 }
 inline int32_t PlayCard::hand_suit() const {
-  // @@protoc_insertion_point(field_get:PlayCard.hand_suit)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.hand_suit)
   return _internal_hand_suit();
 }
 inline void PlayCard::_internal_set_hand_suit(int32_t value) {
@@ -21420,7 +21423,7 @@ inline void PlayCard::_internal_set_hand_suit(int32_t value) {
 }
 inline void PlayCard::set_hand_suit(int32_t value) {
   _internal_set_hand_suit(value);
-  // @@protoc_insertion_point(field_set:PlayCard.hand_suit)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.hand_suit)
 }
 
 // bool is_end_hand = 6;
@@ -21431,7 +21434,7 @@ inline bool PlayCard::_internal_is_end_hand() const {
   return is_end_hand_;
 }
 inline bool PlayCard::is_end_hand() const {
-  // @@protoc_insertion_point(field_get:PlayCard.is_end_hand)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.is_end_hand)
   return _internal_is_end_hand();
 }
 inline void PlayCard::_internal_set_is_end_hand(bool value) {
@@ -21440,7 +21443,7 @@ inline void PlayCard::_internal_set_is_end_hand(bool value) {
 }
 inline void PlayCard::set_is_end_hand(bool value) {
   _internal_set_is_end_hand(value);
-  // @@protoc_insertion_point(field_set:PlayCard.is_end_hand)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.is_end_hand)
 }
 
 // int32 win_uid = 7;
@@ -21451,7 +21454,7 @@ inline int32_t PlayCard::_internal_win_uid() const {
   return win_uid_;
 }
 inline int32_t PlayCard::win_uid() const {
-  // @@protoc_insertion_point(field_get:PlayCard.win_uid)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.win_uid)
   return _internal_win_uid();
 }
 inline void PlayCard::_internal_set_win_uid(int32_t value) {
@@ -21460,7 +21463,7 @@ inline void PlayCard::_internal_set_win_uid(int32_t value) {
 }
 inline void PlayCard::set_win_uid(int32_t value) {
   _internal_set_win_uid(value);
-  // @@protoc_insertion_point(field_set:PlayCard.win_uid)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.win_uid)
 }
 
 // int32 win_point = 8;
@@ -21471,7 +21474,7 @@ inline int32_t PlayCard::_internal_win_point() const {
   return win_point_;
 }
 inline int32_t PlayCard::win_point() const {
-  // @@protoc_insertion_point(field_get:PlayCard.win_point)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.win_point)
   return _internal_win_point();
 }
 inline void PlayCard::_internal_set_win_point(int32_t value) {
@@ -21480,7 +21483,7 @@ inline void PlayCard::_internal_set_win_point(int32_t value) {
 }
 inline void PlayCard::set_win_point(int32_t value) {
   _internal_set_win_point(value);
-  // @@protoc_insertion_point(field_set:PlayCard.win_point)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.win_point)
 }
 
 // bool is_end_round = 9;
@@ -21491,7 +21494,7 @@ inline bool PlayCard::_internal_is_end_round() const {
   return is_end_round_;
 }
 inline bool PlayCard::is_end_round() const {
-  // @@protoc_insertion_point(field_get:PlayCard.is_end_round)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.is_end_round)
   return _internal_is_end_round();
 }
 inline void PlayCard::_internal_set_is_end_round(bool value) {
@@ -21500,7 +21503,7 @@ inline void PlayCard::_internal_set_is_end_round(bool value) {
 }
 inline void PlayCard::set_is_end_round(bool value) {
   _internal_set_is_end_round(value);
-  // @@protoc_insertion_point(field_set:PlayCard.is_end_round)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.is_end_round)
 }
 
 // int32 win_card = 10;
@@ -21511,7 +21514,7 @@ inline int32_t PlayCard::_internal_win_card() const {
   return win_card_;
 }
 inline int32_t PlayCard::win_card() const {
-  // @@protoc_insertion_point(field_get:PlayCard.win_card)
+  // @@protoc_insertion_point(field_get:packet.PlayCard.win_card)
   return _internal_win_card();
 }
 inline void PlayCard::_internal_set_win_card(int32_t value) {
@@ -21520,7 +21523,7 @@ inline void PlayCard::_internal_set_win_card(int32_t value) {
 }
 inline void PlayCard::set_win_card(int32_t value) {
   _internal_set_win_card(value);
-  // @@protoc_insertion_point(field_set:PlayCard.win_card)
+  // @@protoc_insertion_point(field_set:packet.PlayCard.win_card)
 }
 
 // -------------------------------------------------------------------
@@ -21535,7 +21538,7 @@ inline int32_t StartGame::_internal_pot_value() const {
   return pot_value_;
 }
 inline int32_t StartGame::pot_value() const {
-  // @@protoc_insertion_point(field_get:StartGame.pot_value)
+  // @@protoc_insertion_point(field_get:packet.StartGame.pot_value)
   return _internal_pot_value();
 }
 inline void StartGame::_internal_set_pot_value(int32_t value) {
@@ -21544,7 +21547,7 @@ inline void StartGame::_internal_set_pot_value(int32_t value) {
 }
 inline void StartGame::set_pot_value(int32_t value) {
   _internal_set_pot_value(value);
-  // @@protoc_insertion_point(field_set:StartGame.pot_value)
+  // @@protoc_insertion_point(field_set:packet.StartGame.pot_value)
 }
 
 // repeated int64 players_gold = 2;
@@ -21561,19 +21564,19 @@ inline int64_t StartGame::_internal_players_gold(int index) const {
   return players_gold_.Get(index);
 }
 inline int64_t StartGame::players_gold(int index) const {
-  // @@protoc_insertion_point(field_get:StartGame.players_gold)
+  // @@protoc_insertion_point(field_get:packet.StartGame.players_gold)
   return _internal_players_gold(index);
 }
 inline void StartGame::set_players_gold(int index, int64_t value) {
   players_gold_.Set(index, value);
-  // @@protoc_insertion_point(field_set:StartGame.players_gold)
+  // @@protoc_insertion_point(field_set:packet.StartGame.players_gold)
 }
 inline void StartGame::_internal_add_players_gold(int64_t value) {
   players_gold_.Add(value);
 }
 inline void StartGame::add_players_gold(int64_t value) {
   _internal_add_players_gold(value);
-  // @@protoc_insertion_point(field_add:StartGame.players_gold)
+  // @@protoc_insertion_point(field_add:packet.StartGame.players_gold)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 StartGame::_internal_players_gold() const {
@@ -21581,7 +21584,7 @@ StartGame::_internal_players_gold() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 StartGame::players_gold() const {
-  // @@protoc_insertion_point(field_list:StartGame.players_gold)
+  // @@protoc_insertion_point(field_list:packet.StartGame.players_gold)
   return _internal_players_gold();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -21590,7 +21593,7 @@ StartGame::_internal_mutable_players_gold() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 StartGame::mutable_players_gold() {
-  // @@protoc_insertion_point(field_mutable_list:StartGame.players_gold)
+  // @@protoc_insertion_point(field_mutable_list:packet.StartGame.players_gold)
   return _internal_mutable_players_gold();
 }
 
@@ -21606,7 +21609,7 @@ inline int32_t NewHand::_internal_current_turn() const {
   return current_turn_;
 }
 inline int32_t NewHand::current_turn() const {
-  // @@protoc_insertion_point(field_get:NewHand.current_turn)
+  // @@protoc_insertion_point(field_get:packet.NewHand.current_turn)
   return _internal_current_turn();
 }
 inline void NewHand::_internal_set_current_turn(int32_t value) {
@@ -21615,7 +21618,7 @@ inline void NewHand::_internal_set_current_turn(int32_t value) {
 }
 inline void NewHand::set_current_turn(int32_t value) {
   _internal_set_current_turn(value);
-  // @@protoc_insertion_point(field_set:NewHand.current_turn)
+  // @@protoc_insertion_point(field_set:packet.NewHand.current_turn)
 }
 
 // repeated int32 my_cards = 2;
@@ -21632,19 +21635,19 @@ inline int32_t NewHand::_internal_my_cards(int index) const {
   return my_cards_.Get(index);
 }
 inline int32_t NewHand::my_cards(int index) const {
-  // @@protoc_insertion_point(field_get:NewHand.my_cards)
+  // @@protoc_insertion_point(field_get:packet.NewHand.my_cards)
   return _internal_my_cards(index);
 }
 inline void NewHand::set_my_cards(int index, int32_t value) {
   my_cards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:NewHand.my_cards)
+  // @@protoc_insertion_point(field_set:packet.NewHand.my_cards)
 }
 inline void NewHand::_internal_add_my_cards(int32_t value) {
   my_cards_.Add(value);
 }
 inline void NewHand::add_my_cards(int32_t value) {
   _internal_add_my_cards(value);
-  // @@protoc_insertion_point(field_add:NewHand.my_cards)
+  // @@protoc_insertion_point(field_add:packet.NewHand.my_cards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 NewHand::_internal_my_cards() const {
@@ -21652,7 +21655,7 @@ NewHand::_internal_my_cards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 NewHand::my_cards() const {
-  // @@protoc_insertion_point(field_list:NewHand.my_cards)
+  // @@protoc_insertion_point(field_list:packet.NewHand.my_cards)
   return _internal_my_cards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -21661,7 +21664,7 @@ NewHand::_internal_mutable_my_cards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 NewHand::mutable_my_cards() {
-  // @@protoc_insertion_point(field_mutable_list:NewHand.my_cards)
+  // @@protoc_insertion_point(field_mutable_list:packet.NewHand.my_cards)
   return _internal_mutable_my_cards();
 }
 
@@ -21683,19 +21686,19 @@ inline int32_t UpdateGamePoint::_internal_points(int index) const {
   return points_.Get(index);
 }
 inline int32_t UpdateGamePoint::points(int index) const {
-  // @@protoc_insertion_point(field_get:UpdateGamePoint.points)
+  // @@protoc_insertion_point(field_get:packet.UpdateGamePoint.points)
   return _internal_points(index);
 }
 inline void UpdateGamePoint::set_points(int index, int32_t value) {
   points_.Set(index, value);
-  // @@protoc_insertion_point(field_set:UpdateGamePoint.points)
+  // @@protoc_insertion_point(field_set:packet.UpdateGamePoint.points)
 }
 inline void UpdateGamePoint::_internal_add_points(int32_t value) {
   points_.Add(value);
 }
 inline void UpdateGamePoint::add_points(int32_t value) {
   _internal_add_points(value);
-  // @@protoc_insertion_point(field_add:UpdateGamePoint.points)
+  // @@protoc_insertion_point(field_add:packet.UpdateGamePoint.points)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 UpdateGamePoint::_internal_points() const {
@@ -21703,7 +21706,7 @@ UpdateGamePoint::_internal_points() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 UpdateGamePoint::points() const {
-  // @@protoc_insertion_point(field_list:UpdateGamePoint.points)
+  // @@protoc_insertion_point(field_list:packet.UpdateGamePoint.points)
   return _internal_points();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -21712,7 +21715,7 @@ UpdateGamePoint::_internal_mutable_points() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 UpdateGamePoint::mutable_points() {
-  // @@protoc_insertion_point(field_mutable_list:UpdateGamePoint.points)
+  // @@protoc_insertion_point(field_mutable_list:packet.UpdateGamePoint.points)
   return _internal_mutable_points();
 }
 
@@ -21728,7 +21731,7 @@ inline int32_t EndHand::_internal_win_uid() const {
   return win_uid_;
 }
 inline int32_t EndHand::win_uid() const {
-  // @@protoc_insertion_point(field_get:EndHand.win_uid)
+  // @@protoc_insertion_point(field_get:packet.EndHand.win_uid)
   return _internal_win_uid();
 }
 inline void EndHand::_internal_set_win_uid(int32_t value) {
@@ -21737,7 +21740,7 @@ inline void EndHand::_internal_set_win_uid(int32_t value) {
 }
 inline void EndHand::set_win_uid(int32_t value) {
   _internal_set_win_uid(value);
-  // @@protoc_insertion_point(field_set:EndHand.win_uid)
+  // @@protoc_insertion_point(field_set:packet.EndHand.win_uid)
 }
 
 // int32 win_card = 2;
@@ -21748,7 +21751,7 @@ inline int32_t EndHand::_internal_win_card() const {
   return win_card_;
 }
 inline int32_t EndHand::win_card() const {
-  // @@protoc_insertion_point(field_get:EndHand.win_card)
+  // @@protoc_insertion_point(field_get:packet.EndHand.win_card)
   return _internal_win_card();
 }
 inline void EndHand::_internal_set_win_card(int32_t value) {
@@ -21757,7 +21760,7 @@ inline void EndHand::_internal_set_win_card(int32_t value) {
 }
 inline void EndHand::set_win_card(int32_t value) {
   _internal_set_win_card(value);
-  // @@protoc_insertion_point(field_set:EndHand.win_card)
+  // @@protoc_insertion_point(field_set:packet.EndHand.win_card)
 }
 
 // repeated int32 user_points = 3;
@@ -21774,19 +21777,19 @@ inline int32_t EndHand::_internal_user_points(int index) const {
   return user_points_.Get(index);
 }
 inline int32_t EndHand::user_points(int index) const {
-  // @@protoc_insertion_point(field_get:EndHand.user_points)
+  // @@protoc_insertion_point(field_get:packet.EndHand.user_points)
   return _internal_user_points(index);
 }
 inline void EndHand::set_user_points(int index, int32_t value) {
   user_points_.Set(index, value);
-  // @@protoc_insertion_point(field_set:EndHand.user_points)
+  // @@protoc_insertion_point(field_set:packet.EndHand.user_points)
 }
 inline void EndHand::_internal_add_user_points(int32_t value) {
   user_points_.Add(value);
 }
 inline void EndHand::add_user_points(int32_t value) {
   _internal_add_user_points(value);
-  // @@protoc_insertion_point(field_add:EndHand.user_points)
+  // @@protoc_insertion_point(field_add:packet.EndHand.user_points)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndHand::_internal_user_points() const {
@@ -21794,7 +21797,7 @@ EndHand::_internal_user_points() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndHand::user_points() const {
-  // @@protoc_insertion_point(field_list:EndHand.user_points)
+  // @@protoc_insertion_point(field_list:packet.EndHand.user_points)
   return _internal_user_points();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -21803,7 +21806,7 @@ EndHand::_internal_mutable_user_points() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 EndHand::mutable_user_points() {
-  // @@protoc_insertion_point(field_mutable_list:EndHand.user_points)
+  // @@protoc_insertion_point(field_mutable_list:packet.EndHand.user_points)
   return _internal_mutable_user_points();
 }
 
@@ -21815,7 +21818,7 @@ inline int32_t EndHand::_internal_win_point() const {
   return win_point_;
 }
 inline int32_t EndHand::win_point() const {
-  // @@protoc_insertion_point(field_get:EndHand.win_point)
+  // @@protoc_insertion_point(field_get:packet.EndHand.win_point)
   return _internal_win_point();
 }
 inline void EndHand::_internal_set_win_point(int32_t value) {
@@ -21824,7 +21827,7 @@ inline void EndHand::_internal_set_win_point(int32_t value) {
 }
 inline void EndHand::set_win_point(int32_t value) {
   _internal_set_win_point(value);
-  // @@protoc_insertion_point(field_set:EndHand.win_point)
+  // @@protoc_insertion_point(field_set:packet.EndHand.win_point)
 }
 
 // bool is_end_round = 5;
@@ -21835,7 +21838,7 @@ inline bool EndHand::_internal_is_end_round() const {
   return is_end_round_;
 }
 inline bool EndHand::is_end_round() const {
-  // @@protoc_insertion_point(field_get:EndHand.is_end_round)
+  // @@protoc_insertion_point(field_get:packet.EndHand.is_end_round)
   return _internal_is_end_round();
 }
 inline void EndHand::_internal_set_is_end_round(bool value) {
@@ -21844,7 +21847,7 @@ inline void EndHand::_internal_set_is_end_round(bool value) {
 }
 inline void EndHand::set_is_end_round(bool value) {
   _internal_set_is_end_round(value);
-  // @@protoc_insertion_point(field_set:EndHand.is_end_round)
+  // @@protoc_insertion_point(field_set:packet.EndHand.is_end_round)
 }
 
 // -------------------------------------------------------------------
@@ -21865,19 +21868,19 @@ inline int32_t DrawCard::_internal_cards(int index) const {
   return cards_.Get(index);
 }
 inline int32_t DrawCard::cards(int index) const {
-  // @@protoc_insertion_point(field_get:DrawCard.cards)
+  // @@protoc_insertion_point(field_get:packet.DrawCard.cards)
   return _internal_cards(index);
 }
 inline void DrawCard::set_cards(int index, int32_t value) {
   cards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:DrawCard.cards)
+  // @@protoc_insertion_point(field_set:packet.DrawCard.cards)
 }
 inline void DrawCard::_internal_add_cards(int32_t value) {
   cards_.Add(value);
 }
 inline void DrawCard::add_cards(int32_t value) {
   _internal_add_cards(value);
-  // @@protoc_insertion_point(field_add:DrawCard.cards)
+  // @@protoc_insertion_point(field_add:packet.DrawCard.cards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 DrawCard::_internal_cards() const {
@@ -21885,7 +21888,7 @@ DrawCard::_internal_cards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 DrawCard::cards() const {
-  // @@protoc_insertion_point(field_list:DrawCard.cards)
+  // @@protoc_insertion_point(field_list:packet.DrawCard.cards)
   return _internal_cards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -21894,7 +21897,7 @@ DrawCard::_internal_mutable_cards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 DrawCard::mutable_cards() {
-  // @@protoc_insertion_point(field_mutable_list:DrawCard.cards)
+  // @@protoc_insertion_point(field_mutable_list:packet.DrawCard.cards)
   return _internal_mutable_cards();
 }
 
@@ -21910,7 +21913,7 @@ inline int64_t GeneralInfo::_internal_timestamp() const {
   return timestamp_;
 }
 inline int64_t GeneralInfo::timestamp() const {
-  // @@protoc_insertion_point(field_get:GeneralInfo.timestamp)
+  // @@protoc_insertion_point(field_get:packet.GeneralInfo.timestamp)
   return _internal_timestamp();
 }
 inline void GeneralInfo::_internal_set_timestamp(int64_t value) {
@@ -21919,7 +21922,7 @@ inline void GeneralInfo::_internal_set_timestamp(int64_t value) {
 }
 inline void GeneralInfo::set_timestamp(int64_t value) {
   _internal_set_timestamp(value);
-  // @@protoc_insertion_point(field_set:GeneralInfo.timestamp)
+  // @@protoc_insertion_point(field_set:packet.GeneralInfo.timestamp)
 }
 
 // int32 time_thinking_in_turn = 2;
@@ -21930,7 +21933,7 @@ inline int32_t GeneralInfo::_internal_time_thinking_in_turn() const {
   return time_thinking_in_turn_;
 }
 inline int32_t GeneralInfo::time_thinking_in_turn() const {
-  // @@protoc_insertion_point(field_get:GeneralInfo.time_thinking_in_turn)
+  // @@protoc_insertion_point(field_get:packet.GeneralInfo.time_thinking_in_turn)
   return _internal_time_thinking_in_turn();
 }
 inline void GeneralInfo::_internal_set_time_thinking_in_turn(int32_t value) {
@@ -21939,7 +21942,7 @@ inline void GeneralInfo::_internal_set_time_thinking_in_turn(int32_t value) {
 }
 inline void GeneralInfo::set_time_thinking_in_turn(int32_t value) {
   _internal_set_time_thinking_in_turn(value);
-  // @@protoc_insertion_point(field_set:GeneralInfo.time_thinking_in_turn)
+  // @@protoc_insertion_point(field_set:packet.GeneralInfo.time_thinking_in_turn)
 }
 
 // repeated int32 exp_levels = 3;
@@ -21956,19 +21959,19 @@ inline int32_t GeneralInfo::_internal_exp_levels(int index) const {
   return exp_levels_.Get(index);
 }
 inline int32_t GeneralInfo::exp_levels(int index) const {
-  // @@protoc_insertion_point(field_get:GeneralInfo.exp_levels)
+  // @@protoc_insertion_point(field_get:packet.GeneralInfo.exp_levels)
   return _internal_exp_levels(index);
 }
 inline void GeneralInfo::set_exp_levels(int index, int32_t value) {
   exp_levels_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GeneralInfo.exp_levels)
+  // @@protoc_insertion_point(field_set:packet.GeneralInfo.exp_levels)
 }
 inline void GeneralInfo::_internal_add_exp_levels(int32_t value) {
   exp_levels_.Add(value);
 }
 inline void GeneralInfo::add_exp_levels(int32_t value) {
   _internal_add_exp_levels(value);
-  // @@protoc_insertion_point(field_add:GeneralInfo.exp_levels)
+  // @@protoc_insertion_point(field_add:packet.GeneralInfo.exp_levels)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GeneralInfo::_internal_exp_levels() const {
@@ -21976,7 +21979,7 @@ GeneralInfo::_internal_exp_levels() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GeneralInfo::exp_levels() const {
-  // @@protoc_insertion_point(field_list:GeneralInfo.exp_levels)
+  // @@protoc_insertion_point(field_list:packet.GeneralInfo.exp_levels)
   return _internal_exp_levels();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -21985,7 +21988,7 @@ GeneralInfo::_internal_mutable_exp_levels() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GeneralInfo::mutable_exp_levels() {
-  // @@protoc_insertion_point(field_mutable_list:GeneralInfo.exp_levels)
+  // @@protoc_insertion_point(field_mutable_list:packet.GeneralInfo.exp_levels)
   return _internal_mutable_exp_levels();
 }
 
@@ -21997,7 +22000,7 @@ inline int32_t GeneralInfo::_internal_fee_mode_no_bet() const {
   return fee_mode_no_bet_;
 }
 inline int32_t GeneralInfo::fee_mode_no_bet() const {
-  // @@protoc_insertion_point(field_get:GeneralInfo.fee_mode_no_bet)
+  // @@protoc_insertion_point(field_get:packet.GeneralInfo.fee_mode_no_bet)
   return _internal_fee_mode_no_bet();
 }
 inline void GeneralInfo::_internal_set_fee_mode_no_bet(int32_t value) {
@@ -22006,7 +22009,7 @@ inline void GeneralInfo::_internal_set_fee_mode_no_bet(int32_t value) {
 }
 inline void GeneralInfo::set_fee_mode_no_bet(int32_t value) {
   _internal_set_fee_mode_no_bet(value);
-  // @@protoc_insertion_point(field_set:GeneralInfo.fee_mode_no_bet)
+  // @@protoc_insertion_point(field_set:packet.GeneralInfo.fee_mode_no_bet)
 }
 
 // bool enable_ads = 5;
@@ -22017,7 +22020,7 @@ inline bool GeneralInfo::_internal_enable_ads() const {
   return enable_ads_;
 }
 inline bool GeneralInfo::enable_ads() const {
-  // @@protoc_insertion_point(field_get:GeneralInfo.enable_ads)
+  // @@protoc_insertion_point(field_get:packet.GeneralInfo.enable_ads)
   return _internal_enable_ads();
 }
 inline void GeneralInfo::_internal_set_enable_ads(bool value) {
@@ -22026,10 +22029,10 @@ inline void GeneralInfo::_internal_set_enable_ads(bool value) {
 }
 inline void GeneralInfo::set_enable_ads(bool value) {
   _internal_set_enable_ads(value);
-  // @@protoc_insertion_point(field_set:GeneralInfo.enable_ads)
+  // @@protoc_insertion_point(field_set:packet.GeneralInfo.enable_ads)
 }
 
-// repeated .LevelReward level_rewards = 6;
+// repeated .packet.LevelReward level_rewards = 6;
 inline int GeneralInfo::_internal_level_rewards_size() const {
   return level_rewards_.size();
 }
@@ -22039,33 +22042,33 @@ inline int GeneralInfo::level_rewards_size() const {
 inline void GeneralInfo::clear_level_rewards() {
   level_rewards_.Clear();
 }
-inline ::LevelReward* GeneralInfo::mutable_level_rewards(int index) {
-  // @@protoc_insertion_point(field_mutable:GeneralInfo.level_rewards)
+inline ::packet::LevelReward* GeneralInfo::mutable_level_rewards(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.GeneralInfo.level_rewards)
   return level_rewards_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::LevelReward >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::LevelReward >*
 GeneralInfo::mutable_level_rewards() {
-  // @@protoc_insertion_point(field_mutable_list:GeneralInfo.level_rewards)
+  // @@protoc_insertion_point(field_mutable_list:packet.GeneralInfo.level_rewards)
   return &level_rewards_;
 }
-inline const ::LevelReward& GeneralInfo::_internal_level_rewards(int index) const {
+inline const ::packet::LevelReward& GeneralInfo::_internal_level_rewards(int index) const {
   return level_rewards_.Get(index);
 }
-inline const ::LevelReward& GeneralInfo::level_rewards(int index) const {
-  // @@protoc_insertion_point(field_get:GeneralInfo.level_rewards)
+inline const ::packet::LevelReward& GeneralInfo::level_rewards(int index) const {
+  // @@protoc_insertion_point(field_get:packet.GeneralInfo.level_rewards)
   return _internal_level_rewards(index);
 }
-inline ::LevelReward* GeneralInfo::_internal_add_level_rewards() {
+inline ::packet::LevelReward* GeneralInfo::_internal_add_level_rewards() {
   return level_rewards_.Add();
 }
-inline ::LevelReward* GeneralInfo::add_level_rewards() {
-  ::LevelReward* _add = _internal_add_level_rewards();
-  // @@protoc_insertion_point(field_add:GeneralInfo.level_rewards)
+inline ::packet::LevelReward* GeneralInfo::add_level_rewards() {
+  ::packet::LevelReward* _add = _internal_add_level_rewards();
+  // @@protoc_insertion_point(field_add:packet.GeneralInfo.level_rewards)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::LevelReward >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::LevelReward >&
 GeneralInfo::level_rewards() const {
-  // @@protoc_insertion_point(field_list:GeneralInfo.level_rewards)
+  // @@protoc_insertion_point(field_list:packet.GeneralInfo.level_rewards)
   return level_rewards_;
 }
 
@@ -22081,7 +22084,7 @@ inline int32_t LevelReward::_internal_level() const {
   return level_;
 }
 inline int32_t LevelReward::level() const {
-  // @@protoc_insertion_point(field_get:LevelReward.level)
+  // @@protoc_insertion_point(field_get:packet.LevelReward.level)
   return _internal_level();
 }
 inline void LevelReward::_internal_set_level(int32_t value) {
@@ -22090,7 +22093,7 @@ inline void LevelReward::_internal_set_level(int32_t value) {
 }
 inline void LevelReward::set_level(int32_t value) {
   _internal_set_level(value);
-  // @@protoc_insertion_point(field_set:LevelReward.level)
+  // @@protoc_insertion_point(field_set:packet.LevelReward.level)
 }
 
 // int32 gold = 2;
@@ -22101,7 +22104,7 @@ inline int32_t LevelReward::_internal_gold() const {
   return gold_;
 }
 inline int32_t LevelReward::gold() const {
-  // @@protoc_insertion_point(field_get:LevelReward.gold)
+  // @@protoc_insertion_point(field_get:packet.LevelReward.gold)
   return _internal_gold();
 }
 inline void LevelReward::_internal_set_gold(int32_t value) {
@@ -22110,10 +22113,10 @@ inline void LevelReward::_internal_set_gold(int32_t value) {
 }
 inline void LevelReward::set_gold(int32_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:LevelReward.gold)
+  // @@protoc_insertion_point(field_set:packet.LevelReward.gold)
 }
 
-// repeated .ItemReward items = 3;
+// repeated .packet.ItemReward items = 3;
 inline int LevelReward::_internal_items_size() const {
   return items_.size();
 }
@@ -22123,33 +22126,33 @@ inline int LevelReward::items_size() const {
 inline void LevelReward::clear_items() {
   items_.Clear();
 }
-inline ::ItemReward* LevelReward::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:LevelReward.items)
+inline ::packet::ItemReward* LevelReward::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.LevelReward.items)
   return items_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ItemReward >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::ItemReward >*
 LevelReward::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:LevelReward.items)
+  // @@protoc_insertion_point(field_mutable_list:packet.LevelReward.items)
   return &items_;
 }
-inline const ::ItemReward& LevelReward::_internal_items(int index) const {
+inline const ::packet::ItemReward& LevelReward::_internal_items(int index) const {
   return items_.Get(index);
 }
-inline const ::ItemReward& LevelReward::items(int index) const {
-  // @@protoc_insertion_point(field_get:LevelReward.items)
+inline const ::packet::ItemReward& LevelReward::items(int index) const {
+  // @@protoc_insertion_point(field_get:packet.LevelReward.items)
   return _internal_items(index);
 }
-inline ::ItemReward* LevelReward::_internal_add_items() {
+inline ::packet::ItemReward* LevelReward::_internal_add_items() {
   return items_.Add();
 }
-inline ::ItemReward* LevelReward::add_items() {
-  ::ItemReward* _add = _internal_add_items();
-  // @@protoc_insertion_point(field_add:LevelReward.items)
+inline ::packet::ItemReward* LevelReward::add_items() {
+  ::packet::ItemReward* _add = _internal_add_items();
+  // @@protoc_insertion_point(field_add:packet.LevelReward.items)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ItemReward >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::ItemReward >&
 LevelReward::items() const {
-  // @@protoc_insertion_point(field_list:LevelReward.items)
+  // @@protoc_insertion_point(field_list:packet.LevelReward.items)
   return items_;
 }
 
@@ -22165,7 +22168,7 @@ inline int32_t ItemReward::_internal_item_id() const {
   return item_id_;
 }
 inline int32_t ItemReward::item_id() const {
-  // @@protoc_insertion_point(field_get:ItemReward.item_id)
+  // @@protoc_insertion_point(field_get:packet.ItemReward.item_id)
   return _internal_item_id();
 }
 inline void ItemReward::_internal_set_item_id(int32_t value) {
@@ -22174,7 +22177,7 @@ inline void ItemReward::_internal_set_item_id(int32_t value) {
 }
 inline void ItemReward::set_item_id(int32_t value) {
   _internal_set_item_id(value);
-  // @@protoc_insertion_point(field_set:ItemReward.item_id)
+  // @@protoc_insertion_point(field_set:packet.ItemReward.item_id)
 }
 
 // int32 duration = 2;
@@ -22185,7 +22188,7 @@ inline int32_t ItemReward::_internal_duration() const {
   return duration_;
 }
 inline int32_t ItemReward::duration() const {
-  // @@protoc_insertion_point(field_get:ItemReward.duration)
+  // @@protoc_insertion_point(field_get:packet.ItemReward.duration)
   return _internal_duration();
 }
 inline void ItemReward::_internal_set_duration(int32_t value) {
@@ -22194,7 +22197,7 @@ inline void ItemReward::_internal_set_duration(int32_t value) {
 }
 inline void ItemReward::set_duration(int32_t value) {
   _internal_set_duration(value);
-  // @@protoc_insertion_point(field_set:ItemReward.duration)
+  // @@protoc_insertion_point(field_set:packet.ItemReward.duration)
 }
 
 // -------------------------------------------------------------------
@@ -22215,19 +22218,19 @@ inline int32_t EndGame::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t EndGame::uids(int index) const {
-  // @@protoc_insertion_point(field_get:EndGame.uids)
+  // @@protoc_insertion_point(field_get:packet.EndGame.uids)
   return _internal_uids(index);
 }
 inline void EndGame::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:EndGame.uids)
+  // @@protoc_insertion_point(field_set:packet.EndGame.uids)
 }
 inline void EndGame::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void EndGame::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:EndGame.uids)
+  // @@protoc_insertion_point(field_add:packet.EndGame.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndGame::_internal_uids() const {
@@ -22235,7 +22238,7 @@ EndGame::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndGame::uids() const {
-  // @@protoc_insertion_point(field_list:EndGame.uids)
+  // @@protoc_insertion_point(field_list:packet.EndGame.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -22244,7 +22247,7 @@ EndGame::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 EndGame::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:EndGame.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.EndGame.uids)
   return _internal_mutable_uids();
 }
 
@@ -22256,7 +22259,7 @@ inline int32_t EndGame::_internal_win_team_id() const {
   return win_team_id_;
 }
 inline int32_t EndGame::win_team_id() const {
-  // @@protoc_insertion_point(field_get:EndGame.win_team_id)
+  // @@protoc_insertion_point(field_get:packet.EndGame.win_team_id)
   return _internal_win_team_id();
 }
 inline void EndGame::_internal_set_win_team_id(int32_t value) {
@@ -22265,7 +22268,7 @@ inline void EndGame::_internal_set_win_team_id(int32_t value) {
 }
 inline void EndGame::set_win_team_id(int32_t value) {
   _internal_set_win_team_id(value);
-  // @@protoc_insertion_point(field_set:EndGame.win_team_id)
+  // @@protoc_insertion_point(field_set:packet.EndGame.win_team_id)
 }
 
 // repeated int32 score_cards = 2;
@@ -22282,19 +22285,19 @@ inline int32_t EndGame::_internal_score_cards(int index) const {
   return score_cards_.Get(index);
 }
 inline int32_t EndGame::score_cards(int index) const {
-  // @@protoc_insertion_point(field_get:EndGame.score_cards)
+  // @@protoc_insertion_point(field_get:packet.EndGame.score_cards)
   return _internal_score_cards(index);
 }
 inline void EndGame::set_score_cards(int index, int32_t value) {
   score_cards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:EndGame.score_cards)
+  // @@protoc_insertion_point(field_set:packet.EndGame.score_cards)
 }
 inline void EndGame::_internal_add_score_cards(int32_t value) {
   score_cards_.Add(value);
 }
 inline void EndGame::add_score_cards(int32_t value) {
   _internal_add_score_cards(value);
-  // @@protoc_insertion_point(field_add:EndGame.score_cards)
+  // @@protoc_insertion_point(field_add:packet.EndGame.score_cards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndGame::_internal_score_cards() const {
@@ -22302,7 +22305,7 @@ EndGame::_internal_score_cards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndGame::score_cards() const {
-  // @@protoc_insertion_point(field_list:EndGame.score_cards)
+  // @@protoc_insertion_point(field_list:packet.EndGame.score_cards)
   return _internal_score_cards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -22311,7 +22314,7 @@ EndGame::_internal_mutable_score_cards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 EndGame::mutable_score_cards() {
-  // @@protoc_insertion_point(field_mutable_list:EndGame.score_cards)
+  // @@protoc_insertion_point(field_mutable_list:packet.EndGame.score_cards)
   return _internal_mutable_score_cards();
 }
 
@@ -22329,19 +22332,19 @@ inline int32_t EndGame::_internal_score_last_tricks(int index) const {
   return score_last_tricks_.Get(index);
 }
 inline int32_t EndGame::score_last_tricks(int index) const {
-  // @@protoc_insertion_point(field_get:EndGame.score_last_tricks)
+  // @@protoc_insertion_point(field_get:packet.EndGame.score_last_tricks)
   return _internal_score_last_tricks(index);
 }
 inline void EndGame::set_score_last_tricks(int index, int32_t value) {
   score_last_tricks_.Set(index, value);
-  // @@protoc_insertion_point(field_set:EndGame.score_last_tricks)
+  // @@protoc_insertion_point(field_set:packet.EndGame.score_last_tricks)
 }
 inline void EndGame::_internal_add_score_last_tricks(int32_t value) {
   score_last_tricks_.Add(value);
 }
 inline void EndGame::add_score_last_tricks(int32_t value) {
   _internal_add_score_last_tricks(value);
-  // @@protoc_insertion_point(field_add:EndGame.score_last_tricks)
+  // @@protoc_insertion_point(field_add:packet.EndGame.score_last_tricks)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndGame::_internal_score_last_tricks() const {
@@ -22349,7 +22352,7 @@ EndGame::_internal_score_last_tricks() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndGame::score_last_tricks() const {
-  // @@protoc_insertion_point(field_list:EndGame.score_last_tricks)
+  // @@protoc_insertion_point(field_list:packet.EndGame.score_last_tricks)
   return _internal_score_last_tricks();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -22358,7 +22361,7 @@ EndGame::_internal_mutable_score_last_tricks() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 EndGame::mutable_score_last_tricks() {
-  // @@protoc_insertion_point(field_mutable_list:EndGame.score_last_tricks)
+  // @@protoc_insertion_point(field_mutable_list:packet.EndGame.score_last_tricks)
   return _internal_mutable_score_last_tricks();
 }
 
@@ -22376,19 +22379,19 @@ inline int32_t EndGame::_internal_score_totals(int index) const {
   return score_totals_.Get(index);
 }
 inline int32_t EndGame::score_totals(int index) const {
-  // @@protoc_insertion_point(field_get:EndGame.score_totals)
+  // @@protoc_insertion_point(field_get:packet.EndGame.score_totals)
   return _internal_score_totals(index);
 }
 inline void EndGame::set_score_totals(int index, int32_t value) {
   score_totals_.Set(index, value);
-  // @@protoc_insertion_point(field_set:EndGame.score_totals)
+  // @@protoc_insertion_point(field_set:packet.EndGame.score_totals)
 }
 inline void EndGame::_internal_add_score_totals(int32_t value) {
   score_totals_.Add(value);
 }
 inline void EndGame::add_score_totals(int32_t value) {
   _internal_add_score_totals(value);
-  // @@protoc_insertion_point(field_add:EndGame.score_totals)
+  // @@protoc_insertion_point(field_add:packet.EndGame.score_totals)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndGame::_internal_score_totals() const {
@@ -22396,7 +22399,7 @@ EndGame::_internal_score_totals() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 EndGame::score_totals() const {
-  // @@protoc_insertion_point(field_list:EndGame.score_totals)
+  // @@protoc_insertion_point(field_list:packet.EndGame.score_totals)
   return _internal_score_totals();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -22405,7 +22408,7 @@ EndGame::_internal_mutable_score_totals() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 EndGame::mutable_score_totals() {
-  // @@protoc_insertion_point(field_mutable_list:EndGame.score_totals)
+  // @@protoc_insertion_point(field_mutable_list:packet.EndGame.score_totals)
   return _internal_mutable_score_totals();
 }
 
@@ -22423,19 +22426,19 @@ inline int64_t EndGame::_internal_players_gold(int index) const {
   return players_gold_.Get(index);
 }
 inline int64_t EndGame::players_gold(int index) const {
-  // @@protoc_insertion_point(field_get:EndGame.players_gold)
+  // @@protoc_insertion_point(field_get:packet.EndGame.players_gold)
   return _internal_players_gold(index);
 }
 inline void EndGame::set_players_gold(int index, int64_t value) {
   players_gold_.Set(index, value);
-  // @@protoc_insertion_point(field_set:EndGame.players_gold)
+  // @@protoc_insertion_point(field_set:packet.EndGame.players_gold)
 }
 inline void EndGame::_internal_add_players_gold(int64_t value) {
   players_gold_.Add(value);
 }
 inline void EndGame::add_players_gold(int64_t value) {
   _internal_add_players_gold(value);
-  // @@protoc_insertion_point(field_add:EndGame.players_gold)
+  // @@protoc_insertion_point(field_add:packet.EndGame.players_gold)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 EndGame::_internal_players_gold() const {
@@ -22443,7 +22446,7 @@ EndGame::_internal_players_gold() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 EndGame::players_gold() const {
-  // @@protoc_insertion_point(field_list:EndGame.players_gold)
+  // @@protoc_insertion_point(field_list:packet.EndGame.players_gold)
   return _internal_players_gold();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -22452,11 +22455,11 @@ EndGame::_internal_mutable_players_gold() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 EndGame::mutable_players_gold() {
-  // @@protoc_insertion_point(field_mutable_list:EndGame.players_gold)
+  // @@protoc_insertion_point(field_mutable_list:packet.EndGame.players_gold)
   return _internal_mutable_players_gold();
 }
 
-// repeated .RewardInventoryItem rewards = 7;
+// repeated .packet.RewardInventoryItem rewards = 7;
 inline int EndGame::_internal_rewards_size() const {
   return rewards_.size();
 }
@@ -22466,33 +22469,33 @@ inline int EndGame::rewards_size() const {
 inline void EndGame::clear_rewards() {
   rewards_.Clear();
 }
-inline ::RewardInventoryItem* EndGame::mutable_rewards(int index) {
-  // @@protoc_insertion_point(field_mutable:EndGame.rewards)
+inline ::packet::RewardInventoryItem* EndGame::mutable_rewards(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.EndGame.rewards)
   return rewards_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
 EndGame::mutable_rewards() {
-  // @@protoc_insertion_point(field_mutable_list:EndGame.rewards)
+  // @@protoc_insertion_point(field_mutable_list:packet.EndGame.rewards)
   return &rewards_;
 }
-inline const ::RewardInventoryItem& EndGame::_internal_rewards(int index) const {
+inline const ::packet::RewardInventoryItem& EndGame::_internal_rewards(int index) const {
   return rewards_.Get(index);
 }
-inline const ::RewardInventoryItem& EndGame::rewards(int index) const {
-  // @@protoc_insertion_point(field_get:EndGame.rewards)
+inline const ::packet::RewardInventoryItem& EndGame::rewards(int index) const {
+  // @@protoc_insertion_point(field_get:packet.EndGame.rewards)
   return _internal_rewards(index);
 }
-inline ::RewardInventoryItem* EndGame::_internal_add_rewards() {
+inline ::packet::RewardInventoryItem* EndGame::_internal_add_rewards() {
   return rewards_.Add();
 }
-inline ::RewardInventoryItem* EndGame::add_rewards() {
-  ::RewardInventoryItem* _add = _internal_add_rewards();
-  // @@protoc_insertion_point(field_add:EndGame.rewards)
+inline ::packet::RewardInventoryItem* EndGame::add_rewards() {
+  ::packet::RewardInventoryItem* _add = _internal_add_rewards();
+  // @@protoc_insertion_point(field_add:packet.EndGame.rewards)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
 EndGame::rewards() const {
-  // @@protoc_insertion_point(field_list:EndGame.rewards)
+  // @@protoc_insertion_point(field_list:packet.EndGame.rewards)
   return rewards_;
 }
 
@@ -22508,7 +22511,7 @@ inline int32_t PrepareStartGame::_internal_time_start() const {
   return time_start_;
 }
 inline int32_t PrepareStartGame::time_start() const {
-  // @@protoc_insertion_point(field_get:PrepareStartGame.time_start)
+  // @@protoc_insertion_point(field_get:packet.PrepareStartGame.time_start)
   return _internal_time_start();
 }
 inline void PrepareStartGame::_internal_set_time_start(int32_t value) {
@@ -22517,7 +22520,7 @@ inline void PrepareStartGame::_internal_set_time_start(int32_t value) {
 }
 inline void PrepareStartGame::set_time_start(int32_t value) {
   _internal_set_time_start(value);
-  // @@protoc_insertion_point(field_set:PrepareStartGame.time_start)
+  // @@protoc_insertion_point(field_set:packet.PrepareStartGame.time_start)
 }
 
 // -------------------------------------------------------------------
@@ -22532,7 +22535,7 @@ inline int32_t InGameChatMessage::_internal_uid() const {
   return uid_;
 }
 inline int32_t InGameChatMessage::uid() const {
-  // @@protoc_insertion_point(field_get:InGameChatMessage.uid)
+  // @@protoc_insertion_point(field_get:packet.InGameChatMessage.uid)
   return _internal_uid();
 }
 inline void InGameChatMessage::_internal_set_uid(int32_t value) {
@@ -22541,7 +22544,7 @@ inline void InGameChatMessage::_internal_set_uid(int32_t value) {
 }
 inline void InGameChatMessage::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:InGameChatMessage.uid)
+  // @@protoc_insertion_point(field_set:packet.InGameChatMessage.uid)
 }
 
 // string chat_message = 2;
@@ -22549,7 +22552,7 @@ inline void InGameChatMessage::clear_chat_message() {
   chat_message_.ClearToEmpty();
 }
 inline const std::string& InGameChatMessage::chat_message() const {
-  // @@protoc_insertion_point(field_get:InGameChatMessage.chat_message)
+  // @@protoc_insertion_point(field_get:packet.InGameChatMessage.chat_message)
   return _internal_chat_message();
 }
 template <typename ArgT0, typename... ArgT>
@@ -22557,11 +22560,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void InGameChatMessage::set_chat_message(ArgT0&& arg0, ArgT... args) {
  
  chat_message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:InGameChatMessage.chat_message)
+  // @@protoc_insertion_point(field_set:packet.InGameChatMessage.chat_message)
 }
 inline std::string* InGameChatMessage::mutable_chat_message() {
   std::string* _s = _internal_mutable_chat_message();
-  // @@protoc_insertion_point(field_mutable:InGameChatMessage.chat_message)
+  // @@protoc_insertion_point(field_mutable:packet.InGameChatMessage.chat_message)
   return _s;
 }
 inline const std::string& InGameChatMessage::_internal_chat_message() const {
@@ -22576,7 +22579,7 @@ inline std::string* InGameChatMessage::_internal_mutable_chat_message() {
   return chat_message_.Mutable(GetArenaForAllocation());
 }
 inline std::string* InGameChatMessage::release_chat_message() {
-  // @@protoc_insertion_point(field_release:InGameChatMessage.chat_message)
+  // @@protoc_insertion_point(field_release:packet.InGameChatMessage.chat_message)
   return chat_message_.Release();
 }
 inline void InGameChatMessage::set_allocated_chat_message(std::string* chat_message) {
@@ -22591,7 +22594,7 @@ inline void InGameChatMessage::set_allocated_chat_message(std::string* chat_mess
     chat_message_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:InGameChatMessage.chat_message)
+  // @@protoc_insertion_point(field_set_allocated:packet.InGameChatMessage.chat_message)
 }
 
 // -------------------------------------------------------------------
@@ -22603,7 +22606,7 @@ inline void PaymentGoogleConsume::clear_purchase_token() {
   purchase_token_.ClearToEmpty();
 }
 inline const std::string& PaymentGoogleConsume::purchase_token() const {
-  // @@protoc_insertion_point(field_get:PaymentGoogleConsume.purchase_token)
+  // @@protoc_insertion_point(field_get:packet.PaymentGoogleConsume.purchase_token)
   return _internal_purchase_token();
 }
 template <typename ArgT0, typename... ArgT>
@@ -22611,11 +22614,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentGoogleConsume::set_purchase_token(ArgT0&& arg0, ArgT... args) {
  
  purchase_token_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentGoogleConsume.purchase_token)
+  // @@protoc_insertion_point(field_set:packet.PaymentGoogleConsume.purchase_token)
 }
 inline std::string* PaymentGoogleConsume::mutable_purchase_token() {
   std::string* _s = _internal_mutable_purchase_token();
-  // @@protoc_insertion_point(field_mutable:PaymentGoogleConsume.purchase_token)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentGoogleConsume.purchase_token)
   return _s;
 }
 inline const std::string& PaymentGoogleConsume::_internal_purchase_token() const {
@@ -22630,7 +22633,7 @@ inline std::string* PaymentGoogleConsume::_internal_mutable_purchase_token() {
   return purchase_token_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentGoogleConsume::release_purchase_token() {
-  // @@protoc_insertion_point(field_release:PaymentGoogleConsume.purchase_token)
+  // @@protoc_insertion_point(field_release:packet.PaymentGoogleConsume.purchase_token)
   return purchase_token_.Release();
 }
 inline void PaymentGoogleConsume::set_allocated_purchase_token(std::string* purchase_token) {
@@ -22645,7 +22648,7 @@ inline void PaymentGoogleConsume::set_allocated_purchase_token(std::string* purc
     purchase_token_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentGoogleConsume.purchase_token)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentGoogleConsume.purchase_token)
 }
 
 // int32 quantity = 2;
@@ -22656,7 +22659,7 @@ inline int32_t PaymentGoogleConsume::_internal_quantity() const {
   return quantity_;
 }
 inline int32_t PaymentGoogleConsume::quantity() const {
-  // @@protoc_insertion_point(field_get:PaymentGoogleConsume.quantity)
+  // @@protoc_insertion_point(field_get:packet.PaymentGoogleConsume.quantity)
   return _internal_quantity();
 }
 inline void PaymentGoogleConsume::_internal_set_quantity(int32_t value) {
@@ -22665,7 +22668,7 @@ inline void PaymentGoogleConsume::_internal_set_quantity(int32_t value) {
 }
 inline void PaymentGoogleConsume::set_quantity(int32_t value) {
   _internal_set_quantity(value);
-  // @@protoc_insertion_point(field_set:PaymentGoogleConsume.quantity)
+  // @@protoc_insertion_point(field_set:packet.PaymentGoogleConsume.quantity)
 }
 
 // repeated string skus = 3;
@@ -22680,66 +22683,66 @@ inline void PaymentGoogleConsume::clear_skus() {
 }
 inline std::string* PaymentGoogleConsume::add_skus() {
   std::string* _s = _internal_add_skus();
-  // @@protoc_insertion_point(field_add_mutable:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_add_mutable:packet.PaymentGoogleConsume.skus)
   return _s;
 }
 inline const std::string& PaymentGoogleConsume::_internal_skus(int index) const {
   return skus_.Get(index);
 }
 inline const std::string& PaymentGoogleConsume::skus(int index) const {
-  // @@protoc_insertion_point(field_get:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_get:packet.PaymentGoogleConsume.skus)
   return _internal_skus(index);
 }
 inline std::string* PaymentGoogleConsume::mutable_skus(int index) {
-  // @@protoc_insertion_point(field_mutable:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentGoogleConsume.skus)
   return skus_.Mutable(index);
 }
 inline void PaymentGoogleConsume::set_skus(int index, const std::string& value) {
   skus_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_set:packet.PaymentGoogleConsume.skus)
 }
 inline void PaymentGoogleConsume::set_skus(int index, std::string&& value) {
   skus_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_set:packet.PaymentGoogleConsume.skus)
 }
 inline void PaymentGoogleConsume::set_skus(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   skus_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_set_char:packet.PaymentGoogleConsume.skus)
 }
 inline void PaymentGoogleConsume::set_skus(int index, const char* value, size_t size) {
   skus_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_set_pointer:packet.PaymentGoogleConsume.skus)
 }
 inline std::string* PaymentGoogleConsume::_internal_add_skus() {
   return skus_.Add();
 }
 inline void PaymentGoogleConsume::add_skus(const std::string& value) {
   skus_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_add:packet.PaymentGoogleConsume.skus)
 }
 inline void PaymentGoogleConsume::add_skus(std::string&& value) {
   skus_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_add:packet.PaymentGoogleConsume.skus)
 }
 inline void PaymentGoogleConsume::add_skus(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   skus_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_add_char:packet.PaymentGoogleConsume.skus)
 }
 inline void PaymentGoogleConsume::add_skus(const char* value, size_t size) {
   skus_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_add_pointer:packet.PaymentGoogleConsume.skus)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 PaymentGoogleConsume::skus() const {
-  // @@protoc_insertion_point(field_list:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_list:packet.PaymentGoogleConsume.skus)
   return skus_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 PaymentGoogleConsume::mutable_skus() {
-  // @@protoc_insertion_point(field_mutable_list:PaymentGoogleConsume.skus)
+  // @@protoc_insertion_point(field_mutable_list:packet.PaymentGoogleConsume.skus)
   return &skus_;
 }
 
@@ -22748,7 +22751,7 @@ inline void PaymentGoogleConsume::clear_signature() {
   signature_.ClearToEmpty();
 }
 inline const std::string& PaymentGoogleConsume::signature() const {
-  // @@protoc_insertion_point(field_get:PaymentGoogleConsume.signature)
+  // @@protoc_insertion_point(field_get:packet.PaymentGoogleConsume.signature)
   return _internal_signature();
 }
 template <typename ArgT0, typename... ArgT>
@@ -22756,11 +22759,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentGoogleConsume::set_signature(ArgT0&& arg0, ArgT... args) {
  
  signature_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentGoogleConsume.signature)
+  // @@protoc_insertion_point(field_set:packet.PaymentGoogleConsume.signature)
 }
 inline std::string* PaymentGoogleConsume::mutable_signature() {
   std::string* _s = _internal_mutable_signature();
-  // @@protoc_insertion_point(field_mutable:PaymentGoogleConsume.signature)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentGoogleConsume.signature)
   return _s;
 }
 inline const std::string& PaymentGoogleConsume::_internal_signature() const {
@@ -22775,7 +22778,7 @@ inline std::string* PaymentGoogleConsume::_internal_mutable_signature() {
   return signature_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentGoogleConsume::release_signature() {
-  // @@protoc_insertion_point(field_release:PaymentGoogleConsume.signature)
+  // @@protoc_insertion_point(field_release:packet.PaymentGoogleConsume.signature)
   return signature_.Release();
 }
 inline void PaymentGoogleConsume::set_allocated_signature(std::string* signature) {
@@ -22790,7 +22793,7 @@ inline void PaymentGoogleConsume::set_allocated_signature(std::string* signature
     signature_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentGoogleConsume.signature)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentGoogleConsume.signature)
 }
 
 // string sku = 5;
@@ -22798,7 +22801,7 @@ inline void PaymentGoogleConsume::clear_sku() {
   sku_.ClearToEmpty();
 }
 inline const std::string& PaymentGoogleConsume::sku() const {
-  // @@protoc_insertion_point(field_get:PaymentGoogleConsume.sku)
+  // @@protoc_insertion_point(field_get:packet.PaymentGoogleConsume.sku)
   return _internal_sku();
 }
 template <typename ArgT0, typename... ArgT>
@@ -22806,11 +22809,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentGoogleConsume::set_sku(ArgT0&& arg0, ArgT... args) {
  
  sku_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentGoogleConsume.sku)
+  // @@protoc_insertion_point(field_set:packet.PaymentGoogleConsume.sku)
 }
 inline std::string* PaymentGoogleConsume::mutable_sku() {
   std::string* _s = _internal_mutable_sku();
-  // @@protoc_insertion_point(field_mutable:PaymentGoogleConsume.sku)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentGoogleConsume.sku)
   return _s;
 }
 inline const std::string& PaymentGoogleConsume::_internal_sku() const {
@@ -22825,7 +22828,7 @@ inline std::string* PaymentGoogleConsume::_internal_mutable_sku() {
   return sku_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentGoogleConsume::release_sku() {
-  // @@protoc_insertion_point(field_release:PaymentGoogleConsume.sku)
+  // @@protoc_insertion_point(field_release:packet.PaymentGoogleConsume.sku)
   return sku_.Release();
 }
 inline void PaymentGoogleConsume::set_allocated_sku(std::string* sku) {
@@ -22840,7 +22843,7 @@ inline void PaymentGoogleConsume::set_allocated_sku(std::string* sku) {
     sku_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentGoogleConsume.sku)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentGoogleConsume.sku)
 }
 
 // -------------------------------------------------------------------
@@ -22855,7 +22858,7 @@ inline int64_t PaymentSuccess::_internal_gold() const {
   return gold_;
 }
 inline int64_t PaymentSuccess::gold() const {
-  // @@protoc_insertion_point(field_get:PaymentSuccess.gold)
+  // @@protoc_insertion_point(field_get:packet.PaymentSuccess.gold)
   return _internal_gold();
 }
 inline void PaymentSuccess::_internal_set_gold(int64_t value) {
@@ -22864,7 +22867,7 @@ inline void PaymentSuccess::_internal_set_gold(int64_t value) {
 }
 inline void PaymentSuccess::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:PaymentSuccess.gold)
+  // @@protoc_insertion_point(field_set:packet.PaymentSuccess.gold)
 }
 
 // string pack_id = 2;
@@ -22872,7 +22875,7 @@ inline void PaymentSuccess::clear_pack_id() {
   pack_id_.ClearToEmpty();
 }
 inline const std::string& PaymentSuccess::pack_id() const {
-  // @@protoc_insertion_point(field_get:PaymentSuccess.pack_id)
+  // @@protoc_insertion_point(field_get:packet.PaymentSuccess.pack_id)
   return _internal_pack_id();
 }
 template <typename ArgT0, typename... ArgT>
@@ -22880,11 +22883,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentSuccess::set_pack_id(ArgT0&& arg0, ArgT... args) {
  
  pack_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentSuccess.pack_id)
+  // @@protoc_insertion_point(field_set:packet.PaymentSuccess.pack_id)
 }
 inline std::string* PaymentSuccess::mutable_pack_id() {
   std::string* _s = _internal_mutable_pack_id();
-  // @@protoc_insertion_point(field_mutable:PaymentSuccess.pack_id)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentSuccess.pack_id)
   return _s;
 }
 inline const std::string& PaymentSuccess::_internal_pack_id() const {
@@ -22899,7 +22902,7 @@ inline std::string* PaymentSuccess::_internal_mutable_pack_id() {
   return pack_id_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentSuccess::release_pack_id() {
-  // @@protoc_insertion_point(field_release:PaymentSuccess.pack_id)
+  // @@protoc_insertion_point(field_release:packet.PaymentSuccess.pack_id)
   return pack_id_.Release();
 }
 inline void PaymentSuccess::set_allocated_pack_id(std::string* pack_id) {
@@ -22914,10 +22917,10 @@ inline void PaymentSuccess::set_allocated_pack_id(std::string* pack_id) {
     pack_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentSuccess.pack_id)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentSuccess.pack_id)
 }
 
-// repeated .RewardInventoryItem items = 3;
+// repeated .packet.RewardInventoryItem items = 3;
 inline int PaymentSuccess::_internal_items_size() const {
   return items_.size();
 }
@@ -22927,33 +22930,33 @@ inline int PaymentSuccess::items_size() const {
 inline void PaymentSuccess::clear_items() {
   items_.Clear();
 }
-inline ::RewardInventoryItem* PaymentSuccess::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:PaymentSuccess.items)
+inline ::packet::RewardInventoryItem* PaymentSuccess::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.PaymentSuccess.items)
   return items_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
 PaymentSuccess::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:PaymentSuccess.items)
+  // @@protoc_insertion_point(field_mutable_list:packet.PaymentSuccess.items)
   return &items_;
 }
-inline const ::RewardInventoryItem& PaymentSuccess::_internal_items(int index) const {
+inline const ::packet::RewardInventoryItem& PaymentSuccess::_internal_items(int index) const {
   return items_.Get(index);
 }
-inline const ::RewardInventoryItem& PaymentSuccess::items(int index) const {
-  // @@protoc_insertion_point(field_get:PaymentSuccess.items)
+inline const ::packet::RewardInventoryItem& PaymentSuccess::items(int index) const {
+  // @@protoc_insertion_point(field_get:packet.PaymentSuccess.items)
   return _internal_items(index);
 }
-inline ::RewardInventoryItem* PaymentSuccess::_internal_add_items() {
+inline ::packet::RewardInventoryItem* PaymentSuccess::_internal_add_items() {
   return items_.Add();
 }
-inline ::RewardInventoryItem* PaymentSuccess::add_items() {
-  ::RewardInventoryItem* _add = _internal_add_items();
-  // @@protoc_insertion_point(field_add:PaymentSuccess.items)
+inline ::packet::RewardInventoryItem* PaymentSuccess::add_items() {
+  ::packet::RewardInventoryItem* _add = _internal_add_items();
+  // @@protoc_insertion_point(field_add:packet.PaymentSuccess.items)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
 PaymentSuccess::items() const {
-  // @@protoc_insertion_point(field_list:PaymentSuccess.items)
+  // @@protoc_insertion_point(field_list:packet.PaymentSuccess.items)
   return items_;
 }
 
@@ -22969,7 +22972,7 @@ inline int64_t UpdateMoney::_internal_gold() const {
   return gold_;
 }
 inline int64_t UpdateMoney::gold() const {
-  // @@protoc_insertion_point(field_get:UpdateMoney.gold)
+  // @@protoc_insertion_point(field_get:packet.UpdateMoney.gold)
   return _internal_gold();
 }
 inline void UpdateMoney::_internal_set_gold(int64_t value) {
@@ -22978,7 +22981,7 @@ inline void UpdateMoney::_internal_set_gold(int64_t value) {
 }
 inline void UpdateMoney::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:UpdateMoney.gold)
+  // @@protoc_insertion_point(field_set:packet.UpdateMoney.gold)
 }
 
 // -------------------------------------------------------------------
@@ -22999,19 +23002,19 @@ inline int32_t TableList::_internal_table_ids(int index) const {
   return table_ids_.Get(index);
 }
 inline int32_t TableList::table_ids(int index) const {
-  // @@protoc_insertion_point(field_get:TableList.table_ids)
+  // @@protoc_insertion_point(field_get:packet.TableList.table_ids)
   return _internal_table_ids(index);
 }
 inline void TableList::set_table_ids(int index, int32_t value) {
   table_ids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:TableList.table_ids)
+  // @@protoc_insertion_point(field_set:packet.TableList.table_ids)
 }
 inline void TableList::_internal_add_table_ids(int32_t value) {
   table_ids_.Add(value);
 }
 inline void TableList::add_table_ids(int32_t value) {
   _internal_add_table_ids(value);
-  // @@protoc_insertion_point(field_add:TableList.table_ids)
+  // @@protoc_insertion_point(field_add:packet.TableList.table_ids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::_internal_table_ids() const {
@@ -23019,7 +23022,7 @@ TableList::_internal_table_ids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::table_ids() const {
-  // @@protoc_insertion_point(field_list:TableList.table_ids)
+  // @@protoc_insertion_point(field_list:packet.TableList.table_ids)
   return _internal_table_ids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -23028,7 +23031,7 @@ TableList::_internal_mutable_table_ids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 TableList::mutable_table_ids() {
-  // @@protoc_insertion_point(field_mutable_list:TableList.table_ids)
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.table_ids)
   return _internal_mutable_table_ids();
 }
 
@@ -23046,19 +23049,19 @@ inline int32_t TableList::_internal_num_players(int index) const {
   return num_players_.Get(index);
 }
 inline int32_t TableList::num_players(int index) const {
-  // @@protoc_insertion_point(field_get:TableList.num_players)
+  // @@protoc_insertion_point(field_get:packet.TableList.num_players)
   return _internal_num_players(index);
 }
 inline void TableList::set_num_players(int index, int32_t value) {
   num_players_.Set(index, value);
-  // @@protoc_insertion_point(field_set:TableList.num_players)
+  // @@protoc_insertion_point(field_set:packet.TableList.num_players)
 }
 inline void TableList::_internal_add_num_players(int32_t value) {
   num_players_.Add(value);
 }
 inline void TableList::add_num_players(int32_t value) {
   _internal_add_num_players(value);
-  // @@protoc_insertion_point(field_add:TableList.num_players)
+  // @@protoc_insertion_point(field_add:packet.TableList.num_players)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::_internal_num_players() const {
@@ -23066,7 +23069,7 @@ TableList::_internal_num_players() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::num_players() const {
-  // @@protoc_insertion_point(field_list:TableList.num_players)
+  // @@protoc_insertion_point(field_list:packet.TableList.num_players)
   return _internal_num_players();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -23075,7 +23078,7 @@ TableList::_internal_mutable_num_players() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 TableList::mutable_num_players() {
-  // @@protoc_insertion_point(field_mutable_list:TableList.num_players)
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.num_players)
   return _internal_mutable_num_players();
 }
 
@@ -23093,19 +23096,19 @@ inline int32_t TableList::_internal_player_modes(int index) const {
   return player_modes_.Get(index);
 }
 inline int32_t TableList::player_modes(int index) const {
-  // @@protoc_insertion_point(field_get:TableList.player_modes)
+  // @@protoc_insertion_point(field_get:packet.TableList.player_modes)
   return _internal_player_modes(index);
 }
 inline void TableList::set_player_modes(int index, int32_t value) {
   player_modes_.Set(index, value);
-  // @@protoc_insertion_point(field_set:TableList.player_modes)
+  // @@protoc_insertion_point(field_set:packet.TableList.player_modes)
 }
 inline void TableList::_internal_add_player_modes(int32_t value) {
   player_modes_.Add(value);
 }
 inline void TableList::add_player_modes(int32_t value) {
   _internal_add_player_modes(value);
-  // @@protoc_insertion_point(field_add:TableList.player_modes)
+  // @@protoc_insertion_point(field_add:packet.TableList.player_modes)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::_internal_player_modes() const {
@@ -23113,7 +23116,7 @@ TableList::_internal_player_modes() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::player_modes() const {
-  // @@protoc_insertion_point(field_list:TableList.player_modes)
+  // @@protoc_insertion_point(field_list:packet.TableList.player_modes)
   return _internal_player_modes();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -23122,7 +23125,7 @@ TableList::_internal_mutable_player_modes() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 TableList::mutable_player_modes() {
-  // @@protoc_insertion_point(field_mutable_list:TableList.player_modes)
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.player_modes)
   return _internal_mutable_player_modes();
 }
 
@@ -23140,19 +23143,19 @@ inline int32_t TableList::_internal_player_uids(int index) const {
   return player_uids_.Get(index);
 }
 inline int32_t TableList::player_uids(int index) const {
-  // @@protoc_insertion_point(field_get:TableList.player_uids)
+  // @@protoc_insertion_point(field_get:packet.TableList.player_uids)
   return _internal_player_uids(index);
 }
 inline void TableList::set_player_uids(int index, int32_t value) {
   player_uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:TableList.player_uids)
+  // @@protoc_insertion_point(field_set:packet.TableList.player_uids)
 }
 inline void TableList::_internal_add_player_uids(int32_t value) {
   player_uids_.Add(value);
 }
 inline void TableList::add_player_uids(int32_t value) {
   _internal_add_player_uids(value);
-  // @@protoc_insertion_point(field_add:TableList.player_uids)
+  // @@protoc_insertion_point(field_add:packet.TableList.player_uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::_internal_player_uids() const {
@@ -23160,7 +23163,7 @@ TableList::_internal_player_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::player_uids() const {
-  // @@protoc_insertion_point(field_list:TableList.player_uids)
+  // @@protoc_insertion_point(field_list:packet.TableList.player_uids)
   return _internal_player_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -23169,7 +23172,7 @@ TableList::_internal_mutable_player_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 TableList::mutable_player_uids() {
-  // @@protoc_insertion_point(field_mutable_list:TableList.player_uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.player_uids)
   return _internal_mutable_player_uids();
 }
 
@@ -23185,66 +23188,66 @@ inline void TableList::clear_avatars() {
 }
 inline std::string* TableList::add_avatars() {
   std::string* _s = _internal_add_avatars();
-  // @@protoc_insertion_point(field_add_mutable:TableList.avatars)
+  // @@protoc_insertion_point(field_add_mutable:packet.TableList.avatars)
   return _s;
 }
 inline const std::string& TableList::_internal_avatars(int index) const {
   return avatars_.Get(index);
 }
 inline const std::string& TableList::avatars(int index) const {
-  // @@protoc_insertion_point(field_get:TableList.avatars)
+  // @@protoc_insertion_point(field_get:packet.TableList.avatars)
   return _internal_avatars(index);
 }
 inline std::string* TableList::mutable_avatars(int index) {
-  // @@protoc_insertion_point(field_mutable:TableList.avatars)
+  // @@protoc_insertion_point(field_mutable:packet.TableList.avatars)
   return avatars_.Mutable(index);
 }
 inline void TableList::set_avatars(int index, const std::string& value) {
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:TableList.avatars)
+  // @@protoc_insertion_point(field_set:packet.TableList.avatars)
 }
 inline void TableList::set_avatars(int index, std::string&& value) {
   avatars_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:TableList.avatars)
+  // @@protoc_insertion_point(field_set:packet.TableList.avatars)
 }
 inline void TableList::set_avatars(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:TableList.avatars)
+  // @@protoc_insertion_point(field_set_char:packet.TableList.avatars)
 }
 inline void TableList::set_avatars(int index, const char* value, size_t size) {
   avatars_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:TableList.avatars)
+  // @@protoc_insertion_point(field_set_pointer:packet.TableList.avatars)
 }
 inline std::string* TableList::_internal_add_avatars() {
   return avatars_.Add();
 }
 inline void TableList::add_avatars(const std::string& value) {
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:TableList.avatars)
+  // @@protoc_insertion_point(field_add:packet.TableList.avatars)
 }
 inline void TableList::add_avatars(std::string&& value) {
   avatars_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:TableList.avatars)
+  // @@protoc_insertion_point(field_add:packet.TableList.avatars)
 }
 inline void TableList::add_avatars(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:TableList.avatars)
+  // @@protoc_insertion_point(field_add_char:packet.TableList.avatars)
 }
 inline void TableList::add_avatars(const char* value, size_t size) {
   avatars_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:TableList.avatars)
+  // @@protoc_insertion_point(field_add_pointer:packet.TableList.avatars)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 TableList::avatars() const {
-  // @@protoc_insertion_point(field_list:TableList.avatars)
+  // @@protoc_insertion_point(field_list:packet.TableList.avatars)
   return avatars_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 TableList::mutable_avatars() {
-  // @@protoc_insertion_point(field_mutable_list:TableList.avatars)
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.avatars)
   return &avatars_;
 }
 
@@ -23262,19 +23265,19 @@ inline int32_t TableList::_internal_game_modes(int index) const {
   return game_modes_.Get(index);
 }
 inline int32_t TableList::game_modes(int index) const {
-  // @@protoc_insertion_point(field_get:TableList.game_modes)
+  // @@protoc_insertion_point(field_get:packet.TableList.game_modes)
   return _internal_game_modes(index);
 }
 inline void TableList::set_game_modes(int index, int32_t value) {
   game_modes_.Set(index, value);
-  // @@protoc_insertion_point(field_set:TableList.game_modes)
+  // @@protoc_insertion_point(field_set:packet.TableList.game_modes)
 }
 inline void TableList::_internal_add_game_modes(int32_t value) {
   game_modes_.Add(value);
 }
 inline void TableList::add_game_modes(int32_t value) {
   _internal_add_game_modes(value);
-  // @@protoc_insertion_point(field_add:TableList.game_modes)
+  // @@protoc_insertion_point(field_add:packet.TableList.game_modes)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::_internal_game_modes() const {
@@ -23282,7 +23285,7 @@ TableList::_internal_game_modes() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::game_modes() const {
-  // @@protoc_insertion_point(field_list:TableList.game_modes)
+  // @@protoc_insertion_point(field_list:packet.TableList.game_modes)
   return _internal_game_modes();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -23291,7 +23294,7 @@ TableList::_internal_mutable_game_modes() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 TableList::mutable_game_modes() {
-  // @@protoc_insertion_point(field_mutable_list:TableList.game_modes)
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.game_modes)
   return _internal_mutable_game_modes();
 }
 
@@ -23309,19 +23312,19 @@ inline int32_t TableList::_internal_avatar_frames(int index) const {
   return avatar_frames_.Get(index);
 }
 inline int32_t TableList::avatar_frames(int index) const {
-  // @@protoc_insertion_point(field_get:TableList.avatar_frames)
+  // @@protoc_insertion_point(field_get:packet.TableList.avatar_frames)
   return _internal_avatar_frames(index);
 }
 inline void TableList::set_avatar_frames(int index, int32_t value) {
   avatar_frames_.Set(index, value);
-  // @@protoc_insertion_point(field_set:TableList.avatar_frames)
+  // @@protoc_insertion_point(field_set:packet.TableList.avatar_frames)
 }
 inline void TableList::_internal_add_avatar_frames(int32_t value) {
   avatar_frames_.Add(value);
 }
 inline void TableList::add_avatar_frames(int32_t value) {
   _internal_add_avatar_frames(value);
-  // @@protoc_insertion_point(field_add:TableList.avatar_frames)
+  // @@protoc_insertion_point(field_add:packet.TableList.avatar_frames)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::_internal_avatar_frames() const {
@@ -23329,7 +23332,7 @@ TableList::_internal_avatar_frames() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 TableList::avatar_frames() const {
-  // @@protoc_insertion_point(field_list:TableList.avatar_frames)
+  // @@protoc_insertion_point(field_list:packet.TableList.avatar_frames)
   return _internal_avatar_frames();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -23338,7 +23341,7 @@ TableList::_internal_mutable_avatar_frames() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 TableList::mutable_avatar_frames() {
-  // @@protoc_insertion_point(field_mutable_list:TableList.avatar_frames)
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.avatar_frames)
   return _internal_mutable_avatar_frames();
 }
 
@@ -23356,19 +23359,19 @@ inline bool TableList::_internal_is_private(int index) const {
   return is_private_.Get(index);
 }
 inline bool TableList::is_private(int index) const {
-  // @@protoc_insertion_point(field_get:TableList.is_private)
+  // @@protoc_insertion_point(field_get:packet.TableList.is_private)
   return _internal_is_private(index);
 }
 inline void TableList::set_is_private(int index, bool value) {
   is_private_.Set(index, value);
-  // @@protoc_insertion_point(field_set:TableList.is_private)
+  // @@protoc_insertion_point(field_set:packet.TableList.is_private)
 }
 inline void TableList::_internal_add_is_private(bool value) {
   is_private_.Add(value);
 }
 inline void TableList::add_is_private(bool value) {
   _internal_add_is_private(value);
-  // @@protoc_insertion_point(field_add:TableList.is_private)
+  // @@protoc_insertion_point(field_add:packet.TableList.is_private)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 TableList::_internal_is_private() const {
@@ -23376,7 +23379,7 @@ TableList::_internal_is_private() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 TableList::is_private() const {
-  // @@protoc_insertion_point(field_list:TableList.is_private)
+  // @@protoc_insertion_point(field_list:packet.TableList.is_private)
   return _internal_is_private();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
@@ -23385,7 +23388,7 @@ TableList::_internal_mutable_is_private() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
 TableList::mutable_is_private() {
-  // @@protoc_insertion_point(field_mutable_list:TableList.is_private)
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.is_private)
   return _internal_mutable_is_private();
 }
 
@@ -23405,66 +23408,66 @@ inline void ShopConfig::clear_pack_ids() {
 }
 inline std::string* ShopConfig::add_pack_ids() {
   std::string* _s = _internal_add_pack_ids();
-  // @@protoc_insertion_point(field_add_mutable:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_add_mutable:packet.ShopConfig.pack_ids)
   return _s;
 }
 inline const std::string& ShopConfig::_internal_pack_ids(int index) const {
   return pack_ids_.Get(index);
 }
 inline const std::string& ShopConfig::pack_ids(int index) const {
-  // @@protoc_insertion_point(field_get:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.pack_ids)
   return _internal_pack_ids(index);
 }
 inline std::string* ShopConfig::mutable_pack_ids(int index) {
-  // @@protoc_insertion_point(field_mutable:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_mutable:packet.ShopConfig.pack_ids)
   return pack_ids_.Mutable(index);
 }
 inline void ShopConfig::set_pack_ids(int index, const std::string& value) {
   pack_ids_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.pack_ids)
 }
 inline void ShopConfig::set_pack_ids(int index, std::string&& value) {
   pack_ids_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.pack_ids)
 }
 inline void ShopConfig::set_pack_ids(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   pack_ids_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_set_char:packet.ShopConfig.pack_ids)
 }
 inline void ShopConfig::set_pack_ids(int index, const char* value, size_t size) {
   pack_ids_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_set_pointer:packet.ShopConfig.pack_ids)
 }
 inline std::string* ShopConfig::_internal_add_pack_ids() {
   return pack_ids_.Add();
 }
 inline void ShopConfig::add_pack_ids(const std::string& value) {
   pack_ids_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.pack_ids)
 }
 inline void ShopConfig::add_pack_ids(std::string&& value) {
   pack_ids_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.pack_ids)
 }
 inline void ShopConfig::add_pack_ids(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   pack_ids_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_add_char:packet.ShopConfig.pack_ids)
 }
 inline void ShopConfig::add_pack_ids(const char* value, size_t size) {
   pack_ids_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_add_pointer:packet.ShopConfig.pack_ids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 ShopConfig::pack_ids() const {
-  // @@protoc_insertion_point(field_list:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_list:packet.ShopConfig.pack_ids)
   return pack_ids_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 ShopConfig::mutable_pack_ids() {
-  // @@protoc_insertion_point(field_mutable_list:ShopConfig.pack_ids)
+  // @@protoc_insertion_point(field_mutable_list:packet.ShopConfig.pack_ids)
   return &pack_ids_;
 }
 
@@ -23482,19 +23485,19 @@ inline int64_t ShopConfig::_internal_golds(int index) const {
   return golds_.Get(index);
 }
 inline int64_t ShopConfig::golds(int index) const {
-  // @@protoc_insertion_point(field_get:ShopConfig.golds)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.golds)
   return _internal_golds(index);
 }
 inline void ShopConfig::set_golds(int index, int64_t value) {
   golds_.Set(index, value);
-  // @@protoc_insertion_point(field_set:ShopConfig.golds)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.golds)
 }
 inline void ShopConfig::_internal_add_golds(int64_t value) {
   golds_.Add(value);
 }
 inline void ShopConfig::add_golds(int64_t value) {
   _internal_add_golds(value);
-  // @@protoc_insertion_point(field_add:ShopConfig.golds)
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.golds)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 ShopConfig::_internal_golds() const {
@@ -23502,7 +23505,7 @@ ShopConfig::_internal_golds() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 ShopConfig::golds() const {
-  // @@protoc_insertion_point(field_list:ShopConfig.golds)
+  // @@protoc_insertion_point(field_list:packet.ShopConfig.golds)
   return _internal_golds();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -23511,7 +23514,7 @@ ShopConfig::_internal_mutable_golds() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 ShopConfig::mutable_golds() {
-  // @@protoc_insertion_point(field_mutable_list:ShopConfig.golds)
+  // @@protoc_insertion_point(field_mutable_list:packet.ShopConfig.golds)
   return _internal_mutable_golds();
 }
 
@@ -23529,19 +23532,19 @@ inline double ShopConfig::_internal_prices(int index) const {
   return prices_.Get(index);
 }
 inline double ShopConfig::prices(int index) const {
-  // @@protoc_insertion_point(field_get:ShopConfig.prices)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.prices)
   return _internal_prices(index);
 }
 inline void ShopConfig::set_prices(int index, double value) {
   prices_.Set(index, value);
-  // @@protoc_insertion_point(field_set:ShopConfig.prices)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.prices)
 }
 inline void ShopConfig::_internal_add_prices(double value) {
   prices_.Add(value);
 }
 inline void ShopConfig::add_prices(double value) {
   _internal_add_prices(value);
-  // @@protoc_insertion_point(field_add:ShopConfig.prices)
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.prices)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
 ShopConfig::_internal_prices() const {
@@ -23549,7 +23552,7 @@ ShopConfig::_internal_prices() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >&
 ShopConfig::prices() const {
-  // @@protoc_insertion_point(field_list:ShopConfig.prices)
+  // @@protoc_insertion_point(field_list:packet.ShopConfig.prices)
   return _internal_prices();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
@@ -23558,7 +23561,7 @@ ShopConfig::_internal_mutable_prices() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< double >*
 ShopConfig::mutable_prices() {
-  // @@protoc_insertion_point(field_mutable_list:ShopConfig.prices)
+  // @@protoc_insertion_point(field_mutable_list:packet.ShopConfig.prices)
   return _internal_mutable_prices();
 }
 
@@ -23574,66 +23577,66 @@ inline void ShopConfig::clear_currencies() {
 }
 inline std::string* ShopConfig::add_currencies() {
   std::string* _s = _internal_add_currencies();
-  // @@protoc_insertion_point(field_add_mutable:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_add_mutable:packet.ShopConfig.currencies)
   return _s;
 }
 inline const std::string& ShopConfig::_internal_currencies(int index) const {
   return currencies_.Get(index);
 }
 inline const std::string& ShopConfig::currencies(int index) const {
-  // @@protoc_insertion_point(field_get:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.currencies)
   return _internal_currencies(index);
 }
 inline std::string* ShopConfig::mutable_currencies(int index) {
-  // @@protoc_insertion_point(field_mutable:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_mutable:packet.ShopConfig.currencies)
   return currencies_.Mutable(index);
 }
 inline void ShopConfig::set_currencies(int index, const std::string& value) {
   currencies_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.currencies)
 }
 inline void ShopConfig::set_currencies(int index, std::string&& value) {
   currencies_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.currencies)
 }
 inline void ShopConfig::set_currencies(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   currencies_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_set_char:packet.ShopConfig.currencies)
 }
 inline void ShopConfig::set_currencies(int index, const char* value, size_t size) {
   currencies_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_set_pointer:packet.ShopConfig.currencies)
 }
 inline std::string* ShopConfig::_internal_add_currencies() {
   return currencies_.Add();
 }
 inline void ShopConfig::add_currencies(const std::string& value) {
   currencies_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.currencies)
 }
 inline void ShopConfig::add_currencies(std::string&& value) {
   currencies_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.currencies)
 }
 inline void ShopConfig::add_currencies(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   currencies_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_add_char:packet.ShopConfig.currencies)
 }
 inline void ShopConfig::add_currencies(const char* value, size_t size) {
   currencies_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_add_pointer:packet.ShopConfig.currencies)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 ShopConfig::currencies() const {
-  // @@protoc_insertion_point(field_list:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_list:packet.ShopConfig.currencies)
   return currencies_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 ShopConfig::mutable_currencies() {
-  // @@protoc_insertion_point(field_mutable_list:ShopConfig.currencies)
+  // @@protoc_insertion_point(field_mutable_list:packet.ShopConfig.currencies)
   return &currencies_;
 }
 
@@ -23651,19 +23654,19 @@ inline int32_t ShopConfig::_internal_no_ads_days(int index) const {
   return no_ads_days_.Get(index);
 }
 inline int32_t ShopConfig::no_ads_days(int index) const {
-  // @@protoc_insertion_point(field_get:ShopConfig.no_ads_days)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.no_ads_days)
   return _internal_no_ads_days(index);
 }
 inline void ShopConfig::set_no_ads_days(int index, int32_t value) {
   no_ads_days_.Set(index, value);
-  // @@protoc_insertion_point(field_set:ShopConfig.no_ads_days)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.no_ads_days)
 }
 inline void ShopConfig::_internal_add_no_ads_days(int32_t value) {
   no_ads_days_.Add(value);
 }
 inline void ShopConfig::add_no_ads_days(int32_t value) {
   _internal_add_no_ads_days(value);
-  // @@protoc_insertion_point(field_add:ShopConfig.no_ads_days)
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.no_ads_days)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 ShopConfig::_internal_no_ads_days() const {
@@ -23671,7 +23674,7 @@ ShopConfig::_internal_no_ads_days() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 ShopConfig::no_ads_days() const {
-  // @@protoc_insertion_point(field_list:ShopConfig.no_ads_days)
+  // @@protoc_insertion_point(field_list:packet.ShopConfig.no_ads_days)
   return _internal_no_ads_days();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -23680,7 +23683,7 @@ ShopConfig::_internal_mutable_no_ads_days() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 ShopConfig::mutable_no_ads_days() {
-  // @@protoc_insertion_point(field_mutable_list:ShopConfig.no_ads_days)
+  // @@protoc_insertion_point(field_mutable_list:packet.ShopConfig.no_ads_days)
   return _internal_mutable_no_ads_days();
 }
 
@@ -23692,7 +23695,7 @@ inline int32_t ShopConfig::_internal_gold_offer_first() const {
   return gold_offer_first_;
 }
 inline int32_t ShopConfig::gold_offer_first() const {
-  // @@protoc_insertion_point(field_get:ShopConfig.gold_offer_first)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.gold_offer_first)
   return _internal_gold_offer_first();
 }
 inline void ShopConfig::_internal_set_gold_offer_first(int32_t value) {
@@ -23701,7 +23704,7 @@ inline void ShopConfig::_internal_set_gold_offer_first(int32_t value) {
 }
 inline void ShopConfig::set_gold_offer_first(int32_t value) {
   _internal_set_gold_offer_first(value);
-  // @@protoc_insertion_point(field_set:ShopConfig.gold_offer_first)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.gold_offer_first)
 }
 
 // int32 no_ads_day_offer_first = 7;
@@ -23712,7 +23715,7 @@ inline int32_t ShopConfig::_internal_no_ads_day_offer_first() const {
   return no_ads_day_offer_first_;
 }
 inline int32_t ShopConfig::no_ads_day_offer_first() const {
-  // @@protoc_insertion_point(field_get:ShopConfig.no_ads_day_offer_first)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.no_ads_day_offer_first)
   return _internal_no_ads_day_offer_first();
 }
 inline void ShopConfig::_internal_set_no_ads_day_offer_first(int32_t value) {
@@ -23721,7 +23724,7 @@ inline void ShopConfig::_internal_set_no_ads_day_offer_first(int32_t value) {
 }
 inline void ShopConfig::set_no_ads_day_offer_first(int32_t value) {
   _internal_set_no_ads_day_offer_first(value);
-  // @@protoc_insertion_point(field_set:ShopConfig.no_ads_day_offer_first)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.no_ads_day_offer_first)
 }
 
 // int32 price_offer_first = 8;
@@ -23732,7 +23735,7 @@ inline int32_t ShopConfig::_internal_price_offer_first() const {
   return price_offer_first_;
 }
 inline int32_t ShopConfig::price_offer_first() const {
-  // @@protoc_insertion_point(field_get:ShopConfig.price_offer_first)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.price_offer_first)
   return _internal_price_offer_first();
 }
 inline void ShopConfig::_internal_set_price_offer_first(int32_t value) {
@@ -23741,7 +23744,7 @@ inline void ShopConfig::_internal_set_price_offer_first(int32_t value) {
 }
 inline void ShopConfig::set_price_offer_first(int32_t value) {
   _internal_set_price_offer_first(value);
-  // @@protoc_insertion_point(field_set:ShopConfig.price_offer_first)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.price_offer_first)
 }
 
 // string currency_offer_first = 9;
@@ -23749,7 +23752,7 @@ inline void ShopConfig::clear_currency_offer_first() {
   currency_offer_first_.ClearToEmpty();
 }
 inline const std::string& ShopConfig::currency_offer_first() const {
-  // @@protoc_insertion_point(field_get:ShopConfig.currency_offer_first)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.currency_offer_first)
   return _internal_currency_offer_first();
 }
 template <typename ArgT0, typename... ArgT>
@@ -23757,11 +23760,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void ShopConfig::set_currency_offer_first(ArgT0&& arg0, ArgT... args) {
  
  currency_offer_first_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:ShopConfig.currency_offer_first)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.currency_offer_first)
 }
 inline std::string* ShopConfig::mutable_currency_offer_first() {
   std::string* _s = _internal_mutable_currency_offer_first();
-  // @@protoc_insertion_point(field_mutable:ShopConfig.currency_offer_first)
+  // @@protoc_insertion_point(field_mutable:packet.ShopConfig.currency_offer_first)
   return _s;
 }
 inline const std::string& ShopConfig::_internal_currency_offer_first() const {
@@ -23776,7 +23779,7 @@ inline std::string* ShopConfig::_internal_mutable_currency_offer_first() {
   return currency_offer_first_.Mutable(GetArenaForAllocation());
 }
 inline std::string* ShopConfig::release_currency_offer_first() {
-  // @@protoc_insertion_point(field_release:ShopConfig.currency_offer_first)
+  // @@protoc_insertion_point(field_release:packet.ShopConfig.currency_offer_first)
   return currency_offer_first_.Release();
 }
 inline void ShopConfig::set_allocated_currency_offer_first(std::string* currency_offer_first) {
@@ -23791,7 +23794,7 @@ inline void ShopConfig::set_allocated_currency_offer_first(std::string* currency
     currency_offer_first_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ShopConfig.currency_offer_first)
+  // @@protoc_insertion_point(field_set_allocated:packet.ShopConfig.currency_offer_first)
 }
 
 // string pack_id_offer_first = 10;
@@ -23799,7 +23802,7 @@ inline void ShopConfig::clear_pack_id_offer_first() {
   pack_id_offer_first_.ClearToEmpty();
 }
 inline const std::string& ShopConfig::pack_id_offer_first() const {
-  // @@protoc_insertion_point(field_get:ShopConfig.pack_id_offer_first)
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.pack_id_offer_first)
   return _internal_pack_id_offer_first();
 }
 template <typename ArgT0, typename... ArgT>
@@ -23807,11 +23810,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void ShopConfig::set_pack_id_offer_first(ArgT0&& arg0, ArgT... args) {
  
  pack_id_offer_first_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:ShopConfig.pack_id_offer_first)
+  // @@protoc_insertion_point(field_set:packet.ShopConfig.pack_id_offer_first)
 }
 inline std::string* ShopConfig::mutable_pack_id_offer_first() {
   std::string* _s = _internal_mutable_pack_id_offer_first();
-  // @@protoc_insertion_point(field_mutable:ShopConfig.pack_id_offer_first)
+  // @@protoc_insertion_point(field_mutable:packet.ShopConfig.pack_id_offer_first)
   return _s;
 }
 inline const std::string& ShopConfig::_internal_pack_id_offer_first() const {
@@ -23826,7 +23829,7 @@ inline std::string* ShopConfig::_internal_mutable_pack_id_offer_first() {
   return pack_id_offer_first_.Mutable(GetArenaForAllocation());
 }
 inline std::string* ShopConfig::release_pack_id_offer_first() {
-  // @@protoc_insertion_point(field_release:ShopConfig.pack_id_offer_first)
+  // @@protoc_insertion_point(field_release:packet.ShopConfig.pack_id_offer_first)
   return pack_id_offer_first_.Release();
 }
 inline void ShopConfig::set_allocated_pack_id_offer_first(std::string* pack_id_offer_first) {
@@ -23841,10 +23844,10 @@ inline void ShopConfig::set_allocated_pack_id_offer_first(std::string* pack_id_o
     pack_id_offer_first_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ShopConfig.pack_id_offer_first)
+  // @@protoc_insertion_point(field_set_allocated:packet.ShopConfig.pack_id_offer_first)
 }
 
-// repeated .RewardInventoryItem items_offer_first_buy = 11;
+// repeated .packet.RewardInventoryItem items_offer_first_buy = 11;
 inline int ShopConfig::_internal_items_offer_first_buy_size() const {
   return items_offer_first_buy_.size();
 }
@@ -23854,37 +23857,37 @@ inline int ShopConfig::items_offer_first_buy_size() const {
 inline void ShopConfig::clear_items_offer_first_buy() {
   items_offer_first_buy_.Clear();
 }
-inline ::RewardInventoryItem* ShopConfig::mutable_items_offer_first_buy(int index) {
-  // @@protoc_insertion_point(field_mutable:ShopConfig.items_offer_first_buy)
+inline ::packet::RewardInventoryItem* ShopConfig::mutable_items_offer_first_buy(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.ShopConfig.items_offer_first_buy)
   return items_offer_first_buy_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
 ShopConfig::mutable_items_offer_first_buy() {
-  // @@protoc_insertion_point(field_mutable_list:ShopConfig.items_offer_first_buy)
+  // @@protoc_insertion_point(field_mutable_list:packet.ShopConfig.items_offer_first_buy)
   return &items_offer_first_buy_;
 }
-inline const ::RewardInventoryItem& ShopConfig::_internal_items_offer_first_buy(int index) const {
+inline const ::packet::RewardInventoryItem& ShopConfig::_internal_items_offer_first_buy(int index) const {
   return items_offer_first_buy_.Get(index);
 }
-inline const ::RewardInventoryItem& ShopConfig::items_offer_first_buy(int index) const {
-  // @@protoc_insertion_point(field_get:ShopConfig.items_offer_first_buy)
+inline const ::packet::RewardInventoryItem& ShopConfig::items_offer_first_buy(int index) const {
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.items_offer_first_buy)
   return _internal_items_offer_first_buy(index);
 }
-inline ::RewardInventoryItem* ShopConfig::_internal_add_items_offer_first_buy() {
+inline ::packet::RewardInventoryItem* ShopConfig::_internal_add_items_offer_first_buy() {
   return items_offer_first_buy_.Add();
 }
-inline ::RewardInventoryItem* ShopConfig::add_items_offer_first_buy() {
-  ::RewardInventoryItem* _add = _internal_add_items_offer_first_buy();
-  // @@protoc_insertion_point(field_add:ShopConfig.items_offer_first_buy)
+inline ::packet::RewardInventoryItem* ShopConfig::add_items_offer_first_buy() {
+  ::packet::RewardInventoryItem* _add = _internal_add_items_offer_first_buy();
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.items_offer_first_buy)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
 ShopConfig::items_offer_first_buy() const {
-  // @@protoc_insertion_point(field_list:ShopConfig.items_offer_first_buy)
+  // @@protoc_insertion_point(field_list:packet.ShopConfig.items_offer_first_buy)
   return items_offer_first_buy_;
 }
 
-// repeated .DetailShopPack details = 12;
+// repeated .packet.DetailShopPack details = 12;
 inline int ShopConfig::_internal_details_size() const {
   return details_.size();
 }
@@ -23894,33 +23897,33 @@ inline int ShopConfig::details_size() const {
 inline void ShopConfig::clear_details() {
   details_.Clear();
 }
-inline ::DetailShopPack* ShopConfig::mutable_details(int index) {
-  // @@protoc_insertion_point(field_mutable:ShopConfig.details)
+inline ::packet::DetailShopPack* ShopConfig::mutable_details(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.ShopConfig.details)
   return details_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DetailShopPack >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::DetailShopPack >*
 ShopConfig::mutable_details() {
-  // @@protoc_insertion_point(field_mutable_list:ShopConfig.details)
+  // @@protoc_insertion_point(field_mutable_list:packet.ShopConfig.details)
   return &details_;
 }
-inline const ::DetailShopPack& ShopConfig::_internal_details(int index) const {
+inline const ::packet::DetailShopPack& ShopConfig::_internal_details(int index) const {
   return details_.Get(index);
 }
-inline const ::DetailShopPack& ShopConfig::details(int index) const {
-  // @@protoc_insertion_point(field_get:ShopConfig.details)
+inline const ::packet::DetailShopPack& ShopConfig::details(int index) const {
+  // @@protoc_insertion_point(field_get:packet.ShopConfig.details)
   return _internal_details(index);
 }
-inline ::DetailShopPack* ShopConfig::_internal_add_details() {
+inline ::packet::DetailShopPack* ShopConfig::_internal_add_details() {
   return details_.Add();
 }
-inline ::DetailShopPack* ShopConfig::add_details() {
-  ::DetailShopPack* _add = _internal_add_details();
-  // @@protoc_insertion_point(field_add:ShopConfig.details)
+inline ::packet::DetailShopPack* ShopConfig::add_details() {
+  ::packet::DetailShopPack* _add = _internal_add_details();
+  // @@protoc_insertion_point(field_add:packet.ShopConfig.details)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::DetailShopPack >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::DetailShopPack >&
 ShopConfig::details() const {
-  // @@protoc_insertion_point(field_list:ShopConfig.details)
+  // @@protoc_insertion_point(field_list:packet.ShopConfig.details)
   return details_;
 }
 
@@ -23928,7 +23931,7 @@ ShopConfig::details() const {
 
 // DetailShopPack
 
-// repeated .RewardInventoryItem items = 1;
+// repeated .packet.RewardInventoryItem items = 1;
 inline int DetailShopPack::_internal_items_size() const {
   return items_.size();
 }
@@ -23938,33 +23941,33 @@ inline int DetailShopPack::items_size() const {
 inline void DetailShopPack::clear_items() {
   items_.Clear();
 }
-inline ::RewardInventoryItem* DetailShopPack::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:DetailShopPack.items)
+inline ::packet::RewardInventoryItem* DetailShopPack::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.DetailShopPack.items)
   return items_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
 DetailShopPack::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:DetailShopPack.items)
+  // @@protoc_insertion_point(field_mutable_list:packet.DetailShopPack.items)
   return &items_;
 }
-inline const ::RewardInventoryItem& DetailShopPack::_internal_items(int index) const {
+inline const ::packet::RewardInventoryItem& DetailShopPack::_internal_items(int index) const {
   return items_.Get(index);
 }
-inline const ::RewardInventoryItem& DetailShopPack::items(int index) const {
-  // @@protoc_insertion_point(field_get:DetailShopPack.items)
+inline const ::packet::RewardInventoryItem& DetailShopPack::items(int index) const {
+  // @@protoc_insertion_point(field_get:packet.DetailShopPack.items)
   return _internal_items(index);
 }
-inline ::RewardInventoryItem* DetailShopPack::_internal_add_items() {
+inline ::packet::RewardInventoryItem* DetailShopPack::_internal_add_items() {
   return items_.Add();
 }
-inline ::RewardInventoryItem* DetailShopPack::add_items() {
-  ::RewardInventoryItem* _add = _internal_add_items();
-  // @@protoc_insertion_point(field_add:DetailShopPack.items)
+inline ::packet::RewardInventoryItem* DetailShopPack::add_items() {
+  ::packet::RewardInventoryItem* _add = _internal_add_items();
+  // @@protoc_insertion_point(field_add:packet.DetailShopPack.items)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
 DetailShopPack::items() const {
-  // @@protoc_insertion_point(field_list:DetailShopPack.items)
+  // @@protoc_insertion_point(field_list:packet.DetailShopPack.items)
   return items_;
 }
 
@@ -23977,7 +23980,7 @@ inline void GuestAccount::clear_guest_id() {
   guest_id_.ClearToEmpty();
 }
 inline const std::string& GuestAccount::guest_id() const {
-  // @@protoc_insertion_point(field_get:GuestAccount.guest_id)
+  // @@protoc_insertion_point(field_get:packet.GuestAccount.guest_id)
   return _internal_guest_id();
 }
 template <typename ArgT0, typename... ArgT>
@@ -23985,11 +23988,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void GuestAccount::set_guest_id(ArgT0&& arg0, ArgT... args) {
  
  guest_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:GuestAccount.guest_id)
+  // @@protoc_insertion_point(field_set:packet.GuestAccount.guest_id)
 }
 inline std::string* GuestAccount::mutable_guest_id() {
   std::string* _s = _internal_mutable_guest_id();
-  // @@protoc_insertion_point(field_mutable:GuestAccount.guest_id)
+  // @@protoc_insertion_point(field_mutable:packet.GuestAccount.guest_id)
   return _s;
 }
 inline const std::string& GuestAccount::_internal_guest_id() const {
@@ -24004,7 +24007,7 @@ inline std::string* GuestAccount::_internal_mutable_guest_id() {
   return guest_id_.Mutable(GetArenaForAllocation());
 }
 inline std::string* GuestAccount::release_guest_id() {
-  // @@protoc_insertion_point(field_release:GuestAccount.guest_id)
+  // @@protoc_insertion_point(field_release:packet.GuestAccount.guest_id)
   return guest_id_.Release();
 }
 inline void GuestAccount::set_allocated_guest_id(std::string* guest_id) {
@@ -24019,7 +24022,7 @@ inline void GuestAccount::set_allocated_guest_id(std::string* guest_id) {
     guest_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:GuestAccount.guest_id)
+  // @@protoc_insertion_point(field_set_allocated:packet.GuestAccount.guest_id)
 }
 
 // -------------------------------------------------------------------
@@ -24034,7 +24037,7 @@ inline int32_t ChangeAvatar::_internal_avatar_id() const {
   return avatar_id_;
 }
 inline int32_t ChangeAvatar::avatar_id() const {
-  // @@protoc_insertion_point(field_get:ChangeAvatar.avatar_id)
+  // @@protoc_insertion_point(field_get:packet.ChangeAvatar.avatar_id)
   return _internal_avatar_id();
 }
 inline void ChangeAvatar::_internal_set_avatar_id(int32_t value) {
@@ -24043,7 +24046,7 @@ inline void ChangeAvatar::_internal_set_avatar_id(int32_t value) {
 }
 inline void ChangeAvatar::set_avatar_id(int32_t value) {
   _internal_set_avatar_id(value);
-  // @@protoc_insertion_point(field_set:ChangeAvatar.avatar_id)
+  // @@protoc_insertion_point(field_set:packet.ChangeAvatar.avatar_id)
 }
 
 // -------------------------------------------------------------------
@@ -24058,7 +24061,7 @@ inline int32_t InGameChatEmoticon::_internal_uid() const {
   return uid_;
 }
 inline int32_t InGameChatEmoticon::uid() const {
-  // @@protoc_insertion_point(field_get:InGameChatEmoticon.uid)
+  // @@protoc_insertion_point(field_get:packet.InGameChatEmoticon.uid)
   return _internal_uid();
 }
 inline void InGameChatEmoticon::_internal_set_uid(int32_t value) {
@@ -24067,7 +24070,7 @@ inline void InGameChatEmoticon::_internal_set_uid(int32_t value) {
 }
 inline void InGameChatEmoticon::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:InGameChatEmoticon.uid)
+  // @@protoc_insertion_point(field_set:packet.InGameChatEmoticon.uid)
 }
 
 // int32 emoticon = 2;
@@ -24078,7 +24081,7 @@ inline int32_t InGameChatEmoticon::_internal_emoticon() const {
   return emoticon_;
 }
 inline int32_t InGameChatEmoticon::emoticon() const {
-  // @@protoc_insertion_point(field_get:InGameChatEmoticon.emoticon)
+  // @@protoc_insertion_point(field_get:packet.InGameChatEmoticon.emoticon)
   return _internal_emoticon();
 }
 inline void InGameChatEmoticon::_internal_set_emoticon(int32_t value) {
@@ -24087,7 +24090,7 @@ inline void InGameChatEmoticon::_internal_set_emoticon(int32_t value) {
 }
 inline void InGameChatEmoticon::set_emoticon(int32_t value) {
   _internal_set_emoticon(value);
-  // @@protoc_insertion_point(field_set:InGameChatEmoticon.emoticon)
+  // @@protoc_insertion_point(field_set:packet.InGameChatEmoticon.emoticon)
 }
 
 // -------------------------------------------------------------------
@@ -24102,7 +24105,7 @@ inline int32_t SearchFriend::_internal_uid() const {
   return uid_;
 }
 inline int32_t SearchFriend::uid() const {
-  // @@protoc_insertion_point(field_get:SearchFriend.uid)
+  // @@protoc_insertion_point(field_get:packet.SearchFriend.uid)
   return _internal_uid();
 }
 inline void SearchFriend::_internal_set_uid(int32_t value) {
@@ -24111,7 +24114,7 @@ inline void SearchFriend::_internal_set_uid(int32_t value) {
 }
 inline void SearchFriend::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:SearchFriend.uid)
+  // @@protoc_insertion_point(field_set:packet.SearchFriend.uid)
 }
 
 // -------------------------------------------------------------------
@@ -24126,7 +24129,7 @@ inline int32_t SearchFriendResponse::_internal_uid() const {
   return uid_;
 }
 inline int32_t SearchFriendResponse::uid() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.uid)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.uid)
   return _internal_uid();
 }
 inline void SearchFriendResponse::_internal_set_uid(int32_t value) {
@@ -24135,7 +24138,7 @@ inline void SearchFriendResponse::_internal_set_uid(int32_t value) {
 }
 inline void SearchFriendResponse::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.uid)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.uid)
 }
 
 // int64 gold = 2;
@@ -24146,7 +24149,7 @@ inline int64_t SearchFriendResponse::_internal_gold() const {
   return gold_;
 }
 inline int64_t SearchFriendResponse::gold() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.gold)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.gold)
   return _internal_gold();
 }
 inline void SearchFriendResponse::_internal_set_gold(int64_t value) {
@@ -24155,7 +24158,7 @@ inline void SearchFriendResponse::_internal_set_gold(int64_t value) {
 }
 inline void SearchFriendResponse::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.gold)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.gold)
 }
 
 // string name = 3;
@@ -24163,7 +24166,7 @@ inline void SearchFriendResponse::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& SearchFriendResponse::name() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.name)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -24171,11 +24174,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void SearchFriendResponse::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.name)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.name)
 }
 inline std::string* SearchFriendResponse::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:SearchFriendResponse.name)
+  // @@protoc_insertion_point(field_mutable:packet.SearchFriendResponse.name)
   return _s;
 }
 inline const std::string& SearchFriendResponse::_internal_name() const {
@@ -24190,7 +24193,7 @@ inline std::string* SearchFriendResponse::_internal_mutable_name() {
   return name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* SearchFriendResponse::release_name() {
-  // @@protoc_insertion_point(field_release:SearchFriendResponse.name)
+  // @@protoc_insertion_point(field_release:packet.SearchFriendResponse.name)
   return name_.Release();
 }
 inline void SearchFriendResponse::set_allocated_name(std::string* name) {
@@ -24205,7 +24208,7 @@ inline void SearchFriendResponse::set_allocated_name(std::string* name) {
     name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:SearchFriendResponse.name)
+  // @@protoc_insertion_point(field_set_allocated:packet.SearchFriendResponse.name)
 }
 
 // string avatar = 4;
@@ -24213,7 +24216,7 @@ inline void SearchFriendResponse::clear_avatar() {
   avatar_.ClearToEmpty();
 }
 inline const std::string& SearchFriendResponse::avatar() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.avatar)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.avatar)
   return _internal_avatar();
 }
 template <typename ArgT0, typename... ArgT>
@@ -24221,11 +24224,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void SearchFriendResponse::set_avatar(ArgT0&& arg0, ArgT... args) {
  
  avatar_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.avatar)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.avatar)
 }
 inline std::string* SearchFriendResponse::mutable_avatar() {
   std::string* _s = _internal_mutable_avatar();
-  // @@protoc_insertion_point(field_mutable:SearchFriendResponse.avatar)
+  // @@protoc_insertion_point(field_mutable:packet.SearchFriendResponse.avatar)
   return _s;
 }
 inline const std::string& SearchFriendResponse::_internal_avatar() const {
@@ -24240,7 +24243,7 @@ inline std::string* SearchFriendResponse::_internal_mutable_avatar() {
   return avatar_.Mutable(GetArenaForAllocation());
 }
 inline std::string* SearchFriendResponse::release_avatar() {
-  // @@protoc_insertion_point(field_release:SearchFriendResponse.avatar)
+  // @@protoc_insertion_point(field_release:packet.SearchFriendResponse.avatar)
   return avatar_.Release();
 }
 inline void SearchFriendResponse::set_allocated_avatar(std::string* avatar) {
@@ -24255,7 +24258,7 @@ inline void SearchFriendResponse::set_allocated_avatar(std::string* avatar) {
     avatar_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:SearchFriendResponse.avatar)
+  // @@protoc_insertion_point(field_set_allocated:packet.SearchFriendResponse.avatar)
 }
 
 // int32 win_count = 5;
@@ -24266,7 +24269,7 @@ inline int32_t SearchFriendResponse::_internal_win_count() const {
   return win_count_;
 }
 inline int32_t SearchFriendResponse::win_count() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.win_count)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.win_count)
   return _internal_win_count();
 }
 inline void SearchFriendResponse::_internal_set_win_count(int32_t value) {
@@ -24275,7 +24278,7 @@ inline void SearchFriendResponse::_internal_set_win_count(int32_t value) {
 }
 inline void SearchFriendResponse::set_win_count(int32_t value) {
   _internal_set_win_count(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.win_count)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.win_count)
 }
 
 // double game_count = 6;
@@ -24286,7 +24289,7 @@ inline double SearchFriendResponse::_internal_game_count() const {
   return game_count_;
 }
 inline double SearchFriendResponse::game_count() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.game_count)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.game_count)
   return _internal_game_count();
 }
 inline void SearchFriendResponse::_internal_set_game_count(double value) {
@@ -24295,7 +24298,7 @@ inline void SearchFriendResponse::_internal_set_game_count(double value) {
 }
 inline void SearchFriendResponse::set_game_count(double value) {
   _internal_set_game_count(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.game_count)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.game_count)
 }
 
 // int32 error = 7;
@@ -24306,7 +24309,7 @@ inline int32_t SearchFriendResponse::_internal_error() const {
   return error_;
 }
 inline int32_t SearchFriendResponse::error() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.error)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.error)
   return _internal_error();
 }
 inline void SearchFriendResponse::_internal_set_error(int32_t value) {
@@ -24315,7 +24318,7 @@ inline void SearchFriendResponse::_internal_set_error(int32_t value) {
 }
 inline void SearchFriendResponse::set_error(int32_t value) {
   _internal_set_error(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.error)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.error)
 }
 
 // int32 level = 8;
@@ -24326,7 +24329,7 @@ inline int32_t SearchFriendResponse::_internal_level() const {
   return level_;
 }
 inline int32_t SearchFriendResponse::level() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.level)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.level)
   return _internal_level();
 }
 inline void SearchFriendResponse::_internal_set_level(int32_t value) {
@@ -24335,7 +24338,7 @@ inline void SearchFriendResponse::_internal_set_level(int32_t value) {
 }
 inline void SearchFriendResponse::set_level(int32_t value) {
   _internal_set_level(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.level)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.level)
 }
 
 // int64 exp = 9;
@@ -24346,7 +24349,7 @@ inline int64_t SearchFriendResponse::_internal_exp() const {
   return exp_;
 }
 inline int64_t SearchFriendResponse::exp() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.exp)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.exp)
   return _internal_exp();
 }
 inline void SearchFriendResponse::_internal_set_exp(int64_t value) {
@@ -24355,7 +24358,7 @@ inline void SearchFriendResponse::_internal_set_exp(int64_t value) {
 }
 inline void SearchFriendResponse::set_exp(int64_t value) {
   _internal_set_exp(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.exp)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.exp)
 }
 
 // bool is_verified = 10;
@@ -24366,7 +24369,7 @@ inline bool SearchFriendResponse::_internal_is_verified() const {
   return is_verified_;
 }
 inline bool SearchFriendResponse::is_verified() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.is_verified)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.is_verified)
   return _internal_is_verified();
 }
 inline void SearchFriendResponse::_internal_set_is_verified(bool value) {
@@ -24375,7 +24378,7 @@ inline void SearchFriendResponse::_internal_set_is_verified(bool value) {
 }
 inline void SearchFriendResponse::set_is_verified(bool value) {
   _internal_set_is_verified(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.is_verified)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.is_verified)
 }
 
 // int32 avatar_frame = 11;
@@ -24386,7 +24389,7 @@ inline int32_t SearchFriendResponse::_internal_avatar_frame() const {
   return avatar_frame_;
 }
 inline int32_t SearchFriendResponse::avatar_frame() const {
-  // @@protoc_insertion_point(field_get:SearchFriendResponse.avatar_frame)
+  // @@protoc_insertion_point(field_get:packet.SearchFriendResponse.avatar_frame)
   return _internal_avatar_frame();
 }
 inline void SearchFriendResponse::_internal_set_avatar_frame(int32_t value) {
@@ -24395,7 +24398,7 @@ inline void SearchFriendResponse::_internal_set_avatar_frame(int32_t value) {
 }
 inline void SearchFriendResponse::set_avatar_frame(int32_t value) {
   _internal_set_avatar_frame(value);
-  // @@protoc_insertion_point(field_set:SearchFriendResponse.avatar_frame)
+  // @@protoc_insertion_point(field_set:packet.SearchFriendResponse.avatar_frame)
 }
 
 // -------------------------------------------------------------------
@@ -24410,7 +24413,7 @@ inline int64_t CheatGoldUser::_internal_gold() const {
   return gold_;
 }
 inline int64_t CheatGoldUser::gold() const {
-  // @@protoc_insertion_point(field_get:CheatGoldUser.gold)
+  // @@protoc_insertion_point(field_get:packet.CheatGoldUser.gold)
   return _internal_gold();
 }
 inline void CheatGoldUser::_internal_set_gold(int64_t value) {
@@ -24419,7 +24422,7 @@ inline void CheatGoldUser::_internal_set_gold(int64_t value) {
 }
 inline void CheatGoldUser::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:CheatGoldUser.gold)
+  // @@protoc_insertion_point(field_set:packet.CheatGoldUser.gold)
 }
 
 // -------------------------------------------------------------------
@@ -24440,19 +24443,19 @@ inline int32_t FriendList::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t FriendList::uids(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.uids)
+  // @@protoc_insertion_point(field_get:packet.FriendList.uids)
   return _internal_uids(index);
 }
 inline void FriendList::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendList.uids)
+  // @@protoc_insertion_point(field_set:packet.FriendList.uids)
 }
 inline void FriendList::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void FriendList::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:FriendList.uids)
+  // @@protoc_insertion_point(field_add:packet.FriendList.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendList::_internal_uids() const {
@@ -24460,7 +24463,7 @@ FriendList::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendList::uids() const {
-  // @@protoc_insertion_point(field_list:FriendList.uids)
+  // @@protoc_insertion_point(field_list:packet.FriendList.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -24469,7 +24472,7 @@ FriendList::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 FriendList::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.uids)
   return _internal_mutable_uids();
 }
 
@@ -24485,66 +24488,66 @@ inline void FriendList::clear_names() {
 }
 inline std::string* FriendList::add_names() {
   std::string* _s = _internal_add_names();
-  // @@protoc_insertion_point(field_add_mutable:FriendList.names)
+  // @@protoc_insertion_point(field_add_mutable:packet.FriendList.names)
   return _s;
 }
 inline const std::string& FriendList::_internal_names(int index) const {
   return names_.Get(index);
 }
 inline const std::string& FriendList::names(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.names)
+  // @@protoc_insertion_point(field_get:packet.FriendList.names)
   return _internal_names(index);
 }
 inline std::string* FriendList::mutable_names(int index) {
-  // @@protoc_insertion_point(field_mutable:FriendList.names)
+  // @@protoc_insertion_point(field_mutable:packet.FriendList.names)
   return names_.Mutable(index);
 }
 inline void FriendList::set_names(int index, const std::string& value) {
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:FriendList.names)
+  // @@protoc_insertion_point(field_set:packet.FriendList.names)
 }
 inline void FriendList::set_names(int index, std::string&& value) {
   names_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:FriendList.names)
+  // @@protoc_insertion_point(field_set:packet.FriendList.names)
 }
 inline void FriendList::set_names(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:FriendList.names)
+  // @@protoc_insertion_point(field_set_char:packet.FriendList.names)
 }
 inline void FriendList::set_names(int index, const char* value, size_t size) {
   names_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:FriendList.names)
+  // @@protoc_insertion_point(field_set_pointer:packet.FriendList.names)
 }
 inline std::string* FriendList::_internal_add_names() {
   return names_.Add();
 }
 inline void FriendList::add_names(const std::string& value) {
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:FriendList.names)
+  // @@protoc_insertion_point(field_add:packet.FriendList.names)
 }
 inline void FriendList::add_names(std::string&& value) {
   names_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:FriendList.names)
+  // @@protoc_insertion_point(field_add:packet.FriendList.names)
 }
 inline void FriendList::add_names(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:FriendList.names)
+  // @@protoc_insertion_point(field_add_char:packet.FriendList.names)
 }
 inline void FriendList::add_names(const char* value, size_t size) {
   names_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:FriendList.names)
+  // @@protoc_insertion_point(field_add_pointer:packet.FriendList.names)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 FriendList::names() const {
-  // @@protoc_insertion_point(field_list:FriendList.names)
+  // @@protoc_insertion_point(field_list:packet.FriendList.names)
   return names_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 FriendList::mutable_names() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.names)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.names)
   return &names_;
 }
 
@@ -24560,66 +24563,66 @@ inline void FriendList::clear_avatars() {
 }
 inline std::string* FriendList::add_avatars() {
   std::string* _s = _internal_add_avatars();
-  // @@protoc_insertion_point(field_add_mutable:FriendList.avatars)
+  // @@protoc_insertion_point(field_add_mutable:packet.FriendList.avatars)
   return _s;
 }
 inline const std::string& FriendList::_internal_avatars(int index) const {
   return avatars_.Get(index);
 }
 inline const std::string& FriendList::avatars(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.avatars)
+  // @@protoc_insertion_point(field_get:packet.FriendList.avatars)
   return _internal_avatars(index);
 }
 inline std::string* FriendList::mutable_avatars(int index) {
-  // @@protoc_insertion_point(field_mutable:FriendList.avatars)
+  // @@protoc_insertion_point(field_mutable:packet.FriendList.avatars)
   return avatars_.Mutable(index);
 }
 inline void FriendList::set_avatars(int index, const std::string& value) {
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:FriendList.avatars)
+  // @@protoc_insertion_point(field_set:packet.FriendList.avatars)
 }
 inline void FriendList::set_avatars(int index, std::string&& value) {
   avatars_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:FriendList.avatars)
+  // @@protoc_insertion_point(field_set:packet.FriendList.avatars)
 }
 inline void FriendList::set_avatars(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:FriendList.avatars)
+  // @@protoc_insertion_point(field_set_char:packet.FriendList.avatars)
 }
 inline void FriendList::set_avatars(int index, const char* value, size_t size) {
   avatars_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:FriendList.avatars)
+  // @@protoc_insertion_point(field_set_pointer:packet.FriendList.avatars)
 }
 inline std::string* FriendList::_internal_add_avatars() {
   return avatars_.Add();
 }
 inline void FriendList::add_avatars(const std::string& value) {
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:FriendList.avatars)
+  // @@protoc_insertion_point(field_add:packet.FriendList.avatars)
 }
 inline void FriendList::add_avatars(std::string&& value) {
   avatars_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:FriendList.avatars)
+  // @@protoc_insertion_point(field_add:packet.FriendList.avatars)
 }
 inline void FriendList::add_avatars(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:FriendList.avatars)
+  // @@protoc_insertion_point(field_add_char:packet.FriendList.avatars)
 }
 inline void FriendList::add_avatars(const char* value, size_t size) {
   avatars_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:FriendList.avatars)
+  // @@protoc_insertion_point(field_add_pointer:packet.FriendList.avatars)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 FriendList::avatars() const {
-  // @@protoc_insertion_point(field_list:FriendList.avatars)
+  // @@protoc_insertion_point(field_list:packet.FriendList.avatars)
   return avatars_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 FriendList::mutable_avatars() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.avatars)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.avatars)
   return &avatars_;
 }
 
@@ -24637,19 +24640,19 @@ inline int32_t FriendList::_internal_levels(int index) const {
   return levels_.Get(index);
 }
 inline int32_t FriendList::levels(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.levels)
+  // @@protoc_insertion_point(field_get:packet.FriendList.levels)
   return _internal_levels(index);
 }
 inline void FriendList::set_levels(int index, int32_t value) {
   levels_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendList.levels)
+  // @@protoc_insertion_point(field_set:packet.FriendList.levels)
 }
 inline void FriendList::_internal_add_levels(int32_t value) {
   levels_.Add(value);
 }
 inline void FriendList::add_levels(int32_t value) {
   _internal_add_levels(value);
-  // @@protoc_insertion_point(field_add:FriendList.levels)
+  // @@protoc_insertion_point(field_add:packet.FriendList.levels)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendList::_internal_levels() const {
@@ -24657,7 +24660,7 @@ FriendList::_internal_levels() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendList::levels() const {
-  // @@protoc_insertion_point(field_list:FriendList.levels)
+  // @@protoc_insertion_point(field_list:packet.FriendList.levels)
   return _internal_levels();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -24666,7 +24669,7 @@ FriendList::_internal_mutable_levels() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 FriendList::mutable_levels() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.levels)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.levels)
   return _internal_mutable_levels();
 }
 
@@ -24684,19 +24687,19 @@ inline int64_t FriendList::_internal_golds(int index) const {
   return golds_.Get(index);
 }
 inline int64_t FriendList::golds(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.golds)
+  // @@protoc_insertion_point(field_get:packet.FriendList.golds)
   return _internal_golds(index);
 }
 inline void FriendList::set_golds(int index, int64_t value) {
   golds_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendList.golds)
+  // @@protoc_insertion_point(field_set:packet.FriendList.golds)
 }
 inline void FriendList::_internal_add_golds(int64_t value) {
   golds_.Add(value);
 }
 inline void FriendList::add_golds(int64_t value) {
   _internal_add_golds(value);
-  // @@protoc_insertion_point(field_add:FriendList.golds)
+  // @@protoc_insertion_point(field_add:packet.FriendList.golds)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 FriendList::_internal_golds() const {
@@ -24704,7 +24707,7 @@ FriendList::_internal_golds() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 FriendList::golds() const {
-  // @@protoc_insertion_point(field_list:FriendList.golds)
+  // @@protoc_insertion_point(field_list:packet.FriendList.golds)
   return _internal_golds();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -24713,7 +24716,7 @@ FriendList::_internal_mutable_golds() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 FriendList::mutable_golds() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.golds)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.golds)
   return _internal_mutable_golds();
 }
 
@@ -24731,19 +24734,19 @@ inline bool FriendList::_internal_onlines(int index) const {
   return onlines_.Get(index);
 }
 inline bool FriendList::onlines(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.onlines)
+  // @@protoc_insertion_point(field_get:packet.FriendList.onlines)
   return _internal_onlines(index);
 }
 inline void FriendList::set_onlines(int index, bool value) {
   onlines_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendList.onlines)
+  // @@protoc_insertion_point(field_set:packet.FriendList.onlines)
 }
 inline void FriendList::_internal_add_onlines(bool value) {
   onlines_.Add(value);
 }
 inline void FriendList::add_onlines(bool value) {
   _internal_add_onlines(value);
-  // @@protoc_insertion_point(field_add:FriendList.onlines)
+  // @@protoc_insertion_point(field_add:packet.FriendList.onlines)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 FriendList::_internal_onlines() const {
@@ -24751,7 +24754,7 @@ FriendList::_internal_onlines() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 FriendList::onlines() const {
-  // @@protoc_insertion_point(field_list:FriendList.onlines)
+  // @@protoc_insertion_point(field_list:packet.FriendList.onlines)
   return _internal_onlines();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
@@ -24760,7 +24763,7 @@ FriendList::_internal_mutable_onlines() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
 FriendList::mutable_onlines() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.onlines)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.onlines)
   return _internal_mutable_onlines();
 }
 
@@ -24778,19 +24781,19 @@ inline bool FriendList::_internal_is_playings(int index) const {
   return is_playings_.Get(index);
 }
 inline bool FriendList::is_playings(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.is_playings)
+  // @@protoc_insertion_point(field_get:packet.FriendList.is_playings)
   return _internal_is_playings(index);
 }
 inline void FriendList::set_is_playings(int index, bool value) {
   is_playings_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendList.is_playings)
+  // @@protoc_insertion_point(field_set:packet.FriendList.is_playings)
 }
 inline void FriendList::_internal_add_is_playings(bool value) {
   is_playings_.Add(value);
 }
 inline void FriendList::add_is_playings(bool value) {
   _internal_add_is_playings(value);
-  // @@protoc_insertion_point(field_add:FriendList.is_playings)
+  // @@protoc_insertion_point(field_add:packet.FriendList.is_playings)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 FriendList::_internal_is_playings() const {
@@ -24798,7 +24801,7 @@ FriendList::_internal_is_playings() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 FriendList::is_playings() const {
-  // @@protoc_insertion_point(field_list:FriendList.is_playings)
+  // @@protoc_insertion_point(field_list:packet.FriendList.is_playings)
   return _internal_is_playings();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
@@ -24807,7 +24810,7 @@ FriendList::_internal_mutable_is_playings() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
 FriendList::mutable_is_playings() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.is_playings)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.is_playings)
   return _internal_mutable_is_playings();
 }
 
@@ -24825,19 +24828,19 @@ inline int32_t FriendList::_internal_avatar_frames(int index) const {
   return avatar_frames_.Get(index);
 }
 inline int32_t FriendList::avatar_frames(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.avatar_frames)
+  // @@protoc_insertion_point(field_get:packet.FriendList.avatar_frames)
   return _internal_avatar_frames(index);
 }
 inline void FriendList::set_avatar_frames(int index, int32_t value) {
   avatar_frames_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendList.avatar_frames)
+  // @@protoc_insertion_point(field_set:packet.FriendList.avatar_frames)
 }
 inline void FriendList::_internal_add_avatar_frames(int32_t value) {
   avatar_frames_.Add(value);
 }
 inline void FriendList::add_avatar_frames(int32_t value) {
   _internal_add_avatar_frames(value);
-  // @@protoc_insertion_point(field_add:FriendList.avatar_frames)
+  // @@protoc_insertion_point(field_add:packet.FriendList.avatar_frames)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendList::_internal_avatar_frames() const {
@@ -24845,7 +24848,7 @@ FriendList::_internal_avatar_frames() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendList::avatar_frames() const {
-  // @@protoc_insertion_point(field_list:FriendList.avatar_frames)
+  // @@protoc_insertion_point(field_list:packet.FriendList.avatar_frames)
   return _internal_avatar_frames();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -24854,7 +24857,7 @@ FriendList::_internal_mutable_avatar_frames() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 FriendList::mutable_avatar_frames() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.avatar_frames)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.avatar_frames)
   return _internal_mutable_avatar_frames();
 }
 
@@ -24872,19 +24875,19 @@ inline int32_t FriendList::_internal_last_online_times(int index) const {
   return last_online_times_.Get(index);
 }
 inline int32_t FriendList::last_online_times(int index) const {
-  // @@protoc_insertion_point(field_get:FriendList.last_online_times)
+  // @@protoc_insertion_point(field_get:packet.FriendList.last_online_times)
   return _internal_last_online_times(index);
 }
 inline void FriendList::set_last_online_times(int index, int32_t value) {
   last_online_times_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendList.last_online_times)
+  // @@protoc_insertion_point(field_set:packet.FriendList.last_online_times)
 }
 inline void FriendList::_internal_add_last_online_times(int32_t value) {
   last_online_times_.Add(value);
 }
 inline void FriendList::add_last_online_times(int32_t value) {
   _internal_add_last_online_times(value);
-  // @@protoc_insertion_point(field_add:FriendList.last_online_times)
+  // @@protoc_insertion_point(field_add:packet.FriendList.last_online_times)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendList::_internal_last_online_times() const {
@@ -24892,7 +24895,7 @@ FriendList::_internal_last_online_times() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendList::last_online_times() const {
-  // @@protoc_insertion_point(field_list:FriendList.last_online_times)
+  // @@protoc_insertion_point(field_list:packet.FriendList.last_online_times)
   return _internal_last_online_times();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -24901,7 +24904,7 @@ FriendList::_internal_mutable_last_online_times() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 FriendList::mutable_last_online_times() {
-  // @@protoc_insertion_point(field_mutable_list:FriendList.last_online_times)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendList.last_online_times)
   return _internal_mutable_last_online_times();
 }
 
@@ -24923,19 +24926,19 @@ inline int32_t FriendRequests::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t FriendRequests::uids(int index) const {
-  // @@protoc_insertion_point(field_get:FriendRequests.uids)
+  // @@protoc_insertion_point(field_get:packet.FriendRequests.uids)
   return _internal_uids(index);
 }
 inline void FriendRequests::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendRequests.uids)
+  // @@protoc_insertion_point(field_set:packet.FriendRequests.uids)
 }
 inline void FriendRequests::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void FriendRequests::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:FriendRequests.uids)
+  // @@protoc_insertion_point(field_add:packet.FriendRequests.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendRequests::_internal_uids() const {
@@ -24943,7 +24946,7 @@ FriendRequests::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendRequests::uids() const {
-  // @@protoc_insertion_point(field_list:FriendRequests.uids)
+  // @@protoc_insertion_point(field_list:packet.FriendRequests.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -24952,7 +24955,7 @@ FriendRequests::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 FriendRequests::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:FriendRequests.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendRequests.uids)
   return _internal_mutable_uids();
 }
 
@@ -24968,66 +24971,66 @@ inline void FriendRequests::clear_names() {
 }
 inline std::string* FriendRequests::add_names() {
   std::string* _s = _internal_add_names();
-  // @@protoc_insertion_point(field_add_mutable:FriendRequests.names)
+  // @@protoc_insertion_point(field_add_mutable:packet.FriendRequests.names)
   return _s;
 }
 inline const std::string& FriendRequests::_internal_names(int index) const {
   return names_.Get(index);
 }
 inline const std::string& FriendRequests::names(int index) const {
-  // @@protoc_insertion_point(field_get:FriendRequests.names)
+  // @@protoc_insertion_point(field_get:packet.FriendRequests.names)
   return _internal_names(index);
 }
 inline std::string* FriendRequests::mutable_names(int index) {
-  // @@protoc_insertion_point(field_mutable:FriendRequests.names)
+  // @@protoc_insertion_point(field_mutable:packet.FriendRequests.names)
   return names_.Mutable(index);
 }
 inline void FriendRequests::set_names(int index, const std::string& value) {
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:FriendRequests.names)
+  // @@protoc_insertion_point(field_set:packet.FriendRequests.names)
 }
 inline void FriendRequests::set_names(int index, std::string&& value) {
   names_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:FriendRequests.names)
+  // @@protoc_insertion_point(field_set:packet.FriendRequests.names)
 }
 inline void FriendRequests::set_names(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:FriendRequests.names)
+  // @@protoc_insertion_point(field_set_char:packet.FriendRequests.names)
 }
 inline void FriendRequests::set_names(int index, const char* value, size_t size) {
   names_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:FriendRequests.names)
+  // @@protoc_insertion_point(field_set_pointer:packet.FriendRequests.names)
 }
 inline std::string* FriendRequests::_internal_add_names() {
   return names_.Add();
 }
 inline void FriendRequests::add_names(const std::string& value) {
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:FriendRequests.names)
+  // @@protoc_insertion_point(field_add:packet.FriendRequests.names)
 }
 inline void FriendRequests::add_names(std::string&& value) {
   names_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:FriendRequests.names)
+  // @@protoc_insertion_point(field_add:packet.FriendRequests.names)
 }
 inline void FriendRequests::add_names(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:FriendRequests.names)
+  // @@protoc_insertion_point(field_add_char:packet.FriendRequests.names)
 }
 inline void FriendRequests::add_names(const char* value, size_t size) {
   names_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:FriendRequests.names)
+  // @@protoc_insertion_point(field_add_pointer:packet.FriendRequests.names)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 FriendRequests::names() const {
-  // @@protoc_insertion_point(field_list:FriendRequests.names)
+  // @@protoc_insertion_point(field_list:packet.FriendRequests.names)
   return names_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 FriendRequests::mutable_names() {
-  // @@protoc_insertion_point(field_mutable_list:FriendRequests.names)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendRequests.names)
   return &names_;
 }
 
@@ -25043,66 +25046,66 @@ inline void FriendRequests::clear_avatars() {
 }
 inline std::string* FriendRequests::add_avatars() {
   std::string* _s = _internal_add_avatars();
-  // @@protoc_insertion_point(field_add_mutable:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_add_mutable:packet.FriendRequests.avatars)
   return _s;
 }
 inline const std::string& FriendRequests::_internal_avatars(int index) const {
   return avatars_.Get(index);
 }
 inline const std::string& FriendRequests::avatars(int index) const {
-  // @@protoc_insertion_point(field_get:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_get:packet.FriendRequests.avatars)
   return _internal_avatars(index);
 }
 inline std::string* FriendRequests::mutable_avatars(int index) {
-  // @@protoc_insertion_point(field_mutable:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_mutable:packet.FriendRequests.avatars)
   return avatars_.Mutable(index);
 }
 inline void FriendRequests::set_avatars(int index, const std::string& value) {
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_set:packet.FriendRequests.avatars)
 }
 inline void FriendRequests::set_avatars(int index, std::string&& value) {
   avatars_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_set:packet.FriendRequests.avatars)
 }
 inline void FriendRequests::set_avatars(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_set_char:packet.FriendRequests.avatars)
 }
 inline void FriendRequests::set_avatars(int index, const char* value, size_t size) {
   avatars_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_set_pointer:packet.FriendRequests.avatars)
 }
 inline std::string* FriendRequests::_internal_add_avatars() {
   return avatars_.Add();
 }
 inline void FriendRequests::add_avatars(const std::string& value) {
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_add:packet.FriendRequests.avatars)
 }
 inline void FriendRequests::add_avatars(std::string&& value) {
   avatars_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_add:packet.FriendRequests.avatars)
 }
 inline void FriendRequests::add_avatars(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_add_char:packet.FriendRequests.avatars)
 }
 inline void FriendRequests::add_avatars(const char* value, size_t size) {
   avatars_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_add_pointer:packet.FriendRequests.avatars)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 FriendRequests::avatars() const {
-  // @@protoc_insertion_point(field_list:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_list:packet.FriendRequests.avatars)
   return avatars_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 FriendRequests::mutable_avatars() {
-  // @@protoc_insertion_point(field_mutable_list:FriendRequests.avatars)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendRequests.avatars)
   return &avatars_;
 }
 
@@ -25120,19 +25123,19 @@ inline int32_t FriendRequests::_internal_levels(int index) const {
   return levels_.Get(index);
 }
 inline int32_t FriendRequests::levels(int index) const {
-  // @@protoc_insertion_point(field_get:FriendRequests.levels)
+  // @@protoc_insertion_point(field_get:packet.FriendRequests.levels)
   return _internal_levels(index);
 }
 inline void FriendRequests::set_levels(int index, int32_t value) {
   levels_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendRequests.levels)
+  // @@protoc_insertion_point(field_set:packet.FriendRequests.levels)
 }
 inline void FriendRequests::_internal_add_levels(int32_t value) {
   levels_.Add(value);
 }
 inline void FriendRequests::add_levels(int32_t value) {
   _internal_add_levels(value);
-  // @@protoc_insertion_point(field_add:FriendRequests.levels)
+  // @@protoc_insertion_point(field_add:packet.FriendRequests.levels)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendRequests::_internal_levels() const {
@@ -25140,7 +25143,7 @@ FriendRequests::_internal_levels() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendRequests::levels() const {
-  // @@protoc_insertion_point(field_list:FriendRequests.levels)
+  // @@protoc_insertion_point(field_list:packet.FriendRequests.levels)
   return _internal_levels();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -25149,7 +25152,7 @@ FriendRequests::_internal_mutable_levels() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 FriendRequests::mutable_levels() {
-  // @@protoc_insertion_point(field_mutable_list:FriendRequests.levels)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendRequests.levels)
   return _internal_mutable_levels();
 }
 
@@ -25167,19 +25170,19 @@ inline int64_t FriendRequests::_internal_golds(int index) const {
   return golds_.Get(index);
 }
 inline int64_t FriendRequests::golds(int index) const {
-  // @@protoc_insertion_point(field_get:FriendRequests.golds)
+  // @@protoc_insertion_point(field_get:packet.FriendRequests.golds)
   return _internal_golds(index);
 }
 inline void FriendRequests::set_golds(int index, int64_t value) {
   golds_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendRequests.golds)
+  // @@protoc_insertion_point(field_set:packet.FriendRequests.golds)
 }
 inline void FriendRequests::_internal_add_golds(int64_t value) {
   golds_.Add(value);
 }
 inline void FriendRequests::add_golds(int64_t value) {
   _internal_add_golds(value);
-  // @@protoc_insertion_point(field_add:FriendRequests.golds)
+  // @@protoc_insertion_point(field_add:packet.FriendRequests.golds)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 FriendRequests::_internal_golds() const {
@@ -25187,7 +25190,7 @@ FriendRequests::_internal_golds() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 FriendRequests::golds() const {
-  // @@protoc_insertion_point(field_list:FriendRequests.golds)
+  // @@protoc_insertion_point(field_list:packet.FriendRequests.golds)
   return _internal_golds();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -25196,7 +25199,7 @@ FriendRequests::_internal_mutable_golds() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 FriendRequests::mutable_golds() {
-  // @@protoc_insertion_point(field_mutable_list:FriendRequests.golds)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendRequests.golds)
   return _internal_mutable_golds();
 }
 
@@ -25214,19 +25217,19 @@ inline int32_t FriendRequests::_internal_sent_uids(int index) const {
   return sent_uids_.Get(index);
 }
 inline int32_t FriendRequests::sent_uids(int index) const {
-  // @@protoc_insertion_point(field_get:FriendRequests.sent_uids)
+  // @@protoc_insertion_point(field_get:packet.FriendRequests.sent_uids)
   return _internal_sent_uids(index);
 }
 inline void FriendRequests::set_sent_uids(int index, int32_t value) {
   sent_uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:FriendRequests.sent_uids)
+  // @@protoc_insertion_point(field_set:packet.FriendRequests.sent_uids)
 }
 inline void FriendRequests::_internal_add_sent_uids(int32_t value) {
   sent_uids_.Add(value);
 }
 inline void FriendRequests::add_sent_uids(int32_t value) {
   _internal_add_sent_uids(value);
-  // @@protoc_insertion_point(field_add:FriendRequests.sent_uids)
+  // @@protoc_insertion_point(field_add:packet.FriendRequests.sent_uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendRequests::_internal_sent_uids() const {
@@ -25234,7 +25237,7 @@ FriendRequests::_internal_sent_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 FriendRequests::sent_uids() const {
-  // @@protoc_insertion_point(field_list:FriendRequests.sent_uids)
+  // @@protoc_insertion_point(field_list:packet.FriendRequests.sent_uids)
   return _internal_sent_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -25243,7 +25246,7 @@ FriendRequests::_internal_mutable_sent_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 FriendRequests::mutable_sent_uids() {
-  // @@protoc_insertion_point(field_mutable_list:FriendRequests.sent_uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.FriendRequests.sent_uids)
   return _internal_mutable_sent_uids();
 }
 
@@ -25259,7 +25262,7 @@ inline int32_t AddFriend::_internal_error() const {
   return error_;
 }
 inline int32_t AddFriend::error() const {
-  // @@protoc_insertion_point(field_get:AddFriend.error)
+  // @@protoc_insertion_point(field_get:packet.AddFriend.error)
   return _internal_error();
 }
 inline void AddFriend::_internal_set_error(int32_t value) {
@@ -25268,7 +25271,7 @@ inline void AddFriend::_internal_set_error(int32_t value) {
 }
 inline void AddFriend::set_error(int32_t value) {
   _internal_set_error(value);
-  // @@protoc_insertion_point(field_set:AddFriend.error)
+  // @@protoc_insertion_point(field_set:packet.AddFriend.error)
 }
 
 // int32 uid = 2;
@@ -25279,7 +25282,7 @@ inline int32_t AddFriend::_internal_uid() const {
   return uid_;
 }
 inline int32_t AddFriend::uid() const {
-  // @@protoc_insertion_point(field_get:AddFriend.uid)
+  // @@protoc_insertion_point(field_get:packet.AddFriend.uid)
   return _internal_uid();
 }
 inline void AddFriend::_internal_set_uid(int32_t value) {
@@ -25288,7 +25291,7 @@ inline void AddFriend::_internal_set_uid(int32_t value) {
 }
 inline void AddFriend::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:AddFriend.uid)
+  // @@protoc_insertion_point(field_set:packet.AddFriend.uid)
 }
 
 // -------------------------------------------------------------------
@@ -25303,7 +25306,7 @@ inline int32_t RequestFriendAccept::_internal_uid() const {
   return uid_;
 }
 inline int32_t RequestFriendAccept::uid() const {
-  // @@protoc_insertion_point(field_get:RequestFriendAccept.uid)
+  // @@protoc_insertion_point(field_get:packet.RequestFriendAccept.uid)
   return _internal_uid();
 }
 inline void RequestFriendAccept::_internal_set_uid(int32_t value) {
@@ -25312,7 +25315,7 @@ inline void RequestFriendAccept::_internal_set_uid(int32_t value) {
 }
 inline void RequestFriendAccept::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:RequestFriendAccept.uid)
+  // @@protoc_insertion_point(field_set:packet.RequestFriendAccept.uid)
 }
 
 // int32 action = 2;
@@ -25323,7 +25326,7 @@ inline int32_t RequestFriendAccept::_internal_action() const {
   return action_;
 }
 inline int32_t RequestFriendAccept::action() const {
-  // @@protoc_insertion_point(field_get:RequestFriendAccept.action)
+  // @@protoc_insertion_point(field_get:packet.RequestFriendAccept.action)
   return _internal_action();
 }
 inline void RequestFriendAccept::_internal_set_action(int32_t value) {
@@ -25332,7 +25335,7 @@ inline void RequestFriendAccept::_internal_set_action(int32_t value) {
 }
 inline void RequestFriendAccept::set_action(int32_t value) {
   _internal_set_action(value);
-  // @@protoc_insertion_point(field_set:RequestFriendAccept.action)
+  // @@protoc_insertion_point(field_set:packet.RequestFriendAccept.action)
 }
 
 // -------------------------------------------------------------------
@@ -25347,7 +25350,7 @@ inline int32_t RemoveFriend::_internal_uid() const {
   return uid_;
 }
 inline int32_t RemoveFriend::uid() const {
-  // @@protoc_insertion_point(field_get:RemoveFriend.uid)
+  // @@protoc_insertion_point(field_get:packet.RemoveFriend.uid)
   return _internal_uid();
 }
 inline void RemoveFriend::_internal_set_uid(int32_t value) {
@@ -25356,7 +25359,7 @@ inline void RemoveFriend::_internal_set_uid(int32_t value) {
 }
 inline void RemoveFriend::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:RemoveFriend.uid)
+  // @@protoc_insertion_point(field_set:packet.RemoveFriend.uid)
 }
 
 // -------------------------------------------------------------------
@@ -25371,7 +25374,7 @@ inline int32_t NewFriendRequest::_internal_uid() const {
   return uid_;
 }
 inline int32_t NewFriendRequest::uid() const {
-  // @@protoc_insertion_point(field_get:NewFriendRequest.uid)
+  // @@protoc_insertion_point(field_get:packet.NewFriendRequest.uid)
   return _internal_uid();
 }
 inline void NewFriendRequest::_internal_set_uid(int32_t value) {
@@ -25380,7 +25383,7 @@ inline void NewFriendRequest::_internal_set_uid(int32_t value) {
 }
 inline void NewFriendRequest::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:NewFriendRequest.uid)
+  // @@protoc_insertion_point(field_set:packet.NewFriendRequest.uid)
 }
 
 // string avatar = 2;
@@ -25388,7 +25391,7 @@ inline void NewFriendRequest::clear_avatar() {
   avatar_.ClearToEmpty();
 }
 inline const std::string& NewFriendRequest::avatar() const {
-  // @@protoc_insertion_point(field_get:NewFriendRequest.avatar)
+  // @@protoc_insertion_point(field_get:packet.NewFriendRequest.avatar)
   return _internal_avatar();
 }
 template <typename ArgT0, typename... ArgT>
@@ -25396,11 +25399,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void NewFriendRequest::set_avatar(ArgT0&& arg0, ArgT... args) {
  
  avatar_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:NewFriendRequest.avatar)
+  // @@protoc_insertion_point(field_set:packet.NewFriendRequest.avatar)
 }
 inline std::string* NewFriendRequest::mutable_avatar() {
   std::string* _s = _internal_mutable_avatar();
-  // @@protoc_insertion_point(field_mutable:NewFriendRequest.avatar)
+  // @@protoc_insertion_point(field_mutable:packet.NewFriendRequest.avatar)
   return _s;
 }
 inline const std::string& NewFriendRequest::_internal_avatar() const {
@@ -25415,7 +25418,7 @@ inline std::string* NewFriendRequest::_internal_mutable_avatar() {
   return avatar_.Mutable(GetArenaForAllocation());
 }
 inline std::string* NewFriendRequest::release_avatar() {
-  // @@protoc_insertion_point(field_release:NewFriendRequest.avatar)
+  // @@protoc_insertion_point(field_release:packet.NewFriendRequest.avatar)
   return avatar_.Release();
 }
 inline void NewFriendRequest::set_allocated_avatar(std::string* avatar) {
@@ -25430,7 +25433,7 @@ inline void NewFriendRequest::set_allocated_avatar(std::string* avatar) {
     avatar_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:NewFriendRequest.avatar)
+  // @@protoc_insertion_point(field_set_allocated:packet.NewFriendRequest.avatar)
 }
 
 // string name = 3;
@@ -25438,7 +25441,7 @@ inline void NewFriendRequest::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& NewFriendRequest::name() const {
-  // @@protoc_insertion_point(field_get:NewFriendRequest.name)
+  // @@protoc_insertion_point(field_get:packet.NewFriendRequest.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -25446,11 +25449,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void NewFriendRequest::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:NewFriendRequest.name)
+  // @@protoc_insertion_point(field_set:packet.NewFriendRequest.name)
 }
 inline std::string* NewFriendRequest::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:NewFriendRequest.name)
+  // @@protoc_insertion_point(field_mutable:packet.NewFriendRequest.name)
   return _s;
 }
 inline const std::string& NewFriendRequest::_internal_name() const {
@@ -25465,7 +25468,7 @@ inline std::string* NewFriendRequest::_internal_mutable_name() {
   return name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* NewFriendRequest::release_name() {
-  // @@protoc_insertion_point(field_release:NewFriendRequest.name)
+  // @@protoc_insertion_point(field_release:packet.NewFriendRequest.name)
   return name_.Release();
 }
 inline void NewFriendRequest::set_allocated_name(std::string* name) {
@@ -25480,7 +25483,7 @@ inline void NewFriendRequest::set_allocated_name(std::string* name) {
     name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:NewFriendRequest.name)
+  // @@protoc_insertion_point(field_set_allocated:packet.NewFriendRequest.name)
 }
 
 // int32 level = 4;
@@ -25491,7 +25494,7 @@ inline int32_t NewFriendRequest::_internal_level() const {
   return level_;
 }
 inline int32_t NewFriendRequest::level() const {
-  // @@protoc_insertion_point(field_get:NewFriendRequest.level)
+  // @@protoc_insertion_point(field_get:packet.NewFriendRequest.level)
   return _internal_level();
 }
 inline void NewFriendRequest::_internal_set_level(int32_t value) {
@@ -25500,7 +25503,7 @@ inline void NewFriendRequest::_internal_set_level(int32_t value) {
 }
 inline void NewFriendRequest::set_level(int32_t value) {
   _internal_set_level(value);
-  // @@protoc_insertion_point(field_set:NewFriendRequest.level)
+  // @@protoc_insertion_point(field_set:packet.NewFriendRequest.level)
 }
 
 // int64 gold = 5;
@@ -25511,7 +25514,7 @@ inline int64_t NewFriendRequest::_internal_gold() const {
   return gold_;
 }
 inline int64_t NewFriendRequest::gold() const {
-  // @@protoc_insertion_point(field_get:NewFriendRequest.gold)
+  // @@protoc_insertion_point(field_get:packet.NewFriendRequest.gold)
   return _internal_gold();
 }
 inline void NewFriendRequest::_internal_set_gold(int64_t value) {
@@ -25520,7 +25523,7 @@ inline void NewFriendRequest::_internal_set_gold(int64_t value) {
 }
 inline void NewFriendRequest::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:NewFriendRequest.gold)
+  // @@protoc_insertion_point(field_set:packet.NewFriendRequest.gold)
 }
 
 // -------------------------------------------------------------------
@@ -25535,7 +25538,7 @@ inline int32_t FriendRequestAccepted::_internal_uid() const {
   return uid_;
 }
 inline int32_t FriendRequestAccepted::uid() const {
-  // @@protoc_insertion_point(field_get:FriendRequestAccepted.uid)
+  // @@protoc_insertion_point(field_get:packet.FriendRequestAccepted.uid)
   return _internal_uid();
 }
 inline void FriendRequestAccepted::_internal_set_uid(int32_t value) {
@@ -25544,7 +25547,7 @@ inline void FriendRequestAccepted::_internal_set_uid(int32_t value) {
 }
 inline void FriendRequestAccepted::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:FriendRequestAccepted.uid)
+  // @@protoc_insertion_point(field_set:packet.FriendRequestAccepted.uid)
 }
 
 // string name = 2;
@@ -25552,7 +25555,7 @@ inline void FriendRequestAccepted::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& FriendRequestAccepted::name() const {
-  // @@protoc_insertion_point(field_get:FriendRequestAccepted.name)
+  // @@protoc_insertion_point(field_get:packet.FriendRequestAccepted.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -25560,11 +25563,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void FriendRequestAccepted::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:FriendRequestAccepted.name)
+  // @@protoc_insertion_point(field_set:packet.FriendRequestAccepted.name)
 }
 inline std::string* FriendRequestAccepted::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:FriendRequestAccepted.name)
+  // @@protoc_insertion_point(field_mutable:packet.FriendRequestAccepted.name)
   return _s;
 }
 inline const std::string& FriendRequestAccepted::_internal_name() const {
@@ -25579,7 +25582,7 @@ inline std::string* FriendRequestAccepted::_internal_mutable_name() {
   return name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* FriendRequestAccepted::release_name() {
-  // @@protoc_insertion_point(field_release:FriendRequestAccepted.name)
+  // @@protoc_insertion_point(field_release:packet.FriendRequestAccepted.name)
   return name_.Release();
 }
 inline void FriendRequestAccepted::set_allocated_name(std::string* name) {
@@ -25594,7 +25597,7 @@ inline void FriendRequestAccepted::set_allocated_name(std::string* name) {
     name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:FriendRequestAccepted.name)
+  // @@protoc_insertion_point(field_set_allocated:packet.FriendRequestAccepted.name)
 }
 
 // string avatar = 3;
@@ -25602,7 +25605,7 @@ inline void FriendRequestAccepted::clear_avatar() {
   avatar_.ClearToEmpty();
 }
 inline const std::string& FriendRequestAccepted::avatar() const {
-  // @@protoc_insertion_point(field_get:FriendRequestAccepted.avatar)
+  // @@protoc_insertion_point(field_get:packet.FriendRequestAccepted.avatar)
   return _internal_avatar();
 }
 template <typename ArgT0, typename... ArgT>
@@ -25610,11 +25613,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void FriendRequestAccepted::set_avatar(ArgT0&& arg0, ArgT... args) {
  
  avatar_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:FriendRequestAccepted.avatar)
+  // @@protoc_insertion_point(field_set:packet.FriendRequestAccepted.avatar)
 }
 inline std::string* FriendRequestAccepted::mutable_avatar() {
   std::string* _s = _internal_mutable_avatar();
-  // @@protoc_insertion_point(field_mutable:FriendRequestAccepted.avatar)
+  // @@protoc_insertion_point(field_mutable:packet.FriendRequestAccepted.avatar)
   return _s;
 }
 inline const std::string& FriendRequestAccepted::_internal_avatar() const {
@@ -25629,7 +25632,7 @@ inline std::string* FriendRequestAccepted::_internal_mutable_avatar() {
   return avatar_.Mutable(GetArenaForAllocation());
 }
 inline std::string* FriendRequestAccepted::release_avatar() {
-  // @@protoc_insertion_point(field_release:FriendRequestAccepted.avatar)
+  // @@protoc_insertion_point(field_release:packet.FriendRequestAccepted.avatar)
   return avatar_.Release();
 }
 inline void FriendRequestAccepted::set_allocated_avatar(std::string* avatar) {
@@ -25644,7 +25647,7 @@ inline void FriendRequestAccepted::set_allocated_avatar(std::string* avatar) {
     avatar_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:FriendRequestAccepted.avatar)
+  // @@protoc_insertion_point(field_set_allocated:packet.FriendRequestAccepted.avatar)
 }
 
 // int32 level = 4;
@@ -25655,7 +25658,7 @@ inline int32_t FriendRequestAccepted::_internal_level() const {
   return level_;
 }
 inline int32_t FriendRequestAccepted::level() const {
-  // @@protoc_insertion_point(field_get:FriendRequestAccepted.level)
+  // @@protoc_insertion_point(field_get:packet.FriendRequestAccepted.level)
   return _internal_level();
 }
 inline void FriendRequestAccepted::_internal_set_level(int32_t value) {
@@ -25664,7 +25667,7 @@ inline void FriendRequestAccepted::_internal_set_level(int32_t value) {
 }
 inline void FriendRequestAccepted::set_level(int32_t value) {
   _internal_set_level(value);
-  // @@protoc_insertion_point(field_set:FriendRequestAccepted.level)
+  // @@protoc_insertion_point(field_set:packet.FriendRequestAccepted.level)
 }
 
 // int64 gold = 5;
@@ -25675,7 +25678,7 @@ inline int64_t FriendRequestAccepted::_internal_gold() const {
   return gold_;
 }
 inline int64_t FriendRequestAccepted::gold() const {
-  // @@protoc_insertion_point(field_get:FriendRequestAccepted.gold)
+  // @@protoc_insertion_point(field_get:packet.FriendRequestAccepted.gold)
   return _internal_gold();
 }
 inline void FriendRequestAccepted::_internal_set_gold(int64_t value) {
@@ -25684,7 +25687,7 @@ inline void FriendRequestAccepted::_internal_set_gold(int64_t value) {
 }
 inline void FriendRequestAccepted::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:FriendRequestAccepted.gold)
+  // @@protoc_insertion_point(field_set:packet.FriendRequestAccepted.gold)
 }
 
 // int32 avatar_frame = 6;
@@ -25695,7 +25698,7 @@ inline int32_t FriendRequestAccepted::_internal_avatar_frame() const {
   return avatar_frame_;
 }
 inline int32_t FriendRequestAccepted::avatar_frame() const {
-  // @@protoc_insertion_point(field_get:FriendRequestAccepted.avatar_frame)
+  // @@protoc_insertion_point(field_get:packet.FriendRequestAccepted.avatar_frame)
   return _internal_avatar_frame();
 }
 inline void FriendRequestAccepted::_internal_set_avatar_frame(int32_t value) {
@@ -25704,7 +25707,7 @@ inline void FriendRequestAccepted::_internal_set_avatar_frame(int32_t value) {
 }
 inline void FriendRequestAccepted::set_avatar_frame(int32_t value) {
   _internal_set_avatar_frame(value);
-  // @@protoc_insertion_point(field_set:FriendRequestAccepted.avatar_frame)
+  // @@protoc_insertion_point(field_set:packet.FriendRequestAccepted.avatar_frame)
 }
 
 // -------------------------------------------------------------------
@@ -25725,19 +25728,19 @@ inline int32_t RecommendFriends::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t RecommendFriends::uids(int index) const {
-  // @@protoc_insertion_point(field_get:RecommendFriends.uids)
+  // @@protoc_insertion_point(field_get:packet.RecommendFriends.uids)
   return _internal_uids(index);
 }
 inline void RecommendFriends::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:RecommendFriends.uids)
+  // @@protoc_insertion_point(field_set:packet.RecommendFriends.uids)
 }
 inline void RecommendFriends::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void RecommendFriends::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:RecommendFriends.uids)
+  // @@protoc_insertion_point(field_add:packet.RecommendFriends.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RecommendFriends::_internal_uids() const {
@@ -25745,7 +25748,7 @@ RecommendFriends::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RecommendFriends::uids() const {
-  // @@protoc_insertion_point(field_list:RecommendFriends.uids)
+  // @@protoc_insertion_point(field_list:packet.RecommendFriends.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -25754,7 +25757,7 @@ RecommendFriends::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 RecommendFriends::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:RecommendFriends.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.RecommendFriends.uids)
   return _internal_mutable_uids();
 }
 
@@ -25770,66 +25773,66 @@ inline void RecommendFriends::clear_names() {
 }
 inline std::string* RecommendFriends::add_names() {
   std::string* _s = _internal_add_names();
-  // @@protoc_insertion_point(field_add_mutable:RecommendFriends.names)
+  // @@protoc_insertion_point(field_add_mutable:packet.RecommendFriends.names)
   return _s;
 }
 inline const std::string& RecommendFriends::_internal_names(int index) const {
   return names_.Get(index);
 }
 inline const std::string& RecommendFriends::names(int index) const {
-  // @@protoc_insertion_point(field_get:RecommendFriends.names)
+  // @@protoc_insertion_point(field_get:packet.RecommendFriends.names)
   return _internal_names(index);
 }
 inline std::string* RecommendFriends::mutable_names(int index) {
-  // @@protoc_insertion_point(field_mutable:RecommendFriends.names)
+  // @@protoc_insertion_point(field_mutable:packet.RecommendFriends.names)
   return names_.Mutable(index);
 }
 inline void RecommendFriends::set_names(int index, const std::string& value) {
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:RecommendFriends.names)
+  // @@protoc_insertion_point(field_set:packet.RecommendFriends.names)
 }
 inline void RecommendFriends::set_names(int index, std::string&& value) {
   names_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:RecommendFriends.names)
+  // @@protoc_insertion_point(field_set:packet.RecommendFriends.names)
 }
 inline void RecommendFriends::set_names(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:RecommendFriends.names)
+  // @@protoc_insertion_point(field_set_char:packet.RecommendFriends.names)
 }
 inline void RecommendFriends::set_names(int index, const char* value, size_t size) {
   names_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:RecommendFriends.names)
+  // @@protoc_insertion_point(field_set_pointer:packet.RecommendFriends.names)
 }
 inline std::string* RecommendFriends::_internal_add_names() {
   return names_.Add();
 }
 inline void RecommendFriends::add_names(const std::string& value) {
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:RecommendFriends.names)
+  // @@protoc_insertion_point(field_add:packet.RecommendFriends.names)
 }
 inline void RecommendFriends::add_names(std::string&& value) {
   names_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:RecommendFriends.names)
+  // @@protoc_insertion_point(field_add:packet.RecommendFriends.names)
 }
 inline void RecommendFriends::add_names(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:RecommendFriends.names)
+  // @@protoc_insertion_point(field_add_char:packet.RecommendFriends.names)
 }
 inline void RecommendFriends::add_names(const char* value, size_t size) {
   names_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:RecommendFriends.names)
+  // @@protoc_insertion_point(field_add_pointer:packet.RecommendFriends.names)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 RecommendFriends::names() const {
-  // @@protoc_insertion_point(field_list:RecommendFriends.names)
+  // @@protoc_insertion_point(field_list:packet.RecommendFriends.names)
   return names_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 RecommendFriends::mutable_names() {
-  // @@protoc_insertion_point(field_mutable_list:RecommendFriends.names)
+  // @@protoc_insertion_point(field_mutable_list:packet.RecommendFriends.names)
   return &names_;
 }
 
@@ -25845,66 +25848,66 @@ inline void RecommendFriends::clear_avatars() {
 }
 inline std::string* RecommendFriends::add_avatars() {
   std::string* _s = _internal_add_avatars();
-  // @@protoc_insertion_point(field_add_mutable:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_add_mutable:packet.RecommendFriends.avatars)
   return _s;
 }
 inline const std::string& RecommendFriends::_internal_avatars(int index) const {
   return avatars_.Get(index);
 }
 inline const std::string& RecommendFriends::avatars(int index) const {
-  // @@protoc_insertion_point(field_get:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_get:packet.RecommendFriends.avatars)
   return _internal_avatars(index);
 }
 inline std::string* RecommendFriends::mutable_avatars(int index) {
-  // @@protoc_insertion_point(field_mutable:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_mutable:packet.RecommendFriends.avatars)
   return avatars_.Mutable(index);
 }
 inline void RecommendFriends::set_avatars(int index, const std::string& value) {
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_set:packet.RecommendFriends.avatars)
 }
 inline void RecommendFriends::set_avatars(int index, std::string&& value) {
   avatars_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_set:packet.RecommendFriends.avatars)
 }
 inline void RecommendFriends::set_avatars(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_set_char:packet.RecommendFriends.avatars)
 }
 inline void RecommendFriends::set_avatars(int index, const char* value, size_t size) {
   avatars_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_set_pointer:packet.RecommendFriends.avatars)
 }
 inline std::string* RecommendFriends::_internal_add_avatars() {
   return avatars_.Add();
 }
 inline void RecommendFriends::add_avatars(const std::string& value) {
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_add:packet.RecommendFriends.avatars)
 }
 inline void RecommendFriends::add_avatars(std::string&& value) {
   avatars_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_add:packet.RecommendFriends.avatars)
 }
 inline void RecommendFriends::add_avatars(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_add_char:packet.RecommendFriends.avatars)
 }
 inline void RecommendFriends::add_avatars(const char* value, size_t size) {
   avatars_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_add_pointer:packet.RecommendFriends.avatars)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 RecommendFriends::avatars() const {
-  // @@protoc_insertion_point(field_list:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_list:packet.RecommendFriends.avatars)
   return avatars_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 RecommendFriends::mutable_avatars() {
-  // @@protoc_insertion_point(field_mutable_list:RecommendFriends.avatars)
+  // @@protoc_insertion_point(field_mutable_list:packet.RecommendFriends.avatars)
   return &avatars_;
 }
 
@@ -25922,19 +25925,19 @@ inline int32_t RecommendFriends::_internal_levels(int index) const {
   return levels_.Get(index);
 }
 inline int32_t RecommendFriends::levels(int index) const {
-  // @@protoc_insertion_point(field_get:RecommendFriends.levels)
+  // @@protoc_insertion_point(field_get:packet.RecommendFriends.levels)
   return _internal_levels(index);
 }
 inline void RecommendFriends::set_levels(int index, int32_t value) {
   levels_.Set(index, value);
-  // @@protoc_insertion_point(field_set:RecommendFriends.levels)
+  // @@protoc_insertion_point(field_set:packet.RecommendFriends.levels)
 }
 inline void RecommendFriends::_internal_add_levels(int32_t value) {
   levels_.Add(value);
 }
 inline void RecommendFriends::add_levels(int32_t value) {
   _internal_add_levels(value);
-  // @@protoc_insertion_point(field_add:RecommendFriends.levels)
+  // @@protoc_insertion_point(field_add:packet.RecommendFriends.levels)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RecommendFriends::_internal_levels() const {
@@ -25942,7 +25945,7 @@ RecommendFriends::_internal_levels() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RecommendFriends::levels() const {
-  // @@protoc_insertion_point(field_list:RecommendFriends.levels)
+  // @@protoc_insertion_point(field_list:packet.RecommendFriends.levels)
   return _internal_levels();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -25951,7 +25954,7 @@ RecommendFriends::_internal_mutable_levels() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 RecommendFriends::mutable_levels() {
-  // @@protoc_insertion_point(field_mutable_list:RecommendFriends.levels)
+  // @@protoc_insertion_point(field_mutable_list:packet.RecommendFriends.levels)
   return _internal_mutable_levels();
 }
 
@@ -25969,19 +25972,19 @@ inline int64_t RecommendFriends::_internal_golds(int index) const {
   return golds_.Get(index);
 }
 inline int64_t RecommendFriends::golds(int index) const {
-  // @@protoc_insertion_point(field_get:RecommendFriends.golds)
+  // @@protoc_insertion_point(field_get:packet.RecommendFriends.golds)
   return _internal_golds(index);
 }
 inline void RecommendFriends::set_golds(int index, int64_t value) {
   golds_.Set(index, value);
-  // @@protoc_insertion_point(field_set:RecommendFriends.golds)
+  // @@protoc_insertion_point(field_set:packet.RecommendFriends.golds)
 }
 inline void RecommendFriends::_internal_add_golds(int64_t value) {
   golds_.Add(value);
 }
 inline void RecommendFriends::add_golds(int64_t value) {
   _internal_add_golds(value);
-  // @@protoc_insertion_point(field_add:RecommendFriends.golds)
+  // @@protoc_insertion_point(field_add:packet.RecommendFriends.golds)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 RecommendFriends::_internal_golds() const {
@@ -25989,7 +25992,7 @@ RecommendFriends::_internal_golds() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 RecommendFriends::golds() const {
-  // @@protoc_insertion_point(field_list:RecommendFriends.golds)
+  // @@protoc_insertion_point(field_list:packet.RecommendFriends.golds)
   return _internal_golds();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -25998,7 +26001,7 @@ RecommendFriends::_internal_mutable_golds() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 RecommendFriends::mutable_golds() {
-  // @@protoc_insertion_point(field_mutable_list:RecommendFriends.golds)
+  // @@protoc_insertion_point(field_mutable_list:packet.RecommendFriends.golds)
   return _internal_mutable_golds();
 }
 
@@ -26016,19 +26019,19 @@ inline int32_t RecommendFriends::_internal_avatar_frames(int index) const {
   return avatar_frames_.Get(index);
 }
 inline int32_t RecommendFriends::avatar_frames(int index) const {
-  // @@protoc_insertion_point(field_get:RecommendFriends.avatar_frames)
+  // @@protoc_insertion_point(field_get:packet.RecommendFriends.avatar_frames)
   return _internal_avatar_frames(index);
 }
 inline void RecommendFriends::set_avatar_frames(int index, int32_t value) {
   avatar_frames_.Set(index, value);
-  // @@protoc_insertion_point(field_set:RecommendFriends.avatar_frames)
+  // @@protoc_insertion_point(field_set:packet.RecommendFriends.avatar_frames)
 }
 inline void RecommendFriends::_internal_add_avatar_frames(int32_t value) {
   avatar_frames_.Add(value);
 }
 inline void RecommendFriends::add_avatar_frames(int32_t value) {
   _internal_add_avatar_frames(value);
-  // @@protoc_insertion_point(field_add:RecommendFriends.avatar_frames)
+  // @@protoc_insertion_point(field_add:packet.RecommendFriends.avatar_frames)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RecommendFriends::_internal_avatar_frames() const {
@@ -26036,7 +26039,7 @@ RecommendFriends::_internal_avatar_frames() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RecommendFriends::avatar_frames() const {
-  // @@protoc_insertion_point(field_list:RecommendFriends.avatar_frames)
+  // @@protoc_insertion_point(field_list:packet.RecommendFriends.avatar_frames)
   return _internal_avatar_frames();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -26045,7 +26048,7 @@ RecommendFriends::_internal_mutable_avatar_frames() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 RecommendFriends::mutable_avatar_frames() {
-  // @@protoc_insertion_point(field_mutable_list:RecommendFriends.avatar_frames)
+  // @@protoc_insertion_point(field_mutable_list:packet.RecommendFriends.avatar_frames)
   return _internal_mutable_avatar_frames();
 }
 
@@ -26058,7 +26061,7 @@ inline void PaymentAppleConsume::clear_pack_id() {
   pack_id_.ClearToEmpty();
 }
 inline const std::string& PaymentAppleConsume::pack_id() const {
-  // @@protoc_insertion_point(field_get:PaymentAppleConsume.pack_id)
+  // @@protoc_insertion_point(field_get:packet.PaymentAppleConsume.pack_id)
   return _internal_pack_id();
 }
 template <typename ArgT0, typename... ArgT>
@@ -26066,11 +26069,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentAppleConsume::set_pack_id(ArgT0&& arg0, ArgT... args) {
  
  pack_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentAppleConsume.pack_id)
+  // @@protoc_insertion_point(field_set:packet.PaymentAppleConsume.pack_id)
 }
 inline std::string* PaymentAppleConsume::mutable_pack_id() {
   std::string* _s = _internal_mutable_pack_id();
-  // @@protoc_insertion_point(field_mutable:PaymentAppleConsume.pack_id)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentAppleConsume.pack_id)
   return _s;
 }
 inline const std::string& PaymentAppleConsume::_internal_pack_id() const {
@@ -26085,7 +26088,7 @@ inline std::string* PaymentAppleConsume::_internal_mutable_pack_id() {
   return pack_id_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentAppleConsume::release_pack_id() {
-  // @@protoc_insertion_point(field_release:PaymentAppleConsume.pack_id)
+  // @@protoc_insertion_point(field_release:packet.PaymentAppleConsume.pack_id)
   return pack_id_.Release();
 }
 inline void PaymentAppleConsume::set_allocated_pack_id(std::string* pack_id) {
@@ -26100,7 +26103,7 @@ inline void PaymentAppleConsume::set_allocated_pack_id(std::string* pack_id) {
     pack_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentAppleConsume.pack_id)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentAppleConsume.pack_id)
 }
 
 // string receipt_data = 2;
@@ -26108,7 +26111,7 @@ inline void PaymentAppleConsume::clear_receipt_data() {
   receipt_data_.ClearToEmpty();
 }
 inline const std::string& PaymentAppleConsume::receipt_data() const {
-  // @@protoc_insertion_point(field_get:PaymentAppleConsume.receipt_data)
+  // @@protoc_insertion_point(field_get:packet.PaymentAppleConsume.receipt_data)
   return _internal_receipt_data();
 }
 template <typename ArgT0, typename... ArgT>
@@ -26116,11 +26119,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentAppleConsume::set_receipt_data(ArgT0&& arg0, ArgT... args) {
  
  receipt_data_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentAppleConsume.receipt_data)
+  // @@protoc_insertion_point(field_set:packet.PaymentAppleConsume.receipt_data)
 }
 inline std::string* PaymentAppleConsume::mutable_receipt_data() {
   std::string* _s = _internal_mutable_receipt_data();
-  // @@protoc_insertion_point(field_mutable:PaymentAppleConsume.receipt_data)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentAppleConsume.receipt_data)
   return _s;
 }
 inline const std::string& PaymentAppleConsume::_internal_receipt_data() const {
@@ -26135,7 +26138,7 @@ inline std::string* PaymentAppleConsume::_internal_mutable_receipt_data() {
   return receipt_data_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentAppleConsume::release_receipt_data() {
-  // @@protoc_insertion_point(field_release:PaymentAppleConsume.receipt_data)
+  // @@protoc_insertion_point(field_release:packet.PaymentAppleConsume.receipt_data)
   return receipt_data_.Release();
 }
 inline void PaymentAppleConsume::set_allocated_receipt_data(std::string* receipt_data) {
@@ -26150,7 +26153,7 @@ inline void PaymentAppleConsume::set_allocated_receipt_data(std::string* receipt
     receipt_data_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentAppleConsume.receipt_data)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentAppleConsume.receipt_data)
 }
 
 // -------------------------------------------------------------------
@@ -26162,7 +26165,7 @@ inline void PaymentFinishedAppleTransaction::clear_pack_id() {
   pack_id_.ClearToEmpty();
 }
 inline const std::string& PaymentFinishedAppleTransaction::pack_id() const {
-  // @@protoc_insertion_point(field_get:PaymentFinishedAppleTransaction.pack_id)
+  // @@protoc_insertion_point(field_get:packet.PaymentFinishedAppleTransaction.pack_id)
   return _internal_pack_id();
 }
 template <typename ArgT0, typename... ArgT>
@@ -26170,11 +26173,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentFinishedAppleTransaction::set_pack_id(ArgT0&& arg0, ArgT... args) {
  
  pack_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentFinishedAppleTransaction.pack_id)
+  // @@protoc_insertion_point(field_set:packet.PaymentFinishedAppleTransaction.pack_id)
 }
 inline std::string* PaymentFinishedAppleTransaction::mutable_pack_id() {
   std::string* _s = _internal_mutable_pack_id();
-  // @@protoc_insertion_point(field_mutable:PaymentFinishedAppleTransaction.pack_id)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentFinishedAppleTransaction.pack_id)
   return _s;
 }
 inline const std::string& PaymentFinishedAppleTransaction::_internal_pack_id() const {
@@ -26189,7 +26192,7 @@ inline std::string* PaymentFinishedAppleTransaction::_internal_mutable_pack_id()
   return pack_id_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentFinishedAppleTransaction::release_pack_id() {
-  // @@protoc_insertion_point(field_release:PaymentFinishedAppleTransaction.pack_id)
+  // @@protoc_insertion_point(field_release:packet.PaymentFinishedAppleTransaction.pack_id)
   return pack_id_.Release();
 }
 inline void PaymentFinishedAppleTransaction::set_allocated_pack_id(std::string* pack_id) {
@@ -26204,7 +26207,7 @@ inline void PaymentFinishedAppleTransaction::set_allocated_pack_id(std::string* 
     pack_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentFinishedAppleTransaction.pack_id)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentFinishedAppleTransaction.pack_id)
 }
 
 // -------------------------------------------------------------------
@@ -26219,7 +26222,7 @@ inline int32_t NewRound::_internal_current_round() const {
   return current_round_;
 }
 inline int32_t NewRound::current_round() const {
-  // @@protoc_insertion_point(field_get:NewRound.current_round)
+  // @@protoc_insertion_point(field_get:packet.NewRound.current_round)
   return _internal_current_round();
 }
 inline void NewRound::_internal_set_current_round(int32_t value) {
@@ -26228,7 +26231,7 @@ inline void NewRound::_internal_set_current_round(int32_t value) {
 }
 inline void NewRound::set_current_round(int32_t value) {
   _internal_set_current_round(value);
-  // @@protoc_insertion_point(field_set:NewRound.current_round)
+  // @@protoc_insertion_point(field_set:packet.NewRound.current_round)
 }
 
 // int64 pot_value = 2;
@@ -26239,7 +26242,7 @@ inline int64_t NewRound::_internal_pot_value() const {
   return pot_value_;
 }
 inline int64_t NewRound::pot_value() const {
-  // @@protoc_insertion_point(field_get:NewRound.pot_value)
+  // @@protoc_insertion_point(field_get:packet.NewRound.pot_value)
   return _internal_pot_value();
 }
 inline void NewRound::_internal_set_pot_value(int64_t value) {
@@ -26248,7 +26251,7 @@ inline void NewRound::_internal_set_pot_value(int64_t value) {
 }
 inline void NewRound::set_pot_value(int64_t value) {
   _internal_set_pot_value(value);
-  // @@protoc_insertion_point(field_set:NewRound.pot_value)
+  // @@protoc_insertion_point(field_set:packet.NewRound.pot_value)
 }
 
 // repeated int64 players_gold = 3;
@@ -26265,19 +26268,19 @@ inline int64_t NewRound::_internal_players_gold(int index) const {
   return players_gold_.Get(index);
 }
 inline int64_t NewRound::players_gold(int index) const {
-  // @@protoc_insertion_point(field_get:NewRound.players_gold)
+  // @@protoc_insertion_point(field_get:packet.NewRound.players_gold)
   return _internal_players_gold(index);
 }
 inline void NewRound::set_players_gold(int index, int64_t value) {
   players_gold_.Set(index, value);
-  // @@protoc_insertion_point(field_set:NewRound.players_gold)
+  // @@protoc_insertion_point(field_set:packet.NewRound.players_gold)
 }
 inline void NewRound::_internal_add_players_gold(int64_t value) {
   players_gold_.Add(value);
 }
 inline void NewRound::add_players_gold(int64_t value) {
   _internal_add_players_gold(value);
-  // @@protoc_insertion_point(field_add:NewRound.players_gold)
+  // @@protoc_insertion_point(field_add:packet.NewRound.players_gold)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 NewRound::_internal_players_gold() const {
@@ -26285,7 +26288,7 @@ NewRound::_internal_players_gold() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 NewRound::players_gold() const {
-  // @@protoc_insertion_point(field_list:NewRound.players_gold)
+  // @@protoc_insertion_point(field_list:packet.NewRound.players_gold)
   return _internal_players_gold();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -26294,7 +26297,7 @@ NewRound::_internal_mutable_players_gold() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 NewRound::mutable_players_gold() {
-  // @@protoc_insertion_point(field_mutable_list:NewRound.players_gold)
+  // @@protoc_insertion_point(field_mutable_list:packet.NewRound.players_gold)
   return _internal_mutable_players_gold();
 }
 
@@ -26310,7 +26313,7 @@ inline int32_t CreateTable::_internal_bet() const {
   return bet_;
 }
 inline int32_t CreateTable::bet() const {
-  // @@protoc_insertion_point(field_get:CreateTable.bet)
+  // @@protoc_insertion_point(field_get:packet.CreateTable.bet)
   return _internal_bet();
 }
 inline void CreateTable::_internal_set_bet(int32_t value) {
@@ -26319,7 +26322,7 @@ inline void CreateTable::_internal_set_bet(int32_t value) {
 }
 inline void CreateTable::set_bet(int32_t value) {
   _internal_set_bet(value);
-  // @@protoc_insertion_point(field_set:CreateTable.bet)
+  // @@protoc_insertion_point(field_set:packet.CreateTable.bet)
 }
 
 // int32 player_mode = 2;
@@ -26330,7 +26333,7 @@ inline int32_t CreateTable::_internal_player_mode() const {
   return player_mode_;
 }
 inline int32_t CreateTable::player_mode() const {
-  // @@protoc_insertion_point(field_get:CreateTable.player_mode)
+  // @@protoc_insertion_point(field_get:packet.CreateTable.player_mode)
   return _internal_player_mode();
 }
 inline void CreateTable::_internal_set_player_mode(int32_t value) {
@@ -26339,7 +26342,7 @@ inline void CreateTable::_internal_set_player_mode(int32_t value) {
 }
 inline void CreateTable::set_player_mode(int32_t value) {
   _internal_set_player_mode(value);
-  // @@protoc_insertion_point(field_set:CreateTable.player_mode)
+  // @@protoc_insertion_point(field_set:packet.CreateTable.player_mode)
 }
 
 // bool is_private = 3;
@@ -26350,7 +26353,7 @@ inline bool CreateTable::_internal_is_private() const {
   return is_private_;
 }
 inline bool CreateTable::is_private() const {
-  // @@protoc_insertion_point(field_get:CreateTable.is_private)
+  // @@protoc_insertion_point(field_get:packet.CreateTable.is_private)
   return _internal_is_private();
 }
 inline void CreateTable::_internal_set_is_private(bool value) {
@@ -26359,7 +26362,7 @@ inline void CreateTable::_internal_set_is_private(bool value) {
 }
 inline void CreateTable::set_is_private(bool value) {
   _internal_set_is_private(value);
-  // @@protoc_insertion_point(field_set:CreateTable.is_private)
+  // @@protoc_insertion_point(field_set:packet.CreateTable.is_private)
 }
 
 // int32 point_mode = 4;
@@ -26370,7 +26373,7 @@ inline int32_t CreateTable::_internal_point_mode() const {
   return point_mode_;
 }
 inline int32_t CreateTable::point_mode() const {
-  // @@protoc_insertion_point(field_get:CreateTable.point_mode)
+  // @@protoc_insertion_point(field_get:packet.CreateTable.point_mode)
   return _internal_point_mode();
 }
 inline void CreateTable::_internal_set_point_mode(int32_t value) {
@@ -26379,7 +26382,7 @@ inline void CreateTable::_internal_set_point_mode(int32_t value) {
 }
 inline void CreateTable::set_point_mode(int32_t value) {
   _internal_set_point_mode(value);
-  // @@protoc_insertion_point(field_set:CreateTable.point_mode)
+  // @@protoc_insertion_point(field_set:packet.CreateTable.point_mode)
 }
 
 // bool bet_mode = 5;
@@ -26390,7 +26393,7 @@ inline bool CreateTable::_internal_bet_mode() const {
   return bet_mode_;
 }
 inline bool CreateTable::bet_mode() const {
-  // @@protoc_insertion_point(field_get:CreateTable.bet_mode)
+  // @@protoc_insertion_point(field_get:packet.CreateTable.bet_mode)
   return _internal_bet_mode();
 }
 inline void CreateTable::_internal_set_bet_mode(bool value) {
@@ -26399,7 +26402,7 @@ inline void CreateTable::_internal_set_bet_mode(bool value) {
 }
 inline void CreateTable::set_bet_mode(bool value) {
   _internal_set_bet_mode(value);
-  // @@protoc_insertion_point(field_set:CreateTable.bet_mode)
+  // @@protoc_insertion_point(field_set:packet.CreateTable.bet_mode)
 }
 
 // -------------------------------------------------------------------
@@ -26414,7 +26417,7 @@ inline int32_t JoinTableById::_internal_match_id() const {
   return match_id_;
 }
 inline int32_t JoinTableById::match_id() const {
-  // @@protoc_insertion_point(field_get:JoinTableById.match_id)
+  // @@protoc_insertion_point(field_get:packet.JoinTableById.match_id)
   return _internal_match_id();
 }
 inline void JoinTableById::_internal_set_match_id(int32_t value) {
@@ -26423,7 +26426,7 @@ inline void JoinTableById::_internal_set_match_id(int32_t value) {
 }
 inline void JoinTableById::set_match_id(int32_t value) {
   _internal_set_match_id(value);
-  // @@protoc_insertion_point(field_set:JoinTableById.match_id)
+  // @@protoc_insertion_point(field_set:packet.JoinTableById.match_id)
 }
 
 // -------------------------------------------------------------------
@@ -26438,7 +26441,7 @@ inline int32_t JoinTableResponse::_internal_error() const {
   return error_;
 }
 inline int32_t JoinTableResponse::error() const {
-  // @@protoc_insertion_point(field_get:JoinTableResponse.error)
+  // @@protoc_insertion_point(field_get:packet.JoinTableResponse.error)
   return _internal_error();
 }
 inline void JoinTableResponse::_internal_set_error(int32_t value) {
@@ -26447,7 +26450,7 @@ inline void JoinTableResponse::_internal_set_error(int32_t value) {
 }
 inline void JoinTableResponse::set_error(int32_t value) {
   _internal_set_error(value);
-  // @@protoc_insertion_point(field_set:JoinTableResponse.error)
+  // @@protoc_insertion_point(field_set:packet.JoinTableResponse.error)
 }
 
 // -------------------------------------------------------------------
@@ -26462,7 +26465,7 @@ inline int32_t ClaimSupport::_internal_support_amount() const {
   return support_amount_;
 }
 inline int32_t ClaimSupport::support_amount() const {
-  // @@protoc_insertion_point(field_get:ClaimSupport.support_amount)
+  // @@protoc_insertion_point(field_get:packet.ClaimSupport.support_amount)
   return _internal_support_amount();
 }
 inline void ClaimSupport::_internal_set_support_amount(int32_t value) {
@@ -26471,7 +26474,7 @@ inline void ClaimSupport::_internal_set_support_amount(int32_t value) {
 }
 inline void ClaimSupport::set_support_amount(int32_t value) {
   _internal_set_support_amount(value);
-  // @@protoc_insertion_point(field_set:ClaimSupport.support_amount)
+  // @@protoc_insertion_point(field_set:packet.ClaimSupport.support_amount)
 }
 
 // -------------------------------------------------------------------
@@ -26486,7 +26489,7 @@ inline int32_t AppCodeVersion::_internal_android_version() const {
   return android_version_;
 }
 inline int32_t AppCodeVersion::android_version() const {
-  // @@protoc_insertion_point(field_get:AppCodeVersion.android_version)
+  // @@protoc_insertion_point(field_get:packet.AppCodeVersion.android_version)
   return _internal_android_version();
 }
 inline void AppCodeVersion::_internal_set_android_version(int32_t value) {
@@ -26495,7 +26498,7 @@ inline void AppCodeVersion::_internal_set_android_version(int32_t value) {
 }
 inline void AppCodeVersion::set_android_version(int32_t value) {
   _internal_set_android_version(value);
-  // @@protoc_insertion_point(field_set:AppCodeVersion.android_version)
+  // @@protoc_insertion_point(field_set:packet.AppCodeVersion.android_version)
 }
 
 // int32 android_forced_update_version = 2;
@@ -26506,7 +26509,7 @@ inline int32_t AppCodeVersion::_internal_android_forced_update_version() const {
   return android_forced_update_version_;
 }
 inline int32_t AppCodeVersion::android_forced_update_version() const {
-  // @@protoc_insertion_point(field_get:AppCodeVersion.android_forced_update_version)
+  // @@protoc_insertion_point(field_get:packet.AppCodeVersion.android_forced_update_version)
   return _internal_android_forced_update_version();
 }
 inline void AppCodeVersion::_internal_set_android_forced_update_version(int32_t value) {
@@ -26515,7 +26518,7 @@ inline void AppCodeVersion::_internal_set_android_forced_update_version(int32_t 
 }
 inline void AppCodeVersion::set_android_forced_update_version(int32_t value) {
   _internal_set_android_forced_update_version(value);
-  // @@protoc_insertion_point(field_set:AppCodeVersion.android_forced_update_version)
+  // @@protoc_insertion_point(field_set:packet.AppCodeVersion.android_forced_update_version)
 }
 
 // int32 android_remind_update_version = 3;
@@ -26526,7 +26529,7 @@ inline int32_t AppCodeVersion::_internal_android_remind_update_version() const {
   return android_remind_update_version_;
 }
 inline int32_t AppCodeVersion::android_remind_update_version() const {
-  // @@protoc_insertion_point(field_get:AppCodeVersion.android_remind_update_version)
+  // @@protoc_insertion_point(field_get:packet.AppCodeVersion.android_remind_update_version)
   return _internal_android_remind_update_version();
 }
 inline void AppCodeVersion::_internal_set_android_remind_update_version(int32_t value) {
@@ -26535,7 +26538,7 @@ inline void AppCodeVersion::_internal_set_android_remind_update_version(int32_t 
 }
 inline void AppCodeVersion::set_android_remind_update_version(int32_t value) {
   _internal_set_android_remind_update_version(value);
-  // @@protoc_insertion_point(field_set:AppCodeVersion.android_remind_update_version)
+  // @@protoc_insertion_point(field_set:packet.AppCodeVersion.android_remind_update_version)
 }
 
 // int32 ios_version = 4;
@@ -26546,7 +26549,7 @@ inline int32_t AppCodeVersion::_internal_ios_version() const {
   return ios_version_;
 }
 inline int32_t AppCodeVersion::ios_version() const {
-  // @@protoc_insertion_point(field_get:AppCodeVersion.ios_version)
+  // @@protoc_insertion_point(field_get:packet.AppCodeVersion.ios_version)
   return _internal_ios_version();
 }
 inline void AppCodeVersion::_internal_set_ios_version(int32_t value) {
@@ -26555,7 +26558,7 @@ inline void AppCodeVersion::_internal_set_ios_version(int32_t value) {
 }
 inline void AppCodeVersion::set_ios_version(int32_t value) {
   _internal_set_ios_version(value);
-  // @@protoc_insertion_point(field_set:AppCodeVersion.ios_version)
+  // @@protoc_insertion_point(field_set:packet.AppCodeVersion.ios_version)
 }
 
 // int32 ios_forced_update_version = 5;
@@ -26566,7 +26569,7 @@ inline int32_t AppCodeVersion::_internal_ios_forced_update_version() const {
   return ios_forced_update_version_;
 }
 inline int32_t AppCodeVersion::ios_forced_update_version() const {
-  // @@protoc_insertion_point(field_get:AppCodeVersion.ios_forced_update_version)
+  // @@protoc_insertion_point(field_get:packet.AppCodeVersion.ios_forced_update_version)
   return _internal_ios_forced_update_version();
 }
 inline void AppCodeVersion::_internal_set_ios_forced_update_version(int32_t value) {
@@ -26575,7 +26578,7 @@ inline void AppCodeVersion::_internal_set_ios_forced_update_version(int32_t valu
 }
 inline void AppCodeVersion::set_ios_forced_update_version(int32_t value) {
   _internal_set_ios_forced_update_version(value);
-  // @@protoc_insertion_point(field_set:AppCodeVersion.ios_forced_update_version)
+  // @@protoc_insertion_point(field_set:packet.AppCodeVersion.ios_forced_update_version)
 }
 
 // int32 ios_remind_update_version = 6;
@@ -26586,7 +26589,7 @@ inline int32_t AppCodeVersion::_internal_ios_remind_update_version() const {
   return ios_remind_update_version_;
 }
 inline int32_t AppCodeVersion::ios_remind_update_version() const {
-  // @@protoc_insertion_point(field_get:AppCodeVersion.ios_remind_update_version)
+  // @@protoc_insertion_point(field_get:packet.AppCodeVersion.ios_remind_update_version)
   return _internal_ios_remind_update_version();
 }
 inline void AppCodeVersion::_internal_set_ios_remind_update_version(int32_t value) {
@@ -26595,7 +26598,7 @@ inline void AppCodeVersion::_internal_set_ios_remind_update_version(int32_t valu
 }
 inline void AppCodeVersion::set_ios_remind_update_version(int32_t value) {
   _internal_set_ios_remind_update_version(value);
-  // @@protoc_insertion_point(field_set:AppCodeVersion.ios_remind_update_version)
+  // @@protoc_insertion_point(field_set:packet.AppCodeVersion.ios_remind_update_version)
 }
 
 // int32 ios_reviewing_version = 7;
@@ -26606,7 +26609,7 @@ inline int32_t AppCodeVersion::_internal_ios_reviewing_version() const {
   return ios_reviewing_version_;
 }
 inline int32_t AppCodeVersion::ios_reviewing_version() const {
-  // @@protoc_insertion_point(field_get:AppCodeVersion.ios_reviewing_version)
+  // @@protoc_insertion_point(field_get:packet.AppCodeVersion.ios_reviewing_version)
   return _internal_ios_reviewing_version();
 }
 inline void AppCodeVersion::_internal_set_ios_reviewing_version(int32_t value) {
@@ -26615,7 +26618,7 @@ inline void AppCodeVersion::_internal_set_ios_reviewing_version(int32_t value) {
 }
 inline void AppCodeVersion::set_ios_reviewing_version(int32_t value) {
   _internal_set_ios_reviewing_version(value);
-  // @@protoc_insertion_point(field_set:AppCodeVersion.ios_reviewing_version)
+  // @@protoc_insertion_point(field_set:packet.AppCodeVersion.ios_reviewing_version)
 }
 
 // -------------------------------------------------------------------
@@ -26630,7 +26633,7 @@ inline int32_t PlayCardResponse::_internal_status() const {
   return status_;
 }
 inline int32_t PlayCardResponse::status() const {
-  // @@protoc_insertion_point(field_get:PlayCardResponse.status)
+  // @@protoc_insertion_point(field_get:packet.PlayCardResponse.status)
   return _internal_status();
 }
 inline void PlayCardResponse::_internal_set_status(int32_t value) {
@@ -26639,7 +26642,7 @@ inline void PlayCardResponse::_internal_set_status(int32_t value) {
 }
 inline void PlayCardResponse::set_status(int32_t value) {
   _internal_set_status(value);
-  // @@protoc_insertion_point(field_set:PlayCardResponse.status)
+  // @@protoc_insertion_point(field_set:packet.PlayCardResponse.status)
 }
 
 // -------------------------------------------------------------------
@@ -26660,19 +26663,19 @@ inline int32_t CheatViewCardBot::_internal_cards(int index) const {
   return cards_.Get(index);
 }
 inline int32_t CheatViewCardBot::cards(int index) const {
-  // @@protoc_insertion_point(field_get:CheatViewCardBot.cards)
+  // @@protoc_insertion_point(field_get:packet.CheatViewCardBot.cards)
   return _internal_cards(index);
 }
 inline void CheatViewCardBot::set_cards(int index, int32_t value) {
   cards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:CheatViewCardBot.cards)
+  // @@protoc_insertion_point(field_set:packet.CheatViewCardBot.cards)
 }
 inline void CheatViewCardBot::_internal_add_cards(int32_t value) {
   cards_.Add(value);
 }
 inline void CheatViewCardBot::add_cards(int32_t value) {
   _internal_add_cards(value);
-  // @@protoc_insertion_point(field_add:CheatViewCardBot.cards)
+  // @@protoc_insertion_point(field_add:packet.CheatViewCardBot.cards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 CheatViewCardBot::_internal_cards() const {
@@ -26680,7 +26683,7 @@ CheatViewCardBot::_internal_cards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 CheatViewCardBot::cards() const {
-  // @@protoc_insertion_point(field_list:CheatViewCardBot.cards)
+  // @@protoc_insertion_point(field_list:packet.CheatViewCardBot.cards)
   return _internal_cards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -26689,7 +26692,7 @@ CheatViewCardBot::_internal_mutable_cards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 CheatViewCardBot::mutable_cards() {
-  // @@protoc_insertion_point(field_mutable_list:CheatViewCardBot.cards)
+  // @@protoc_insertion_point(field_mutable_list:packet.CheatViewCardBot.cards)
   return _internal_mutable_cards();
 }
 
@@ -26705,7 +26708,7 @@ inline int32_t InviteFriendPlay::_internal_uid() const {
   return uid_;
 }
 inline int32_t InviteFriendPlay::uid() const {
-  // @@protoc_insertion_point(field_get:InviteFriendPlay.uid)
+  // @@protoc_insertion_point(field_get:packet.InviteFriendPlay.uid)
   return _internal_uid();
 }
 inline void InviteFriendPlay::_internal_set_uid(int32_t value) {
@@ -26714,7 +26717,7 @@ inline void InviteFriendPlay::_internal_set_uid(int32_t value) {
 }
 inline void InviteFriendPlay::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:InviteFriendPlay.uid)
+  // @@protoc_insertion_point(field_set:packet.InviteFriendPlay.uid)
 }
 
 // int32 room_id = 2;
@@ -26725,7 +26728,7 @@ inline int32_t InviteFriendPlay::_internal_room_id() const {
   return room_id_;
 }
 inline int32_t InviteFriendPlay::room_id() const {
-  // @@protoc_insertion_point(field_get:InviteFriendPlay.room_id)
+  // @@protoc_insertion_point(field_get:packet.InviteFriendPlay.room_id)
   return _internal_room_id();
 }
 inline void InviteFriendPlay::_internal_set_room_id(int32_t value) {
@@ -26734,7 +26737,7 @@ inline void InviteFriendPlay::_internal_set_room_id(int32_t value) {
 }
 inline void InviteFriendPlay::set_room_id(int32_t value) {
   _internal_set_room_id(value);
-  // @@protoc_insertion_point(field_set:InviteFriendPlay.room_id)
+  // @@protoc_insertion_point(field_set:packet.InviteFriendPlay.room_id)
 }
 
 // -------------------------------------------------------------------
@@ -26749,7 +26752,7 @@ inline int32_t GameActionNapoli::_internal_uid() const {
   return uid_;
 }
 inline int32_t GameActionNapoli::uid() const {
-  // @@protoc_insertion_point(field_get:GameActionNapoli.uid)
+  // @@protoc_insertion_point(field_get:packet.GameActionNapoli.uid)
   return _internal_uid();
 }
 inline void GameActionNapoli::_internal_set_uid(int32_t value) {
@@ -26758,7 +26761,7 @@ inline void GameActionNapoli::_internal_set_uid(int32_t value) {
 }
 inline void GameActionNapoli::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:GameActionNapoli.uid)
+  // @@protoc_insertion_point(field_set:packet.GameActionNapoli.uid)
 }
 
 // int32 point_add = 2;
@@ -26769,7 +26772,7 @@ inline int32_t GameActionNapoli::_internal_point_add() const {
   return point_add_;
 }
 inline int32_t GameActionNapoli::point_add() const {
-  // @@protoc_insertion_point(field_get:GameActionNapoli.point_add)
+  // @@protoc_insertion_point(field_get:packet.GameActionNapoli.point_add)
   return _internal_point_add();
 }
 inline void GameActionNapoli::_internal_set_point_add(int32_t value) {
@@ -26778,7 +26781,7 @@ inline void GameActionNapoli::_internal_set_point_add(int32_t value) {
 }
 inline void GameActionNapoli::set_point_add(int32_t value) {
   _internal_set_point_add(value);
-  // @@protoc_insertion_point(field_set:GameActionNapoli.point_add)
+  // @@protoc_insertion_point(field_set:packet.GameActionNapoli.point_add)
 }
 
 // repeated int32 suits = 3;
@@ -26795,19 +26798,19 @@ inline int32_t GameActionNapoli::_internal_suits(int index) const {
   return suits_.Get(index);
 }
 inline int32_t GameActionNapoli::suits(int index) const {
-  // @@protoc_insertion_point(field_get:GameActionNapoli.suits)
+  // @@protoc_insertion_point(field_get:packet.GameActionNapoli.suits)
   return _internal_suits(index);
 }
 inline void GameActionNapoli::set_suits(int index, int32_t value) {
   suits_.Set(index, value);
-  // @@protoc_insertion_point(field_set:GameActionNapoli.suits)
+  // @@protoc_insertion_point(field_set:packet.GameActionNapoli.suits)
 }
 inline void GameActionNapoli::_internal_add_suits(int32_t value) {
   suits_.Add(value);
 }
 inline void GameActionNapoli::add_suits(int32_t value) {
   _internal_add_suits(value);
-  // @@protoc_insertion_point(field_add:GameActionNapoli.suits)
+  // @@protoc_insertion_point(field_add:packet.GameActionNapoli.suits)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameActionNapoli::_internal_suits() const {
@@ -26815,7 +26818,7 @@ GameActionNapoli::_internal_suits() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 GameActionNapoli::suits() const {
-  // @@protoc_insertion_point(field_list:GameActionNapoli.suits)
+  // @@protoc_insertion_point(field_list:packet.GameActionNapoli.suits)
   return _internal_suits();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -26824,7 +26827,7 @@ GameActionNapoli::_internal_mutable_suits() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 GameActionNapoli::mutable_suits() {
-  // @@protoc_insertion_point(field_mutable_list:GameActionNapoli.suits)
+  // @@protoc_insertion_point(field_mutable_list:packet.GameActionNapoli.suits)
   return _internal_mutable_suits();
 }
 
@@ -26840,7 +26843,7 @@ inline int32_t CustomerServiceReport::_internal_report_type() const {
   return report_type_;
 }
 inline int32_t CustomerServiceReport::report_type() const {
-  // @@protoc_insertion_point(field_get:CustomerServiceReport.report_type)
+  // @@protoc_insertion_point(field_get:packet.CustomerServiceReport.report_type)
   return _internal_report_type();
 }
 inline void CustomerServiceReport::_internal_set_report_type(int32_t value) {
@@ -26849,7 +26852,7 @@ inline void CustomerServiceReport::_internal_set_report_type(int32_t value) {
 }
 inline void CustomerServiceReport::set_report_type(int32_t value) {
   _internal_set_report_type(value);
-  // @@protoc_insertion_point(field_set:CustomerServiceReport.report_type)
+  // @@protoc_insertion_point(field_set:packet.CustomerServiceReport.report_type)
 }
 
 // string report_content = 2;
@@ -26857,7 +26860,7 @@ inline void CustomerServiceReport::clear_report_content() {
   report_content_.ClearToEmpty();
 }
 inline const std::string& CustomerServiceReport::report_content() const {
-  // @@protoc_insertion_point(field_get:CustomerServiceReport.report_content)
+  // @@protoc_insertion_point(field_get:packet.CustomerServiceReport.report_content)
   return _internal_report_content();
 }
 template <typename ArgT0, typename... ArgT>
@@ -26865,11 +26868,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void CustomerServiceReport::set_report_content(ArgT0&& arg0, ArgT... args) {
  
  report_content_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:CustomerServiceReport.report_content)
+  // @@protoc_insertion_point(field_set:packet.CustomerServiceReport.report_content)
 }
 inline std::string* CustomerServiceReport::mutable_report_content() {
   std::string* _s = _internal_mutable_report_content();
-  // @@protoc_insertion_point(field_mutable:CustomerServiceReport.report_content)
+  // @@protoc_insertion_point(field_mutable:packet.CustomerServiceReport.report_content)
   return _s;
 }
 inline const std::string& CustomerServiceReport::_internal_report_content() const {
@@ -26884,7 +26887,7 @@ inline std::string* CustomerServiceReport::_internal_mutable_report_content() {
   return report_content_.Mutable(GetArenaForAllocation());
 }
 inline std::string* CustomerServiceReport::release_report_content() {
-  // @@protoc_insertion_point(field_release:CustomerServiceReport.report_content)
+  // @@protoc_insertion_point(field_release:packet.CustomerServiceReport.report_content)
   return report_content_.Release();
 }
 inline void CustomerServiceReport::set_allocated_report_content(std::string* report_content) {
@@ -26899,7 +26902,7 @@ inline void CustomerServiceReport::set_allocated_report_content(std::string* rep
     report_content_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:CustomerServiceReport.report_content)
+  // @@protoc_insertion_point(field_set_allocated:packet.CustomerServiceReport.report_content)
 }
 
 // -------------------------------------------------------------------
@@ -26911,7 +26914,7 @@ inline void AdminBroadcast::clear_mes() {
   mes_.ClearToEmpty();
 }
 inline const std::string& AdminBroadcast::mes() const {
-  // @@protoc_insertion_point(field_get:AdminBroadcast.mes)
+  // @@protoc_insertion_point(field_get:packet.AdminBroadcast.mes)
   return _internal_mes();
 }
 template <typename ArgT0, typename... ArgT>
@@ -26919,11 +26922,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void AdminBroadcast::set_mes(ArgT0&& arg0, ArgT... args) {
  
  mes_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:AdminBroadcast.mes)
+  // @@protoc_insertion_point(field_set:packet.AdminBroadcast.mes)
 }
 inline std::string* AdminBroadcast::mutable_mes() {
   std::string* _s = _internal_mutable_mes();
-  // @@protoc_insertion_point(field_mutable:AdminBroadcast.mes)
+  // @@protoc_insertion_point(field_mutable:packet.AdminBroadcast.mes)
   return _s;
 }
 inline const std::string& AdminBroadcast::_internal_mes() const {
@@ -26938,7 +26941,7 @@ inline std::string* AdminBroadcast::_internal_mutable_mes() {
   return mes_.Mutable(GetArenaForAllocation());
 }
 inline std::string* AdminBroadcast::release_mes() {
-  // @@protoc_insertion_point(field_release:AdminBroadcast.mes)
+  // @@protoc_insertion_point(field_release:packet.AdminBroadcast.mes)
   return mes_.Release();
 }
 inline void AdminBroadcast::set_allocated_mes(std::string* mes) {
@@ -26953,7 +26956,7 @@ inline void AdminBroadcast::set_allocated_mes(std::string* mes) {
     mes_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:AdminBroadcast.mes)
+  // @@protoc_insertion_point(field_set_allocated:packet.AdminBroadcast.mes)
 }
 
 // -------------------------------------------------------------------
@@ -26965,7 +26968,7 @@ inline void PaymentPaypalRequestOrder::clear_pack_id() {
   pack_id_.ClearToEmpty();
 }
 inline const std::string& PaymentPaypalRequestOrder::pack_id() const {
-  // @@protoc_insertion_point(field_get:PaymentPaypalRequestOrder.pack_id)
+  // @@protoc_insertion_point(field_get:packet.PaymentPaypalRequestOrder.pack_id)
   return _internal_pack_id();
 }
 template <typename ArgT0, typename... ArgT>
@@ -26973,11 +26976,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentPaypalRequestOrder::set_pack_id(ArgT0&& arg0, ArgT... args) {
  
  pack_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentPaypalRequestOrder.pack_id)
+  // @@protoc_insertion_point(field_set:packet.PaymentPaypalRequestOrder.pack_id)
 }
 inline std::string* PaymentPaypalRequestOrder::mutable_pack_id() {
   std::string* _s = _internal_mutable_pack_id();
-  // @@protoc_insertion_point(field_mutable:PaymentPaypalRequestOrder.pack_id)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentPaypalRequestOrder.pack_id)
   return _s;
 }
 inline const std::string& PaymentPaypalRequestOrder::_internal_pack_id() const {
@@ -26992,7 +26995,7 @@ inline std::string* PaymentPaypalRequestOrder::_internal_mutable_pack_id() {
   return pack_id_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentPaypalRequestOrder::release_pack_id() {
-  // @@protoc_insertion_point(field_release:PaymentPaypalRequestOrder.pack_id)
+  // @@protoc_insertion_point(field_release:packet.PaymentPaypalRequestOrder.pack_id)
   return pack_id_.Release();
 }
 inline void PaymentPaypalRequestOrder::set_allocated_pack_id(std::string* pack_id) {
@@ -27007,7 +27010,7 @@ inline void PaymentPaypalRequestOrder::set_allocated_pack_id(std::string* pack_i
     pack_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentPaypalRequestOrder.pack_id)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentPaypalRequestOrder.pack_id)
 }
 
 // -------------------------------------------------------------------
@@ -27019,7 +27022,7 @@ inline void PaymentPaypalOrder::clear_order_url() {
   order_url_.ClearToEmpty();
 }
 inline const std::string& PaymentPaypalOrder::order_url() const {
-  // @@protoc_insertion_point(field_get:PaymentPaypalOrder.order_url)
+  // @@protoc_insertion_point(field_get:packet.PaymentPaypalOrder.order_url)
   return _internal_order_url();
 }
 template <typename ArgT0, typename... ArgT>
@@ -27027,11 +27030,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void PaymentPaypalOrder::set_order_url(ArgT0&& arg0, ArgT... args) {
  
  order_url_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:PaymentPaypalOrder.order_url)
+  // @@protoc_insertion_point(field_set:packet.PaymentPaypalOrder.order_url)
 }
 inline std::string* PaymentPaypalOrder::mutable_order_url() {
   std::string* _s = _internal_mutable_order_url();
-  // @@protoc_insertion_point(field_mutable:PaymentPaypalOrder.order_url)
+  // @@protoc_insertion_point(field_mutable:packet.PaymentPaypalOrder.order_url)
   return _s;
 }
 inline const std::string& PaymentPaypalOrder::_internal_order_url() const {
@@ -27046,7 +27049,7 @@ inline std::string* PaymentPaypalOrder::_internal_mutable_order_url() {
   return order_url_.Mutable(GetArenaForAllocation());
 }
 inline std::string* PaymentPaypalOrder::release_order_url() {
-  // @@protoc_insertion_point(field_release:PaymentPaypalOrder.order_url)
+  // @@protoc_insertion_point(field_release:packet.PaymentPaypalOrder.order_url)
   return order_url_.Release();
 }
 inline void PaymentPaypalOrder::set_allocated_order_url(std::string* order_url) {
@@ -27061,7 +27064,7 @@ inline void PaymentPaypalOrder::set_allocated_order_url(std::string* order_url) 
     order_url_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:PaymentPaypalOrder.order_url)
+  // @@protoc_insertion_point(field_set_allocated:packet.PaymentPaypalOrder.order_url)
 }
 
 // -------------------------------------------------------------------
@@ -27080,7 +27083,7 @@ inline int32_t SetteMezzoNewUserJoinMatch::_internal_uid() const {
   return uid_;
 }
 inline int32_t SetteMezzoNewUserJoinMatch::uid() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoNewUserJoinMatch.uid)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoNewUserJoinMatch.uid)
   return _internal_uid();
 }
 inline void SetteMezzoNewUserJoinMatch::_internal_set_uid(int32_t value) {
@@ -27089,7 +27092,7 @@ inline void SetteMezzoNewUserJoinMatch::_internal_set_uid(int32_t value) {
 }
 inline void SetteMezzoNewUserJoinMatch::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoNewUserJoinMatch.uid)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoNewUserJoinMatch.uid)
 }
 
 // int64 gold = 2;
@@ -27100,7 +27103,7 @@ inline int64_t SetteMezzoNewUserJoinMatch::_internal_gold() const {
   return gold_;
 }
 inline int64_t SetteMezzoNewUserJoinMatch::gold() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoNewUserJoinMatch.gold)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoNewUserJoinMatch.gold)
   return _internal_gold();
 }
 inline void SetteMezzoNewUserJoinMatch::_internal_set_gold(int64_t value) {
@@ -27109,7 +27112,7 @@ inline void SetteMezzoNewUserJoinMatch::_internal_set_gold(int64_t value) {
 }
 inline void SetteMezzoNewUserJoinMatch::set_gold(int64_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoNewUserJoinMatch.gold)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoNewUserJoinMatch.gold)
 }
 
 // string name = 3;
@@ -27117,7 +27120,7 @@ inline void SetteMezzoNewUserJoinMatch::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& SetteMezzoNewUserJoinMatch::name() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoNewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoNewUserJoinMatch.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -27125,11 +27128,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void SetteMezzoNewUserJoinMatch::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:SetteMezzoNewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoNewUserJoinMatch.name)
 }
 inline std::string* SetteMezzoNewUserJoinMatch::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:SetteMezzoNewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_mutable:packet.SetteMezzoNewUserJoinMatch.name)
   return _s;
 }
 inline const std::string& SetteMezzoNewUserJoinMatch::_internal_name() const {
@@ -27144,7 +27147,7 @@ inline std::string* SetteMezzoNewUserJoinMatch::_internal_mutable_name() {
   return name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* SetteMezzoNewUserJoinMatch::release_name() {
-  // @@protoc_insertion_point(field_release:SetteMezzoNewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_release:packet.SetteMezzoNewUserJoinMatch.name)
   return name_.Release();
 }
 inline void SetteMezzoNewUserJoinMatch::set_allocated_name(std::string* name) {
@@ -27159,7 +27162,7 @@ inline void SetteMezzoNewUserJoinMatch::set_allocated_name(std::string* name) {
     name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:SetteMezzoNewUserJoinMatch.name)
+  // @@protoc_insertion_point(field_set_allocated:packet.SetteMezzoNewUserJoinMatch.name)
 }
 
 // int32 seat_server = 4;
@@ -27170,7 +27173,7 @@ inline int32_t SetteMezzoNewUserJoinMatch::_internal_seat_server() const {
   return seat_server_;
 }
 inline int32_t SetteMezzoNewUserJoinMatch::seat_server() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoNewUserJoinMatch.seat_server)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoNewUserJoinMatch.seat_server)
   return _internal_seat_server();
 }
 inline void SetteMezzoNewUserJoinMatch::_internal_set_seat_server(int32_t value) {
@@ -27179,7 +27182,7 @@ inline void SetteMezzoNewUserJoinMatch::_internal_set_seat_server(int32_t value)
 }
 inline void SetteMezzoNewUserJoinMatch::set_seat_server(int32_t value) {
   _internal_set_seat_server(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoNewUserJoinMatch.seat_server)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoNewUserJoinMatch.seat_server)
 }
 
 // int32 team_id = 5;
@@ -27190,7 +27193,7 @@ inline int32_t SetteMezzoNewUserJoinMatch::_internal_team_id() const {
   return team_id_;
 }
 inline int32_t SetteMezzoNewUserJoinMatch::team_id() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoNewUserJoinMatch.team_id)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoNewUserJoinMatch.team_id)
   return _internal_team_id();
 }
 inline void SetteMezzoNewUserJoinMatch::_internal_set_team_id(int32_t value) {
@@ -27199,7 +27202,7 @@ inline void SetteMezzoNewUserJoinMatch::_internal_set_team_id(int32_t value) {
 }
 inline void SetteMezzoNewUserJoinMatch::set_team_id(int32_t value) {
   _internal_set_team_id(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoNewUserJoinMatch.team_id)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoNewUserJoinMatch.team_id)
 }
 
 // string avatar = 6;
@@ -27207,7 +27210,7 @@ inline void SetteMezzoNewUserJoinMatch::clear_avatar() {
   avatar_.ClearToEmpty();
 }
 inline const std::string& SetteMezzoNewUserJoinMatch::avatar() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoNewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoNewUserJoinMatch.avatar)
   return _internal_avatar();
 }
 template <typename ArgT0, typename... ArgT>
@@ -27215,11 +27218,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void SetteMezzoNewUserJoinMatch::set_avatar(ArgT0&& arg0, ArgT... args) {
  
  avatar_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:SetteMezzoNewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoNewUserJoinMatch.avatar)
 }
 inline std::string* SetteMezzoNewUserJoinMatch::mutable_avatar() {
   std::string* _s = _internal_mutable_avatar();
-  // @@protoc_insertion_point(field_mutable:SetteMezzoNewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_mutable:packet.SetteMezzoNewUserJoinMatch.avatar)
   return _s;
 }
 inline const std::string& SetteMezzoNewUserJoinMatch::_internal_avatar() const {
@@ -27234,7 +27237,7 @@ inline std::string* SetteMezzoNewUserJoinMatch::_internal_mutable_avatar() {
   return avatar_.Mutable(GetArenaForAllocation());
 }
 inline std::string* SetteMezzoNewUserJoinMatch::release_avatar() {
-  // @@protoc_insertion_point(field_release:SetteMezzoNewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_release:packet.SetteMezzoNewUserJoinMatch.avatar)
   return avatar_.Release();
 }
 inline void SetteMezzoNewUserJoinMatch::set_allocated_avatar(std::string* avatar) {
@@ -27249,7 +27252,7 @@ inline void SetteMezzoNewUserJoinMatch::set_allocated_avatar(std::string* avatar
     avatar_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:SetteMezzoNewUserJoinMatch.avatar)
+  // @@protoc_insertion_point(field_set_allocated:packet.SetteMezzoNewUserJoinMatch.avatar)
 }
 
 // -------------------------------------------------------------------
@@ -27264,7 +27267,7 @@ inline int32_t SetteMezzoPrepareStartGame::_internal_pot_value() const {
   return pot_value_;
 }
 inline int32_t SetteMezzoPrepareStartGame::pot_value() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoPrepareStartGame.pot_value)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoPrepareStartGame.pot_value)
   return _internal_pot_value();
 }
 inline void SetteMezzoPrepareStartGame::_internal_set_pot_value(int32_t value) {
@@ -27273,7 +27276,7 @@ inline void SetteMezzoPrepareStartGame::_internal_set_pot_value(int32_t value) {
 }
 inline void SetteMezzoPrepareStartGame::set_pot_value(int32_t value) {
   _internal_set_pot_value(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoPrepareStartGame.pot_value)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoPrepareStartGame.pot_value)
 }
 
 // repeated int64 players_gold = 2;
@@ -27290,19 +27293,19 @@ inline int64_t SetteMezzoPrepareStartGame::_internal_players_gold(int index) con
   return players_gold_.Get(index);
 }
 inline int64_t SetteMezzoPrepareStartGame::players_gold(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoPrepareStartGame.players_gold)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoPrepareStartGame.players_gold)
   return _internal_players_gold(index);
 }
 inline void SetteMezzoPrepareStartGame::set_players_gold(int index, int64_t value) {
   players_gold_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoPrepareStartGame.players_gold)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoPrepareStartGame.players_gold)
 }
 inline void SetteMezzoPrepareStartGame::_internal_add_players_gold(int64_t value) {
   players_gold_.Add(value);
 }
 inline void SetteMezzoPrepareStartGame::add_players_gold(int64_t value) {
   _internal_add_players_gold(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoPrepareStartGame.players_gold)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoPrepareStartGame.players_gold)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoPrepareStartGame::_internal_players_gold() const {
@@ -27310,7 +27313,7 @@ SetteMezzoPrepareStartGame::_internal_players_gold() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoPrepareStartGame::players_gold() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoPrepareStartGame.players_gold)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoPrepareStartGame.players_gold)
   return _internal_players_gold();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -27319,7 +27322,7 @@ SetteMezzoPrepareStartGame::_internal_mutable_players_gold() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 SetteMezzoPrepareStartGame::mutable_players_gold() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoPrepareStartGame.players_gold)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoPrepareStartGame.players_gold)
   return _internal_mutable_players_gold();
 }
 
@@ -27335,7 +27338,7 @@ inline int32_t SetteMezzoGameInfo::_internal_match_id() const {
   return match_id_;
 }
 inline int32_t SetteMezzoGameInfo::match_id() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.match_id)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.match_id)
   return _internal_match_id();
 }
 inline void SetteMezzoGameInfo::_internal_set_match_id(int32_t value) {
@@ -27344,7 +27347,7 @@ inline void SetteMezzoGameInfo::_internal_set_match_id(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_match_id(int32_t value) {
   _internal_set_match_id(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.match_id)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.match_id)
 }
 
 // int32 game_mode = 2;
@@ -27355,7 +27358,7 @@ inline int32_t SetteMezzoGameInfo::_internal_game_mode() const {
   return game_mode_;
 }
 inline int32_t SetteMezzoGameInfo::game_mode() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.game_mode)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.game_mode)
   return _internal_game_mode();
 }
 inline void SetteMezzoGameInfo::_internal_set_game_mode(int32_t value) {
@@ -27364,7 +27367,7 @@ inline void SetteMezzoGameInfo::_internal_set_game_mode(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_game_mode(int32_t value) {
   _internal_set_game_mode(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.game_mode)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.game_mode)
 }
 
 // int32 player_mode = 3;
@@ -27375,7 +27378,7 @@ inline int32_t SetteMezzoGameInfo::_internal_player_mode() const {
   return player_mode_;
 }
 inline int32_t SetteMezzoGameInfo::player_mode() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.player_mode)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.player_mode)
   return _internal_player_mode();
 }
 inline void SetteMezzoGameInfo::_internal_set_player_mode(int32_t value) {
@@ -27384,7 +27387,7 @@ inline void SetteMezzoGameInfo::_internal_set_player_mode(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_player_mode(int32_t value) {
   _internal_set_player_mode(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.player_mode)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.player_mode)
 }
 
 // repeated int32 uids = 4;
@@ -27401,19 +27404,19 @@ inline int32_t SetteMezzoGameInfo::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t SetteMezzoGameInfo::uids(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.uids)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.uids)
   return _internal_uids(index);
 }
 inline void SetteMezzoGameInfo::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.uids)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.uids)
 }
 inline void SetteMezzoGameInfo::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void SetteMezzoGameInfo::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.uids)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoGameInfo::_internal_uids() const {
@@ -27421,7 +27424,7 @@ SetteMezzoGameInfo::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoGameInfo::uids() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.uids)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -27430,7 +27433,7 @@ SetteMezzoGameInfo::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoGameInfo::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.uids)
   return _internal_mutable_uids();
 }
 
@@ -27448,19 +27451,19 @@ inline int64_t SetteMezzoGameInfo::_internal_user_golds(int index) const {
   return user_golds_.Get(index);
 }
 inline int64_t SetteMezzoGameInfo::user_golds(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.user_golds)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.user_golds)
   return _internal_user_golds(index);
 }
 inline void SetteMezzoGameInfo::set_user_golds(int index, int64_t value) {
   user_golds_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.user_golds)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.user_golds)
 }
 inline void SetteMezzoGameInfo::_internal_add_user_golds(int64_t value) {
   user_golds_.Add(value);
 }
 inline void SetteMezzoGameInfo::add_user_golds(int64_t value) {
   _internal_add_user_golds(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.user_golds)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.user_golds)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoGameInfo::_internal_user_golds() const {
@@ -27468,7 +27471,7 @@ SetteMezzoGameInfo::_internal_user_golds() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoGameInfo::user_golds() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.user_golds)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.user_golds)
   return _internal_user_golds();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -27477,7 +27480,7 @@ SetteMezzoGameInfo::_internal_mutable_user_golds() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 SetteMezzoGameInfo::mutable_user_golds() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.user_golds)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.user_golds)
   return _internal_mutable_user_golds();
 }
 
@@ -27493,66 +27496,66 @@ inline void SetteMezzoGameInfo::clear_user_names() {
 }
 inline std::string* SetteMezzoGameInfo::add_user_names() {
   std::string* _s = _internal_add_user_names();
-  // @@protoc_insertion_point(field_add_mutable:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_add_mutable:packet.SetteMezzoGameInfo.user_names)
   return _s;
 }
 inline const std::string& SetteMezzoGameInfo::_internal_user_names(int index) const {
   return user_names_.Get(index);
 }
 inline const std::string& SetteMezzoGameInfo::user_names(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.user_names)
   return _internal_user_names(index);
 }
 inline std::string* SetteMezzoGameInfo::mutable_user_names(int index) {
-  // @@protoc_insertion_point(field_mutable:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_mutable:packet.SetteMezzoGameInfo.user_names)
   return user_names_.Mutable(index);
 }
 inline void SetteMezzoGameInfo::set_user_names(int index, const std::string& value) {
   user_names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.user_names)
 }
 inline void SetteMezzoGameInfo::set_user_names(int index, std::string&& value) {
   user_names_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.user_names)
 }
 inline void SetteMezzoGameInfo::set_user_names(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   user_names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_set_char:packet.SetteMezzoGameInfo.user_names)
 }
 inline void SetteMezzoGameInfo::set_user_names(int index, const char* value, size_t size) {
   user_names_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_set_pointer:packet.SetteMezzoGameInfo.user_names)
 }
 inline std::string* SetteMezzoGameInfo::_internal_add_user_names() {
   return user_names_.Add();
 }
 inline void SetteMezzoGameInfo::add_user_names(const std::string& value) {
   user_names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.user_names)
 }
 inline void SetteMezzoGameInfo::add_user_names(std::string&& value) {
   user_names_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.user_names)
 }
 inline void SetteMezzoGameInfo::add_user_names(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   user_names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_add_char:packet.SetteMezzoGameInfo.user_names)
 }
 inline void SetteMezzoGameInfo::add_user_names(const char* value, size_t size) {
   user_names_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_add_pointer:packet.SetteMezzoGameInfo.user_names)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 SetteMezzoGameInfo::user_names() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.user_names)
   return user_names_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 SetteMezzoGameInfo::mutable_user_names() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.user_names)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.user_names)
   return &user_names_;
 }
 
@@ -27564,7 +27567,7 @@ inline int32_t SetteMezzoGameInfo::_internal_banker_uid() const {
   return banker_uid_;
 }
 inline int32_t SetteMezzoGameInfo::banker_uid() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.banker_uid)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.banker_uid)
   return _internal_banker_uid();
 }
 inline void SetteMezzoGameInfo::_internal_set_banker_uid(int32_t value) {
@@ -27573,7 +27576,7 @@ inline void SetteMezzoGameInfo::_internal_set_banker_uid(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_banker_uid(int32_t value) {
   _internal_set_banker_uid(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.banker_uid)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.banker_uid)
 }
 
 // int32 current_turn = 8;
@@ -27584,7 +27587,7 @@ inline int32_t SetteMezzoGameInfo::_internal_current_turn() const {
   return current_turn_;
 }
 inline int32_t SetteMezzoGameInfo::current_turn() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.current_turn)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.current_turn)
   return _internal_current_turn();
 }
 inline void SetteMezzoGameInfo::_internal_set_current_turn(int32_t value) {
@@ -27593,7 +27596,7 @@ inline void SetteMezzoGameInfo::_internal_set_current_turn(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_current_turn(int32_t value) {
   _internal_set_current_turn(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.current_turn)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.current_turn)
 }
 
 // int32 game_state = 9;
@@ -27604,7 +27607,7 @@ inline int32_t SetteMezzoGameInfo::_internal_game_state() const {
   return game_state_;
 }
 inline int32_t SetteMezzoGameInfo::game_state() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.game_state)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.game_state)
   return _internal_game_state();
 }
 inline void SetteMezzoGameInfo::_internal_set_game_state(int32_t value) {
@@ -27613,7 +27616,7 @@ inline void SetteMezzoGameInfo::_internal_set_game_state(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_game_state(int32_t value) {
   _internal_set_game_state(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.game_state)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.game_state)
 }
 
 // repeated int32 user_points = 11;
@@ -27630,19 +27633,19 @@ inline int32_t SetteMezzoGameInfo::_internal_user_points(int index) const {
   return user_points_.Get(index);
 }
 inline int32_t SetteMezzoGameInfo::user_points(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.user_points)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.user_points)
   return _internal_user_points(index);
 }
 inline void SetteMezzoGameInfo::set_user_points(int index, int32_t value) {
   user_points_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.user_points)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.user_points)
 }
 inline void SetteMezzoGameInfo::_internal_add_user_points(int32_t value) {
   user_points_.Add(value);
 }
 inline void SetteMezzoGameInfo::add_user_points(int32_t value) {
   _internal_add_user_points(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.user_points)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.user_points)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoGameInfo::_internal_user_points() const {
@@ -27650,7 +27653,7 @@ SetteMezzoGameInfo::_internal_user_points() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoGameInfo::user_points() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.user_points)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.user_points)
   return _internal_user_points();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -27659,7 +27662,7 @@ SetteMezzoGameInfo::_internal_mutable_user_points() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoGameInfo::mutable_user_points() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.user_points)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.user_points)
   return _internal_mutable_user_points();
 }
 
@@ -27677,19 +27680,19 @@ inline int32_t SetteMezzoGameInfo::_internal_team_ids(int index) const {
   return team_ids_.Get(index);
 }
 inline int32_t SetteMezzoGameInfo::team_ids(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.team_ids)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.team_ids)
   return _internal_team_ids(index);
 }
 inline void SetteMezzoGameInfo::set_team_ids(int index, int32_t value) {
   team_ids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.team_ids)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.team_ids)
 }
 inline void SetteMezzoGameInfo::_internal_add_team_ids(int32_t value) {
   team_ids_.Add(value);
 }
 inline void SetteMezzoGameInfo::add_team_ids(int32_t value) {
   _internal_add_team_ids(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.team_ids)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.team_ids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoGameInfo::_internal_team_ids() const {
@@ -27697,7 +27700,7 @@ SetteMezzoGameInfo::_internal_team_ids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoGameInfo::team_ids() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.team_ids)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.team_ids)
   return _internal_team_ids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -27706,7 +27709,7 @@ SetteMezzoGameInfo::_internal_mutable_team_ids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoGameInfo::mutable_team_ids() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.team_ids)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.team_ids)
   return _internal_mutable_team_ids();
 }
 
@@ -27718,7 +27721,7 @@ inline int32_t SetteMezzoGameInfo::_internal_hand_suit() const {
   return hand_suit_;
 }
 inline int32_t SetteMezzoGameInfo::hand_suit() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.hand_suit)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.hand_suit)
   return _internal_hand_suit();
 }
 inline void SetteMezzoGameInfo::_internal_set_hand_suit(int32_t value) {
@@ -27727,7 +27730,7 @@ inline void SetteMezzoGameInfo::_internal_set_hand_suit(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_hand_suit(int32_t value) {
   _internal_set_hand_suit(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.hand_suit)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.hand_suit)
 }
 
 // repeated string avatars = 14;
@@ -27742,66 +27745,66 @@ inline void SetteMezzoGameInfo::clear_avatars() {
 }
 inline std::string* SetteMezzoGameInfo::add_avatars() {
   std::string* _s = _internal_add_avatars();
-  // @@protoc_insertion_point(field_add_mutable:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_add_mutable:packet.SetteMezzoGameInfo.avatars)
   return _s;
 }
 inline const std::string& SetteMezzoGameInfo::_internal_avatars(int index) const {
   return avatars_.Get(index);
 }
 inline const std::string& SetteMezzoGameInfo::avatars(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.avatars)
   return _internal_avatars(index);
 }
 inline std::string* SetteMezzoGameInfo::mutable_avatars(int index) {
-  // @@protoc_insertion_point(field_mutable:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_mutable:packet.SetteMezzoGameInfo.avatars)
   return avatars_.Mutable(index);
 }
 inline void SetteMezzoGameInfo::set_avatars(int index, const std::string& value) {
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.avatars)
 }
 inline void SetteMezzoGameInfo::set_avatars(int index, std::string&& value) {
   avatars_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.avatars)
 }
 inline void SetteMezzoGameInfo::set_avatars(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_set_char:packet.SetteMezzoGameInfo.avatars)
 }
 inline void SetteMezzoGameInfo::set_avatars(int index, const char* value, size_t size) {
   avatars_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_set_pointer:packet.SetteMezzoGameInfo.avatars)
 }
 inline std::string* SetteMezzoGameInfo::_internal_add_avatars() {
   return avatars_.Add();
 }
 inline void SetteMezzoGameInfo::add_avatars(const std::string& value) {
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.avatars)
 }
 inline void SetteMezzoGameInfo::add_avatars(std::string&& value) {
   avatars_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.avatars)
 }
 inline void SetteMezzoGameInfo::add_avatars(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_add_char:packet.SetteMezzoGameInfo.avatars)
 }
 inline void SetteMezzoGameInfo::add_avatars(const char* value, size_t size) {
   avatars_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_add_pointer:packet.SetteMezzoGameInfo.avatars)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 SetteMezzoGameInfo::avatars() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.avatars)
   return avatars_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 SetteMezzoGameInfo::mutable_avatars() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.avatars)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.avatars)
   return &avatars_;
 }
 
@@ -27813,7 +27816,7 @@ inline bool SetteMezzoGameInfo::_internal_is_registered_leave() const {
   return is_registered_leave_;
 }
 inline bool SetteMezzoGameInfo::is_registered_leave() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.is_registered_leave)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.is_registered_leave)
   return _internal_is_registered_leave();
 }
 inline void SetteMezzoGameInfo::_internal_set_is_registered_leave(bool value) {
@@ -27822,7 +27825,7 @@ inline void SetteMezzoGameInfo::_internal_set_is_registered_leave(bool value) {
 }
 inline void SetteMezzoGameInfo::set_is_registered_leave(bool value) {
   _internal_set_is_registered_leave(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.is_registered_leave)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.is_registered_leave)
 }
 
 // int32 bet = 16;
@@ -27833,7 +27836,7 @@ inline int32_t SetteMezzoGameInfo::_internal_bet() const {
   return bet_;
 }
 inline int32_t SetteMezzoGameInfo::bet() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.bet)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.bet)
   return _internal_bet();
 }
 inline void SetteMezzoGameInfo::_internal_set_bet(int32_t value) {
@@ -27842,7 +27845,7 @@ inline void SetteMezzoGameInfo::_internal_set_bet(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_bet(int32_t value) {
   _internal_set_bet(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.bet)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.bet)
 }
 
 // int64 pot_value = 17;
@@ -27853,7 +27856,7 @@ inline int64_t SetteMezzoGameInfo::_internal_pot_value() const {
   return pot_value_;
 }
 inline int64_t SetteMezzoGameInfo::pot_value() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.pot_value)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.pot_value)
   return _internal_pot_value();
 }
 inline void SetteMezzoGameInfo::_internal_set_pot_value(int64_t value) {
@@ -27862,7 +27865,7 @@ inline void SetteMezzoGameInfo::_internal_set_pot_value(int64_t value) {
 }
 inline void SetteMezzoGameInfo::set_pot_value(int64_t value) {
   _internal_set_pot_value(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.pot_value)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.pot_value)
 }
 
 // int32 current_round = 18;
@@ -27873,7 +27876,7 @@ inline int32_t SetteMezzoGameInfo::_internal_current_round() const {
   return current_round_;
 }
 inline int32_t SetteMezzoGameInfo::current_round() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.current_round)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.current_round)
   return _internal_current_round();
 }
 inline void SetteMezzoGameInfo::_internal_set_current_round(int32_t value) {
@@ -27882,7 +27885,7 @@ inline void SetteMezzoGameInfo::_internal_set_current_round(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_current_round(int32_t value) {
   _internal_set_current_round(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.current_round)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.current_round)
 }
 
 // int32 hand_in_round = 19;
@@ -27893,7 +27896,7 @@ inline int32_t SetteMezzoGameInfo::_internal_hand_in_round() const {
   return hand_in_round_;
 }
 inline int32_t SetteMezzoGameInfo::hand_in_round() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.hand_in_round)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.hand_in_round)
   return _internal_hand_in_round();
 }
 inline void SetteMezzoGameInfo::_internal_set_hand_in_round(int32_t value) {
@@ -27902,7 +27905,7 @@ inline void SetteMezzoGameInfo::_internal_set_hand_in_round(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_hand_in_round(int32_t value) {
   _internal_set_hand_in_round(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.hand_in_round)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.hand_in_round)
 }
 
 // repeated bool is_in_games = 20;
@@ -27919,19 +27922,19 @@ inline bool SetteMezzoGameInfo::_internal_is_in_games(int index) const {
   return is_in_games_.Get(index);
 }
 inline bool SetteMezzoGameInfo::is_in_games(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.is_in_games)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.is_in_games)
   return _internal_is_in_games(index);
 }
 inline void SetteMezzoGameInfo::set_is_in_games(int index, bool value) {
   is_in_games_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.is_in_games)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.is_in_games)
 }
 inline void SetteMezzoGameInfo::_internal_add_is_in_games(bool value) {
   is_in_games_.Add(value);
 }
 inline void SetteMezzoGameInfo::add_is_in_games(bool value) {
   _internal_add_is_in_games(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.is_in_games)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.is_in_games)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 SetteMezzoGameInfo::_internal_is_in_games() const {
@@ -27939,7 +27942,7 @@ SetteMezzoGameInfo::_internal_is_in_games() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 SetteMezzoGameInfo::is_in_games() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.is_in_games)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.is_in_games)
   return _internal_is_in_games();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
@@ -27948,7 +27951,7 @@ SetteMezzoGameInfo::_internal_mutable_is_in_games() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
 SetteMezzoGameInfo::mutable_is_in_games() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.is_in_games)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.is_in_games)
   return _internal_mutable_is_in_games();
 }
 
@@ -27960,7 +27963,7 @@ inline int32_t SetteMezzoGameInfo::_internal_play_turn_time() const {
   return play_turn_time_;
 }
 inline int32_t SetteMezzoGameInfo::play_turn_time() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.play_turn_time)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.play_turn_time)
   return _internal_play_turn_time();
 }
 inline void SetteMezzoGameInfo::_internal_set_play_turn_time(int32_t value) {
@@ -27969,7 +27972,7 @@ inline void SetteMezzoGameInfo::_internal_set_play_turn_time(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_play_turn_time(int32_t value) {
   _internal_set_play_turn_time(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.play_turn_time)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.play_turn_time)
 }
 
 // repeated bytes player_infos = 22;
@@ -27984,66 +27987,66 @@ inline void SetteMezzoGameInfo::clear_player_infos() {
 }
 inline std::string* SetteMezzoGameInfo::add_player_infos() {
   std::string* _s = _internal_add_player_infos();
-  // @@protoc_insertion_point(field_add_mutable:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_add_mutable:packet.SetteMezzoGameInfo.player_infos)
   return _s;
 }
 inline const std::string& SetteMezzoGameInfo::_internal_player_infos(int index) const {
   return player_infos_.Get(index);
 }
 inline const std::string& SetteMezzoGameInfo::player_infos(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.player_infos)
   return _internal_player_infos(index);
 }
 inline std::string* SetteMezzoGameInfo::mutable_player_infos(int index) {
-  // @@protoc_insertion_point(field_mutable:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_mutable:packet.SetteMezzoGameInfo.player_infos)
   return player_infos_.Mutable(index);
 }
 inline void SetteMezzoGameInfo::set_player_infos(int index, const std::string& value) {
   player_infos_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.player_infos)
 }
 inline void SetteMezzoGameInfo::set_player_infos(int index, std::string&& value) {
   player_infos_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.player_infos)
 }
 inline void SetteMezzoGameInfo::set_player_infos(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   player_infos_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_set_char:packet.SetteMezzoGameInfo.player_infos)
 }
 inline void SetteMezzoGameInfo::set_player_infos(int index, const void* value, size_t size) {
   player_infos_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_set_pointer:packet.SetteMezzoGameInfo.player_infos)
 }
 inline std::string* SetteMezzoGameInfo::_internal_add_player_infos() {
   return player_infos_.Add();
 }
 inline void SetteMezzoGameInfo::add_player_infos(const std::string& value) {
   player_infos_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.player_infos)
 }
 inline void SetteMezzoGameInfo::add_player_infos(std::string&& value) {
   player_infos_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.player_infos)
 }
 inline void SetteMezzoGameInfo::add_player_infos(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   player_infos_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_add_char:packet.SetteMezzoGameInfo.player_infos)
 }
 inline void SetteMezzoGameInfo::add_player_infos(const void* value, size_t size) {
   player_infos_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_add_pointer:packet.SetteMezzoGameInfo.player_infos)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 SetteMezzoGameInfo::player_infos() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.player_infos)
   return player_infos_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 SetteMezzoGameInfo::mutable_player_infos() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.player_infos)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.player_infos)
   return &player_infos_;
 }
 
@@ -28061,19 +28064,19 @@ inline int32_t SetteMezzoGameInfo::_internal_banker_cards(int index) const {
   return banker_cards_.Get(index);
 }
 inline int32_t SetteMezzoGameInfo::banker_cards(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.banker_cards)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.banker_cards)
   return _internal_banker_cards(index);
 }
 inline void SetteMezzoGameInfo::set_banker_cards(int index, int32_t value) {
   banker_cards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.banker_cards)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.banker_cards)
 }
 inline void SetteMezzoGameInfo::_internal_add_banker_cards(int32_t value) {
   banker_cards_.Add(value);
 }
 inline void SetteMezzoGameInfo::add_banker_cards(int32_t value) {
   _internal_add_banker_cards(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.banker_cards)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.banker_cards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoGameInfo::_internal_banker_cards() const {
@@ -28081,7 +28084,7 @@ SetteMezzoGameInfo::_internal_banker_cards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoGameInfo::banker_cards() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.banker_cards)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.banker_cards)
   return _internal_banker_cards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -28090,7 +28093,7 @@ SetteMezzoGameInfo::_internal_mutable_banker_cards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoGameInfo::mutable_banker_cards() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.banker_cards)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.banker_cards)
   return _internal_mutable_banker_cards();
 }
 
@@ -28108,19 +28111,19 @@ inline int64_t SetteMezzoGameInfo::_internal_player_bets(int index) const {
   return player_bets_.Get(index);
 }
 inline int64_t SetteMezzoGameInfo::player_bets(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.player_bets)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.player_bets)
   return _internal_player_bets(index);
 }
 inline void SetteMezzoGameInfo::set_player_bets(int index, int64_t value) {
   player_bets_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.player_bets)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.player_bets)
 }
 inline void SetteMezzoGameInfo::_internal_add_player_bets(int64_t value) {
   player_bets_.Add(value);
 }
 inline void SetteMezzoGameInfo::add_player_bets(int64_t value) {
   _internal_add_player_bets(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoGameInfo.player_bets)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoGameInfo.player_bets)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoGameInfo::_internal_player_bets() const {
@@ -28128,7 +28131,7 @@ SetteMezzoGameInfo::_internal_player_bets() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoGameInfo::player_bets() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoGameInfo.player_bets)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoGameInfo.player_bets)
   return _internal_player_bets();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -28137,7 +28140,7 @@ SetteMezzoGameInfo::_internal_mutable_player_bets() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 SetteMezzoGameInfo::mutable_player_bets() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoGameInfo.player_bets)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoGameInfo.player_bets)
   return _internal_mutable_player_bets();
 }
 
@@ -28149,7 +28152,7 @@ inline int32_t SetteMezzoGameInfo::_internal_time_end_bet() const {
   return time_end_bet_;
 }
 inline int32_t SetteMezzoGameInfo::time_end_bet() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoGameInfo.time_end_bet)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoGameInfo.time_end_bet)
   return _internal_time_end_bet();
 }
 inline void SetteMezzoGameInfo::_internal_set_time_end_bet(int32_t value) {
@@ -28158,7 +28161,7 @@ inline void SetteMezzoGameInfo::_internal_set_time_end_bet(int32_t value) {
 }
 inline void SetteMezzoGameInfo::set_time_end_bet(int32_t value) {
   _internal_set_time_end_bet(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoGameInfo.time_end_bet)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoGameInfo.time_end_bet)
 }
 
 // -------------------------------------------------------------------
@@ -28179,19 +28182,19 @@ inline int32_t SetteMezzoPlayerInfo::_internal_card_ids(int index) const {
   return card_ids_.Get(index);
 }
 inline int32_t SetteMezzoPlayerInfo::card_ids(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoPlayerInfo.card_ids)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoPlayerInfo.card_ids)
   return _internal_card_ids(index);
 }
 inline void SetteMezzoPlayerInfo::set_card_ids(int index, int32_t value) {
   card_ids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoPlayerInfo.card_ids)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoPlayerInfo.card_ids)
 }
 inline void SetteMezzoPlayerInfo::_internal_add_card_ids(int32_t value) {
   card_ids_.Add(value);
 }
 inline void SetteMezzoPlayerInfo::add_card_ids(int32_t value) {
   _internal_add_card_ids(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoPlayerInfo.card_ids)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoPlayerInfo.card_ids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoPlayerInfo::_internal_card_ids() const {
@@ -28199,7 +28202,7 @@ SetteMezzoPlayerInfo::_internal_card_ids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoPlayerInfo::card_ids() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoPlayerInfo.card_ids)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoPlayerInfo.card_ids)
   return _internal_card_ids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -28208,7 +28211,7 @@ SetteMezzoPlayerInfo::_internal_mutable_card_ids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoPlayerInfo::mutable_card_ids() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoPlayerInfo.card_ids)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoPlayerInfo.card_ids)
   return _internal_mutable_card_ids();
 }
 
@@ -28234,19 +28237,19 @@ inline int32_t SetteMezzoStartGame::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t SetteMezzoStartGame::uids(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoStartGame.uids)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoStartGame.uids)
   return _internal_uids(index);
 }
 inline void SetteMezzoStartGame::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoStartGame.uids)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoStartGame.uids)
 }
 inline void SetteMezzoStartGame::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void SetteMezzoStartGame::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoStartGame.uids)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoStartGame.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoStartGame::_internal_uids() const {
@@ -28254,7 +28257,7 @@ SetteMezzoStartGame::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoStartGame::uids() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoStartGame.uids)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoStartGame.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -28263,7 +28266,7 @@ SetteMezzoStartGame::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoStartGame::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoStartGame.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoStartGame.uids)
   return _internal_mutable_uids();
 }
 
@@ -28281,19 +28284,19 @@ inline int32_t SetteMezzoStartGame::_internal_cards(int index) const {
   return cards_.Get(index);
 }
 inline int32_t SetteMezzoStartGame::cards(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoStartGame.cards)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoStartGame.cards)
   return _internal_cards(index);
 }
 inline void SetteMezzoStartGame::set_cards(int index, int32_t value) {
   cards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoStartGame.cards)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoStartGame.cards)
 }
 inline void SetteMezzoStartGame::_internal_add_cards(int32_t value) {
   cards_.Add(value);
 }
 inline void SetteMezzoStartGame::add_cards(int32_t value) {
   _internal_add_cards(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoStartGame.cards)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoStartGame.cards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoStartGame::_internal_cards() const {
@@ -28301,7 +28304,7 @@ SetteMezzoStartGame::_internal_cards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoStartGame::cards() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoStartGame.cards)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoStartGame.cards)
   return _internal_cards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -28310,7 +28313,7 @@ SetteMezzoStartGame::_internal_mutable_cards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoStartGame::mutable_cards() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoStartGame.cards)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoStartGame.cards)
   return _internal_mutable_cards();
 }
 
@@ -28326,7 +28329,7 @@ inline int32_t RankingInfo::_internal_season_id() const {
   return season_id_;
 }
 inline int32_t RankingInfo::season_id() const {
-  // @@protoc_insertion_point(field_get:RankingInfo.season_id)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.season_id)
   return _internal_season_id();
 }
 inline void RankingInfo::_internal_set_season_id(int32_t value) {
@@ -28335,7 +28338,7 @@ inline void RankingInfo::_internal_set_season_id(int32_t value) {
 }
 inline void RankingInfo::set_season_id(int32_t value) {
   _internal_set_season_id(value);
-  // @@protoc_insertion_point(field_set:RankingInfo.season_id)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.season_id)
 }
 
 // int32 time_start = 2;
@@ -28346,7 +28349,7 @@ inline int32_t RankingInfo::_internal_time_start() const {
   return time_start_;
 }
 inline int32_t RankingInfo::time_start() const {
-  // @@protoc_insertion_point(field_get:RankingInfo.time_start)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.time_start)
   return _internal_time_start();
 }
 inline void RankingInfo::_internal_set_time_start(int32_t value) {
@@ -28355,7 +28358,7 @@ inline void RankingInfo::_internal_set_time_start(int32_t value) {
 }
 inline void RankingInfo::set_time_start(int32_t value) {
   _internal_set_time_start(value);
-  // @@protoc_insertion_point(field_set:RankingInfo.time_start)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.time_start)
 }
 
 // int32 time_end = 3;
@@ -28366,7 +28369,7 @@ inline int32_t RankingInfo::_internal_time_end() const {
   return time_end_;
 }
 inline int32_t RankingInfo::time_end() const {
-  // @@protoc_insertion_point(field_get:RankingInfo.time_end)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.time_end)
   return _internal_time_end();
 }
 inline void RankingInfo::_internal_set_time_end(int32_t value) {
@@ -28375,7 +28378,7 @@ inline void RankingInfo::_internal_set_time_end(int32_t value) {
 }
 inline void RankingInfo::set_time_end(int32_t value) {
   _internal_set_time_end(value);
-  // @@protoc_insertion_point(field_set:RankingInfo.time_end)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.time_end)
 }
 
 // repeated int32 rewards = 4;
@@ -28392,19 +28395,19 @@ inline int32_t RankingInfo::_internal_rewards(int index) const {
   return rewards_.Get(index);
 }
 inline int32_t RankingInfo::rewards(int index) const {
-  // @@protoc_insertion_point(field_get:RankingInfo.rewards)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.rewards)
   return _internal_rewards(index);
 }
 inline void RankingInfo::set_rewards(int index, int32_t value) {
   rewards_.Set(index, value);
-  // @@protoc_insertion_point(field_set:RankingInfo.rewards)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.rewards)
 }
 inline void RankingInfo::_internal_add_rewards(int32_t value) {
   rewards_.Add(value);
 }
 inline void RankingInfo::add_rewards(int32_t value) {
   _internal_add_rewards(value);
-  // @@protoc_insertion_point(field_add:RankingInfo.rewards)
+  // @@protoc_insertion_point(field_add:packet.RankingInfo.rewards)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RankingInfo::_internal_rewards() const {
@@ -28412,7 +28415,7 @@ RankingInfo::_internal_rewards() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RankingInfo::rewards() const {
-  // @@protoc_insertion_point(field_list:RankingInfo.rewards)
+  // @@protoc_insertion_point(field_list:packet.RankingInfo.rewards)
   return _internal_rewards();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -28421,7 +28424,7 @@ RankingInfo::_internal_mutable_rewards() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 RankingInfo::mutable_rewards() {
-  // @@protoc_insertion_point(field_mutable_list:RankingInfo.rewards)
+  // @@protoc_insertion_point(field_mutable_list:packet.RankingInfo.rewards)
   return _internal_mutable_rewards();
 }
 
@@ -28439,19 +28442,19 @@ inline int32_t RankingInfo::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t RankingInfo::uids(int index) const {
-  // @@protoc_insertion_point(field_get:RankingInfo.uids)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.uids)
   return _internal_uids(index);
 }
 inline void RankingInfo::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:RankingInfo.uids)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.uids)
 }
 inline void RankingInfo::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void RankingInfo::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:RankingInfo.uids)
+  // @@protoc_insertion_point(field_add:packet.RankingInfo.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RankingInfo::_internal_uids() const {
@@ -28459,7 +28462,7 @@ RankingInfo::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RankingInfo::uids() const {
-  // @@protoc_insertion_point(field_list:RankingInfo.uids)
+  // @@protoc_insertion_point(field_list:packet.RankingInfo.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -28468,7 +28471,7 @@ RankingInfo::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 RankingInfo::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:RankingInfo.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.RankingInfo.uids)
   return _internal_mutable_uids();
 }
 
@@ -28484,66 +28487,66 @@ inline void RankingInfo::clear_avatars() {
 }
 inline std::string* RankingInfo::add_avatars() {
   std::string* _s = _internal_add_avatars();
-  // @@protoc_insertion_point(field_add_mutable:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_add_mutable:packet.RankingInfo.avatars)
   return _s;
 }
 inline const std::string& RankingInfo::_internal_avatars(int index) const {
   return avatars_.Get(index);
 }
 inline const std::string& RankingInfo::avatars(int index) const {
-  // @@protoc_insertion_point(field_get:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.avatars)
   return _internal_avatars(index);
 }
 inline std::string* RankingInfo::mutable_avatars(int index) {
-  // @@protoc_insertion_point(field_mutable:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_mutable:packet.RankingInfo.avatars)
   return avatars_.Mutable(index);
 }
 inline void RankingInfo::set_avatars(int index, const std::string& value) {
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.avatars)
 }
 inline void RankingInfo::set_avatars(int index, std::string&& value) {
   avatars_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.avatars)
 }
 inline void RankingInfo::set_avatars(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_set_char:packet.RankingInfo.avatars)
 }
 inline void RankingInfo::set_avatars(int index, const char* value, size_t size) {
   avatars_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_set_pointer:packet.RankingInfo.avatars)
 }
 inline std::string* RankingInfo::_internal_add_avatars() {
   return avatars_.Add();
 }
 inline void RankingInfo::add_avatars(const std::string& value) {
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_add:packet.RankingInfo.avatars)
 }
 inline void RankingInfo::add_avatars(std::string&& value) {
   avatars_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_add:packet.RankingInfo.avatars)
 }
 inline void RankingInfo::add_avatars(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   avatars_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_add_char:packet.RankingInfo.avatars)
 }
 inline void RankingInfo::add_avatars(const char* value, size_t size) {
   avatars_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_add_pointer:packet.RankingInfo.avatars)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 RankingInfo::avatars() const {
-  // @@protoc_insertion_point(field_list:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_list:packet.RankingInfo.avatars)
   return avatars_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 RankingInfo::mutable_avatars() {
-  // @@protoc_insertion_point(field_mutable_list:RankingInfo.avatars)
+  // @@protoc_insertion_point(field_mutable_list:packet.RankingInfo.avatars)
   return &avatars_;
 }
 
@@ -28559,66 +28562,66 @@ inline void RankingInfo::clear_names() {
 }
 inline std::string* RankingInfo::add_names() {
   std::string* _s = _internal_add_names();
-  // @@protoc_insertion_point(field_add_mutable:RankingInfo.names)
+  // @@protoc_insertion_point(field_add_mutable:packet.RankingInfo.names)
   return _s;
 }
 inline const std::string& RankingInfo::_internal_names(int index) const {
   return names_.Get(index);
 }
 inline const std::string& RankingInfo::names(int index) const {
-  // @@protoc_insertion_point(field_get:RankingInfo.names)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.names)
   return _internal_names(index);
 }
 inline std::string* RankingInfo::mutable_names(int index) {
-  // @@protoc_insertion_point(field_mutable:RankingInfo.names)
+  // @@protoc_insertion_point(field_mutable:packet.RankingInfo.names)
   return names_.Mutable(index);
 }
 inline void RankingInfo::set_names(int index, const std::string& value) {
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:RankingInfo.names)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.names)
 }
 inline void RankingInfo::set_names(int index, std::string&& value) {
   names_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:RankingInfo.names)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.names)
 }
 inline void RankingInfo::set_names(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:RankingInfo.names)
+  // @@protoc_insertion_point(field_set_char:packet.RankingInfo.names)
 }
 inline void RankingInfo::set_names(int index, const char* value, size_t size) {
   names_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:RankingInfo.names)
+  // @@protoc_insertion_point(field_set_pointer:packet.RankingInfo.names)
 }
 inline std::string* RankingInfo::_internal_add_names() {
   return names_.Add();
 }
 inline void RankingInfo::add_names(const std::string& value) {
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:RankingInfo.names)
+  // @@protoc_insertion_point(field_add:packet.RankingInfo.names)
 }
 inline void RankingInfo::add_names(std::string&& value) {
   names_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:RankingInfo.names)
+  // @@protoc_insertion_point(field_add:packet.RankingInfo.names)
 }
 inline void RankingInfo::add_names(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   names_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:RankingInfo.names)
+  // @@protoc_insertion_point(field_add_char:packet.RankingInfo.names)
 }
 inline void RankingInfo::add_names(const char* value, size_t size) {
   names_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:RankingInfo.names)
+  // @@protoc_insertion_point(field_add_pointer:packet.RankingInfo.names)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
 RankingInfo::names() const {
-  // @@protoc_insertion_point(field_list:RankingInfo.names)
+  // @@protoc_insertion_point(field_list:packet.RankingInfo.names)
   return names_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 RankingInfo::mutable_names() {
-  // @@protoc_insertion_point(field_mutable_list:RankingInfo.names)
+  // @@protoc_insertion_point(field_mutable_list:packet.RankingInfo.names)
   return &names_;
 }
 
@@ -28636,19 +28639,19 @@ inline int32_t RankingInfo::_internal_scores(int index) const {
   return scores_.Get(index);
 }
 inline int32_t RankingInfo::scores(int index) const {
-  // @@protoc_insertion_point(field_get:RankingInfo.scores)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.scores)
   return _internal_scores(index);
 }
 inline void RankingInfo::set_scores(int index, int32_t value) {
   scores_.Set(index, value);
-  // @@protoc_insertion_point(field_set:RankingInfo.scores)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.scores)
 }
 inline void RankingInfo::_internal_add_scores(int32_t value) {
   scores_.Add(value);
 }
 inline void RankingInfo::add_scores(int32_t value) {
   _internal_add_scores(value);
-  // @@protoc_insertion_point(field_add:RankingInfo.scores)
+  // @@protoc_insertion_point(field_add:packet.RankingInfo.scores)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RankingInfo::_internal_scores() const {
@@ -28656,7 +28659,7 @@ RankingInfo::_internal_scores() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RankingInfo::scores() const {
-  // @@protoc_insertion_point(field_list:RankingInfo.scores)
+  // @@protoc_insertion_point(field_list:packet.RankingInfo.scores)
   return _internal_scores();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -28665,7 +28668,7 @@ RankingInfo::_internal_mutable_scores() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 RankingInfo::mutable_scores() {
-  // @@protoc_insertion_point(field_mutable_list:RankingInfo.scores)
+  // @@protoc_insertion_point(field_mutable_list:packet.RankingInfo.scores)
   return _internal_mutable_scores();
 }
 
@@ -28683,19 +28686,19 @@ inline int32_t RankingInfo::_internal_avatar_frames(int index) const {
   return avatar_frames_.Get(index);
 }
 inline int32_t RankingInfo::avatar_frames(int index) const {
-  // @@protoc_insertion_point(field_get:RankingInfo.avatar_frames)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.avatar_frames)
   return _internal_avatar_frames(index);
 }
 inline void RankingInfo::set_avatar_frames(int index, int32_t value) {
   avatar_frames_.Set(index, value);
-  // @@protoc_insertion_point(field_set:RankingInfo.avatar_frames)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.avatar_frames)
 }
 inline void RankingInfo::_internal_add_avatar_frames(int32_t value) {
   avatar_frames_.Add(value);
 }
 inline void RankingInfo::add_avatar_frames(int32_t value) {
   _internal_add_avatar_frames(value);
-  // @@protoc_insertion_point(field_add:RankingInfo.avatar_frames)
+  // @@protoc_insertion_point(field_add:packet.RankingInfo.avatar_frames)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RankingInfo::_internal_avatar_frames() const {
@@ -28703,7 +28706,7 @@ RankingInfo::_internal_avatar_frames() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 RankingInfo::avatar_frames() const {
-  // @@protoc_insertion_point(field_list:RankingInfo.avatar_frames)
+  // @@protoc_insertion_point(field_list:packet.RankingInfo.avatar_frames)
   return _internal_avatar_frames();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -28712,7 +28715,7 @@ RankingInfo::_internal_mutable_avatar_frames() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 RankingInfo::mutable_avatar_frames() {
-  // @@protoc_insertion_point(field_mutable_list:RankingInfo.avatar_frames)
+  // @@protoc_insertion_point(field_mutable_list:packet.RankingInfo.avatar_frames)
   return _internal_mutable_avatar_frames();
 }
 
@@ -28724,7 +28727,7 @@ inline int32_t RankingInfo::_internal_my_rank() const {
   return my_rank_;
 }
 inline int32_t RankingInfo::my_rank() const {
-  // @@protoc_insertion_point(field_get:RankingInfo.my_rank)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.my_rank)
   return _internal_my_rank();
 }
 inline void RankingInfo::_internal_set_my_rank(int32_t value) {
@@ -28733,7 +28736,7 @@ inline void RankingInfo::_internal_set_my_rank(int32_t value) {
 }
 inline void RankingInfo::set_my_rank(int32_t value) {
   _internal_set_my_rank(value);
-  // @@protoc_insertion_point(field_set:RankingInfo.my_rank)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.my_rank)
 }
 
 // int32 my_score = 11;
@@ -28744,7 +28747,7 @@ inline int32_t RankingInfo::_internal_my_score() const {
   return my_score_;
 }
 inline int32_t RankingInfo::my_score() const {
-  // @@protoc_insertion_point(field_get:RankingInfo.my_score)
+  // @@protoc_insertion_point(field_get:packet.RankingInfo.my_score)
   return _internal_my_score();
 }
 inline void RankingInfo::_internal_set_my_score(int32_t value) {
@@ -28753,7 +28756,7 @@ inline void RankingInfo::_internal_set_my_score(int32_t value) {
 }
 inline void RankingInfo::set_my_score(int32_t value) {
   _internal_set_my_score(value);
-  // @@protoc_insertion_point(field_set:RankingInfo.my_score)
+  // @@protoc_insertion_point(field_set:packet.RankingInfo.my_score)
 }
 
 // -------------------------------------------------------------------
@@ -28768,7 +28771,7 @@ inline int32_t RankingResult::_internal_season_id() const {
   return season_id_;
 }
 inline int32_t RankingResult::season_id() const {
-  // @@protoc_insertion_point(field_get:RankingResult.season_id)
+  // @@protoc_insertion_point(field_get:packet.RankingResult.season_id)
   return _internal_season_id();
 }
 inline void RankingResult::_internal_set_season_id(int32_t value) {
@@ -28777,7 +28780,7 @@ inline void RankingResult::_internal_set_season_id(int32_t value) {
 }
 inline void RankingResult::set_season_id(int32_t value) {
   _internal_set_season_id(value);
-  // @@protoc_insertion_point(field_set:RankingResult.season_id)
+  // @@protoc_insertion_point(field_set:packet.RankingResult.season_id)
 }
 
 // int32 gold_reward = 2;
@@ -28788,7 +28791,7 @@ inline int32_t RankingResult::_internal_gold_reward() const {
   return gold_reward_;
 }
 inline int32_t RankingResult::gold_reward() const {
-  // @@protoc_insertion_point(field_get:RankingResult.gold_reward)
+  // @@protoc_insertion_point(field_get:packet.RankingResult.gold_reward)
   return _internal_gold_reward();
 }
 inline void RankingResult::_internal_set_gold_reward(int32_t value) {
@@ -28797,7 +28800,7 @@ inline void RankingResult::_internal_set_gold_reward(int32_t value) {
 }
 inline void RankingResult::set_gold_reward(int32_t value) {
   _internal_set_gold_reward(value);
-  // @@protoc_insertion_point(field_set:RankingResult.gold_reward)
+  // @@protoc_insertion_point(field_set:packet.RankingResult.gold_reward)
 }
 
 // int32 rank = 3;
@@ -28808,7 +28811,7 @@ inline int32_t RankingResult::_internal_rank() const {
   return rank_;
 }
 inline int32_t RankingResult::rank() const {
-  // @@protoc_insertion_point(field_get:RankingResult.rank)
+  // @@protoc_insertion_point(field_get:packet.RankingResult.rank)
   return _internal_rank();
 }
 inline void RankingResult::_internal_set_rank(int32_t value) {
@@ -28817,7 +28820,7 @@ inline void RankingResult::_internal_set_rank(int32_t value) {
 }
 inline void RankingResult::set_rank(int32_t value) {
   _internal_set_rank(value);
-  // @@protoc_insertion_point(field_set:RankingResult.rank)
+  // @@protoc_insertion_point(field_set:packet.RankingResult.rank)
 }
 
 // -------------------------------------------------------------------
@@ -28832,7 +28835,7 @@ inline int32_t RankingClaimReward::_internal_season_id() const {
   return season_id_;
 }
 inline int32_t RankingClaimReward::season_id() const {
-  // @@protoc_insertion_point(field_get:RankingClaimReward.season_id)
+  // @@protoc_insertion_point(field_get:packet.RankingClaimReward.season_id)
   return _internal_season_id();
 }
 inline void RankingClaimReward::_internal_set_season_id(int32_t value) {
@@ -28841,7 +28844,7 @@ inline void RankingClaimReward::_internal_set_season_id(int32_t value) {
 }
 inline void RankingClaimReward::set_season_id(int32_t value) {
   _internal_set_season_id(value);
-  // @@protoc_insertion_point(field_set:RankingClaimReward.season_id)
+  // @@protoc_insertion_point(field_set:packet.RankingClaimReward.season_id)
 }
 
 // -------------------------------------------------------------------
@@ -28856,7 +28859,7 @@ inline int32_t UpdateAds::_internal_time_show_ads() const {
   return time_show_ads_;
 }
 inline int32_t UpdateAds::time_show_ads() const {
-  // @@protoc_insertion_point(field_get:UpdateAds.time_show_ads)
+  // @@protoc_insertion_point(field_get:packet.UpdateAds.time_show_ads)
   return _internal_time_show_ads();
 }
 inline void UpdateAds::_internal_set_time_show_ads(int32_t value) {
@@ -28865,7 +28868,7 @@ inline void UpdateAds::_internal_set_time_show_ads(int32_t value) {
 }
 inline void UpdateAds::set_time_show_ads(int32_t value) {
   _internal_set_time_show_ads(value);
-  // @@protoc_insertion_point(field_set:UpdateAds.time_show_ads)
+  // @@protoc_insertion_point(field_set:packet.UpdateAds.time_show_ads)
 }
 
 // -------------------------------------------------------------------
@@ -28880,7 +28883,7 @@ inline int32_t AdsReward::_internal_gold() const {
   return gold_;
 }
 inline int32_t AdsReward::gold() const {
-  // @@protoc_insertion_point(field_get:AdsReward.gold)
+  // @@protoc_insertion_point(field_get:packet.AdsReward.gold)
   return _internal_gold();
 }
 inline void AdsReward::_internal_set_gold(int32_t value) {
@@ -28889,7 +28892,7 @@ inline void AdsReward::_internal_set_gold(int32_t value) {
 }
 inline void AdsReward::set_gold(int32_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:AdsReward.gold)
+  // @@protoc_insertion_point(field_set:packet.AdsReward.gold)
 }
 
 // int32 time_ads_reward = 2;
@@ -28900,7 +28903,7 @@ inline int32_t AdsReward::_internal_time_ads_reward() const {
   return time_ads_reward_;
 }
 inline int32_t AdsReward::time_ads_reward() const {
-  // @@protoc_insertion_point(field_get:AdsReward.time_ads_reward)
+  // @@protoc_insertion_point(field_get:packet.AdsReward.time_ads_reward)
   return _internal_time_ads_reward();
 }
 inline void AdsReward::_internal_set_time_ads_reward(int32_t value) {
@@ -28909,7 +28912,7 @@ inline void AdsReward::_internal_set_time_ads_reward(int32_t value) {
 }
 inline void AdsReward::set_time_ads_reward(int32_t value) {
   _internal_set_time_ads_reward(value);
-  // @@protoc_insertion_point(field_set:AdsReward.time_ads_reward)
+  // @@protoc_insertion_point(field_set:packet.AdsReward.time_ads_reward)
 }
 
 // -------------------------------------------------------------------
@@ -28921,7 +28924,7 @@ inline void ChangeUserName::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& ChangeUserName::name() const {
-  // @@protoc_insertion_point(field_get:ChangeUserName.name)
+  // @@protoc_insertion_point(field_get:packet.ChangeUserName.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -28929,11 +28932,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void ChangeUserName::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:ChangeUserName.name)
+  // @@protoc_insertion_point(field_set:packet.ChangeUserName.name)
 }
 inline std::string* ChangeUserName::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:ChangeUserName.name)
+  // @@protoc_insertion_point(field_mutable:packet.ChangeUserName.name)
   return _s;
 }
 inline const std::string& ChangeUserName::_internal_name() const {
@@ -28948,7 +28951,7 @@ inline std::string* ChangeUserName::_internal_mutable_name() {
   return name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* ChangeUserName::release_name() {
-  // @@protoc_insertion_point(field_release:ChangeUserName.name)
+  // @@protoc_insertion_point(field_release:packet.ChangeUserName.name)
   return name_.Release();
 }
 inline void ChangeUserName::set_allocated_name(std::string* name) {
@@ -28963,7 +28966,7 @@ inline void ChangeUserName::set_allocated_name(std::string* name) {
     name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:ChangeUserName.name)
+  // @@protoc_insertion_point(field_set_allocated:packet.ChangeUserName.name)
 }
 
 // -------------------------------------------------------------------
@@ -28978,7 +28981,7 @@ inline int32_t SetteMezzoActionHit::_internal_uid() const {
   return uid_;
 }
 inline int32_t SetteMezzoActionHit::uid() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoActionHit.uid)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoActionHit.uid)
   return _internal_uid();
 }
 inline void SetteMezzoActionHit::_internal_set_uid(int32_t value) {
@@ -28987,7 +28990,7 @@ inline void SetteMezzoActionHit::_internal_set_uid(int32_t value) {
 }
 inline void SetteMezzoActionHit::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoActionHit.uid)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoActionHit.uid)
 }
 
 // int32 card_id = 2;
@@ -28998,7 +29001,7 @@ inline int32_t SetteMezzoActionHit::_internal_card_id() const {
   return card_id_;
 }
 inline int32_t SetteMezzoActionHit::card_id() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoActionHit.card_id)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoActionHit.card_id)
   return _internal_card_id();
 }
 inline void SetteMezzoActionHit::_internal_set_card_id(int32_t value) {
@@ -29007,7 +29010,7 @@ inline void SetteMezzoActionHit::_internal_set_card_id(int32_t value) {
 }
 inline void SetteMezzoActionHit::set_card_id(int32_t value) {
   _internal_set_card_id(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoActionHit.card_id)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoActionHit.card_id)
 }
 
 // -------------------------------------------------------------------
@@ -29022,7 +29025,7 @@ inline int32_t SetteMezzoUpdateTurn::_internal_current_turn() const {
   return current_turn_;
 }
 inline int32_t SetteMezzoUpdateTurn::current_turn() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoUpdateTurn.current_turn)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoUpdateTurn.current_turn)
   return _internal_current_turn();
 }
 inline void SetteMezzoUpdateTurn::_internal_set_current_turn(int32_t value) {
@@ -29031,7 +29034,7 @@ inline void SetteMezzoUpdateTurn::_internal_set_current_turn(int32_t value) {
 }
 inline void SetteMezzoUpdateTurn::set_current_turn(int32_t value) {
   _internal_set_current_turn(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoUpdateTurn.current_turn)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoUpdateTurn.current_turn)
 }
 
 // int32 play_turn_time = 2;
@@ -29042,7 +29045,7 @@ inline int32_t SetteMezzoUpdateTurn::_internal_play_turn_time() const {
   return play_turn_time_;
 }
 inline int32_t SetteMezzoUpdateTurn::play_turn_time() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoUpdateTurn.play_turn_time)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoUpdateTurn.play_turn_time)
   return _internal_play_turn_time();
 }
 inline void SetteMezzoUpdateTurn::_internal_set_play_turn_time(int32_t value) {
@@ -29051,7 +29054,7 @@ inline void SetteMezzoUpdateTurn::_internal_set_play_turn_time(int32_t value) {
 }
 inline void SetteMezzoUpdateTurn::set_play_turn_time(int32_t value) {
   _internal_set_play_turn_time(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoUpdateTurn.play_turn_time)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoUpdateTurn.play_turn_time)
 }
 
 // -------------------------------------------------------------------
@@ -29066,7 +29069,7 @@ inline int32_t SetteMezzoActionStand::_internal_uid() const {
   return uid_;
 }
 inline int32_t SetteMezzoActionStand::uid() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoActionStand.uid)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoActionStand.uid)
   return _internal_uid();
 }
 inline void SetteMezzoActionStand::_internal_set_uid(int32_t value) {
@@ -29075,7 +29078,7 @@ inline void SetteMezzoActionStand::_internal_set_uid(int32_t value) {
 }
 inline void SetteMezzoActionStand::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoActionStand.uid)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoActionStand.uid)
 }
 
 // int32 current_turn = 2;
@@ -29086,7 +29089,7 @@ inline int32_t SetteMezzoActionStand::_internal_current_turn() const {
   return current_turn_;
 }
 inline int32_t SetteMezzoActionStand::current_turn() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoActionStand.current_turn)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoActionStand.current_turn)
   return _internal_current_turn();
 }
 inline void SetteMezzoActionStand::_internal_set_current_turn(int32_t value) {
@@ -29095,7 +29098,7 @@ inline void SetteMezzoActionStand::_internal_set_current_turn(int32_t value) {
 }
 inline void SetteMezzoActionStand::set_current_turn(int32_t value) {
   _internal_set_current_turn(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoActionStand.current_turn)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoActionStand.current_turn)
 }
 
 // int32 play_turn_time = 3;
@@ -29106,7 +29109,7 @@ inline int32_t SetteMezzoActionStand::_internal_play_turn_time() const {
   return play_turn_time_;
 }
 inline int32_t SetteMezzoActionStand::play_turn_time() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoActionStand.play_turn_time)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoActionStand.play_turn_time)
   return _internal_play_turn_time();
 }
 inline void SetteMezzoActionStand::_internal_set_play_turn_time(int32_t value) {
@@ -29115,7 +29118,7 @@ inline void SetteMezzoActionStand::_internal_set_play_turn_time(int32_t value) {
 }
 inline void SetteMezzoActionStand::set_play_turn_time(int32_t value) {
   _internal_set_play_turn_time(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoActionStand.play_turn_time)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoActionStand.play_turn_time)
 }
 
 // -------------------------------------------------------------------
@@ -29136,19 +29139,19 @@ inline int32_t SetteMezzoEndGame::_internal_uids(int index) const {
   return uids_.Get(index);
 }
 inline int32_t SetteMezzoEndGame::uids(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoEndGame.uids)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoEndGame.uids)
   return _internal_uids(index);
 }
 inline void SetteMezzoEndGame::set_uids(int index, int32_t value) {
   uids_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoEndGame.uids)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoEndGame.uids)
 }
 inline void SetteMezzoEndGame::_internal_add_uids(int32_t value) {
   uids_.Add(value);
 }
 inline void SetteMezzoEndGame::add_uids(int32_t value) {
   _internal_add_uids(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoEndGame.uids)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoEndGame.uids)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoEndGame::_internal_uids() const {
@@ -29156,7 +29159,7 @@ SetteMezzoEndGame::_internal_uids() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoEndGame::uids() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoEndGame.uids)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoEndGame.uids)
   return _internal_uids();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -29165,7 +29168,7 @@ SetteMezzoEndGame::_internal_mutable_uids() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoEndGame::mutable_uids() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoEndGame.uids)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoEndGame.uids)
   return _internal_mutable_uids();
 }
 
@@ -29183,19 +29186,19 @@ inline int32_t SetteMezzoEndGame::_internal_scores(int index) const {
   return scores_.Get(index);
 }
 inline int32_t SetteMezzoEndGame::scores(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoEndGame.scores)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoEndGame.scores)
   return _internal_scores(index);
 }
 inline void SetteMezzoEndGame::set_scores(int index, int32_t value) {
   scores_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoEndGame.scores)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoEndGame.scores)
 }
 inline void SetteMezzoEndGame::_internal_add_scores(int32_t value) {
   scores_.Add(value);
 }
 inline void SetteMezzoEndGame::add_scores(int32_t value) {
   _internal_add_scores(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoEndGame.scores)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoEndGame.scores)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoEndGame::_internal_scores() const {
@@ -29203,7 +29206,7 @@ SetteMezzoEndGame::_internal_scores() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
 SetteMezzoEndGame::scores() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoEndGame.scores)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoEndGame.scores)
   return _internal_scores();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
@@ -29212,7 +29215,7 @@ SetteMezzoEndGame::_internal_mutable_scores() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 SetteMezzoEndGame::mutable_scores() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoEndGame.scores)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoEndGame.scores)
   return _internal_mutable_scores();
 }
 
@@ -29230,19 +29233,19 @@ inline bool SetteMezzoEndGame::_internal_is_wins(int index) const {
   return is_wins_.Get(index);
 }
 inline bool SetteMezzoEndGame::is_wins(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoEndGame.is_wins)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoEndGame.is_wins)
   return _internal_is_wins(index);
 }
 inline void SetteMezzoEndGame::set_is_wins(int index, bool value) {
   is_wins_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoEndGame.is_wins)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoEndGame.is_wins)
 }
 inline void SetteMezzoEndGame::_internal_add_is_wins(bool value) {
   is_wins_.Add(value);
 }
 inline void SetteMezzoEndGame::add_is_wins(bool value) {
   _internal_add_is_wins(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoEndGame.is_wins)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoEndGame.is_wins)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 SetteMezzoEndGame::_internal_is_wins() const {
@@ -29250,7 +29253,7 @@ SetteMezzoEndGame::_internal_is_wins() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >&
 SetteMezzoEndGame::is_wins() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoEndGame.is_wins)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoEndGame.is_wins)
   return _internal_is_wins();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
@@ -29259,7 +29262,7 @@ SetteMezzoEndGame::_internal_mutable_is_wins() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
 SetteMezzoEndGame::mutable_is_wins() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoEndGame.is_wins)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoEndGame.is_wins)
   return _internal_mutable_is_wins();
 }
 
@@ -29277,19 +29280,19 @@ inline int64_t SetteMezzoEndGame::_internal_golds_change(int index) const {
   return golds_change_.Get(index);
 }
 inline int64_t SetteMezzoEndGame::golds_change(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoEndGame.golds_change)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoEndGame.golds_change)
   return _internal_golds_change(index);
 }
 inline void SetteMezzoEndGame::set_golds_change(int index, int64_t value) {
   golds_change_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoEndGame.golds_change)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoEndGame.golds_change)
 }
 inline void SetteMezzoEndGame::_internal_add_golds_change(int64_t value) {
   golds_change_.Add(value);
 }
 inline void SetteMezzoEndGame::add_golds_change(int64_t value) {
   _internal_add_golds_change(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoEndGame.golds_change)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoEndGame.golds_change)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoEndGame::_internal_golds_change() const {
@@ -29297,7 +29300,7 @@ SetteMezzoEndGame::_internal_golds_change() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoEndGame::golds_change() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoEndGame.golds_change)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoEndGame.golds_change)
   return _internal_golds_change();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -29306,7 +29309,7 @@ SetteMezzoEndGame::_internal_mutable_golds_change() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 SetteMezzoEndGame::mutable_golds_change() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoEndGame.golds_change)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoEndGame.golds_change)
   return _internal_mutable_golds_change();
 }
 
@@ -29324,19 +29327,19 @@ inline int64_t SetteMezzoEndGame::_internal_player_golds(int index) const {
   return player_golds_.Get(index);
 }
 inline int64_t SetteMezzoEndGame::player_golds(int index) const {
-  // @@protoc_insertion_point(field_get:SetteMezzoEndGame.player_golds)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoEndGame.player_golds)
   return _internal_player_golds(index);
 }
 inline void SetteMezzoEndGame::set_player_golds(int index, int64_t value) {
   player_golds_.Set(index, value);
-  // @@protoc_insertion_point(field_set:SetteMezzoEndGame.player_golds)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoEndGame.player_golds)
 }
 inline void SetteMezzoEndGame::_internal_add_player_golds(int64_t value) {
   player_golds_.Add(value);
 }
 inline void SetteMezzoEndGame::add_player_golds(int64_t value) {
   _internal_add_player_golds(value);
-  // @@protoc_insertion_point(field_add:SetteMezzoEndGame.player_golds)
+  // @@protoc_insertion_point(field_add:packet.SetteMezzoEndGame.player_golds)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoEndGame::_internal_player_golds() const {
@@ -29344,7 +29347,7 @@ SetteMezzoEndGame::_internal_player_golds() const {
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >&
 SetteMezzoEndGame::player_golds() const {
-  // @@protoc_insertion_point(field_list:SetteMezzoEndGame.player_golds)
+  // @@protoc_insertion_point(field_list:packet.SetteMezzoEndGame.player_golds)
   return _internal_player_golds();
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
@@ -29353,7 +29356,7 @@ SetteMezzoEndGame::_internal_mutable_player_golds() {
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int64_t >*
 SetteMezzoEndGame::mutable_player_golds() {
-  // @@protoc_insertion_point(field_mutable_list:SetteMezzoEndGame.player_golds)
+  // @@protoc_insertion_point(field_mutable_list:packet.SetteMezzoEndGame.player_golds)
   return _internal_mutable_player_golds();
 }
 
@@ -29369,7 +29372,7 @@ inline int32_t SetteMezzoShowBankerCard::_internal_card_id() const {
   return card_id_;
 }
 inline int32_t SetteMezzoShowBankerCard::card_id() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoShowBankerCard.card_id)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoShowBankerCard.card_id)
   return _internal_card_id();
 }
 inline void SetteMezzoShowBankerCard::_internal_set_card_id(int32_t value) {
@@ -29378,7 +29381,7 @@ inline void SetteMezzoShowBankerCard::_internal_set_card_id(int32_t value) {
 }
 inline void SetteMezzoShowBankerCard::set_card_id(int32_t value) {
   _internal_set_card_id(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoShowBankerCard.card_id)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoShowBankerCard.card_id)
 }
 
 // -------------------------------------------------------------------
@@ -29393,7 +29396,7 @@ inline int32_t SetteMezzoUserBet::_internal_uid() const {
   return uid_;
 }
 inline int32_t SetteMezzoUserBet::uid() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoUserBet.uid)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoUserBet.uid)
   return _internal_uid();
 }
 inline void SetteMezzoUserBet::_internal_set_uid(int32_t value) {
@@ -29402,7 +29405,7 @@ inline void SetteMezzoUserBet::_internal_set_uid(int32_t value) {
 }
 inline void SetteMezzoUserBet::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoUserBet.uid)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoUserBet.uid)
 }
 
 // int64 bet = 2;
@@ -29413,7 +29416,7 @@ inline int64_t SetteMezzoUserBet::_internal_bet() const {
   return bet_;
 }
 inline int64_t SetteMezzoUserBet::bet() const {
-  // @@protoc_insertion_point(field_get:SetteMezzoUserBet.bet)
+  // @@protoc_insertion_point(field_get:packet.SetteMezzoUserBet.bet)
   return _internal_bet();
 }
 inline void SetteMezzoUserBet::_internal_set_bet(int64_t value) {
@@ -29422,7 +29425,7 @@ inline void SetteMezzoUserBet::_internal_set_bet(int64_t value) {
 }
 inline void SetteMezzoUserBet::set_bet(int64_t value) {
   _internal_set_bet(value);
-  // @@protoc_insertion_point(field_set:SetteMezzoUserBet.bet)
+  // @@protoc_insertion_point(field_set:packet.SetteMezzoUserBet.bet)
 }
 
 // -------------------------------------------------------------------
@@ -29437,7 +29440,7 @@ inline int32_t ViewGame::_internal_match_id() const {
   return match_id_;
 }
 inline int32_t ViewGame::match_id() const {
-  // @@protoc_insertion_point(field_get:ViewGame.match_id)
+  // @@protoc_insertion_point(field_get:packet.ViewGame.match_id)
   return _internal_match_id();
 }
 inline void ViewGame::_internal_set_match_id(int32_t value) {
@@ -29446,7 +29449,7 @@ inline void ViewGame::_internal_set_match_id(int32_t value) {
 }
 inline void ViewGame::set_match_id(int32_t value) {
   _internal_set_match_id(value);
-  // @@protoc_insertion_point(field_set:ViewGame.match_id)
+  // @@protoc_insertion_point(field_set:packet.ViewGame.match_id)
 }
 
 // -------------------------------------------------------------------
@@ -29461,7 +29464,7 @@ inline int32_t UserStopView::_internal_uid() const {
   return uid_;
 }
 inline int32_t UserStopView::uid() const {
-  // @@protoc_insertion_point(field_get:UserStopView.uid)
+  // @@protoc_insertion_point(field_get:packet.UserStopView.uid)
   return _internal_uid();
 }
 inline void UserStopView::_internal_set_uid(int32_t value) {
@@ -29470,7 +29473,7 @@ inline void UserStopView::_internal_set_uid(int32_t value) {
 }
 inline void UserStopView::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:UserStopView.uid)
+  // @@protoc_insertion_point(field_set:packet.UserStopView.uid)
 }
 
 // -------------------------------------------------------------------
@@ -29485,7 +29488,7 @@ inline int32_t NewUserView::_internal_uid() const {
   return uid_;
 }
 inline int32_t NewUserView::uid() const {
-  // @@protoc_insertion_point(field_get:NewUserView.uid)
+  // @@protoc_insertion_point(field_get:packet.NewUserView.uid)
   return _internal_uid();
 }
 inline void NewUserView::_internal_set_uid(int32_t value) {
@@ -29494,7 +29497,7 @@ inline void NewUserView::_internal_set_uid(int32_t value) {
 }
 inline void NewUserView::set_uid(int32_t value) {
   _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:NewUserView.uid)
+  // @@protoc_insertion_point(field_set:packet.NewUserView.uid)
 }
 
 // string avatar = 2;
@@ -29502,7 +29505,7 @@ inline void NewUserView::clear_avatar() {
   avatar_.ClearToEmpty();
 }
 inline const std::string& NewUserView::avatar() const {
-  // @@protoc_insertion_point(field_get:NewUserView.avatar)
+  // @@protoc_insertion_point(field_get:packet.NewUserView.avatar)
   return _internal_avatar();
 }
 template <typename ArgT0, typename... ArgT>
@@ -29510,11 +29513,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void NewUserView::set_avatar(ArgT0&& arg0, ArgT... args) {
  
  avatar_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:NewUserView.avatar)
+  // @@protoc_insertion_point(field_set:packet.NewUserView.avatar)
 }
 inline std::string* NewUserView::mutable_avatar() {
   std::string* _s = _internal_mutable_avatar();
-  // @@protoc_insertion_point(field_mutable:NewUserView.avatar)
+  // @@protoc_insertion_point(field_mutable:packet.NewUserView.avatar)
   return _s;
 }
 inline const std::string& NewUserView::_internal_avatar() const {
@@ -29529,7 +29532,7 @@ inline std::string* NewUserView::_internal_mutable_avatar() {
   return avatar_.Mutable(GetArenaForAllocation());
 }
 inline std::string* NewUserView::release_avatar() {
-  // @@protoc_insertion_point(field_release:NewUserView.avatar)
+  // @@protoc_insertion_point(field_release:packet.NewUserView.avatar)
   return avatar_.Release();
 }
 inline void NewUserView::set_allocated_avatar(std::string* avatar) {
@@ -29544,7 +29547,7 @@ inline void NewUserView::set_allocated_avatar(std::string* avatar) {
     avatar_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:NewUserView.avatar)
+  // @@protoc_insertion_point(field_set_allocated:packet.NewUserView.avatar)
 }
 
 // string name = 3;
@@ -29552,7 +29555,7 @@ inline void NewUserView::clear_name() {
   name_.ClearToEmpty();
 }
 inline const std::string& NewUserView::name() const {
-  // @@protoc_insertion_point(field_get:NewUserView.name)
+  // @@protoc_insertion_point(field_get:packet.NewUserView.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
@@ -29560,11 +29563,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void NewUserView::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:NewUserView.name)
+  // @@protoc_insertion_point(field_set:packet.NewUserView.name)
 }
 inline std::string* NewUserView::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:NewUserView.name)
+  // @@protoc_insertion_point(field_mutable:packet.NewUserView.name)
   return _s;
 }
 inline const std::string& NewUserView::_internal_name() const {
@@ -29579,7 +29582,7 @@ inline std::string* NewUserView::_internal_mutable_name() {
   return name_.Mutable(GetArenaForAllocation());
 }
 inline std::string* NewUserView::release_name() {
-  // @@protoc_insertion_point(field_release:NewUserView.name)
+  // @@protoc_insertion_point(field_release:packet.NewUserView.name)
   return name_.Release();
 }
 inline void NewUserView::set_allocated_name(std::string* name) {
@@ -29594,7 +29597,7 @@ inline void NewUserView::set_allocated_name(std::string* name) {
     name_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:NewUserView.name)
+  // @@protoc_insertion_point(field_set_allocated:packet.NewUserView.name)
 }
 
 // int32 avatar_frame = 4;
@@ -29605,7 +29608,7 @@ inline int32_t NewUserView::_internal_avatar_frame() const {
   return avatar_frame_;
 }
 inline int32_t NewUserView::avatar_frame() const {
-  // @@protoc_insertion_point(field_get:NewUserView.avatar_frame)
+  // @@protoc_insertion_point(field_get:packet.NewUserView.avatar_frame)
   return _internal_avatar_frame();
 }
 inline void NewUserView::_internal_set_avatar_frame(int32_t value) {
@@ -29614,7 +29617,7 @@ inline void NewUserView::_internal_set_avatar_frame(int32_t value) {
 }
 inline void NewUserView::set_avatar_frame(int32_t value) {
   _internal_set_avatar_frame(value);
-  // @@protoc_insertion_point(field_set:NewUserView.avatar_frame)
+  // @@protoc_insertion_point(field_set:packet.NewUserView.avatar_frame)
 }
 
 // -------------------------------------------------------------------
@@ -29629,7 +29632,7 @@ inline int32_t CheatExpUser::_internal_exp() const {
   return exp_;
 }
 inline int32_t CheatExpUser::exp() const {
-  // @@protoc_insertion_point(field_get:CheatExpUser.exp)
+  // @@protoc_insertion_point(field_get:packet.CheatExpUser.exp)
   return _internal_exp();
 }
 inline void CheatExpUser::_internal_set_exp(int32_t value) {
@@ -29638,7 +29641,7 @@ inline void CheatExpUser::_internal_set_exp(int32_t value) {
 }
 inline void CheatExpUser::set_exp(int32_t value) {
   _internal_set_exp(value);
-  // @@protoc_insertion_point(field_set:CheatExpUser.exp)
+  // @@protoc_insertion_point(field_set:packet.CheatExpUser.exp)
 }
 
 // -------------------------------------------------------------------
@@ -29653,7 +29656,7 @@ inline int64_t UpdateExp::_internal_exp() const {
   return exp_;
 }
 inline int64_t UpdateExp::exp() const {
-  // @@protoc_insertion_point(field_get:UpdateExp.exp)
+  // @@protoc_insertion_point(field_get:packet.UpdateExp.exp)
   return _internal_exp();
 }
 inline void UpdateExp::_internal_set_exp(int64_t value) {
@@ -29662,7 +29665,7 @@ inline void UpdateExp::_internal_set_exp(int64_t value) {
 }
 inline void UpdateExp::set_exp(int64_t value) {
   _internal_set_exp(value);
-  // @@protoc_insertion_point(field_set:UpdateExp.exp)
+  // @@protoc_insertion_point(field_set:packet.UpdateExp.exp)
 }
 
 // -------------------------------------------------------------------
@@ -29677,7 +29680,7 @@ inline int32_t ClaimRewardLevel::_internal_level() const {
   return level_;
 }
 inline int32_t ClaimRewardLevel::level() const {
-  // @@protoc_insertion_point(field_get:ClaimRewardLevel.level)
+  // @@protoc_insertion_point(field_get:packet.ClaimRewardLevel.level)
   return _internal_level();
 }
 inline void ClaimRewardLevel::_internal_set_level(int32_t value) {
@@ -29686,14 +29689,14 @@ inline void ClaimRewardLevel::_internal_set_level(int32_t value) {
 }
 inline void ClaimRewardLevel::set_level(int32_t value) {
   _internal_set_level(value);
-  // @@protoc_insertion_point(field_set:ClaimRewardLevel.level)
+  // @@protoc_insertion_point(field_set:packet.ClaimRewardLevel.level)
 }
 
 // -------------------------------------------------------------------
 
 // UserInventory
 
-// repeated .InvetoryItem items = 1;
+// repeated .packet.InvetoryItem items = 1;
 inline int UserInventory::_internal_items_size() const {
   return items_.size();
 }
@@ -29703,33 +29706,33 @@ inline int UserInventory::items_size() const {
 inline void UserInventory::clear_items() {
   items_.Clear();
 }
-inline ::InvetoryItem* UserInventory::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:UserInventory.items)
+inline ::packet::InvetoryItem* UserInventory::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.UserInventory.items)
   return items_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryItem >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryItem >*
 UserInventory::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:UserInventory.items)
+  // @@protoc_insertion_point(field_mutable_list:packet.UserInventory.items)
   return &items_;
 }
-inline const ::InvetoryItem& UserInventory::_internal_items(int index) const {
+inline const ::packet::InvetoryItem& UserInventory::_internal_items(int index) const {
   return items_.Get(index);
 }
-inline const ::InvetoryItem& UserInventory::items(int index) const {
-  // @@protoc_insertion_point(field_get:UserInventory.items)
+inline const ::packet::InvetoryItem& UserInventory::items(int index) const {
+  // @@protoc_insertion_point(field_get:packet.UserInventory.items)
   return _internal_items(index);
 }
-inline ::InvetoryItem* UserInventory::_internal_add_items() {
+inline ::packet::InvetoryItem* UserInventory::_internal_add_items() {
   return items_.Add();
 }
-inline ::InvetoryItem* UserInventory::add_items() {
-  ::InvetoryItem* _add = _internal_add_items();
-  // @@protoc_insertion_point(field_add:UserInventory.items)
+inline ::packet::InvetoryItem* UserInventory::add_items() {
+  ::packet::InvetoryItem* _add = _internal_add_items();
+  // @@protoc_insertion_point(field_add:packet.UserInventory.items)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryItem >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryItem >&
 UserInventory::items() const {
-  // @@protoc_insertion_point(field_list:UserInventory.items)
+  // @@protoc_insertion_point(field_list:packet.UserInventory.items)
   return items_;
 }
 
@@ -29745,7 +29748,7 @@ inline int32_t InvetoryItem::_internal_item_id() const {
   return item_id_;
 }
 inline int32_t InvetoryItem::item_id() const {
-  // @@protoc_insertion_point(field_get:InvetoryItem.item_id)
+  // @@protoc_insertion_point(field_get:packet.InvetoryItem.item_id)
   return _internal_item_id();
 }
 inline void InvetoryItem::_internal_set_item_id(int32_t value) {
@@ -29754,7 +29757,7 @@ inline void InvetoryItem::_internal_set_item_id(int32_t value) {
 }
 inline void InvetoryItem::set_item_id(int32_t value) {
   _internal_set_item_id(value);
-  // @@protoc_insertion_point(field_set:InvetoryItem.item_id)
+  // @@protoc_insertion_point(field_set:packet.InvetoryItem.item_id)
 }
 
 // int32 expire_time = 2;
@@ -29765,7 +29768,7 @@ inline int32_t InvetoryItem::_internal_expire_time() const {
   return expire_time_;
 }
 inline int32_t InvetoryItem::expire_time() const {
-  // @@protoc_insertion_point(field_get:InvetoryItem.expire_time)
+  // @@protoc_insertion_point(field_get:packet.InvetoryItem.expire_time)
   return _internal_expire_time();
 }
 inline void InvetoryItem::_internal_set_expire_time(int32_t value) {
@@ -29774,7 +29777,7 @@ inline void InvetoryItem::_internal_set_expire_time(int32_t value) {
 }
 inline void InvetoryItem::set_expire_time(int32_t value) {
   _internal_set_expire_time(value);
-  // @@protoc_insertion_point(field_set:InvetoryItem.expire_time)
+  // @@protoc_insertion_point(field_set:packet.InvetoryItem.expire_time)
 }
 
 // int32 value = 3;
@@ -29785,7 +29788,7 @@ inline int32_t InvetoryItem::_internal_value() const {
   return value_;
 }
 inline int32_t InvetoryItem::value() const {
-  // @@protoc_insertion_point(field_get:InvetoryItem.value)
+  // @@protoc_insertion_point(field_get:packet.InvetoryItem.value)
   return _internal_value();
 }
 inline void InvetoryItem::_internal_set_value(int32_t value) {
@@ -29794,7 +29797,7 @@ inline void InvetoryItem::_internal_set_value(int32_t value) {
 }
 inline void InvetoryItem::set_value(int32_t value) {
   _internal_set_value(value);
-  // @@protoc_insertion_point(field_set:InvetoryItem.value)
+  // @@protoc_insertion_point(field_set:packet.InvetoryItem.value)
 }
 
 // -------------------------------------------------------------------
@@ -29809,7 +29812,7 @@ inline int32_t UseItem::_internal_item_id() const {
   return item_id_;
 }
 inline int32_t UseItem::item_id() const {
-  // @@protoc_insertion_point(field_get:UseItem.item_id)
+  // @@protoc_insertion_point(field_get:packet.UseItem.item_id)
   return _internal_item_id();
 }
 inline void UseItem::_internal_set_item_id(int32_t value) {
@@ -29818,7 +29821,7 @@ inline void UseItem::_internal_set_item_id(int32_t value) {
 }
 inline void UseItem::set_item_id(int32_t value) {
   _internal_set_item_id(value);
-  // @@protoc_insertion_point(field_set:UseItem.item_id)
+  // @@protoc_insertion_point(field_set:packet.UseItem.item_id)
 }
 
 // -------------------------------------------------------------------
@@ -29833,7 +29836,7 @@ inline int32_t CheatItem::_internal_item_id() const {
   return item_id_;
 }
 inline int32_t CheatItem::item_id() const {
-  // @@protoc_insertion_point(field_get:CheatItem.item_id)
+  // @@protoc_insertion_point(field_get:packet.CheatItem.item_id)
   return _internal_item_id();
 }
 inline void CheatItem::_internal_set_item_id(int32_t value) {
@@ -29842,7 +29845,7 @@ inline void CheatItem::_internal_set_item_id(int32_t value) {
 }
 inline void CheatItem::set_item_id(int32_t value) {
   _internal_set_item_id(value);
-  // @@protoc_insertion_point(field_set:CheatItem.item_id)
+  // @@protoc_insertion_point(field_set:packet.CheatItem.item_id)
 }
 
 // int32 duration = 2;
@@ -29853,7 +29856,7 @@ inline int32_t CheatItem::_internal_duration() const {
   return duration_;
 }
 inline int32_t CheatItem::duration() const {
-  // @@protoc_insertion_point(field_get:CheatItem.duration)
+  // @@protoc_insertion_point(field_get:packet.CheatItem.duration)
   return _internal_duration();
 }
 inline void CheatItem::_internal_set_duration(int32_t value) {
@@ -29862,7 +29865,7 @@ inline void CheatItem::_internal_set_duration(int32_t value) {
 }
 inline void CheatItem::set_duration(int32_t value) {
   _internal_set_duration(value);
-  // @@protoc_insertion_point(field_set:CheatItem.duration)
+  // @@protoc_insertion_point(field_set:packet.CheatItem.duration)
 }
 
 // -------------------------------------------------------------------
@@ -29877,7 +29880,7 @@ inline int32_t BuyItem::_internal_item_id() const {
   return item_id_;
 }
 inline int32_t BuyItem::item_id() const {
-  // @@protoc_insertion_point(field_get:BuyItem.item_id)
+  // @@protoc_insertion_point(field_get:packet.BuyItem.item_id)
   return _internal_item_id();
 }
 inline void BuyItem::_internal_set_item_id(int32_t value) {
@@ -29886,7 +29889,7 @@ inline void BuyItem::_internal_set_item_id(int32_t value) {
 }
 inline void BuyItem::set_item_id(int32_t value) {
   _internal_set_item_id(value);
-  // @@protoc_insertion_point(field_set:BuyItem.item_id)
+  // @@protoc_insertion_point(field_set:packet.BuyItem.item_id)
 }
 
 // int32 pack_id = 2;
@@ -29897,7 +29900,7 @@ inline int32_t BuyItem::_internal_pack_id() const {
   return pack_id_;
 }
 inline int32_t BuyItem::pack_id() const {
-  // @@protoc_insertion_point(field_get:BuyItem.pack_id)
+  // @@protoc_insertion_point(field_get:packet.BuyItem.pack_id)
   return _internal_pack_id();
 }
 inline void BuyItem::_internal_set_pack_id(int32_t value) {
@@ -29906,14 +29909,14 @@ inline void BuyItem::_internal_set_pack_id(int32_t value) {
 }
 inline void BuyItem::set_pack_id(int32_t value) {
   _internal_set_pack_id(value);
-  // @@protoc_insertion_point(field_set:BuyItem.pack_id)
+  // @@protoc_insertion_point(field_set:packet.BuyItem.pack_id)
 }
 
 // -------------------------------------------------------------------
 
 // InventoryShopConfig
 
-// repeated .InventoryShopItem items = 1;
+// repeated .packet.InventoryShopItem items = 1;
 inline int InventoryShopConfig::_internal_items_size() const {
   return items_.size();
 }
@@ -29923,33 +29926,33 @@ inline int InventoryShopConfig::items_size() const {
 inline void InventoryShopConfig::clear_items() {
   items_.Clear();
 }
-inline ::InventoryShopItem* InventoryShopConfig::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:InventoryShopConfig.items)
+inline ::packet::InventoryShopItem* InventoryShopConfig::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.InventoryShopConfig.items)
   return items_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InventoryShopItem >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InventoryShopItem >*
 InventoryShopConfig::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:InventoryShopConfig.items)
+  // @@protoc_insertion_point(field_mutable_list:packet.InventoryShopConfig.items)
   return &items_;
 }
-inline const ::InventoryShopItem& InventoryShopConfig::_internal_items(int index) const {
+inline const ::packet::InventoryShopItem& InventoryShopConfig::_internal_items(int index) const {
   return items_.Get(index);
 }
-inline const ::InventoryShopItem& InventoryShopConfig::items(int index) const {
-  // @@protoc_insertion_point(field_get:InventoryShopConfig.items)
+inline const ::packet::InventoryShopItem& InventoryShopConfig::items(int index) const {
+  // @@protoc_insertion_point(field_get:packet.InventoryShopConfig.items)
   return _internal_items(index);
 }
-inline ::InventoryShopItem* InventoryShopConfig::_internal_add_items() {
+inline ::packet::InventoryShopItem* InventoryShopConfig::_internal_add_items() {
   return items_.Add();
 }
-inline ::InventoryShopItem* InventoryShopConfig::add_items() {
-  ::InventoryShopItem* _add = _internal_add_items();
-  // @@protoc_insertion_point(field_add:InventoryShopConfig.items)
+inline ::packet::InventoryShopItem* InventoryShopConfig::add_items() {
+  ::packet::InventoryShopItem* _add = _internal_add_items();
+  // @@protoc_insertion_point(field_add:packet.InventoryShopConfig.items)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InventoryShopItem >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InventoryShopItem >&
 InventoryShopConfig::items() const {
-  // @@protoc_insertion_point(field_list:InventoryShopConfig.items)
+  // @@protoc_insertion_point(field_list:packet.InventoryShopConfig.items)
   return items_;
 }
 
@@ -29965,7 +29968,7 @@ inline int32_t InventoryShopItem::_internal_item_id() const {
   return item_id_;
 }
 inline int32_t InventoryShopItem::item_id() const {
-  // @@protoc_insertion_point(field_get:InventoryShopItem.item_id)
+  // @@protoc_insertion_point(field_get:packet.InventoryShopItem.item_id)
   return _internal_item_id();
 }
 inline void InventoryShopItem::_internal_set_item_id(int32_t value) {
@@ -29974,10 +29977,10 @@ inline void InventoryShopItem::_internal_set_item_id(int32_t value) {
 }
 inline void InventoryShopItem::set_item_id(int32_t value) {
   _internal_set_item_id(value);
-  // @@protoc_insertion_point(field_set:InventoryShopItem.item_id)
+  // @@protoc_insertion_point(field_set:packet.InventoryShopItem.item_id)
 }
 
-// repeated .InvetoryShopPack packs = 2;
+// repeated .packet.InvetoryShopPack packs = 2;
 inline int InventoryShopItem::_internal_packs_size() const {
   return packs_.size();
 }
@@ -29987,33 +29990,33 @@ inline int InventoryShopItem::packs_size() const {
 inline void InventoryShopItem::clear_packs() {
   packs_.Clear();
 }
-inline ::InvetoryShopPack* InventoryShopItem::mutable_packs(int index) {
-  // @@protoc_insertion_point(field_mutable:InventoryShopItem.packs)
+inline ::packet::InvetoryShopPack* InventoryShopItem::mutable_packs(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.InventoryShopItem.packs)
   return packs_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryShopPack >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryShopPack >*
 InventoryShopItem::mutable_packs() {
-  // @@protoc_insertion_point(field_mutable_list:InventoryShopItem.packs)
+  // @@protoc_insertion_point(field_mutable_list:packet.InventoryShopItem.packs)
   return &packs_;
 }
-inline const ::InvetoryShopPack& InventoryShopItem::_internal_packs(int index) const {
+inline const ::packet::InvetoryShopPack& InventoryShopItem::_internal_packs(int index) const {
   return packs_.Get(index);
 }
-inline const ::InvetoryShopPack& InventoryShopItem::packs(int index) const {
-  // @@protoc_insertion_point(field_get:InventoryShopItem.packs)
+inline const ::packet::InvetoryShopPack& InventoryShopItem::packs(int index) const {
+  // @@protoc_insertion_point(field_get:packet.InventoryShopItem.packs)
   return _internal_packs(index);
 }
-inline ::InvetoryShopPack* InventoryShopItem::_internal_add_packs() {
+inline ::packet::InvetoryShopPack* InventoryShopItem::_internal_add_packs() {
   return packs_.Add();
 }
-inline ::InvetoryShopPack* InventoryShopItem::add_packs() {
-  ::InvetoryShopPack* _add = _internal_add_packs();
-  // @@protoc_insertion_point(field_add:InventoryShopItem.packs)
+inline ::packet::InvetoryShopPack* InventoryShopItem::add_packs() {
+  ::packet::InvetoryShopPack* _add = _internal_add_packs();
+  // @@protoc_insertion_point(field_add:packet.InventoryShopItem.packs)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::InvetoryShopPack >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::InvetoryShopPack >&
 InventoryShopItem::packs() const {
-  // @@protoc_insertion_point(field_list:InventoryShopItem.packs)
+  // @@protoc_insertion_point(field_list:packet.InventoryShopItem.packs)
   return packs_;
 }
 
@@ -30029,7 +30032,7 @@ inline int32_t InvetoryShopPack::_internal_id() const {
   return id_;
 }
 inline int32_t InvetoryShopPack::id() const {
-  // @@protoc_insertion_point(field_get:InvetoryShopPack.id)
+  // @@protoc_insertion_point(field_get:packet.InvetoryShopPack.id)
   return _internal_id();
 }
 inline void InvetoryShopPack::_internal_set_id(int32_t value) {
@@ -30038,7 +30041,7 @@ inline void InvetoryShopPack::_internal_set_id(int32_t value) {
 }
 inline void InvetoryShopPack::set_id(int32_t value) {
   _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:InvetoryShopPack.id)
+  // @@protoc_insertion_point(field_set:packet.InvetoryShopPack.id)
 }
 
 // int32 price = 2;
@@ -30049,7 +30052,7 @@ inline int32_t InvetoryShopPack::_internal_price() const {
   return price_;
 }
 inline int32_t InvetoryShopPack::price() const {
-  // @@protoc_insertion_point(field_get:InvetoryShopPack.price)
+  // @@protoc_insertion_point(field_get:packet.InvetoryShopPack.price)
   return _internal_price();
 }
 inline void InvetoryShopPack::_internal_set_price(int32_t value) {
@@ -30058,7 +30061,7 @@ inline void InvetoryShopPack::_internal_set_price(int32_t value) {
 }
 inline void InvetoryShopPack::set_price(int32_t value) {
   _internal_set_price(value);
-  // @@protoc_insertion_point(field_set:InvetoryShopPack.price)
+  // @@protoc_insertion_point(field_set:packet.InvetoryShopPack.price)
 }
 
 // int32 duration = 3;
@@ -30069,7 +30072,7 @@ inline int32_t InvetoryShopPack::_internal_duration() const {
   return duration_;
 }
 inline int32_t InvetoryShopPack::duration() const {
-  // @@protoc_insertion_point(field_get:InvetoryShopPack.duration)
+  // @@protoc_insertion_point(field_get:packet.InvetoryShopPack.duration)
   return _internal_duration();
 }
 inline void InvetoryShopPack::_internal_set_duration(int32_t value) {
@@ -30078,7 +30081,7 @@ inline void InvetoryShopPack::_internal_set_duration(int32_t value) {
 }
 inline void InvetoryShopPack::set_duration(int32_t value) {
   _internal_set_duration(value);
-  // @@protoc_insertion_point(field_set:InvetoryShopPack.duration)
+  // @@protoc_insertion_point(field_set:packet.InvetoryShopPack.duration)
 }
 
 // -------------------------------------------------------------------
@@ -30093,7 +30096,7 @@ inline int32_t ClaimRewardLevelResponse::_internal_level() const {
   return level_;
 }
 inline int32_t ClaimRewardLevelResponse::level() const {
-  // @@protoc_insertion_point(field_get:ClaimRewardLevelResponse.level)
+  // @@protoc_insertion_point(field_get:packet.ClaimRewardLevelResponse.level)
   return _internal_level();
 }
 inline void ClaimRewardLevelResponse::_internal_set_level(int32_t value) {
@@ -30102,7 +30105,7 @@ inline void ClaimRewardLevelResponse::_internal_set_level(int32_t value) {
 }
 inline void ClaimRewardLevelResponse::set_level(int32_t value) {
   _internal_set_level(value);
-  // @@protoc_insertion_point(field_set:ClaimRewardLevelResponse.level)
+  // @@protoc_insertion_point(field_set:packet.ClaimRewardLevelResponse.level)
 }
 
 // int32 gold = 2;
@@ -30113,7 +30116,7 @@ inline int32_t ClaimRewardLevelResponse::_internal_gold() const {
   return gold_;
 }
 inline int32_t ClaimRewardLevelResponse::gold() const {
-  // @@protoc_insertion_point(field_get:ClaimRewardLevelResponse.gold)
+  // @@protoc_insertion_point(field_get:packet.ClaimRewardLevelResponse.gold)
   return _internal_gold();
 }
 inline void ClaimRewardLevelResponse::_internal_set_gold(int32_t value) {
@@ -30122,10 +30125,10 @@ inline void ClaimRewardLevelResponse::_internal_set_gold(int32_t value) {
 }
 inline void ClaimRewardLevelResponse::set_gold(int32_t value) {
   _internal_set_gold(value);
-  // @@protoc_insertion_point(field_set:ClaimRewardLevelResponse.gold)
+  // @@protoc_insertion_point(field_set:packet.ClaimRewardLevelResponse.gold)
 }
 
-// repeated .RewardInventoryItem items = 3;
+// repeated .packet.RewardInventoryItem items = 3;
 inline int ClaimRewardLevelResponse::_internal_items_size() const {
   return items_.size();
 }
@@ -30135,33 +30138,33 @@ inline int ClaimRewardLevelResponse::items_size() const {
 inline void ClaimRewardLevelResponse::clear_items() {
   items_.Clear();
 }
-inline ::RewardInventoryItem* ClaimRewardLevelResponse::mutable_items(int index) {
-  // @@protoc_insertion_point(field_mutable:ClaimRewardLevelResponse.items)
+inline ::packet::RewardInventoryItem* ClaimRewardLevelResponse::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:packet.ClaimRewardLevelResponse.items)
   return items_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >*
 ClaimRewardLevelResponse::mutable_items() {
-  // @@protoc_insertion_point(field_mutable_list:ClaimRewardLevelResponse.items)
+  // @@protoc_insertion_point(field_mutable_list:packet.ClaimRewardLevelResponse.items)
   return &items_;
 }
-inline const ::RewardInventoryItem& ClaimRewardLevelResponse::_internal_items(int index) const {
+inline const ::packet::RewardInventoryItem& ClaimRewardLevelResponse::_internal_items(int index) const {
   return items_.Get(index);
 }
-inline const ::RewardInventoryItem& ClaimRewardLevelResponse::items(int index) const {
-  // @@protoc_insertion_point(field_get:ClaimRewardLevelResponse.items)
+inline const ::packet::RewardInventoryItem& ClaimRewardLevelResponse::items(int index) const {
+  // @@protoc_insertion_point(field_get:packet.ClaimRewardLevelResponse.items)
   return _internal_items(index);
 }
-inline ::RewardInventoryItem* ClaimRewardLevelResponse::_internal_add_items() {
+inline ::packet::RewardInventoryItem* ClaimRewardLevelResponse::_internal_add_items() {
   return items_.Add();
 }
-inline ::RewardInventoryItem* ClaimRewardLevelResponse::add_items() {
-  ::RewardInventoryItem* _add = _internal_add_items();
-  // @@protoc_insertion_point(field_add:ClaimRewardLevelResponse.items)
+inline ::packet::RewardInventoryItem* ClaimRewardLevelResponse::add_items() {
+  ::packet::RewardInventoryItem* _add = _internal_add_items();
+  // @@protoc_insertion_point(field_add:packet.ClaimRewardLevelResponse.items)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::RewardInventoryItem >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::packet::RewardInventoryItem >&
 ClaimRewardLevelResponse::items() const {
-  // @@protoc_insertion_point(field_list:ClaimRewardLevelResponse.items)
+  // @@protoc_insertion_point(field_list:packet.ClaimRewardLevelResponse.items)
   return items_;
 }
 
@@ -30177,7 +30180,7 @@ inline int32_t RewardInventoryItem::_internal_item_id() const {
   return item_id_;
 }
 inline int32_t RewardInventoryItem::item_id() const {
-  // @@protoc_insertion_point(field_get:RewardInventoryItem.item_id)
+  // @@protoc_insertion_point(field_get:packet.RewardInventoryItem.item_id)
   return _internal_item_id();
 }
 inline void RewardInventoryItem::_internal_set_item_id(int32_t value) {
@@ -30186,7 +30189,7 @@ inline void RewardInventoryItem::_internal_set_item_id(int32_t value) {
 }
 inline void RewardInventoryItem::set_item_id(int32_t value) {
   _internal_set_item_id(value);
-  // @@protoc_insertion_point(field_set:RewardInventoryItem.item_id)
+  // @@protoc_insertion_point(field_set:packet.RewardInventoryItem.item_id)
 }
 
 // int32 duration = 2;
@@ -30197,7 +30200,7 @@ inline int32_t RewardInventoryItem::_internal_duration() const {
   return duration_;
 }
 inline int32_t RewardInventoryItem::duration() const {
-  // @@protoc_insertion_point(field_get:RewardInventoryItem.duration)
+  // @@protoc_insertion_point(field_get:packet.RewardInventoryItem.duration)
   return _internal_duration();
 }
 inline void RewardInventoryItem::_internal_set_duration(int32_t value) {
@@ -30206,7 +30209,7 @@ inline void RewardInventoryItem::_internal_set_duration(int32_t value) {
 }
 inline void RewardInventoryItem::set_duration(int32_t value) {
   _internal_set_duration(value);
-  // @@protoc_insertion_point(field_set:RewardInventoryItem.duration)
+  // @@protoc_insertion_point(field_set:packet.RewardInventoryItem.duration)
 }
 
 // int32 value = 3;
@@ -30217,7 +30220,7 @@ inline int32_t RewardInventoryItem::_internal_value() const {
   return value_;
 }
 inline int32_t RewardInventoryItem::value() const {
-  // @@protoc_insertion_point(field_get:RewardInventoryItem.value)
+  // @@protoc_insertion_point(field_get:packet.RewardInventoryItem.value)
   return _internal_value();
 }
 inline void RewardInventoryItem::_internal_set_value(int32_t value) {
@@ -30226,7 +30229,7 @@ inline void RewardInventoryItem::_internal_set_value(int32_t value) {
 }
 inline void RewardInventoryItem::set_value(int32_t value) {
   _internal_set_value(value);
-  // @@protoc_insertion_point(field_set:RewardInventoryItem.value)
+  // @@protoc_insertion_point(field_set:packet.RewardInventoryItem.value)
 }
 
 #ifdef __GNUC__
@@ -30427,6 +30430,7 @@ inline void RewardInventoryItem::set_value(int32_t value) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace packet
 
 // @@protoc_insertion_point(global_scope)
 

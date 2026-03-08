@@ -30,7 +30,7 @@ int main() {
         ws.binary(true);
 
         // Send Ping packet
-        Packet ping_packet;
+        packet::Packet ping_packet;
         ping_packet.set_cmd_id(Cmd::PING_PONG);
 
         std::string ping_bytes;
@@ -47,7 +47,7 @@ int main() {
 
         std::string response = beast::buffers_to_string(buffer.data());
 
-        Packet ping_reply;
+        packet::Packet ping_reply;
         if (!ping_reply.ParseFromArray(response.data(), static_cast<int>(response.size()))) {
             std::cerr << "Failed to parse Ping reply Packet\n";
             return 1;
@@ -58,7 +58,7 @@ int main() {
         std::cout << "  token = " << ping_reply.token() << '\n';
         std::cout << "  payload_size = " << ping_reply.payload().size() << '\n';
 
-        PingPong pong;
+        packet::PingPong pong;
         if (pong.ParseFromString(ping_reply.payload())) {
             std::cout << "  payload parsed as PingPong\n";
         } else {
@@ -66,7 +66,7 @@ int main() {
         }
 
         // Send Login packet
-        Login login;
+        packet::Login login;
         login.set_type(1);
         login.set_token("abc123");
         login.set_device_model("PC");
@@ -79,7 +79,7 @@ int main() {
             throw std::runtime_error("Failed to serialize Login");
         }
 
-        Packet packet;
+        packet::Packet packet;
         packet.set_token("session_token_here");
         packet.set_cmd_id(Cmd::LOGIN);
         packet.set_payload(login_bytes);
