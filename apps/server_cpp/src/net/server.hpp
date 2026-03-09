@@ -10,6 +10,7 @@
 #include "net/game_client.hpp"   
 #include "game/match/match_registry.hpp"
 #include "game/users_info_mgr.hpp"
+#include "game/game_manager.hpp"
 
 namespace asio = boost::asio;
 using tcp = asio::ip::tcp;
@@ -36,7 +37,10 @@ public:
     MatchRegistry& match_registry() { return match_registry_; }
     IGameClient& game_client() { return game_client_; }
     UsersInfoMgr& users_info_mgr() { return users_info_mgr_; }
+    GameManager& game_manager() { return game_manager_; }
 
+private:
+    void schedule_update();
 private:
     asio::io_context& io_;
     std::unique_ptr<Listener> listener_;
@@ -47,8 +51,10 @@ private:
     GameClient game_client_;
     MatchRegistry match_registry_;
     UsersInfoMgr users_info_mgr_;
+    GameManager game_manager_;
 
     AppConfig app_config_;
     AuthService auth_service_;
     uint64_t next_session_id_ = 1;
+    std::unique_ptr<asio::steady_timer> update_timer_;
 };

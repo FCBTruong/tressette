@@ -49,7 +49,7 @@ public:
     void remove(uint64_t uid);
 
     // Read packet from client and update cache.
-    void on_receive_packet(uint64_t uid, int cmd_id, const std::string& payload);
+    void on_receive_packet(uint64_t uid, Cmd cmd_id, const std::string& payload);
 
     // Same VIP logic as python: time_show_ads > now.
     bool check_user_vip(uint64_t uid, int64_t now_unix_sec) const;

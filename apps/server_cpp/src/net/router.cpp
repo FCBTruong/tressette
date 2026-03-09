@@ -27,12 +27,13 @@ void Router::handle(const std::shared_ptr<ClientSession>& session, const packet:
             handle_login(session, packet);
             break;
         default:
-            int cmd_id = packet.cmd_id();
+            Cmd cmd_id = static_cast<Cmd>(packet.cmd_id());
             int uid = session->uid().value_or(0);
 
             // Dispatch on received packet event to listeners
             server_.match_registry().on_received_packet(uid, cmd_id, packet.payload());
             server_.users_info_mgr().on_receive_packet(uid, cmd_id, packet.payload());
+            server_.game_manager().on_receive_packet(uid, cmd_id, packet.payload());
             break;
     }
 }
@@ -79,6 +80,13 @@ void Router::handle_login(const std::shared_ptr<ClientSession>& session, const p
     reply.set_payload(response_payload);
 
     session->send(reply);
+
+    server_.game_manager().on_login_success(result.uid);
+
+    std::thread([this, uid = result.uid]() {
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        server_.match_registry().on_user_login(uid);
+    }).detach();
 }
 
 void Router::send_auth_error(const std::shared_ptr<ClientSession>& session, int cmd_id) {

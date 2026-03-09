@@ -33,18 +33,18 @@ bool UsersInfoMgr::check_user_vip(uint64_t uid, int64_t now_unix_sec) const {
     return it->second.time_show_ads > now_unix_sec;
 }
 
-void UsersInfoMgr::on_receive_packet(uint64_t uid, int cmd_id, const std::string& payload) {
+void UsersInfoMgr::on_receive_packet(uint64_t uid, Cmd cmd_id, const std::string& payload) {
     switch (cmd_id) {
-        case static_cast<int>(Cmd::CHANGE_AVATAR):
+        case Cmd::CHANGE_AVATAR:
             handle_change_avatar(uid, payload);
             return;
-        case static_cast<int>(Cmd::CHANGE_USER_NAME):
+        case Cmd::CHANGE_USER_NAME:
             handle_change_user_name(uid, payload);
             return;
-        case static_cast<int>(Cmd::CHEAT_GOLD_USER):
+        case Cmd::CHEAT_GOLD_USER:
             handle_cheat_gold_user(uid, payload);
             return;
-        case static_cast<int>(Cmd::CHEAT_EXP_USER):
+        case Cmd::CHEAT_EXP_USER:
             handle_cheat_exp_user(uid, payload);
             return;
         default:

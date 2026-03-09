@@ -79,10 +79,11 @@ func set_info(info: UserData):
 		
 		head_pn.self_modulate = Color('#429648ca')
 		
-		var scene = g.v.scene_manager.get_current_scene()
-		if scene is not BoardScene:
-			if g.v.player_info_mgr.login_type == g.v.game_constants.LOGIN_TYPE.GUEST:
-				link_acc_btn.visible = true
+		# Not allow link anymore
+		#var scene = g.v.scene_manager.get_current_scene()
+		#if scene is not BoardScene:
+			#if g.v.player_info_mgr.login_type == g.v.game_constants.LOGIN_TYPE.GUEST:
+				#link_acc_btn.visible = true
 	else:
 		hbox_premium.visible = false
 		avt_edit_btn.visible = false

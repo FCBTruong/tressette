@@ -2,12 +2,13 @@
 
 #include <iostream>
 
-#include "match.hpp"
+#include "match_player.hpp"
 #include "net/cmd.hpp"
 #include "packet.pb.h"
-#include "match_player.hpp"
 
-MatchRegistry::MatchRegistry(IGameClient& net, UsersInfoMgr& users_info_mgr) : net_(net), users_info_mgr_(users_info_mgr) {}
+MatchRegistry::MatchRegistry(IGameClient& net, UsersInfoMgr& users_info_mgr)
+    : net_(net), users_info_mgr_(users_info_mgr) {
+}
 
 void MatchRegistry::start() {
     running_ = true;
@@ -29,21 +30,18 @@ void MatchRegistry::update() {
     }
 }
 
-void MatchRegistry::on_received_packet(uint64_t uid, int cmd_id, const std::string& payload) {
-    switch(cmd_id) {
+void MatchRegistry::on_received_packet(uint64_t uid, Cmd cmd_id, const std::string& payload) {
+    switch (cmd_id) {
         case Cmd::QUICK_PLAY:
             receive_quick_play(uid, payload);
             break;
-        case Cmd::JOIN_TABLE_BY_ID:
-            {
-                packet::JoinTableById req;
-                if (!req.ParseFromString(payload)) {
-                    std::cerr << "Failed to parse JoinTableRequest from uid " << uid << '\n';
-                    return;
-                }
-                handle_user_join_by_match_id(uid, req.match_id());
-            }
-        default:
+
+        case Cmd::JOIN_TABLE_BY_ID: {
+            receive_user_join_match(uid, payload);
+            break;
+        }
+
+        default: {
             auto match = get_match_of_user(uid);
             if (!match) {
                 return;
@@ -51,6 +49,7 @@ void MatchRegistry::on_received_packet(uint64_t uid, int cmd_id, const std::stri
 
             match->on_received_packet(uid, cmd_id, payload);
             break;
+        }
     }
 }
 
@@ -58,21 +57,29 @@ std::shared_ptr<Match> MatchRegistry::create_match(
     int game_mode,
     int player_mode,
     bool is_private,
-    int point_mode)
-{
+    int point_mode
+) {
+    (void)game_mode;
+
     const int64_t match_id = next_match_id_++;
     std::cout << "Creating match " << match_id << '\n';
 
-    std::shared_ptr<Match> match;
-    match = std::make_shared<Match>(
+    auto match = std::make_shared<Match>(
         match_id,
         player_mode,
         point_mode,
         net_,
         users_info_mgr_
     );
-    
+
     match->set_public(!is_private);
+
+    match->set_user_removed_callback(
+        [this](uint64_t uid, int64_t removed_match_id) {
+            on_user_removed_from_match(uid, removed_match_id);
+        }
+    );
+
     matches_[match_id] = match;
     return match;
 }
@@ -93,14 +100,6 @@ std::shared_ptr<Match> MatchRegistry::get_match_of_user(uint64_t uid) const {
     return get_match(it->second);
 }
 
-std::shared_ptr<Match> MatchRegistry::get_match_of_viewer(uint64_t uid) const {
-    const auto it = user_views_.find(uid);
-    if (it == user_views_.end()) {
-        return nullptr;
-    }
-    return get_match(it->second);
-}
-
 bool MatchRegistry::is_user_in_match(uint64_t uid) const {
     return user_match_ids_.find(uid) != user_match_ids_.end();
 }
@@ -112,68 +111,47 @@ void MatchRegistry::destroy_match(int64_t match_id) {
     }
 
     for (const auto& player : match->players()) {
-        user_match_ids_.erase(player->uid);
+        if (!player.is_empty()) {
+            user_match_ids_.erase(player.uid);
+        }
+    }
+
+    for (const auto viewer_uid : match->viewers()) {
+        user_match_ids_.erase(viewer_uid);
     }
 
     matches_.erase(match_id);
     std::cout << "Destroyed match " << match_id << '\n';
 }
 
-void MatchRegistry::user_join_match(const std::shared_ptr<Match>& match, uint64_t uid) {
+bool MatchRegistry::user_join_match(const std::shared_ptr<Match>& match, uint64_t uid) {
+   if (!match) {
+        return false;
+    }
+    const auto result = match->try_join(uid);
+
+    if (result != JoinMatchErrors::Success) {
+        send_response_join_table(uid, result);
+        return false;
+    }
+
+    user_match_ids_[uid] = match->match_id();
+    return true;
+}
+
+void MatchRegistry::user_disconnect(uint64_t uid) {
+    auto match = get_match_of_user(uid);
     if (!match) {
         return;
     }
 
-    const auto view_it = user_views_.find(uid);
-    if (view_it != user_views_.end()) {
-        const int64_t viewed_match_id = view_it->second;
-        user_views_.erase(view_it);
-
-        auto viewed_match = get_match(viewed_match_id);
-        if (viewed_match) {
-            const bool is_same_match = (viewed_match_id == match->match_id());
-            viewed_match->user_stop_view(uid, !is_same_match);
-        }
-    }
-
-    user_match_ids_[uid] = match->match_id();
-    match->user_join(uid);
-}
-
-void MatchRegistry::user_disconnect(uint64_t uid) {
-    // auto match = get_match_of_user(uid);
-    // if (match && match->state() == MatchState::Waiting) {
-    //     handle_user_leave_match(uid);
-    // }
-
-    // auto view_match = get_match_of_viewer(uid);
-    // if (view_match) {
-    //     view_match->user_stop_view(uid);
-    //     user_views_.erase(uid);
-
-    //     if (!view_match->check_has_real_players()) {
-    //         destroy_match(view_match->match_id());
-    //     }
-    // }
-}
-
-void MatchRegistry::handle_user_stop_view(uint64_t uid) {
-    const auto it = user_views_.find(uid);
-    if (it == user_views_.end()) {
-        return;
-    }
-
-    const int64_t match_id = it->second;
-    user_views_.erase(it);
-
-    auto match = get_match(match_id);
-    if (match && !match->check_has_real_players()) {
-        destroy_match(match_id);
-    }
+    match->user_disconnect(uid);
 }
 
 std::shared_ptr<Match> MatchRegistry::find_a_suitable_match_quickplay() const {
     for (const auto& [match_id, match] : matches_) {
+        (void)match_id;
+
         if (!match) {
             continue;
         }
@@ -193,6 +171,8 @@ std::vector<std::shared_ptr<Match>> MatchRegistry::prioritize_matches(uint64_t /
     std::vector<std::shared_ptr<Match>> others;
 
     for (const auto& [match_id, match] : matches_) {
+        (void)match_id;
+
         if (!match) {
             continue;
         }
@@ -225,19 +205,7 @@ void MatchRegistry::handle_user_join_by_match_id(uint64_t uid, int64_t match_id)
         send_response_join_table(uid, JoinMatchErrors::MatchNotFound);
         return;
     }
-
-    if (match->state() != MatchState::Waiting) {
-        send_response_join_table(uid, JoinMatchErrors::MatchStarted);
-        return;
-    }
-
-    if (match->check_room_full()) {
-        send_response_join_table(uid, JoinMatchErrors::FullRoom);
-        return;
-    }
-
     user_join_match(match, uid);
-    send_response_join_table(uid, JoinMatchErrors::Success);
 }
 
 void MatchRegistry::receive_user_join_match(uint64_t uid, const std::string& payload) {
@@ -250,8 +218,8 @@ void MatchRegistry::receive_user_join_match(uint64_t uid, const std::string& pay
 }
 
 void MatchRegistry::handle_quick_play(uint64_t uid) {
-    // log
-    std::cout << "Handling quick play for user: " << uid << std::endl;
+    std::cout << "Handling quick play for user: " << uid << '\n';
+
     auto existing = get_match_of_user(uid);
     if (existing) {
         existing->user_reconnect(uid);
@@ -266,6 +234,7 @@ void MatchRegistry::handle_quick_play(uint64_t uid) {
             return;
         }
     }
+
     std::cout << "User " << uid << " joining match " << match->match_id() << " via quick play.\n";
     user_join_match(match, uid);
 }
@@ -315,8 +284,9 @@ void MatchRegistry::received_create_table(uint64_t uid, const std::string& paylo
 }
 
 void MatchRegistry::receive_request_table_list(uint64_t uid) {
-    auto matches = prioritize_matches(uid);
+    (void)uid;
 
+    auto matches = prioritize_matches(uid);
     packet::TableList pkg;
 
     for (const auto& match : matches) {
@@ -331,11 +301,13 @@ void MatchRegistry::receive_request_table_list(uint64_t uid) {
         pkg.add_is_private(!match->is_public());
 
         for (const auto& player : match->players()) {
-            pkg.add_avatars(player->avatar);
-            pkg.add_player_uids(static_cast<int64_t>(player->uid));
-            pkg.add_avatar_frames(player->avatar_frame);
+            pkg.add_avatars(player.avatar);
+            pkg.add_player_uids(static_cast<int64_t>(player.uid));
+            pkg.add_avatar_frames(player.avatar_frame);
         }
     }
+
+    net_.send_packet(uid, Cmd::TABLE_LIST, pkg);
 }
 
 void MatchRegistry::view_game(uint64_t uid, const std::string& payload) {
@@ -344,23 +316,45 @@ void MatchRegistry::view_game(uint64_t uid, const std::string& payload) {
         return;
     }
 
-    auto match = get_match(pkg.match_id());
-    if (!match) {
+    auto target_match = get_match(pkg.match_id());
+    if (!target_match) {
         return;
     }
 
-    user_views_[uid] = pkg.match_id();
-    match->user_view_game(uid);
+    auto current_match = get_match_of_user(uid);
+    if (current_match) {
+        return;
+    }
+
+    user_match_ids_[uid] = target_match->match_id();
+    target_match->user_view_game(uid);
 }
 
 void MatchRegistry::send_response_join_table(uint64_t uid, JoinMatchErrors status) {
     packet::JoinTableResponse pkg;
     pkg.set_error(static_cast<int>(status));
+    net_.send_packet(uid, Cmd::JOIN_TABLE_BY_ID, pkg);
+}
 
-    std::string payload;
-    if (!pkg.SerializeToString(&payload)) {
+void MatchRegistry::on_user_removed_from_match(uint64_t uid, int64_t match_id) {
+    const auto it = user_match_ids_.find(uid);
+    if (it != user_match_ids_.end() && it->second == match_id) {
+        user_match_ids_.erase(it);
+    }
+
+    auto match = get_match(match_id);
+    if (!match) {
         return;
     }
 
-    net_.send_packet(uid, Cmd::JOIN_TABLE_BY_ID, pkg);
+    if (!match->check_has_real_players()) {
+        destroy_match(match_id);
+    }
+}
+
+void MatchRegistry::on_user_login(uint64_t uid) {
+    auto match = get_match_of_user(uid);
+    if (match) {
+        match->user_reconnect(uid);
+    }
 }

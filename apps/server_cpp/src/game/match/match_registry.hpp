@@ -5,19 +5,9 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "net/game_client.hpp" 
+#include "match.hpp"
+#include "net/game_client.hpp"
 #include "game/users_info_mgr.hpp"
-
-class Match;
-
-enum class JoinMatchErrors {
-    Success = 0,
-    MatchStarted = 1,
-    FullRoom = 2,
-    NotEnoughGold = 3,
-    AlreadyInMatch = 4,
-    MatchNotFound = 5
-};
 
 class MatchRegistry {
 public:
@@ -31,20 +21,19 @@ public:
         int game_mode,
         int player_mode,
         bool is_private = false,
-        int point_mode = 11);
+        int point_mode = 11
+    );
 
     std::shared_ptr<Match> get_match(int64_t match_id) const;
     std::shared_ptr<Match> get_match_of_user(uint64_t uid) const;
-    std::shared_ptr<Match> get_match_of_viewer(uint64_t uid) const;
 
     bool is_user_in_match(uint64_t uid) const;
 
-    void on_received_packet(uint64_t uid, int cmd_id, const std::string& payload);
+    void on_received_packet(uint64_t uid, Cmd cmd_id, const std::string& payload);
     void destroy_match(int64_t match_id);
 
-    void user_join_match(const std::shared_ptr<Match>& match, uint64_t uid);
+    bool user_join_match(const std::shared_ptr<Match>& match, uint64_t uid);
     void user_disconnect(uint64_t uid);
-    void handle_user_stop_view(uint64_t uid);
 
     void user_play_card(uint64_t uid, const std::string& payload);
     void user_ready(uint64_t uid);
@@ -57,6 +46,7 @@ public:
     void received_create_table(uint64_t uid, const std::string& payload);
     void handle_register_leave_match(uint64_t uid, const std::string& payload);
     void view_game(uint64_t uid, const std::string& payload);
+    void on_user_login(uint64_t uid);
 
 private:
     std::shared_ptr<Match> find_a_suitable_match_quickplay() const;
@@ -66,11 +56,12 @@ private:
     void handle_user_join_by_match_id(uint64_t uid, int64_t match_id);
     void send_response_join_table(uint64_t uid, JoinMatchErrors status);
 
+    void on_user_removed_from_match(uint64_t uid, int64_t match_id);
+
 private:
     int64_t next_match_id_ = 1000;
     std::unordered_map<int64_t, std::shared_ptr<Match>> matches_;
     std::unordered_map<uint64_t, int64_t> user_match_ids_;
-    std::unordered_map<uint64_t, int64_t> user_views_;
     bool running_ = false;
     IGameClient& net_;
     UsersInfoMgr& users_info_mgr_;
