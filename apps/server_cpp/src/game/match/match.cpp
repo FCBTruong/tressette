@@ -19,6 +19,7 @@ Match::Match(int64_t match_id, int player_mode, int point_mode,
 {
     for (int i = 0; i < player_mode_; ++i) {
         players_.emplace_back(this);
+        players_.back().team_id = (i % 2 == 0) ? TEAM_ID_1 : TEAM_ID_2;
     }
 
     cards_compare_.reserve(static_cast<std::size_t>(player_mode_));
@@ -30,6 +31,10 @@ Match::Match(int64_t match_id, int player_mode, int point_mode,
 }
 
 void Match::on_received_packet(uint64_t uid, int cmd_id, const std::string& payload) {
+    if (is_pending_destroyed_) {
+        return;
+    }
+
     switch (cmd_id) {
         case Cmd::USER_READY_MATCH:
             user_ready(uid);
@@ -37,14 +42,6 @@ void Match::on_received_packet(uint64_t uid, int cmd_id, const std::string& payl
 
         case Cmd::USER_RETURN_TO_TABLE:
             user_return_to_table(uid);
-            return;
-
-        case Cmd::VIEW_GAME:
-            user_view_game(uid);
-            return;
-
-        case Cmd::USER_STOP_VIEW:
-            user_stop_view(uid, true);
             return;
 
         case Cmd::NEW_INGAME_CHAT_MESSAGE: {
@@ -80,6 +77,23 @@ void Match::on_received_packet(uint64_t uid, int cmd_id, const std::string& payl
                 return;
             }
             handle_play_card(uid, req.card_id());
+            break;
+        }
+        case Cmd::GAME_ACTION_NAPOLI: {
+            packet::GameActionNapoli req;
+            if (!req.ParseFromString(payload)) {
+                return;
+            }
+            handle_game_action_napoli(uid);
+			return;
+        }
+        case Cmd::VIWER_JOIN_MATCH: {
+            packet::ViewerJoinMatch req;
+            if (!req.ParseFromString(payload)) {
+                return;
+            }
+            handle_viewer_enter_match(uid, req.seat_idx());
+            break;
         }
         default:
             return;
@@ -128,15 +142,18 @@ void Match::broadcast_pkg(Cmd cmd, const google::protobuf::Message& msg,
         }
         net_.send_packet(player.uid, cmd, msg);
     }
+
+    for (uint64_t viewer_uid : viewers_) {
+        if (excluded.count(viewer_uid) > 0) {
+            continue;
+        }
+        net_.send_packet(viewer_uid, cmd, msg);
+    }
 }
 
 JoinMatchErrors Match::try_join(uint64_t user_id, bool is_bot) {
     if (is_player(user_id)) {
         return JoinMatchErrors::AlreadyInMatch;
-    }
-
-    if (state_ != MatchState::Waiting) {
-        return JoinMatchErrors::MatchStarted;
     }
 
     if (is_viewer(user_id)) {
@@ -151,32 +168,46 @@ JoinMatchErrors Match::try_join(uint64_t user_id, bool is_bot) {
         }
     }
 
-    if (slot_idx < 0) {
-        return JoinMatchErrors::FullRoom;
-    }
-
     const auto info = users_info_mgr_.get_or_create(user_id);
 
-    auto& player = players_[static_cast<std::size_t>(slot_idx)];
-    player.uid = user_id;
-    player.is_bot = is_bot;
-    player.name = info.name;
-    player.avatar = info.avatar;
-    player.avatar_frame = info.avatar_frame;
-    player.gold = info.gold;
+    if (slot_idx >= 0) {
+        auto& player = players_[static_cast<std::size_t>(slot_idx)];
+        player.uid = user_id;
+        player.is_bot = is_bot;
+        player.name = info.name;
+        player.avatar = info.avatar;
+        player.avatar_frame = info.avatar_frame;
+        player.gold = info.gold;
 
-    int seat_server_id = slot_idx;
-    packet::NewUserJoinMatch pkg;
-    pkg.set_uid(static_cast<int64_t>(user_id));
-    pkg.set_name(info.name);
-    pkg.set_avatar(info.avatar);
-    pkg.set_gold(info.gold);
-    pkg.set_avatar_frame(info.avatar_frame);
-    pkg.set_seat_server(seat_server_id);
+        if (is_bot) {
+            player.set_depth_strategy(1 + rand() % 3);
+        }
+    
+        int seat_server_id = slot_idx;
+        packet::NewUserJoinMatch pkg;
+        pkg.set_uid(static_cast<int64_t>(user_id));
+        pkg.set_name(info.name);
+        pkg.set_avatar(info.avatar);
+        pkg.set_gold(info.gold);
+        pkg.set_avatar_frame(info.avatar_frame);
+        pkg.set_seat_server(seat_server_id);
+		pkg.set_team_id(player.team_id);
+        broadcast_pkg(Cmd::NEW_USER_JOIN_MATCH, pkg, {user_id});
+    }
+    else {
+        viewers_.insert(user_id);
+        packet::NewUserView pkg;
+        pkg.set_uid(static_cast<int64_t>(user_id));
+        const auto info = users_info_mgr_.get_or_create(user_id);
+        pkg.set_avatar(info.avatar);
+        pkg.set_name(info.name);
+        pkg.set_avatar_frame(info.avatar_frame);
+        broadcast_pkg(Cmd::NEW_USER_VIEW_GAME, pkg, {user_id});
+    }
 
-    broadcast_pkg(Cmd::NEW_USER_JOIN_MATCH, pkg, {user_id});
     send_game_info_to_user(user_id);
 
+    schedule_gen_bot();
     return JoinMatchErrors::Success;
 }
 
@@ -238,7 +269,7 @@ void Match::user_leave(uint64_t uid, int reason) {
         removed = true;
     }
 
-    if (viewers_.erase(uid) > 0) {
+    if (viewers_.count(uid) > 0) {
         removed = true;
     }
 
@@ -251,9 +282,21 @@ void Match::user_leave(uint64_t uid, int reason) {
     pkg.set_reason(reason);
     broadcast_pkg(Cmd::USER_LEAVE_MATCH, pkg);
 
-    players_[static_cast<std::size_t>(player_idx)].clear();
+    if (player_idx >= 0) {
+		MatchPlayer& player = players_[static_cast<std::size_t>(player_idx)];
+        if (player.is_bot) {
+            users_info_mgr_.release_bot(uid);
+        }
+		player.clear();
+    }
+    viewers_.erase(uid);
     register_leave_uids_.erase(uid);
 
+    if (state_ == MatchState::PreparingStart) {
+        state_ = MatchState::Waiting;
+    }
+
+    schedule_gen_bot();
     notify_user_removed(uid);
 }
 
@@ -262,10 +305,21 @@ void Match::user_reconnect(uint64_t uid) {
         return;
     }
 
+    if (is_player(uid)) {
+        const int player_idx = find_player_index(uid);
+        if (player_idx >= 0) {
+            players_[static_cast<std::size_t>(player_idx)].set_auto(false);
+		}
+    }
+
     send_game_info_to_user(uid);
 }
 
 void Match::loop() {
+    if (is_pending_destroyed_) {
+        return;
+    }
+
     try {
         delayed_tasks_.run_due();   
         const int64_t now_ts = std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -278,12 +332,9 @@ void Match::loop() {
                 return;
             }
 
-            if (current_turn_idx_ != -1 &&
-                time_auto_play_ != -1 &&
-                now_ts > time_auto_play_) {
-                auto& player = players_[static_cast<std::size_t>(current_turn_idx_)];
+			for (auto& player : players_) {
                 if (!player.is_empty()) {
-                    player.auto_play();
+					player.loop();
                 }
             }
         } else if (state_ == MatchState::PreparingStart) {
@@ -298,6 +349,9 @@ void Match::loop() {
         } else if (state_ == MatchState::Waiting) {
             if (check_room_full()) {
                 prepare_start_game();
+            }
+            else {
+                check_gen_bot();
             }
         }
     } catch (const std::exception& e) {
@@ -325,12 +379,13 @@ void Match::broadcast_chat_message(uint64_t uid, const std::string& message) {
 }
 
 void Match::user_return_to_table(uint64_t uid) {
-    if (!is_viewer(uid)) {
+    if (!is_player(uid)) {
         return;
-    }
-
-    viewers_.erase(uid);
-    send_game_info_to_user(uid);
+	}
+	MatchPlayer& player = players_[static_cast<std::size_t>(find_player_index(uid))];
+    if (player.is_auto()) {
+        player.set_auto(false);
+	}
 }
 
 void Match::user_ready(uint64_t uid) {
@@ -339,27 +394,6 @@ void Match::user_ready(uint64_t uid) {
 
 bool Match::check_room_full() const {
     return get_num_players() >= player_mode_;
-}
-
-void Match::user_stop_view(uint64_t uid, bool should_send_back_to_user) {
-    (void)should_send_back_to_user;
-
-    if (!is_viewer(uid)) {
-        return;
-    }
-
-    viewers_.erase(uid);
-    notify_user_removed(uid);
-}
-
-void Match::user_view_game(uint64_t uid) {
-    if (is_player(uid)) {
-        send_game_info_to_user(uid);
-        return;
-    }
-
-    viewers_.insert(uid);
-    send_game_info_to_user(uid);
 }
 
 bool Match::check_has_real_players() const {
@@ -383,34 +417,84 @@ int Match::get_num_players() const {
 
 void Match::handle_register_leave_game(uint64_t uid, const packet::RegisterLeaveGame& req) {
     std::cout << "User " << uid << " register_leave_game with status " << req.status() << '\n';
-
-    if (is_viewer(uid)) {
-        user_stop_view(uid, false);
-        return;
-    }
-
-    if (!is_player(uid)) {
-        return;
-    }
-
-    std::cout << "User " << uid << " is in game, processing register_leave_game\n";
-
-    if (is_in_game_) {
+    if (is_in_game_ && is_player(uid)) {
         if (req.status() == 0) {
             register_leave_uids_.insert(uid);
         } else {
             register_leave_uids_.erase(uid);
         }
+
+        net_.send_packet(uid, Cmd::REGISTER_LEAVE_GAME, req);
         return;
     }
 
-    std::cout << "Game not started, user " << uid << " leaving immediately\n";
     user_leave(uid, 0);
 }
 
 void Match::end_game() {
-    state_ = MatchState::Ending;
+    state_ = MatchState::Ended;
     time_start_ = -1;
+
+    if (team_scores_[TEAM_ID_1] > team_scores_[TEAM_ID_2]) {
+        win_team_id_ = TEAM_ID_1;
+    }
+    else {
+        win_team_id_ = TEAM_ID_2;
+    }
+
+    std::vector<int64_t> uids;
+    std::vector<int32_t> score_totals;
+    std::vector<int32_t> score_last_tricks;
+    std::vector<int32_t> score_cards;
+    std::vector<int32_t> players_gold;
+
+    for (const auto& player : players_) {
+        uids.push_back(player.uid);
+        score_cards.push_back(player.points - player.score_last_trick);
+        score_last_tricks.push_back(player.score_last_trick);
+        score_totals.push_back(player.points);
+        players_gold.push_back(player.gold);
+    }
+
+    // Send to users
+    packet::EndGame pkg;
+    pkg.set_win_team_id(win_team_id_);
+
+    for (auto uid : uids) {
+        pkg.add_uids(uid);
+    }
+    for (auto score : score_cards) {
+        pkg.add_score_cards(score);
+    }
+    for (auto score : score_last_tricks) {
+        pkg.add_score_last_tricks(score);
+    }
+    for (auto score : score_totals) {
+        pkg.add_score_totals(score);
+    }
+    for (auto gold : players_gold) {
+        pkg.add_players_gold(gold);
+    }
+
+    delayed_tasks_.push_after(2.0, [this, pkg]() {
+         broadcast_pkg(Cmd::END_GAME, pkg);
+    });
+
+    // kick users registered to leave after 2 seconds
+    delayed_tasks_.push_after(6.0, [this]() {
+        update_users_staying_endgame();
+    });
+
+    // schedule prepare for next game after delay
+    delayed_tasks_.push_after(7.0, [this]() {
+        if (check_room_full()) {
+            prepare_start_game();
+        } else {
+            state_ = MatchState::Waiting;
+        }
+    });
+
+    is_in_game_ = false;
 }
 
 void Match::start_game() {
@@ -437,16 +521,14 @@ void Match::start_game() {
     last_won_uid_ = PLAYER_EMPTY_UID;
 
     for (auto& player : players_) {
-        player.points = 0;
-        player.cards.clear();
+        player.reset_new_game();
 
         cards_compare_.push_back(-1);
     }
-    deal_cards();
+    broadcast_pkg(Cmd::START_GAME, packet::StartGame{});
 
-    //Start first hand after 1 second to give clients time to receive deal cards info
-    delayed_tasks_.push_after(1.f, [this]() {
-        handle_new_hand();
+    delayed_tasks_.push_after(1.0, [this]() {
+        handle_new_round();
     });
 }
 
@@ -516,15 +598,13 @@ void Match::handle_new_hand() {
         current_turn_idx_ = 0;
     }
 
+    if (current_turn_idx_ < 0 || static_cast<std::size_t>(current_turn_idx_) >= players_.size()) {
+        return;
+    }
+
     const auto now_ts = std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::system_clock::now().time_since_epoch()
     ).count();
-
-    if (users_auto_play_.find(last_won_uid_) != users_auto_play_.end()) {
-        time_auto_play_ = now_ts + TIME_AUTO_PLAY_SEVERE;
-    } else {
-        time_auto_play_ = now_ts + TIME_AUTO_PLAY;
-    }
 
     packet::NewHand pkg;
     pkg.set_current_turn(current_turn_idx_);
@@ -533,7 +613,7 @@ void Match::handle_new_hand() {
     players_[current_turn_idx_].on_turn();
 }
 
-void Match::handle_play_card(uint64_t uid, int card_id) {
+void Match::handle_play_card(uint64_t uid, int card_id, bool is_auto) {
     if (state_ != MatchState::Playing) {
         return;
     }
@@ -550,6 +630,10 @@ void Match::handle_play_card(uint64_t uid, int card_id) {
     auto& player = players_[static_cast<std::size_t>(player_idx)];
     if (current_turn_idx_ != player_idx || player.is_empty()) {
         return;
+    }
+
+    if (!is_auto) {
+        player.set_auto(false);
     }
 
     if (hand_suit_ != -1 && card_id % 4 != hand_suit_ && player.has_suit(hand_suit_)) {
@@ -572,6 +656,7 @@ void Match::handle_play_card(uint64_t uid, int card_id) {
     }
     else {
         current_turn_idx_ = (current_turn_idx_ + 1) % player_mode_;
+		players_[static_cast<std::size_t>(current_turn_idx_)].on_turn();
     }
 
     packet::PlayCard pkg;
@@ -579,6 +664,7 @@ void Match::handle_play_card(uint64_t uid, int card_id) {
     pkg.set_card_id(card_id);
     pkg.set_current_turn(current_turn_idx_);
     pkg.set_hand_suit(hand_suit_);
+    pkg.set_is_auto(is_auto);
 
     if (is_finished_hand) {
         end_hand(pkg);
@@ -612,8 +698,16 @@ void Match::end_hand(packet::PlayCard& play_card_pkg) {
             break;
         }
     }
+
+    if (win_player_idx < 0 || static_cast<std::size_t>(win_player_idx) >= players_.size()) {
+        std::cerr << "Invalid win_player_idx\n";
+        return;
+    }
+    last_won_uid_ = players_[static_cast<std::size_t>(win_player_idx)].uid;
     MatchPlayer& win_player = players_[static_cast<std::size_t>(win_player_idx)];
     win_player.points += win_score;
+    std::cout << "Player " << win_player.uid << " wins hand with card " << win_card
+              << " and score " << win_score << " in match " << match_id_ << '\n';
     // reset cards_compare to -1
     for (auto& c : cards_compare_) {
         c = -1;
@@ -621,7 +715,7 @@ void Match::end_hand(packet::PlayCard& play_card_pkg) {
     current_hand_ += 1;
 
     // If is end round
-    bool is_end_round = cards_.empty();
+    bool is_end_round = cards_.empty() && players_[0].cards.empty();
     if (is_end_round) {
         // Bonus 1 point to winner of last hand in round
         win_player.points += 3; // 3 mean 1 point
@@ -633,21 +727,30 @@ void Match::end_hand(packet::PlayCard& play_card_pkg) {
     play_card_pkg.set_is_end_hand(true);
     play_card_pkg.set_win_card(win_card);
     play_card_pkg.set_is_end_round(is_end_round);
+    
+    for (const auto& player : players_) {
+        play_card_pkg.add_player_points(player.points);
+    }
     broadcast_pkg(Cmd::PLAY_CARD, play_card_pkg);
+
+    if (check_end_game()) {
+        end_game();
+        return;
+    }
 
     if (is_end_round) {
         handle_end_round();
     }
     else {
         bool has_remaining_cards = !cards_.empty();
-        float delay_after_hand = 1.0f;
+        float delay_after_hand = 2.0f;
         if (has_remaining_cards) {
             delayed_tasks_.push_after(delay_after_hand, [this]() {
                  handle_draw_card();
             });
-            delay_after_hand += 2.0f;
+            delay_after_hand += 3.5f;
         }
-        // Start new hand after 2 seconds to give clients time to receive end hand info
+        // Start new hand after 3 seconds to give clients time to receive end hand info
         delayed_tasks_.push_after(delay_after_hand, [this]() {
             handle_new_hand();
         });
@@ -685,9 +788,12 @@ int Match::get_win_score_in_hand() const {
 }
 
 void Match::handle_end_round() {
-   std::cout << "Round " << cur_round_ << " ended in match " << match_id_ << '\n';
+    std::cout << "Round " << cur_round_ << " ended in match " << match_id_ << '\n';
 
-   handle_new_round();
+    // Start new round after 3 seconds to give clients time to receive end round info
+    delayed_tasks_.push_after(4.0f, [this]() {
+        handle_new_round();
+    });
 }
 
 void Match::handle_new_round() {
@@ -775,17 +881,182 @@ void Match::handle_draw_card() {
 }
 
 void Match::user_disconnect(uint64_t uid) {
+    std::cout << "User disconnect";
     if (!has_user(uid)) {
         return;
     }
 
-    if (is_viewer(uid)) {
-        user_stop_view(uid, false);
+    if (is_in_game_ && is_player(uid)) {
+        return;
+    }
+    user_leave(uid);
+}
+
+bool Match::check_end_game() {
+    // Check if one team reaches point_to_win, then end game
+    team_scores_ = {0, 0};
+
+    for (const auto& player : players_) {
+        if (player.team_id < 0 || static_cast<std::size_t>(player.team_id) >= team_scores_.size()) {
+            continue;
+        }
+        team_scores_[static_cast<std::size_t>(player.team_id)] += player.points;
+    }
+
+    if (true) {
+        return true;
+    }
+
+    if (team_scores_[0] >= point_to_win_ || team_scores_[1] >= point_to_win_) {
+        return true;
+    }
+
+    return false;
+}
+
+void Match::update_users_staying_endgame() {
+    std::unordered_set<uint64_t> uids_to_kick;
+
+    for (const auto& uid : register_leave_uids_) {
+        uids_to_kick.insert(uid);
+    }
+
+ 
+    for (const auto& player : players_) {
+        if (player.is_empty()) {
+			continue;
+        }
+       
+        if (player.is_bot || player.is_auto()) {
+            uids_to_kick.insert(player.uid);
+        }
+    }
+
+    for (const auto& uid : uids_to_kick) {
+        user_leave(uid, 0);
+    }
+}
+
+void Match::handle_game_action_napoli(int64_t uid)
+{
+    auto it = napoli_claimed_status_.find(uid);
+    if (it != napoli_claimed_status_.end() && it->second) {
         return;
     }
 
-    if (is_in_game_) {
-        users_auto_play_.insert(uid);
+    MatchPlayer* p = nullptr;
+    for (auto& player : players_) {
+        if (player.uid == uid) {
+            p = &player;
+            break;
+        }
+    }
+
+    if (p == nullptr) {
         return;
+    }
+
+    auto napoli_sets = find_napoli(p->cards);
+    if (napoli_sets.empty()) {
+        return;
+    }
+
+    std::vector<int> napoli_suits;
+    for (const auto& napoli_set : napoli_sets) {
+        int set_suit = napoli_set[0] % 4;
+        napoli_suits.push_back(set_suit);
+    }
+
+    napoli_claimed_status_[uid] = true;
+
+    // Add 1 point for each Napoli set
+    int point_add = static_cast<int>(napoli_sets.size()) * SERVER_SCORE_ONE_POINT;
+    p->points += point_add;
+
+    // Send to all users
+    packet::GameActionNapoli pkg;
+    pkg.set_uid(uid);
+    pkg.set_point_add(point_add);
+    for (int suit : napoli_suits) {
+        pkg.add_suits(suit);
+    }
+
+    broadcast_pkg(Cmd::GAME_ACTION_NAPOLI, pkg);
+}
+
+std::vector<std::vector<int>> Match::find_napoli(const std::vector<int>& hand)
+{
+    std::vector<std::vector<int>> napoli_sets;
+
+    // Check for Napoli in each suit
+    for (int suit = 0; suit < 4; ++suit) {
+        int ace = suit;
+        int two = suit + 4;
+        int three = suit + 8;
+
+        if (std::find(hand.begin(), hand.end(), ace) != hand.end() &&
+            std::find(hand.begin(), hand.end(), two) != hand.end() &&
+            std::find(hand.begin(), hand.end(), three) != hand.end()) {
+            napoli_sets.push_back({ ace, two, three });
+        }
+    }
+
+    return napoli_sets;
+}
+
+void Match::handle_viewer_enter_match(uint64_t uid, int seat_idx)
+{
+    if (!is_viewer(uid)) {
+        return;
+    }
+    if (seat_idx < 0 || seat_idx >= player_mode_) {
+        return;
+    }
+
+	try_join(uid);
+}
+
+void Match::check_gen_bot() {
+    if (!check_has_real_players()) {
+        return;
+    }
+
+    int64_t now_ts_sec = std::chrono::duration_cast<std::chrono::seconds>(
+        std::chrono::system_clock::now().time_since_epoch()
+    ).count();
+    
+    if (now_ts_sec - last_time_changed_player_sec_ < time_gen_bot_interval_sec_) {
+        return;
+    }
+
+    if (get_num_players() < player_mode_) {
+		uint64_t bot_uid = users_info_mgr_.request_bot();
+        if (bot_uid == -1) {
+            return;
+		}
+        std::cout << "Generating bot with uid " << bot_uid << " for match " << match_id_ << '\n';
+        try_join(bot_uid, true);
+    }
+}
+
+void Match::schedule_gen_bot(){
+    int64_t now_ts_sec = std::chrono::duration_cast<std::chrono::seconds>(
+        std::chrono::system_clock::now().time_since_epoch()
+    ).count();
+    last_time_changed_player_sec_ = now_ts_sec;
+
+    time_gen_bot_interval_sec_ = 5 + (std::rand() % 10); // random interval between 5 to 14 seconds
+}
+
+void Match::test_fill_bots() {
+    for (int i = 0; i < player_mode_; ++i) {
+        if (players_[i].is_empty()) {
+            uint64_t bot_uid = users_info_mgr_.request_bot();
+            if (bot_uid == -1) {
+                return;
+            }
+            std::cout << "Filling bot with uid " << bot_uid << " in slot " << i << " for match " << match_id_ << '\n';
+            try_join(bot_uid, true);
+        }
     }
 }

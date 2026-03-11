@@ -1,20 +1,19 @@
-[gd_scene load_steps=54 format=3 uid="uid://ctmeyvn7w00v8"]
+[gd_scene format=3 uid="uid://ctmeyvn7w00v8"]
 
-[ext_resource type="Script" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
+[ext_resource type="Script" uid="uid://cuc7h8waxlrjl" path="res://scripts/game/board_scene.gd" id="1_th5x2"]
 [ext_resource type="Texture2D" uid="uid://dfhij1rrsx23o" path="res://assets/images/board/bg.jpg" id="2_hw1ge"]
 [ext_resource type="Texture2D" uid="uid://bu4nhtuij6lrr" path="res://assets/images/card_tressette/card_back.png" id="3_ncq5t"]
 [ext_resource type="Texture2D" uid="uid://chr5ymkhnv53v" path="res://assets/images/board/cup_coffee.png" id="3_riun7"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_2a7pa"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="4_cv557"]
 [ext_resource type="Texture2D" uid="uid://cgodot5mrjw1e" path="res://assets/images/lobby/arrow.png" id="4_ei7ic"]
-[ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
-[ext_resource type="Texture2D" uid="uid://boqs51p732ps4" path="res://assets/images/lobby/finger.png" id="7_cs18x"]
-[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
+[ext_resource type="Shader" uid="uid://cpoe18uq8xt2q" path="res://shaders/light_highlight.gdshader" id="6_3op4f"]
+[ext_resource type="Script" uid="uid://cxg1mkp74kffp" path="res://scripts/custom/zoomable_button.gd" id="7_gov4p"]
 [ext_resource type="AudioStream" uid="uid://c15vh1wxdxtal" path="res://assets/sounds/play_card.wav" id="8_62q6d"]
 [ext_resource type="Texture2D" uid="uid://du1w2yoq2ic7h" path="res://assets/images/icon_chat.png" id="8_f0rj1"]
 [ext_resource type="AudioStream" uid="uid://defcdo120bucl" path="res://assets/sounds/flip_card.wav" id="8_gg0m3"]
 [ext_resource type="Texture2D" uid="uid://dkua70e0nxvng" path="res://assets/images/items/carpets/carpet_01.png" id="9_4rmbm"]
-[ext_resource type="Shader" path="res://shaders/baletro_fire.gdshader" id="11_2rt0a"]
+[ext_resource type="Shader" uid="uid://cnmlux05iwn5n" path="res://shaders/baletro_fire.gdshader" id="11_2rt0a"]
 [ext_resource type="Texture2D" uid="uid://c4n4ak32npep1" path="res://assets/images/board/layer_board_card.png" id="11_eum2r"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_lcke6"]
 [ext_resource type="AudioStream" uid="uid://dr02xp8pu3qy4" path="res://assets/sounds/your_turn_sound.wav" id="11_mpmvk"]
@@ -29,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://d1cv761bu0g1a" path="res://assets/images/board/game_start.png" id="15_fu0n4"]
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="16_oiaq1"]
 [ext_resource type="Texture2D" uid="uid://cew12u8cbftkx" path="res://assets/images/board/back_btn.png" id="17_11riy"]
-[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="23_5xkug"]
 [ext_resource type="PackedScene" uid="uid://d3phqitk2yrkh" path="res://scenes/board/EmoChat.tscn" id="27_8g18i"]
 [ext_resource type="Texture2D" uid="uid://ciag7udxsmr8c" path="res://assets/images/board/icon_viewer.png" id="27_sb6tw"]
 [ext_resource type="AudioStream" uid="uid://e4j6vv5n4nbj" path="res://assets/sounds/deal_card_sound.mp3" id="28_52y2w"]
@@ -78,13 +76,13 @@ noise = SubResource("FastNoiseLite_gdgki")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_isqbr"]
 shader = ExtResource("11_2rt0a")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_1l567")
 shader_parameter/bottom_color = Color(0.984314, 0.992157, 0.933333, 1)
 shader_parameter/middle_color = Color(0, 0.996078, 1, 1)
 shader_parameter/top_color = Color(0, 0.576471, 0.996078, 1)
 shader_parameter/fire_alpha = 1.0
 shader_parameter/fire_speed = Vector2(-0.2, 1.5)
 shader_parameter/fire_aperture = 0.6
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_1l567")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ke41p"]
 corner_radius_bottom_right = 5
@@ -158,13 +156,13 @@ noise = SubResource("FastNoiseLite_gdgki")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to0ld"]
 shader = SubResource("Shader_xqcm3")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_40xxb")
 shader_parameter/bottom_color = Color(0.984314, 0.992157, 0.933333, 1)
 shader_parameter/middle_color = Color(0.972549, 0.47451, 0.258824, 1)
 shader_parameter/top_color = Color(1, 0.298039, 0.25098, 1)
 shader_parameter/fire_alpha = 1.0
 shader_parameter/fire_speed = Vector2(0.2, 1.5)
 shader_parameter/fire_aperture = 0.6
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_40xxb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy0di"]
 corner_radius_top_left = 15
@@ -208,7 +206,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="BoardScene" type="Control"]
+[node name="BoardScene" type="Control" unique_id=1354092575]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,7 +215,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_th5x2")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=362560791]
 self_modulate = Color(0.920897, 0.920897, 0.920897, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -228,7 +226,7 @@ grow_vertical = 2
 texture = ExtResource("2_hw1ge")
 expand_mode = 1
 
-[node name="CupCoffee" type="TextureRect" parent="."]
+[node name="CupCoffee" type="TextureRect" parent="." unique_id=1638404864]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -240,108 +238,7 @@ grow_vertical = 0
 texture = ExtResource("3_riun7")
 expand_mode = 1
 
-[node name="HideFunctionBtn" type="Button" parent="."]
-layout_mode = 1
-offset_left = 29.0
-offset_top = 75.0
-offset_right = 79.0
-offset_bottom = 125.0
-flat = true
-script = ExtResource("7_gov4p")
-
-[node name="TextureRect" type="TextureRect" parent="HideFunctionBtn"]
-self_modulate = Color(0.557704, 0.467414, 0.236673, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.5708
-pivot_offset = Vector2(20, 20)
-texture = ExtResource("4_ei7ic")
-expand_mode = 1
-
-[node name="ShowFunctionBtn" type="Button" parent="."]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-offset_left = 22.0
-offset_top = 11.0
-offset_right = 82.0
-offset_bottom = 71.0
-flat = true
-script = ExtResource("7_gov4p")
-
-[node name="TextureRect" type="TextureRect" parent="ShowFunctionBtn"]
-self_modulate = Color(0.557704, 0.467414, 0.236673, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 1.5708
-pivot_offset = Vector2(20, 20)
-texture = ExtResource("4_ei7ic")
-expand_mode = 1
-
-[node name="GuideClick" type="Control" parent="ShowFunctionBtn"]
-anchors_preset = 0
-offset_left = 65.0
-offset_top = 65.0
-offset_right = 105.0
-offset_bottom = 105.0
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="ShowFunctionBtn/GuideClick"]
-self_modulate = Color(1, 0.693515, 0.411217, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -5.0
-offset_right = 375.0
-offset_bottom = 21.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("23_5xkug")
-theme_override_font_sizes/font_size = 25
-text = "CLICK_HERE_SHOW"
-
-[node name="FingerIcon" type="TextureRect" parent="ShowFunctionBtn/GuideClick"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -70.0
-offset_top = -25.0
-offset_right = -33.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.14159
-pivot_offset = Vector2(18, 25)
-texture = ExtResource("7_cs18x")
-expand_mode = 1
-
-[node name="PlayGround" type="Control" parent="."]
+[node name="PlayGround" type="Control" parent="." unique_id=1415446919]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -350,19 +247,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CheatBotCardPn" type="Control" parent="PlayGround"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -360.0
-offset_top = 80.0
-offset_right = 360.0
-offset_bottom = 240.0
-grow_horizontal = 2
-mouse_filter = 2
-
-[node name="MyCardPanel" type="Control" parent="PlayGround"]
+[node name="MyCardPanel" type="Control" parent="PlayGround" unique_id=1363192214]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 1
 anchors_preset = 12
@@ -373,7 +258,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="AdsBannerPn" type="ColorRect" parent="PlayGround/MyCardPanel"]
+[node name="AdsBannerPn" type="ColorRect" parent="PlayGround/MyCardPanel" unique_id=1511076691]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
@@ -386,7 +271,7 @@ grow_vertical = 0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ReachPointWinLb" type="Label" parent="PlayGround"]
+[node name="ReachPointWinLb" type="Label" parent="PlayGround" unique_id=158142235]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -406,7 +291,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="CenterPlayPn" type="Control" parent="PlayGround"]
+[node name="CenterPlayPn" type="Control" parent="PlayGround" unique_id=537079963]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -422,7 +307,7 @@ grow_vertical = 2
 pivot_offset = Vector2(300, 200)
 mouse_filter = 2
 
-[node name="Panel2" type="Control" parent="PlayGround/CenterPlayPn"]
+[node name="Panel2" type="Control" parent="PlayGround/CenterPlayPn" unique_id=1790323845]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -437,7 +322,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CarpetDefault" type="Panel" parent="PlayGround/CenterPlayPn/Panel2"]
+[node name="CarpetDefault" type="Panel" parent="PlayGround/CenterPlayPn/Panel2" unique_id=1863972516]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -453,7 +338,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kjq8g")
 
-[node name="CarpetImg" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2"]
+[node name="CarpetImg" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2" unique_id=1151753787]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -465,7 +350,7 @@ texture = ExtResource("9_4rmbm")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Deco2vs2" type="Control" parent="PlayGround/CenterPlayPn/Panel2"]
+[node name="Deco2vs2" type="Control" parent="PlayGround/CenterPlayPn/Panel2" unique_id=299001987]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -476,7 +361,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+[node name="TextureRect" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2" unique_id=1446505851]
 self_modulate = Color(0.0431373, 0.705882, 0.0431373, 0.392157)
 layout_mode = 1
 anchors_preset = 8
@@ -491,7 +376,7 @@ grow_vertical = 2
 texture = ExtResource("11_eum2r")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+[node name="TextureRect2" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2" unique_id=1967572082]
 self_modulate = Color(0.0431373, 0.705882, 0.0431373, 0.392157)
 layout_mode = 1
 anchors_preset = 8
@@ -508,7 +393,7 @@ rotation = 3.14159
 texture = ExtResource("11_eum2r")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+[node name="TextureRect3" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2" unique_id=1996961045]
 self_modulate = Color(0.737255, 0.215686, 0.14902, 0.392157)
 layout_mode = 1
 anchors_preset = 8
@@ -527,7 +412,7 @@ texture = ExtResource("11_eum2r")
 expand_mode = 1
 flip_h = true
 
-[node name="TextureRect4" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+[node name="TextureRect4" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2" unique_id=325997558]
 self_modulate = Color(0.737255, 0.215686, 0.14902, 0.392157)
 layout_mode = 1
 anchors_preset = 8
@@ -544,7 +429,7 @@ texture = ExtResource("11_eum2r")
 expand_mode = 1
 flip_v = true
 
-[node name="TextureRect5" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2"]
+[node name="TextureRect5" type="TextureRect" parent="PlayGround/CenterPlayPn/Panel2/Deco2vs2" unique_id=1666346811]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -560,7 +445,7 @@ grow_vertical = 2
 texture = ExtResource("12_v447i")
 expand_mode = 1
 
-[node name="CardbackPn" type="Control" parent="PlayGround/CenterPlayPn"]
+[node name="CardbackPn" type="Control" parent="PlayGround/CenterPlayPn" unique_id=1258612507]
 anchors_preset = 0
 offset_left = 65.0
 offset_top = -16.0
@@ -569,7 +454,7 @@ offset_bottom = 114.0
 pivot_offset = Vector2(45, 65)
 mouse_filter = 2
 
-[node name="CardbackShadow" type="Panel" parent="PlayGround/CenterPlayPn/CardbackPn"]
+[node name="CardbackShadow" type="Panel" parent="PlayGround/CenterPlayPn/CardbackPn" unique_id=331717504]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -584,7 +469,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ktgw6")
 
-[node name="TextureRect3" type="TextureRect" parent="PlayGround/CenterPlayPn/CardbackPn"]
+[node name="TextureRect3" type="TextureRect" parent="PlayGround/CenterPlayPn/CardbackPn" unique_id=731753684]
 visible = false
 layout_mode = 0
 offset_left = 7.0
@@ -595,7 +480,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_ncq5t")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="PlayGround/CenterPlayPn/CardbackPn"]
+[node name="TextureRect2" type="TextureRect" parent="PlayGround/CenterPlayPn/CardbackPn" unique_id=174155204]
 visible = false
 layout_mode = 0
 offset_left = 7.0
@@ -606,7 +491,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_ncq5t")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="PlayGround/CenterPlayPn/CardbackPn"]
+[node name="TextureRect" type="TextureRect" parent="PlayGround/CenterPlayPn/CardbackPn" unique_id=841928954]
 visible = false
 layout_mode = 0
 offset_left = 7.0
@@ -617,7 +502,7 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_ncq5t")
 expand_mode = 1
 
-[node name="CardBack" type="TextureRect" parent="PlayGround/CenterPlayPn/CardbackPn"]
+[node name="CardBack" type="TextureRect" parent="PlayGround/CenterPlayPn/CardbackPn" unique_id=91255859]
 custom_minimum_size = Vector2(70, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -635,7 +520,7 @@ pivot_offset = Vector2(35, 50)
 texture = ExtResource("3_ncq5t")
 expand_mode = 1
 
-[node name="RemainCardPn" type="Panel" parent="PlayGround/CenterPlayPn/CardbackPn/CardBack"]
+[node name="RemainCardPn" type="Panel" parent="PlayGround/CenterPlayPn/CardbackPn/CardBack" unique_id=1020295202]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -647,7 +532,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2wdn7")
 
-[node name="RemainCardsLb" type="Label" parent="PlayGround/CenterPlayPn/CardbackPn/CardBack/RemainCardPn"]
+[node name="RemainCardsLb" type="Label" parent="PlayGround/CenterPlayPn/CardbackPn/CardBack/RemainCardPn" unique_id=933754504]
 modulate = Color(0.944657, 0.832392, 0.515816, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -667,7 +552,7 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayersPn" type="Control" parent="PlayGround/CenterPlayPn"]
+[node name="PlayersPn" type="Control" parent="PlayGround/CenterPlayPn" unique_id=1413904891]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -682,7 +567,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PlayerPos3" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn"]
+[node name="PlayerPos3" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn" unique_id=2075678658]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -697,7 +582,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="PlayerPos2" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn"]
+[node name="PlayerPos2" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn" unique_id=758498934]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -709,7 +594,7 @@ offset_bottom = -13.0
 grow_horizontal = 0
 mouse_filter = 2
 
-[node name="PlayerPos1" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn"]
+[node name="PlayerPos1" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn" unique_id=938398792]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 18.0
@@ -718,7 +603,7 @@ offset_right = 18.0
 offset_bottom = -15.0
 mouse_filter = 2
 
-[node name="PlayerPos0" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn"]
+[node name="PlayerPos0" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn" unique_id=956851184]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -730,8 +615,7 @@ offset_bottom = -100.0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="seat_pos_solo1" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn"]
-layout_mode = 3
+[node name="seat_pos_solo1" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn" unique_id=1339281295]
 anchors_preset = 0
 offset_left = 559.0
 offset_top = 31.0
@@ -739,7 +623,7 @@ offset_right = 559.0
 offset_bottom = 31.0
 mouse_filter = 2
 
-[node name="seat_pos_solo0" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn"]
+[node name="seat_pos_solo0" type="Control" parent="PlayGround/CenterPlayPn/PlayersPn" unique_id=368666234]
 anchors_preset = 0
 offset_left = 35.0
 offset_top = 181.0
@@ -747,7 +631,7 @@ offset_right = 35.0
 offset_bottom = 181.0
 mouse_filter = 2
 
-[node name="CardComparePn" type="Control" parent="PlayGround/CenterPlayPn"]
+[node name="CardComparePn" type="Control" parent="PlayGround/CenterPlayPn" unique_id=465111535]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -762,25 +646,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PlaceCard20" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard20" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn" unique_id=150113945]
 position = Vector2(40, 230)
 
-[node name="PlaceCard21" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard21" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn" unique_id=344494072]
 position = Vector2(40, 90)
 
-[node name="PlaceCard22" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard22" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn" unique_id=1689909529]
 position = Vector2(180, 90)
 
-[node name="PlaceCard23" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard23" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn" unique_id=1748941888]
 position = Vector2(180, 230)
 
-[node name="PlaceCard1" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard1" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn" unique_id=1870782303]
 position = Vector2(170, 120)
 
-[node name="PlaceCard0" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn"]
+[node name="PlaceCard0" type="Node2D" parent="PlayGround/CenterPlayPn/CardComparePn" unique_id=1426906962]
 position = Vector2(50, 180)
 
-[node name="EvaluateLb" type="Label" parent="PlayGround/CenterPlayPn"]
+[node name="EvaluateLb" type="Label" parent="PlayGround/CenterPlayPn" unique_id=1833556324]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 1
 anchors_preset = 5
@@ -801,7 +685,7 @@ text = "Fantastic!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScorePn" type="Control" parent="PlayGround"]
+[node name="ScorePn" type="Control" parent="PlayGround" unique_id=1943884313]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -814,7 +698,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(130, 0)
 mouse_filter = 2
 
-[node name="Panel" type="Control" parent="PlayGround/ScorePn"]
+[node name="Panel" type="Control" parent="PlayGround/ScorePn" unique_id=1721716649]
 clip_children = 2
 material = SubResource("ShaderMaterial_pdh6q")
 layout_mode = 1
@@ -827,7 +711,7 @@ offset_bottom = 70.0
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayGround/ScorePn/Panel"]
+[node name="TextureRect" type="TextureRect" parent="PlayGround/ScorePn/Panel" unique_id=17137025]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -837,7 +721,7 @@ grow_vertical = 2
 texture = ExtResource("13_hk633")
 expand_mode = 1
 
-[node name="FireMine" type="Panel" parent="PlayGround/ScorePn/Panel"]
+[node name="FireMine" type="Panel" parent="PlayGround/ScorePn/Panel" unique_id=969303325]
 material = SubResource("ShaderMaterial_isqbr")
 custom_minimum_size = Vector2(96, 60)
 layout_mode = 1
@@ -848,7 +732,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ke41p")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayGround/ScorePn/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayGround/ScorePn/Panel" unique_id=1616368832]
 modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 1
 anchors_preset = 8
@@ -864,7 +748,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="MyScoreLb" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer"]
+[node name="MyScoreLb" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer" unique_id=955763611]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -875,12 +759,12 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MyScoreSub" type="Control" parent="PlayGround/ScorePn/Panel/HBoxContainer"]
+[node name="MyScoreSub" type="Control" parent="PlayGround/ScorePn/Panel/HBoxContainer" unique_id=579340023]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Sub2" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub"]
+[node name="Sub2" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub" unique_id=2005139602]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -888,8 +772,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -8.0
-offset_top = -46.0
+offset_top = -36.0
 offset_right = 8.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
@@ -902,7 +787,7 @@ text = "3
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sub1" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub"]
+[node name="Sub1" type="Label" parent="PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub" unique_id=1550580654]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -921,7 +806,7 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub"]
+[node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel/HBoxContainer/MyScoreSub" unique_id=1901299104]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -937,7 +822,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v8j2g")
 
-[node name="Panel2" type="Control" parent="PlayGround/ScorePn"]
+[node name="Panel2" type="Control" parent="PlayGround/ScorePn" unique_id=2026509485]
 clip_children = 2
 material = SubResource("ShaderMaterial_0m3fb")
 layout_mode = 1
@@ -950,7 +835,7 @@ offset_bottom = 70.0
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayGround/ScorePn/Panel2"]
+[node name="TextureRect" type="TextureRect" parent="PlayGround/ScorePn/Panel2" unique_id=1728423312]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -960,7 +845,7 @@ grow_vertical = 2
 texture = ExtResource("13_hr4c4")
 expand_mode = 1
 
-[node name="FireOpponent" type="Panel" parent="PlayGround/ScorePn/Panel2"]
+[node name="FireOpponent" type="Panel" parent="PlayGround/ScorePn/Panel2" unique_id=2090720527]
 material = SubResource("ShaderMaterial_to0ld")
 custom_minimum_size = Vector2(96, 60)
 layout_mode = 1
@@ -971,7 +856,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vy0di")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PlayGround/ScorePn/Panel2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayGround/ScorePn/Panel2" unique_id=53752008]
 modulate = Color(1, 1, 1, 0.901961)
 layout_mode = 1
 anchors_preset = 8
@@ -987,7 +872,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="OpponentScoreLb" type="Label" parent="PlayGround/ScorePn/Panel2/HBoxContainer2"]
+[node name="OpponentScoreLb" type="Label" parent="PlayGround/ScorePn/Panel2/HBoxContainer2" unique_id=279338505]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -996,12 +881,12 @@ theme_override_fonts/font = ExtResource("4_2a7pa")
 theme_override_font_sizes/font_size = 40
 text = "10"
 
-[node name="OpponentScoreSub" type="Control" parent="PlayGround/ScorePn/Panel2/HBoxContainer2"]
+[node name="OpponentScoreSub" type="Control" parent="PlayGround/ScorePn/Panel2/HBoxContainer2" unique_id=1750840134]
 modulate = Color(1, 1, 1, 0.9)
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="Sub2" type="Label" parent="PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub"]
+[node name="Sub2" type="Label" parent="PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub" unique_id=1668895309]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1009,8 +894,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -8.0
-offset_top = -46.0
+offset_top = -36.0
 offset_right = 8.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.992157, 0.937255, 0.796078, 1)
@@ -1023,7 +909,7 @@ text = "3
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sub1" type="Label" parent="PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub"]
+[node name="Sub1" type="Label" parent="PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub" unique_id=675483695]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1042,7 +928,7 @@ text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub"]
+[node name="Panel" type="Panel" parent="PlayGround/ScorePn/Panel2/HBoxContainer2/OpponentScoreSub" unique_id=1061092744]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1058,11 +944,11 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v8j2g")
 
-[node name="CountdownTimer" type="Timer" parent="PlayGround"]
+[node name="CountdownTimer" type="Timer" parent="PlayGround" unique_id=142177516]
 wait_time = 3.0
 one_shot = true
 
-[node name="GameStartLb" type="Label" parent="PlayGround"]
+[node name="GameStartLb" type="Label" parent="PlayGround" unique_id=522906340]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1086,7 +972,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="PlayGround/GameStartLb"]
+[node name="TextureRect" type="TextureRect" parent="PlayGround/GameStartLb" unique_id=1273534848]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1102,7 +988,7 @@ grow_vertical = 2
 texture = ExtResource("15_fu0n4")
 expand_mode = 1
 
-[node name="CountdownStartLb" type="Label" parent="PlayGround"]
+[node name="CountdownStartLb" type="Label" parent="PlayGround" unique_id=1798426048]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1124,7 +1010,19 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ActionBtnPn" type="Control" parent="."]
+[node name="CheatBotCardPn" type="Control" parent="PlayGround" unique_id=1151473307]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_top = 15.0
+offset_right = 360.0
+offset_bottom = 175.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="ActionBtnPn" type="Control" parent="." unique_id=255068218]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1138,7 +1036,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="NapoliBtn" type="Button" parent="ActionBtnPn"]
+[node name="NapoliBtn" type="Button" parent="ActionBtnPn" unique_id=308825005]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -1155,10 +1053,10 @@ grow_vertical = 2
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="PanelNapoliBtn" parent="ActionBtnPn/NapoliBtn" instance=ExtResource("13_6bu1m")]
+[node name="PanelNapoliBtn" parent="ActionBtnPn/NapoliBtn" unique_id=1091445984 instance=ExtResource("13_6bu1m")]
 layout_mode = 1
 
-[node name="RightTopPanel" type="Control" parent="."]
+[node name="RightTopPanel" type="Control" parent="." unique_id=1958845225]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -1169,7 +1067,7 @@ grow_horizontal = 0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="RoomIdLb" type="Label" parent="RightTopPanel"]
+[node name="RoomIdLb" type="Label" parent="RightTopPanel" unique_id=507013185]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.21
@@ -1188,7 +1086,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RightTopPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RightTopPanel" unique_id=120164554]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
 anchors_preset = 6
@@ -1206,13 +1104,14 @@ mouse_filter = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="RankingBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
+[node name="RankingBtn" type="Button" parent="RightTopPanel/HBoxContainer" unique_id=596431184]
+visible = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer/RankingBtn"]
+[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer/RankingBtn" unique_id=1952921391]
 material = SubResource("ShaderMaterial_ydul5")
 layout_mode = 1
 anchors_preset = 8
@@ -1229,13 +1128,13 @@ grow_vertical = 2
 texture = ExtResource("16_oiaq1")
 expand_mode = 1
 
-[node name="GuideBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
+[node name="GuideBtn" type="Button" parent="RightTopPanel/HBoxContainer" unique_id=330162928]
 custom_minimum_size = Vector2(55, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect2" type="TextureRect" parent="RightTopPanel/HBoxContainer/GuideBtn"]
+[node name="TextureRect2" type="TextureRect" parent="RightTopPanel/HBoxContainer/GuideBtn" unique_id=1249109763]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1251,13 +1150,13 @@ grow_vertical = 2
 texture = ExtResource("14_arj4s")
 expand_mode = 1
 
-[node name="SettingBtn" type="Button" parent="RightTopPanel/HBoxContainer"]
+[node name="SettingBtn" type="Button" parent="RightTopPanel/HBoxContainer" unique_id=1208969483]
 custom_minimum_size = Vector2(55, 50)
 layout_mode = 2
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer/SettingBtn"]
+[node name="TextureRect" type="TextureRect" parent="RightTopPanel/HBoxContainer/SettingBtn" unique_id=1808354345]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1273,15 +1172,14 @@ grow_vertical = 2
 texture = ExtResource("15_fl0rb")
 expand_mode = 1
 
-[node name="LeftTopPn" type="Control" parent="."]
-layout_mode = 3
+[node name="LeftTopPn" type="Control" parent="." unique_id=830984783]
 anchors_preset = 0
 offset_right = 400.0
 offset_bottom = 100.0
 mouse_filter = 2
 mouse_force_pass_scroll_events = false
 
-[node name="BackBtn" type="Button" parent="LeftTopPn"]
+[node name="BackBtn" type="Button" parent="LeftTopPn" unique_id=1461774670]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 20.0
@@ -1292,7 +1190,7 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="LeftTopPn/BackBtn"]
+[node name="TextureRect" type="TextureRect" parent="LeftTopPn/BackBtn" unique_id=1694386823]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1308,7 +1206,7 @@ grow_vertical = 2
 texture = ExtResource("17_11riy")
 expand_mode = 1
 
-[node name="RoundLb" type="Label" parent="."]
+[node name="RoundLb" type="Label" parent="." unique_id=421945871]
 visible = false
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 1
@@ -1328,7 +1226,7 @@ text = "ROUND: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EvaluateIpadPos" type="Control" parent="."]
+[node name="EvaluateIpadPos" type="Control" parent="." unique_id=1181925340]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1337,15 +1235,14 @@ offset_top = 113.0
 offset_bottom = 113.0
 grow_horizontal = 2
 
-[node name="PnCheat" type="Control" parent="."]
+[node name="PnCheat" type="Control" parent="." unique_id=761174396]
 visible = false
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="PnCheat"]
+[node name="Button" type="Button" parent="PnCheat" unique_id=1772594255]
 layout_mode = 0
 offset_left = 205.0
 offset_top = 47.0
@@ -1353,14 +1250,14 @@ offset_right = 285.0
 offset_bottom = 78.0
 text = "Test Deal"
 
-[node name="TestPlaycard" type="Button" parent="PnCheat/Button"]
+[node name="TestPlaycard" type="Button" parent="PnCheat/Button" unique_id=2061219209]
 layout_mode = 0
 offset_left = 121.0
 offset_right = 201.0
 offset_bottom = 31.0
 text = "Test Deal"
 
-[node name="BottomRightPn" type="Control" parent="."]
+[node name="BottomRightPn" type="Control" parent="." unique_id=276328191]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
 anchors_preset = 3
@@ -1374,7 +1271,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="EmoBtn" type="Button" parent="BottomRightPn"]
+[node name="EmoBtn" type="Button" parent="BottomRightPn" unique_id=1453955937]
 layout_mode = 0
 offset_left = 100.0
 offset_top = -11.0
@@ -1383,7 +1280,7 @@ offset_bottom = 59.0
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="BottomRightPn/EmoBtn"]
+[node name="TextureRect" type="TextureRect" parent="BottomRightPn/EmoBtn" unique_id=1736734058]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1399,7 +1296,7 @@ grow_vertical = 2
 texture = ExtResource("12_cc6ty")
 expand_mode = 1
 
-[node name="ChatBtn" type="Button" parent="BottomRightPn"]
+[node name="ChatBtn" type="Button" parent="BottomRightPn" unique_id=515266715]
 layout_mode = 0
 offset_left = 100.0
 offset_top = -103.0
@@ -1408,7 +1305,7 @@ offset_bottom = -33.0
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="BottomRightPn/ChatBtn"]
+[node name="TextureRect" type="TextureRect" parent="BottomRightPn/ChatBtn" unique_id=874803761]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1424,7 +1321,7 @@ grow_vertical = 2
 texture = ExtResource("8_f0rj1")
 expand_mode = 1
 
-[node name="RedDot" type="TextureRect" parent="BottomRightPn/ChatBtn"]
+[node name="RedDot" type="TextureRect" parent="BottomRightPn/ChatBtn" unique_id=1149931381]
 modulate = Color(0.798701, 0, 0, 1)
 layout_mode = 0
 offset_left = 55.0
@@ -1434,7 +1331,7 @@ offset_bottom = 19.0
 texture = ExtResource("11_lcke6")
 expand_mode = 1
 
-[node name="BottomCenter" type="Control" parent="."]
+[node name="BottomCenter" type="Control" parent="." unique_id=677853161]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1448,7 +1345,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="WaitingOtherLb" type="Label" parent="BottomCenter"]
+[node name="WaitingOtherLb" type="Label" parent="BottomCenter" unique_id=44484975]
 modulate = Color(1, 1, 1, 0.734)
 layout_mode = 1
 anchors_preset = 5
@@ -1465,10 +1362,10 @@ text = "Waiting for other players ..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EmoChat" parent="." instance=ExtResource("27_8g18i")]
+[node name="EmoChat" parent="." unique_id=422462038 instance=ExtResource("27_8g18i")]
 layout_mode = 1
 
-[node name="AutoPlayPn" type="Panel" parent="."]
+[node name="AutoPlayPn" type="Panel" parent="." unique_id=1944099523]
 self_modulate = Color(0, 0, 0, 0.6)
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
@@ -1482,7 +1379,7 @@ size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_23sef")
 metadata/_edit_use_anchors_ = true
 
-[node name="ReturnTableBtn" type="Button" parent="AutoPlayPn"]
+[node name="ReturnTableBtn" type="Button" parent="AutoPlayPn" unique_id=608633809]
 custom_minimum_size = Vector2(240, 90)
 layout_mode = 1
 anchors_preset = 8
@@ -1500,7 +1397,7 @@ pivot_offset = Vector2(100, 30)
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="AutoPlayPn/ReturnTableBtn"]
+[node name="TextureRect" type="TextureRect" parent="AutoPlayPn/ReturnTableBtn" unique_id=14934538]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1510,7 +1407,7 @@ grow_vertical = 2
 texture = ExtResource("28_pmwlt")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="AutoPlayPn/ReturnTableBtn/TextureRect"]
+[node name="Label" type="Label" parent="AutoPlayPn/ReturnTableBtn/TextureRect" unique_id=160469821]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1529,7 +1426,7 @@ theme_override_font_sizes/font_size = 23
 text = "RETURN_TO_TABLE"
 horizontal_alignment = 1
 
-[node name="VisitorPn" type="Panel" parent="."]
+[node name="VisitorPn" type="Panel" parent="." unique_id=9290051]
 layout_mode = 1
 offset_left = 39.0
 offset_top = 189.0
@@ -1538,7 +1435,7 @@ offset_bottom = 439.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4smk3")
 
-[node name="TextureRect" type="TextureRect" parent="VisitorPn"]
+[node name="TextureRect" type="TextureRect" parent="VisitorPn" unique_id=556940077]
 layout_mode = 0
 offset_left = 27.0
 offset_top = -42.0
@@ -1547,7 +1444,7 @@ offset_bottom = -2.0
 texture = ExtResource("27_sb6tw")
 expand_mode = 1
 
-[node name="HideViewerBtn" type="Button" parent="VisitorPn"]
+[node name="HideViewerBtn" type="Button" parent="VisitorPn" unique_id=878526512]
 visible = false
 layout_mode = 0
 offset_left = 94.0
@@ -1557,7 +1454,7 @@ offset_bottom = 107.0
 flat = true
 script = ExtResource("7_gov4p")
 
-[node name="TextureRect" type="TextureRect" parent="VisitorPn/HideViewerBtn"]
+[node name="TextureRect" type="TextureRect" parent="VisitorPn/HideViewerBtn" unique_id=856684564]
 modulate = Color(0.761363, 0.761363, 0.761363, 0.545098)
 layout_mode = 1
 anchors_preset = 8
@@ -1576,7 +1473,7 @@ pivot_offset = Vector2(15, 15)
 texture = ExtResource("4_ei7ic")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="VisitorPn"]
+[node name="Control" type="Control" parent="VisitorPn" unique_id=1774092975]
 clip_children = 1
 custom_minimum_size = Vector2(500, 240)
 layout_mode = 1
@@ -1593,7 +1490,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VisitorPn/Control"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VisitorPn/Control" unique_id=607030534]
 clip_contents = false
 custom_minimum_size = Vector2(60, 230)
 layout_mode = 1
@@ -1610,14 +1507,14 @@ grow_horizontal = 2
 grow_vertical = 2
 vertical_scroll_mode = 3
 
-[node name="VboxViewer" type="VBoxContainer" parent="VisitorPn/Control/ScrollContainer"]
+[node name="VboxViewer" type="VBoxContainer" parent="VisitorPn/Control/ScrollContainer" unique_id=1047049696]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="PnHighlightNapoli" type="Panel" parent="."]
+[node name="PnHighlightNapoli" type="Panel" parent="." unique_id=131853522]
 layout_mode = 0
 offset_left = 1587.0
 offset_top = 748.0
@@ -1626,7 +1523,7 @@ offset_bottom = 898.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7t6yy")
 
-[node name="WatchingLb" type="Label" parent="."]
+[node name="WatchingLb" type="Label" parent="." unique_id=195251962]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1646,30 +1543,28 @@ text = "YOU_ARE_WATCHING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioDrawCard" type="AudioStreamPlayer" parent="."]
+[node name="AudioDrawCard" type="AudioStreamPlayer" parent="." unique_id=617592806]
 stream = ExtResource("8_gg0m3")
 
-[node name="AudioShuffleDealCard" type="AudioStreamPlayer" parent="."]
+[node name="AudioShuffleDealCard" type="AudioStreamPlayer" parent="." unique_id=456532205]
 stream = ExtResource("28_52y2w")
 
-[node name="AudioYourTurn" type="AudioStreamPlayer" parent="."]
+[node name="AudioYourTurn" type="AudioStreamPlayer" parent="." unique_id=1470260089]
 stream = ExtResource("11_mpmvk")
 volume_db = 5.0
 
-[node name="AudioWinTurn" type="AudioStreamPlayer" parent="."]
+[node name="AudioWinTurn" type="AudioStreamPlayer" parent="." unique_id=14873319]
 stream = ExtResource("12_b6jtg")
 volume_db = 1.0
 
-[node name="AudioPlayCard" type="AudioStreamPlayer" parent="."]
+[node name="AudioPlayCard" type="AudioStreamPlayer" parent="." unique_id=692003126]
 stream = ExtResource("8_62q6d")
 volume_db = 12.0
 
-[node name="AudioClockTick" type="AudioStreamPlayer" parent="."]
+[node name="AudioClockTick" type="AudioStreamPlayer" parent="." unique_id=1496227343]
 stream = ExtResource("33_2tsyk")
 volume_db = 12.0
 
-[connection signal="pressed" from="HideFunctionBtn" to="." method="hide_function_btns"]
-[connection signal="pressed" from="ShowFunctionBtn" to="." method="show_function_btns"]
 [connection signal="pressed" from="ActionBtnPn/NapoliBtn" to="." method="_click_napoli_btn"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer/RankingBtn" to="." method="_click_ranking"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer/GuideBtn" to="." method="_open_guide_gui"]

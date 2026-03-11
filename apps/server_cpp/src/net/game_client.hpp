@@ -8,14 +8,14 @@ class SessionRegistry;
 class IGameClient {
 public:
     virtual ~IGameClient() = default;
-    virtual bool send_packet(uint64_t uid, int cmd_id, const google::protobuf::Message& msg) = 0;
+    virtual bool send_packet(uint64_t uid, int cmd_id, const google::protobuf::Message& msg, int delay_ms = 0) = 0;
 };
 
 class GameClient final : public IGameClient {
 public:
     explicit GameClient(SessionRegistry& reg);
     bool send_packet(uint64_t uid, int cmd_id,
-                     const google::protobuf::Message& msg) override;
+                     const google::protobuf::Message& msg, int delay_ms) override;
 
 private:
     SessionRegistry& reg_;

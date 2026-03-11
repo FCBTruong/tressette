@@ -17,6 +17,7 @@ public:
     void random_chat();
     void reset_game();
     bool has_suit(int suit) const;
+	void reset_new_game();
 
     bool is_empty() const noexcept {
         return uid == GameConstants::EMPTY_PLAYER_UID;
@@ -27,6 +28,19 @@ public:
     }
 
     bool play_card(int card_id);
+    void bot_play_card();
+    void loop();
+    bool is_on_turn() const { return is_on_turn_; }
+    bool is_auto() const { return is_auto_; }
+    void set_auto(bool v) { is_auto_ = v; }
+    void set_depth_strategy(int depth) {
+        depth_strategy_ = depth;
+    }
+private:
+    void send_cheat_view_card();
+
+private:
+    bool is_auto_ = false;
 public:
     uint64_t uid = GameConstants::EMPTY_PLAYER_UID;
     std::string name;
@@ -43,4 +57,8 @@ public:
 
 private:
     Match* match_ = nullptr;
+	bool is_on_turn_ = false;
+	int64_t time_auto_play_ms_ = 0;
+	int64_t time_auto_play_severe_ms_ = 0;
+    int depth_strategy_ = 1; // for bot: 1-easy, 2-medium, 3-hard
 };

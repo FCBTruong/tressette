@@ -74,7 +74,7 @@ func _click_view():
 		var gui = g.v.scene_manager.open_gui("res://scenes/lobby/JoinPrivateTable.tscn")
 		gui.set_info(self._info.match_id, false)
 	else:
-		g.v.game_manager.view_game_by_id(self._info.match_id)
+		g.v.game_manager.join_game_by_id(self._info.match_id)
 
 	
 func click_user1():

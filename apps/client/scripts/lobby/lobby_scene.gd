@@ -83,8 +83,6 @@ func _ready() -> void:
 @onready var play_container = find_child('PlayContainer')
 @onready var bg = find_child('Background')
 @onready var avatar_img = find_child('Avatar')
-@onready var friend_btn = find_child('FriendBtn')
-@onready var friend_img_hot = friend_btn.find_child('ImgHot')
 @onready var nofriend_btn = find_child('NofriendBtn')
 @onready var animation_player = find_child("AnimationPlayer")
 @onready var mobile_web_pn = find_child("MobileWebPn")
@@ -157,7 +155,6 @@ func open_shop():
 var friend_lobby_scene = preload("res://scenes/lobby/FriendLobbyNode.tscn")
 		
 func _update_friend_requests():
-	friend_img_hot.visible = len(g.v.friend_mgr.requests) > 0
 	pass
 	
 

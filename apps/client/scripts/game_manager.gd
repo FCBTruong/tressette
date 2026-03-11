@@ -236,6 +236,15 @@ func show_not_gold_recommend_shop():
 		true
 		)
 
+func show_not_gold():
+	g.v.scene_manager.show_ok_dialog(
+		tr('NOT_ENOUGH_GOLD')
+		,
+		func ():
+			pass,
+		true
+	)
+
 func send_claim_support():
 	print('send claim support')
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.CLAM_SUPPORT, [])
@@ -260,6 +269,7 @@ func join_game_by_id(id):
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.JOIN_TABLE_BY_ID, pkg.to_bytes())
 
 func view_game_by_id(id):
+	print("view gamemmmm", id)
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ViewGame.new()
 	pkg.set_match_id(id)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.VIEW_GAME, pkg.to_bytes())

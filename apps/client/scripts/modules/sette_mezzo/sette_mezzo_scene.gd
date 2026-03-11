@@ -438,9 +438,6 @@ func _get_my_card(id):
 		if c.get_card_id() == id:
 			return c
 	return null
-	
-func play_my_card(id: int, auto: bool = false):	
-	pass
 
 var win_messages = [
 		'FANTASTIC',

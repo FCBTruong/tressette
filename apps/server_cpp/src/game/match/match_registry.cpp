@@ -8,6 +8,7 @@
 
 MatchRegistry::MatchRegistry(IGameClient& net, UsersInfoMgr& users_info_mgr)
     : net_(net), users_info_mgr_(users_info_mgr) {
+
 }
 
 void MatchRegistry::start() {
@@ -28,6 +29,8 @@ void MatchRegistry::update() {
             match->loop();
         }
     }
+
+    flush_pending_destroy_matches();
 }
 
 void MatchRegistry::on_received_packet(uint64_t uid, Cmd cmd_id, const std::string& payload) {
@@ -38,6 +41,11 @@ void MatchRegistry::on_received_packet(uint64_t uid, Cmd cmd_id, const std::stri
 
         case Cmd::JOIN_TABLE_BY_ID: {
             receive_user_join_match(uid, payload);
+            break;
+        }
+        
+        case Cmd::TABLE_LIST: {
+            receive_request_table_list(uid);
             break;
         }
 
@@ -104,7 +112,7 @@ bool MatchRegistry::is_user_in_match(uint64_t uid) const {
     return user_match_ids_.find(uid) != user_match_ids_.end();
 }
 
-void MatchRegistry::destroy_match(int64_t match_id) {
+void MatchRegistry::destroy_match_now(int64_t match_id) {
     auto match = get_match(match_id);
     if (!match) {
         return;
@@ -124,8 +132,29 @@ void MatchRegistry::destroy_match(int64_t match_id) {
     std::cout << "Destroyed match " << match_id << '\n';
 }
 
+void MatchRegistry::flush_pending_destroy_matches() {
+    std::vector<int64_t> match_ids(
+        pending_destroy_match_ids_.begin(),
+        pending_destroy_match_ids_.end()
+    );
+    pending_destroy_match_ids_.clear();
+
+    for (int64_t match_id : match_ids) {
+        destroy_match_now(match_id);
+    }
+}
+
+void MatchRegistry::request_destroy_match(int64_t match_id) {
+    auto match = get_match(match_id);
+    if (!match) {
+        return;
+    }
+	match->set_is_pending_destroyed(true);
+    pending_destroy_match_ids_.insert(match_id);
+}
+
 bool MatchRegistry::user_join_match(const std::shared_ptr<Match>& match, uint64_t uid) {
-   if (!match) {
+    if (!match) {
         return false;
     }
     const auto result = match->try_join(uid);
@@ -195,11 +224,6 @@ std::vector<std::shared_ptr<Match>> MatchRegistry::prioritize_matches(uint64_t /
 }
 
 void MatchRegistry::handle_user_join_by_match_id(uint64_t uid, int64_t match_id) {
-    if (is_user_in_match(uid)) {
-        send_response_join_table(uid, JoinMatchErrors::AlreadyInMatch);
-        return;
-    }
-
     auto match = get_match(match_id);
     if (!match) {
         send_response_join_table(uid, JoinMatchErrors::MatchNotFound);
@@ -234,6 +258,12 @@ void MatchRegistry::handle_quick_play(uint64_t uid) {
             return;
         }
     }
+
+  //  for (int i = 0; i < 10; i++) {
+  //      // test
+		//auto test_match = create_match(TRESSETTE_MODE, PLAYER_SOLO_MODE, false, 21);
+  //      test_match->test_fill_bots();
+  //  }
 
     std::cout << "User " << uid << " joining match " << match->match_id() << " via quick play.\n";
     user_join_match(match, uid);
@@ -310,26 +340,6 @@ void MatchRegistry::receive_request_table_list(uint64_t uid) {
     net_.send_packet(uid, Cmd::TABLE_LIST, pkg);
 }
 
-void MatchRegistry::view_game(uint64_t uid, const std::string& payload) {
-    packet::ViewGame pkg;
-    if (!pkg.ParseFromString(payload)) {
-        return;
-    }
-
-    auto target_match = get_match(pkg.match_id());
-    if (!target_match) {
-        return;
-    }
-
-    auto current_match = get_match_of_user(uid);
-    if (current_match) {
-        return;
-    }
-
-    user_match_ids_[uid] = target_match->match_id();
-    target_match->user_view_game(uid);
-}
-
 void MatchRegistry::send_response_join_table(uint64_t uid, JoinMatchErrors status) {
     packet::JoinTableResponse pkg;
     pkg.set_error(static_cast<int>(status));
@@ -348,7 +358,7 @@ void MatchRegistry::on_user_removed_from_match(uint64_t uid, int64_t match_id) {
     }
 
     if (!match->check_has_real_players()) {
-        destroy_match(match_id);
+        request_destroy_match(match_id);
     }
 }
 

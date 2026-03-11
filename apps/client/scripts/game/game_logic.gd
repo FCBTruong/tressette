@@ -77,7 +77,6 @@ func _handle_user_stop_view(payload: PackedByteArray):
 		return
 	if uid == g.v.player_info_mgr.get_user_id():
 		# leave table
-		
 		board_scene.exit_game()
 	else:
 		board_scene.on_viewer_stop(uid)
@@ -108,13 +107,20 @@ func _handle_user_leave_match(payload: PackedByteArray):
 		else:
 			board_scene.exit_game()
 		return
+		
+	var is_player = false
 	for user in match_data.users:
 		if user.uid == uid:
 			# update info
 			user.uid = -1
+			is_player = true
 	
-	# reload
-	board_scene.on_update_players()
+	if (is_player):
+		# reload
+		board_scene.on_update_players()
+	else:
+		board_scene.on_viewer_stop(uid)
+	
 	
 func _handle_user_join_match(payload: PackedByteArray):
 	if not match_data:
@@ -154,6 +160,7 @@ func _handle_user_join_match(payload: PackedByteArray):
 	var cur_scene = g.v.scene_manager.get_current_scene()
 	if cur_scene is BoardScene:
 		cur_scene.on_update_players()
+		cur_scene.on_viewer_stop(uid)
 		
 func _handle_register_leave_game(payload: PackedByteArray):
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.RegisterLeaveGame.new()
@@ -225,6 +232,7 @@ func _handle_game_info(payload: PackedByteArray):
 		userdata.gold = golds[i]
 		userdata.is_vip = is_vips[i]
 		userdata.avatar_frame = avatar_frames[i]
+		userdata.game_data.seat_server_id = i;
 		users.append(userdata)
 		if uid == g.v.player_info_mgr.my_user_data.uid:
 			my_idx = i
@@ -291,7 +299,7 @@ func _handle_play_card(payload: PackedByteArray):
 	var result_code = pkg.from_bytes(payload)
 	var uid = pkg.get_uid()
 	var card_id = pkg.get_card_id()
-	var auto = pkg.get_auto()
+	var auto = pkg.get_is_auto()
 	self.hand_suit = pkg.get_hand_suit()
 	print('current handsuit follow', self.hand_suit)
 	
@@ -310,7 +318,12 @@ func _handle_play_card(payload: PackedByteArray):
 		scene.on_user_turn()
 	var is_end_hand = pkg.get_is_end_hand()
 	if is_end_hand:
-		win_point_hand = pkg.get_win_point()
+		var points = pkg.get_player_points()
+		var i = 0
+		for user in match_data.users:
+			user.game_data.points = points[i]
+			i += 1
+		win_point_hand = pkg.get_win_point()	
 		card_win_id = pkg.get_win_card()
 		var is_end_round = pkg.get_is_end_round()
 		await ROOT.get_tree().create_timer(0.65).timeout
@@ -348,16 +361,9 @@ func _start_game(payload: PackedByteArray):
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.StartGame.new()
 	var result_code = pkg.from_bytes(payload)
 	match_data.state = MatchData.MATCH_STATE.PLAYING
-	reset_cards_compare()
-	
-	var players_gold = pkg.get_players_gold()
-	var i = 0
 	for p in match_data.users:
-		p.gold = players_gold[i]
-		i += 1
-		
-		g.v.signal_bus.emit_signal_global("ingame_update_player_money", [p.uid])
-	
+		p.game_data.points = 0
+	reset_cards_compare()
 	
 	match_data.current_round = 1
 	match_data.hand_in_round = -1
@@ -459,19 +465,13 @@ func get_card_win_inhand():
 func _handle_endhand(payload: PackedByteArray):
 	if not match_data:
 		return
-	var pkg = g.v.game_constants.PROTOBUF.PACKETS.EndHand.new()
-	var result_code = pkg.from_bytes(payload)
-	var points = pkg.get_user_points()
-	var i = 0
-	for user in match_data.users:
-		user.game_data.points = points[i]
-		i += 1
-	reset_cards_compare()
 	
 func is_my_team(uid) -> bool:
 	if uid == g.v.player_info_mgr.get_user_id():
 		return true
 	var u = get_user(uid)
+	if (!u):
+		return false
 	if u.game_data.team_id == my_team_id:
 		return true
 	return false
@@ -552,12 +552,15 @@ func _handle_end_game(payload: PackedByteArray):
 	g.v.player_info_mgr.my_user_data.game_count += 1
 	
 	match_result.rewards.clear()
-	for r in pkg.get_rewards():
+	
+	if not IS_VIEWING:
+		var gold_received = 200 if match_result.is_win else 100
 		var a = Reward.new(
-			r.get_item_id(),
-			r.get_value(),
-			r.get_duration()
+			GameConstants.CRYPSTAL_ITEM_ID,
+			gold_received,
+			-1
 		)
+		g.v.player_info_mgr.add_money(gold_received)
 		match_result.rewards.append(a)
 	
 	match_result.players.clear()
@@ -764,15 +767,6 @@ func _handle_receive_napoli(payload):
 func send_action_napoli():
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.GameActionNapoli.new()
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.GAME_ACTION_NAPOLI, pkg.to_bytes())
-
-func auto_play_card():
-	var cards = match_data.users[my_idx].game_data.cards
-	for c in cards:
-		if check_valid_card_play(c):
-			var cur_scene = g.v.scene_manager.get_current_scene()
-			if cur_scene is BoardScene:
-				cur_scene.play_my_card(c)
-			return
 
 func check_enough_players_room():
 	for p in match_data.users:

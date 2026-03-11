@@ -106,9 +106,7 @@ func _click_cheat_goldbtn():
 	var gold = int(line_edit_gold.text)
 	print('golll', gold)
 	
-	var pkg = g.v.game_constants.PROTOBUF.PACKETS.CheatGoldUser.new()
-	pkg.set_gold(gold)
-	g.v.game_client.send_packet(g.v.game_constants.CMDs.CHEAT_GOLD_USER, pkg.to_bytes())
+	g.v.player_info_mgr.add_money(gold)
 	pass
 	
 func _cheat_gold(gold: int):

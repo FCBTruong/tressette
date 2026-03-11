@@ -67,14 +67,9 @@ void GameManager::on_login_success(uint64_t uid) {
 
     const auto user_info = users_info_mgr_.get_or_create(uid);
     info.set_name(user_info.name);
-    info.set_gold(user_info.gold);
-    info.set_level(user_info.level);
     info.set_avatar(user_info.avatar);
     info.set_avatar_third_party(user_info.avatar_third_party);
     info.set_avatar_frame(user_info.avatar_frame);
-    info.set_win_count(user_info.win_count);
-    info.set_game_count(user_info.game_count);
-    info.set_exp(user_info.exp);
     info.set_add_for_user_support(false);
     
     net_.send_packet(uid, Cmd::USER_INFO, info);

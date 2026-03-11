@@ -5,6 +5,12 @@
 #include <cctype>
 #include <iostream>
 
+UsersInfoMgr::UsersInfoMgr() {
+    for (int bot_uid = BOT_START_UID; bot_uid < BOT_START_UID + 10; ++bot_uid) {
+        available_uids_.push_back(bot_uid);
+    }
+}
+
 UserInfo UsersInfoMgr::get_or_create(uint64_t uid) {
     std::lock_guard<std::mutex> lk(mu_);
     auto it = users_.find(uid);
@@ -41,12 +47,6 @@ void UsersInfoMgr::on_receive_packet(uint64_t uid, Cmd cmd_id, const std::string
         case Cmd::CHANGE_USER_NAME:
             handle_change_user_name(uid, payload);
             return;
-        case Cmd::CHEAT_GOLD_USER:
-            handle_cheat_gold_user(uid, payload);
-            return;
-        case Cmd::CHEAT_EXP_USER:
-            handle_cheat_exp_user(uid, payload);
-            return;
         default:
             return;
     }
@@ -75,30 +75,6 @@ void UsersInfoMgr::handle_change_avatar(uint64_t uid, const std::string& payload
     user.avatar = std::to_string(avatar_id);
 }
 
-void UsersInfoMgr::handle_cheat_gold_user(uint64_t uid, const std::string& payload) {
-    packet::CheatGoldUser req;
-    if (!req.ParseFromString(payload)) return;
-
-    const int64_t add_gold = req.gold();
-
-    std::lock_guard<std::mutex> lk(mu_);
-    auto& user = users_[uid];
-    user.uid = uid;
-    user.gold += add_gold;
-}
-
-void UsersInfoMgr::handle_cheat_exp_user(uint64_t uid, const std::string& payload) {
-    packet::CheatExpUser req;
-    if (!req.ParseFromString(payload)) return;
-
-    const int add_exp = req.exp();
-
-    std::lock_guard<std::mutex> lk(mu_);
-    auto& user = users_[uid];
-    user.uid = uid;
-    user.exp += add_exp;
-}
-
 std::string UsersInfoMgr::trim(std::string s) {
     auto not_space = [](unsigned char ch) { return !std::isspace(ch); };
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), not_space));
@@ -124,4 +100,20 @@ void UsersInfoMgr::handle_change_user_name(uint64_t uid, const std::string& payl
     // No inventory / rename-card logic per your request (cache only)
     user.name = std::move(new_name);
     user.num_change_name += 1;
+}
+
+int UsersInfoMgr::request_bot() {
+    if (available_uids_.empty()) {
+        return -1;
+    }
+    const int bot_uid = available_uids_.back();
+    available_uids_.pop_back();
+    in_use_uids_.insert(bot_uid);
+    return bot_uid;
+}
+
+void UsersInfoMgr::release_bot(int bot_uid) {
+    if (in_use_uids_.erase(bot_uid) > 0) {
+        available_uids_.push_back(bot_uid);
+    }
 }

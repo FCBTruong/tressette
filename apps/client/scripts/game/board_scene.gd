@@ -75,8 +75,6 @@ var my_card_panel_pos
 var is_showing_functions = false
 @onready var right_top_pn = find_child("RightTopPanel")
 @onready var left_top_pn = find_child("LeftTopPn")
-@onready var btn_hide_func_bar = find_child("HideFunctionBtn")
-@onready var btn_show_func_bar = find_child("ShowFunctionBtn")
 @onready var emo_chat = find_child("EmoChat")
 @onready var ads_banner_pn = find_child("AdsBannerPn")
 @onready var vbox_viewer = find_child("VboxViewer")
@@ -85,7 +83,6 @@ var is_showing_functions = false
 var cardback_node_default_pos
 var remain_card_pn
 func _ready() -> void:	
-	self.show_function_btns()
 	remain_card_pn = cardback_node.find_child("RemainCardPn")
 	cardback_node_default_pos = cardback_node.position
 	#set_up_ads_banner(g.v.game_manager.is_enable_ads())
@@ -262,12 +259,11 @@ func _update_current_round():
 		return
 	round_lb.text = tr("ROUND") + ": " + str(game_logic.match_data.current_round)
 
-func on_game_start():
-	game_start_lb.text = tr("GAME_START")
-	_eff_text_middle()
-	_update_current_round()
+func on_game_start():	
+	# delay 0.5 sec
+	#await ROOT.get_tree().create_timer(0.5).timeout
 	
-	self.hide_function_btns()
+	_update_current_round()
 	
 func _eff_text_middle():
 	# effect start game
@@ -376,7 +372,8 @@ func _process(delta: float) -> void:
 	else:
 		self.waiting_other_lb.text = ''
 	if countdown_timer and countdown_start_lb.visible:
-		var time_left_str = str(ceil(countdown_timer.time_left))
+		var time_left = int(ceil(countdown_timer.time_left))
+		var time_left_str = str(time_left)
 		#if countdown_start_lb.text != time_left_str:
 			## effect zoom and disppear
 		countdown_start_lb.text = time_left_str
@@ -445,15 +442,12 @@ func play_my_card(id: int, auto: bool = false):
 	var rot = deg_to_rad(rot_degrees)
 	# Animate the card moving to (0, 0)
 	var tween = create_tween()
-	print("my turnnnnnds")
 	var start_pos = card.global_position
 	var p_place_world = get_place_pos_card(player_node.user_data.game_data.seat_id)
 	var direction = (p_place_world - start_pos).normalized()
 	var mid_pos = start_pos.lerp(p_place_world, 0.25)
 	tween.parallel().tween_property(card, "global_position", p_place_world, 0.5)
 	tween.parallel().tween_property(card, "rotation_degrees", 0, 0.5)
-	
-
 	
 	var t2 = create_tween()
 	t2.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -464,10 +458,11 @@ func play_my_card(id: int, auto: bool = false):
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.3).set_ease(Tween.EASE_IN)
 	# send to server
 	
-	if not auto:
-		game_logic.match_data.current_turn = -1
-		g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
-		game_logic.send_play_card(id)
+
+	game_logic.match_data.current_turn = -1
+	g.v.scene_manager.INSTANCES.BOARD_SCENE.on_user_turn()
+	game_logic.send_play_card(id)
+	
 	cards_node_compare.append(card)
 	update_card_follow_star()
 	
@@ -503,6 +498,7 @@ func on_finishhand(delay = 0.5, is_end_round = false):
 	card_win_node.effect_win_card()
 			
 	if not player_win_id:
+		print("Error player win id null")
 		return
 	var is_win = game_logic.is_my_team(player_win_id)
 	if is_win:
@@ -543,7 +539,6 @@ func on_finishhand(delay = 0.5, is_end_round = false):
 		tween.tween_callback(c.queue_free)
 	
 	cards_node_compare.clear()
-	
 	for player in list_players:
 		player.update_points_display(true)
 	# effect add score
@@ -830,14 +825,13 @@ func deal_my_cards(cards) -> void:
 	#tween.tween_callback(set_process.bind(true))
 	#tween.tween_property(self, "sine_offset_mult", anim_offset_y, 1.5).from(0.0)
 
-func play_card(user_id: int, card_id: int, auto: bool = false):
-	print("user " + str(user_id) + "play_a_card", card_id, auto)
-	if user_id == g.v.player_info_mgr.my_user_data.uid:
-		if auto:
-			play_my_card(card_id, auto)
-		return
+func play_card(user_id: int, card_id: int, auto: bool):
+	print("user " + str(user_id) + "play_a_card", card_id)
 	if g.v.game_manager.enable_sound:
 		$AudioPlayCard.play()
+	if user_id == g.v.player_info_mgr.my_user_data.uid:
+		play_my_card(card_id, auto)
+		return
 
 	var card_instance = card_scene.instantiate()
 	play_ground.add_child(card_instance)
@@ -860,7 +854,6 @@ func play_card(user_id: int, card_id: int, auto: bool = false):
 		Vector2(SCALE_CARD_NORMAL * 1.05, SCALE_CARD_NORMAL * 1.05), 0.4)\
 			.set_trans(Tween.TRANS_SINE)
 			
-	
 	tween.parallel().tween_property(card_instance, "scale", 
 		Vector2(SCALE_CARD_COMPARE, SCALE_CARD_COMPARE), 0.2).set_delay(0.3)
 	cards_node_compare.append(card_instance)
@@ -1287,78 +1280,6 @@ func _on_screen_resized():
 func _click_ranking() -> void:
 	g.v.ranking_mgr.show_gui()
 
-
-var tween_function_btn
-func show_function_btns():
-	self.is_showing_functions = true
-	self.left_top_pn.visible = true
-	self.right_top_pn.visible = true
-	self.btn_show_func_bar.visible = false
-	self.btn_hide_func_bar.visible = true
-	self.reach_point_win_lb.visible = true
-	
-	var img = btn_hide_func_bar.find_child("TextureRect")
-	img.modulate.a = 1
-	
-	if tween_function_btn and tween_function_btn.is_running():
-		tween_function_btn.kill()
-	tween_function_btn = create_tween()
-	tween_function_btn.tween_property(
-		img,
-		"modulate:a",
-		0.2,
-		0.5
-	).set_delay(1.5)
-	
-func hide_function_btns() -> void:
-	return
-	self.is_showing_functions = false
-	self.left_top_pn.visible = false
-	self.right_top_pn.visible = false
-	self.btn_show_func_bar.visible = true
-	self.btn_hide_func_bar.visible = false
-	self.reach_point_win_lb.visible = false
-	var img = btn_show_func_bar.find_child("TextureRect")
-	img.modulate.a = 1
-	
-	if tween_function_btn and tween_function_btn.is_running():
-		tween_function_btn.kill()
-	tween_function_btn = create_tween()
-	tween_function_btn.tween_property(
-		img,
-		"modulate:a",
-		0.2,
-		0.5
-	).set_delay(1.5)
-	var guide_click = btn_show_func_bar.find_child("GuideClick")
-	guide_click.visible = false
-	var did_show_hint_click = g.v.storage_cache.fetch("did_show_hint_click", '0') == '1'
-	if not did_show_hint_click:
-		g.v.storage_cache.store("did_show_hint_click", '1')
-		guide_click.visible = true
-		guide_click.modulate.a = 0
-		tween_function_btn.tween_property(
-			guide_click,
-			"modulate:a",
-			1,
-			0.3
-		)
-		
-		var finger_icon = guide_click.find_child("FingerIcon")
-		var finger_tw = create_tween()
-		finger_tw.set_loops() # infinite loop
-		finger_tw.tween_property(finger_icon, "position:y", 5, 0.3)
-		finger_tw.tween_property(finger_icon, "position:y", -5, 0.3) \
-		.set_trans(Tween.TRANS_SINE) \
-		.set_ease(Tween.EASE_IN_OUT)
-
-		tween_function_btn.tween_property(
-			guide_click,
-			"modulate:a",
-			0,
-			0.3
-		).set_delay(5)
-
 var anim_cup_scene = preload("res://scenes/board/AnimCupWin.tscn")
 func end_game():
 	for p in self.list_players:
@@ -1396,8 +1317,4 @@ func on_viewer_stop(uid):
 
 func hide_viewer_pn() -> void:
 	self.visitor_pn.visible = false
-	pass
-
-func stop_view_join_game() -> void:
-	g.v.game_manager.join_game_by_id(self.game_logic.match_data.match_id)
 	pass

@@ -155,7 +155,7 @@ void ClientSession::send(const packet::Packet& packet) {
         });
 }
 
-bool ClientSession::send_packet(int cmd_id, const google::protobuf::Message& msg) {
+bool ClientSession::send_packet(int cmd_id, const google::protobuf::Message& msg, int delay_ms) {
     std::string payload;
     if (!msg.SerializeToString(&payload)) {
         std::cerr << "Failed to serialize payload for session "
@@ -170,6 +170,11 @@ bool ClientSession::send_packet(int cmd_id, const google::protobuf::Message& msg
         packet.set_token(session_token_);
     }
 
+    // send timestamp in milliseconds
+    int64_t timestamp_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        std::chrono::steady_clock::now().time_since_epoch()).count();
+    packet.set_timestamp(timestamp_ms);
+    packet.set_packet_id(++packet_id_);
     packet.set_payload(payload);
     send(packet);
     return true;

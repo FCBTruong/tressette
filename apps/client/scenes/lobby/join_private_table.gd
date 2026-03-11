@@ -35,10 +35,11 @@ func _click_ok():
 		g.v.scene_manager.show_toast("WRONG_PASSWORD")
 		return
 		
-	if is_join:
-		g.v.game_manager.join_game_by_id(match_id)
-	else:
-		g.v.game_manager.view_game_by_id(match_id)
+	#if is_join:
+		#g.v.game_manager.join_game_by_id(match_id)
+	#else:
+		#g.v.game_manager.view_game_by_id(match_id)
+	g.v.game_manager.join_game_by_id(match_id)
 	# passed checks → close UI
 	self.queue_free()
 

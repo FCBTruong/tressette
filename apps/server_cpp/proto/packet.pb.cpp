@@ -36,7 +36,9 @@ PROTOBUF_CONSTEXPR Packet::Packet(
     ::_pbi::ConstantInitialized)
   : token_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , payload_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
-  , cmd_id_(0){}
+  , timestamp_(int64_t{0})
+  , cmd_id_(0)
+  , packet_id_(0){}
 struct PacketDefaultTypeInternal {
   PROTOBUF_CONSTEXPR PacketDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -271,11 +273,13 @@ struct DealCardDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DealCardDefaultTypeInternal _DealCard_default_instance_;
 PROTOBUF_CONSTEXPR PlayCard::PlayCard(
     ::_pbi::ConstantInitialized)
-  : uid_(0)
+  : player_points_()
+  , _player_points_cached_byte_size_(0)
+  , uid_(0)
   , card_id_(0)
   , current_turn_(0)
   , hand_suit_(0)
-  , auto__(false)
+  , is_auto_(false)
   , is_end_hand_(false)
   , is_end_round_(false)
   , win_uid_(0)
@@ -331,23 +335,6 @@ struct UpdateGamePointDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateGamePointDefaultTypeInternal _UpdateGamePoint_default_instance_;
-PROTOBUF_CONSTEXPR EndHand::EndHand(
-    ::_pbi::ConstantInitialized)
-  : user_points_()
-  , _user_points_cached_byte_size_(0)
-  , win_uid_(0)
-  , win_card_(0)
-  , win_point_(0)
-  , is_end_round_(false){}
-struct EndHandDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR EndHandDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~EndHandDefaultTypeInternal() {}
-  union {
-    EndHand _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 EndHandDefaultTypeInternal _EndHand_default_instance_;
 PROTOBUF_CONSTEXPR DrawCard::DrawCard(
     ::_pbi::ConstantInitialized)
   : cards_()
@@ -1493,6 +1480,18 @@ struct RewardInventoryItemDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RewardInventoryItemDefaultTypeInternal _RewardInventoryItem_default_instance_;
+PROTOBUF_CONSTEXPR ViewerJoinMatch::ViewerJoinMatch(
+    ::_pbi::ConstantInitialized)
+  : seat_idx_(0){}
+struct ViewerJoinMatchDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ViewerJoinMatchDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ViewerJoinMatchDefaultTypeInternal() {}
+  union {
+    ViewerJoinMatch _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ViewerJoinMatchDefaultTypeInternal _ViewerJoinMatch_default_instance_;
 }  // namespace packet
 static ::_pb::Metadata file_level_metadata_packet_2eproto[97];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_packet_2eproto = nullptr;
@@ -1513,6 +1512,8 @@ const uint32_t TableStruct_packet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::packet::Packet, token_),
   PROTOBUF_FIELD_OFFSET(::packet::Packet, cmd_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::Packet, timestamp_),
+  PROTOBUF_FIELD_OFFSET(::packet::Packet, packet_id_),
   PROTOBUF_FIELD_OFFSET(::packet::Packet, payload_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::packet::ChatMessage, _internal_metadata_),
@@ -1673,7 +1674,7 @@ const uint32_t TableStruct_packet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::packet::PlayCard, uid_),
   PROTOBUF_FIELD_OFFSET(::packet::PlayCard, card_id_),
-  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, auto__),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, is_auto_),
   PROTOBUF_FIELD_OFFSET(::packet::PlayCard, current_turn_),
   PROTOBUF_FIELD_OFFSET(::packet::PlayCard, hand_suit_),
   PROTOBUF_FIELD_OFFSET(::packet::PlayCard, is_end_hand_),
@@ -1681,6 +1682,7 @@ const uint32_t TableStruct_packet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::packet::PlayCard, win_point_),
   PROTOBUF_FIELD_OFFSET(::packet::PlayCard, is_end_round_),
   PROTOBUF_FIELD_OFFSET(::packet::PlayCard, win_card_),
+  PROTOBUF_FIELD_OFFSET(::packet::PlayCard, player_points_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::packet::StartGame, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1704,17 +1706,6 @@ const uint32_t TableStruct_packet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::packet::UpdateGamePoint, points_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::packet::EndHand, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::packet::EndHand, win_uid_),
-  PROTOBUF_FIELD_OFFSET(::packet::EndHand, win_card_),
-  PROTOBUF_FIELD_OFFSET(::packet::EndHand, user_points_),
-  PROTOBUF_FIELD_OFFSET(::packet::EndHand, win_point_),
-  PROTOBUF_FIELD_OFFSET(::packet::EndHand, is_end_round_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::packet::DrawCard, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2421,105 +2412,112 @@ const uint32_t TableStruct_packet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::packet::RewardInventoryItem, item_id_),
   PROTOBUF_FIELD_OFFSET(::packet::RewardInventoryItem, duration_),
   PROTOBUF_FIELD_OFFSET(::packet::RewardInventoryItem, value_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::packet::ViewerJoinMatch, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::packet::ViewerJoinMatch, seat_idx_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::packet::Empty)},
   { 6, -1, -1, sizeof(::packet::Packet)},
-  { 15, -1, -1, sizeof(::packet::ChatMessage)},
-  { 27, -1, -1, sizeof(::packet::PingPong)},
-  { 33, -1, -1, sizeof(::packet::Login)},
-  { 45, -1, -1, sizeof(::packet::LoginFirebase)},
-  { 54, -1, -1, sizeof(::packet::Logout)},
-  { 60, -1, -1, sizeof(::packet::LoginResponse)},
-  { 69, -1, -1, sizeof(::packet::UserInfo)},
-  { 97, -1, -1, sizeof(::packet::GameInfo)},
-  { 129, -1, -1, sizeof(::packet::RegisterLeaveGame)},
-  { 136, -1, -1, sizeof(::packet::NewUserJoinMatch)},
-  { 150, -1, -1, sizeof(::packet::UserLeaveMatch)},
-  { 158, -1, -1, sizeof(::packet::DealCard)},
-  { 166, -1, -1, sizeof(::packet::PlayCard)},
-  { 182, -1, -1, sizeof(::packet::StartGame)},
-  { 190, -1, -1, sizeof(::packet::NewHand)},
-  { 198, -1, -1, sizeof(::packet::UpdateGamePoint)},
-  { 205, -1, -1, sizeof(::packet::EndHand)},
-  { 216, -1, -1, sizeof(::packet::DrawCard)},
-  { 223, -1, -1, sizeof(::packet::GeneralInfo)},
-  { 235, -1, -1, sizeof(::packet::LevelReward)},
-  { 244, -1, -1, sizeof(::packet::ItemReward)},
-  { 252, -1, -1, sizeof(::packet::EndGame)},
-  { 265, -1, -1, sizeof(::packet::PrepareStartGame)},
-  { 272, -1, -1, sizeof(::packet::InGameChatMessage)},
-  { 280, -1, -1, sizeof(::packet::PaymentGoogleConsume)},
-  { 291, -1, -1, sizeof(::packet::PaymentSuccess)},
-  { 300, -1, -1, sizeof(::packet::UpdateMoney)},
-  { 307, -1, -1, sizeof(::packet::TableList)},
-  { 321, -1, -1, sizeof(::packet::ShopConfig)},
-  { 339, -1, -1, sizeof(::packet::DetailShopPack)},
-  { 346, -1, -1, sizeof(::packet::GuestAccount)},
-  { 353, -1, -1, sizeof(::packet::ChangeAvatar)},
-  { 360, -1, -1, sizeof(::packet::InGameChatEmoticon)},
-  { 368, -1, -1, sizeof(::packet::SearchFriend)},
-  { 375, -1, -1, sizeof(::packet::SearchFriendResponse)},
-  { 392, -1, -1, sizeof(::packet::CheatGoldUser)},
-  { 399, -1, -1, sizeof(::packet::FriendList)},
-  { 414, -1, -1, sizeof(::packet::FriendRequests)},
-  { 426, -1, -1, sizeof(::packet::AddFriend)},
-  { 434, -1, -1, sizeof(::packet::RequestFriendAccept)},
-  { 442, -1, -1, sizeof(::packet::RemoveFriend)},
-  { 449, -1, -1, sizeof(::packet::NewFriendRequest)},
-  { 460, -1, -1, sizeof(::packet::FriendRequestAccepted)},
-  { 472, -1, -1, sizeof(::packet::RecommendFriends)},
-  { 484, -1, -1, sizeof(::packet::PaymentAppleConsume)},
-  { 492, -1, -1, sizeof(::packet::PaymentFinishedAppleTransaction)},
-  { 499, -1, -1, sizeof(::packet::NewRound)},
-  { 508, -1, -1, sizeof(::packet::CreateTable)},
-  { 519, -1, -1, sizeof(::packet::JoinTableById)},
-  { 526, -1, -1, sizeof(::packet::JoinTableResponse)},
-  { 533, -1, -1, sizeof(::packet::ClaimSupport)},
-  { 540, -1, -1, sizeof(::packet::AppCodeVersion)},
-  { 553, -1, -1, sizeof(::packet::PlayCardResponse)},
-  { 560, -1, -1, sizeof(::packet::CheatViewCardBot)},
-  { 567, -1, -1, sizeof(::packet::InviteFriendPlay)},
-  { 575, -1, -1, sizeof(::packet::GameActionNapoli)},
-  { 584, -1, -1, sizeof(::packet::CustomerServiceReport)},
-  { 592, -1, -1, sizeof(::packet::AdminBroadcast)},
-  { 599, -1, -1, sizeof(::packet::PaymentPaypalRequestOrder)},
-  { 606, -1, -1, sizeof(::packet::PaymentPaypalOrder)},
-  { 613, -1, -1, sizeof(::packet::QuickPlay)},
-  { 619, -1, -1, sizeof(::packet::SetteMezzoNewUserJoinMatch)},
-  { 631, -1, -1, sizeof(::packet::SetteMezzoPrepareStartGame)},
-  { 639, -1, -1, sizeof(::packet::SetteMezzoGameInfo)},
-  { 669, -1, -1, sizeof(::packet::SetteMezzoPlayerInfo)},
-  { 676, -1, -1, sizeof(::packet::SetteMezzoQuickPlay)},
-  { 682, -1, -1, sizeof(::packet::SetteMezzoStartGame)},
-  { 690, -1, -1, sizeof(::packet::RankingInfo)},
-  { 707, -1, -1, sizeof(::packet::RankingResult)},
-  { 716, -1, -1, sizeof(::packet::RankingClaimReward)},
-  { 723, -1, -1, sizeof(::packet::UpdateAds)},
-  { 730, -1, -1, sizeof(::packet::AdsReward)},
-  { 738, -1, -1, sizeof(::packet::ChangeUserName)},
-  { 745, -1, -1, sizeof(::packet::SetteMezzoActionHit)},
-  { 753, -1, -1, sizeof(::packet::SetteMezzoUpdateTurn)},
-  { 761, -1, -1, sizeof(::packet::SetteMezzoActionStand)},
-  { 770, -1, -1, sizeof(::packet::SetteMezzoEndGame)},
-  { 781, -1, -1, sizeof(::packet::SetteMezzoShowBankerCard)},
-  { 788, -1, -1, sizeof(::packet::SetteMezzoUserBet)},
-  { 796, -1, -1, sizeof(::packet::ViewGame)},
-  { 803, -1, -1, sizeof(::packet::UserStopView)},
-  { 810, -1, -1, sizeof(::packet::NewUserView)},
-  { 820, -1, -1, sizeof(::packet::CheatExpUser)},
-  { 827, -1, -1, sizeof(::packet::UpdateExp)},
-  { 834, -1, -1, sizeof(::packet::ClaimRewardLevel)},
-  { 841, -1, -1, sizeof(::packet::UserInventory)},
-  { 848, -1, -1, sizeof(::packet::InvetoryItem)},
-  { 857, -1, -1, sizeof(::packet::UseItem)},
-  { 864, -1, -1, sizeof(::packet::CheatItem)},
-  { 872, -1, -1, sizeof(::packet::BuyItem)},
-  { 880, -1, -1, sizeof(::packet::InventoryShopConfig)},
-  { 887, -1, -1, sizeof(::packet::InventoryShopItem)},
-  { 895, -1, -1, sizeof(::packet::InvetoryShopPack)},
-  { 904, -1, -1, sizeof(::packet::ClaimRewardLevelResponse)},
-  { 913, -1, -1, sizeof(::packet::RewardInventoryItem)},
+  { 17, -1, -1, sizeof(::packet::ChatMessage)},
+  { 29, -1, -1, sizeof(::packet::PingPong)},
+  { 35, -1, -1, sizeof(::packet::Login)},
+  { 47, -1, -1, sizeof(::packet::LoginFirebase)},
+  { 56, -1, -1, sizeof(::packet::Logout)},
+  { 62, -1, -1, sizeof(::packet::LoginResponse)},
+  { 71, -1, -1, sizeof(::packet::UserInfo)},
+  { 99, -1, -1, sizeof(::packet::GameInfo)},
+  { 131, -1, -1, sizeof(::packet::RegisterLeaveGame)},
+  { 138, -1, -1, sizeof(::packet::NewUserJoinMatch)},
+  { 152, -1, -1, sizeof(::packet::UserLeaveMatch)},
+  { 160, -1, -1, sizeof(::packet::DealCard)},
+  { 168, -1, -1, sizeof(::packet::PlayCard)},
+  { 185, -1, -1, sizeof(::packet::StartGame)},
+  { 193, -1, -1, sizeof(::packet::NewHand)},
+  { 201, -1, -1, sizeof(::packet::UpdateGamePoint)},
+  { 208, -1, -1, sizeof(::packet::DrawCard)},
+  { 215, -1, -1, sizeof(::packet::GeneralInfo)},
+  { 227, -1, -1, sizeof(::packet::LevelReward)},
+  { 236, -1, -1, sizeof(::packet::ItemReward)},
+  { 244, -1, -1, sizeof(::packet::EndGame)},
+  { 257, -1, -1, sizeof(::packet::PrepareStartGame)},
+  { 264, -1, -1, sizeof(::packet::InGameChatMessage)},
+  { 272, -1, -1, sizeof(::packet::PaymentGoogleConsume)},
+  { 283, -1, -1, sizeof(::packet::PaymentSuccess)},
+  { 292, -1, -1, sizeof(::packet::UpdateMoney)},
+  { 299, -1, -1, sizeof(::packet::TableList)},
+  { 313, -1, -1, sizeof(::packet::ShopConfig)},
+  { 331, -1, -1, sizeof(::packet::DetailShopPack)},
+  { 338, -1, -1, sizeof(::packet::GuestAccount)},
+  { 345, -1, -1, sizeof(::packet::ChangeAvatar)},
+  { 352, -1, -1, sizeof(::packet::InGameChatEmoticon)},
+  { 360, -1, -1, sizeof(::packet::SearchFriend)},
+  { 367, -1, -1, sizeof(::packet::SearchFriendResponse)},
+  { 384, -1, -1, sizeof(::packet::CheatGoldUser)},
+  { 391, -1, -1, sizeof(::packet::FriendList)},
+  { 406, -1, -1, sizeof(::packet::FriendRequests)},
+  { 418, -1, -1, sizeof(::packet::AddFriend)},
+  { 426, -1, -1, sizeof(::packet::RequestFriendAccept)},
+  { 434, -1, -1, sizeof(::packet::RemoveFriend)},
+  { 441, -1, -1, sizeof(::packet::NewFriendRequest)},
+  { 452, -1, -1, sizeof(::packet::FriendRequestAccepted)},
+  { 464, -1, -1, sizeof(::packet::RecommendFriends)},
+  { 476, -1, -1, sizeof(::packet::PaymentAppleConsume)},
+  { 484, -1, -1, sizeof(::packet::PaymentFinishedAppleTransaction)},
+  { 491, -1, -1, sizeof(::packet::NewRound)},
+  { 500, -1, -1, sizeof(::packet::CreateTable)},
+  { 511, -1, -1, sizeof(::packet::JoinTableById)},
+  { 518, -1, -1, sizeof(::packet::JoinTableResponse)},
+  { 525, -1, -1, sizeof(::packet::ClaimSupport)},
+  { 532, -1, -1, sizeof(::packet::AppCodeVersion)},
+  { 545, -1, -1, sizeof(::packet::PlayCardResponse)},
+  { 552, -1, -1, sizeof(::packet::CheatViewCardBot)},
+  { 559, -1, -1, sizeof(::packet::InviteFriendPlay)},
+  { 567, -1, -1, sizeof(::packet::GameActionNapoli)},
+  { 576, -1, -1, sizeof(::packet::CustomerServiceReport)},
+  { 584, -1, -1, sizeof(::packet::AdminBroadcast)},
+  { 591, -1, -1, sizeof(::packet::PaymentPaypalRequestOrder)},
+  { 598, -1, -1, sizeof(::packet::PaymentPaypalOrder)},
+  { 605, -1, -1, sizeof(::packet::QuickPlay)},
+  { 611, -1, -1, sizeof(::packet::SetteMezzoNewUserJoinMatch)},
+  { 623, -1, -1, sizeof(::packet::SetteMezzoPrepareStartGame)},
+  { 631, -1, -1, sizeof(::packet::SetteMezzoGameInfo)},
+  { 661, -1, -1, sizeof(::packet::SetteMezzoPlayerInfo)},
+  { 668, -1, -1, sizeof(::packet::SetteMezzoQuickPlay)},
+  { 674, -1, -1, sizeof(::packet::SetteMezzoStartGame)},
+  { 682, -1, -1, sizeof(::packet::RankingInfo)},
+  { 699, -1, -1, sizeof(::packet::RankingResult)},
+  { 708, -1, -1, sizeof(::packet::RankingClaimReward)},
+  { 715, -1, -1, sizeof(::packet::UpdateAds)},
+  { 722, -1, -1, sizeof(::packet::AdsReward)},
+  { 730, -1, -1, sizeof(::packet::ChangeUserName)},
+  { 737, -1, -1, sizeof(::packet::SetteMezzoActionHit)},
+  { 745, -1, -1, sizeof(::packet::SetteMezzoUpdateTurn)},
+  { 753, -1, -1, sizeof(::packet::SetteMezzoActionStand)},
+  { 762, -1, -1, sizeof(::packet::SetteMezzoEndGame)},
+  { 773, -1, -1, sizeof(::packet::SetteMezzoShowBankerCard)},
+  { 780, -1, -1, sizeof(::packet::SetteMezzoUserBet)},
+  { 788, -1, -1, sizeof(::packet::ViewGame)},
+  { 795, -1, -1, sizeof(::packet::UserStopView)},
+  { 802, -1, -1, sizeof(::packet::NewUserView)},
+  { 812, -1, -1, sizeof(::packet::CheatExpUser)},
+  { 819, -1, -1, sizeof(::packet::UpdateExp)},
+  { 826, -1, -1, sizeof(::packet::ClaimRewardLevel)},
+  { 833, -1, -1, sizeof(::packet::UserInventory)},
+  { 840, -1, -1, sizeof(::packet::InvetoryItem)},
+  { 849, -1, -1, sizeof(::packet::UseItem)},
+  { 856, -1, -1, sizeof(::packet::CheatItem)},
+  { 864, -1, -1, sizeof(::packet::BuyItem)},
+  { 872, -1, -1, sizeof(::packet::InventoryShopConfig)},
+  { 879, -1, -1, sizeof(::packet::InventoryShopItem)},
+  { 887, -1, -1, sizeof(::packet::InvetoryShopPack)},
+  { 896, -1, -1, sizeof(::packet::ClaimRewardLevelResponse)},
+  { 905, -1, -1, sizeof(::packet::RewardInventoryItem)},
+  { 914, -1, -1, sizeof(::packet::ViewerJoinMatch)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -2541,7 +2539,6 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::packet::_StartGame_default_instance_._instance,
   &::packet::_NewHand_default_instance_._instance,
   &::packet::_UpdateGamePoint_default_instance_._instance,
-  &::packet::_EndHand_default_instance_._instance,
   &::packet::_DrawCard_default_instance_._instance,
   &::packet::_GeneralInfo_default_instance_._instance,
   &::packet::_LevelReward_default_instance_._instance,
@@ -2620,223 +2617,223 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::packet::_InvetoryShopPack_default_instance_._instance,
   &::packet::_ClaimRewardLevelResponse_default_instance_._instance,
   &::packet::_RewardInventoryItem_default_instance_._instance,
+  &::packet::_ViewerJoinMatch_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_packet_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014packet.proto\022\006packet\"\007\n\005Empty\"8\n\006Packe"
-  "t\022\r\n\005token\030\001 \001(\t\022\016\n\006cmd_id\030\002 \001(\005\022\017\n\007payl"
-  "oad\030\003 \001(\014\"j\n\013ChatMessage\022\013\n\003abc\030\001 \001(\001\022\020\n"
-  "\010username\030\002 \001(\t\022\r\n\005level\030\003 \001(\003\022\014\n\004gold\030\004"
-  " \001(\003\022\014\n\004abcd\030\005 \001(\t\022\021\n\tis_active\030\006 \001(\010\"\n\n"
-  "\010PingPong\"~\n\005Login\022\014\n\004type\030\001 \001(\005\022\r\n\005toke"
-  "n\030\002 \001(\t\022\024\n\014device_model\030\003 \001(\t\022\020\n\010platfor"
-  "m\030\004 \001(\t\022\026\n\016device_country\030\005 \001(\t\022\030\n\020app_v"
-  "ersion_code\030\006 \001(\005\"H\n\rLoginFirebase\022\020\n\010su"
-  "b_type\030\001 \001(\005\022\023\n\013login_token\030\002 \001(\t\022\020\n\010gue"
-  "st_id\030\003 \001(\t\"\010\n\006Logout\":\n\rLoginResponse\022\013"
-  "\n\003uid\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\022\r\n\005error\030\003 \001("
-  "\005\"\273\003\n\010UserInfo\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001("
-  "\t\022\014\n\004gold\030\003 \001(\003\022\016\n\006scores\030\004 \003(\005\022\r\n\005names"
-  "\030\005 \003(\t\022\013\n\003abc\030\006 \001(\005\022\016\n\006avatar\030\007 \001(\t\022\032\n\022a"
-  "vatar_third_party\030\010 \001(\t\022\r\n\005level\030\t \001(\005\022\023"
-  "\n\013support_num\030\n \001(\005\022\021\n\twin_count\030\013 \001(\005\022\022"
-  "\n\ngame_count\030\014 \001(\005\022\013\n\003exp\030\r \001(\003\022\024\n\014start"
-  "up_gold\030\016 \001(\005\022\025\n\rhas_first_buy\030\017 \001(\010\022\025\n\r"
-  "time_show_ads\030\020 \001(\005\022\022\n\nlogin_type\030\021 \001(\005\022"
-  "\027\n\017time_ads_reward\030\022 \001(\005\022\034\n\024add_for_user"
-  "_support\030\023 \001(\010\022\024\n\014avatar_frame\030\024 \001(\005\022\026\n\016"
-  "claimed_levels\030\025 \003(\005\022\031\n\021price_change_nam"
-  "e\030\026 \001(\005\"\253\004\n\010GameInfo\022\020\n\010match_id\030\001 \001(\005\022\021"
-  "\n\tgame_mode\030\002 \001(\005\022\023\n\013player_mode\030\003 \001(\005\022\014"
-  "\n\004uids\030\004 \003(\005\022\022\n\nuser_golds\030\005 \003(\003\022\022\n\nuser"
-  "_names\030\006 \003(\t\022\025\n\rcards_compare\030\007 \003(\005\022\024\n\014c"
-  "urrent_turn\030\010 \001(\005\022\022\n\ngame_state\030\t \001(\005\022\020\n"
-  "\010my_cards\030\n \003(\005\022\024\n\014remain_cards\030\013 \001(\005\022\023\n"
-  "\013user_points\030\014 \003(\005\022\020\n\010team_ids\030\r \003(\005\022\021\n\t"
-  "hand_suit\030\016 \001(\005\022\017\n\007avatars\030\017 \003(\t\022\033\n\023is_r"
-  "egistered_leave\030\020 \001(\010\022\021\n\tpot_value\030\021 \001(\003"
-  "\022\025\n\rcurrent_round\030\022 \001(\005\022\025\n\rhand_in_round"
-  "\030\023 \001(\005\022\024\n\014point_to_win\030\024 \001(\005\022\017\n\007is_vips\030"
-  "\025 \003(\010\022\023\n\013viewer_uids\030\026 \003(\005\022\026\n\016viewer_ava"
-  "tars\030\027 \003(\t\022\024\n\014viewer_names\030\030 \003(\t\022\025\n\ravat"
-  "ar_frames\030\031 \003(\005\022\034\n\024viewer_avatar_frames\030"
-  "\032 \003(\005\"#\n\021RegisterLeaveGame\022\016\n\006status\030\001 \001"
-  "(\005\"\227\001\n\020NewUserJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004"
-  "gold\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030"
-  "\004 \001(\005\022\017\n\007team_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\022\016"
-  "\n\006is_vip\030\007 \001(\010\022\024\n\014avatar_frame\030\010 \001(\005\"-\n\016"
-  "UserLeaveMatch\022\013\n\003uid\030\001 \001(\005\022\016\n\006reason\030\002 "
-  "\001(\005\"/\n\010DealCard\022\r\n\005cards\030\001 \003(\005\022\024\n\014remain"
-  "_cards\030\002 \001(\005\"\300\001\n\010PlayCard\022\013\n\003uid\030\001 \001(\005\022\017"
-  "\n\007card_id\030\002 \001(\005\022\014\n\004auto\030\003 \001(\010\022\024\n\014current"
-  "_turn\030\004 \001(\005\022\021\n\thand_suit\030\005 \001(\005\022\023\n\013is_end"
-  "_hand\030\006 \001(\010\022\017\n\007win_uid\030\007 \001(\005\022\021\n\twin_poin"
-  "t\030\010 \001(\005\022\024\n\014is_end_round\030\t \001(\010\022\020\n\010win_car"
-  "d\030\n \001(\005\"4\n\tStartGame\022\021\n\tpot_value\030\001 \001(\005\022"
-  "\024\n\014players_gold\030\002 \003(\003\"1\n\007NewHand\022\024\n\014curr"
-  "ent_turn\030\001 \001(\005\022\020\n\010my_cards\030\002 \003(\005\"!\n\017Upda"
-  "teGamePoint\022\016\n\006points\030\001 \003(\005\"j\n\007EndHand\022\017"
-  "\n\007win_uid\030\001 \001(\005\022\020\n\010win_card\030\002 \001(\005\022\023\n\013use"
-  "r_points\030\003 \003(\005\022\021\n\twin_point\030\004 \001(\005\022\024\n\014is_"
-  "end_round\030\005 \001(\010\"\031\n\010DrawCard\022\r\n\005cards\030\001 \003"
-  "(\005\"\254\001\n\013GeneralInfo\022\021\n\ttimestamp\030\001 \001(\003\022\035\n"
-  "\025time_thinking_in_turn\030\002 \001(\005\022\022\n\nexp_leve"
-  "ls\030\003 \003(\005\022\027\n\017fee_mode_no_bet\030\004 \001(\005\022\022\n\nena"
-  "ble_ads\030\005 \001(\010\022*\n\rlevel_rewards\030\006 \003(\0132\023.p"
-  "acket.LevelReward\"M\n\013LevelReward\022\r\n\005leve"
-  "l\030\001 \001(\005\022\014\n\004gold\030\002 \001(\005\022!\n\005items\030\003 \003(\0132\022.p"
-  "acket.ItemReward\"/\n\nItemReward\022\017\n\007item_i"
-  "d\030\001 \001(\005\022\020\n\010duration\030\002 \001(\005\"\266\001\n\007EndGame\022\014\n"
-  "\004uids\030\001 \003(\005\022\023\n\013win_team_id\030\006 \001(\005\022\023\n\013scor"
-  "e_cards\030\002 \003(\005\022\031\n\021score_last_tricks\030\003 \003(\005"
-  "\022\024\n\014score_totals\030\004 \003(\005\022\024\n\014players_gold\030\005"
-  " \003(\003\022,\n\007rewards\030\007 \003(\0132\033.packet.RewardInv"
-  "entoryItem\"&\n\020PrepareStartGame\022\022\n\ntime_s"
-  "tart\030\001 \001(\005\"6\n\021InGameChatMessage\022\013\n\003uid\030\001"
-  " \001(\005\022\024\n\014chat_message\030\002 \001(\t\"n\n\024PaymentGoo"
-  "gleConsume\022\026\n\016purchase_token\030\001 \001(\t\022\020\n\010qu"
-  "antity\030\002 \001(\005\022\014\n\004skus\030\003 \003(\t\022\021\n\tsignature\030"
-  "\004 \001(\t\022\013\n\003sku\030\005 \001(\t\"[\n\016PaymentSuccess\022\014\n\004"
-  "gold\030\001 \001(\003\022\017\n\007pack_id\030\002 \001(\t\022*\n\005items\030\003 \003"
-  "(\0132\033.packet.RewardInventoryItem\"\033\n\013Updat"
-  "eMoney\022\014\n\004gold\030\001 \001(\003\"\256\001\n\tTableList\022\021\n\tta"
-  "ble_ids\030\001 \003(\005\022\023\n\013num_players\030\002 \003(\005\022\024\n\014pl"
-  "ayer_modes\030\003 \003(\005\022\023\n\013player_uids\030\004 \003(\005\022\017\n"
-  "\007avatars\030\005 \003(\t\022\022\n\ngame_modes\030\006 \003(\005\022\025\n\rav"
-  "atar_frames\030\007 \003(\005\022\022\n\nis_private\030\010 \003(\010\"\333\002"
-  "\n\nShopConfig\022\020\n\010pack_ids\030\001 \003(\t\022\r\n\005golds\030"
-  "\002 \003(\003\022\016\n\006prices\030\003 \003(\001\022\022\n\ncurrencies\030\004 \003("
-  "\t\022\023\n\013no_ads_days\030\005 \003(\005\022\030\n\020gold_offer_fir"
-  "st\030\006 \001(\005\022\036\n\026no_ads_day_offer_first\030\007 \001(\005"
-  "\022\031\n\021price_offer_first\030\010 \001(\005\022\034\n\024currency_"
-  "offer_first\030\t \001(\t\022\033\n\023pack_id_offer_first"
-  "\030\n \001(\t\022:\n\025items_offer_first_buy\030\013 \003(\0132\033."
-  "packet.RewardInventoryItem\022\'\n\007details\030\014 "
-  "\003(\0132\026.packet.DetailShopPack\"<\n\016DetailSho"
-  "pPack\022*\n\005items\030\001 \003(\0132\033.packet.RewardInve"
-  "ntoryItem\" \n\014GuestAccount\022\020\n\010guest_id\030\001 "
-  "\001(\t\"!\n\014ChangeAvatar\022\021\n\tavatar_id\030\001 \001(\005\"3"
-  "\n\022InGameChatEmoticon\022\013\n\003uid\030\001 \001(\005\022\020\n\010emo"
-  "ticon\030\002 \001(\005\"\033\n\014SearchFriend\022\013\n\003uid\030\001 \001(\005"
-  "\"\314\001\n\024SearchFriendResponse\022\013\n\003uid\030\001 \001(\005\022\014"
-  "\n\004gold\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\016\n\006avatar\030\004 \001"
-  "(\t\022\021\n\twin_count\030\005 \001(\005\022\022\n\ngame_count\030\006 \001("
-  "\001\022\r\n\005error\030\007 \001(\005\022\r\n\005level\030\010 \001(\005\022\013\n\003exp\030\t"
-  " \001(\003\022\023\n\013is_verified\030\n \001(\010\022\024\n\014avatar_fram"
-  "e\030\013 \001(\005\"\035\n\rCheatGoldUser\022\014\n\004gold\030\001 \001(\003\"\261"
-  "\001\n\nFriendList\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003"
-  "(\t\022\017\n\007avatars\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005g"
-  "olds\030\005 \003(\003\022\017\n\007onlines\030\006 \003(\010\022\023\n\013is_playin"
-  "gs\030\007 \003(\010\022\025\n\ravatar_frames\030\010 \003(\005\022\031\n\021last_"
-  "online_times\030\t \003(\005\"p\n\016FriendRequests\022\014\n\004"
-  "uids\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007avatars\030\003 \003"
-  "(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\021\n\tsen"
-  "t_uids\030\006 \003(\005\"\'\n\tAddFriend\022\r\n\005error\030\001 \001(\005"
-  "\022\013\n\003uid\030\002 \001(\005\"2\n\023RequestFriendAccept\022\013\n\003"
-  "uid\030\001 \001(\005\022\016\n\006action\030\002 \001(\005\"\033\n\014RemoveFrien"
-  "d\022\013\n\003uid\030\001 \001(\005\"Z\n\020NewFriendRequest\022\013\n\003ui"
-  "d\030\001 \001(\005\022\016\n\006avatar\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\r\n"
-  "\005level\030\004 \001(\005\022\014\n\004gold\030\005 \001(\003\"u\n\025FriendRequ"
-  "estAccepted\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\016"
-  "\n\006avatar\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\014\n\004gold\030\005 "
-  "\001(\003\022\024\n\014avatar_frame\030\006 \001(\005\"v\n\020RecommendFr"
-  "iends\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007av"
-  "atars\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003"
-  "(\003\022\025\n\ravatar_frames\030\006 \003(\005\"<\n\023PaymentAppl"
-  "eConsume\022\017\n\007pack_id\030\001 \001(\t\022\024\n\014receipt_dat"
-  "a\030\002 \001(\t\"2\n\037PaymentFinishedAppleTransacti"
-  "on\022\017\n\007pack_id\030\001 \001(\t\"J\n\010NewRound\022\025\n\rcurre"
-  "nt_round\030\001 \001(\005\022\021\n\tpot_value\030\002 \001(\003\022\024\n\014pla"
-  "yers_gold\030\003 \003(\003\"i\n\013CreateTable\022\013\n\003bet\030\001 "
-  "\001(\005\022\023\n\013player_mode\030\002 \001(\005\022\022\n\nis_private\030\003"
-  " \001(\010\022\022\n\npoint_mode\030\004 \001(\005\022\020\n\010bet_mode\030\005 \001"
-  "(\010\"!\n\rJoinTableById\022\020\n\010match_id\030\001 \001(\005\"\"\n"
-  "\021JoinTableResponse\022\r\n\005error\030\001 \001(\005\"&\n\014Cla"
-  "imSupport\022\026\n\016support_amount\030\001 \001(\005\"\361\001\n\016Ap"
-  "pCodeVersion\022\027\n\017android_version\030\001 \001(\005\022%\n"
-  "\035android_forced_update_version\030\002 \001(\005\022%\n\035"
-  "android_remind_update_version\030\003 \001(\005\022\023\n\013i"
-  "os_version\030\004 \001(\005\022!\n\031ios_forced_update_ve"
-  "rsion\030\005 \001(\005\022!\n\031ios_remind_update_version"
-  "\030\006 \001(\005\022\035\n\025ios_reviewing_version\030\007 \001(\005\"\"\n"
-  "\020PlayCardResponse\022\016\n\006status\030\001 \001(\005\"!\n\020Che"
-  "atViewCardBot\022\r\n\005cards\030\001 \003(\005\"0\n\020InviteFr"
-  "iendPlay\022\013\n\003uid\030\001 \001(\005\022\017\n\007room_id\030\002 \001(\005\"A"
-  "\n\020GameActionNapoli\022\013\n\003uid\030\001 \001(\005\022\021\n\tpoint"
-  "_add\030\002 \001(\005\022\r\n\005suits\030\003 \003(\005\"D\n\025CustomerSer"
-  "viceReport\022\023\n\013report_type\030\001 \001(\005\022\026\n\016repor"
-  "t_content\030\002 \001(\t\"\035\n\016AdminBroadcast\022\013\n\003mes"
-  "\030\001 \001(\t\",\n\031PaymentPaypalRequestOrder\022\017\n\007p"
-  "ack_id\030\001 \001(\t\"\'\n\022PaymentPaypalOrder\022\021\n\tor"
-  "der_url\030\001 \001(\t\"\013\n\tQuickPlay\"{\n\032SetteMezzo"
-  "NewUserJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004gold\030\002 "
-  "\001(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030\004 \001(\005\022\017"
-  "\n\007team_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\"E\n\032Sette"
-  "MezzoPrepareStartGame\022\021\n\tpot_value\030\001 \001(\005"
-  "\022\024\n\014players_gold\030\002 \003(\003\"\374\003\n\022SetteMezzoGam"
-  "eInfo\022\020\n\010match_id\030\001 \001(\005\022\021\n\tgame_mode\030\002 \001"
-  "(\005\022\023\n\013player_mode\030\003 \001(\005\022\014\n\004uids\030\004 \003(\005\022\022\n"
-  "\nuser_golds\030\005 \003(\003\022\022\n\nuser_names\030\006 \003(\t\022\022\n"
-  "\nbanker_uid\030\007 \001(\005\022\024\n\014current_turn\030\010 \001(\005\022"
-  "\022\n\ngame_state\030\t \001(\005\022\023\n\013user_points\030\013 \003(\005"
-  "\022\020\n\010team_ids\030\014 \003(\005\022\021\n\thand_suit\030\r \001(\005\022\017\n"
-  "\007avatars\030\016 \003(\t\022\033\n\023is_registered_leave\030\017 "
-  "\001(\010\022\013\n\003bet\030\020 \001(\005\022\021\n\tpot_value\030\021 \001(\003\022\025\n\rc"
-  "urrent_round\030\022 \001(\005\022\025\n\rhand_in_round\030\023 \001("
-  "\005\022\023\n\013is_in_games\030\024 \003(\010\022\026\n\016play_turn_time"
-  "\030\025 \001(\005\022\024\n\014player_infos\030\026 \003(\014\022\024\n\014banker_c"
-  "ards\030\027 \003(\005\022\023\n\013player_bets\030\030 \003(\003\022\024\n\014time_"
-  "end_bet\030\031 \001(\005\"(\n\024SetteMezzoPlayerInfo\022\020\n"
-  "\010card_ids\030\001 \003(\005\"\025\n\023SetteMezzoQuickPlay\"2"
-  "\n\023SetteMezzoStartGame\022\014\n\004uids\030\001 \003(\005\022\r\n\005c"
-  "ards\030\002 \003(\005\"\317\001\n\013RankingInfo\022\021\n\tseason_id\030"
-  "\001 \001(\005\022\022\n\ntime_start\030\002 \001(\005\022\020\n\010time_end\030\003 "
-  "\001(\005\022\017\n\007rewards\030\004 \003(\005\022\014\n\004uids\030\005 \003(\005\022\017\n\007av"
-  "atars\030\006 \003(\t\022\r\n\005names\030\007 \003(\t\022\016\n\006scores\030\010 \003"
-  "(\005\022\025\n\ravatar_frames\030\t \003(\005\022\017\n\007my_rank\030\n \001"
-  "(\005\022\020\n\010my_score\030\013 \001(\005\"E\n\rRankingResult\022\021\n"
-  "\tseason_id\030\001 \001(\005\022\023\n\013gold_reward\030\002 \001(\005\022\014\n"
-  "\004rank\030\003 \001(\005\"\'\n\022RankingClaimReward\022\021\n\tsea"
-  "son_id\030\001 \001(\005\"\"\n\tUpdateAds\022\025\n\rtime_show_a"
-  "ds\030\001 \001(\005\"2\n\tAdsReward\022\014\n\004gold\030\001 \001(\005\022\027\n\017t"
-  "ime_ads_reward\030\002 \001(\005\"\036\n\016ChangeUserName\022\014"
-  "\n\004name\030\001 \001(\t\"3\n\023SetteMezzoActionHit\022\013\n\003u"
-  "id\030\001 \001(\005\022\017\n\007card_id\030\002 \001(\005\"D\n\024SetteMezzoU"
-  "pdateTurn\022\024\n\014current_turn\030\001 \001(\005\022\026\n\016play_"
-  "turn_time\030\002 \001(\005\"R\n\025SetteMezzoActionStand"
-  "\022\013\n\003uid\030\001 \001(\005\022\024\n\014current_turn\030\002 \001(\005\022\026\n\016p"
-  "lay_turn_time\030\003 \001(\005\"n\n\021SetteMezzoEndGame"
-  "\022\014\n\004uids\030\001 \003(\005\022\016\n\006scores\030\002 \003(\005\022\017\n\007is_win"
-  "s\030\003 \003(\010\022\024\n\014golds_change\030\004 \003(\003\022\024\n\014player_"
-  "golds\030\005 \003(\003\"+\n\030SetteMezzoShowBankerCard\022"
-  "\017\n\007card_id\030\001 \001(\005\"-\n\021SetteMezzoUserBet\022\013\n"
-  "\003uid\030\001 \001(\005\022\013\n\003bet\030\002 \001(\003\"\034\n\010ViewGame\022\020\n\010m"
-  "atch_id\030\001 \001(\005\"\033\n\014UserStopView\022\013\n\003uid\030\001 \001"
-  "(\005\"N\n\013NewUserView\022\013\n\003uid\030\001 \001(\005\022\016\n\006avatar"
-  "\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\024\n\014avatar_frame\030\004 \001"
-  "(\005\"\033\n\014CheatExpUser\022\013\n\003exp\030\001 \001(\005\"\030\n\tUpdat"
-  "eExp\022\013\n\003exp\030\001 \001(\003\"!\n\020ClaimRewardLevel\022\r\n"
-  "\005level\030\001 \001(\005\"4\n\rUserInventory\022#\n\005items\030\001"
-  " \003(\0132\024.packet.InvetoryItem\"C\n\014InvetoryIt"
-  "em\022\017\n\007item_id\030\001 \001(\005\022\023\n\013expire_time\030\002 \001(\005"
-  "\022\r\n\005value\030\003 \001(\005\"\032\n\007UseItem\022\017\n\007item_id\030\001 "
-  "\001(\005\".\n\tCheatItem\022\017\n\007item_id\030\001 \001(\005\022\020\n\010dur"
-  "ation\030\002 \001(\005\"+\n\007BuyItem\022\017\n\007item_id\030\001 \001(\005\022"
-  "\017\n\007pack_id\030\002 \001(\005\"\?\n\023InventoryShopConfig\022"
-  "(\n\005items\030\001 \003(\0132\031.packet.InventoryShopIte"
-  "m\"M\n\021InventoryShopItem\022\017\n\007item_id\030\001 \001(\005\022"
-  "\'\n\005packs\030\002 \003(\0132\030.packet.InvetoryShopPack"
-  "\"\?\n\020InvetoryShopPack\022\n\n\002id\030\001 \001(\005\022\r\n\005pric"
-  "e\030\002 \001(\005\022\020\n\010duration\030\003 \001(\005\"c\n\030ClaimReward"
-  "LevelResponse\022\r\n\005level\030\001 \001(\005\022\014\n\004gold\030\002 \001"
-  "(\005\022*\n\005items\030\003 \003(\0132\033.packet.RewardInvento"
-  "ryItem\"G\n\023RewardInventoryItem\022\017\n\007item_id"
-  "\030\001 \001(\005\022\020\n\010duration\030\002 \001(\005\022\r\n\005value\030\003 \001(\005b"
-  "\006proto3"
+  "\n\014packet.proto\022\006packet\"\007\n\005Empty\"^\n\006Packe"
+  "t\022\r\n\005token\030\001 \001(\t\022\016\n\006cmd_id\030\002 \001(\005\022\021\n\ttime"
+  "stamp\030\003 \001(\003\022\021\n\tpacket_id\030\004 \001(\005\022\017\n\007payloa"
+  "d\030\005 \001(\014\"j\n\013ChatMessage\022\013\n\003abc\030\001 \001(\001\022\020\n\010u"
+  "sername\030\002 \001(\t\022\r\n\005level\030\003 \001(\003\022\014\n\004gold\030\004 \001"
+  "(\003\022\014\n\004abcd\030\005 \001(\t\022\021\n\tis_active\030\006 \001(\010\"\n\n\010P"
+  "ingPong\"~\n\005Login\022\014\n\004type\030\001 \001(\005\022\r\n\005token\030"
+  "\002 \001(\t\022\024\n\014device_model\030\003 \001(\t\022\020\n\010platform\030"
+  "\004 \001(\t\022\026\n\016device_country\030\005 \001(\t\022\030\n\020app_ver"
+  "sion_code\030\006 \001(\005\"H\n\rLoginFirebase\022\020\n\010sub_"
+  "type\030\001 \001(\005\022\023\n\013login_token\030\002 \001(\t\022\020\n\010guest"
+  "_id\030\003 \001(\t\"\010\n\006Logout\":\n\rLoginResponse\022\013\n\003"
+  "uid\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\022\r\n\005error\030\003 \001(\005\""
+  "\273\003\n\010UserInfo\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022"
+  "\014\n\004gold\030\003 \001(\003\022\016\n\006scores\030\004 \003(\005\022\r\n\005names\030\005"
+  " \003(\t\022\013\n\003abc\030\006 \001(\005\022\016\n\006avatar\030\007 \001(\t\022\032\n\022ava"
+  "tar_third_party\030\010 \001(\t\022\r\n\005level\030\t \001(\005\022\023\n\013"
+  "support_num\030\n \001(\005\022\021\n\twin_count\030\013 \001(\005\022\022\n\n"
+  "game_count\030\014 \001(\005\022\013\n\003exp\030\r \001(\003\022\024\n\014startup"
+  "_gold\030\016 \001(\005\022\025\n\rhas_first_buy\030\017 \001(\010\022\025\n\rti"
+  "me_show_ads\030\020 \001(\005\022\022\n\nlogin_type\030\021 \001(\005\022\027\n"
+  "\017time_ads_reward\030\022 \001(\005\022\034\n\024add_for_user_s"
+  "upport\030\023 \001(\010\022\024\n\014avatar_frame\030\024 \001(\005\022\026\n\016cl"
+  "aimed_levels\030\025 \003(\005\022\031\n\021price_change_name\030"
+  "\026 \001(\005\"\253\004\n\010GameInfo\022\020\n\010match_id\030\001 \001(\005\022\021\n\t"
+  "game_mode\030\002 \001(\005\022\023\n\013player_mode\030\003 \001(\005\022\014\n\004"
+  "uids\030\004 \003(\005\022\022\n\nuser_golds\030\005 \003(\003\022\022\n\nuser_n"
+  "ames\030\006 \003(\t\022\025\n\rcards_compare\030\007 \003(\005\022\024\n\014cur"
+  "rent_turn\030\010 \001(\005\022\022\n\ngame_state\030\t \001(\005\022\020\n\010m"
+  "y_cards\030\n \003(\005\022\024\n\014remain_cards\030\013 \001(\005\022\023\n\013u"
+  "ser_points\030\014 \003(\005\022\020\n\010team_ids\030\r \003(\005\022\021\n\tha"
+  "nd_suit\030\016 \001(\005\022\017\n\007avatars\030\017 \003(\t\022\033\n\023is_reg"
+  "istered_leave\030\020 \001(\010\022\021\n\tpot_value\030\021 \001(\003\022\025"
+  "\n\rcurrent_round\030\022 \001(\005\022\025\n\rhand_in_round\030\023"
+  " \001(\005\022\024\n\014point_to_win\030\024 \001(\005\022\017\n\007is_vips\030\025 "
+  "\003(\010\022\023\n\013viewer_uids\030\026 \003(\005\022\026\n\016viewer_avata"
+  "rs\030\027 \003(\t\022\024\n\014viewer_names\030\030 \003(\t\022\025\n\ravatar"
+  "_frames\030\031 \003(\005\022\034\n\024viewer_avatar_frames\030\032 "
+  "\003(\005\"#\n\021RegisterLeaveGame\022\016\n\006status\030\001 \001(\005"
+  "\"\227\001\n\020NewUserJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004go"
+  "ld\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030\004 "
+  "\001(\005\022\017\n\007team_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\022\016\n\006"
+  "is_vip\030\007 \001(\010\022\024\n\014avatar_frame\030\010 \001(\005\"-\n\016Us"
+  "erLeaveMatch\022\013\n\003uid\030\001 \001(\005\022\016\n\006reason\030\002 \001("
+  "\005\"/\n\010DealCard\022\r\n\005cards\030\001 \003(\005\022\024\n\014remain_c"
+  "ards\030\002 \001(\005\"\332\001\n\010PlayCard\022\013\n\003uid\030\001 \001(\005\022\017\n\007"
+  "card_id\030\002 \001(\005\022\017\n\007is_auto\030\003 \001(\010\022\024\n\014curren"
+  "t_turn\030\004 \001(\005\022\021\n\thand_suit\030\005 \001(\005\022\023\n\013is_en"
+  "d_hand\030\006 \001(\010\022\017\n\007win_uid\030\007 \001(\005\022\021\n\twin_poi"
+  "nt\030\010 \001(\005\022\024\n\014is_end_round\030\t \001(\010\022\020\n\010win_ca"
+  "rd\030\n \001(\005\022\025\n\rplayer_points\030\013 \003(\005\"4\n\tStart"
+  "Game\022\021\n\tpot_value\030\001 \001(\005\022\024\n\014players_gold\030"
+  "\002 \003(\003\"1\n\007NewHand\022\024\n\014current_turn\030\001 \001(\005\022\020"
+  "\n\010my_cards\030\002 \003(\005\"!\n\017UpdateGamePoint\022\016\n\006p"
+  "oints\030\001 \003(\005\"\031\n\010DrawCard\022\r\n\005cards\030\001 \003(\005\"\254"
+  "\001\n\013GeneralInfo\022\021\n\ttimestamp\030\001 \001(\003\022\035\n\025tim"
+  "e_thinking_in_turn\030\002 \001(\005\022\022\n\nexp_levels\030\003"
+  " \003(\005\022\027\n\017fee_mode_no_bet\030\004 \001(\005\022\022\n\nenable_"
+  "ads\030\005 \001(\010\022*\n\rlevel_rewards\030\006 \003(\0132\023.packe"
+  "t.LevelReward\"M\n\013LevelReward\022\r\n\005level\030\001 "
+  "\001(\005\022\014\n\004gold\030\002 \001(\005\022!\n\005items\030\003 \003(\0132\022.packe"
+  "t.ItemReward\"/\n\nItemReward\022\017\n\007item_id\030\001 "
+  "\001(\005\022\020\n\010duration\030\002 \001(\005\"\266\001\n\007EndGame\022\014\n\004uid"
+  "s\030\001 \003(\005\022\023\n\013win_team_id\030\006 \001(\005\022\023\n\013score_ca"
+  "rds\030\002 \003(\005\022\031\n\021score_last_tricks\030\003 \003(\005\022\024\n\014"
+  "score_totals\030\004 \003(\005\022\024\n\014players_gold\030\005 \003(\003"
+  "\022,\n\007rewards\030\007 \003(\0132\033.packet.RewardInvento"
+  "ryItem\"&\n\020PrepareStartGame\022\022\n\ntime_start"
+  "\030\001 \001(\005\"6\n\021InGameChatMessage\022\013\n\003uid\030\001 \001(\005"
+  "\022\024\n\014chat_message\030\002 \001(\t\"n\n\024PaymentGoogleC"
+  "onsume\022\026\n\016purchase_token\030\001 \001(\t\022\020\n\010quanti"
+  "ty\030\002 \001(\005\022\014\n\004skus\030\003 \003(\t\022\021\n\tsignature\030\004 \001("
+  "\t\022\013\n\003sku\030\005 \001(\t\"[\n\016PaymentSuccess\022\014\n\004gold"
+  "\030\001 \001(\003\022\017\n\007pack_id\030\002 \001(\t\022*\n\005items\030\003 \003(\0132\033"
+  ".packet.RewardInventoryItem\"\033\n\013UpdateMon"
+  "ey\022\014\n\004gold\030\001 \001(\003\"\256\001\n\tTableList\022\021\n\ttable_"
+  "ids\030\001 \003(\005\022\023\n\013num_players\030\002 \003(\005\022\024\n\014player"
+  "_modes\030\003 \003(\005\022\023\n\013player_uids\030\004 \003(\005\022\017\n\007ava"
+  "tars\030\005 \003(\t\022\022\n\ngame_modes\030\006 \003(\005\022\025\n\ravatar"
+  "_frames\030\007 \003(\005\022\022\n\nis_private\030\010 \003(\010\"\333\002\n\nSh"
+  "opConfig\022\020\n\010pack_ids\030\001 \003(\t\022\r\n\005golds\030\002 \003("
+  "\003\022\016\n\006prices\030\003 \003(\001\022\022\n\ncurrencies\030\004 \003(\t\022\023\n"
+  "\013no_ads_days\030\005 \003(\005\022\030\n\020gold_offer_first\030\006"
+  " \001(\005\022\036\n\026no_ads_day_offer_first\030\007 \001(\005\022\031\n\021"
+  "price_offer_first\030\010 \001(\005\022\034\n\024currency_offe"
+  "r_first\030\t \001(\t\022\033\n\023pack_id_offer_first\030\n \001"
+  "(\t\022:\n\025items_offer_first_buy\030\013 \003(\0132\033.pack"
+  "et.RewardInventoryItem\022\'\n\007details\030\014 \003(\0132"
+  "\026.packet.DetailShopPack\"<\n\016DetailShopPac"
+  "k\022*\n\005items\030\001 \003(\0132\033.packet.RewardInventor"
+  "yItem\" \n\014GuestAccount\022\020\n\010guest_id\030\001 \001(\t\""
+  "!\n\014ChangeAvatar\022\021\n\tavatar_id\030\001 \001(\005\"3\n\022In"
+  "GameChatEmoticon\022\013\n\003uid\030\001 \001(\005\022\020\n\010emotico"
+  "n\030\002 \001(\005\"\033\n\014SearchFriend\022\013\n\003uid\030\001 \001(\005\"\314\001\n"
+  "\024SearchFriendResponse\022\013\n\003uid\030\001 \001(\005\022\014\n\004go"
+  "ld\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\016\n\006avatar\030\004 \001(\t\022\021"
+  "\n\twin_count\030\005 \001(\005\022\022\n\ngame_count\030\006 \001(\001\022\r\n"
+  "\005error\030\007 \001(\005\022\r\n\005level\030\010 \001(\005\022\013\n\003exp\030\t \001(\003"
+  "\022\023\n\013is_verified\030\n \001(\010\022\024\n\014avatar_frame\030\013 "
+  "\001(\005\"\035\n\rCheatGoldUser\022\014\n\004gold\030\001 \001(\003\"\261\001\n\nF"
+  "riendList\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017"
+  "\n\007avatars\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds"
+  "\030\005 \003(\003\022\017\n\007onlines\030\006 \003(\010\022\023\n\013is_playings\030\007"
+  " \003(\010\022\025\n\ravatar_frames\030\010 \003(\005\022\031\n\021last_onli"
+  "ne_times\030\t \003(\005\"p\n\016FriendRequests\022\014\n\004uids"
+  "\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007avatars\030\003 \003(\t\022\016"
+  "\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\021\n\tsent_ui"
+  "ds\030\006 \003(\005\"\'\n\tAddFriend\022\r\n\005error\030\001 \001(\005\022\013\n\003"
+  "uid\030\002 \001(\005\"2\n\023RequestFriendAccept\022\013\n\003uid\030"
+  "\001 \001(\005\022\016\n\006action\030\002 \001(\005\"\033\n\014RemoveFriend\022\013\n"
+  "\003uid\030\001 \001(\005\"Z\n\020NewFriendRequest\022\013\n\003uid\030\001 "
+  "\001(\005\022\016\n\006avatar\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\r\n\005lev"
+  "el\030\004 \001(\005\022\014\n\004gold\030\005 \001(\003\"u\n\025FriendRequestA"
+  "ccepted\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\016\n\006av"
+  "atar\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\014\n\004gold\030\005 \001(\003\022"
+  "\024\n\014avatar_frame\030\006 \001(\005\"v\n\020RecommendFriend"
+  "s\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007avatar"
+  "s\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\025"
+  "\n\ravatar_frames\030\006 \003(\005\"<\n\023PaymentAppleCon"
+  "sume\022\017\n\007pack_id\030\001 \001(\t\022\024\n\014receipt_data\030\002 "
+  "\001(\t\"2\n\037PaymentFinishedAppleTransaction\022\017"
+  "\n\007pack_id\030\001 \001(\t\"J\n\010NewRound\022\025\n\rcurrent_r"
+  "ound\030\001 \001(\005\022\021\n\tpot_value\030\002 \001(\003\022\024\n\014players"
+  "_gold\030\003 \003(\003\"i\n\013CreateTable\022\013\n\003bet\030\001 \001(\005\022"
+  "\023\n\013player_mode\030\002 \001(\005\022\022\n\nis_private\030\003 \001(\010"
+  "\022\022\n\npoint_mode\030\004 \001(\005\022\020\n\010bet_mode\030\005 \001(\010\"!"
+  "\n\rJoinTableById\022\020\n\010match_id\030\001 \001(\005\"\"\n\021Joi"
+  "nTableResponse\022\r\n\005error\030\001 \001(\005\"&\n\014ClaimSu"
+  "pport\022\026\n\016support_amount\030\001 \001(\005\"\361\001\n\016AppCod"
+  "eVersion\022\027\n\017android_version\030\001 \001(\005\022%\n\035and"
+  "roid_forced_update_version\030\002 \001(\005\022%\n\035andr"
+  "oid_remind_update_version\030\003 \001(\005\022\023\n\013ios_v"
+  "ersion\030\004 \001(\005\022!\n\031ios_forced_update_versio"
+  "n\030\005 \001(\005\022!\n\031ios_remind_update_version\030\006 \001"
+  "(\005\022\035\n\025ios_reviewing_version\030\007 \001(\005\"\"\n\020Pla"
+  "yCardResponse\022\016\n\006status\030\001 \001(\005\"!\n\020CheatVi"
+  "ewCardBot\022\r\n\005cards\030\001 \003(\005\"0\n\020InviteFriend"
+  "Play\022\013\n\003uid\030\001 \001(\005\022\017\n\007room_id\030\002 \001(\005\"A\n\020Ga"
+  "meActionNapoli\022\013\n\003uid\030\001 \001(\005\022\021\n\tpoint_add"
+  "\030\002 \001(\005\022\r\n\005suits\030\003 \003(\005\"D\n\025CustomerService"
+  "Report\022\023\n\013report_type\030\001 \001(\005\022\026\n\016report_co"
+  "ntent\030\002 \001(\t\"\035\n\016AdminBroadcast\022\013\n\003mes\030\001 \001"
+  "(\t\",\n\031PaymentPaypalRequestOrder\022\017\n\007pack_"
+  "id\030\001 \001(\t\"\'\n\022PaymentPaypalOrder\022\021\n\torder_"
+  "url\030\001 \001(\t\"\013\n\tQuickPlay\"{\n\032SetteMezzoNewU"
+  "serJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004gold\030\002 \001(\003\022"
+  "\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030\004 \001(\005\022\017\n\007te"
+  "am_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\"E\n\032SetteMezz"
+  "oPrepareStartGame\022\021\n\tpot_value\030\001 \001(\005\022\024\n\014"
+  "players_gold\030\002 \003(\003\"\374\003\n\022SetteMezzoGameInf"
+  "o\022\020\n\010match_id\030\001 \001(\005\022\021\n\tgame_mode\030\002 \001(\005\022\023"
+  "\n\013player_mode\030\003 \001(\005\022\014\n\004uids\030\004 \003(\005\022\022\n\nuse"
+  "r_golds\030\005 \003(\003\022\022\n\nuser_names\030\006 \003(\t\022\022\n\nban"
+  "ker_uid\030\007 \001(\005\022\024\n\014current_turn\030\010 \001(\005\022\022\n\ng"
+  "ame_state\030\t \001(\005\022\023\n\013user_points\030\013 \003(\005\022\020\n\010"
+  "team_ids\030\014 \003(\005\022\021\n\thand_suit\030\r \001(\005\022\017\n\007ava"
+  "tars\030\016 \003(\t\022\033\n\023is_registered_leave\030\017 \001(\010\022"
+  "\013\n\003bet\030\020 \001(\005\022\021\n\tpot_value\030\021 \001(\003\022\025\n\rcurre"
+  "nt_round\030\022 \001(\005\022\025\n\rhand_in_round\030\023 \001(\005\022\023\n"
+  "\013is_in_games\030\024 \003(\010\022\026\n\016play_turn_time\030\025 \001"
+  "(\005\022\024\n\014player_infos\030\026 \003(\014\022\024\n\014banker_cards"
+  "\030\027 \003(\005\022\023\n\013player_bets\030\030 \003(\003\022\024\n\014time_end_"
+  "bet\030\031 \001(\005\"(\n\024SetteMezzoPlayerInfo\022\020\n\010car"
+  "d_ids\030\001 \003(\005\"\025\n\023SetteMezzoQuickPlay\"2\n\023Se"
+  "tteMezzoStartGame\022\014\n\004uids\030\001 \003(\005\022\r\n\005cards"
+  "\030\002 \003(\005\"\317\001\n\013RankingInfo\022\021\n\tseason_id\030\001 \001("
+  "\005\022\022\n\ntime_start\030\002 \001(\005\022\020\n\010time_end\030\003 \001(\005\022"
+  "\017\n\007rewards\030\004 \003(\005\022\014\n\004uids\030\005 \003(\005\022\017\n\007avatar"
+  "s\030\006 \003(\t\022\r\n\005names\030\007 \003(\t\022\016\n\006scores\030\010 \003(\005\022\025"
+  "\n\ravatar_frames\030\t \003(\005\022\017\n\007my_rank\030\n \001(\005\022\020"
+  "\n\010my_score\030\013 \001(\005\"E\n\rRankingResult\022\021\n\tsea"
+  "son_id\030\001 \001(\005\022\023\n\013gold_reward\030\002 \001(\005\022\014\n\004ran"
+  "k\030\003 \001(\005\"\'\n\022RankingClaimReward\022\021\n\tseason_"
+  "id\030\001 \001(\005\"\"\n\tUpdateAds\022\025\n\rtime_show_ads\030\001"
+  " \001(\005\"2\n\tAdsReward\022\014\n\004gold\030\001 \001(\005\022\027\n\017time_"
+  "ads_reward\030\002 \001(\005\"\036\n\016ChangeUserName\022\014\n\004na"
+  "me\030\001 \001(\t\"3\n\023SetteMezzoActionHit\022\013\n\003uid\030\001"
+  " \001(\005\022\017\n\007card_id\030\002 \001(\005\"D\n\024SetteMezzoUpdat"
+  "eTurn\022\024\n\014current_turn\030\001 \001(\005\022\026\n\016play_turn"
+  "_time\030\002 \001(\005\"R\n\025SetteMezzoActionStand\022\013\n\003"
+  "uid\030\001 \001(\005\022\024\n\014current_turn\030\002 \001(\005\022\026\n\016play_"
+  "turn_time\030\003 \001(\005\"n\n\021SetteMezzoEndGame\022\014\n\004"
+  "uids\030\001 \003(\005\022\016\n\006scores\030\002 \003(\005\022\017\n\007is_wins\030\003 "
+  "\003(\010\022\024\n\014golds_change\030\004 \003(\003\022\024\n\014player_gold"
+  "s\030\005 \003(\003\"+\n\030SetteMezzoShowBankerCard\022\017\n\007c"
+  "ard_id\030\001 \001(\005\"-\n\021SetteMezzoUserBet\022\013\n\003uid"
+  "\030\001 \001(\005\022\013\n\003bet\030\002 \001(\003\"\034\n\010ViewGame\022\020\n\010match"
+  "_id\030\001 \001(\005\"\033\n\014UserStopView\022\013\n\003uid\030\001 \001(\005\"N"
+  "\n\013NewUserView\022\013\n\003uid\030\001 \001(\005\022\016\n\006avatar\030\002 \001"
+  "(\t\022\014\n\004name\030\003 \001(\t\022\024\n\014avatar_frame\030\004 \001(\005\"\033"
+  "\n\014CheatExpUser\022\013\n\003exp\030\001 \001(\005\"\030\n\tUpdateExp"
+  "\022\013\n\003exp\030\001 \001(\003\"!\n\020ClaimRewardLevel\022\r\n\005lev"
+  "el\030\001 \001(\005\"4\n\rUserInventory\022#\n\005items\030\001 \003(\013"
+  "2\024.packet.InvetoryItem\"C\n\014InvetoryItem\022\017"
+  "\n\007item_id\030\001 \001(\005\022\023\n\013expire_time\030\002 \001(\005\022\r\n\005"
+  "value\030\003 \001(\005\"\032\n\007UseItem\022\017\n\007item_id\030\001 \001(\005\""
+  ".\n\tCheatItem\022\017\n\007item_id\030\001 \001(\005\022\020\n\010duratio"
+  "n\030\002 \001(\005\"+\n\007BuyItem\022\017\n\007item_id\030\001 \001(\005\022\017\n\007p"
+  "ack_id\030\002 \001(\005\"\?\n\023InventoryShopConfig\022(\n\005i"
+  "tems\030\001 \003(\0132\031.packet.InventoryShopItem\"M\n"
+  "\021InventoryShopItem\022\017\n\007item_id\030\001 \001(\005\022\'\n\005p"
+  "acks\030\002 \003(\0132\030.packet.InvetoryShopPack\"\?\n\020"
+  "InvetoryShopPack\022\n\n\002id\030\001 \001(\005\022\r\n\005price\030\002 "
+  "\001(\005\022\020\n\010duration\030\003 \001(\005\"c\n\030ClaimRewardLeve"
+  "lResponse\022\r\n\005level\030\001 \001(\005\022\014\n\004gold\030\002 \001(\005\022*"
+  "\n\005items\030\003 \003(\0132\033.packet.RewardInventoryIt"
+  "em\"G\n\023RewardInventoryItem\022\017\n\007item_id\030\001 \001"
+  "(\005\022\020\n\010duration\030\002 \001(\005\022\r\n\005value\030\003 \001(\005\"#\n\017V"
+  "iewerJoinMatch\022\020\n\010seat_idx\030\001 \001(\005b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_packet_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_packet_2eproto = {
-    false, false, 8367, descriptor_table_protodef_packet_2eproto,
+    false, false, 8360, descriptor_table_protodef_packet_2eproto,
     "packet.proto",
     &descriptor_table_packet_2eproto_once, nullptr, 0, 97,
     schemas, file_default_instances, TableStruct_packet_2eproto::offsets,
@@ -2921,7 +2918,9 @@ Packet::Packet(const Packet& from)
     payload_.Set(from._internal_payload(), 
       GetArenaForAllocation());
   }
-  cmd_id_ = from.cmd_id_;
+  ::memcpy(&timestamp_, &from.timestamp_,
+    static_cast<size_t>(reinterpret_cast<char*>(&packet_id_) -
+    reinterpret_cast<char*>(&timestamp_)) + sizeof(packet_id_));
   // @@protoc_insertion_point(copy_constructor:packet.Packet)
 }
 
@@ -2934,7 +2933,10 @@ payload_.InitDefault();
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
   payload_.Set("", GetArenaForAllocation());
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-cmd_id_ = 0;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&timestamp_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&packet_id_) -
+    reinterpret_cast<char*>(&timestamp_)) + sizeof(packet_id_));
 }
 
 Packet::~Packet() {
@@ -2964,7 +2966,9 @@ void Packet::Clear() {
 
   token_.ClearToEmpty();
   payload_.ClearToEmpty();
-  cmd_id_ = 0;
+  ::memset(&timestamp_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&packet_id_) -
+      reinterpret_cast<char*>(&timestamp_)) + sizeof(packet_id_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2992,9 +2996,25 @@ const char* Packet::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
         } else
           goto handle_unusual;
         continue;
-      // bytes payload = 3;
+      // int64 timestamp = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          timestamp_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 packet_id = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          packet_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bytes payload = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_payload();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
@@ -3046,10 +3066,22 @@ uint8_t* Packet::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_cmd_id(), target);
   }
 
-  // bytes payload = 3;
+  // int64 timestamp = 3;
+  if (this->_internal_timestamp() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(3, this->_internal_timestamp(), target);
+  }
+
+  // int32 packet_id = 4;
+  if (this->_internal_packet_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(4, this->_internal_packet_id(), target);
+  }
+
+  // bytes payload = 5;
   if (!this->_internal_payload().empty()) {
     target = stream->WriteBytesMaybeAliased(
-        3, this->_internal_payload(), target);
+        5, this->_internal_payload(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -3075,16 +3107,26 @@ size_t Packet::ByteSizeLong() const {
         this->_internal_token());
   }
 
-  // bytes payload = 3;
+  // bytes payload = 5;
   if (!this->_internal_payload().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_payload());
   }
 
+  // int64 timestamp = 3;
+  if (this->_internal_timestamp() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_timestamp());
+  }
+
   // int32 cmd_id = 2;
   if (this->_internal_cmd_id() != 0) {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_cmd_id());
+  }
+
+  // int32 packet_id = 4;
+  if (this->_internal_packet_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_packet_id());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
@@ -3115,8 +3157,14 @@ void Packet::MergeFrom(const Packet& from) {
   if (!from._internal_payload().empty()) {
     _internal_set_payload(from._internal_payload());
   }
+  if (from._internal_timestamp() != 0) {
+    _internal_set_timestamp(from._internal_timestamp());
+  }
   if (from._internal_cmd_id() != 0) {
     _internal_set_cmd_id(from._internal_cmd_id());
+  }
+  if (from._internal_packet_id() != 0) {
+    _internal_set_packet_id(from._internal_packet_id());
   }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -3145,7 +3193,12 @@ void Packet::InternalSwap(Packet* other) {
       &payload_, lhs_arena,
       &other->payload_, rhs_arena
   );
-  swap(cmd_id_, other->cmd_id_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Packet, packet_id_)
+      + sizeof(Packet::packet_id_)
+      - PROTOBUF_FIELD_OFFSET(Packet, timestamp_)>(
+          reinterpret_cast<char*>(&timestamp_),
+          reinterpret_cast<char*>(&other->timestamp_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Packet::GetMetadata() const {
@@ -7252,12 +7305,14 @@ class PlayCard::_Internal {
 
 PlayCard::PlayCard(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  player_points_(arena) {
   SharedCtor();
   // @@protoc_insertion_point(arena_constructor:packet.PlayCard)
 }
 PlayCard::PlayCard(const PlayCard& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      player_points_(from.player_points_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::memcpy(&uid_, &from.uid_,
     static_cast<size_t>(reinterpret_cast<char*>(&win_card_) -
@@ -7295,6 +7350,7 @@ void PlayCard::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  player_points_.Clear();
   ::memset(&uid_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&win_card_) -
       reinterpret_cast<char*>(&uid_)) + sizeof(win_card_));
@@ -7323,10 +7379,10 @@ const char* PlayCard::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
         } else
           goto handle_unusual;
         continue;
-      // bool auto = 3;
+      // bool is_auto = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          auto__ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          is_auto_ = (::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr) != 0);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -7387,6 +7443,17 @@ const char* PlayCard::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx)
         } else
           goto handle_unusual;
         continue;
+      // repeated int32 player_points = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_player_points(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 88) {
+          _internal_add_player_points(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -7428,10 +7495,10 @@ uint8_t* PlayCard::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_card_id(), target);
   }
 
-  // bool auto = 3;
-  if (this->_internal_auto_() != 0) {
+  // bool is_auto = 3;
+  if (this->_internal_is_auto() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_auto_(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_is_auto(), target);
   }
 
   // int32 current_turn = 4;
@@ -7476,6 +7543,15 @@ uint8_t* PlayCard::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(10, this->_internal_win_card(), target);
   }
 
+  // repeated int32 player_points = 11;
+  {
+    int byte_size = _player_points_cached_byte_size_.load(std::memory_order_relaxed);
+    if (byte_size > 0) {
+      target = stream->WriteInt32Packed(
+          11, _internal_player_points(), byte_size, target);
+    }
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -7491,6 +7567,20 @@ size_t PlayCard::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated int32 player_points = 11;
+  {
+    size_t data_size = ::_pbi::WireFormatLite::
+      Int32Size(this->player_points_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    int cached_size = ::_pbi::ToCachedSize(data_size);
+    _player_points_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
 
   // int32 uid = 1;
   if (this->_internal_uid() != 0) {
@@ -7512,8 +7602,8 @@ size_t PlayCard::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_hand_suit());
   }
 
-  // bool auto = 3;
-  if (this->_internal_auto_() != 0) {
+  // bool is_auto = 3;
+  if (this->_internal_is_auto() != 0) {
     total_size += 1 + 1;
   }
 
@@ -7564,6 +7654,7 @@ void PlayCard::MergeFrom(const PlayCard& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  player_points_.MergeFrom(from.player_points_);
   if (from._internal_uid() != 0) {
     _internal_set_uid(from._internal_uid());
   }
@@ -7576,8 +7667,8 @@ void PlayCard::MergeFrom(const PlayCard& from) {
   if (from._internal_hand_suit() != 0) {
     _internal_set_hand_suit(from._internal_hand_suit());
   }
-  if (from._internal_auto_() != 0) {
-    _internal_set_auto_(from._internal_auto_());
+  if (from._internal_is_auto() != 0) {
+    _internal_set_is_auto(from._internal_is_auto());
   }
   if (from._internal_is_end_hand() != 0) {
     _internal_set_is_end_hand(from._internal_is_end_hand());
@@ -7611,6 +7702,7 @@ bool PlayCard::IsInitialized() const {
 void PlayCard::InternalSwap(PlayCard* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  player_points_.InternalSwap(&other->player_points_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(PlayCard, win_card_)
       + sizeof(PlayCard::win_card_)
@@ -8231,294 +8323,6 @@ void UpdateGamePoint::InternalSwap(UpdateGamePoint* other) {
 
 // ===================================================================
 
-class EndHand::_Internal {
- public:
-};
-
-EndHand::EndHand(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  user_points_(arena) {
-  SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:packet.EndHand)
-}
-EndHand::EndHand(const EndHand& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      user_points_(from.user_points_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&win_uid_, &from.win_uid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&is_end_round_) -
-    reinterpret_cast<char*>(&win_uid_)) + sizeof(is_end_round_));
-  // @@protoc_insertion_point(copy_constructor:packet.EndHand)
-}
-
-inline void EndHand::SharedCtor() {
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&win_uid_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&is_end_round_) -
-    reinterpret_cast<char*>(&win_uid_)) + sizeof(is_end_round_));
-}
-
-EndHand::~EndHand() {
-  // @@protoc_insertion_point(destructor:packet.EndHand)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void EndHand::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-}
-
-void EndHand::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
-}
-
-void EndHand::Clear() {
-// @@protoc_insertion_point(message_clear_start:packet.EndHand)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  user_points_.Clear();
-  ::memset(&win_uid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&is_end_round_) -
-      reinterpret_cast<char*>(&win_uid_)) + sizeof(is_end_round_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* EndHand::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // int32 win_uid = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          win_uid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 win_card = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          win_card_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // repeated int32 user_points = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_user_points(), ptr, ctx);
-          CHK_(ptr);
-        } else if (static_cast<uint8_t>(tag) == 24) {
-          _internal_add_user_points(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 win_point = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          win_point_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // bool is_end_round = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
-          is_end_round_ = (::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr) != 0);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* EndHand::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:packet.EndHand)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // int32 win_uid = 1;
-  if (this->_internal_win_uid() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_win_uid(), target);
-  }
-
-  // int32 win_card = 2;
-  if (this->_internal_win_card() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_win_card(), target);
-  }
-
-  // repeated int32 user_points = 3;
-  {
-    int byte_size = _user_points_cached_byte_size_.load(std::memory_order_relaxed);
-    if (byte_size > 0) {
-      target = stream->WriteInt32Packed(
-          3, _internal_user_points(), byte_size, target);
-    }
-  }
-
-  // int32 win_point = 4;
-  if (this->_internal_win_point() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(4, this->_internal_win_point(), target);
-  }
-
-  // bool is_end_round = 5;
-  if (this->_internal_is_end_round() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_is_end_round(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:packet.EndHand)
-  return target;
-}
-
-size_t EndHand::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:packet.EndHand)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // repeated int32 user_points = 3;
-  {
-    size_t data_size = ::_pbi::WireFormatLite::
-      Int32Size(this->user_points_);
-    if (data_size > 0) {
-      total_size += 1 +
-        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
-    }
-    int cached_size = ::_pbi::ToCachedSize(data_size);
-    _user_points_cached_byte_size_.store(cached_size,
-                                    std::memory_order_relaxed);
-    total_size += data_size;
-  }
-
-  // int32 win_uid = 1;
-  if (this->_internal_win_uid() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_win_uid());
-  }
-
-  // int32 win_card = 2;
-  if (this->_internal_win_card() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_win_card());
-  }
-
-  // int32 win_point = 4;
-  if (this->_internal_win_point() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_win_point());
-  }
-
-  // bool is_end_round = 5;
-  if (this->_internal_is_end_round() != 0) {
-    total_size += 1 + 1;
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData EndHand::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    EndHand::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*EndHand::GetClassData() const { return &_class_data_; }
-
-void EndHand::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
-  static_cast<EndHand *>(to)->MergeFrom(
-      static_cast<const EndHand &>(from));
-}
-
-
-void EndHand::MergeFrom(const EndHand& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:packet.EndHand)
-  GOOGLE_DCHECK_NE(&from, this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  user_points_.MergeFrom(from.user_points_);
-  if (from._internal_win_uid() != 0) {
-    _internal_set_win_uid(from._internal_win_uid());
-  }
-  if (from._internal_win_card() != 0) {
-    _internal_set_win_card(from._internal_win_card());
-  }
-  if (from._internal_win_point() != 0) {
-    _internal_set_win_point(from._internal_win_point());
-  }
-  if (from._internal_is_end_round() != 0) {
-    _internal_set_is_end_round(from._internal_is_end_round());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void EndHand::CopyFrom(const EndHand& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:packet.EndHand)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool EndHand::IsInitialized() const {
-  return true;
-}
-
-void EndHand::InternalSwap(EndHand* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  user_points_.InternalSwap(&other->user_points_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(EndHand, is_end_round_)
-      + sizeof(EndHand::is_end_round_)
-      - PROTOBUF_FIELD_OFFSET(EndHand, win_uid_)>(
-          reinterpret_cast<char*>(&win_uid_),
-          reinterpret_cast<char*>(&other->win_uid_));
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata EndHand::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[18]);
-}
-
-// ===================================================================
-
 class DrawCard::_Internal {
  public:
 };
@@ -8698,7 +8502,7 @@ void DrawCard::InternalSwap(DrawCard* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DrawCard::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[19]);
+      file_level_metadata_packet_2eproto[18]);
 }
 
 // ===================================================================
@@ -9019,7 +8823,7 @@ void GeneralInfo::InternalSwap(GeneralInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GeneralInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[20]);
+      file_level_metadata_packet_2eproto[19]);
 }
 
 // ===================================================================
@@ -9257,7 +9061,7 @@ void LevelReward::InternalSwap(LevelReward* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata LevelReward::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[21]);
+      file_level_metadata_packet_2eproto[20]);
 }
 
 // ===================================================================
@@ -9462,7 +9266,7 @@ void ItemReward::InternalSwap(ItemReward* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ItemReward::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[22]);
+      file_level_metadata_packet_2eproto[21]);
 }
 
 // ===================================================================
@@ -9861,7 +9665,7 @@ void EndGame::InternalSwap(EndGame* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata EndGame::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[23]);
+      file_level_metadata_packet_2eproto[22]);
 }
 
 // ===================================================================
@@ -10032,7 +9836,7 @@ void PrepareStartGame::InternalSwap(PrepareStartGame* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PrepareStartGame::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[24]);
+      file_level_metadata_packet_2eproto[23]);
 }
 
 // ===================================================================
@@ -10253,7 +10057,7 @@ void InGameChatMessage::InternalSwap(InGameChatMessage* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InGameChatMessage::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[25]);
+      file_level_metadata_packet_2eproto[24]);
 }
 
 // ===================================================================
@@ -10608,7 +10412,7 @@ void PaymentGoogleConsume::InternalSwap(PaymentGoogleConsume* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PaymentGoogleConsume::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[26]);
+      file_level_metadata_packet_2eproto[25]);
 }
 
 // ===================================================================
@@ -10862,7 +10666,7 @@ void PaymentSuccess::InternalSwap(PaymentSuccess* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PaymentSuccess::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[27]);
+      file_level_metadata_packet_2eproto[26]);
 }
 
 // ===================================================================
@@ -11033,7 +10837,7 @@ void UpdateMoney::InternalSwap(UpdateMoney* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateMoney::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[28]);
+      file_level_metadata_packet_2eproto[27]);
 }
 
 // ===================================================================
@@ -11482,7 +11286,7 @@ void TableList::InternalSwap(TableList* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TableList::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[29]);
+      file_level_metadata_packet_2eproto[28]);
 }
 
 // ===================================================================
@@ -12059,7 +11863,7 @@ void ShopConfig::InternalSwap(ShopConfig* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ShopConfig::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[30]);
+      file_level_metadata_packet_2eproto[29]);
 }
 
 // ===================================================================
@@ -12237,7 +12041,7 @@ void DetailShopPack::InternalSwap(DetailShopPack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DetailShopPack::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[31]);
+      file_level_metadata_packet_2eproto[30]);
 }
 
 // ===================================================================
@@ -12432,7 +12236,7 @@ void GuestAccount::InternalSwap(GuestAccount* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GuestAccount::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[32]);
+      file_level_metadata_packet_2eproto[31]);
 }
 
 // ===================================================================
@@ -12603,7 +12407,7 @@ void ChangeAvatar::InternalSwap(ChangeAvatar* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ChangeAvatar::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[33]);
+      file_level_metadata_packet_2eproto[32]);
 }
 
 // ===================================================================
@@ -12808,7 +12612,7 @@ void InGameChatEmoticon::InternalSwap(InGameChatEmoticon* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InGameChatEmoticon::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[34]);
+      file_level_metadata_packet_2eproto[33]);
 }
 
 // ===================================================================
@@ -12979,7 +12783,7 @@ void SearchFriend::InternalSwap(SearchFriend* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SearchFriend::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[35]);
+      file_level_metadata_packet_2eproto[34]);
 }
 
 // ===================================================================
@@ -13448,7 +13252,7 @@ void SearchFriendResponse::InternalSwap(SearchFriendResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SearchFriendResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[36]);
+      file_level_metadata_packet_2eproto[35]);
 }
 
 // ===================================================================
@@ -13619,7 +13423,7 @@ void CheatGoldUser::InternalSwap(CheatGoldUser* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CheatGoldUser::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[37]);
+      file_level_metadata_packet_2eproto[36]);
 }
 
 // ===================================================================
@@ -14099,7 +13903,7 @@ void FriendList::InternalSwap(FriendList* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FriendList::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[38]);
+      file_level_metadata_packet_2eproto[37]);
 }
 
 // ===================================================================
@@ -14476,7 +14280,7 @@ void FriendRequests::InternalSwap(FriendRequests* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FriendRequests::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[39]);
+      file_level_metadata_packet_2eproto[38]);
 }
 
 // ===================================================================
@@ -14681,7 +14485,7 @@ void AddFriend::InternalSwap(AddFriend* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AddFriend::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[40]);
+      file_level_metadata_packet_2eproto[39]);
 }
 
 // ===================================================================
@@ -14886,7 +14690,7 @@ void RequestFriendAccept::InternalSwap(RequestFriendAccept* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RequestFriendAccept::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[41]);
+      file_level_metadata_packet_2eproto[40]);
 }
 
 // ===================================================================
@@ -15057,7 +14861,7 @@ void RemoveFriend::InternalSwap(RemoveFriend* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RemoveFriend::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[42]);
+      file_level_metadata_packet_2eproto[41]);
 }
 
 // ===================================================================
@@ -15382,7 +15186,7 @@ void NewFriendRequest::InternalSwap(NewFriendRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata NewFriendRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[43]);
+      file_level_metadata_packet_2eproto[42]);
 }
 
 // ===================================================================
@@ -15729,7 +15533,7 @@ void FriendRequestAccepted::InternalSwap(FriendRequestAccepted* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FriendRequestAccepted::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[44]);
+      file_level_metadata_packet_2eproto[43]);
 }
 
 // ===================================================================
@@ -16106,7 +15910,7 @@ void RecommendFriends::InternalSwap(RecommendFriends* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RecommendFriends::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[45]);
+      file_level_metadata_packet_2eproto[44]);
 }
 
 // ===================================================================
@@ -16349,7 +16153,7 @@ void PaymentAppleConsume::InternalSwap(PaymentAppleConsume* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PaymentAppleConsume::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[46]);
+      file_level_metadata_packet_2eproto[45]);
 }
 
 // ===================================================================
@@ -16544,7 +16348,7 @@ void PaymentFinishedAppleTransaction::InternalSwap(PaymentFinishedAppleTransacti
 ::PROTOBUF_NAMESPACE_ID::Metadata PaymentFinishedAppleTransaction::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[47]);
+      file_level_metadata_packet_2eproto[46]);
 }
 
 // ===================================================================
@@ -16788,7 +16592,7 @@ void NewRound::InternalSwap(NewRound* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata NewRound::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[48]);
+      file_level_metadata_packet_2eproto[47]);
 }
 
 // ===================================================================
@@ -17059,7 +16863,7 @@ void CreateTable::InternalSwap(CreateTable* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateTable::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[49]);
+      file_level_metadata_packet_2eproto[48]);
 }
 
 // ===================================================================
@@ -17230,7 +17034,7 @@ void JoinTableById::InternalSwap(JoinTableById* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata JoinTableById::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[50]);
+      file_level_metadata_packet_2eproto[49]);
 }
 
 // ===================================================================
@@ -17401,7 +17205,7 @@ void JoinTableResponse::InternalSwap(JoinTableResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata JoinTableResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[51]);
+      file_level_metadata_packet_2eproto[50]);
 }
 
 // ===================================================================
@@ -17572,7 +17376,7 @@ void ClaimSupport::InternalSwap(ClaimSupport* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ClaimSupport::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[52]);
+      file_level_metadata_packet_2eproto[51]);
 }
 
 // ===================================================================
@@ -17887,7 +17691,7 @@ void AppCodeVersion::InternalSwap(AppCodeVersion* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AppCodeVersion::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[53]);
+      file_level_metadata_packet_2eproto[52]);
 }
 
 // ===================================================================
@@ -18058,7 +17862,7 @@ void PlayCardResponse::InternalSwap(PlayCardResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayCardResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[54]);
+      file_level_metadata_packet_2eproto[53]);
 }
 
 // ===================================================================
@@ -18242,7 +18046,7 @@ void CheatViewCardBot::InternalSwap(CheatViewCardBot* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CheatViewCardBot::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[55]);
+      file_level_metadata_packet_2eproto[54]);
 }
 
 // ===================================================================
@@ -18447,7 +18251,7 @@ void InviteFriendPlay::InternalSwap(InviteFriendPlay* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InviteFriendPlay::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[56]);
+      file_level_metadata_packet_2eproto[55]);
 }
 
 // ===================================================================
@@ -18691,7 +18495,7 @@ void GameActionNapoli::InternalSwap(GameActionNapoli* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GameActionNapoli::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[57]);
+      file_level_metadata_packet_2eproto[56]);
 }
 
 // ===================================================================
@@ -18912,7 +18716,7 @@ void CustomerServiceReport::InternalSwap(CustomerServiceReport* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CustomerServiceReport::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[58]);
+      file_level_metadata_packet_2eproto[57]);
 }
 
 // ===================================================================
@@ -19107,7 +18911,7 @@ void AdminBroadcast::InternalSwap(AdminBroadcast* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AdminBroadcast::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[59]);
+      file_level_metadata_packet_2eproto[58]);
 }
 
 // ===================================================================
@@ -19302,7 +19106,7 @@ void PaymentPaypalRequestOrder::InternalSwap(PaymentPaypalRequestOrder* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PaymentPaypalRequestOrder::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[60]);
+      file_level_metadata_packet_2eproto[59]);
 }
 
 // ===================================================================
@@ -19497,7 +19301,7 @@ void PaymentPaypalOrder::InternalSwap(PaymentPaypalOrder* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PaymentPaypalOrder::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[61]);
+      file_level_metadata_packet_2eproto[60]);
 }
 
 // ===================================================================
@@ -19536,7 +19340,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*QuickPlay::GetClassData() cons
 ::PROTOBUF_NAMESPACE_ID::Metadata QuickPlay::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[62]);
+      file_level_metadata_packet_2eproto[61]);
 }
 
 // ===================================================================
@@ -19883,7 +19687,7 @@ void SetteMezzoNewUserJoinMatch::InternalSwap(SetteMezzoNewUserJoinMatch* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoNewUserJoinMatch::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[63]);
+      file_level_metadata_packet_2eproto[62]);
 }
 
 // ===================================================================
@@ -20093,7 +19897,7 @@ void SetteMezzoPrepareStartGame::InternalSwap(SetteMezzoPrepareStartGame* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoPrepareStartGame::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[64]);
+      file_level_metadata_packet_2eproto[63]);
 }
 
 // ===================================================================
@@ -20949,7 +20753,7 @@ void SetteMezzoGameInfo::InternalSwap(SetteMezzoGameInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoGameInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[65]);
+      file_level_metadata_packet_2eproto[64]);
 }
 
 // ===================================================================
@@ -21133,7 +20937,7 @@ void SetteMezzoPlayerInfo::InternalSwap(SetteMezzoPlayerInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoPlayerInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[66]);
+      file_level_metadata_packet_2eproto[65]);
 }
 
 // ===================================================================
@@ -21172,7 +20976,7 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SetteMezzoQuickPlay::GetClassD
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoQuickPlay::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[67]);
+      file_level_metadata_packet_2eproto[66]);
 }
 
 // ===================================================================
@@ -21395,7 +21199,7 @@ void SetteMezzoStartGame::InternalSwap(SetteMezzoStartGame* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoStartGame::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[68]);
+      file_level_metadata_packet_2eproto[67]);
 }
 
 // ===================================================================
@@ -21898,7 +21702,7 @@ void RankingInfo::InternalSwap(RankingInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RankingInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[69]);
+      file_level_metadata_packet_2eproto[68]);
 }
 
 // ===================================================================
@@ -22125,7 +21929,7 @@ void RankingResult::InternalSwap(RankingResult* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RankingResult::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[70]);
+      file_level_metadata_packet_2eproto[69]);
 }
 
 // ===================================================================
@@ -22296,7 +22100,7 @@ void RankingClaimReward::InternalSwap(RankingClaimReward* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RankingClaimReward::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[71]);
+      file_level_metadata_packet_2eproto[70]);
 }
 
 // ===================================================================
@@ -22467,7 +22271,7 @@ void UpdateAds::InternalSwap(UpdateAds* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateAds::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[72]);
+      file_level_metadata_packet_2eproto[71]);
 }
 
 // ===================================================================
@@ -22672,7 +22476,7 @@ void AdsReward::InternalSwap(AdsReward* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AdsReward::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[73]);
+      file_level_metadata_packet_2eproto[72]);
 }
 
 // ===================================================================
@@ -22867,7 +22671,7 @@ void ChangeUserName::InternalSwap(ChangeUserName* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ChangeUserName::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[74]);
+      file_level_metadata_packet_2eproto[73]);
 }
 
 // ===================================================================
@@ -23072,7 +22876,7 @@ void SetteMezzoActionHit::InternalSwap(SetteMezzoActionHit* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoActionHit::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[75]);
+      file_level_metadata_packet_2eproto[74]);
 }
 
 // ===================================================================
@@ -23277,7 +23081,7 @@ void SetteMezzoUpdateTurn::InternalSwap(SetteMezzoUpdateTurn* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoUpdateTurn::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[76]);
+      file_level_metadata_packet_2eproto[75]);
 }
 
 // ===================================================================
@@ -23504,7 +23308,7 @@ void SetteMezzoActionStand::InternalSwap(SetteMezzoActionStand* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoActionStand::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[77]);
+      file_level_metadata_packet_2eproto[76]);
 }
 
 // ===================================================================
@@ -23837,7 +23641,7 @@ void SetteMezzoEndGame::InternalSwap(SetteMezzoEndGame* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoEndGame::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[78]);
+      file_level_metadata_packet_2eproto[77]);
 }
 
 // ===================================================================
@@ -24008,7 +23812,7 @@ void SetteMezzoShowBankerCard::InternalSwap(SetteMezzoShowBankerCard* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoShowBankerCard::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[79]);
+      file_level_metadata_packet_2eproto[78]);
 }
 
 // ===================================================================
@@ -24213,7 +24017,7 @@ void SetteMezzoUserBet::InternalSwap(SetteMezzoUserBet* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SetteMezzoUserBet::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[80]);
+      file_level_metadata_packet_2eproto[79]);
 }
 
 // ===================================================================
@@ -24384,7 +24188,7 @@ void ViewGame::InternalSwap(ViewGame* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ViewGame::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[81]);
+      file_level_metadata_packet_2eproto[80]);
 }
 
 // ===================================================================
@@ -24555,7 +24359,7 @@ void UserStopView::InternalSwap(UserStopView* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UserStopView::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[82]);
+      file_level_metadata_packet_2eproto[81]);
 }
 
 // ===================================================================
@@ -24858,7 +24662,7 @@ void NewUserView::InternalSwap(NewUserView* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata NewUserView::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[83]);
+      file_level_metadata_packet_2eproto[82]);
 }
 
 // ===================================================================
@@ -25029,7 +24833,7 @@ void CheatExpUser::InternalSwap(CheatExpUser* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CheatExpUser::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[84]);
+      file_level_metadata_packet_2eproto[83]);
 }
 
 // ===================================================================
@@ -25200,7 +25004,7 @@ void UpdateExp::InternalSwap(UpdateExp* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateExp::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[85]);
+      file_level_metadata_packet_2eproto[84]);
 }
 
 // ===================================================================
@@ -25371,7 +25175,7 @@ void ClaimRewardLevel::InternalSwap(ClaimRewardLevel* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ClaimRewardLevel::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[86]);
+      file_level_metadata_packet_2eproto[85]);
 }
 
 // ===================================================================
@@ -25549,7 +25353,7 @@ void UserInventory::InternalSwap(UserInventory* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UserInventory::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[87]);
+      file_level_metadata_packet_2eproto[86]);
 }
 
 // ===================================================================
@@ -25776,7 +25580,7 @@ void InvetoryItem::InternalSwap(InvetoryItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InvetoryItem::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[88]);
+      file_level_metadata_packet_2eproto[87]);
 }
 
 // ===================================================================
@@ -25947,7 +25751,7 @@ void UseItem::InternalSwap(UseItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UseItem::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[89]);
+      file_level_metadata_packet_2eproto[88]);
 }
 
 // ===================================================================
@@ -26152,7 +25956,7 @@ void CheatItem::InternalSwap(CheatItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CheatItem::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[90]);
+      file_level_metadata_packet_2eproto[89]);
 }
 
 // ===================================================================
@@ -26357,7 +26161,7 @@ void BuyItem::InternalSwap(BuyItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata BuyItem::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[91]);
+      file_level_metadata_packet_2eproto[90]);
 }
 
 // ===================================================================
@@ -26535,7 +26339,7 @@ void InventoryShopConfig::InternalSwap(InventoryShopConfig* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InventoryShopConfig::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[92]);
+      file_level_metadata_packet_2eproto[91]);
 }
 
 // ===================================================================
@@ -26739,7 +26543,7 @@ void InventoryShopItem::InternalSwap(InventoryShopItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InventoryShopItem::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[93]);
+      file_level_metadata_packet_2eproto[92]);
 }
 
 // ===================================================================
@@ -26966,7 +26770,7 @@ void InvetoryShopPack::InternalSwap(InvetoryShopPack* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InvetoryShopPack::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[94]);
+      file_level_metadata_packet_2eproto[93]);
 }
 
 // ===================================================================
@@ -27204,7 +27008,7 @@ void ClaimRewardLevelResponse::InternalSwap(ClaimRewardLevelResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ClaimRewardLevelResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
-      file_level_metadata_packet_2eproto[95]);
+      file_level_metadata_packet_2eproto[94]);
 }
 
 // ===================================================================
@@ -27431,6 +27235,177 @@ void RewardInventoryItem::InternalSwap(RewardInventoryItem* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RewardInventoryItem::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
+      file_level_metadata_packet_2eproto[95]);
+}
+
+// ===================================================================
+
+class ViewerJoinMatch::_Internal {
+ public:
+};
+
+ViewerJoinMatch::ViewerJoinMatch(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  // @@protoc_insertion_point(arena_constructor:packet.ViewerJoinMatch)
+}
+ViewerJoinMatch::ViewerJoinMatch(const ViewerJoinMatch& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  seat_idx_ = from.seat_idx_;
+  // @@protoc_insertion_point(copy_constructor:packet.ViewerJoinMatch)
+}
+
+inline void ViewerJoinMatch::SharedCtor() {
+seat_idx_ = 0;
+}
+
+ViewerJoinMatch::~ViewerJoinMatch() {
+  // @@protoc_insertion_point(destructor:packet.ViewerJoinMatch)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ViewerJoinMatch::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void ViewerJoinMatch::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void ViewerJoinMatch::Clear() {
+// @@protoc_insertion_point(message_clear_start:packet.ViewerJoinMatch)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  seat_idx_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ViewerJoinMatch::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 seat_idx = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          seat_idx_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ViewerJoinMatch::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:packet.ViewerJoinMatch)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 seat_idx = 1;
+  if (this->_internal_seat_idx() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_seat_idx(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:packet.ViewerJoinMatch)
+  return target;
+}
+
+size_t ViewerJoinMatch::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:packet.ViewerJoinMatch)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 seat_idx = 1;
+  if (this->_internal_seat_idx() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_seat_idx());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ViewerJoinMatch::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    ViewerJoinMatch::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ViewerJoinMatch::GetClassData() const { return &_class_data_; }
+
+void ViewerJoinMatch::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+  static_cast<ViewerJoinMatch *>(to)->MergeFrom(
+      static_cast<const ViewerJoinMatch &>(from));
+}
+
+
+void ViewerJoinMatch::MergeFrom(const ViewerJoinMatch& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:packet.ViewerJoinMatch)
+  GOOGLE_DCHECK_NE(&from, this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_seat_idx() != 0) {
+    _internal_set_seat_idx(from._internal_seat_idx());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ViewerJoinMatch::CopyFrom(const ViewerJoinMatch& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:packet.ViewerJoinMatch)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ViewerJoinMatch::IsInitialized() const {
+  return true;
+}
+
+void ViewerJoinMatch::InternalSwap(ViewerJoinMatch* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(seat_idx_, other->seat_idx_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ViewerJoinMatch::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_packet_2eproto_getter, &descriptor_table_packet_2eproto_once,
       file_level_metadata_packet_2eproto[96]);
 }
 
@@ -27508,10 +27483,6 @@ Arena::CreateMaybeMessage< ::packet::NewHand >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::packet::UpdateGamePoint*
 Arena::CreateMaybeMessage< ::packet::UpdateGamePoint >(Arena* arena) {
   return Arena::CreateMessageInternal< ::packet::UpdateGamePoint >(arena);
-}
-template<> PROTOBUF_NOINLINE ::packet::EndHand*
-Arena::CreateMaybeMessage< ::packet::EndHand >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::packet::EndHand >(arena);
 }
 template<> PROTOBUF_NOINLINE ::packet::DrawCard*
 Arena::CreateMaybeMessage< ::packet::DrawCard >(Arena* arena) {
@@ -27824,6 +27795,10 @@ Arena::CreateMaybeMessage< ::packet::ClaimRewardLevelResponse >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::packet::RewardInventoryItem*
 Arena::CreateMaybeMessage< ::packet::RewardInventoryItem >(Arena* arena) {
   return Arena::CreateMessageInternal< ::packet::RewardInventoryItem >(arena);
+}
+template<> PROTOBUF_NOINLINE ::packet::ViewerJoinMatch*
+Arena::CreateMaybeMessage< ::packet::ViewerJoinMatch >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::packet::ViewerJoinMatch >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

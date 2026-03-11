@@ -2229,10 +2229,10 @@ class PlayCard:
 		service.field = _card_id
 		data[_card_id.tag] = service
 		
-		_is_auto = PBField.new("is_auto", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		_auto = PBField.new("auto", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 3, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
 		service = PBServiceField.new()
-		service.field = _is_auto
-		data[_is_auto.tag] = service
+		service.field = _auto
+		data[_auto.tag] = service
 		
 		_current_turn = PBField.new("current_turn", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
 		service = PBServiceField.new()
@@ -2269,11 +2269,6 @@ class PlayCard:
 		service.field = _win_card
 		data[_win_card.tag] = service
 		
-		_player_points = PBField.new("player_points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 11, true, [])
-		service = PBServiceField.new()
-		service.field = _player_points
-		data[_player_points.tag] = service
-		
 	var data = {}
 	
 	var _uid: PBField
@@ -2294,14 +2289,14 @@ class PlayCard:
 	func set_card_id(value : int) -> void:
 		_card_id.value = value
 	
-	var _is_auto: PBField
-	func get_is_auto() -> bool:
-		return _is_auto.value
-	func clear_is_auto() -> void:
+	var _auto: PBField
+	func get_auto() -> bool:
+		return _auto.value
+	func clear_auto() -> void:
 		data[3].state = PB_SERVICE_STATE.UNFILLED
-		_is_auto.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
-	func set_is_auto(value : bool) -> void:
-		_is_auto.value = value
+		_auto.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_auto(value : bool) -> void:
+		_auto.value = value
 	
 	var _current_turn: PBField
 	func get_current_turn() -> int:
@@ -2365,15 +2360,6 @@ class PlayCard:
 		_win_card.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_win_card(value : int) -> void:
 		_win_card.value = value
-	
-	var _player_points: PBField
-	func get_player_points() -> Array:
-		return _player_points.value
-	func clear_player_points() -> void:
-		data[11].state = PB_SERVICE_STATE.UNFILLED
-		_player_points.value = []
-	func add_player_points(value : int) -> void:
-		_player_points.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -2525,6 +2511,103 @@ class UpdateGamePoint:
 		_points.value = []
 	func add_points(value : int) -> void:
 		_points.value.append(value)
+	
+	func _to_string() -> String:
+		return PBPacker.message_to_string(data)
+		
+	func to_bytes() -> PackedByteArray:
+		return PBPacker.pack_message(data)
+		
+	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
+		var cur_limit = bytes.size()
+		if limit != -1:
+			cur_limit = limit
+		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
+		if result == cur_limit:
+			if PBPacker.check_required(data):
+				if limit == -1:
+					return PB_ERR.NO_ERRORS
+			else:
+				return PB_ERR.REQUIRED_FIELDS
+		elif limit == -1 && result > 0:
+			return PB_ERR.PARSE_INCOMPLETE
+		return result
+	
+class EndHand:
+	func _init():
+		var service
+		
+		_win_uid = PBField.new("win_uid", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_uid
+		data[_win_uid.tag] = service
+		
+		_win_card = PBField.new("win_card", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 2, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_card
+		data[_win_card.tag] = service
+		
+		_user_points = PBField.new("user_points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 3, true, [])
+		service = PBServiceField.new()
+		service.field = _user_points
+		data[_user_points.tag] = service
+		
+		_win_point = PBField.new("win_point", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 4, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _win_point
+		data[_win_point.tag] = service
+		
+		_is_end_round = PBField.new("is_end_round", PB_DATA_TYPE.BOOL, PB_RULE.OPTIONAL, 5, true, DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL])
+		service = PBServiceField.new()
+		service.field = _is_end_round
+		data[_is_end_round.tag] = service
+		
+	var data = {}
+	
+	var _win_uid: PBField
+	func get_win_uid() -> int:
+		return _win_uid.value
+	func clear_win_uid() -> void:
+		data[1].state = PB_SERVICE_STATE.UNFILLED
+		_win_uid.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_uid(value : int) -> void:
+		_win_uid.value = value
+	
+	var _win_card: PBField
+	func get_win_card() -> int:
+		return _win_card.value
+	func clear_win_card() -> void:
+		data[2].state = PB_SERVICE_STATE.UNFILLED
+		_win_card.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_card(value : int) -> void:
+		_win_card.value = value
+	
+	var _user_points: PBField
+	func get_user_points() -> Array:
+		return _user_points.value
+	func clear_user_points() -> void:
+		data[3].state = PB_SERVICE_STATE.UNFILLED
+		_user_points.value = []
+	func add_user_points(value : int) -> void:
+		_user_points.value.append(value)
+	
+	var _win_point: PBField
+	func get_win_point() -> int:
+		return _win_point.value
+	func clear_win_point() -> void:
+		data[4].state = PB_SERVICE_STATE.UNFILLED
+		_win_point.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_win_point(value : int) -> void:
+		_win_point.value = value
+	
+	var _is_end_round: PBField
+	func get_is_end_round() -> bool:
+		return _is_end_round.value
+	func clear_is_end_round() -> void:
+		data[5].state = PB_SERVICE_STATE.UNFILLED
+		_is_end_round.value = DEFAULT_VALUES_3[PB_DATA_TYPE.BOOL]
+	func set_is_end_round(value : bool) -> void:
+		_is_end_round.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -7996,47 +8079,6 @@ class RewardInventoryItem:
 		_value.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_value(value : int) -> void:
 		_value.value = value
-	
-	func _to_string() -> String:
-		return PBPacker.message_to_string(data)
-		
-	func to_bytes() -> PackedByteArray:
-		return PBPacker.pack_message(data)
-		
-	func from_bytes(bytes : PackedByteArray, offset : int = 0, limit : int = -1) -> int:
-		var cur_limit = bytes.size()
-		if limit != -1:
-			cur_limit = limit
-		var result = PBPacker.unpack_message(data, bytes, offset, cur_limit)
-		if result == cur_limit:
-			if PBPacker.check_required(data):
-				if limit == -1:
-					return PB_ERR.NO_ERRORS
-			else:
-				return PB_ERR.REQUIRED_FIELDS
-		elif limit == -1 && result > 0:
-			return PB_ERR.PARSE_INCOMPLETE
-		return result
-	
-class ViewerJoinMatch:
-	func _init():
-		var service
-		
-		_seat_idx = PBField.new("seat_idx", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 1, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
-		service = PBServiceField.new()
-		service.field = _seat_idx
-		data[_seat_idx.tag] = service
-		
-	var data = {}
-	
-	var _seat_idx: PBField
-	func get_seat_idx() -> int:
-		return _seat_idx.value
-	func clear_seat_idx() -> void:
-		data[1].state = PB_SERVICE_STATE.UNFILLED
-		_seat_idx.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
-	func set_seat_idx(value : int) -> void:
-		_seat_idx.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

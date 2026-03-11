@@ -10,7 +10,7 @@ var uids_cheat = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
-	var auto = g.v.login_mgr.auto_login()	
+	g.v.login_mgr.auto_login()	
 	if g.v.config.CURRENT_MODE != g.v.config.MODES.LIVE:
 		pn_cheat.visible = true
 		
@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 	login_pn.modulate.a = 0
 	login_pn.position.y -= 300
-	var delay = 2 if auto else 0
+	var delay = 0
 	
 	tween.parallel().tween_property(login_pn,
 		"position", default_pos, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT) \

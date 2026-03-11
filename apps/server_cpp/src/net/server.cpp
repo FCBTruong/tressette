@@ -46,6 +46,14 @@ void Server::on_new_connection(tcp::socket socket) {
 }
 
 void Server::remove_session(uint64_t session_id) {
+    ClientSession* session = session_registry_.find_by_session_id(session_id).get();
+    if (session) {
+        int64_t uid = session->uid().value_or(0);
+        if (uid) {
+            // disconnect event may trigger some cleanup in game system, so we need to notify game manager about it.
+            match_registry_.user_disconnect(uid);
+        }
+    }
     session_registry_.remove_session(session_id);
     std::cout << "Session removed, session_id=" << session_id << '\n';
 }

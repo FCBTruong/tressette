@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://bebfix1c1kukt"]
+[gd_scene format=3 uid="uid://bebfix1c1kukt"]
 
-[ext_resource type="Script" path="res://scripts/game/game_result_gui.gd" id="1_fpth8"]
+[ext_resource type="Script" uid="uid://cq38uacx0skg" path="res://scripts/game/game_result_gui.gd" id="1_fpth8"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_2qycw"]
 [ext_resource type="PackedScene" uid="uid://d2dopof1ns88o" path="res://scenes/board/background_particles.tscn" id="2_t0g3t"]
-[ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="2_wfunv"]
+[ext_resource type="Shader" uid="uid://daflijf34fqc0" path="res://shaders/light_rotate.gdshader" id="2_wfunv"]
 [ext_resource type="Texture2D" uid="uid://by7rcr6y45reu" path="res://assets/images/board/game_result/icon_lose.png" id="3_d31e7"]
 [ext_resource type="Texture2D" uid="uid://inorf6pkbk08" path="res://assets/images/lights/light_04.png" id="4_6sc0g"]
-[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="4_xsh0q"]
+[ext_resource type="Script" uid="uid://cxg1mkp74kffp" path="res://scripts/custom/zoomable_button.gd" id="4_xsh0q"]
 [ext_resource type="Texture2D" uid="uid://1usgm64c5qwn" path="res://assets/images/board/game_result/icon_win.png" id="5_d5byi"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="6_c54ls"]
 [ext_resource type="Texture2D" uid="uid://c7a7tjr3otmm2" path="res://assets/images/lobby/circles/border_circle_thick.png" id="6_hnshh"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="12_tifh7"]
 [ext_resource type="PackedScene" uid="uid://dxxn5ab0frjyc" path="res://scenes/board/ResultRewardNode.tscn" id="14_35h3i"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="17_l5vj0"]
-[ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="17_qhloc"]
+[ext_resource type="Shader" uid="uid://cpoe18uq8xt2q" path="res://shaders/light_highlight.gdshader" id="17_qhloc"]
 [ext_resource type="Texture2D" uid="uid://qabrdus6wbh6" path="res://assets/images/board/game_result/winner_txt.png" id="17_qn74f"]
 [ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="18_iwf68"]
 [ext_resource type="Texture2D" uid="uid://baqeo8fn0qpy6" path="res://assets/images/board/vs.png" id="18_llwbu"]
@@ -57,7 +57,7 @@ shader_parameter/color_mode_toggle = false
 shader_parameter/is_horizontal = true
 shader_parameter/delay = 1.0
 
-[node name="GameResultGui" type="Control"]
+[node name="GameResultGui" type="Control" unique_id=799872481]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,7 +67,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_fpth8")
 
-[node name="Fog" type="Panel" parent="."]
+[node name="Fog" type="Panel" parent="." unique_id=1771899337]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y1xll")
 
-[node name="MainPn" type="Panel" parent="."]
+[node name="MainPn" type="Panel" parent="." unique_id=988657173]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 1
 anchors_preset = 14
@@ -89,7 +89,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hag70")
 
-[node name="WinPn" type="Control" parent="MainPn"]
+[node name="WinPn" type="Control" parent="MainPn" unique_id=1340144597]
 clip_children = 2
 light_mask = 7
 layout_mode = 1
@@ -99,7 +99,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="MainPn/WinPn"]
+[node name="ColorRect" type="ColorRect" parent="MainPn/WinPn" unique_id=497516725]
 custom_minimum_size = Vector2(0, 270)
 layout_mode = 1
 anchors_preset = 15
@@ -109,7 +109,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.849616, 0.70459, 0.539352, 1)
 
-[node name="EffRotateLight" type="TextureRect" parent="MainPn/WinPn"]
+[node name="EffRotateLight" type="TextureRect" parent="MainPn/WinPn" unique_id=812750301]
 material = SubResource("ShaderMaterial_jiyt7")
 layout_mode = 1
 anchors_preset = 15
@@ -121,7 +121,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_il20s")
 
-[node name="EffLose" type="Control" parent="MainPn/WinPn"]
+[node name="EffLose" type="Control" parent="MainPn/WinPn" unique_id=89094361]
 visible = false
 layout_mode = 1
 anchors_preset = 5
@@ -131,7 +131,7 @@ offset_top = -43.0
 offset_bottom = -43.0
 grow_horizontal = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MainPn/WinPn/EffLose"]
+[node name="TextureRect2" type="TextureRect" parent="MainPn/WinPn/EffLose" unique_id=56456827]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -148,7 +148,7 @@ pivot_offset = Vector2(200, 200)
 texture = ExtResource("3_d31e7")
 expand_mode = 1
 
-[node name="TitleLbLose" type="Label" parent="MainPn/WinPn/EffLose/TextureRect2"]
+[node name="TitleLbLose" type="Label" parent="MainPn/WinPn/EffLose/TextureRect2" unique_id=1773786065]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -166,7 +166,7 @@ text = "YOU_LOSE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EffWin" type="Control" parent="MainPn/WinPn"]
+[node name="EffWin" type="Control" parent="MainPn/WinPn" unique_id=1052973444]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -175,7 +175,7 @@ offset_top = -53.0
 offset_bottom = -53.0
 grow_horizontal = 2
 
-[node name="TextureRect3" type="TextureRect" parent="MainPn/WinPn/EffWin"]
+[node name="TextureRect3" type="TextureRect" parent="MainPn/WinPn/EffWin" unique_id=1731119113]
 self_modulate = Color(1, 1, 1, 0.6)
 layout_mode = 0
 offset_left = -236.0
@@ -185,7 +185,7 @@ offset_bottom = 264.0
 texture = ExtResource("4_6sc0g")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MainPn/WinPn/EffWin"]
+[node name="TextureRect2" type="TextureRect" parent="MainPn/WinPn/EffWin" unique_id=2036097438]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -202,7 +202,7 @@ pivot_offset = Vector2(200, 200)
 texture = ExtResource("5_d5byi")
 expand_mode = 1
 
-[node name="TitleLb" type="Label" parent="MainPn/WinPn/EffWin/TextureRect2"]
+[node name="TitleLb" type="Label" parent="MainPn/WinPn/EffWin/TextureRect2" unique_id=587510752]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -220,7 +220,7 @@ text = "YOU_WIN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainPn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainPn" unique_id=346260937]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -236,7 +236,7 @@ grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="BtnExit" type="Button" parent="MainPn/HBoxContainer"]
+[node name="BtnExit" type="Button" parent="MainPn/HBoxContainer" unique_id=1022777201]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
@@ -244,7 +244,7 @@ theme_override_font_sizes/font_size = 18
 flat = true
 script = ExtResource("4_xsh0q")
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/BtnExit"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/BtnExit" unique_id=2053643645]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -254,7 +254,7 @@ grow_vertical = 2
 texture = ExtResource("8_17kmu")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnExit/TextureRect"]
+[node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnExit/TextureRect" unique_id=229221355]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -273,15 +273,15 @@ text = "EXIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="MainPn/HBoxContainer"]
+[node name="Control" type="Control" parent="MainPn/HBoxContainer" unique_id=1844758031]
 custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
 
-[node name="ContinueTimer" type="Timer" parent="MainPn/HBoxContainer/Control"]
+[node name="ContinueTimer" type="Timer" parent="MainPn/HBoxContainer/Control" unique_id=294053903]
 wait_time = 6.0
 one_shot = true
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/Control" unique_id=1190226450]
 self_modulate = Color(0.140201, 0.116202, 0.116202, 1)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
@@ -295,7 +295,7 @@ grow_vertical = 2
 texture = ExtResource("7_11gwx")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MainPn/HBoxContainer/Control"]
+[node name="TextureRect2" type="TextureRect" parent="MainPn/HBoxContainer/Control" unique_id=1491142938]
 self_modulate = Color(0.408353, 0.408353, 0.408353, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -312,7 +312,7 @@ grow_vertical = 2
 texture = ExtResource("6_hnshh")
 expand_mode = 1
 
-[node name="ContinueTimeNode" type="TextureProgressBar" parent="MainPn/HBoxContainer/Control"]
+[node name="ContinueTimeNode" type="TextureProgressBar" parent="MainPn/HBoxContainer/Control" unique_id=474517923]
 self_modulate = Color(0.890348, 0.6586, 0.0148031, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -335,7 +335,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("6_hnshh")
 
-[node name="ContinueTimeLb" type="Label" parent="MainPn/HBoxContainer/Control/ContinueTimeNode"]
+[node name="ContinueTimeLb" type="Label" parent="MainPn/HBoxContainer/Control/ContinueTimeNode" unique_id=1288730433]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -354,7 +354,7 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BtnContinue" type="Button" parent="MainPn/HBoxContainer"]
+[node name="BtnContinue" type="Button" parent="MainPn/HBoxContainer" unique_id=1185616684]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2qycw")
@@ -362,7 +362,7 @@ theme_override_font_sizes/font_size = 18
 flat = true
 script = ExtResource("4_xsh0q")
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/BtnContinue"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxContainer/BtnContinue" unique_id=801043263]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -372,7 +372,7 @@ grow_vertical = 2
 texture = ExtResource("12_tifh7")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnContinue"]
+[node name="Label" type="Label" parent="MainPn/HBoxContainer/BtnContinue" unique_id=1675852788]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -391,10 +391,10 @@ text = "CONTINUE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackgroundParticles" parent="MainPn" instance=ExtResource("2_t0g3t")]
+[node name="BackgroundParticles" parent="MainPn" unique_id=137319349 instance=ExtResource("2_t0g3t")]
 position = Vector2(365, 258)
 
-[node name="Panel" type="Panel" parent="MainPn"]
+[node name="Panel" type="Panel" parent="MainPn" unique_id=559703951]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -410,7 +410,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xm2sr")
 
-[node name="Label" type="Label" parent="MainPn/Panel"]
+[node name="Label" type="Label" parent="MainPn/Panel" unique_id=941284799]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 5
@@ -428,7 +428,7 @@ text = "REWARDS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxRewards" type="HBoxContainer" parent="MainPn/Panel"]
+[node name="HBoxRewards" type="HBoxContainer" parent="MainPn/Panel" unique_id=863227501]
 modulate = Color(1, 1, 1, 0.831373)
 layout_mode = 1
 anchors_preset = 8
@@ -445,10 +445,10 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ResultRewardNode" parent="MainPn/Panel/HBoxRewards" instance=ExtResource("14_35h3i")]
+[node name="ResultRewardNode" parent="MainPn/Panel/HBoxRewards" unique_id=582613638 instance=ExtResource("14_35h3i")]
 layout_mode = 2
 
-[node name="HBoxTeam" type="HBoxContainer" parent="MainPn"]
+[node name="HBoxTeam" type="HBoxContainer" parent="MainPn" unique_id=1381571775]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -464,11 +464,11 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Player1Team1" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+[node name="Player1Team1" parent="MainPn/HBoxTeam" unique_id=2060598991 instance=ExtResource("17_l5vj0")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player1Team1" instance=ExtResource("18_iwf68")]
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player1Team1" unique_id=645650026 instance=ExtResource("18_iwf68")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -479,7 +479,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 
-[node name="WinnerImg" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team1"]
+[node name="WinnerImg" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team1" unique_id=741975401]
 material = SubResource("ShaderMaterial_cmurl")
 layout_mode = 1
 anchors_preset = 5
@@ -493,7 +493,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("17_qn74f")
 
-[node name="WinnerImgDouble" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team1"]
+[node name="WinnerImgDouble" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team1" unique_id=1058058188]
 material = SubResource("ShaderMaterial_cmurl")
 layout_mode = 0
 offset_left = 31.0
@@ -503,11 +503,11 @@ offset_bottom = 30.0
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("17_qn74f")
 
-[node name="Player2Team1" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+[node name="Player2Team1" parent="MainPn/HBoxTeam" unique_id=2004752462 instance=ExtResource("17_l5vj0")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player2Team1" instance=ExtResource("18_iwf68")]
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player2Team1" unique_id=1363111047 instance=ExtResource("18_iwf68")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -518,11 +518,11 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 
-[node name="Control" type="Control" parent="MainPn/HBoxTeam"]
+[node name="Control" type="Control" parent="MainPn/HBoxTeam" unique_id=1425809056]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainPn/HBoxTeam/Control"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainPn/HBoxTeam/Control" unique_id=728854577]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -534,7 +534,7 @@ offset_bottom = 29.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="MyTeamScoreLb" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2"]
+[node name="MyTeamScoreLb" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2" unique_id=1831966946]
 self_modulate = Color(0.341176, 0.643137, 0, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -544,7 +544,7 @@ text = "20"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MyTeamScoreLb2" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2"]
+[node name="MyTeamScoreLb2" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2" unique_id=753971222]
 self_modulate = Color(1, 1, 1, 0.564706)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_c54ls")
@@ -553,7 +553,7 @@ text = ":"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OppScoreLb" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2"]
+[node name="OppScoreLb" type="Label" parent="MainPn/HBoxTeam/Control/HBoxContainer2" unique_id=102885870]
 self_modulate = Color(0.880165, 0.212237, 0.144873, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -562,7 +562,7 @@ theme_override_font_sizes/font_size = 35
 text = "20"
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxTeam/Control"]
+[node name="TextureRect" type="TextureRect" parent="MainPn/HBoxTeam/Control" unique_id=334668352]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -579,11 +579,11 @@ texture = ExtResource("18_llwbu")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Player1Team2" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
+[node name="Player1Team2" parent="MainPn/HBoxTeam" unique_id=1186999985 instance=ExtResource("17_l5vj0")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player1Team2" instance=ExtResource("18_iwf68")]
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player1Team2" unique_id=48048945 instance=ExtResource("18_iwf68")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -594,7 +594,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 
-[node name="WinnerImg" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team2"]
+[node name="WinnerImg" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team2" unique_id=1286415556]
 material = SubResource("ShaderMaterial_cmurl")
 layout_mode = 1
 anchors_preset = 5
@@ -608,7 +608,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("17_qn74f")
 
-[node name="WinnerImgDouble" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team2"]
+[node name="WinnerImgDouble" type="TextureRect" parent="MainPn/HBoxTeam/Player1Team2" unique_id=1303078905]
 material = SubResource("ShaderMaterial_cmurl")
 layout_mode = 0
 offset_left = 31.0
@@ -618,12 +618,11 @@ offset_bottom = 30.0
 pivot_offset = Vector2(50, 50)
 texture = ExtResource("17_qn74f")
 
-[node name="Player2Team2" parent="MainPn/HBoxTeam" instance=ExtResource("17_l5vj0")]
-visible = false
+[node name="Player2Team2" parent="MainPn/HBoxTeam" unique_id=1084308585 instance=ExtResource("17_l5vj0")]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player2Team2" instance=ExtResource("18_iwf68")]
+[node name="AvatarFrame" parent="MainPn/HBoxTeam/Player2Team2" unique_id=1838486800 instance=ExtResource("18_iwf68")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

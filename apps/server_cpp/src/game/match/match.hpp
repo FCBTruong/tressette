@@ -91,11 +91,12 @@ constexpr int BOT_MODEL_ADVANCE = 2;
 constexpr int BOT_MODEL_SUPER = 3;
 constexpr int BOT_MODEL_SUPER_V2 = 4;
 
+constexpr int TEAM_ID_1 = 0;
+constexpr int TEAM_ID_2 = 1;
+
 constexpr int TIME_MATCH_MAXIMUM = 60 * 60 * 1000; // 1 hour
 constexpr int TIME_PREPARE_START = 3000; // 3 seconds to prepare start game after room is full
 constexpr uint64_t PLAYER_EMPTY_UID = 0;
-constexpr int TIME_AUTO_PLAY = 15000; // 15 seconds to auto play after player turn
-constexpr int TIME_AUTO_PLAY_SEVERE = 3000; // 3 seconds to auto play after player turn when severe (e.g. last won player is auto play)
 
 const std::vector<int> TRESSETTE_CARDS = [] {
     std::vector<int> v(40);
@@ -140,8 +141,6 @@ public:
     void user_ready(uint64_t uid);
 
     bool check_room_full() const;
-    void user_stop_view(uint64_t uid, bool should_send_back_to_user = true);
-    void user_view_game(uint64_t uid);
     bool check_has_real_players() const;
 
     bool has_user(uint64_t uid) const;
@@ -162,8 +161,15 @@ public:
         return true;
     }
     int hand_suit() const { return hand_suit_; }
-    void handle_play_card(uint64_t uid, int card_id);
+    void handle_play_card(uint64_t uid, int card_id, bool is_auto = false);
     void user_disconnect(uint64_t uid);
+    void set_is_pending_destroyed(bool v) { is_pending_destroyed_ = v; }
+    int point_mode() const { return point_mode_; }
+	const std::vector<int>& cards_compare() const { return cards_compare_; }
+    int point_to_win() const {
+        return point_to_win_;
+    }
+    void test_fill_bots();
 private:
     void user_leave(uint64_t uid, int reason = 0);
     void handle_register_leave_game(uint64_t uid, const packet::RegisterLeaveGame& req);
@@ -182,11 +188,20 @@ private:
     void handle_end_round();
     void handle_draw_card();
     void handle_new_round();
+    bool check_end_game();
+    void update_users_staying_endgame();
+    void handle_game_action_napoli(int64_t uid);
+	void handle_viewer_enter_match(uint64_t uid, int seat_idx);
+    std::vector<std::vector<int>> find_napoli(const std::vector<int>& hand);
+    void check_gen_bot();
+    void schedule_gen_bot();
 private:
     IGameClient& net_;
     UsersInfoMgr& users_info_mgr_;
     UserRemovedCallback on_user_removed_;
 
+    int64_t last_time_changed_player_sec_ = 0;
+    int time_gen_bot_interval_sec_ = 0;
     int64_t match_id_ = 0;
     int player_mode_ = PLAYER_SOLO_MODE;
     int point_mode_ = 21;
@@ -202,19 +217,20 @@ private:
     int hand_in_round_ = 0;
     int point_to_win_ = 0;
     int64_t time_start_ = -1;
-    int64_t time_auto_play_ = -1;
     int last_won_uid_;
+    int win_team_id_ = -1;
+    int bot_start_uid_ = BOT_START_UID;
 
     MatchState state_ = MatchState::Waiting;
     bool is_public_ = true;
     bool is_in_game_ = false;
+	bool is_pending_destroyed_ = false;
 
     std::string unique_match_id_;
     std::string unique_game_id_;
 
     std::vector<MatchPlayer> players_;
     std::set<uint64_t> viewers_;
-    std::unordered_set<uint64_t> users_auto_play_; 
     std::set<uint64_t> register_leave_uids_;
     DelayedTaskQueue delayed_tasks_;
     std::unordered_map<uint64_t, int> napoli_claimed_status_; // uid -> napoli claimed status (0: not claimed, 1: claimed 1/3, 2: claimed 2/3)

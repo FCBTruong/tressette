@@ -146,10 +146,6 @@ func _process(delta: float):
 				/ TIME_THINKING_IN_TURN * 100
 			
 			if user_data.uid == g.v.player_info_mgr.get_user_id():
-				if g.v.scene_manager.INSTANCES.BOARD_SCENE.is_auto_play:
-					if elapsed_time > 3:
-						#g.v.scene_manager.INSTANCES.BOARD_SCENE.game_logic.auto_play_card()
-						end_timer()
 				var time_remain = g.v.game_server_config.time_thinking_in_turn - elapsed_time
 				if time_remain < 5 and not did_alarm_clock:
 					did_alarm_clock = true

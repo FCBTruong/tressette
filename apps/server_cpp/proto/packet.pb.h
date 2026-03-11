@@ -112,9 +112,6 @@ extern EmptyDefaultTypeInternal _Empty_default_instance_;
 class EndGame;
 struct EndGameDefaultTypeInternal;
 extern EndGameDefaultTypeInternal _EndGame_default_instance_;
-class EndHand;
-struct EndHandDefaultTypeInternal;
-extern EndHandDefaultTypeInternal _EndHand_default_instance_;
 class FriendList;
 struct FriendListDefaultTypeInternal;
 extern FriendListDefaultTypeInternal _FriendList_default_instance_;
@@ -337,6 +334,9 @@ extern UserStopViewDefaultTypeInternal _UserStopView_default_instance_;
 class ViewGame;
 struct ViewGameDefaultTypeInternal;
 extern ViewGameDefaultTypeInternal _ViewGame_default_instance_;
+class ViewerJoinMatch;
+struct ViewerJoinMatchDefaultTypeInternal;
+extern ViewerJoinMatchDefaultTypeInternal _ViewerJoinMatch_default_instance_;
 }  // namespace packet
 PROTOBUF_NAMESPACE_OPEN
 template<> ::packet::AddFriend* Arena::CreateMaybeMessage<::packet::AddFriend>(Arena*);
@@ -361,7 +361,6 @@ template<> ::packet::DetailShopPack* Arena::CreateMaybeMessage<::packet::DetailS
 template<> ::packet::DrawCard* Arena::CreateMaybeMessage<::packet::DrawCard>(Arena*);
 template<> ::packet::Empty* Arena::CreateMaybeMessage<::packet::Empty>(Arena*);
 template<> ::packet::EndGame* Arena::CreateMaybeMessage<::packet::EndGame>(Arena*);
-template<> ::packet::EndHand* Arena::CreateMaybeMessage<::packet::EndHand>(Arena*);
 template<> ::packet::FriendList* Arena::CreateMaybeMessage<::packet::FriendList>(Arena*);
 template<> ::packet::FriendRequestAccepted* Arena::CreateMaybeMessage<::packet::FriendRequestAccepted>(Arena*);
 template<> ::packet::FriendRequests* Arena::CreateMaybeMessage<::packet::FriendRequests>(Arena*);
@@ -436,6 +435,7 @@ template<> ::packet::UserInventory* Arena::CreateMaybeMessage<::packet::UserInve
 template<> ::packet::UserLeaveMatch* Arena::CreateMaybeMessage<::packet::UserLeaveMatch>(Arena*);
 template<> ::packet::UserStopView* Arena::CreateMaybeMessage<::packet::UserStopView>(Arena*);
 template<> ::packet::ViewGame* Arena::CreateMaybeMessage<::packet::ViewGame>(Arena*);
+template<> ::packet::ViewerJoinMatch* Arena::CreateMaybeMessage<::packet::ViewerJoinMatch>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace packet {
 
@@ -677,8 +677,10 @@ class Packet final :
 
   enum : int {
     kTokenFieldNumber = 1,
-    kPayloadFieldNumber = 3,
+    kPayloadFieldNumber = 5,
+    kTimestampFieldNumber = 3,
     kCmdIdFieldNumber = 2,
+    kPacketIdFieldNumber = 4,
   };
   // string token = 1;
   void clear_token();
@@ -694,7 +696,7 @@ class Packet final :
   std::string* _internal_mutable_token();
   public:
 
-  // bytes payload = 3;
+  // bytes payload = 5;
   void clear_payload();
   const std::string& payload() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -708,6 +710,15 @@ class Packet final :
   std::string* _internal_mutable_payload();
   public:
 
+  // int64 timestamp = 3;
+  void clear_timestamp();
+  int64_t timestamp() const;
+  void set_timestamp(int64_t value);
+  private:
+  int64_t _internal_timestamp() const;
+  void _internal_set_timestamp(int64_t value);
+  public:
+
   // int32 cmd_id = 2;
   void clear_cmd_id();
   int32_t cmd_id() const;
@@ -715,6 +726,15 @@ class Packet final :
   private:
   int32_t _internal_cmd_id() const;
   void _internal_set_cmd_id(int32_t value);
+  public:
+
+  // int32 packet_id = 4;
+  void clear_packet_id();
+  int32_t packet_id() const;
+  void set_packet_id(int32_t value);
+  private:
+  int32_t _internal_packet_id() const;
+  void _internal_set_packet_id(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:packet.Packet)
@@ -726,7 +746,9 @@ class Packet final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_;
+  int64_t timestamp_;
   int32_t cmd_id_;
+  int32_t packet_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
 };
@@ -3598,17 +3620,40 @@ class PlayCard final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kPlayerPointsFieldNumber = 11,
     kUidFieldNumber = 1,
     kCardIdFieldNumber = 2,
     kCurrentTurnFieldNumber = 4,
     kHandSuitFieldNumber = 5,
-    kAutoFieldNumber = 3,
+    kIsAutoFieldNumber = 3,
     kIsEndHandFieldNumber = 6,
     kIsEndRoundFieldNumber = 9,
     kWinUidFieldNumber = 7,
     kWinPointFieldNumber = 8,
     kWinCardFieldNumber = 10,
   };
+  // repeated int32 player_points = 11;
+  int player_points_size() const;
+  private:
+  int _internal_player_points_size() const;
+  public:
+  void clear_player_points();
+  private:
+  int32_t _internal_player_points(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+      _internal_player_points() const;
+  void _internal_add_player_points(int32_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+      _internal_mutable_player_points();
+  public:
+  int32_t player_points(int index) const;
+  void set_player_points(int index, int32_t value);
+  void add_player_points(int32_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+      player_points() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+      mutable_player_points();
+
   // int32 uid = 1;
   void clear_uid();
   int32_t uid() const;
@@ -3645,13 +3690,13 @@ class PlayCard final :
   void _internal_set_hand_suit(int32_t value);
   public:
 
-  // bool auto = 3;
-  void clear_auto_();
-  bool auto_() const;
-  void set_auto_(bool value);
+  // bool is_auto = 3;
+  void clear_is_auto();
+  bool is_auto() const;
+  void set_is_auto(bool value);
   private:
-  bool _internal_auto_() const;
-  void _internal_set_auto_(bool value);
+  bool _internal_is_auto() const;
+  void _internal_set_is_auto(bool value);
   public:
 
   // bool is_end_hand = 6;
@@ -3706,11 +3751,13 @@ class PlayCard final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > player_points_;
+  mutable std::atomic<int> _player_points_cached_byte_size_;
   int32_t uid_;
   int32_t card_id_;
   int32_t current_turn_;
   int32_t hand_suit_;
-  bool auto__;
+  bool is_auto_;
   bool is_end_hand_;
   bool is_end_round_;
   int32_t win_uid_;
@@ -4214,207 +4261,6 @@ class UpdateGamePoint final :
 };
 // -------------------------------------------------------------------
 
-class EndHand final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.EndHand) */ {
- public:
-  inline EndHand() : EndHand(nullptr) {}
-  ~EndHand() override;
-  explicit PROTOBUF_CONSTEXPR EndHand(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  EndHand(const EndHand& from);
-  EndHand(EndHand&& from) noexcept
-    : EndHand() {
-    *this = ::std::move(from);
-  }
-
-  inline EndHand& operator=(const EndHand& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline EndHand& operator=(EndHand&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const EndHand& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const EndHand* internal_default_instance() {
-    return reinterpret_cast<const EndHand*>(
-               &_EndHand_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    18;
-
-  friend void swap(EndHand& a, EndHand& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(EndHand* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(EndHand* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  EndHand* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<EndHand>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const EndHand& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const EndHand& from);
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(EndHand* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "packet.EndHand";
-  }
-  protected:
-  explicit EndHand(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kUserPointsFieldNumber = 3,
-    kWinUidFieldNumber = 1,
-    kWinCardFieldNumber = 2,
-    kWinPointFieldNumber = 4,
-    kIsEndRoundFieldNumber = 5,
-  };
-  // repeated int32 user_points = 3;
-  int user_points_size() const;
-  private:
-  int _internal_user_points_size() const;
-  public:
-  void clear_user_points();
-  private:
-  int32_t _internal_user_points(int index) const;
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      _internal_user_points() const;
-  void _internal_add_user_points(int32_t value);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      _internal_mutable_user_points();
-  public:
-  int32_t user_points(int index) const;
-  void set_user_points(int index, int32_t value);
-  void add_user_points(int32_t value);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-      user_points() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-      mutable_user_points();
-
-  // int32 win_uid = 1;
-  void clear_win_uid();
-  int32_t win_uid() const;
-  void set_win_uid(int32_t value);
-  private:
-  int32_t _internal_win_uid() const;
-  void _internal_set_win_uid(int32_t value);
-  public:
-
-  // int32 win_card = 2;
-  void clear_win_card();
-  int32_t win_card() const;
-  void set_win_card(int32_t value);
-  private:
-  int32_t _internal_win_card() const;
-  void _internal_set_win_card(int32_t value);
-  public:
-
-  // int32 win_point = 4;
-  void clear_win_point();
-  int32_t win_point() const;
-  void set_win_point(int32_t value);
-  private:
-  int32_t _internal_win_point() const;
-  void _internal_set_win_point(int32_t value);
-  public:
-
-  // bool is_end_round = 5;
-  void clear_is_end_round();
-  bool is_end_round() const;
-  void set_is_end_round(bool value);
-  private:
-  bool _internal_is_end_round() const;
-  void _internal_set_is_end_round(bool value);
-  public:
-
-  // @@protoc_insertion_point(class_scope:packet.EndHand)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > user_points_;
-  mutable std::atomic<int> _user_points_cached_byte_size_;
-  int32_t win_uid_;
-  int32_t win_card_;
-  int32_t win_point_;
-  bool is_end_round_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_packet_2eproto;
-};
-// -------------------------------------------------------------------
-
 class DrawCard final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.DrawCard) */ {
  public:
@@ -4463,7 +4309,7 @@ class DrawCard final :
                &_DrawCard_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    18;
 
   friend void swap(DrawCard& a, DrawCard& b) {
     a.Swap(&b);
@@ -4620,7 +4466,7 @@ class GeneralInfo final :
                &_GeneralInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    19;
 
   friend void swap(GeneralInfo& a, GeneralInfo& b) {
     a.Swap(&b);
@@ -4841,7 +4687,7 @@ class LevelReward final :
                &_LevelReward_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    20;
 
   friend void swap(LevelReward& a, LevelReward& b) {
     a.Swap(&b);
@@ -5015,7 +4861,7 @@ class ItemReward final :
                &_ItemReward_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    21;
 
   friend void swap(ItemReward& a, ItemReward& b) {
     a.Swap(&b);
@@ -5169,7 +5015,7 @@ class EndGame final :
                &_EndGame_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    22;
 
   friend void swap(EndGame& a, EndGame& b) {
     a.Swap(&b);
@@ -5457,7 +5303,7 @@ class PrepareStartGame final :
                &_PrepareStartGame_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    23;
 
   friend void swap(PrepareStartGame& a, PrepareStartGame& b) {
     a.Swap(&b);
@@ -5600,7 +5446,7 @@ class InGameChatMessage final :
                &_InGameChatMessage_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    24;
 
   friend void swap(InGameChatMessage& a, InGameChatMessage& b) {
     a.Swap(&b);
@@ -5759,7 +5605,7 @@ class PaymentGoogleConsume final :
                &_PaymentGoogleConsume_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    25;
 
   friend void swap(PaymentGoogleConsume& a, PaymentGoogleConsume& b) {
     a.Swap(&b);
@@ -5976,7 +5822,7 @@ class PaymentSuccess final :
                &_PaymentSuccess_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    27;
+    26;
 
   friend void swap(PaymentSuccess& a, PaymentSuccess& b) {
     a.Swap(&b);
@@ -6155,7 +6001,7 @@ class UpdateMoney final :
                &_UpdateMoney_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    28;
+    27;
 
   friend void swap(UpdateMoney& a, UpdateMoney& b) {
     a.Swap(&b);
@@ -6298,7 +6144,7 @@ class TableList final :
                &_TableList_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    29;
+    28;
 
   friend void swap(TableList& a, TableList& b) {
     a.Swap(&b);
@@ -6630,7 +6476,7 @@ class ShopConfig final :
                &_ShopConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    30;
+    29;
 
   friend void swap(ShopConfig& a, ShopConfig& b) {
     a.Swap(&b);
@@ -6993,7 +6839,7 @@ class DetailShopPack final :
                &_DetailShopPack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    31;
+    30;
 
   friend void swap(DetailShopPack& a, DetailShopPack& b) {
     a.Swap(&b);
@@ -7145,7 +6991,7 @@ class GuestAccount final :
                &_GuestAccount_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    32;
+    31;
 
   friend void swap(GuestAccount& a, GuestAccount& b) {
     a.Swap(&b);
@@ -7293,7 +7139,7 @@ class ChangeAvatar final :
                &_ChangeAvatar_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    33;
+    32;
 
   friend void swap(ChangeAvatar& a, ChangeAvatar& b) {
     a.Swap(&b);
@@ -7436,7 +7282,7 @@ class InGameChatEmoticon final :
                &_InGameChatEmoticon_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    34;
+    33;
 
   friend void swap(InGameChatEmoticon& a, InGameChatEmoticon& b) {
     a.Swap(&b);
@@ -7590,7 +7436,7 @@ class SearchFriend final :
                &_SearchFriend_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    35;
+    34;
 
   friend void swap(SearchFriend& a, SearchFriend& b) {
     a.Swap(&b);
@@ -7733,7 +7579,7 @@ class SearchFriendResponse final :
                &_SearchFriendResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    36;
+    35;
 
   friend void swap(SearchFriendResponse& a, SearchFriendResponse& b) {
     a.Swap(&b);
@@ -7996,7 +7842,7 @@ class CheatGoldUser final :
                &_CheatGoldUser_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    37;
+    36;
 
   friend void swap(CheatGoldUser& a, CheatGoldUser& b) {
     a.Swap(&b);
@@ -8139,7 +7985,7 @@ class FriendList final :
                &_FriendList_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    38;
+    37;
 
   friend void swap(FriendList& a, FriendList& b) {
     a.Swap(&b);
@@ -8496,7 +8342,7 @@ class FriendRequests final :
                &_FriendRequests_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    39;
+    38;
 
   friend void swap(FriendRequests& a, FriendRequests& b) {
     a.Swap(&b);
@@ -8780,7 +8626,7 @@ class AddFriend final :
                &_AddFriend_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    40;
+    39;
 
   friend void swap(AddFriend& a, AddFriend& b) {
     a.Swap(&b);
@@ -8934,7 +8780,7 @@ class RequestFriendAccept final :
                &_RequestFriendAccept_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    41;
+    40;
 
   friend void swap(RequestFriendAccept& a, RequestFriendAccept& b) {
     a.Swap(&b);
@@ -9088,7 +8934,7 @@ class RemoveFriend final :
                &_RemoveFriend_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    42;
+    41;
 
   friend void swap(RemoveFriend& a, RemoveFriend& b) {
     a.Swap(&b);
@@ -9231,7 +9077,7 @@ class NewFriendRequest final :
                &_NewFriendRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    43;
+    42;
 
   friend void swap(NewFriendRequest& a, NewFriendRequest& b) {
     a.Swap(&b);
@@ -9428,7 +9274,7 @@ class FriendRequestAccepted final :
                &_FriendRequestAccepted_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    44;
+    43;
 
   friend void swap(FriendRequestAccepted& a, FriendRequestAccepted& b) {
     a.Swap(&b);
@@ -9636,7 +9482,7 @@ class RecommendFriends final :
                &_RecommendFriends_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    45;
+    44;
 
   friend void swap(RecommendFriends& a, RecommendFriends& b) {
     a.Swap(&b);
@@ -9920,7 +9766,7 @@ class PaymentAppleConsume final :
                &_PaymentAppleConsume_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    46;
+    45;
 
   friend void swap(PaymentAppleConsume& a, PaymentAppleConsume& b) {
     a.Swap(&b);
@@ -10084,7 +9930,7 @@ class PaymentFinishedAppleTransaction final :
                &_PaymentFinishedAppleTransaction_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    47;
+    46;
 
   friend void swap(PaymentFinishedAppleTransaction& a, PaymentFinishedAppleTransaction& b) {
     a.Swap(&b);
@@ -10232,7 +10078,7 @@ class NewRound final :
                &_NewRound_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    48;
+    47;
 
   friend void swap(NewRound& a, NewRound& b) {
     a.Swap(&b);
@@ -10411,7 +10257,7 @@ class CreateTable final :
                &_CreateTable_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    49;
+    48;
 
   friend void swap(CreateTable& a, CreateTable& b) {
     a.Swap(&b);
@@ -10598,7 +10444,7 @@ class JoinTableById final :
                &_JoinTableById_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    50;
+    49;
 
   friend void swap(JoinTableById& a, JoinTableById& b) {
     a.Swap(&b);
@@ -10741,7 +10587,7 @@ class JoinTableResponse final :
                &_JoinTableResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    51;
+    50;
 
   friend void swap(JoinTableResponse& a, JoinTableResponse& b) {
     a.Swap(&b);
@@ -10884,7 +10730,7 @@ class ClaimSupport final :
                &_ClaimSupport_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    52;
+    51;
 
   friend void swap(ClaimSupport& a, ClaimSupport& b) {
     a.Swap(&b);
@@ -11027,7 +10873,7 @@ class AppCodeVersion final :
                &_AppCodeVersion_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    53;
+    52;
 
   friend void swap(AppCodeVersion& a, AppCodeVersion& b) {
     a.Swap(&b);
@@ -11236,7 +11082,7 @@ class PlayCardResponse final :
                &_PlayCardResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    54;
+    53;
 
   friend void swap(PlayCardResponse& a, PlayCardResponse& b) {
     a.Swap(&b);
@@ -11379,7 +11225,7 @@ class CheatViewCardBot final :
                &_CheatViewCardBot_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    55;
+    54;
 
   friend void swap(CheatViewCardBot& a, CheatViewCardBot& b) {
     a.Swap(&b);
@@ -11536,7 +11382,7 @@ class InviteFriendPlay final :
                &_InviteFriendPlay_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    56;
+    55;
 
   friend void swap(InviteFriendPlay& a, InviteFriendPlay& b) {
     a.Swap(&b);
@@ -11690,7 +11536,7 @@ class GameActionNapoli final :
                &_GameActionNapoli_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    57;
+    56;
 
   friend void swap(GameActionNapoli& a, GameActionNapoli& b) {
     a.Swap(&b);
@@ -11869,7 +11715,7 @@ class CustomerServiceReport final :
                &_CustomerServiceReport_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    58;
+    57;
 
   friend void swap(CustomerServiceReport& a, CustomerServiceReport& b) {
     a.Swap(&b);
@@ -12028,7 +11874,7 @@ class AdminBroadcast final :
                &_AdminBroadcast_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    59;
+    58;
 
   friend void swap(AdminBroadcast& a, AdminBroadcast& b) {
     a.Swap(&b);
@@ -12176,7 +12022,7 @@ class PaymentPaypalRequestOrder final :
                &_PaymentPaypalRequestOrder_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    60;
+    59;
 
   friend void swap(PaymentPaypalRequestOrder& a, PaymentPaypalRequestOrder& b) {
     a.Swap(&b);
@@ -12324,7 +12170,7 @@ class PaymentPaypalOrder final :
                &_PaymentPaypalOrder_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    61;
+    60;
 
   friend void swap(PaymentPaypalOrder& a, PaymentPaypalOrder& b) {
     a.Swap(&b);
@@ -12471,7 +12317,7 @@ class QuickPlay final :
                &_QuickPlay_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    62;
+    61;
 
   friend void swap(QuickPlay& a, QuickPlay& b) {
     a.Swap(&b);
@@ -12588,7 +12434,7 @@ class SetteMezzoNewUserJoinMatch final :
                &_SetteMezzoNewUserJoinMatch_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    63;
+    62;
 
   friend void swap(SetteMezzoNewUserJoinMatch& a, SetteMezzoNewUserJoinMatch& b) {
     a.Swap(&b);
@@ -12796,7 +12642,7 @@ class SetteMezzoPrepareStartGame final :
                &_SetteMezzoPrepareStartGame_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    64;
+    63;
 
   friend void swap(SetteMezzoPrepareStartGame& a, SetteMezzoPrepareStartGame& b) {
     a.Swap(&b);
@@ -12964,7 +12810,7 @@ class SetteMezzoGameInfo final :
                &_SetteMezzoGameInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    65;
+    64;
 
   friend void swap(SetteMezzoGameInfo& a, SetteMezzoGameInfo& b) {
     a.Swap(&b);
@@ -13502,7 +13348,7 @@ class SetteMezzoPlayerInfo final :
                &_SetteMezzoPlayerInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    66;
+    65;
 
   friend void swap(SetteMezzoPlayerInfo& a, SetteMezzoPlayerInfo& b) {
     a.Swap(&b);
@@ -13658,7 +13504,7 @@ class SetteMezzoQuickPlay final :
                &_SetteMezzoQuickPlay_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    67;
+    66;
 
   friend void swap(SetteMezzoQuickPlay& a, SetteMezzoQuickPlay& b) {
     a.Swap(&b);
@@ -13775,7 +13621,7 @@ class SetteMezzoStartGame final :
                &_SetteMezzoStartGame_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    68;
+    67;
 
   friend void swap(SetteMezzoStartGame& a, SetteMezzoStartGame& b) {
     a.Swap(&b);
@@ -13957,7 +13803,7 @@ class RankingInfo final :
                &_RankingInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    69;
+    68;
 
   friend void swap(RankingInfo& a, RankingInfo& b) {
     a.Swap(&b);
@@ -14296,7 +14142,7 @@ class RankingResult final :
                &_RankingResult_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    70;
+    69;
 
   friend void swap(RankingResult& a, RankingResult& b) {
     a.Swap(&b);
@@ -14461,7 +14307,7 @@ class RankingClaimReward final :
                &_RankingClaimReward_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    71;
+    70;
 
   friend void swap(RankingClaimReward& a, RankingClaimReward& b) {
     a.Swap(&b);
@@ -14604,7 +14450,7 @@ class UpdateAds final :
                &_UpdateAds_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    72;
+    71;
 
   friend void swap(UpdateAds& a, UpdateAds& b) {
     a.Swap(&b);
@@ -14747,7 +14593,7 @@ class AdsReward final :
                &_AdsReward_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    73;
+    72;
 
   friend void swap(AdsReward& a, AdsReward& b) {
     a.Swap(&b);
@@ -14901,7 +14747,7 @@ class ChangeUserName final :
                &_ChangeUserName_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    74;
+    73;
 
   friend void swap(ChangeUserName& a, ChangeUserName& b) {
     a.Swap(&b);
@@ -15049,7 +14895,7 @@ class SetteMezzoActionHit final :
                &_SetteMezzoActionHit_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    75;
+    74;
 
   friend void swap(SetteMezzoActionHit& a, SetteMezzoActionHit& b) {
     a.Swap(&b);
@@ -15203,7 +15049,7 @@ class SetteMezzoUpdateTurn final :
                &_SetteMezzoUpdateTurn_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    76;
+    75;
 
   friend void swap(SetteMezzoUpdateTurn& a, SetteMezzoUpdateTurn& b) {
     a.Swap(&b);
@@ -15357,7 +15203,7 @@ class SetteMezzoActionStand final :
                &_SetteMezzoActionStand_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    77;
+    76;
 
   friend void swap(SetteMezzoActionStand& a, SetteMezzoActionStand& b) {
     a.Swap(&b);
@@ -15522,7 +15368,7 @@ class SetteMezzoEndGame final :
                &_SetteMezzoEndGame_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    78;
+    77;
 
   friend void swap(SetteMezzoEndGame& a, SetteMezzoEndGame& b) {
     a.Swap(&b);
@@ -15778,7 +15624,7 @@ class SetteMezzoShowBankerCard final :
                &_SetteMezzoShowBankerCard_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    79;
+    78;
 
   friend void swap(SetteMezzoShowBankerCard& a, SetteMezzoShowBankerCard& b) {
     a.Swap(&b);
@@ -15921,7 +15767,7 @@ class SetteMezzoUserBet final :
                &_SetteMezzoUserBet_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    80;
+    79;
 
   friend void swap(SetteMezzoUserBet& a, SetteMezzoUserBet& b) {
     a.Swap(&b);
@@ -16075,7 +15921,7 @@ class ViewGame final :
                &_ViewGame_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    81;
+    80;
 
   friend void swap(ViewGame& a, ViewGame& b) {
     a.Swap(&b);
@@ -16218,7 +16064,7 @@ class UserStopView final :
                &_UserStopView_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    82;
+    81;
 
   friend void swap(UserStopView& a, UserStopView& b) {
     a.Swap(&b);
@@ -16361,7 +16207,7 @@ class NewUserView final :
                &_NewUserView_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    83;
+    82;
 
   friend void swap(NewUserView& a, NewUserView& b) {
     a.Swap(&b);
@@ -16547,7 +16393,7 @@ class CheatExpUser final :
                &_CheatExpUser_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    84;
+    83;
 
   friend void swap(CheatExpUser& a, CheatExpUser& b) {
     a.Swap(&b);
@@ -16690,7 +16536,7 @@ class UpdateExp final :
                &_UpdateExp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    85;
+    84;
 
   friend void swap(UpdateExp& a, UpdateExp& b) {
     a.Swap(&b);
@@ -16833,7 +16679,7 @@ class ClaimRewardLevel final :
                &_ClaimRewardLevel_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    86;
+    85;
 
   friend void swap(ClaimRewardLevel& a, ClaimRewardLevel& b) {
     a.Swap(&b);
@@ -16976,7 +16822,7 @@ class UserInventory final :
                &_UserInventory_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    87;
+    86;
 
   friend void swap(UserInventory& a, UserInventory& b) {
     a.Swap(&b);
@@ -17128,7 +16974,7 @@ class InvetoryItem final :
                &_InvetoryItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    88;
+    87;
 
   friend void swap(InvetoryItem& a, InvetoryItem& b) {
     a.Swap(&b);
@@ -17293,7 +17139,7 @@ class UseItem final :
                &_UseItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    89;
+    88;
 
   friend void swap(UseItem& a, UseItem& b) {
     a.Swap(&b);
@@ -17436,7 +17282,7 @@ class CheatItem final :
                &_CheatItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    90;
+    89;
 
   friend void swap(CheatItem& a, CheatItem& b) {
     a.Swap(&b);
@@ -17590,7 +17436,7 @@ class BuyItem final :
                &_BuyItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    91;
+    90;
 
   friend void swap(BuyItem& a, BuyItem& b) {
     a.Swap(&b);
@@ -17744,7 +17590,7 @@ class InventoryShopConfig final :
                &_InventoryShopConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    92;
+    91;
 
   friend void swap(InventoryShopConfig& a, InventoryShopConfig& b) {
     a.Swap(&b);
@@ -17896,7 +17742,7 @@ class InventoryShopItem final :
                &_InventoryShopItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    93;
+    92;
 
   friend void swap(InventoryShopItem& a, InventoryShopItem& b) {
     a.Swap(&b);
@@ -18059,7 +17905,7 @@ class InvetoryShopPack final :
                &_InvetoryShopPack_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    94;
+    93;
 
   friend void swap(InvetoryShopPack& a, InvetoryShopPack& b) {
     a.Swap(&b);
@@ -18224,7 +18070,7 @@ class ClaimRewardLevelResponse final :
                &_ClaimRewardLevelResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    95;
+    94;
 
   friend void swap(ClaimRewardLevelResponse& a, ClaimRewardLevelResponse& b) {
     a.Swap(&b);
@@ -18398,7 +18244,7 @@ class RewardInventoryItem final :
                &_RewardInventoryItem_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    96;
+    95;
 
   friend void swap(RewardInventoryItem& a, RewardInventoryItem& b) {
     a.Swap(&b);
@@ -18513,6 +18359,149 @@ class RewardInventoryItem final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ViewerJoinMatch final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:packet.ViewerJoinMatch) */ {
+ public:
+  inline ViewerJoinMatch() : ViewerJoinMatch(nullptr) {}
+  ~ViewerJoinMatch() override;
+  explicit PROTOBUF_CONSTEXPR ViewerJoinMatch(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ViewerJoinMatch(const ViewerJoinMatch& from);
+  ViewerJoinMatch(ViewerJoinMatch&& from) noexcept
+    : ViewerJoinMatch() {
+    *this = ::std::move(from);
+  }
+
+  inline ViewerJoinMatch& operator=(const ViewerJoinMatch& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ViewerJoinMatch& operator=(ViewerJoinMatch&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ViewerJoinMatch& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ViewerJoinMatch* internal_default_instance() {
+    return reinterpret_cast<const ViewerJoinMatch*>(
+               &_ViewerJoinMatch_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    96;
+
+  friend void swap(ViewerJoinMatch& a, ViewerJoinMatch& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ViewerJoinMatch* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ViewerJoinMatch* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ViewerJoinMatch* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ViewerJoinMatch>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ViewerJoinMatch& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ViewerJoinMatch& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ViewerJoinMatch* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "packet.ViewerJoinMatch";
+  }
+  protected:
+  explicit ViewerJoinMatch(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSeatIdxFieldNumber = 1,
+  };
+  // int32 seat_idx = 1;
+  void clear_seat_idx();
+  int32_t seat_idx() const;
+  void set_seat_idx(int32_t value);
+  private:
+  int32_t _internal_seat_idx() const;
+  void _internal_set_seat_idx(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:packet.ViewerJoinMatch)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  int32_t seat_idx_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_packet_2eproto;
+};
 // ===================================================================
 
 
@@ -18598,7 +18587,47 @@ inline void Packet::set_cmd_id(int32_t value) {
   // @@protoc_insertion_point(field_set:packet.Packet.cmd_id)
 }
 
-// bytes payload = 3;
+// int64 timestamp = 3;
+inline void Packet::clear_timestamp() {
+  timestamp_ = int64_t{0};
+}
+inline int64_t Packet::_internal_timestamp() const {
+  return timestamp_;
+}
+inline int64_t Packet::timestamp() const {
+  // @@protoc_insertion_point(field_get:packet.Packet.timestamp)
+  return _internal_timestamp();
+}
+inline void Packet::_internal_set_timestamp(int64_t value) {
+  
+  timestamp_ = value;
+}
+inline void Packet::set_timestamp(int64_t value) {
+  _internal_set_timestamp(value);
+  // @@protoc_insertion_point(field_set:packet.Packet.timestamp)
+}
+
+// int32 packet_id = 4;
+inline void Packet::clear_packet_id() {
+  packet_id_ = 0;
+}
+inline int32_t Packet::_internal_packet_id() const {
+  return packet_id_;
+}
+inline int32_t Packet::packet_id() const {
+  // @@protoc_insertion_point(field_get:packet.Packet.packet_id)
+  return _internal_packet_id();
+}
+inline void Packet::_internal_set_packet_id(int32_t value) {
+  
+  packet_id_ = value;
+}
+inline void Packet::set_packet_id(int32_t value) {
+  _internal_set_packet_id(value);
+  // @@protoc_insertion_point(field_set:packet.Packet.packet_id)
+}
+
+// bytes payload = 5;
 inline void Packet::clear_payload() {
   payload_.ClearToEmpty();
 }
@@ -21366,24 +21395,24 @@ inline void PlayCard::set_card_id(int32_t value) {
   // @@protoc_insertion_point(field_set:packet.PlayCard.card_id)
 }
 
-// bool auto = 3;
-inline void PlayCard::clear_auto_() {
-  auto__ = false;
+// bool is_auto = 3;
+inline void PlayCard::clear_is_auto() {
+  is_auto_ = false;
 }
-inline bool PlayCard::_internal_auto_() const {
-  return auto__;
+inline bool PlayCard::_internal_is_auto() const {
+  return is_auto_;
 }
-inline bool PlayCard::auto_() const {
-  // @@protoc_insertion_point(field_get:packet.PlayCard.auto)
-  return _internal_auto_();
+inline bool PlayCard::is_auto() const {
+  // @@protoc_insertion_point(field_get:packet.PlayCard.is_auto)
+  return _internal_is_auto();
 }
-inline void PlayCard::_internal_set_auto_(bool value) {
+inline void PlayCard::_internal_set_is_auto(bool value) {
   
-  auto__ = value;
+  is_auto_ = value;
 }
-inline void PlayCard::set_auto_(bool value) {
-  _internal_set_auto_(value);
-  // @@protoc_insertion_point(field_set:packet.PlayCard.auto)
+inline void PlayCard::set_is_auto(bool value) {
+  _internal_set_is_auto(value);
+  // @@protoc_insertion_point(field_set:packet.PlayCard.is_auto)
 }
 
 // int32 current_turn = 4;
@@ -21524,6 +21553,53 @@ inline void PlayCard::_internal_set_win_card(int32_t value) {
 inline void PlayCard::set_win_card(int32_t value) {
   _internal_set_win_card(value);
   // @@protoc_insertion_point(field_set:packet.PlayCard.win_card)
+}
+
+// repeated int32 player_points = 11;
+inline int PlayCard::_internal_player_points_size() const {
+  return player_points_.size();
+}
+inline int PlayCard::player_points_size() const {
+  return _internal_player_points_size();
+}
+inline void PlayCard::clear_player_points() {
+  player_points_.Clear();
+}
+inline int32_t PlayCard::_internal_player_points(int index) const {
+  return player_points_.Get(index);
+}
+inline int32_t PlayCard::player_points(int index) const {
+  // @@protoc_insertion_point(field_get:packet.PlayCard.player_points)
+  return _internal_player_points(index);
+}
+inline void PlayCard::set_player_points(int index, int32_t value) {
+  player_points_.Set(index, value);
+  // @@protoc_insertion_point(field_set:packet.PlayCard.player_points)
+}
+inline void PlayCard::_internal_add_player_points(int32_t value) {
+  player_points_.Add(value);
+}
+inline void PlayCard::add_player_points(int32_t value) {
+  _internal_add_player_points(value);
+  // @@protoc_insertion_point(field_add:packet.PlayCard.player_points)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+PlayCard::_internal_player_points() const {
+  return player_points_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+PlayCard::player_points() const {
+  // @@protoc_insertion_point(field_list:packet.PlayCard.player_points)
+  return _internal_player_points();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+PlayCard::_internal_mutable_player_points() {
+  return &player_points_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+PlayCard::mutable_player_points() {
+  // @@protoc_insertion_point(field_mutable_list:packet.PlayCard.player_points)
+  return _internal_mutable_player_points();
 }
 
 // -------------------------------------------------------------------
@@ -21717,137 +21793,6 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
 UpdateGamePoint::mutable_points() {
   // @@protoc_insertion_point(field_mutable_list:packet.UpdateGamePoint.points)
   return _internal_mutable_points();
-}
-
-// -------------------------------------------------------------------
-
-// EndHand
-
-// int32 win_uid = 1;
-inline void EndHand::clear_win_uid() {
-  win_uid_ = 0;
-}
-inline int32_t EndHand::_internal_win_uid() const {
-  return win_uid_;
-}
-inline int32_t EndHand::win_uid() const {
-  // @@protoc_insertion_point(field_get:packet.EndHand.win_uid)
-  return _internal_win_uid();
-}
-inline void EndHand::_internal_set_win_uid(int32_t value) {
-  
-  win_uid_ = value;
-}
-inline void EndHand::set_win_uid(int32_t value) {
-  _internal_set_win_uid(value);
-  // @@protoc_insertion_point(field_set:packet.EndHand.win_uid)
-}
-
-// int32 win_card = 2;
-inline void EndHand::clear_win_card() {
-  win_card_ = 0;
-}
-inline int32_t EndHand::_internal_win_card() const {
-  return win_card_;
-}
-inline int32_t EndHand::win_card() const {
-  // @@protoc_insertion_point(field_get:packet.EndHand.win_card)
-  return _internal_win_card();
-}
-inline void EndHand::_internal_set_win_card(int32_t value) {
-  
-  win_card_ = value;
-}
-inline void EndHand::set_win_card(int32_t value) {
-  _internal_set_win_card(value);
-  // @@protoc_insertion_point(field_set:packet.EndHand.win_card)
-}
-
-// repeated int32 user_points = 3;
-inline int EndHand::_internal_user_points_size() const {
-  return user_points_.size();
-}
-inline int EndHand::user_points_size() const {
-  return _internal_user_points_size();
-}
-inline void EndHand::clear_user_points() {
-  user_points_.Clear();
-}
-inline int32_t EndHand::_internal_user_points(int index) const {
-  return user_points_.Get(index);
-}
-inline int32_t EndHand::user_points(int index) const {
-  // @@protoc_insertion_point(field_get:packet.EndHand.user_points)
-  return _internal_user_points(index);
-}
-inline void EndHand::set_user_points(int index, int32_t value) {
-  user_points_.Set(index, value);
-  // @@protoc_insertion_point(field_set:packet.EndHand.user_points)
-}
-inline void EndHand::_internal_add_user_points(int32_t value) {
-  user_points_.Add(value);
-}
-inline void EndHand::add_user_points(int32_t value) {
-  _internal_add_user_points(value);
-  // @@protoc_insertion_point(field_add:packet.EndHand.user_points)
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-EndHand::_internal_user_points() const {
-  return user_points_;
-}
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
-EndHand::user_points() const {
-  // @@protoc_insertion_point(field_list:packet.EndHand.user_points)
-  return _internal_user_points();
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-EndHand::_internal_mutable_user_points() {
-  return &user_points_;
-}
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
-EndHand::mutable_user_points() {
-  // @@protoc_insertion_point(field_mutable_list:packet.EndHand.user_points)
-  return _internal_mutable_user_points();
-}
-
-// int32 win_point = 4;
-inline void EndHand::clear_win_point() {
-  win_point_ = 0;
-}
-inline int32_t EndHand::_internal_win_point() const {
-  return win_point_;
-}
-inline int32_t EndHand::win_point() const {
-  // @@protoc_insertion_point(field_get:packet.EndHand.win_point)
-  return _internal_win_point();
-}
-inline void EndHand::_internal_set_win_point(int32_t value) {
-  
-  win_point_ = value;
-}
-inline void EndHand::set_win_point(int32_t value) {
-  _internal_set_win_point(value);
-  // @@protoc_insertion_point(field_set:packet.EndHand.win_point)
-}
-
-// bool is_end_round = 5;
-inline void EndHand::clear_is_end_round() {
-  is_end_round_ = false;
-}
-inline bool EndHand::_internal_is_end_round() const {
-  return is_end_round_;
-}
-inline bool EndHand::is_end_round() const {
-  // @@protoc_insertion_point(field_get:packet.EndHand.is_end_round)
-  return _internal_is_end_round();
-}
-inline void EndHand::_internal_set_is_end_round(bool value) {
-  
-  is_end_round_ = value;
-}
-inline void EndHand::set_is_end_round(bool value) {
-  _internal_set_is_end_round(value);
-  // @@protoc_insertion_point(field_set:packet.EndHand.is_end_round)
 }
 
 // -------------------------------------------------------------------
@@ -30230,6 +30175,30 @@ inline void RewardInventoryItem::_internal_set_value(int32_t value) {
 inline void RewardInventoryItem::set_value(int32_t value) {
   _internal_set_value(value);
   // @@protoc_insertion_point(field_set:packet.RewardInventoryItem.value)
+}
+
+// -------------------------------------------------------------------
+
+// ViewerJoinMatch
+
+// int32 seat_idx = 1;
+inline void ViewerJoinMatch::clear_seat_idx() {
+  seat_idx_ = 0;
+}
+inline int32_t ViewerJoinMatch::_internal_seat_idx() const {
+  return seat_idx_;
+}
+inline int32_t ViewerJoinMatch::seat_idx() const {
+  // @@protoc_insertion_point(field_get:packet.ViewerJoinMatch.seat_idx)
+  return _internal_seat_idx();
+}
+inline void ViewerJoinMatch::_internal_set_seat_idx(int32_t value) {
+  
+  seat_idx_ = value;
+}
+inline void ViewerJoinMatch::set_seat_idx(int32_t value) {
+  _internal_set_seat_idx(value);
+  // @@protoc_insertion_point(field_set:packet.ViewerJoinMatch.seat_idx)
 }
 
 #ifdef __GNUC__

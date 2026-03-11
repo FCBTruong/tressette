@@ -8,6 +8,10 @@ var time_show_ads = 0
 var has_first_buy: bool = false
 var claimed_levels = []
 var price_change_name = 0
+
+func _init() -> void:
+	pass
+	
 func get_user_id():
 	return my_user_data.uid
 	
@@ -34,86 +38,15 @@ func _on_receive_info(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UserInfo.new()
 	packet.from_bytes(bytes)
 	my_user_data.uid = packet.get_uid()
-	my_user_data.name = packet.get_name()
-	my_user_data.gold = packet.get_gold()
-	my_user_data.avatar = packet.get_avatar()
-	my_user_data.win_count = packet.get_win_count()
-	my_user_data.game_count = packet.get_game_count()
-	my_user_data.exp = packet.get_exp()
-	#my_user_data.exp = 5033
-	my_user_data.avatar_third_party = packet.get_avatar_third_party()
-	support_num = packet.get_support_num()
-	startup_gold = packet.get_startup_gold()
-	has_first_buy = packet.get_has_first_buy()
-	time_show_ads = packet.get_time_show_ads()
-	login_type = packet.get_login_type()
-	time_ads_reward = packet.get_time_ads_reward()
-	my_user_data.avatar_frame = packet.get_avatar_frame()
-	claimed_levels = packet.get_claimed_levels()
-	price_change_name = packet.get_price_change_name()
-	#my_user_data.avatar_frame = g.v.game_constants.AVATAR_FRAME_IDS.VICTORY
-	if time_ads_reward == -1:
-		enable_ads_reward = false
-	else:
-		enable_ads_reward = true
-		
-	my_user_data.is_verified = login_type != g.v.game_constants.LOGIN_TYPE.GUEST
-	
-	if g.v.config.get_platform() == g.v.config.PLATFORMS.WEB:
-		has_first_buy = false
-	
-	if has_first_buy:
-		# this should check cache of client, because countdown time client manage
-		time_end_offer = g.v.storage_cache.fetch("first_buy_offer_time" + str(self.get_user_id()), 0)
-		
-		if time_end_offer < g.v.game_manager.get_timestamp_client():
-			if time_end_offer > g.v.game_manager.get_timestamp_client() - 86400 * 3: # days
-				has_first_buy = false
-				# due to offer just expired, need to cooldown
-			else:
-				# regen time end offer
-				time_end_offer = g.v.game_manager.get_timestamp_client() + 86400
-				# save to cache
-				g.v.storage_cache.store("first_buy_offer_time" + str(self.get_user_id()), time_end_offer)
-	if has_first_buy and my_user_data.game_count > 0:
-		g.v.popup_mgr.add_popup("res://scenes/lobby/FirstBuyGUI.tscn")
-	
-	if login_type == g.v.game_constants.LOGIN_TYPE.GUEST:
-		if my_user_data.game_count > 2:
-			var last_time_remind_link = g.v.storage_cache.fetch("link_acc_remind", 0)
-			var remind_link_times = g.v.storage_cache.fetch("remind_link_times", 0)
-			if remind_link_times < 5 and last_time_remind_link < g.v.game_manager.get_timestamp_client() - 86400:			
-				g.v.popup_mgr.add_popup("res://scenes/lobby/LinkAccountGUI.tscn")
-				g.v.storage_cache.store("link_acc_remind", g.v.game_manager.get_timestamp_client())
-				g.v.storage_cache.store("remind_link_times", remind_link_times + 1)
-	print('on_receive_userinfo', my_user_data.uid, ' ', my_user_data.win_count)
-	
-	if is_linking_acc:
-		if login_type != g.v.game_constants.LOGIN_TYPE.GUEST:
-			if uid_linking == my_user_data.uid:
-				# link successfully
-				g.v.scene_manager.show_ok_dialog(tr("LINK_ACCOUNT_SUCCESS"))
-			else:
-				g.v.scene_manager.show_ok_dialog(tr("CANNOT_LINK_ACCOUNT"))
-		is_linking_acc = false
-		
-	if enable_ads_reward and time_ads_reward < g.v.game_manager.get_timestamp_server():
-		# add popup watch ads
-		g.v.popup_mgr.add_popup("res://scenes/lobby/WatchAdsGUI.tscn")
-		
-	# add popup change user name
-	#if self.my_user_data.game_count > 3 and my_user_data.name == 'tressette player':
-		#g.v.popup_mgr.add_popup("res://scenes/lobby/ChangeUserNameGUI.tscn")
-	
-	if self.my_user_data.game_count > 2:
-		var sette_times = g.v.storage_cache.fetch("sette_mezzo_play", 0)
-		if sette_times < 3:
-			g.v.popup_mgr.add_popup("res://scenes/sette_mezzo/SetteMezzoIntroGUI.tscn")
-	
-	var should_ask_support = packet.get_add_for_user_support()
-	if self.has_first_buy:
-		if should_ask_support:
-			_handle_ask_for_support()
+	var key_gold = GameConstants.STORAGE_KEY_GOLD
+	var current_gold = g.v.storage_cache.fetch(
+		key_gold,
+		0
+	)
+	my_user_data.gold = current_gold
+	update_using_frame(g.v.inventory_mgr.current_avatar_frame)
+	#on_update_avatar(g.v.inventory_mgr.current_avatar)
+
 func _on_update_money(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateMoney.new()
 	packet.from_bytes(bytes)
@@ -178,3 +111,23 @@ func get_avatar_id_using() -> int:
 		return -1
 	else:
 		return int(my_user_data.avatar)
+		
+func consume_money(money: int):
+	my_user_data.gold = max(0, my_user_data.gold - money)
+	g.v.signal_bus.emit_signal_global('on_update_money')
+	
+	var key_gold = GameConstants.STORAGE_KEY_GOLD
+	g.v.storage_cache.store(
+		key_gold,
+		my_user_data.gold
+	)
+
+func add_money(money: int):
+	my_user_data.gold += money
+	g.v.signal_bus.emit_signal_global('on_update_money')
+	
+	var key_gold = GameConstants.STORAGE_KEY_GOLD
+	g.v.storage_cache.store(
+		key_gold,
+		my_user_data.gold
+	)

@@ -35,9 +35,10 @@ struct UserInfo {
     int num_change_name = 0;
 };
 
+constexpr uint64_t BOT_START_UID = 1000000;
 class UsersInfoMgr {
 public:
-    UsersInfoMgr() = default;
+    UsersInfoMgr();
 
     // Get cached user; create if missing (default values).
     UserInfo get_or_create(uint64_t uid);
@@ -54,16 +55,17 @@ public:
     // Same VIP logic as python: time_show_ads > now.
     bool check_user_vip(uint64_t uid, int64_t now_unix_sec) const;
 
+    int request_bot(); // return bot uid
+    void release_bot(int bot_uid);
 private:
     void handle_change_avatar(uint64_t uid, const std::string& payload);
     void handle_change_user_name(uint64_t uid, const std::string& payload);
-    void handle_cheat_gold_user(uint64_t uid, const std::string& payload);
-    void handle_cheat_exp_user(uint64_t uid, const std::string& payload);
-
     // Helpers
     static std::string trim(std::string s);
 
 private:
     mutable std::mutex mu_;
     std::unordered_map<uint64_t, UserInfo> users_;
+    std::vector<int> available_uids_;
+    std::unordered_set<int> in_use_uids_;
 };

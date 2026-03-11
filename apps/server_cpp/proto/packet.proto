@@ -7,7 +7,9 @@ message Empty {
 message Packet {
   string token = 1;
   int32 cmd_id = 2;        // CMD ID
-  bytes payload = 3;       // Generic payload (serialized message)
+  int64 timestamp = 3;
+  int32 packet_id = 4;
+  bytes payload = 5;       // Generic payload (serialized message)
 }
 
 message ChatMessage {
@@ -131,7 +133,7 @@ message DealCard {
 message PlayCard {
   int32 uid = 1;
   int32 card_id = 2;
-  bool auto = 3;
+  bool is_auto = 3;
   int32 current_turn = 4;
   int32 hand_suit = 5;
   bool is_end_hand = 6;
@@ -139,6 +141,7 @@ message PlayCard {
   int32 win_point = 8;
   bool is_end_round = 9;
   int32 win_card = 10;
+  repeated int32 player_points = 11;
 }
 
 message StartGame {
@@ -153,14 +156,6 @@ message NewHand {
 
 message UpdateGamePoint {
   repeated int32 points = 1;
-}
-
-message EndHand {
-  int32 win_uid = 1;
-  int32 win_card = 2;
-  repeated int32 user_points = 3;
-  int32 win_point = 4;
-  bool is_end_round = 5;
 }
 
 message DrawCard {
@@ -638,4 +633,8 @@ message RewardInventoryItem {
   int32 item_id = 1;
   int32 duration = 2;
   int32 value = 3;
+}
+
+message ViewerJoinMatch {
+  int32 seat_idx = 1;
 }

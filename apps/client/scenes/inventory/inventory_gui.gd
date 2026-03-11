@@ -250,7 +250,7 @@ func _on_buy_btn_pressed() -> void:
 		return
 	var price = cur_shop_pack['price']
 	if price > g.v.player_info_mgr.my_user_data.gold:
-		g.v.game_manager.show_not_gold_recommend_shop()
+		g.v.game_manager.show_not_gold()
 		return
 	var item_id = preview_info.item_id
 	var pack_id = cur_shop_pack['id']

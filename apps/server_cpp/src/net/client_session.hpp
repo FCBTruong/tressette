@@ -26,7 +26,7 @@ public:
 
     void start();
     void send(const packet::Packet& packet);
-    bool send_packet(int cmd_id, const google::protobuf::Message& msg);
+    bool send_packet(int cmd_id, const google::protobuf::Message& msg, int delay_ms = 0);
     void close();
 
     uint64_t session_id() const;
@@ -58,4 +58,5 @@ private:
     bool closed_ = false;
 
     Server& server_;
+    int packet_id_ = 0;
 };

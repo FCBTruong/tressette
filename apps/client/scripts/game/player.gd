@@ -122,10 +122,6 @@ func _process(delta: float):
 				/ g.v.game_server_config.time_thinking_in_turn * 100
 			
 			if user_data.uid == g.v.player_info_mgr.get_user_id():
-				if g.v.scene_manager.INSTANCES.BOARD_SCENE.is_auto_play:
-					if elapsed_time > 3:
-						g.v.scene_manager.INSTANCES.BOARD_SCENE.game_logic.auto_play_card()
-						end_timer()
 				var time_remain = g.v.game_server_config.time_thinking_in_turn - elapsed_time
 				if time_remain < 5 and not did_alarm_clock:
 					did_alarm_clock = true
@@ -147,6 +143,7 @@ func end_timer(out_time=false):
 
 var effect_add_score_scene = preload('res://scenes/board/AddScoreEffect.tscn')
 func effect_add_score(score):
+	print("effect add score", score)
 	if score <= 0:
 		return
 	var main = score / 3
@@ -204,10 +201,9 @@ func _click_open_invite_gui() -> void:
 	pass
 	
 func _click_join_game() -> void:
-	var scene = g.v.scene_manager.get_current_scene()
-	if scene is BoardScene:
-		scene.stop_view_join_game()
-	pass
+	var pkg = g.v.game_constants.PROTOBUF.PACKETS.ViewerJoinMatch.new()
+	pkg.set_seat_idx(user_data.game_data.seat_server_id)
+	g.v.game_client.send_packet(g.v.game_constants.CMDs.VIEWER_JOIN_MATCH, pkg.to_bytes())
 	
 var tw_bonus
 func show_bonus(txt, type=0): # last trick

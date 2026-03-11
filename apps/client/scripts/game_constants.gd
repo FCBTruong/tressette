@@ -63,6 +63,7 @@ const CMDs = {
 	VIEW_GAME = 2024,
 	USER_STOP_VIEW = 2025,
 	NEW_USER_VIEW_GAME = 2026,
+	VIEWER_JOIN_MATCH = 2027,
 	
 	NEW_INGAME_CHAT_MESSAGE = 3000,
 	CHAT_EMOTICON = 3001,
@@ -156,7 +157,7 @@ const DELETE_ACCOUNT_URL = 'https://clareentertainment.my.canva.site/tressette-d
 const PRIVACY_POLICY_URL = 'https://clareentertainment.my.canva.site/tressette-policy'
 const TERMS_OF_SERVICE_URL = 'https://clareentertainment.my.canva.site/term-of-services'
 
-
+const STORAGE_KEY_GOLD = "keygold"
 const GEO_API_URL = "https://ipwhois.app/json/"
 const MAX_SHOW_FANPAGE_LIKE = 3
 const MAX_SHOW_JOIN_GROUP_FB = 3
@@ -209,5 +210,4 @@ const AVATAR_TYPE = 0
 const CARPET_TYPE = 4
 const ITEM_TYPE_STACKABLE = 3 # no expire time
 const VIP_DAYS_TYPE = 5
-
 const ITEM_PERMANENT_TIME = -1
