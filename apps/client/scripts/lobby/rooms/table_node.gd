@@ -6,6 +6,7 @@ extends Node
 @onready var view_btn = find_child("ViewBtn")
 @onready var play_btn = find_child("PlayBtn")
 @onready var private_icon = find_child("PrivateIcon")
+@onready var score_lb = find_child("ScoreLb")
 var _info: TableInfo
 var slots = []
 # Called when the node enters the scene tree for the first time.
@@ -35,14 +36,13 @@ func set_info(table: TableInfo):
 		icon_vs2.visible = true
 		icon_vs1.visible = false
 	
-	if table.num_player == table.player_mode:
-		self.view_btn.visible = true
-		self.play_btn.visible = false
-	else:
-		self.view_btn.visible = false
-		self.play_btn.visible = true
+
+	self.view_btn.visible = false
+	self.play_btn.visible = true
 	
 	private_icon.visible = _info.is_private
+	var scoreA = 0
+	var scoreB = 0
 	for i in range(len(table.player_uids)):
 		var uid = table.player_uids[i]
 		var avatar = table.player_avatars[i]
@@ -55,6 +55,12 @@ func set_info(table: TableInfo):
 		slots[i].find_child("AvatarCircle").visible = true
 		slots[i].find_child("AvatarImg").set_avatar(avatar)
 		slots[i].find_child("AvatarFrame").update_frame_by_id(avatar_frame)
+		if (i % 2 == 0):
+			scoreA += table.player_points[i]
+		else:
+			scoreB += table.player_points[i]
+	score_lb.text = str(scoreA) + " : " + str(scoreB)
+
 
 func _click_play():
 	if self._info.num_player == self._info.player_mode:

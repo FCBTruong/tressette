@@ -70,7 +70,7 @@ func text_submitted(text):
 	print(text)
 	input_field.text = ''
 	user_name = g.v.player_info_mgr.my_user_data.name
-	add_message(g.v.player_info_mgr.my_user_data.uid, user_name, text)
+
 	var pkg = g.v.game_constants.PROTOBUF.PACKETS.InGameChatMessage.new()
 	pkg.set_chat_message(text)
 	g.v.game_client.send_packet(g.v.game_constants.CMDs.NEW_INGAME_CHAT_MESSAGE, pkg.to_bytes())

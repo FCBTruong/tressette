@@ -1,6 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://bajq0x8ksakrb"]
+[gd_scene format=3 uid="uid://bajq0x8ksakrb"]
 
-[ext_resource type="Script" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
+[ext_resource type="Script" uid="uid://bjkaf6y7q4xsa" path="res://scripts/lobby/user_info_gui.gd" id="1_pd1jq"]
 [ext_resource type="Texture2D" uid="uid://ceyy7y3k4olhi" path="res://assets/images/lobby/bg_user_info.png" id="2_mmkv0"]
 [ext_resource type="Texture2D" uid="uid://dg3l1d4ooviad" path="res://assets/images/lobby/user_info_gui/close_btn.png" id="4_228md"]
 [ext_resource type="Texture2D" uid="uid://bxusji6lb1q6e" path="res://assets/images/lobby/avatar_mask.png" id="4_aqih6"]
@@ -12,11 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://dgiytxaol142g" path="res://assets/images/lobby/user_info_gui/verified_icon.png" id="7_y188f"]
 [ext_resource type="Texture2D" uid="uid://c5xihlabuct6y" path="res://assets/images/lobby/user_info_gui/level_icon.png" id="8_5e8xp"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="8_ngl8q"]
-[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
-[ext_resource type="Script" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
+[ext_resource type="Script" uid="uid://cxg1mkp74kffp" path="res://scripts/custom/zoomable_button.gd" id="11_eoxhy"]
+[ext_resource type="Script" uid="uid://b5ccxabx0gpb" path="res://scripts/lobby/avatar.gd" id="11_tjqgq"]
 [ext_resource type="Texture2D" uid="uid://c1qpfhy0ay3r1" path="res://assets/images/lobby/edit_icon.png" id="13_f07n6"]
 [ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="14_fxme8"]
-[ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="14_gxqle"]
+[ext_resource type="Shader" uid="uid://cpoe18uq8xt2q" path="res://shaders/light_highlight.gdshader" id="14_gxqle"]
 [ext_resource type="Texture2D" uid="uid://drmwf5psvwa1h" path="res://assets/images/lobby/user_info_gui/vip_icon.png" id="15_s3gax"]
 [ext_resource type="Texture2D" uid="uid://bsk36sewe4nhv" path="res://assets/images/lobby/add_friend_icon_small.png" id="16_ao60i"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="17_65462"]
@@ -119,7 +119,7 @@ corner_radius_bottom_left = 10
 expand_margin_left = 5.0
 expand_margin_right = 5.0
 
-[node name="UserInfoGui" type="Control"]
+[node name="UserInfoGui" type="Control" unique_id=745632120]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,7 +129,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_pd1jq")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=410428989]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,7 +137,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="ColorRect" parent="Control"]
+[node name="Panel" type="ColorRect" parent="Control" unique_id=1441468181]
 material = SubResource("ShaderMaterial_yaus5")
 layout_mode = 1
 anchors_preset = 15
@@ -147,7 +147,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.615)
 
-[node name="MainPn" type="Control" parent="Control"]
+[node name="MainPn" type="Control" parent="Control" unique_id=1891907408]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -163,7 +163,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(306, 189)
 
-[node name="Panel2" type="Panel" parent="Control/MainPn"]
+[node name="Panel2" type="Panel" parent="Control/MainPn" unique_id=869949386]
 clip_children = 1
 layout_mode = 1
 anchors_preset = 15
@@ -173,7 +173,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qp3k3")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/Panel2"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/Panel2" unique_id=766030531]
 self_modulate = Color(0.591647, 0.591647, 0.591647, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -184,7 +184,7 @@ grow_vertical = 2
 texture = ExtResource("2_mmkv0")
 expand_mode = 1
 
-[node name="HeadPn" type="Panel" parent="Control/MainPn"]
+[node name="HeadPn" type="Panel" parent="Control/MainPn" unique_id=441279343]
 self_modulate = Color(0.299735, 0.209004, 0.209004, 1)
 layout_mode = 1
 anchors_preset = 10
@@ -193,7 +193,7 @@ offset_bottom = 60.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qh3o1")
 
-[node name="CloseBtn" type="Button" parent="Control/MainPn/HeadPn"]
+[node name="CloseBtn" type="Button" parent="Control/MainPn/HeadPn" unique_id=1156159930]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -206,7 +206,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("11_eoxhy")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HeadPn/CloseBtn"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HeadPn/CloseBtn" unique_id=611700770]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -223,7 +223,7 @@ mouse_filter = 2
 texture = ExtResource("4_228md")
 expand_mode = 1
 
-[node name="GoldBg" type="Panel" parent="Control/MainPn/HeadPn"]
+[node name="GoldBg" type="Panel" parent="Control/MainPn/HeadPn" unique_id=1889065460]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -238,7 +238,7 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v17p2")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HeadPn/GoldBg"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HeadPn/GoldBg" unique_id=960178176]
 layout_mode = 0
 offset_left = -16.0
 offset_top = -2.0
@@ -248,7 +248,7 @@ texture = ExtResource("7_vm0bd")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GoldLb" type="Label" parent="Control/MainPn/HeadPn/GoldBg"]
+[node name="GoldLb" type="Label" parent="Control/MainPn/HeadPn/GoldBg" unique_id=2107462254]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -268,7 +268,7 @@ text = "1.000.000
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UserNameLb" type="Label" parent="Control/MainPn"]
+[node name="UserNameLb" type="Label" parent="Control/MainPn" unique_id=864386511]
 modulate = Color(1, 1, 1, 0.928)
 layout_mode = 1
 anchors_preset = 8
@@ -289,7 +289,7 @@ text = "Truong"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VerifiedIcon" type="TextureRect" parent="Control/MainPn/UserNameLb"]
+[node name="VerifiedIcon" type="TextureRect" parent="Control/MainPn/UserNameLb" unique_id=1606025350]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -305,7 +305,7 @@ grow_vertical = 2
 texture = ExtResource("7_y188f")
 expand_mode = 1
 
-[node name="ExpBar" type="ProgressBar" parent="Control/MainPn"]
+[node name="ExpBar" type="ProgressBar" parent="Control/MainPn" unique_id=165211136]
 custom_minimum_size = Vector2(120, 10)
 layout_mode = 1
 anchors_preset = 8
@@ -324,7 +324,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_y27un")
 value = 50.0
 show_percentage = false
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn/ExpBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn/ExpBar" unique_id=1011015671]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -336,7 +336,7 @@ offset_bottom = 30.0
 grow_vertical = 2
 alignment = 2
 
-[node name="LevelLbHead" type="Label" parent="Control/MainPn/ExpBar/HBoxContainer"]
+[node name="LevelLbHead" type="Label" parent="Control/MainPn/ExpBar/HBoxContainer" unique_id=1238617214]
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_b03ik")
@@ -344,11 +344,11 @@ text = "LEVEL"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="Control/MainPn/ExpBar/HBoxContainer"]
+[node name="Control" type="Control" parent="Control/MainPn/ExpBar/HBoxContainer" unique_id=272100352]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/ExpBar/HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/ExpBar/HBoxContainer/Control" unique_id=663109367]
 self_modulate = Color(1, 0.630315, 0.210633, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -365,7 +365,7 @@ grow_vertical = 2
 texture = ExtResource("8_5e8xp")
 expand_mode = 1
 
-[node name="LevelLb" type="Label" parent="Control/MainPn/ExpBar/HBoxContainer/Control/TextureRect"]
+[node name="LevelLb" type="Label" parent="Control/MainPn/ExpBar/HBoxContainer/Control/TextureRect" unique_id=1363173422]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -387,7 +387,7 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExpLb" type="Label" parent="Control/MainPn/ExpBar"]
+[node name="ExpLb" type="Label" parent="Control/MainPn/ExpBar" unique_id=147461318]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -405,7 +405,7 @@ theme_override_font_sizes/font_size = 20
 text = "100/200"
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn" unique_id=804007361]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -420,27 +420,27 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="UidLb2" type="Label" parent="Control/MainPn/HBoxContainer"]
+[node name="UidLb2" type="Label" parent="Control/MainPn/HBoxContainer" unique_id=1749116751]
 modulate = Color(1, 1, 1, 0.891)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 18
 text = "UID:"
 
-[node name="UidLb" type="Label" parent="Control/MainPn/HBoxContainer"]
+[node name="UidLb" type="Label" parent="Control/MainPn/HBoxContainer" unique_id=1119138075]
 modulate = Color(1, 1, 1, 0.891)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 18
 text = "100000"
 
-[node name="CopyBtn" type="Button" parent="Control/MainPn/HBoxContainer"]
+[node name="CopyBtn" type="Button" parent="Control/MainPn/HBoxContainer" unique_id=1615416592]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("11_eoxhy")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HBoxContainer/CopyBtn"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/HBoxContainer/CopyBtn" unique_id=1000816382]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -456,7 +456,7 @@ grow_vertical = 2
 texture = ExtResource("7_sq5rc")
 expand_mode = 1
 
-[node name="PlayStatistic" type="Panel" parent="Control/MainPn"]
+[node name="PlayStatistic" type="Panel" parent="Control/MainPn" unique_id=988261554]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 12
@@ -467,7 +467,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sgqk0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MainPn/PlayStatistic"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MainPn/PlayStatistic" unique_id=1263891452]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -478,61 +478,61 @@ offset_right = 90.0
 offset_bottom = 83.0
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer" unique_id=1164222708]
 layout_mode = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer" unique_id=1382727624]
 self_modulate = Color(1, 1, 1, 0.7)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22
 text = "TOTAL_MATCH"
 
-[node name="GameCountLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer"]
+[node name="GameCountLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer" unique_id=2075125848]
 self_modulate = Color(1, 1, 1, 0.7)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22
 text = "100"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer" unique_id=980514988]
 layout_mode = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer2" unique_id=1464489242]
 self_modulate = Color(1, 1, 1, 0.7)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22
 text = "WIN_RATE"
 
-[node name="WinRateLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer2"]
+[node name="WinRateLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxContainer2" unique_id=1972059987]
 self_modulate = Color(1, 1, 1, 0.7)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22
 text = "50%"
 
-[node name="HBoxPremium" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer"]
+[node name="HBoxPremium" type="HBoxContainer" parent="Control/MainPn/PlayStatistic/VBoxContainer" unique_id=1485822488]
 layout_mode = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium"]
+[node name="Label2" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium" unique_id=1959784336]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.994193, 1, 0.536171, 1)
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22
 text = "PREMIUM"
 
-[node name="PremiumLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium"]
+[node name="PremiumLb" type="Label" parent="Control/MainPn/PlayStatistic/VBoxContainer/HBoxPremium" unique_id=986029886]
 self_modulate = Color(0.915, 1, 0.885, 0.98)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_font_sizes/font_size = 22
 text = "10 days"
 
-[node name="TextureRect2" type="Control" parent="Control/MainPn"]
+[node name="TextureRect2" type="Control" parent="Control/MainPn" unique_id=1111373248]
 self_modulate = Color(0.0156505, 0.030661, 0.394776, 1)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -545,7 +545,7 @@ offset_right = 50.0
 offset_bottom = 85.0
 grow_horizontal = 2
 
-[node name="AvatarNode" type="TextureRect" parent="Control/MainPn/TextureRect2"]
+[node name="AvatarNode" type="TextureRect" parent="Control/MainPn/TextureRect2" unique_id=1708747130]
 self_modulate = Color(0.381198, 0.381198, 0.381198, 1)
 clip_children = 2
 layout_mode = 1
@@ -557,7 +557,7 @@ grow_vertical = 2
 texture = ExtResource("4_aqih6")
 expand_mode = 1
 
-[node name="AvatarImg" type="TextureRect" parent="Control/MainPn/TextureRect2/AvatarNode"]
+[node name="AvatarImg" type="TextureRect" parent="Control/MainPn/TextureRect2/AvatarNode" unique_id=662975063]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -575,7 +575,7 @@ expand_mode = 1
 script = ExtResource("11_tjqgq")
 is_me = false
 
-[node name="InfoBtn" type="Button" parent="Control/MainPn/TextureRect2/AvatarNode/AvatarImg"]
+[node name="InfoBtn" type="Button" parent="Control/MainPn/TextureRect2/AvatarNode/AvatarImg" unique_id=844948317]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -585,7 +585,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("11_eoxhy")
 
-[node name="AvatarFrame" parent="Control/MainPn/TextureRect2" instance=ExtResource("14_fxme8")]
+[node name="AvatarFrame" parent="Control/MainPn/TextureRect2" unique_id=1394452672 instance=ExtResource("14_fxme8")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -595,7 +595,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VipIcon" type="TextureRect" parent="Control/MainPn/TextureRect2"]
+[node name="VipIcon" type="TextureRect" parent="Control/MainPn/TextureRect2" unique_id=49254474]
 material = SubResource("ShaderMaterial_dwvhj")
 layout_mode = 0
 offset_left = -10.0
@@ -605,7 +605,8 @@ offset_bottom = 38.0
 texture = ExtResource("15_s3gax")
 expand_mode = 1
 
-[node name="AvtEditBtn" type="Button" parent="Control/MainPn/TextureRect2"]
+[node name="AvtEditBtn" type="Button" parent="Control/MainPn/TextureRect2" unique_id=835664182]
+visible = false
 layout_mode = 0
 offset_left = 113.0
 offset_top = 30.0
@@ -614,7 +615,7 @@ offset_bottom = 60.0
 flat = true
 script = ExtResource("11_eoxhy")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/TextureRect2/AvtEditBtn"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/TextureRect2/AvtEditBtn" unique_id=1314318760]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -630,7 +631,7 @@ grow_vertical = 2
 texture = ExtResource("13_f07n6")
 expand_mode = 1
 
-[node name="RedDotAvt" type="TextureRect" parent="Control/MainPn/TextureRect2/AvtEditBtn"]
+[node name="RedDotAvt" type="TextureRect" parent="Control/MainPn/TextureRect2/AvtEditBtn" unique_id=1082410496]
 self_modulate = Color(0.95484, 0, 0, 1)
 layout_mode = 0
 offset_left = 28.0
@@ -640,7 +641,7 @@ offset_bottom = 12.0
 texture = ExtResource("17_65462")
 expand_mode = 1
 
-[node name="ButtonPn" type="HBoxContainer" parent="Control/MainPn"]
+[node name="ButtonPn" type="HBoxContainer" parent="Control/MainPn" unique_id=1702154249]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -656,28 +657,28 @@ grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="MailBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+[node name="MailBtn" type="Button" parent="Control/MainPn/ButtonPn" unique_id=444047726]
 layout_mode = 2
 size_flags_vertical = 8
 icon = ExtResource("6_5upxd")
 flat = true
 script = ExtResource("11_eoxhy")
 
-[node name="RequestFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+[node name="RequestFriendBtn" type="Button" parent="Control/MainPn/ButtonPn" unique_id=388028796]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("8_ngl8q")
 theme_override_icons/icon = ExtResource("16_ao60i")
-theme_override_styles/focus = SubResource("StyleBoxFlat_4fk0a")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4fk0a")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4fk0a")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_4fk0a")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4fk0a")
+theme_override_styles/focus = SubResource("StyleBoxFlat_4fk0a")
 text = "ADD_FRIEND"
 script = ExtResource("11_eoxhy")
 
-[node name="FriendRequested" type="Button" parent="Control/MainPn/ButtonPn"]
+[node name="FriendRequested" type="Button" parent="Control/MainPn/ButtonPn" unique_id=1073377109]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 4
@@ -687,7 +688,7 @@ theme_override_icons/icon = ExtResource("16_ao60i")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8i00h")
 text = "REQUESTED"
 
-[node name="FriendStatus" type="Button" parent="Control/MainPn/ButtonPn"]
+[node name="FriendStatus" type="Button" parent="Control/MainPn/ButtonPn" unique_id=1132681591]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 4
@@ -697,37 +698,37 @@ theme_override_icons/icon = ExtResource("17_lnp64")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2epfd")
 text = "FRIENDS"
 
-[node name="AcceptFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+[node name="AcceptFriendBtn" type="Button" parent="Control/MainPn/ButtonPn" unique_id=644610240]
 custom_minimum_size = Vector2(100, 35)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("4_b03ik")
 theme_override_icons/icon = ExtResource("16_ao60i")
-theme_override_styles/focus = SubResource("StyleBoxFlat_qev7t")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qev7t")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qev7t")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_qev7t")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qev7t")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qev7t")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qev7t")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qev7t")
 text = "ACCEPT_FRIEND"
 script = ExtResource("11_eoxhy")
 
-[node name="RejectFriendBtn" type="Button" parent="Control/MainPn/ButtonPn"]
+[node name="RejectFriendBtn" type="Button" parent="Control/MainPn/ButtonPn" unique_id=262693473]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("4_b03ik")
 theme_override_icons/icon = ExtResource("18_jxtpp")
-theme_override_styles/focus = SubResource("StyleBoxFlat_cin67")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_cin67")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cin67")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_cin67")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_cin67")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_cin67")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cin67")
 script = ExtResource("11_eoxhy")
 
-[node name="LinkAccBtn" type="Button" parent="Control/MainPn"]
+[node name="LinkAccBtn" type="Button" parent="Control/MainPn" unique_id=1179754318]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 1
 anchors_preset = 7
@@ -744,7 +745,7 @@ grow_vertical = 0
 flat = true
 script = ExtResource("11_eoxhy")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MainPn/LinkAccBtn"]
+[node name="TextureRect" type="TextureRect" parent="Control/MainPn/LinkAccBtn" unique_id=734830975]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -754,7 +755,7 @@ grow_vertical = 2
 texture = ExtResource("22_65kq0")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Control/MainPn/LinkAccBtn/TextureRect"]
+[node name="Label" type="Label" parent="Control/MainPn/LinkAccBtn/TextureRect" unique_id=751840809]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

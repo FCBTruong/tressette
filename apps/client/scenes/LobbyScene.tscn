@@ -4,30 +4,42 @@
 [ext_resource type="Texture2D" uid="uid://cx6qbrregb73n" path="res://assets/images/lobby.jpg" id="2_k5oqt"]
 [ext_resource type="Script" uid="uid://cxg1mkp74kffp" path="res://scripts/custom/zoomable_button.gd" id="3_x7pan"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_a6ucd"]
-[ext_resource type="Texture2D" uid="uid://cf8ipf82gextw" path="res://assets/images/avatar_01.png" id="4_cni6g"]
 [ext_resource type="Shader" uid="uid://cpoe18uq8xt2q" path="res://shaders/light_highlight.gdshader" id="4_j2d4c"]
-[ext_resource type="Texture2D" uid="uid://ce2xu8i28ghrs" path="res://assets/images/lobby/play_now_btn.png" id="4_nkqsu"]
-[ext_resource type="Texture2D" uid="uid://d2tfe85dyn0yu" path="res://assets/images/card_tressette/classic/4.png" id="7_6d8ha"]
-[ext_resource type="Texture2D" uid="uid://sdy5lv7vlgi0" path="res://assets/images/card_tressette/classic/8.png" id="8_2m2e2"]
-[ext_resource type="Texture2D" uid="uid://t4qbllnxmlnt" path="res://assets/images/card_tressette/classic/0.png" id="9_bp02q"]
+[ext_resource type="Texture2D" uid="uid://bdtg51815bb3m" path="res://assets/images/start_btn.png" id="5_34sax"]
 [ext_resource type="Texture2D" uid="uid://dhq5itq645pou" path="res://assets/images/lobby/buttons/setting_btn.png" id="11_cafaj"]
-[ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="11_pgu6f"]
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="12_hwrjc"]
 [ext_resource type="Texture2D" uid="uid://dcgslu7rw0vn1" path="res://assets/images/lobby/buttons/guide_btn.png" id="13_t7q2e"]
-[ext_resource type="Shader" uid="uid://cu60cbs3wtfvu" path="res://shaders/blur_shader.gdshader" id="13_wu0dj"]
-[ext_resource type="Script" uid="uid://b5ccxabx0gpb" path="res://scripts/lobby/avatar.gd" id="15_yoog2"]
+[ext_resource type="Texture2D" uid="uid://b6tsxlt8m77j2" path="res://assets/images/room_bg.png" id="15_ph83y"]
+[ext_resource type="PackedScene" uid="uid://coalpvybk074r" path="res://scenes/lobby/rooms/TableNode.tscn" id="16_cxrji"]
 [ext_resource type="Texture2D" uid="uid://cjvl0gkvick8q" path="res://assets/images/lobby/buttons/inventory_btn.png" id="17_ftiv5"]
-[ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="24_nhqpo"]
-[ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="24_yht0g"]
 [ext_resource type="Texture2D" uid="uid://c3cvhcijeqyq6" path="res://assets/images/lobby/chplay_color_icon.png" id="25_f38q8"]
 [ext_resource type="Texture2D" uid="uid://bl4mmldeh4mqd" path="res://assets/images/lobby/btn_watch_ads.png" id="25_iyd1h"]
 [ext_resource type="Shader" uid="uid://c1wyhmdkob24b" path="res://shaders/gray.gdshader" id="26_bbl5h"]
-[ext_resource type="Texture2D" uid="uid://bwqoh74dqbxea" path="res://assets/images/login/gift_icon.png" id="26_di7a6"]
 [ext_resource type="Texture2D" uid="uid://ckmdrn8wnvvrj" path="res://assets/images/lobby/appstore_icon.png" id="26_p24wg"]
 [ext_resource type="Texture2D" uid="uid://chov6o51wxwvs" path="res://assets/images/lobby/icon_gold.png" id="27_dqlu8"]
-[ext_resource type="Texture2D" uid="uid://chdb6xb0yq64c" path="res://assets/images/lobby/offers/offer_btn.png" id="28_50qpl"]
-[ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="33_xdvxi"]
-[ext_resource type="Texture2D" uid="uid://c2sg4foah440r" path="res://assets/images/search_icon_small.png" id="34_exti7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjl6a"]
+shader = ExtResource("4_j2d4c")
+shader_parameter/size_effect = 0.6
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = true
+shader_parameter/delay = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnt7q"]
+shader = ExtResource("26_bbl5h")
+shader_parameter/weighted = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yprj"]
+bg_color = Color(0.0383711, 0.0369761, 0.0369761, 0.564706)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hal5k"]
+bg_color = Color(0.0117647, 0.168627, 0.290196, 1)
 
 [sub_resource type="Gradient" id="Gradient_e6ksn"]
 colors = PackedColorArray(1, 0.730178, 0.755568, 1, 1, 0.744725, 0.296128, 1)
@@ -44,161 +56,6 @@ shader_parameter/highlight_strength = 0.5
 shader_parameter/color_mode_toggle = false
 shader_parameter/is_horizontal = true
 shader_parameter/delay = 2.0
-
-[sub_resource type="Animation" id="Animation_hects"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-4, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-25, -24)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TextureRect3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(24, -15)]
-}
-
-[sub_resource type="Animation" id="Animation_jbqx2"]
-resource_name = "play_now_icon"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, -0.5),
-"update": 0,
-"values": [Vector2(-4, 0), Vector2(-4, -5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect3:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, -0.5),
-"update": 0,
-"values": [Vector2(24, -15), Vector2(25, -20)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TextureRect2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, -0.5),
-"update": 0,
-"values": [Vector2(-25, -24), Vector2(-30, -29)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ysekw"]
-_data = {
-&"RESET": SubResource("Animation_hects"),
-&"play_now_icon": SubResource("Animation_jbqx2")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dgugp"]
-shader = ExtResource("13_wu0dj")
-shader_parameter/blur_amount = 4.839
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26wlx"]
-bg_color = Color(0.666322, 0.641461, 0.620187, 0.788235)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjl6a"]
-shader = ExtResource("4_j2d4c")
-shader_parameter/size_effect = 0.6
-shader_parameter/speed = 1.0
-shader_parameter/highlight_strength = 0.5
-shader_parameter/color_mode_toggle = false
-shader_parameter/is_horizontal = true
-shader_parameter/delay = 0.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnt7q"]
-shader = ExtResource("26_bbl5h")
-shader_parameter/weighted = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fmd3"]
-bg_color = Color(0.266575, 0.266575, 0.266575, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6xc6"]
-bg_color = Color(0, 0.528993, 0.00939041, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yprj"]
-bg_color = Color(0.0383711, 0.0369761, 0.0369761, 0.564706)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hal5k"]
-bg_color = Color(0.0117647, 0.168627, 0.290196, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivuvr"]
-bg_color = Color(0, 0, 0, 0.454902)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0791031, 0.0645222, 0.0645222, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icvos"]
-bg_color = Color(0.015, 0.015, 0.015, 0.306)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = 5.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hwr3p"]
 
 [node name="LobbyScene" type="Control" unique_id=1349142982]
 layout_mode = 3
@@ -239,171 +96,29 @@ grow_vertical = 2
 pivot_offset = Vector2(165, 190)
 mouse_filter = 2
 
-[node name="StartBtn" type="Button" parent="PlayContainer" unique_id=415863508]
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 0
-offset_left = 80.0
-offset_top = -9.5
-offset_right = 240.0
-offset_bottom = 150.5
-flat = true
-script = ExtResource("3_x7pan")
-
-[node name="Panel" type="TextureRect" parent="PlayContainer/StartBtn" unique_id=2005798126]
-material = SubResource("ShaderMaterial_atgee")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_nkqsu")
-expand_mode = 1
-
-[node name="Label" type="Label" parent="PlayContainer/StartBtn" unique_id=1631204806]
-modulate = Color(1, 1, 1, 0.854902)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -89.0
-offset_top = -59.0
-offset_right = 89.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_a6ucd")
-theme_override_font_sizes/font_size = 30
-text = "Tressette"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control2" type="Control" parent="PlayContainer/StartBtn" unique_id=15813771]
-anchors_preset = 0
-offset_left = 58.0
-offset_top = 26.0
-offset_right = 58.0
-offset_bottom = 26.0
-scale = Vector2(0.6, 0.6)
-mouse_filter = 2
-
-[node name="TextureRect2" type="TextureRect" parent="PlayContainer/StartBtn/Control2" unique_id=509024575]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -24.0
-offset_right = 45.0
-offset_bottom = 76.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.589485
-pivot_offset = Vector2(70, 100)
-texture = ExtResource("7_6d8ha")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="PlayContainer/StartBtn/Control2" unique_id=1881791452]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 24.0
-offset_top = -15.0
-offset_right = 94.0
-offset_bottom = 85.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.540785
-pivot_offset = Vector2(0, 100)
-texture = ExtResource("8_2m2e2")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="PlayContainer/StartBtn/Control2" unique_id=1611511781]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_right = 66.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.00634568
-pivot_offset = Vector2(35, 100)
-texture = ExtResource("9_bp02q")
-expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayContainer/StartBtn/Control2" unique_id=1389964575]
-libraries/ = SubResource("AnimationLibrary_ysekw")
-
 [node name="RightTopPanel" type="Control" parent="." unique_id=484012979]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -165.0
-offset_top = -110.0
-offset_right = 165.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 130.0
+grow_horizontal = 0
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="RightTopPanel" unique_id=19191392]
-material = SubResource("ShaderMaterial_dgugp")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -45.0
-offset_right = 300.0
-offset_bottom = 45.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="RightTopPanel/Panel" unique_id=830394811]
-self_modulate = Color(1, 1, 1, 0.615686)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_26wlx")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="RightTopPanel" unique_id=806650349]
+[node name="HBoxContainer2" type="VBoxContainer" parent="RightTopPanel" unique_id=2125311857]
 layout_direction = 3
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 10.0
+offset_right = 110.0
+offset_bottom = 260.0
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Control" type="Control" parent="RightTopPanel/HBoxContainer2" unique_id=1496885851]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 mouse_filter = 2
 
@@ -441,7 +156,7 @@ texture = ExtResource("11_cafaj")
 expand_mode = 1
 
 [node name="Control3" type="Control" parent="RightTopPanel/HBoxContainer2" unique_id=1351395624]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 mouse_filter = 2
 
@@ -479,7 +194,7 @@ texture = ExtResource("17_ftiv5")
 expand_mode = 1
 
 [node name="Control5" type="Control" parent="RightTopPanel/HBoxContainer2" unique_id=2114556899]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 mouse_filter = 2
 
@@ -517,6 +232,7 @@ texture = ExtResource("13_t7q2e")
 expand_mode = 1
 
 [node name="WatchAdsBtn" type="Button" parent="RightTopPanel" unique_id=451122699]
+visible = false
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
 anchors_preset = 2
@@ -561,157 +277,22 @@ theme_override_font_sizes/font_size = 20
 text = "3h:00:00"
 horizontal_alignment = 1
 
-[node name="PnInfo" type="Control" parent="." unique_id=2034251572]
+[node name="GoldBg" type="Panel" parent="." unique_id=1913502055]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 78.0
-offset_top = -225.0
-offset_right = 278.0
-offset_bottom = 75.0
-grow_vertical = 2
-
-[node name="AvatarBtn" type="Button" parent="PnInfo" unique_id=469945340]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -50.0
-offset_right = 50.0
-offset_bottom = 100.0
-grow_horizontal = 2
-flat = true
-script = ExtResource("3_x7pan")
-
-[node name="TextureRect" type="TextureRect" parent="PnInfo/AvatarBtn" unique_id=252605365]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("11_pgu6f")
-expand_mode = 1
-
-[node name="Avatar" type="TextureRect" parent="PnInfo/AvatarBtn/TextureRect" unique_id=134456477]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_cni6g")
-expand_mode = 1
-script = ExtResource("15_yoog2")
-
-[node name="AvatarFrame" parent="PnInfo/AvatarBtn" unique_id=1849880601 instance=ExtResource("24_yht0g")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.05, 1.05)
-is_me = true
-
-[node name="NameLb" type="Label" parent="PnInfo" unique_id=865894545]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -34.0
-offset_top = 110.0
-offset_right = 35.0
-offset_bottom = 139.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.82925, 0.82925, 0.82925, 1)
-theme_override_fonts/font = ExtResource("24_nhqpo")
-theme_override_font_sizes/font_size = 23
-text = "Truong"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ExpBar" type="ProgressBar" parent="PnInfo" unique_id=888593028]
-custom_minimum_size = Vector2(120, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_right = 75.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_0fmd3")
-theme_override_styles/fill = SubResource("StyleBoxFlat_y6xc6")
-value = 50.0
-show_percentage = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PnInfo/ExpBar" unique_id=1721954195]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -30.0
-offset_right = -10.0
-offset_bottom = 30.0
-grow_vertical = 2
-alignment = 2
-
-[node name="LevelLbHead" type="Label" parent="PnInfo/ExpBar/HBoxContainer" unique_id=1868194147]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.910714, 0.454315, 0.410437, 1)
-theme_override_fonts/font = ExtResource("24_nhqpo")
-theme_override_font_sizes/font_size = 22
-text = "Lv.10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="PnInfo/ExpBar/HBoxContainer" unique_id=1350757514]
-visible = false
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-
-[node name="LevelGiftBtn" type="Button" parent="PnInfo/ExpBar" unique_id=335879172]
-layout_mode = 0
-offset_left = 147.0
-offset_top = -17.0
-offset_right = 187.0
-offset_bottom = 23.0
-flat = true
-script = ExtResource("3_x7pan")
-
-[node name="TextureRect" type="TextureRect" parent="PnInfo/ExpBar/LevelGiftBtn" unique_id=888718943]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("26_di7a6")
-expand_mode = 1
-
-[node name="GoldBg" type="Panel" parent="PnInfo" unique_id=1913502055]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = 30.0
-offset_right = 75.0
-offset_bottom = 65.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -190.0
+offset_top = -59.0
+offset_right = -40.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_8yprj")
 
-[node name="TextureRect" type="TextureRect" parent="PnInfo/GoldBg" unique_id=1209783060]
+[node name="TextureRect" type="TextureRect" parent="GoldBg" unique_id=1209783060]
 layout_mode = 0
 offset_left = -16.0
 offset_top = -2.0
@@ -721,8 +302,8 @@ texture = ExtResource("27_dqlu8")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GoldLb" type="Label" parent="PnInfo/GoldBg" unique_id=679506400]
-modulate = Color(1, 1, 1, 0.784314)
+[node name="GoldLb" type="Label" parent="GoldBg" unique_id=679506400]
+modulate = Color(0.9411765, 0.8117647, 0.68235296, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -730,9 +311,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -62.0
-offset_top = -20.5
+offset_top = -24.5
 offset_right = 74.0
-offset_bottom = 21.5
+offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_a6ucd")
@@ -861,102 +442,101 @@ grow_vertical = 2
 texture = ExtResource("12_hwrjc")
 expand_mode = 1
 
-[node name="OfferFirstBtn" type="Button" parent="BottomLeft/HBoxContainer" unique_id=743194]
-custom_minimum_size = Vector2(90, 90)
+[node name="CenterPn" type="Control" parent="." unique_id=1308127891]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterPn" unique_id=387574967]
+layout_mode = 0
+offset_left = -204.0
+offset_top = -219.0
+offset_right = 496.0
+offset_bottom = 481.0
+texture = ExtResource("15_ph83y")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterPn" unique_id=2110513622]
+custom_minimum_size = Vector2(500, 380)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -180.0
+offset_right = 260.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 4
+
+[node name="VBoxTables" type="VBoxContainer" parent="CenterPn/ScrollContainer" unique_id=760725090]
 layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="TableNode" parent="CenterPn/ScrollContainer/VBoxTables" unique_id=424473314 instance=ExtResource("16_cxrji")]
+layout_mode = 2
+
+[node name="TableNode2" parent="CenterPn/ScrollContainer/VBoxTables" unique_id=1525654836 instance=ExtResource("16_cxrji")]
+layout_mode = 2
+
+[node name="StartBtn" type="Button" parent="." unique_id=415863508]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -105.0
+offset_right = 150.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0.5, 0.5)
 flat = true
 script = ExtResource("3_x7pan")
 
-[node name="TextureRect" type="TextureRect" parent="BottomLeft/HBoxContainer/OfferFirstBtn" unique_id=1673127189]
+[node name="Panel" type="TextureRect" parent="StartBtn" unique_id=2005798126]
+material = SubResource("ShaderMaterial_atgee")
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -134.0
+offset_right = 200.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("28_50qpl")
+mouse_filter = 2
+texture = ExtResource("5_34sax")
 expand_mode = 1
 
-[node name="PnMatches" type="Panel" parent="." unique_id=1372191316]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -239.0
-offset_right = 300.0
-offset_bottom = 161.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ivuvr")
-
-[node name="LineEdit" type="LineEdit" parent="PnMatches" unique_id=1688320341]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -594.0
-offset_top = -47.0
-offset_right = -294.0
-offset_bottom = -7.0
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("33_xdvxi")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_icvos")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hwr3p")
-placeholder_text = "JOIN_ROOM_BY_ID"
-virtual_keyboard_type = 2
-right_icon = ExtResource("34_exti7")
-
-[node name="CreateRoomBtn" type="Button" parent="PnMatches" unique_id=1027068883]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 0
-offset_left = 453.0
-offset_top = -47.0
-offset_right = 598.0
-offset_bottom = -7.0
-theme_override_fonts/font = ExtResource("24_nhqpo")
-theme_override_font_sizes/font_size = 20
-text = "CREATE_TABLE"
-script = ExtResource("3_x7pan")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="PnMatches" unique_id=2110513622]
-custom_minimum_size = Vector2(560, 380)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -290.0
-offset_top = -4.0
-offset_right = 290.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-vertical_scroll_mode = 3
-
-[node name="VBoxTables" type="VBoxContainer" parent="PnMatches/ScrollContainer" unique_id=760725090]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="Timer" type="Timer" parent="." unique_id=1886670601]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
-[connection signal="pressed" from="PlayContainer/StartBtn" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control/SettingBtn" to="." method="_open_setting_gui"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control3/InventoryBtn" to="." method="_open_inventory"]
 [connection signal="pressed" from="RightTopPanel/HBoxContainer2/Control5/GuideBtn" to="." method="_click_guide_btn"]
 [connection signal="pressed" from="RightTopPanel/WatchAdsBtn" to="." method="watch_ads_reward"]
-[connection signal="pressed" from="PnInfo/AvatarBtn" to="." method="_open_user_info_gui"]
-[connection signal="pressed" from="PnInfo/ExpBar/LevelGiftBtn" to="." method="_click_open_level_gui"]
 [connection signal="pressed" from="BottomLeft/MobileWebPn/HBoxContainer/ChplayBtn" to="." method="_click_open_chplay"]
 [connection signal="pressed" from="BottomLeft/MobileWebPn/HBoxContainer/AppstoreBtn" to="." method="_click_open_appstore"]
 [connection signal="pressed" from="BottomLeft/HBoxContainer/LeaderboardBtn" to="." method="_click_ranking"]
-[connection signal="pressed" from="BottomLeft/HBoxContainer/OfferFirstBtn" to="." method="_click_offer_first_buy"]
-[connection signal="text_submitted" from="PnMatches/LineEdit" to="." method="_click_join_room_by_id"]
-[connection signal="pressed" from="PnMatches/CreateRoomBtn" to="." method="_open_tables_scene"]
+[connection signal="pressed" from="StartBtn" to="." method="_on_start_game_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_auto_refresh_list_table"]

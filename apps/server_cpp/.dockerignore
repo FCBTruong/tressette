@@ -1,0 +1,11 @@
+build/
+dist/
+.git/
+.vs/
+.vscode/
+.idea/
+CMakeCache.txt
+CMakeFiles/
+*.obj
+*.o
+*.exe

@@ -11,6 +11,7 @@ var player_avatars
 var game_mode: int
 var avatar_frames
 var is_private: bool
+var player_points
 
 func _init() -> void:
 	pass

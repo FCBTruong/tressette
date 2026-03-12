@@ -83,7 +83,9 @@ PROTOBUF_CONSTEXPR Login::Login(
   , platform_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , device_country_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
   , type_(0)
-  , app_version_code_(0){}
+  , app_version_code_(0)
+  , avatar_frame_id_(0)
+  , avatar_id_(0){}
 struct LoginDefaultTypeInternal {
   PROTOBUF_CONSTEXPR LoginDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -498,7 +500,9 @@ PROTOBUF_CONSTEXPR TableList::TableList(
   , _game_modes_cached_byte_size_(0)
   , avatar_frames_()
   , _avatar_frames_cached_byte_size_(0)
-  , is_private_(){}
+  , is_private_()
+  , points_()
+  , _points_cached_byte_size_(0){}
 struct TableListDefaultTypeInternal {
   PROTOBUF_CONSTEXPR TableListDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -1545,6 +1549,8 @@ const uint32_t TableStruct_packet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::packet::Login, platform_),
   PROTOBUF_FIELD_OFFSET(::packet::Login, device_country_),
   PROTOBUF_FIELD_OFFSET(::packet::Login, app_version_code_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, avatar_frame_id_),
+  PROTOBUF_FIELD_OFFSET(::packet::Login, avatar_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::packet::LoginFirebase, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -1811,6 +1817,7 @@ const uint32_t TableStruct_packet_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::packet::TableList, game_modes_),
   PROTOBUF_FIELD_OFFSET(::packet::TableList, avatar_frames_),
   PROTOBUF_FIELD_OFFSET(::packet::TableList, is_private_),
+  PROTOBUF_FIELD_OFFSET(::packet::TableList, points_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::packet::ShopConfig, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -2426,98 +2433,98 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 17, -1, -1, sizeof(::packet::ChatMessage)},
   { 29, -1, -1, sizeof(::packet::PingPong)},
   { 35, -1, -1, sizeof(::packet::Login)},
-  { 47, -1, -1, sizeof(::packet::LoginFirebase)},
-  { 56, -1, -1, sizeof(::packet::Logout)},
-  { 62, -1, -1, sizeof(::packet::LoginResponse)},
-  { 71, -1, -1, sizeof(::packet::UserInfo)},
-  { 99, -1, -1, sizeof(::packet::GameInfo)},
-  { 131, -1, -1, sizeof(::packet::RegisterLeaveGame)},
-  { 138, -1, -1, sizeof(::packet::NewUserJoinMatch)},
-  { 152, -1, -1, sizeof(::packet::UserLeaveMatch)},
-  { 160, -1, -1, sizeof(::packet::DealCard)},
-  { 168, -1, -1, sizeof(::packet::PlayCard)},
-  { 185, -1, -1, sizeof(::packet::StartGame)},
-  { 193, -1, -1, sizeof(::packet::NewHand)},
-  { 201, -1, -1, sizeof(::packet::UpdateGamePoint)},
-  { 208, -1, -1, sizeof(::packet::DrawCard)},
-  { 215, -1, -1, sizeof(::packet::GeneralInfo)},
-  { 227, -1, -1, sizeof(::packet::LevelReward)},
-  { 236, -1, -1, sizeof(::packet::ItemReward)},
-  { 244, -1, -1, sizeof(::packet::EndGame)},
-  { 257, -1, -1, sizeof(::packet::PrepareStartGame)},
-  { 264, -1, -1, sizeof(::packet::InGameChatMessage)},
-  { 272, -1, -1, sizeof(::packet::PaymentGoogleConsume)},
-  { 283, -1, -1, sizeof(::packet::PaymentSuccess)},
-  { 292, -1, -1, sizeof(::packet::UpdateMoney)},
-  { 299, -1, -1, sizeof(::packet::TableList)},
-  { 313, -1, -1, sizeof(::packet::ShopConfig)},
-  { 331, -1, -1, sizeof(::packet::DetailShopPack)},
-  { 338, -1, -1, sizeof(::packet::GuestAccount)},
-  { 345, -1, -1, sizeof(::packet::ChangeAvatar)},
-  { 352, -1, -1, sizeof(::packet::InGameChatEmoticon)},
-  { 360, -1, -1, sizeof(::packet::SearchFriend)},
-  { 367, -1, -1, sizeof(::packet::SearchFriendResponse)},
-  { 384, -1, -1, sizeof(::packet::CheatGoldUser)},
-  { 391, -1, -1, sizeof(::packet::FriendList)},
-  { 406, -1, -1, sizeof(::packet::FriendRequests)},
-  { 418, -1, -1, sizeof(::packet::AddFriend)},
-  { 426, -1, -1, sizeof(::packet::RequestFriendAccept)},
-  { 434, -1, -1, sizeof(::packet::RemoveFriend)},
-  { 441, -1, -1, sizeof(::packet::NewFriendRequest)},
-  { 452, -1, -1, sizeof(::packet::FriendRequestAccepted)},
-  { 464, -1, -1, sizeof(::packet::RecommendFriends)},
-  { 476, -1, -1, sizeof(::packet::PaymentAppleConsume)},
-  { 484, -1, -1, sizeof(::packet::PaymentFinishedAppleTransaction)},
-  { 491, -1, -1, sizeof(::packet::NewRound)},
-  { 500, -1, -1, sizeof(::packet::CreateTable)},
-  { 511, -1, -1, sizeof(::packet::JoinTableById)},
-  { 518, -1, -1, sizeof(::packet::JoinTableResponse)},
-  { 525, -1, -1, sizeof(::packet::ClaimSupport)},
-  { 532, -1, -1, sizeof(::packet::AppCodeVersion)},
-  { 545, -1, -1, sizeof(::packet::PlayCardResponse)},
-  { 552, -1, -1, sizeof(::packet::CheatViewCardBot)},
-  { 559, -1, -1, sizeof(::packet::InviteFriendPlay)},
-  { 567, -1, -1, sizeof(::packet::GameActionNapoli)},
-  { 576, -1, -1, sizeof(::packet::CustomerServiceReport)},
-  { 584, -1, -1, sizeof(::packet::AdminBroadcast)},
-  { 591, -1, -1, sizeof(::packet::PaymentPaypalRequestOrder)},
-  { 598, -1, -1, sizeof(::packet::PaymentPaypalOrder)},
-  { 605, -1, -1, sizeof(::packet::QuickPlay)},
-  { 611, -1, -1, sizeof(::packet::SetteMezzoNewUserJoinMatch)},
-  { 623, -1, -1, sizeof(::packet::SetteMezzoPrepareStartGame)},
-  { 631, -1, -1, sizeof(::packet::SetteMezzoGameInfo)},
-  { 661, -1, -1, sizeof(::packet::SetteMezzoPlayerInfo)},
-  { 668, -1, -1, sizeof(::packet::SetteMezzoQuickPlay)},
-  { 674, -1, -1, sizeof(::packet::SetteMezzoStartGame)},
-  { 682, -1, -1, sizeof(::packet::RankingInfo)},
-  { 699, -1, -1, sizeof(::packet::RankingResult)},
-  { 708, -1, -1, sizeof(::packet::RankingClaimReward)},
-  { 715, -1, -1, sizeof(::packet::UpdateAds)},
-  { 722, -1, -1, sizeof(::packet::AdsReward)},
-  { 730, -1, -1, sizeof(::packet::ChangeUserName)},
-  { 737, -1, -1, sizeof(::packet::SetteMezzoActionHit)},
-  { 745, -1, -1, sizeof(::packet::SetteMezzoUpdateTurn)},
-  { 753, -1, -1, sizeof(::packet::SetteMezzoActionStand)},
-  { 762, -1, -1, sizeof(::packet::SetteMezzoEndGame)},
-  { 773, -1, -1, sizeof(::packet::SetteMezzoShowBankerCard)},
-  { 780, -1, -1, sizeof(::packet::SetteMezzoUserBet)},
-  { 788, -1, -1, sizeof(::packet::ViewGame)},
-  { 795, -1, -1, sizeof(::packet::UserStopView)},
-  { 802, -1, -1, sizeof(::packet::NewUserView)},
-  { 812, -1, -1, sizeof(::packet::CheatExpUser)},
-  { 819, -1, -1, sizeof(::packet::UpdateExp)},
-  { 826, -1, -1, sizeof(::packet::ClaimRewardLevel)},
-  { 833, -1, -1, sizeof(::packet::UserInventory)},
-  { 840, -1, -1, sizeof(::packet::InvetoryItem)},
-  { 849, -1, -1, sizeof(::packet::UseItem)},
-  { 856, -1, -1, sizeof(::packet::CheatItem)},
-  { 864, -1, -1, sizeof(::packet::BuyItem)},
-  { 872, -1, -1, sizeof(::packet::InventoryShopConfig)},
-  { 879, -1, -1, sizeof(::packet::InventoryShopItem)},
-  { 887, -1, -1, sizeof(::packet::InvetoryShopPack)},
-  { 896, -1, -1, sizeof(::packet::ClaimRewardLevelResponse)},
-  { 905, -1, -1, sizeof(::packet::RewardInventoryItem)},
-  { 914, -1, -1, sizeof(::packet::ViewerJoinMatch)},
+  { 49, -1, -1, sizeof(::packet::LoginFirebase)},
+  { 58, -1, -1, sizeof(::packet::Logout)},
+  { 64, -1, -1, sizeof(::packet::LoginResponse)},
+  { 73, -1, -1, sizeof(::packet::UserInfo)},
+  { 101, -1, -1, sizeof(::packet::GameInfo)},
+  { 133, -1, -1, sizeof(::packet::RegisterLeaveGame)},
+  { 140, -1, -1, sizeof(::packet::NewUserJoinMatch)},
+  { 154, -1, -1, sizeof(::packet::UserLeaveMatch)},
+  { 162, -1, -1, sizeof(::packet::DealCard)},
+  { 170, -1, -1, sizeof(::packet::PlayCard)},
+  { 187, -1, -1, sizeof(::packet::StartGame)},
+  { 195, -1, -1, sizeof(::packet::NewHand)},
+  { 203, -1, -1, sizeof(::packet::UpdateGamePoint)},
+  { 210, -1, -1, sizeof(::packet::DrawCard)},
+  { 217, -1, -1, sizeof(::packet::GeneralInfo)},
+  { 229, -1, -1, sizeof(::packet::LevelReward)},
+  { 238, -1, -1, sizeof(::packet::ItemReward)},
+  { 246, -1, -1, sizeof(::packet::EndGame)},
+  { 259, -1, -1, sizeof(::packet::PrepareStartGame)},
+  { 266, -1, -1, sizeof(::packet::InGameChatMessage)},
+  { 274, -1, -1, sizeof(::packet::PaymentGoogleConsume)},
+  { 285, -1, -1, sizeof(::packet::PaymentSuccess)},
+  { 294, -1, -1, sizeof(::packet::UpdateMoney)},
+  { 301, -1, -1, sizeof(::packet::TableList)},
+  { 316, -1, -1, sizeof(::packet::ShopConfig)},
+  { 334, -1, -1, sizeof(::packet::DetailShopPack)},
+  { 341, -1, -1, sizeof(::packet::GuestAccount)},
+  { 348, -1, -1, sizeof(::packet::ChangeAvatar)},
+  { 355, -1, -1, sizeof(::packet::InGameChatEmoticon)},
+  { 363, -1, -1, sizeof(::packet::SearchFriend)},
+  { 370, -1, -1, sizeof(::packet::SearchFriendResponse)},
+  { 387, -1, -1, sizeof(::packet::CheatGoldUser)},
+  { 394, -1, -1, sizeof(::packet::FriendList)},
+  { 409, -1, -1, sizeof(::packet::FriendRequests)},
+  { 421, -1, -1, sizeof(::packet::AddFriend)},
+  { 429, -1, -1, sizeof(::packet::RequestFriendAccept)},
+  { 437, -1, -1, sizeof(::packet::RemoveFriend)},
+  { 444, -1, -1, sizeof(::packet::NewFriendRequest)},
+  { 455, -1, -1, sizeof(::packet::FriendRequestAccepted)},
+  { 467, -1, -1, sizeof(::packet::RecommendFriends)},
+  { 479, -1, -1, sizeof(::packet::PaymentAppleConsume)},
+  { 487, -1, -1, sizeof(::packet::PaymentFinishedAppleTransaction)},
+  { 494, -1, -1, sizeof(::packet::NewRound)},
+  { 503, -1, -1, sizeof(::packet::CreateTable)},
+  { 514, -1, -1, sizeof(::packet::JoinTableById)},
+  { 521, -1, -1, sizeof(::packet::JoinTableResponse)},
+  { 528, -1, -1, sizeof(::packet::ClaimSupport)},
+  { 535, -1, -1, sizeof(::packet::AppCodeVersion)},
+  { 548, -1, -1, sizeof(::packet::PlayCardResponse)},
+  { 555, -1, -1, sizeof(::packet::CheatViewCardBot)},
+  { 562, -1, -1, sizeof(::packet::InviteFriendPlay)},
+  { 570, -1, -1, sizeof(::packet::GameActionNapoli)},
+  { 579, -1, -1, sizeof(::packet::CustomerServiceReport)},
+  { 587, -1, -1, sizeof(::packet::AdminBroadcast)},
+  { 594, -1, -1, sizeof(::packet::PaymentPaypalRequestOrder)},
+  { 601, -1, -1, sizeof(::packet::PaymentPaypalOrder)},
+  { 608, -1, -1, sizeof(::packet::QuickPlay)},
+  { 614, -1, -1, sizeof(::packet::SetteMezzoNewUserJoinMatch)},
+  { 626, -1, -1, sizeof(::packet::SetteMezzoPrepareStartGame)},
+  { 634, -1, -1, sizeof(::packet::SetteMezzoGameInfo)},
+  { 664, -1, -1, sizeof(::packet::SetteMezzoPlayerInfo)},
+  { 671, -1, -1, sizeof(::packet::SetteMezzoQuickPlay)},
+  { 677, -1, -1, sizeof(::packet::SetteMezzoStartGame)},
+  { 685, -1, -1, sizeof(::packet::RankingInfo)},
+  { 702, -1, -1, sizeof(::packet::RankingResult)},
+  { 711, -1, -1, sizeof(::packet::RankingClaimReward)},
+  { 718, -1, -1, sizeof(::packet::UpdateAds)},
+  { 725, -1, -1, sizeof(::packet::AdsReward)},
+  { 733, -1, -1, sizeof(::packet::ChangeUserName)},
+  { 740, -1, -1, sizeof(::packet::SetteMezzoActionHit)},
+  { 748, -1, -1, sizeof(::packet::SetteMezzoUpdateTurn)},
+  { 756, -1, -1, sizeof(::packet::SetteMezzoActionStand)},
+  { 765, -1, -1, sizeof(::packet::SetteMezzoEndGame)},
+  { 776, -1, -1, sizeof(::packet::SetteMezzoShowBankerCard)},
+  { 783, -1, -1, sizeof(::packet::SetteMezzoUserBet)},
+  { 791, -1, -1, sizeof(::packet::ViewGame)},
+  { 798, -1, -1, sizeof(::packet::UserStopView)},
+  { 805, -1, -1, sizeof(::packet::NewUserView)},
+  { 815, -1, -1, sizeof(::packet::CheatExpUser)},
+  { 822, -1, -1, sizeof(::packet::UpdateExp)},
+  { 829, -1, -1, sizeof(::packet::ClaimRewardLevel)},
+  { 836, -1, -1, sizeof(::packet::UserInventory)},
+  { 843, -1, -1, sizeof(::packet::InvetoryItem)},
+  { 852, -1, -1, sizeof(::packet::UseItem)},
+  { 859, -1, -1, sizeof(::packet::CheatItem)},
+  { 867, -1, -1, sizeof(::packet::BuyItem)},
+  { 875, -1, -1, sizeof(::packet::InventoryShopConfig)},
+  { 882, -1, -1, sizeof(::packet::InventoryShopItem)},
+  { 890, -1, -1, sizeof(::packet::InvetoryShopPack)},
+  { 899, -1, -1, sizeof(::packet::ClaimRewardLevelResponse)},
+  { 908, -1, -1, sizeof(::packet::RewardInventoryItem)},
+  { 917, -1, -1, sizeof(::packet::ViewerJoinMatch)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -2627,213 +2634,215 @@ const char descriptor_table_protodef_packet_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "d\030\005 \001(\014\"j\n\013ChatMessage\022\013\n\003abc\030\001 \001(\001\022\020\n\010u"
   "sername\030\002 \001(\t\022\r\n\005level\030\003 \001(\003\022\014\n\004gold\030\004 \001"
   "(\003\022\014\n\004abcd\030\005 \001(\t\022\021\n\tis_active\030\006 \001(\010\"\n\n\010P"
-  "ingPong\"~\n\005Login\022\014\n\004type\030\001 \001(\005\022\r\n\005token\030"
-  "\002 \001(\t\022\024\n\014device_model\030\003 \001(\t\022\020\n\010platform\030"
-  "\004 \001(\t\022\026\n\016device_country\030\005 \001(\t\022\030\n\020app_ver"
-  "sion_code\030\006 \001(\005\"H\n\rLoginFirebase\022\020\n\010sub_"
-  "type\030\001 \001(\005\022\023\n\013login_token\030\002 \001(\t\022\020\n\010guest"
-  "_id\030\003 \001(\t\"\010\n\006Logout\":\n\rLoginResponse\022\013\n\003"
-  "uid\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\022\r\n\005error\030\003 \001(\005\""
-  "\273\003\n\010UserInfo\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022"
-  "\014\n\004gold\030\003 \001(\003\022\016\n\006scores\030\004 \003(\005\022\r\n\005names\030\005"
-  " \003(\t\022\013\n\003abc\030\006 \001(\005\022\016\n\006avatar\030\007 \001(\t\022\032\n\022ava"
-  "tar_third_party\030\010 \001(\t\022\r\n\005level\030\t \001(\005\022\023\n\013"
-  "support_num\030\n \001(\005\022\021\n\twin_count\030\013 \001(\005\022\022\n\n"
-  "game_count\030\014 \001(\005\022\013\n\003exp\030\r \001(\003\022\024\n\014startup"
-  "_gold\030\016 \001(\005\022\025\n\rhas_first_buy\030\017 \001(\010\022\025\n\rti"
-  "me_show_ads\030\020 \001(\005\022\022\n\nlogin_type\030\021 \001(\005\022\027\n"
-  "\017time_ads_reward\030\022 \001(\005\022\034\n\024add_for_user_s"
-  "upport\030\023 \001(\010\022\024\n\014avatar_frame\030\024 \001(\005\022\026\n\016cl"
-  "aimed_levels\030\025 \003(\005\022\031\n\021price_change_name\030"
-  "\026 \001(\005\"\253\004\n\010GameInfo\022\020\n\010match_id\030\001 \001(\005\022\021\n\t"
-  "game_mode\030\002 \001(\005\022\023\n\013player_mode\030\003 \001(\005\022\014\n\004"
-  "uids\030\004 \003(\005\022\022\n\nuser_golds\030\005 \003(\003\022\022\n\nuser_n"
-  "ames\030\006 \003(\t\022\025\n\rcards_compare\030\007 \003(\005\022\024\n\014cur"
-  "rent_turn\030\010 \001(\005\022\022\n\ngame_state\030\t \001(\005\022\020\n\010m"
-  "y_cards\030\n \003(\005\022\024\n\014remain_cards\030\013 \001(\005\022\023\n\013u"
-  "ser_points\030\014 \003(\005\022\020\n\010team_ids\030\r \003(\005\022\021\n\tha"
-  "nd_suit\030\016 \001(\005\022\017\n\007avatars\030\017 \003(\t\022\033\n\023is_reg"
-  "istered_leave\030\020 \001(\010\022\021\n\tpot_value\030\021 \001(\003\022\025"
-  "\n\rcurrent_round\030\022 \001(\005\022\025\n\rhand_in_round\030\023"
-  " \001(\005\022\024\n\014point_to_win\030\024 \001(\005\022\017\n\007is_vips\030\025 "
-  "\003(\010\022\023\n\013viewer_uids\030\026 \003(\005\022\026\n\016viewer_avata"
-  "rs\030\027 \003(\t\022\024\n\014viewer_names\030\030 \003(\t\022\025\n\ravatar"
-  "_frames\030\031 \003(\005\022\034\n\024viewer_avatar_frames\030\032 "
-  "\003(\005\"#\n\021RegisterLeaveGame\022\016\n\006status\030\001 \001(\005"
-  "\"\227\001\n\020NewUserJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004go"
-  "ld\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030\004 "
-  "\001(\005\022\017\n\007team_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\022\016\n\006"
-  "is_vip\030\007 \001(\010\022\024\n\014avatar_frame\030\010 \001(\005\"-\n\016Us"
-  "erLeaveMatch\022\013\n\003uid\030\001 \001(\005\022\016\n\006reason\030\002 \001("
-  "\005\"/\n\010DealCard\022\r\n\005cards\030\001 \003(\005\022\024\n\014remain_c"
-  "ards\030\002 \001(\005\"\332\001\n\010PlayCard\022\013\n\003uid\030\001 \001(\005\022\017\n\007"
-  "card_id\030\002 \001(\005\022\017\n\007is_auto\030\003 \001(\010\022\024\n\014curren"
-  "t_turn\030\004 \001(\005\022\021\n\thand_suit\030\005 \001(\005\022\023\n\013is_en"
-  "d_hand\030\006 \001(\010\022\017\n\007win_uid\030\007 \001(\005\022\021\n\twin_poi"
-  "nt\030\010 \001(\005\022\024\n\014is_end_round\030\t \001(\010\022\020\n\010win_ca"
-  "rd\030\n \001(\005\022\025\n\rplayer_points\030\013 \003(\005\"4\n\tStart"
-  "Game\022\021\n\tpot_value\030\001 \001(\005\022\024\n\014players_gold\030"
-  "\002 \003(\003\"1\n\007NewHand\022\024\n\014current_turn\030\001 \001(\005\022\020"
-  "\n\010my_cards\030\002 \003(\005\"!\n\017UpdateGamePoint\022\016\n\006p"
-  "oints\030\001 \003(\005\"\031\n\010DrawCard\022\r\n\005cards\030\001 \003(\005\"\254"
-  "\001\n\013GeneralInfo\022\021\n\ttimestamp\030\001 \001(\003\022\035\n\025tim"
-  "e_thinking_in_turn\030\002 \001(\005\022\022\n\nexp_levels\030\003"
-  " \003(\005\022\027\n\017fee_mode_no_bet\030\004 \001(\005\022\022\n\nenable_"
-  "ads\030\005 \001(\010\022*\n\rlevel_rewards\030\006 \003(\0132\023.packe"
-  "t.LevelReward\"M\n\013LevelReward\022\r\n\005level\030\001 "
-  "\001(\005\022\014\n\004gold\030\002 \001(\005\022!\n\005items\030\003 \003(\0132\022.packe"
-  "t.ItemReward\"/\n\nItemReward\022\017\n\007item_id\030\001 "
-  "\001(\005\022\020\n\010duration\030\002 \001(\005\"\266\001\n\007EndGame\022\014\n\004uid"
-  "s\030\001 \003(\005\022\023\n\013win_team_id\030\006 \001(\005\022\023\n\013score_ca"
-  "rds\030\002 \003(\005\022\031\n\021score_last_tricks\030\003 \003(\005\022\024\n\014"
-  "score_totals\030\004 \003(\005\022\024\n\014players_gold\030\005 \003(\003"
-  "\022,\n\007rewards\030\007 \003(\0132\033.packet.RewardInvento"
-  "ryItem\"&\n\020PrepareStartGame\022\022\n\ntime_start"
-  "\030\001 \001(\005\"6\n\021InGameChatMessage\022\013\n\003uid\030\001 \001(\005"
-  "\022\024\n\014chat_message\030\002 \001(\t\"n\n\024PaymentGoogleC"
-  "onsume\022\026\n\016purchase_token\030\001 \001(\t\022\020\n\010quanti"
-  "ty\030\002 \001(\005\022\014\n\004skus\030\003 \003(\t\022\021\n\tsignature\030\004 \001("
-  "\t\022\013\n\003sku\030\005 \001(\t\"[\n\016PaymentSuccess\022\014\n\004gold"
-  "\030\001 \001(\003\022\017\n\007pack_id\030\002 \001(\t\022*\n\005items\030\003 \003(\0132\033"
-  ".packet.RewardInventoryItem\"\033\n\013UpdateMon"
-  "ey\022\014\n\004gold\030\001 \001(\003\"\256\001\n\tTableList\022\021\n\ttable_"
-  "ids\030\001 \003(\005\022\023\n\013num_players\030\002 \003(\005\022\024\n\014player"
-  "_modes\030\003 \003(\005\022\023\n\013player_uids\030\004 \003(\005\022\017\n\007ava"
-  "tars\030\005 \003(\t\022\022\n\ngame_modes\030\006 \003(\005\022\025\n\ravatar"
-  "_frames\030\007 \003(\005\022\022\n\nis_private\030\010 \003(\010\"\333\002\n\nSh"
-  "opConfig\022\020\n\010pack_ids\030\001 \003(\t\022\r\n\005golds\030\002 \003("
-  "\003\022\016\n\006prices\030\003 \003(\001\022\022\n\ncurrencies\030\004 \003(\t\022\023\n"
-  "\013no_ads_days\030\005 \003(\005\022\030\n\020gold_offer_first\030\006"
-  " \001(\005\022\036\n\026no_ads_day_offer_first\030\007 \001(\005\022\031\n\021"
-  "price_offer_first\030\010 \001(\005\022\034\n\024currency_offe"
-  "r_first\030\t \001(\t\022\033\n\023pack_id_offer_first\030\n \001"
-  "(\t\022:\n\025items_offer_first_buy\030\013 \003(\0132\033.pack"
-  "et.RewardInventoryItem\022\'\n\007details\030\014 \003(\0132"
-  "\026.packet.DetailShopPack\"<\n\016DetailShopPac"
-  "k\022*\n\005items\030\001 \003(\0132\033.packet.RewardInventor"
-  "yItem\" \n\014GuestAccount\022\020\n\010guest_id\030\001 \001(\t\""
-  "!\n\014ChangeAvatar\022\021\n\tavatar_id\030\001 \001(\005\"3\n\022In"
-  "GameChatEmoticon\022\013\n\003uid\030\001 \001(\005\022\020\n\010emotico"
-  "n\030\002 \001(\005\"\033\n\014SearchFriend\022\013\n\003uid\030\001 \001(\005\"\314\001\n"
-  "\024SearchFriendResponse\022\013\n\003uid\030\001 \001(\005\022\014\n\004go"
-  "ld\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\016\n\006avatar\030\004 \001(\t\022\021"
-  "\n\twin_count\030\005 \001(\005\022\022\n\ngame_count\030\006 \001(\001\022\r\n"
-  "\005error\030\007 \001(\005\022\r\n\005level\030\010 \001(\005\022\013\n\003exp\030\t \001(\003"
-  "\022\023\n\013is_verified\030\n \001(\010\022\024\n\014avatar_frame\030\013 "
-  "\001(\005\"\035\n\rCheatGoldUser\022\014\n\004gold\030\001 \001(\003\"\261\001\n\nF"
-  "riendList\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017"
-  "\n\007avatars\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds"
-  "\030\005 \003(\003\022\017\n\007onlines\030\006 \003(\010\022\023\n\013is_playings\030\007"
-  " \003(\010\022\025\n\ravatar_frames\030\010 \003(\005\022\031\n\021last_onli"
-  "ne_times\030\t \003(\005\"p\n\016FriendRequests\022\014\n\004uids"
-  "\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007avatars\030\003 \003(\t\022\016"
-  "\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\021\n\tsent_ui"
-  "ds\030\006 \003(\005\"\'\n\tAddFriend\022\r\n\005error\030\001 \001(\005\022\013\n\003"
-  "uid\030\002 \001(\005\"2\n\023RequestFriendAccept\022\013\n\003uid\030"
-  "\001 \001(\005\022\016\n\006action\030\002 \001(\005\"\033\n\014RemoveFriend\022\013\n"
-  "\003uid\030\001 \001(\005\"Z\n\020NewFriendRequest\022\013\n\003uid\030\001 "
-  "\001(\005\022\016\n\006avatar\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\r\n\005lev"
-  "el\030\004 \001(\005\022\014\n\004gold\030\005 \001(\003\"u\n\025FriendRequestA"
-  "ccepted\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\016\n\006av"
-  "atar\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\014\n\004gold\030\005 \001(\003\022"
-  "\024\n\014avatar_frame\030\006 \001(\005\"v\n\020RecommendFriend"
-  "s\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007avatar"
-  "s\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\025"
-  "\n\ravatar_frames\030\006 \003(\005\"<\n\023PaymentAppleCon"
-  "sume\022\017\n\007pack_id\030\001 \001(\t\022\024\n\014receipt_data\030\002 "
-  "\001(\t\"2\n\037PaymentFinishedAppleTransaction\022\017"
-  "\n\007pack_id\030\001 \001(\t\"J\n\010NewRound\022\025\n\rcurrent_r"
-  "ound\030\001 \001(\005\022\021\n\tpot_value\030\002 \001(\003\022\024\n\014players"
-  "_gold\030\003 \003(\003\"i\n\013CreateTable\022\013\n\003bet\030\001 \001(\005\022"
-  "\023\n\013player_mode\030\002 \001(\005\022\022\n\nis_private\030\003 \001(\010"
-  "\022\022\n\npoint_mode\030\004 \001(\005\022\020\n\010bet_mode\030\005 \001(\010\"!"
-  "\n\rJoinTableById\022\020\n\010match_id\030\001 \001(\005\"\"\n\021Joi"
-  "nTableResponse\022\r\n\005error\030\001 \001(\005\"&\n\014ClaimSu"
-  "pport\022\026\n\016support_amount\030\001 \001(\005\"\361\001\n\016AppCod"
-  "eVersion\022\027\n\017android_version\030\001 \001(\005\022%\n\035and"
-  "roid_forced_update_version\030\002 \001(\005\022%\n\035andr"
-  "oid_remind_update_version\030\003 \001(\005\022\023\n\013ios_v"
-  "ersion\030\004 \001(\005\022!\n\031ios_forced_update_versio"
-  "n\030\005 \001(\005\022!\n\031ios_remind_update_version\030\006 \001"
-  "(\005\022\035\n\025ios_reviewing_version\030\007 \001(\005\"\"\n\020Pla"
-  "yCardResponse\022\016\n\006status\030\001 \001(\005\"!\n\020CheatVi"
-  "ewCardBot\022\r\n\005cards\030\001 \003(\005\"0\n\020InviteFriend"
-  "Play\022\013\n\003uid\030\001 \001(\005\022\017\n\007room_id\030\002 \001(\005\"A\n\020Ga"
-  "meActionNapoli\022\013\n\003uid\030\001 \001(\005\022\021\n\tpoint_add"
-  "\030\002 \001(\005\022\r\n\005suits\030\003 \003(\005\"D\n\025CustomerService"
-  "Report\022\023\n\013report_type\030\001 \001(\005\022\026\n\016report_co"
-  "ntent\030\002 \001(\t\"\035\n\016AdminBroadcast\022\013\n\003mes\030\001 \001"
-  "(\t\",\n\031PaymentPaypalRequestOrder\022\017\n\007pack_"
-  "id\030\001 \001(\t\"\'\n\022PaymentPaypalOrder\022\021\n\torder_"
-  "url\030\001 \001(\t\"\013\n\tQuickPlay\"{\n\032SetteMezzoNewU"
-  "serJoinMatch\022\013\n\003uid\030\001 \001(\005\022\014\n\004gold\030\002 \001(\003\022"
-  "\014\n\004name\030\003 \001(\t\022\023\n\013seat_server\030\004 \001(\005\022\017\n\007te"
-  "am_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001(\t\"E\n\032SetteMezz"
-  "oPrepareStartGame\022\021\n\tpot_value\030\001 \001(\005\022\024\n\014"
-  "players_gold\030\002 \003(\003\"\374\003\n\022SetteMezzoGameInf"
-  "o\022\020\n\010match_id\030\001 \001(\005\022\021\n\tgame_mode\030\002 \001(\005\022\023"
-  "\n\013player_mode\030\003 \001(\005\022\014\n\004uids\030\004 \003(\005\022\022\n\nuse"
-  "r_golds\030\005 \003(\003\022\022\n\nuser_names\030\006 \003(\t\022\022\n\nban"
-  "ker_uid\030\007 \001(\005\022\024\n\014current_turn\030\010 \001(\005\022\022\n\ng"
-  "ame_state\030\t \001(\005\022\023\n\013user_points\030\013 \003(\005\022\020\n\010"
-  "team_ids\030\014 \003(\005\022\021\n\thand_suit\030\r \001(\005\022\017\n\007ava"
-  "tars\030\016 \003(\t\022\033\n\023is_registered_leave\030\017 \001(\010\022"
-  "\013\n\003bet\030\020 \001(\005\022\021\n\tpot_value\030\021 \001(\003\022\025\n\rcurre"
-  "nt_round\030\022 \001(\005\022\025\n\rhand_in_round\030\023 \001(\005\022\023\n"
-  "\013is_in_games\030\024 \003(\010\022\026\n\016play_turn_time\030\025 \001"
-  "(\005\022\024\n\014player_infos\030\026 \003(\014\022\024\n\014banker_cards"
-  "\030\027 \003(\005\022\023\n\013player_bets\030\030 \003(\003\022\024\n\014time_end_"
-  "bet\030\031 \001(\005\"(\n\024SetteMezzoPlayerInfo\022\020\n\010car"
-  "d_ids\030\001 \003(\005\"\025\n\023SetteMezzoQuickPlay\"2\n\023Se"
-  "tteMezzoStartGame\022\014\n\004uids\030\001 \003(\005\022\r\n\005cards"
-  "\030\002 \003(\005\"\317\001\n\013RankingInfo\022\021\n\tseason_id\030\001 \001("
-  "\005\022\022\n\ntime_start\030\002 \001(\005\022\020\n\010time_end\030\003 \001(\005\022"
-  "\017\n\007rewards\030\004 \003(\005\022\014\n\004uids\030\005 \003(\005\022\017\n\007avatar"
-  "s\030\006 \003(\t\022\r\n\005names\030\007 \003(\t\022\016\n\006scores\030\010 \003(\005\022\025"
-  "\n\ravatar_frames\030\t \003(\005\022\017\n\007my_rank\030\n \001(\005\022\020"
-  "\n\010my_score\030\013 \001(\005\"E\n\rRankingResult\022\021\n\tsea"
-  "son_id\030\001 \001(\005\022\023\n\013gold_reward\030\002 \001(\005\022\014\n\004ran"
-  "k\030\003 \001(\005\"\'\n\022RankingClaimReward\022\021\n\tseason_"
-  "id\030\001 \001(\005\"\"\n\tUpdateAds\022\025\n\rtime_show_ads\030\001"
-  " \001(\005\"2\n\tAdsReward\022\014\n\004gold\030\001 \001(\005\022\027\n\017time_"
-  "ads_reward\030\002 \001(\005\"\036\n\016ChangeUserName\022\014\n\004na"
-  "me\030\001 \001(\t\"3\n\023SetteMezzoActionHit\022\013\n\003uid\030\001"
-  " \001(\005\022\017\n\007card_id\030\002 \001(\005\"D\n\024SetteMezzoUpdat"
-  "eTurn\022\024\n\014current_turn\030\001 \001(\005\022\026\n\016play_turn"
-  "_time\030\002 \001(\005\"R\n\025SetteMezzoActionStand\022\013\n\003"
-  "uid\030\001 \001(\005\022\024\n\014current_turn\030\002 \001(\005\022\026\n\016play_"
-  "turn_time\030\003 \001(\005\"n\n\021SetteMezzoEndGame\022\014\n\004"
-  "uids\030\001 \003(\005\022\016\n\006scores\030\002 \003(\005\022\017\n\007is_wins\030\003 "
-  "\003(\010\022\024\n\014golds_change\030\004 \003(\003\022\024\n\014player_gold"
-  "s\030\005 \003(\003\"+\n\030SetteMezzoShowBankerCard\022\017\n\007c"
-  "ard_id\030\001 \001(\005\"-\n\021SetteMezzoUserBet\022\013\n\003uid"
-  "\030\001 \001(\005\022\013\n\003bet\030\002 \001(\003\"\034\n\010ViewGame\022\020\n\010match"
-  "_id\030\001 \001(\005\"\033\n\014UserStopView\022\013\n\003uid\030\001 \001(\005\"N"
-  "\n\013NewUserView\022\013\n\003uid\030\001 \001(\005\022\016\n\006avatar\030\002 \001"
-  "(\t\022\014\n\004name\030\003 \001(\t\022\024\n\014avatar_frame\030\004 \001(\005\"\033"
-  "\n\014CheatExpUser\022\013\n\003exp\030\001 \001(\005\"\030\n\tUpdateExp"
-  "\022\013\n\003exp\030\001 \001(\003\"!\n\020ClaimRewardLevel\022\r\n\005lev"
-  "el\030\001 \001(\005\"4\n\rUserInventory\022#\n\005items\030\001 \003(\013"
-  "2\024.packet.InvetoryItem\"C\n\014InvetoryItem\022\017"
-  "\n\007item_id\030\001 \001(\005\022\023\n\013expire_time\030\002 \001(\005\022\r\n\005"
-  "value\030\003 \001(\005\"\032\n\007UseItem\022\017\n\007item_id\030\001 \001(\005\""
-  ".\n\tCheatItem\022\017\n\007item_id\030\001 \001(\005\022\020\n\010duratio"
-  "n\030\002 \001(\005\"+\n\007BuyItem\022\017\n\007item_id\030\001 \001(\005\022\017\n\007p"
-  "ack_id\030\002 \001(\005\"\?\n\023InventoryShopConfig\022(\n\005i"
-  "tems\030\001 \003(\0132\031.packet.InventoryShopItem\"M\n"
-  "\021InventoryShopItem\022\017\n\007item_id\030\001 \001(\005\022\'\n\005p"
-  "acks\030\002 \003(\0132\030.packet.InvetoryShopPack\"\?\n\020"
-  "InvetoryShopPack\022\n\n\002id\030\001 \001(\005\022\r\n\005price\030\002 "
-  "\001(\005\022\020\n\010duration\030\003 \001(\005\"c\n\030ClaimRewardLeve"
-  "lResponse\022\r\n\005level\030\001 \001(\005\022\014\n\004gold\030\002 \001(\005\022*"
-  "\n\005items\030\003 \003(\0132\033.packet.RewardInventoryIt"
-  "em\"G\n\023RewardInventoryItem\022\017\n\007item_id\030\001 \001"
-  "(\005\022\020\n\010duration\030\002 \001(\005\022\r\n\005value\030\003 \001(\005\"#\n\017V"
-  "iewerJoinMatch\022\020\n\010seat_idx\030\001 \001(\005b\006proto3"
+  "ingPong\"\252\001\n\005Login\022\014\n\004type\030\001 \001(\005\022\r\n\005token"
+  "\030\002 \001(\t\022\024\n\014device_model\030\003 \001(\t\022\020\n\010platform"
+  "\030\004 \001(\t\022\026\n\016device_country\030\005 \001(\t\022\030\n\020app_ve"
+  "rsion_code\030\006 \001(\005\022\027\n\017avatar_frame_id\030\007 \001("
+  "\005\022\021\n\tavatar_id\030\010 \001(\005\"H\n\rLoginFirebase\022\020\n"
+  "\010sub_type\030\001 \001(\005\022\023\n\013login_token\030\002 \001(\t\022\020\n\010"
+  "guest_id\030\003 \001(\t\"\010\n\006Logout\":\n\rLoginRespons"
+  "e\022\013\n\003uid\030\001 \001(\005\022\r\n\005token\030\002 \001(\t\022\r\n\005error\030\003"
+  " \001(\005\"\273\003\n\010UserInfo\022\013\n\003uid\030\001 \001(\005\022\014\n\004name\030\002"
+  " \001(\t\022\014\n\004gold\030\003 \001(\003\022\016\n\006scores\030\004 \003(\005\022\r\n\005na"
+  "mes\030\005 \003(\t\022\013\n\003abc\030\006 \001(\005\022\016\n\006avatar\030\007 \001(\t\022\032"
+  "\n\022avatar_third_party\030\010 \001(\t\022\r\n\005level\030\t \001("
+  "\005\022\023\n\013support_num\030\n \001(\005\022\021\n\twin_count\030\013 \001("
+  "\005\022\022\n\ngame_count\030\014 \001(\005\022\013\n\003exp\030\r \001(\003\022\024\n\014st"
+  "artup_gold\030\016 \001(\005\022\025\n\rhas_first_buy\030\017 \001(\010\022"
+  "\025\n\rtime_show_ads\030\020 \001(\005\022\022\n\nlogin_type\030\021 \001"
+  "(\005\022\027\n\017time_ads_reward\030\022 \001(\005\022\034\n\024add_for_u"
+  "ser_support\030\023 \001(\010\022\024\n\014avatar_frame\030\024 \001(\005\022"
+  "\026\n\016claimed_levels\030\025 \003(\005\022\031\n\021price_change_"
+  "name\030\026 \001(\005\"\253\004\n\010GameInfo\022\020\n\010match_id\030\001 \001("
+  "\005\022\021\n\tgame_mode\030\002 \001(\005\022\023\n\013player_mode\030\003 \001("
+  "\005\022\014\n\004uids\030\004 \003(\005\022\022\n\nuser_golds\030\005 \003(\003\022\022\n\nu"
+  "ser_names\030\006 \003(\t\022\025\n\rcards_compare\030\007 \003(\005\022\024"
+  "\n\014current_turn\030\010 \001(\005\022\022\n\ngame_state\030\t \001(\005"
+  "\022\020\n\010my_cards\030\n \003(\005\022\024\n\014remain_cards\030\013 \001(\005"
+  "\022\023\n\013user_points\030\014 \003(\005\022\020\n\010team_ids\030\r \003(\005\022"
+  "\021\n\thand_suit\030\016 \001(\005\022\017\n\007avatars\030\017 \003(\t\022\033\n\023i"
+  "s_registered_leave\030\020 \001(\010\022\021\n\tpot_value\030\021 "
+  "\001(\003\022\025\n\rcurrent_round\030\022 \001(\005\022\025\n\rhand_in_ro"
+  "und\030\023 \001(\005\022\024\n\014point_to_win\030\024 \001(\005\022\017\n\007is_vi"
+  "ps\030\025 \003(\010\022\023\n\013viewer_uids\030\026 \003(\005\022\026\n\016viewer_"
+  "avatars\030\027 \003(\t\022\024\n\014viewer_names\030\030 \003(\t\022\025\n\ra"
+  "vatar_frames\030\031 \003(\005\022\034\n\024viewer_avatar_fram"
+  "es\030\032 \003(\005\"#\n\021RegisterLeaveGame\022\016\n\006status\030"
+  "\001 \001(\005\"\227\001\n\020NewUserJoinMatch\022\013\n\003uid\030\001 \001(\005\022"
+  "\014\n\004gold\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013seat_serv"
+  "er\030\004 \001(\005\022\017\n\007team_id\030\005 \001(\005\022\016\n\006avatar\030\006 \001("
+  "\t\022\016\n\006is_vip\030\007 \001(\010\022\024\n\014avatar_frame\030\010 \001(\005\""
+  "-\n\016UserLeaveMatch\022\013\n\003uid\030\001 \001(\005\022\016\n\006reason"
+  "\030\002 \001(\005\"/\n\010DealCard\022\r\n\005cards\030\001 \003(\005\022\024\n\014rem"
+  "ain_cards\030\002 \001(\005\"\332\001\n\010PlayCard\022\013\n\003uid\030\001 \001("
+  "\005\022\017\n\007card_id\030\002 \001(\005\022\017\n\007is_auto\030\003 \001(\010\022\024\n\014c"
+  "urrent_turn\030\004 \001(\005\022\021\n\thand_suit\030\005 \001(\005\022\023\n\013"
+  "is_end_hand\030\006 \001(\010\022\017\n\007win_uid\030\007 \001(\005\022\021\n\twi"
+  "n_point\030\010 \001(\005\022\024\n\014is_end_round\030\t \001(\010\022\020\n\010w"
+  "in_card\030\n \001(\005\022\025\n\rplayer_points\030\013 \003(\005\"4\n\t"
+  "StartGame\022\021\n\tpot_value\030\001 \001(\005\022\024\n\014players_"
+  "gold\030\002 \003(\003\"1\n\007NewHand\022\024\n\014current_turn\030\001 "
+  "\001(\005\022\020\n\010my_cards\030\002 \003(\005\"!\n\017UpdateGamePoint"
+  "\022\016\n\006points\030\001 \003(\005\"\031\n\010DrawCard\022\r\n\005cards\030\001 "
+  "\003(\005\"\254\001\n\013GeneralInfo\022\021\n\ttimestamp\030\001 \001(\003\022\035"
+  "\n\025time_thinking_in_turn\030\002 \001(\005\022\022\n\nexp_lev"
+  "els\030\003 \003(\005\022\027\n\017fee_mode_no_bet\030\004 \001(\005\022\022\n\nen"
+  "able_ads\030\005 \001(\010\022*\n\rlevel_rewards\030\006 \003(\0132\023."
+  "packet.LevelReward\"M\n\013LevelReward\022\r\n\005lev"
+  "el\030\001 \001(\005\022\014\n\004gold\030\002 \001(\005\022!\n\005items\030\003 \003(\0132\022."
+  "packet.ItemReward\"/\n\nItemReward\022\017\n\007item_"
+  "id\030\001 \001(\005\022\020\n\010duration\030\002 \001(\005\"\266\001\n\007EndGame\022\014"
+  "\n\004uids\030\001 \003(\005\022\023\n\013win_team_id\030\006 \001(\005\022\023\n\013sco"
+  "re_cards\030\002 \003(\005\022\031\n\021score_last_tricks\030\003 \003("
+  "\005\022\024\n\014score_totals\030\004 \003(\005\022\024\n\014players_gold\030"
+  "\005 \003(\003\022,\n\007rewards\030\007 \003(\0132\033.packet.RewardIn"
+  "ventoryItem\"&\n\020PrepareStartGame\022\022\n\ntime_"
+  "start\030\001 \001(\005\"6\n\021InGameChatMessage\022\013\n\003uid\030"
+  "\001 \001(\005\022\024\n\014chat_message\030\002 \001(\t\"n\n\024PaymentGo"
+  "ogleConsume\022\026\n\016purchase_token\030\001 \001(\t\022\020\n\010q"
+  "uantity\030\002 \001(\005\022\014\n\004skus\030\003 \003(\t\022\021\n\tsignature"
+  "\030\004 \001(\t\022\013\n\003sku\030\005 \001(\t\"[\n\016PaymentSuccess\022\014\n"
+  "\004gold\030\001 \001(\003\022\017\n\007pack_id\030\002 \001(\t\022*\n\005items\030\003 "
+  "\003(\0132\033.packet.RewardInventoryItem\"\033\n\013Upda"
+  "teMoney\022\014\n\004gold\030\001 \001(\003\"\276\001\n\tTableList\022\021\n\tt"
+  "able_ids\030\001 \003(\005\022\023\n\013num_players\030\002 \003(\005\022\024\n\014p"
+  "layer_modes\030\003 \003(\005\022\023\n\013player_uids\030\004 \003(\005\022\017"
+  "\n\007avatars\030\005 \003(\t\022\022\n\ngame_modes\030\006 \003(\005\022\025\n\ra"
+  "vatar_frames\030\007 \003(\005\022\022\n\nis_private\030\010 \003(\010\022\016"
+  "\n\006points\030\t \003(\005\"\333\002\n\nShopConfig\022\020\n\010pack_id"
+  "s\030\001 \003(\t\022\r\n\005golds\030\002 \003(\003\022\016\n\006prices\030\003 \003(\001\022\022"
+  "\n\ncurrencies\030\004 \003(\t\022\023\n\013no_ads_days\030\005 \003(\005\022"
+  "\030\n\020gold_offer_first\030\006 \001(\005\022\036\n\026no_ads_day_"
+  "offer_first\030\007 \001(\005\022\031\n\021price_offer_first\030\010"
+  " \001(\005\022\034\n\024currency_offer_first\030\t \001(\t\022\033\n\023pa"
+  "ck_id_offer_first\030\n \001(\t\022:\n\025items_offer_f"
+  "irst_buy\030\013 \003(\0132\033.packet.RewardInventoryI"
+  "tem\022\'\n\007details\030\014 \003(\0132\026.packet.DetailShop"
+  "Pack\"<\n\016DetailShopPack\022*\n\005items\030\001 \003(\0132\033."
+  "packet.RewardInventoryItem\" \n\014GuestAccou"
+  "nt\022\020\n\010guest_id\030\001 \001(\t\"!\n\014ChangeAvatar\022\021\n\t"
+  "avatar_id\030\001 \001(\005\"3\n\022InGameChatEmoticon\022\013\n"
+  "\003uid\030\001 \001(\005\022\020\n\010emoticon\030\002 \001(\005\"\033\n\014SearchFr"
+  "iend\022\013\n\003uid\030\001 \001(\005\"\314\001\n\024SearchFriendRespon"
+  "se\022\013\n\003uid\030\001 \001(\005\022\014\n\004gold\030\002 \001(\003\022\014\n\004name\030\003 "
+  "\001(\t\022\016\n\006avatar\030\004 \001(\t\022\021\n\twin_count\030\005 \001(\005\022\022"
+  "\n\ngame_count\030\006 \001(\001\022\r\n\005error\030\007 \001(\005\022\r\n\005lev"
+  "el\030\010 \001(\005\022\013\n\003exp\030\t \001(\003\022\023\n\013is_verified\030\n \001"
+  "(\010\022\024\n\014avatar_frame\030\013 \001(\005\"\035\n\rCheatGoldUse"
+  "r\022\014\n\004gold\030\001 \001(\003\"\261\001\n\nFriendList\022\014\n\004uids\030\001"
+  " \003(\005\022\r\n\005names\030\002 \003(\t\022\017\n\007avatars\030\003 \003(\t\022\016\n\006"
+  "levels\030\004 \003(\005\022\r\n\005golds\030\005 \003(\003\022\017\n\007onlines\030\006"
+  " \003(\010\022\023\n\013is_playings\030\007 \003(\010\022\025\n\ravatar_fram"
+  "es\030\010 \003(\005\022\031\n\021last_online_times\030\t \003(\005\"p\n\016F"
+  "riendRequests\022\014\n\004uids\030\001 \003(\005\022\r\n\005names\030\002 \003"
+  "(\t\022\017\n\007avatars\030\003 \003(\t\022\016\n\006levels\030\004 \003(\005\022\r\n\005g"
+  "olds\030\005 \003(\003\022\021\n\tsent_uids\030\006 \003(\005\"\'\n\tAddFrie"
+  "nd\022\r\n\005error\030\001 \001(\005\022\013\n\003uid\030\002 \001(\005\"2\n\023Reques"
+  "tFriendAccept\022\013\n\003uid\030\001 \001(\005\022\016\n\006action\030\002 \001"
+  "(\005\"\033\n\014RemoveFriend\022\013\n\003uid\030\001 \001(\005\"Z\n\020NewFr"
+  "iendRequest\022\013\n\003uid\030\001 \001(\005\022\016\n\006avatar\030\002 \001(\t"
+  "\022\014\n\004name\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\014\n\004gold\030\005 "
+  "\001(\003\"u\n\025FriendRequestAccepted\022\013\n\003uid\030\001 \001("
+  "\005\022\014\n\004name\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\r\n\005level"
+  "\030\004 \001(\005\022\014\n\004gold\030\005 \001(\003\022\024\n\014avatar_frame\030\006 \001"
+  "(\005\"v\n\020RecommendFriends\022\014\n\004uids\030\001 \003(\005\022\r\n\005"
+  "names\030\002 \003(\t\022\017\n\007avatars\030\003 \003(\t\022\016\n\006levels\030\004"
+  " \003(\005\022\r\n\005golds\030\005 \003(\003\022\025\n\ravatar_frames\030\006 \003"
+  "(\005\"<\n\023PaymentAppleConsume\022\017\n\007pack_id\030\001 \001"
+  "(\t\022\024\n\014receipt_data\030\002 \001(\t\"2\n\037PaymentFinis"
+  "hedAppleTransaction\022\017\n\007pack_id\030\001 \001(\t\"J\n\010"
+  "NewRound\022\025\n\rcurrent_round\030\001 \001(\005\022\021\n\tpot_v"
+  "alue\030\002 \001(\003\022\024\n\014players_gold\030\003 \003(\003\"i\n\013Crea"
+  "teTable\022\013\n\003bet\030\001 \001(\005\022\023\n\013player_mode\030\002 \001("
+  "\005\022\022\n\nis_private\030\003 \001(\010\022\022\n\npoint_mode\030\004 \001("
+  "\005\022\020\n\010bet_mode\030\005 \001(\010\"!\n\rJoinTableById\022\020\n\010"
+  "match_id\030\001 \001(\005\"\"\n\021JoinTableResponse\022\r\n\005e"
+  "rror\030\001 \001(\005\"&\n\014ClaimSupport\022\026\n\016support_am"
+  "ount\030\001 \001(\005\"\361\001\n\016AppCodeVersion\022\027\n\017android"
+  "_version\030\001 \001(\005\022%\n\035android_forced_update_"
+  "version\030\002 \001(\005\022%\n\035android_remind_update_v"
+  "ersion\030\003 \001(\005\022\023\n\013ios_version\030\004 \001(\005\022!\n\031ios"
+  "_forced_update_version\030\005 \001(\005\022!\n\031ios_remi"
+  "nd_update_version\030\006 \001(\005\022\035\n\025ios_reviewing"
+  "_version\030\007 \001(\005\"\"\n\020PlayCardResponse\022\016\n\006st"
+  "atus\030\001 \001(\005\"!\n\020CheatViewCardBot\022\r\n\005cards\030"
+  "\001 \003(\005\"0\n\020InviteFriendPlay\022\013\n\003uid\030\001 \001(\005\022\017"
+  "\n\007room_id\030\002 \001(\005\"A\n\020GameActionNapoli\022\013\n\003u"
+  "id\030\001 \001(\005\022\021\n\tpoint_add\030\002 \001(\005\022\r\n\005suits\030\003 \003"
+  "(\005\"D\n\025CustomerServiceReport\022\023\n\013report_ty"
+  "pe\030\001 \001(\005\022\026\n\016report_content\030\002 \001(\t\"\035\n\016Admi"
+  "nBroadcast\022\013\n\003mes\030\001 \001(\t\",\n\031PaymentPaypal"
+  "RequestOrder\022\017\n\007pack_id\030\001 \001(\t\"\'\n\022Payment"
+  "PaypalOrder\022\021\n\torder_url\030\001 \001(\t\"\013\n\tQuickP"
+  "lay\"{\n\032SetteMezzoNewUserJoinMatch\022\013\n\003uid"
+  "\030\001 \001(\005\022\014\n\004gold\030\002 \001(\003\022\014\n\004name\030\003 \001(\t\022\023\n\013se"
+  "at_server\030\004 \001(\005\022\017\n\007team_id\030\005 \001(\005\022\016\n\006avat"
+  "ar\030\006 \001(\t\"E\n\032SetteMezzoPrepareStartGame\022\021"
+  "\n\tpot_value\030\001 \001(\005\022\024\n\014players_gold\030\002 \003(\003\""
+  "\374\003\n\022SetteMezzoGameInfo\022\020\n\010match_id\030\001 \001(\005"
+  "\022\021\n\tgame_mode\030\002 \001(\005\022\023\n\013player_mode\030\003 \001(\005"
+  "\022\014\n\004uids\030\004 \003(\005\022\022\n\nuser_golds\030\005 \003(\003\022\022\n\nus"
+  "er_names\030\006 \003(\t\022\022\n\nbanker_uid\030\007 \001(\005\022\024\n\014cu"
+  "rrent_turn\030\010 \001(\005\022\022\n\ngame_state\030\t \001(\005\022\023\n\013"
+  "user_points\030\013 \003(\005\022\020\n\010team_ids\030\014 \003(\005\022\021\n\th"
+  "and_suit\030\r \001(\005\022\017\n\007avatars\030\016 \003(\t\022\033\n\023is_re"
+  "gistered_leave\030\017 \001(\010\022\013\n\003bet\030\020 \001(\005\022\021\n\tpot"
+  "_value\030\021 \001(\003\022\025\n\rcurrent_round\030\022 \001(\005\022\025\n\rh"
+  "and_in_round\030\023 \001(\005\022\023\n\013is_in_games\030\024 \003(\010\022"
+  "\026\n\016play_turn_time\030\025 \001(\005\022\024\n\014player_infos\030"
+  "\026 \003(\014\022\024\n\014banker_cards\030\027 \003(\005\022\023\n\013player_be"
+  "ts\030\030 \003(\003\022\024\n\014time_end_bet\030\031 \001(\005\"(\n\024SetteM"
+  "ezzoPlayerInfo\022\020\n\010card_ids\030\001 \003(\005\"\025\n\023Sett"
+  "eMezzoQuickPlay\"2\n\023SetteMezzoStartGame\022\014"
+  "\n\004uids\030\001 \003(\005\022\r\n\005cards\030\002 \003(\005\"\317\001\n\013RankingI"
+  "nfo\022\021\n\tseason_id\030\001 \001(\005\022\022\n\ntime_start\030\002 \001"
+  "(\005\022\020\n\010time_end\030\003 \001(\005\022\017\n\007rewards\030\004 \003(\005\022\014\n"
+  "\004uids\030\005 \003(\005\022\017\n\007avatars\030\006 \003(\t\022\r\n\005names\030\007 "
+  "\003(\t\022\016\n\006scores\030\010 \003(\005\022\025\n\ravatar_frames\030\t \003"
+  "(\005\022\017\n\007my_rank\030\n \001(\005\022\020\n\010my_score\030\013 \001(\005\"E\n"
+  "\rRankingResult\022\021\n\tseason_id\030\001 \001(\005\022\023\n\013gol"
+  "d_reward\030\002 \001(\005\022\014\n\004rank\030\003 \001(\005\"\'\n\022RankingC"
+  "laimReward\022\021\n\tseason_id\030\001 \001(\005\"\"\n\tUpdateA"
+  "ds\022\025\n\rtime_show_ads\030\001 \001(\005\"2\n\tAdsReward\022\014"
+  "\n\004gold\030\001 \001(\005\022\027\n\017time_ads_reward\030\002 \001(\005\"\036\n"
+  "\016ChangeUserName\022\014\n\004name\030\001 \001(\t\"3\n\023SetteMe"
+  "zzoActionHit\022\013\n\003uid\030\001 \001(\005\022\017\n\007card_id\030\002 \001"
+  "(\005\"D\n\024SetteMezzoUpdateTurn\022\024\n\014current_tu"
+  "rn\030\001 \001(\005\022\026\n\016play_turn_time\030\002 \001(\005\"R\n\025Sett"
+  "eMezzoActionStand\022\013\n\003uid\030\001 \001(\005\022\024\n\014curren"
+  "t_turn\030\002 \001(\005\022\026\n\016play_turn_time\030\003 \001(\005\"n\n\021"
+  "SetteMezzoEndGame\022\014\n\004uids\030\001 \003(\005\022\016\n\006score"
+  "s\030\002 \003(\005\022\017\n\007is_wins\030\003 \003(\010\022\024\n\014golds_change"
+  "\030\004 \003(\003\022\024\n\014player_golds\030\005 \003(\003\"+\n\030SetteMez"
+  "zoShowBankerCard\022\017\n\007card_id\030\001 \001(\005\"-\n\021Set"
+  "teMezzoUserBet\022\013\n\003uid\030\001 \001(\005\022\013\n\003bet\030\002 \001(\003"
+  "\"\034\n\010ViewGame\022\020\n\010match_id\030\001 \001(\005\"\033\n\014UserSt"
+  "opView\022\013\n\003uid\030\001 \001(\005\"N\n\013NewUserView\022\013\n\003ui"
+  "d\030\001 \001(\005\022\016\n\006avatar\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\024\n"
+  "\014avatar_frame\030\004 \001(\005\"\033\n\014CheatExpUser\022\013\n\003e"
+  "xp\030\001 \001(\005\"\030\n\tUpdateExp\022\013\n\003exp\030\001 \001(\003\"!\n\020Cl"
+  "aimRewardLevel\022\r\n\005level\030\001 \001(\005\"4\n\rUserInv"
+  "entory\022#\n\005items\030\001 \003(\0132\024.packet.InvetoryI"
+  "tem\"C\n\014InvetoryItem\022\017\n\007item_id\030\001 \001(\005\022\023\n\013"
+  "expire_time\030\002 \001(\005\022\r\n\005value\030\003 \001(\005\"\032\n\007UseI"
+  "tem\022\017\n\007item_id\030\001 \001(\005\".\n\tCheatItem\022\017\n\007ite"
+  "m_id\030\001 \001(\005\022\020\n\010duration\030\002 \001(\005\"+\n\007BuyItem\022"
+  "\017\n\007item_id\030\001 \001(\005\022\017\n\007pack_id\030\002 \001(\005\"\?\n\023Inv"
+  "entoryShopConfig\022(\n\005items\030\001 \003(\0132\031.packet"
+  ".InventoryShopItem\"M\n\021InventoryShopItem\022"
+  "\017\n\007item_id\030\001 \001(\005\022\'\n\005packs\030\002 \003(\0132\030.packet"
+  ".InvetoryShopPack\"\?\n\020InvetoryShopPack\022\n\n"
+  "\002id\030\001 \001(\005\022\r\n\005price\030\002 \001(\005\022\020\n\010duration\030\003 \001"
+  "(\005\"c\n\030ClaimRewardLevelResponse\022\r\n\005level\030"
+  "\001 \001(\005\022\014\n\004gold\030\002 \001(\005\022*\n\005items\030\003 \003(\0132\033.pac"
+  "ket.RewardInventoryItem\"G\n\023RewardInvento"
+  "ryItem\022\017\n\007item_id\030\001 \001(\005\022\020\n\010duration\030\002 \001("
+  "\005\022\r\n\005value\030\003 \001(\005\"#\n\017ViewerJoinMatch\022\020\n\010s"
+  "eat_idx\030\001 \001(\005b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_packet_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_packet_2eproto = {
-    false, false, 8360, descriptor_table_protodef_packet_2eproto,
+    false, false, 8421, descriptor_table_protodef_packet_2eproto,
     "packet.proto",
     &descriptor_table_packet_2eproto_once, nullptr, 0, 97,
     schemas, file_default_instances, TableStruct_packet_2eproto::offsets,
@@ -3653,8 +3662,8 @@ Login::Login(const Login& from)
       GetArenaForAllocation());
   }
   ::memcpy(&type_, &from.type_,
-    static_cast<size_t>(reinterpret_cast<char*>(&app_version_code_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(app_version_code_));
+    static_cast<size_t>(reinterpret_cast<char*>(&avatar_id_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(avatar_id_));
   // @@protoc_insertion_point(copy_constructor:packet.Login)
 }
 
@@ -3677,8 +3686,8 @@ device_country_.InitDefault();
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&type_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&app_version_code_) -
-    reinterpret_cast<char*>(&type_)) + sizeof(app_version_code_));
+    0, static_cast<size_t>(reinterpret_cast<char*>(&avatar_id_) -
+    reinterpret_cast<char*>(&type_)) + sizeof(avatar_id_));
 }
 
 Login::~Login() {
@@ -3713,8 +3722,8 @@ void Login::Clear() {
   platform_.ClearToEmpty();
   device_country_.ClearToEmpty();
   ::memset(&type_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&app_version_code_) -
-      reinterpret_cast<char*>(&type_)) + sizeof(app_version_code_));
+      reinterpret_cast<char*>(&avatar_id_) -
+      reinterpret_cast<char*>(&type_)) + sizeof(avatar_id_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -3776,6 +3785,22 @@ const char* Login::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
           app_version_code_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 avatar_frame_id = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          avatar_frame_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 avatar_id = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+          avatar_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -3861,6 +3886,18 @@ uint8_t* Login::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteInt32ToArray(6, this->_internal_app_version_code(), target);
   }
 
+  // int32 avatar_frame_id = 7;
+  if (this->_internal_avatar_frame_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(7, this->_internal_avatar_frame_id(), target);
+  }
+
+  // int32 avatar_id = 8;
+  if (this->_internal_avatar_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(8, this->_internal_avatar_id(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -3915,6 +3952,16 @@ size_t Login::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_app_version_code());
   }
 
+  // int32 avatar_frame_id = 7;
+  if (this->_internal_avatar_frame_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_avatar_frame_id());
+  }
+
+  // int32 avatar_id = 8;
+  if (this->_internal_avatar_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_avatar_id());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -3955,6 +4002,12 @@ void Login::MergeFrom(const Login& from) {
   if (from._internal_app_version_code() != 0) {
     _internal_set_app_version_code(from._internal_app_version_code());
   }
+  if (from._internal_avatar_frame_id() != 0) {
+    _internal_set_avatar_frame_id(from._internal_avatar_frame_id());
+  }
+  if (from._internal_avatar_id() != 0) {
+    _internal_set_avatar_id(from._internal_avatar_id());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -3991,8 +4044,8 @@ void Login::InternalSwap(Login* other) {
       &other->device_country_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Login, app_version_code_)
-      + sizeof(Login::app_version_code_)
+      PROTOBUF_FIELD_OFFSET(Login, avatar_id_)
+      + sizeof(Login::avatar_id_)
       - PROTOBUF_FIELD_OFFSET(Login, type_)>(
           reinterpret_cast<char*>(&type_),
           reinterpret_cast<char*>(&other->type_));
@@ -10856,7 +10909,8 @@ TableList::TableList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   avatars_(arena),
   game_modes_(arena),
   avatar_frames_(arena),
-  is_private_(arena) {
+  is_private_(arena),
+  points_(arena) {
   SharedCtor();
   // @@protoc_insertion_point(arena_constructor:packet.TableList)
 }
@@ -10869,7 +10923,8 @@ TableList::TableList(const TableList& from)
       avatars_(from.avatars_),
       game_modes_(from.game_modes_),
       avatar_frames_(from.avatar_frames_),
-      is_private_(from.is_private_) {
+      is_private_(from.is_private_),
+      points_(from.points_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:packet.TableList)
 }
@@ -10908,6 +10963,7 @@ void TableList::Clear() {
   game_modes_.Clear();
   avatar_frames_.Clear();
   is_private_.Clear();
+  points_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -11009,6 +11065,17 @@ const char* TableList::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx
         } else
           goto handle_unusual;
         continue;
+      // repeated int32 points = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedInt32Parser(_internal_mutable_points(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 72) {
+          _internal_add_points(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -11105,6 +11172,15 @@ uint8_t* TableList::_InternalSerialize(
   // repeated bool is_private = 8;
   if (this->_internal_is_private_size() > 0) {
     target = stream->WriteFixedPacked(8, _internal_is_private(), target);
+  }
+
+  // repeated int32 points = 9;
+  {
+    int byte_size = _points_cached_byte_size_.load(std::memory_order_relaxed);
+    if (byte_size > 0) {
+      target = stream->WriteInt32Packed(
+          9, _internal_points(), byte_size, target);
+    }
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -11226,6 +11302,20 @@ size_t TableList::ByteSizeLong() const {
     total_size += data_size;
   }
 
+  // repeated int32 points = 9;
+  {
+    size_t data_size = ::_pbi::WireFormatLite::
+      Int32Size(this->points_);
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    int cached_size = ::_pbi::ToCachedSize(data_size);
+    _points_cached_byte_size_.store(cached_size,
+                                    std::memory_order_relaxed);
+    total_size += data_size;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_cached_size_);
 }
 
@@ -11256,6 +11346,7 @@ void TableList::MergeFrom(const TableList& from) {
   game_modes_.MergeFrom(from.game_modes_);
   avatar_frames_.MergeFrom(from.avatar_frames_);
   is_private_.MergeFrom(from.is_private_);
+  points_.MergeFrom(from.points_);
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -11281,6 +11372,7 @@ void TableList::InternalSwap(TableList* other) {
   game_modes_.InternalSwap(&other->game_modes_);
   avatar_frames_.InternalSwap(&other->avatar_frames_);
   is_private_.InternalSwap(&other->is_private_);
+  points_.InternalSwap(&other->points_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TableList::GetMetadata() const {

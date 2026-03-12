@@ -181,15 +181,22 @@ JoinMatchErrors Match::try_join(uint64_t user_id, bool is_bot) {
 
         if (is_bot) {
             player.set_depth_strategy(1 + rand() % 3);
+
+            // should random avatar, avatar frame for it
+            int random_avatar_id = GameConstants::AVATAR_IDS[rand() % GameConstants::AVATAR_IDS.size()];
+            player.avatar = std::to_string(random_avatar_id);
+            int random_avatar_frame_id = GameConstants::AVATAR_FRAME_IDS[rand() % GameConstants::AVATAR_FRAME_IDS.size()];
+            player.avatar_frame = random_avatar_frame_id;
+            player.name = "User_" + std::to_string(user_id);
         }
     
         int seat_server_id = slot_idx;
         packet::NewUserJoinMatch pkg;
         pkg.set_uid(static_cast<int64_t>(user_id));
-        pkg.set_name(info.name);
-        pkg.set_avatar(info.avatar);
-        pkg.set_gold(info.gold);
-        pkg.set_avatar_frame(info.avatar_frame);
+        pkg.set_name(player.name);
+        pkg.set_avatar(player.avatar);
+        pkg.set_gold(player.gold);
+        pkg.set_avatar_frame(player.avatar_frame);
         pkg.set_seat_server(seat_server_id);
 		pkg.set_team_id(player.team_id);
         broadcast_pkg(Cmd::NEW_USER_JOIN_MATCH, pkg, {user_id});
@@ -903,9 +910,9 @@ bool Match::check_end_game() {
         team_scores_[static_cast<std::size_t>(player.team_id)] += player.points;
     }
 
-    if (true) {
-        return true;
-    }
+    // if (true) {
+    //     return true;
+    // }
 
     if (team_scores_[0] >= point_to_win_ || team_scores_[1] >= point_to_win_) {
         return true;

@@ -6,3 +6,8 @@ cmake --build build --config Debug
 
 # Run the client test
 .\build\Debug\test_client.exe
+
+
+# Build release server
+docker build --no-cache -t tressette_server .
+docker run --rm -p 8080:8080 tressette_server

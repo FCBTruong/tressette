@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxrhqd8w2syim"]
+[gd_scene format=3 uid="uid://cxrhqd8w2syim"]
 
-[ext_resource type="Script" path="res://scripts/lobby/settings_gui.gd" id="1_h1gqm"]
+[ext_resource type="Script" uid="uid://bpp80eeaj2fn" path="res://scripts/lobby/settings_gui.gd" id="1_h1gqm"]
 [ext_resource type="FontFile" uid="uid://dfle2wkqrgoh4" path="res://assets/fonts/mithella/Mithella-Regular.otf" id="2_kpywk"]
-[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_txiv8"]
+[ext_resource type="Script" uid="uid://cxg1mkp74kffp" path="res://scripts/custom/zoomable_button.gd" id="2_txiv8"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="4_71xqs"]
 [ext_resource type="Texture2D" uid="uid://0ohtbsqbkssg" path="res://assets/images/card_tressette/modern/card_0.png" id="5_5y25g"]
 [ext_resource type="Texture2D" uid="uid://t4qbllnxmlnt" path="res://assets/images/card_tressette/classic/0.png" id="6_6qx2p"]
@@ -41,7 +41,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="SettingsGui" type="Control"]
+[node name="SettingsGui" type="Control" unique_id=1900408270]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +50,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CanvasLayer" type="Control" parent="."]
+[node name="CanvasLayer" type="Control" parent="." unique_id=1425609030]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +60,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_h1gqm")
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=371312965]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=2086176325]
 layout_direction = 3
 layout_mode = 1
 anchors_preset = 9
@@ -78,7 +78,7 @@ offset_right = 300.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1m567")
 
-[node name="VersionLb" type="Label" parent="CanvasLayer/Panel"]
+[node name="VersionLb" type="Label" parent="CanvasLayer/Panel" unique_id=219417865]
 modulate = Color(1, 1, 1, 0.612)
 layout_mode = 1
 anchors_preset = 7
@@ -97,7 +97,7 @@ text = "Version 1.0.0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=2012645835]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -109,7 +109,7 @@ offset_bottom = 425.0
 grow_horizontal = 2
 theme_override_constants/separation = 10
 
-[node name="MusicBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="MusicBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1466086847]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kpywk")
 theme_override_font_sizes/font_size = 20
@@ -117,25 +117,25 @@ text = "MUSIC"
 flat = true
 script = ExtResource("2_txiv8")
 
-[node name="SoundBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="SoundBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1237993996]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kpywk")
 theme_override_font_sizes/font_size = 20
 text = "SOUND"
 script = ExtResource("2_txiv8")
 
-[node name="ChatBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="ChatBtn" type="CheckButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=398968044]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kpywk")
 theme_override_font_sizes/font_size = 20
 text = "CHAT"
 script = ExtResource("2_txiv8")
 
-[node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer" unique_id=457409402]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="LanguageTitle" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="LanguageTitle" type="Label" parent="CanvasLayer/Panel/VBoxContainer" unique_id=711221103]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_71xqs")
 theme_override_font_sizes/font_size = 25
@@ -144,7 +144,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="OptionLanguage" type="OptionButton" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="OptionLanguage" type="OptionButton" parent="CanvasLayer/Panel/VBoxContainer" unique_id=2109169540]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_kpywk")
 theme_override_font_sizes/font_size = 18
@@ -156,10 +156,10 @@ popup/item_1/text = "ITALY"
 popup/item_1/id = 1
 script = ExtResource("2_txiv8")
 
-[node name="Control2" type="Control" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="Control2" type="Control" parent="CanvasLayer/Panel/VBoxContainer" unique_id=380036355]
 layout_mode = 2
 
-[node name="CardStyleTitle" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="CardStyleTitle" type="Label" parent="CanvasLayer/Panel/VBoxContainer" unique_id=2029108928]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_71xqs")
 theme_override_font_sizes/font_size = 25
@@ -167,18 +167,18 @@ text = "CARD_STYLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1869433786]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ModernCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+[node name="ModernCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer" unique_id=638575250]
 custom_minimum_size = Vector2(70, 100)
 layout_mode = 2
 flat = true
 script = ExtResource("2_txiv8")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn" unique_id=880826183]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,7 +188,7 @@ grow_vertical = 2
 texture = ExtResource("5_5y25g")
 expand_mode = 1
 
-[node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn"]
+[node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ModernCardBtn" unique_id=19195330]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -198,13 +198,13 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vthgo")
 
-[node name="ClassicCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+[node name="ClassicCardBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer" unique_id=1591059456]
 custom_minimum_size = Vector2(70, 100)
 layout_mode = 2
 flat = true
 script = ExtResource("2_txiv8")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn" unique_id=989595918]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -214,7 +214,7 @@ grow_vertical = 2
 texture = ExtResource("6_6qx2p")
 expand_mode = 1
 
-[node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn"]
+[node name="CheckIcon" type="Panel" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer/ClassicCardBtn" unique_id=1126488715]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -224,7 +224,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vthgo")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=842257840]
 modulate = Color(1, 1, 1, 0.704)
 layout_mode = 1
 anchors_preset = 5
@@ -239,7 +239,7 @@ theme_override_fonts/font = ExtResource("4_71xqs")
 theme_override_font_sizes/font_size = 30
 text = "SETTINGS"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Panel"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=1209988016]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -253,11 +253,11 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer2"]
+[node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer2" unique_id=1118245354]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="RemoveAccBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/Control"]
+[node name="RemoveAccBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/Control" unique_id=719969940]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -273,17 +273,18 @@ grow_vertical = 2
 theme_override_constants/align_to_largest_stylebox = 40
 theme_override_fonts/font = ExtResource("4_71xqs")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_xsjki")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_xsjki")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xsjki")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_xsjki")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xsjki")
 text = "REMOVE_ACC"
 script = ExtResource("2_txiv8")
 
-[node name="Control2" type="Control" parent="CanvasLayer/Panel/VBoxContainer2"]
+[node name="Control2" type="Control" parent="CanvasLayer/Panel/VBoxContainer2" unique_id=2116454113]
+visible = false
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="LogoutBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/Control2"]
+[node name="LogoutBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/Control2" unique_id=1411940844]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -300,25 +301,25 @@ grow_vertical = 2
 theme_override_constants/align_to_largest_stylebox = 40
 theme_override_fonts/font = ExtResource("4_71xqs")
 theme_override_font_sizes/font_size = 18
-theme_override_styles/hover = SubResource("StyleBoxFlat_1pm8r")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_1pm8r")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_1pm8r")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_1pm8r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1pm8r")
 text = "LOGOUT"
 script = ExtResource("2_txiv8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer2" unique_id=359267120]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="PrivacyBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer"]
+[node name="PrivacyBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer" unique_id=38212505]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("2_txiv8")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/PrivacyBtn"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/PrivacyBtn" unique_id=1898301207]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -337,7 +338,7 @@ text = "PRIVACY_POLICY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/PrivacyBtn"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/PrivacyBtn" unique_id=680946843]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -351,13 +352,13 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(1, 1, 1, 0.72)
 
-[node name="TermsBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer"]
+[node name="TermsBtn" type="Button" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer" unique_id=450959745]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 flat = true
 script = ExtResource("2_txiv8")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/TermsBtn"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/TermsBtn" unique_id=921130316]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -376,7 +377,7 @@ text = "TERMS_OF_SERVICE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/TermsBtn"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel/VBoxContainer2/HBoxContainer/TermsBtn" unique_id=248982511]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -390,11 +391,11 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(1, 1, 1, 0.72)
 
-[node name="Control3" type="Control" parent="CanvasLayer/Panel/VBoxContainer2"]
+[node name="Control3" type="Control" parent="CanvasLayer/Panel/VBoxContainer2" unique_id=1673036800]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="BtnGroupFb" type="Button" parent="CanvasLayer/Panel"]
+[node name="BtnGroupFb" type="Button" parent="CanvasLayer/Panel" unique_id=190730087]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -407,7 +408,7 @@ grow_horizontal = 2
 flat = true
 script = ExtResource("2_txiv8")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/BtnGroupFb"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/BtnGroupFb" unique_id=617791343]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -417,7 +418,7 @@ grow_vertical = 2
 texture = ExtResource("7_7p66w")
 expand_mode = 1
 
-[node name="SupportBtn" type="Button" parent="CanvasLayer/Panel"]
+[node name="SupportBtn" type="Button" parent="CanvasLayer/Panel" unique_id=646247524]
 layout_mode = 0
 offset_left = 327.0
 offset_top = 45.0
@@ -426,7 +427,7 @@ offset_bottom = 105.0
 flat = true
 script = ExtResource("2_txiv8")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/SupportBtn"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/SupportBtn" unique_id=982300614]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

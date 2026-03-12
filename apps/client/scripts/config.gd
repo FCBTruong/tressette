@@ -6,7 +6,7 @@ class_name Config
 
 enum MODES { LOCAL, PRIVATE, LIVE }
 
-@export var CURRENT_MODE: int = MODES.LOCAL
+@export var CURRENT_MODE: int = MODES.LIVE
 @export var SHOW_CARD_BOT: bool = true
 var WEBSOCKET_URL: String
 var EDIT_MODE = false

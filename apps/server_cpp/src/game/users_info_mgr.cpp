@@ -6,20 +6,26 @@
 #include <iostream>
 
 UsersInfoMgr::UsersInfoMgr() {
-    for (int bot_uid = BOT_START_UID; bot_uid < BOT_START_UID + 10; ++bot_uid) {
+    for (int bot_uid = BOT_START_UID; bot_uid < BOT_START_UID + 5; ++bot_uid) {
         available_uids_.push_back(bot_uid);
     }
 }
 
-UserInfo UsersInfoMgr::get_or_create(uint64_t uid) {
-    std::lock_guard<std::mutex> lk(mu_);
+UserInfo& UsersInfoMgr::get_or_create_internal(uint64_t uid) {
     auto it = users_.find(uid);
-    if (it != users_.end()) return it->second;
+    if (it != users_.end()) {
+        return it->second;
+    }
 
-    UserInfo u;
-    u.uid = uid;
-    users_.emplace(uid, u);
-    return u;
+    UserInfo user;
+    user.uid = uid;
+    auto [inserted_it, _] = users_.emplace(uid, std::move(user));
+    return inserted_it->second;
+}
+
+const UserInfo& UsersInfoMgr::get_or_create(uint64_t uid) {
+    std::lock_guard<std::mutex> lk(mu_);
+    return get_or_create_internal(uid);
 }
 
 void UsersInfoMgr::upsert(const UserInfo& info) {
@@ -117,3 +123,23 @@ void UsersInfoMgr::release_bot(int bot_uid) {
         available_uids_.push_back(bot_uid);
     }
 }
+
+void UsersInfoMgr::set_name(uint64_t uid, const std::string& name) {
+    std::lock_guard<std::mutex> lk(mu_);
+    auto& user = get_or_create_internal(uid);
+    user.name = name;
+}
+
+void UsersInfoMgr::set_avatar(uint64_t uid, const std::string& avatar) {
+    std::lock_guard<std::mutex> lk(mu_);
+    auto& user = get_or_create_internal(uid);
+    user.avatar = avatar;
+}
+
+
+void UsersInfoMgr::set_avatar_frame(uint64_t uid, int avatar_frame_id) {
+    std::lock_guard<std::mutex> lk(mu_);
+    auto& user = get_or_create_internal(uid);
+    user.avatar_frame = avatar_frame_id;
+}
+

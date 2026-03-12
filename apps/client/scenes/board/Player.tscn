@@ -1,16 +1,16 @@
-[gd_scene load_steps=27 format=3 uid="uid://dvggiqkn2bjut"]
+[gd_scene format=3 uid="uid://dvggiqkn2bjut"]
 
-[ext_resource type="Script" path="res://scripts/game/player.gd" id="1_phee0"]
+[ext_resource type="Script" uid="uid://r3m132faxqat" path="res://scripts/game/player.gd" id="1_phee0"]
 [ext_resource type="PackedScene" uid="uid://i4n8kjwe3x24" path="res://effects/2d_vortex/source/vortex.tscn" id="2_2fpyj"]
-[ext_resource type="Shader" path="res://shaders/light_rotate.gdshader" id="3_lqea4"]
+[ext_resource type="Shader" uid="uid://daflijf34fqc0" path="res://shaders/light_rotate.gdshader" id="3_lqea4"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_tcukj"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="3_tw46g"]
 [ext_resource type="Texture2D" uid="uid://bp6kti3au5fyr" path="res://assets/images/lobby/triangle.png" id="4_h8ypu"]
 [ext_resource type="Texture2D" uid="uid://bpda4gk3polk0" path="res://assets/images/lobby/circles/border_circle_medium.png" id="5_6p0k0"]
-[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="5_tnwwa"]
+[ext_resource type="Script" uid="uid://cxg1mkp74kffp" path="res://scripts/custom/zoomable_button.gd" id="5_tnwwa"]
 [ext_resource type="Texture2D" uid="uid://y5sewb6gfj34" path="res://assets/images/lobby/circles/circle.png" id="6_lqmp5"]
 [ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="8_46ppi"]
-[ext_resource type="Shader" path="res://shaders/light_highlight.gdshader" id="9_55w0l"]
+[ext_resource type="Shader" uid="uid://cpoe18uq8xt2q" path="res://shaders/light_highlight.gdshader" id="9_55w0l"]
 [ext_resource type="Texture2D" uid="uid://b0kfn073sb074" path="res://assets/images/lobby/circles/loading_avatar.png" id="9_uidpq"]
 [ext_resource type="Texture2D" uid="uid://drmwf5psvwa1h" path="res://assets/images/lobby/user_info_gui/vip_icon.png" id="10_avxb6"]
 [ext_resource type="Texture2D" uid="uid://dekvp4vpshah1" path="res://assets/images/board/empty_slot_icon.png" id="10_dudm3"]
@@ -92,25 +92,25 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_58tro"]
 _data = {
-"RESET": SubResource("Animation_p3g0g"),
-"idle": SubResource("Animation_l0lgi")
+&"RESET": SubResource("Animation_p3g0g"),
+&"idle": SubResource("Animation_l0lgi")
 }
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" unique_id=1382845215]
 position = Vector2(465, 470)
 script = ExtResource("1_phee0")
 
-[node name="Vortex" parent="." instance=ExtResource("2_2fpyj")]
+[node name="Vortex" parent="." unique_id=1023287140 instance=ExtResource("2_2fpyj")]
 offset_left = -75.0
 offset_top = -75.0
 offset_right = 75.0
 offset_bottom = 75.0
 color = Color(1, 0.444462, 0, 1)
 
-[node name="ChatTooltip" type="Node2D" parent="."]
+[node name="ChatTooltip" type="Node2D" parent="." unique_id=713164985]
 position = Vector2(0, -48)
 
-[node name="Panel" type="Panel" parent="ChatTooltip"]
+[node name="Panel" type="Panel" parent="ChatTooltip" unique_id=1865002801]
 custom_minimum_size = Vector2(150, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -125,7 +125,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fuo70")
 
-[node name="ChatContent" type="Label" parent="ChatTooltip/Panel"]
+[node name="ChatContent" type="Label" parent="ChatTooltip/Panel" unique_id=1143455947]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -145,7 +145,7 @@ text = "Hello"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="ChatTooltip/Panel"]
+[node name="TextureRect" type="TextureRect" parent="ChatTooltip/Panel" unique_id=54615034]
 modulate = Color(0.952941, 0.952941, 0.952941, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -164,7 +164,7 @@ pivot_offset = Vector2(12, 10)
 texture = ExtResource("4_h8ypu")
 expand_mode = 1
 
-[node name="MainPn" type="Control" parent="."]
+[node name="MainPn" type="Control" parent="." unique_id=1948750988]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -178,7 +178,8 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NamePn" type="Panel" parent="MainPn"]
+[node name="NamePn" type="Panel" parent="MainPn" unique_id=2001278445]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -195,7 +196,7 @@ size_flags_vertical = 8
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sjdqh")
 
-[node name="NameLb" type="Label" parent="MainPn/NamePn"]
+[node name="NameLb" type="Label" parent="MainPn/NamePn" unique_id=85239528]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -214,7 +215,7 @@ text = "Truong"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BonusInfo" type="Panel" parent="MainPn"]
+[node name="BonusInfo" type="Panel" parent="MainPn" unique_id=1852283866]
 clip_children = 2
 layout_mode = 0
 offset_left = 54.0
@@ -224,7 +225,7 @@ offset_bottom = 45.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3xqwo")
 
-[node name="BonusInfoColour" type="ColorRect" parent="MainPn/BonusInfo"]
+[node name="BonusInfoColour" type="ColorRect" parent="MainPn/BonusInfo" unique_id=1561003451]
 material = SubResource("ShaderMaterial_ourub")
 layout_mode = 1
 anchors_preset = 15
@@ -235,7 +236,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.115274, 0.496194, 1, 1)
 
-[node name="BonusTxtLb" type="Label" parent="MainPn/BonusInfo/BonusInfoColour"]
+[node name="BonusTxtLb" type="Label" parent="MainPn/BonusInfo/BonusInfoColour" unique_id=1623820966]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -255,7 +256,7 @@ text = "+1 Last Trick"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AvatarCircle" parent="MainPn" instance=ExtResource("3_tw46g")]
+[node name="AvatarCircle" parent="MainPn" unique_id=106753841 instance=ExtResource("3_tw46g")]
 layout_mode = 1
 offset_left = -45.0
 offset_top = -45.0
@@ -263,7 +264,7 @@ offset_right = 45.0
 offset_bottom = 45.0
 mouse_filter = 1
 
-[node name="InfoBtn" type="Button" parent="MainPn/AvatarCircle"]
+[node name="InfoBtn" type="Button" parent="MainPn/AvatarCircle" unique_id=626295040]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -281,14 +282,15 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0nki0")
 flat = true
 script = ExtResource("5_tnwwa")
 
-[node name="AvatarFrame" parent="MainPn" instance=ExtResource("8_46ppi")]
+[node name="AvatarFrame" parent="MainPn" unique_id=1957857248 instance=ExtResource("8_46ppi")]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 20.0
 offset_bottom = 20.0
 scale = Vector2(0.95, 0.95)
 
-[node name="TimeProgressBar" type="TextureProgressBar" parent="MainPn"]
+[node name="TimeProgressBar" type="TextureProgressBar" parent="MainPn" unique_id=535260312]
 visible = false
 self_modulate = Color(1, 0.888832, 0, 1)
 layout_mode = 1
@@ -314,7 +316,7 @@ fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("9_uidpq")
 
-[node name="VipIcon" type="TextureRect" parent="MainPn"]
+[node name="VipIcon" type="TextureRect" parent="MainPn" unique_id=586145576]
 material = SubResource("ShaderMaterial_rpnew")
 layout_mode = 0
 offset_left = -42.0
@@ -324,7 +326,7 @@ offset_bottom = 10.0
 texture = ExtResource("10_avxb6")
 expand_mode = 1
 
-[node name="EmptySlot" type="Control" parent="."]
+[node name="EmptySlot" type="Control" parent="." unique_id=1708958484]
 visible = false
 layout_mode = 3
 anchors_preset = 8
@@ -339,7 +341,7 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="EmptySlot"]
+[node name="TextureRect" type="TextureRect" parent="EmptySlot" unique_id=2020162392]
 visible = false
 modulate = Color(0.394776, 0.15369, 0.144165, 1)
 layout_mode = 1
@@ -357,7 +359,7 @@ grow_vertical = 2
 texture = ExtResource("11_7d5ia")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="EmptySlot"]
+[node name="TextureRect3" type="TextureRect" parent="EmptySlot" unique_id=1852104333]
 visible = false
 modulate = Color(0.394776, 0.15369, 0.144165, 1)
 layout_mode = 1
@@ -369,7 +371,7 @@ grow_vertical = 2
 texture = ExtResource("5_6p0k0")
 expand_mode = 1
 
-[node name="InviteBtn" type="Button" parent="EmptySlot"]
+[node name="InviteBtn" type="Button" parent="EmptySlot" unique_id=1094947838]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -379,7 +381,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("5_tnwwa")
 
-[node name="TextureRect2" type="TextureRect" parent="EmptySlot/InviteBtn"]
+[node name="TextureRect2" type="TextureRect" parent="EmptySlot/InviteBtn" unique_id=699665111]
 self_modulate = Color(1, 1, 1, 0.6)
 layout_mode = 1
 anchors_preset = 15
@@ -390,7 +392,7 @@ grow_vertical = 2
 texture = ExtResource("10_dudm3")
 expand_mode = 1
 
-[node name="JoinBtn" type="Button" parent="EmptySlot"]
+[node name="JoinBtn" type="Button" parent="EmptySlot" unique_id=54019528]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -400,7 +402,7 @@ grow_vertical = 2
 flat = true
 script = ExtResource("5_tnwwa")
 
-[node name="TextureRect" type="TextureRect" parent="EmptySlot/JoinBtn"]
+[node name="TextureRect" type="TextureRect" parent="EmptySlot/JoinBtn" unique_id=1621400794]
 modulate = Color(0.121569, 0.203922, 0.129412, 0.623529)
 layout_mode = 1
 anchors_preset = 8
@@ -417,7 +419,7 @@ grow_vertical = 2
 texture = ExtResource("6_lqmp5")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="EmptySlot/JoinBtn"]
+[node name="TextureRect2" type="TextureRect" parent="EmptySlot/JoinBtn" unique_id=172867096]
 self_modulate = Color(0.924291, 0.834135, 0.0123282, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -425,24 +427,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -36.5655
-offset_right = 30.0
-offset_bottom = 23.4345
+offset_left = -45.0
+offset_top = -45.0
+offset_right = 15.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_3x84p")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EmptySlot/JoinBtn/TextureRect2"]
-libraries = {
-"": SubResource("AnimationLibrary_58tro")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EmptySlot/JoinBtn/TextureRect2" unique_id=1532999288]
+libraries/ = SubResource("AnimationLibrary_58tro")
+autoplay = &"idle"
 
-[node name="EmoPlayer" parent="." instance=ExtResource("14_4bldu")]
+[node name="EmoPlayer" parent="." unique_id=559856878 instance=ExtResource("14_4bldu")]
 
-[node name="RedDot" type="TextureRect" parent="."]
+[node name="RedDot" type="TextureRect" parent="." unique_id=1432740598]
 self_modulate = Color(0.924291, 0, 0, 1)
 offset_left = 23.0
 offset_top = -43.0

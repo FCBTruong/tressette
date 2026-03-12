@@ -54,7 +54,7 @@ func set_info(info: UserData):
 	link_acc_btn.visible = false
 	verified_icon.visible = info.is_verified
 	if _info.uid == g.v.player_info_mgr.my_user_data.uid:
-		avt_edit_btn.visible = true
+		#avt_edit_btn.visible = true
 		avatar_img.set_me()
 		avatar_frame.set_me()
 		is_me = true

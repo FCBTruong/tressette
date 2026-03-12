@@ -957,6 +957,16 @@ class Login:
 		service.field = _app_version_code
 		data[_app_version_code.tag] = service
 		
+		_avatar_frame_id = PBField.new("avatar_frame_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 7, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _avatar_frame_id
+		data[_avatar_frame_id.tag] = service
+		
+		_avatar_id = PBField.new("avatar_id", PB_DATA_TYPE.INT32, PB_RULE.OPTIONAL, 8, true, DEFAULT_VALUES_3[PB_DATA_TYPE.INT32])
+		service = PBServiceField.new()
+		service.field = _avatar_id
+		data[_avatar_id.tag] = service
+		
 	var data = {}
 	
 	var _type: PBField
@@ -1012,6 +1022,24 @@ class Login:
 		_app_version_code.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
 	func set_app_version_code(value : int) -> void:
 		_app_version_code.value = value
+	
+	var _avatar_frame_id: PBField
+	func get_avatar_frame_id() -> int:
+		return _avatar_frame_id.value
+	func clear_avatar_frame_id() -> void:
+		data[7].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_frame_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_avatar_frame_id(value : int) -> void:
+		_avatar_frame_id.value = value
+	
+	var _avatar_id: PBField
+	func get_avatar_id() -> int:
+		return _avatar_id.value
+	func clear_avatar_id() -> void:
+		data[8].state = PB_SERVICE_STATE.UNFILLED
+		_avatar_id.value = DEFAULT_VALUES_3[PB_DATA_TYPE.INT32]
+	func set_avatar_id(value : int) -> void:
+		_avatar_id.value = value
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)
@@ -3307,6 +3335,11 @@ class TableList:
 		service.field = _is_private
 		data[_is_private.tag] = service
 		
+		_points = PBField.new("points", PB_DATA_TYPE.INT32, PB_RULE.REPEATED, 9, true, [])
+		service = PBServiceField.new()
+		service.field = _points
+		data[_points.tag] = service
+		
 	var data = {}
 	
 	var _table_ids: PBField
@@ -3380,6 +3413,15 @@ class TableList:
 		_is_private.value = []
 	func add_is_private(value : bool) -> void:
 		_is_private.value.append(value)
+	
+	var _points: PBField
+	func get_points() -> Array:
+		return _points.value
+	func clear_points() -> void:
+		data[9].state = PB_SERVICE_STATE.UNFILLED
+		_points.value = []
+	func add_points(value : int) -> void:
+		_points.value.append(value)
 	
 	func _to_string() -> String:
 		return PBPacker.message_to_string(data)

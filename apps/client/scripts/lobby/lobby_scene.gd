@@ -3,9 +3,6 @@ extends Control
 class_name LobbyScene
 var did_share_session
 @onready var sette_mezzo_btn = find_child("SetteMezzoBtn")
-@onready var exp_bar = find_child("ExpBar")
-@onready var level_lb = find_child("LevelLbHead")
-@onready var name_lb = find_child("NameLb")
 @onready var vbox_tables = find_child("VBoxTables")
 @onready var lb_gold = find_child("GoldLb")
 # Called when the node enters the scene tree for the first time.
@@ -49,8 +46,7 @@ func _ready() -> void:
 	
 	g.v.game_manager.check_show_fanpage()
 	g.v.game_manager.check_show_group_fb()
-	
-	self.offer_first_btn.visible = g.v.player_info_mgr.has_first_buy
+
 	#g.v.scene_manager.open_gui("res://scenes/lobby/LinkAccountGUI.tscn")
 	update_ads_reward_info()
 	
@@ -84,9 +80,7 @@ func _ready() -> void:
 @onready var bg = find_child('Background')
 @onready var avatar_img = find_child('Avatar')
 @onready var nofriend_btn = find_child('NofriendBtn')
-@onready var animation_player = find_child("AnimationPlayer")
 @onready var mobile_web_pn = find_child("MobileWebPn")
-@onready var offer_first_btn = find_child("OfferFirstBtn")
 func _do_effect() -> void:
 	var play_container_defaultpos = play_container.position
 	var tween = create_tween()
@@ -101,8 +95,6 @@ func _do_effect() -> void:
 	#var original_scale = bg.scale
 	#bg.scale = Vector2(1.2, 1.2)
 	#tween2.tween_property(bg, "scale", original_scale, 0.3)
-	
-	animation_player.play("play_now_icon")
 	mobile_web_pn.visible = g.v.config.get_platform() == g.v.config.PLATFORMS.WEB
 
 func _on_update_money():
@@ -229,16 +221,7 @@ func play_sette_mezzo():
 	g.v.sette_mezzo_mgr.quick_play()
 
 func update_level_exp():
-	var level = g.v.game_server_config.convert_exp_to_level(g.v.player_info_mgr.my_user_data.exp)
-	if g.v.game_server_config.is_max_level(level):
-		exp_bar.value = 100
-	else:
-		var a = g.v.game_server_config.exp_levels[level - 1]
-		var b = g.v.game_server_config.exp_levels[level]
-		var cur = g.v.player_info_mgr.my_user_data.exp - a
-		var des = b - a
-		exp_bar.value = cur * 1.0 / des * 100
-	self.level_lb.text = "Lv." + str(level)
+	pass
 
 
 var table_node_scene = preload("res://scenes/lobby/rooms/TableNode.tscn")
@@ -273,7 +256,7 @@ func _click_open_level_gui():
 
 
 func on_update_username():
-	name_lb.text = g.v.player_info_mgr.my_user_data.name
+	pass
 
 
 func _click_join_room_by_id(text):

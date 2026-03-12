@@ -1203,6 +1203,8 @@ class Login final :
     kDeviceCountryFieldNumber = 5,
     kTypeFieldNumber = 1,
     kAppVersionCodeFieldNumber = 6,
+    kAvatarFrameIdFieldNumber = 7,
+    kAvatarIdFieldNumber = 8,
   };
   // string token = 2;
   void clear_token();
@@ -1278,6 +1280,24 @@ class Login final :
   void _internal_set_app_version_code(int32_t value);
   public:
 
+  // int32 avatar_frame_id = 7;
+  void clear_avatar_frame_id();
+  int32_t avatar_frame_id() const;
+  void set_avatar_frame_id(int32_t value);
+  private:
+  int32_t _internal_avatar_frame_id() const;
+  void _internal_set_avatar_frame_id(int32_t value);
+  public:
+
+  // int32 avatar_id = 8;
+  void clear_avatar_id();
+  int32_t avatar_id() const;
+  void set_avatar_id(int32_t value);
+  private:
+  int32_t _internal_avatar_id() const;
+  void _internal_set_avatar_id(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:packet.Login)
  private:
   class _Internal;
@@ -1291,6 +1311,8 @@ class Login final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_country_;
   int32_t type_;
   int32_t app_version_code_;
+  int32_t avatar_frame_id_;
+  int32_t avatar_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
 };
@@ -6223,6 +6245,7 @@ class TableList final :
     kGameModesFieldNumber = 6,
     kAvatarFramesFieldNumber = 7,
     kIsPrivateFieldNumber = 8,
+    kPointsFieldNumber = 9,
   };
   // repeated int32 table_ids = 1;
   int table_ids_size() const;
@@ -6402,6 +6425,28 @@ class TableList final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
       mutable_is_private();
 
+  // repeated int32 points = 9;
+  int points_size() const;
+  private:
+  int _internal_points_size() const;
+  public:
+  void clear_points();
+  private:
+  int32_t _internal_points(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+      _internal_points() const;
+  void _internal_add_points(int32_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+      _internal_mutable_points();
+  public:
+  int32_t points(int index) const;
+  void set_points(int index, int32_t value);
+  void add_points(int32_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+      points() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+      mutable_points();
+
   // @@protoc_insertion_point(class_scope:packet.TableList)
  private:
   class _Internal;
@@ -6423,6 +6468,8 @@ class TableList final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > avatar_frames_;
   mutable std::atomic<int> _avatar_frames_cached_byte_size_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool > is_private_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t > points_;
+  mutable std::atomic<int> _points_cached_byte_size_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_packet_2eproto;
 };
@@ -19109,6 +19156,46 @@ inline void Login::set_app_version_code(int32_t value) {
   // @@protoc_insertion_point(field_set:packet.Login.app_version_code)
 }
 
+// int32 avatar_frame_id = 7;
+inline void Login::clear_avatar_frame_id() {
+  avatar_frame_id_ = 0;
+}
+inline int32_t Login::_internal_avatar_frame_id() const {
+  return avatar_frame_id_;
+}
+inline int32_t Login::avatar_frame_id() const {
+  // @@protoc_insertion_point(field_get:packet.Login.avatar_frame_id)
+  return _internal_avatar_frame_id();
+}
+inline void Login::_internal_set_avatar_frame_id(int32_t value) {
+  
+  avatar_frame_id_ = value;
+}
+inline void Login::set_avatar_frame_id(int32_t value) {
+  _internal_set_avatar_frame_id(value);
+  // @@protoc_insertion_point(field_set:packet.Login.avatar_frame_id)
+}
+
+// int32 avatar_id = 8;
+inline void Login::clear_avatar_id() {
+  avatar_id_ = 0;
+}
+inline int32_t Login::_internal_avatar_id() const {
+  return avatar_id_;
+}
+inline int32_t Login::avatar_id() const {
+  // @@protoc_insertion_point(field_get:packet.Login.avatar_id)
+  return _internal_avatar_id();
+}
+inline void Login::_internal_set_avatar_id(int32_t value) {
+  
+  avatar_id_ = value;
+}
+inline void Login::set_avatar_id(int32_t value) {
+  _internal_set_avatar_id(value);
+  // @@protoc_insertion_point(field_set:packet.Login.avatar_id)
+}
+
 // -------------------------------------------------------------------
 
 // LoginFirebase
@@ -23335,6 +23422,53 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< bool >*
 TableList::mutable_is_private() {
   // @@protoc_insertion_point(field_mutable_list:packet.TableList.is_private)
   return _internal_mutable_is_private();
+}
+
+// repeated int32 points = 9;
+inline int TableList::_internal_points_size() const {
+  return points_.size();
+}
+inline int TableList::points_size() const {
+  return _internal_points_size();
+}
+inline void TableList::clear_points() {
+  points_.Clear();
+}
+inline int32_t TableList::_internal_points(int index) const {
+  return points_.Get(index);
+}
+inline int32_t TableList::points(int index) const {
+  // @@protoc_insertion_point(field_get:packet.TableList.points)
+  return _internal_points(index);
+}
+inline void TableList::set_points(int index, int32_t value) {
+  points_.Set(index, value);
+  // @@protoc_insertion_point(field_set:packet.TableList.points)
+}
+inline void TableList::_internal_add_points(int32_t value) {
+  points_.Add(value);
+}
+inline void TableList::add_points(int32_t value) {
+  _internal_add_points(value);
+  // @@protoc_insertion_point(field_add:packet.TableList.points)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+TableList::_internal_points() const {
+  return points_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >&
+TableList::points() const {
+  // @@protoc_insertion_point(field_list:packet.TableList.points)
+  return _internal_points();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+TableList::_internal_mutable_points() {
+  return &points_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< int32_t >*
+TableList::mutable_points() {
+  // @@protoc_insertion_point(field_mutable_list:packet.TableList.points)
+  return _internal_mutable_points();
 }
 
 // -------------------------------------------------------------------

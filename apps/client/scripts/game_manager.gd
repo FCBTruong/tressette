@@ -137,6 +137,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 			var uids = pkg.get_player_uids()
 			var avatar_frames = pkg.get_avatar_frames()
 			var is_privates = pkg.get_is_private()
+			var player_points = pkg.get_points()
 			table_list = []
 			
 			var j = 0
@@ -150,6 +151,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 				table.avatar_frames = []
 				table.game_mode = game_modes[i]
 				table.is_private = is_privates[i]
+				table.player_points = []
 				table_list.append(table)
 				
 				for x in range(table.player_mode):
@@ -158,6 +160,7 @@ func on_receive(cmd_id: int, payload: PackedByteArray) -> void:
 					table.player_uids.append(uids[j])
 					table.player_avatars.append(avatars[j])
 					table.avatar_frames.append(avatar_frames[j])
+					table.player_points.append(player_points[i])
 					j += 1
 					
 				

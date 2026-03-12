@@ -554,7 +554,7 @@ func _handle_end_game(payload: PackedByteArray):
 	match_result.rewards.clear()
 	
 	if not IS_VIEWING:
-		var gold_received = 200 if match_result.is_win else 100
+		var gold_received = 200 if match_result.is_win else 50
 		var a = Reward.new(
 			GameConstants.CRYPSTAL_ITEM_ID,
 			gold_received,

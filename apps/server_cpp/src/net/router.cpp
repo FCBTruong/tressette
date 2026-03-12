@@ -9,6 +9,7 @@
 #include "client_session.hpp"
 #include "cmd.hpp"
 #include "server.hpp"
+#include "game/game_constants.hpp"
 
 Router::Router(Server& server)
     : server_(server) {}
@@ -55,6 +56,24 @@ void Router::handle_login(const std::shared_ptr<ClientSession>& session, const p
         login.token(),
         login.platform(),
         login.device_model());
+
+    auto user_info = server_.users_info_mgr().get_or_create(result.uid);
+    server_.users_info_mgr().set_name(result.uid, "User_" + std::to_string(result.uid));
+    int avt_client_id = login.avatar_id();
+
+    // validate avatar is in AVATAR_IDS
+    if (std::find(GameConstants::AVATAR_IDS.begin(), GameConstants::AVATAR_IDS.end(), avt_client_id) != GameConstants::AVATAR_IDS.end()) {
+        server_.users_info_mgr().set_avatar(result.uid, std::to_string(avt_client_id));
+    } else {
+        server_.users_info_mgr().set_avatar(result.uid, "1"); // default avatar
+    }
+
+    int avt_frame_client_id = login.avatar_frame_id();
+    if (std::find(GameConstants::AVATAR_FRAME_IDS.begin(), GameConstants::AVATAR_FRAME_IDS.end(), avt_frame_client_id) != GameConstants::AVATAR_FRAME_IDS.end()) {
+        server_.users_info_mgr().set_avatar_frame(result.uid, avt_frame_client_id);
+    } else {
+        server_.users_info_mgr().set_avatar_frame(result.uid, GameConstants::AVATAR_FRAME_DEFAULT); // default avatar frame
+    }
 
     packet::LoginResponse login_response;
     login_response.set_error(result.error);

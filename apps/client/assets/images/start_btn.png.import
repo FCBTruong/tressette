@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0oconvjkpusw"
-path="res://.godot/imported/login_scene.png-b8227547306216195178130fb82f447f.ctex"
+uid="uid://bdtg51815bb3m"
+path="res://.godot/imported/start_btn.png-e6a5570f8cab64d28ef3cc575c04c267.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/login/login_scene.png"
-dest_files=["res://.godot/imported/login_scene.png-b8227547306216195178130fb82f447f.ctex"]
+source_file="res://assets/images/start_btn.png"
+dest_files=["res://.godot/imported/start_btn.png-e6a5570f8cab64d28ef3cc575c04c267.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

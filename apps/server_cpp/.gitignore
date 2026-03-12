@@ -10,3 +10,4 @@
 /*.vcxproj.user
 /protbuf-3.20.3/
 /.vs/
+/secrets/

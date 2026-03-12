@@ -44,8 +44,9 @@ func _on_receive_info(bytes: PackedByteArray):
 		0
 	)
 	my_user_data.gold = current_gold
-	update_using_frame(g.v.inventory_mgr.current_avatar_frame)
-	#on_update_avatar(g.v.inventory_mgr.current_avatar)
+	my_user_data.name = packet.get_name()
+	update_using_frame(packet.get_avatar_frame())
+	on_update_avatar(packet.get_avatar())
 
 func _on_update_money(bytes: PackedByteArray):
 	var packet = g.v.game_constants.PROTOBUF.PACKETS.UpdateMoney.new()

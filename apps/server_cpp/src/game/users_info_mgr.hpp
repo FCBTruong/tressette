@@ -41,7 +41,7 @@ public:
     UsersInfoMgr();
 
     // Get cached user; create if missing (default values).
-    UserInfo get_or_create(uint64_t uid);
+    const UserInfo& get_or_create(uint64_t uid);
 
     // Update full user object in cache (overwrite).
     void upsert(const UserInfo& info);
@@ -57,12 +57,15 @@ public:
 
     int request_bot(); // return bot uid
     void release_bot(int bot_uid);
+    void set_name(uint64_t uid, const std::string& name);
+    void set_avatar(uint64_t uid, const std::string& avatar);
+    void set_avatar_frame(uint64_t uid, int avatar_frame_id);
 private:
     void handle_change_avatar(uint64_t uid, const std::string& payload);
     void handle_change_user_name(uint64_t uid, const std::string& payload);
     // Helpers
     static std::string trim(std::string s);
-
+    UserInfo& get_or_create_internal(uint64_t uid);
 private:
     mutable std::mutex mu_;
     std::unordered_map<uint64_t, UserInfo> users_;

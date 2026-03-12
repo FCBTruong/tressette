@@ -67,6 +67,13 @@ func _set_device_info(pkg):
 	pkg.set_platform(platform)
 	pkg.set_app_version_code(g.v.app_version.my_code_version)
 	
+	# load current avatar, frame
+	var cur_avatar = g.v.inventory_mgr.current_avatar
+	var cur_avatar_frame = g.v.inventory_mgr.current_avatar_frame
+	
+	pkg.set_avatar_id(cur_avatar)
+	pkg.set_avatar_frame_id(cur_avatar_frame)
+	
 	var current_locale = OS.get_locale()
 	var country = current_locale.split("_")[-1]
 	pkg.set_device_country(country)

@@ -1,19 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://coalpvybk074r"]
+[gd_scene format=3 uid="uid://coalpvybk074r"]
 
-[ext_resource type="Script" path="res://scripts/lobby/rooms/table_node.gd" id="1_d11nj"]
+[ext_resource type="Script" uid="uid://dvvjm8o1uj0g6" path="res://scripts/lobby/rooms/table_node.gd" id="1_d11nj"]
 [ext_resource type="FontFile" uid="uid://bq576idtgkcvs" path="res://assets/fonts/signika/Signika-SemiBold.ttf" id="2_3wqxv"]
-[ext_resource type="Script" path="res://scripts/custom/zoomable_button.gd" id="2_c3fu3"]
+[ext_resource type="Script" uid="uid://cxg1mkp74kffp" path="res://scripts/custom/zoomable_button.gd" id="2_c3fu3"]
 [ext_resource type="Texture2D" uid="uid://roswew5btpo" path="res://assets/images/lobby/people_icon.png" id="3_wpwhv"]
 [ext_resource type="Texture2D" uid="uid://cosrkkx4pkdik" path="res://assets/images/lobby/buttons/yellow_btn.png" id="4_tmffe"]
-[ext_resource type="Texture2D" uid="uid://bxre5gr5igsab" path="res://assets/images/lobby/buttons/green_btn.png" id="5_ujqb8"]
+[ext_resource type="Texture2D" uid="uid://biaioo0tdta7g" path="res://assets/images/lobby/join_btn.png" id="5_8sbai"]
 [ext_resource type="PackedScene" uid="uid://gd1jod3mrcan" path="res://scenes/board/AvatarCircleNode.tscn" id="7_2obxu"]
 [ext_resource type="Texture2D" uid="uid://teun5qbwsk0g" path="res://assets/images/lobby/empty_slot_icon.png" id="7_nphfa"]
 [ext_resource type="PackedScene" uid="uid://bmhvk6fq106oj" path="res://scenes/lobby/AvatarFrame.tscn" id="8_r2rrg"]
 [ext_resource type="Texture2D" uid="uid://baqeo8fn0qpy6" path="res://assets/images/board/vs.png" id="8_wbf2d"]
 [ext_resource type="Texture2D" uid="uid://b6pipwdwkmmbb" path="res://assets/images/lobby/lock_icon.png" id="11_e6rdb"]
+[ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="12_cgdy6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4aig1"]
-bg_color = Color(0.129412, 0.109804, 0.109804, 0.215686)
+bg_color = Color(0.6, 0.6, 0.6, 0.3647059)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -24,19 +25,19 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="TableNode" type="Control"]
-custom_minimum_size = Vector2(560, 100)
+[node name="TableNode" type="Control" unique_id=742318336]
+custom_minimum_size = Vector2(500, 74)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 441.0
 offset_top = 240.0
-offset_right = 441.0
-offset_bottom = 240.0
+offset_right = 941.0
+offset_bottom = 320.0
 size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("1_d11nj")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1347039199]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,16 +47,17 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4aig1")
 
-[node name="ViewBtn" type="Button" parent="Panel"]
+[node name="ViewBtn" type="Button" parent="Panel" unique_id=1180622870]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 170.0
+offset_left = 142.0
 offset_top = -20.0
-offset_right = 270.0
+offset_right = 242.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -63,7 +65,7 @@ mouse_filter = 1
 flat = true
 script = ExtResource("2_c3fu3")
 
-[node name="TextureRect" type="TextureRect" parent="Panel/ViewBtn"]
+[node name="TextureRect" type="TextureRect" parent="Panel/ViewBtn" unique_id=1131470703]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -79,7 +81,7 @@ grow_vertical = 2
 texture = ExtResource("4_tmffe")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Panel/ViewBtn/TextureRect"]
+[node name="Label" type="Label" parent="Panel/ViewBtn/TextureRect" unique_id=916587182]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,16 +102,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="PlayBtn" type="Button" parent="Panel"]
+[node name="PlayBtn" type="Button" parent="Panel" unique_id=351856197]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 170.0
+offset_left = 143.0
 offset_top = -20.0
-offset_right = 270.0
+offset_right = 243.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -117,66 +119,45 @@ mouse_filter = 1
 flat = true
 script = ExtResource("2_c3fu3")
 
-[node name="TextureRect" type="TextureRect" parent="Panel/PlayBtn"]
+[node name="TextureRect" type="TextureRect" parent="Panel/PlayBtn" unique_id=2028482215]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -20.0
-offset_right = 50.0
-offset_bottom = 20.0
+offset_left = -58.0
+offset_top = -60.0
+offset_right = 72.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_ujqb8")
+texture = ExtResource("5_8sbai")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Panel/PlayBtn/TextureRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1486984746]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -14.0
-offset_right = 24.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.807843)
-theme_override_fonts/font = ExtResource("2_3wqxv")
-theme_override_font_sizes/font_size = 20
-text = "PLAY"
-horizontal_alignment = 1
-vertical_alignment = 1
-uppercase = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -126.0
+offset_left = -148.0
 offset_top = -30.0
-offset_right = 126.0
+offset_right = 148.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Slot1" type="Control" parent="Panel/HBoxContainer"]
+[node name="Slot1" type="Control" parent="Panel/HBoxContainer" unique_id=1866268236]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot1"]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot1" unique_id=871153111]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,7 +173,8 @@ grow_vertical = 2
 texture = ExtResource("7_nphfa")
 expand_mode = 1
 
-[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot1" instance=ExtResource("7_2obxu")]
+[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot1" unique_id=1275213620 instance=ExtResource("7_2obxu")]
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 1
 offset_left = -25.0
@@ -202,7 +184,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot1" instance=ExtResource("8_r2rrg")]
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot1" unique_id=1275865798 instance=ExtResource("8_r2rrg")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -213,7 +195,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot1"]
+[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot1" unique_id=1126393025]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -231,7 +213,7 @@ mouse_filter = 1
 flat = true
 script = ExtResource("2_c3fu3")
 
-[node name="IconVs1" type="TextureRect" parent="Panel/HBoxContainer"]
+[node name="IconVs1" type="TextureRect" parent="Panel/HBoxContainer" unique_id=1274015242]
 visible = false
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -239,14 +221,14 @@ texture = ExtResource("8_wbf2d")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Slot2" type="Control" parent="Panel/HBoxContainer"]
+[node name="Slot2" type="Control" parent="Panel/HBoxContainer" unique_id=463199784]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot2"]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot2" unique_id=1188262033]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -262,7 +244,7 @@ grow_vertical = 2
 texture = ExtResource("7_nphfa")
 expand_mode = 1
 
-[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot2" instance=ExtResource("7_2obxu")]
+[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot2" unique_id=1948993092 instance=ExtResource("7_2obxu")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 1
 offset_left = -25.0
@@ -272,7 +254,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot2" instance=ExtResource("8_r2rrg")]
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot2" unique_id=1600219350 instance=ExtResource("8_r2rrg")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -283,7 +265,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot2"]
+[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot2" unique_id=1668309717]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -301,21 +283,21 @@ mouse_filter = 1
 flat = true
 script = ExtResource("2_c3fu3")
 
-[node name="IconVs2" type="TextureRect" parent="Panel/HBoxContainer"]
+[node name="IconVs2" type="TextureRect" parent="Panel/HBoxContainer" unique_id=119873616]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 texture = ExtResource("8_wbf2d")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Slot3" type="Control" parent="Panel/HBoxContainer"]
+[node name="Slot3" type="Control" parent="Panel/HBoxContainer" unique_id=1714204742]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot3"]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot3" unique_id=1627426232]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -331,7 +313,7 @@ grow_vertical = 2
 texture = ExtResource("7_nphfa")
 expand_mode = 1
 
-[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot3" instance=ExtResource("7_2obxu")]
+[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot3" unique_id=5036312 instance=ExtResource("7_2obxu")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 1
 offset_left = -25.0
@@ -341,7 +323,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot3" instance=ExtResource("8_r2rrg")]
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot3" unique_id=709704074 instance=ExtResource("8_r2rrg")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -352,7 +334,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot3"]
+[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot3" unique_id=1660431317]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -370,14 +352,14 @@ mouse_filter = 1
 flat = true
 script = ExtResource("2_c3fu3")
 
-[node name="Slot4" type="Control" parent="Panel/HBoxContainer"]
+[node name="Slot4" type="Control" parent="Panel/HBoxContainer" unique_id=1951584819]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot4"]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Slot4" unique_id=1638730744]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -393,7 +375,7 @@ grow_vertical = 2
 texture = ExtResource("7_nphfa")
 expand_mode = 1
 
-[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot4" instance=ExtResource("7_2obxu")]
+[node name="AvatarCircle" parent="Panel/HBoxContainer/Slot4" unique_id=915565516 instance=ExtResource("7_2obxu")]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 1
 offset_left = -25.0
@@ -403,7 +385,7 @@ offset_bottom = 25.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot4" instance=ExtResource("8_r2rrg")]
+[node name="AvatarFrame" parent="Panel/HBoxContainer/Slot4" unique_id=1102796284 instance=ExtResource("8_r2rrg")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -414,7 +396,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot4"]
+[node name="Button" type="Button" parent="Panel/HBoxContainer/Slot4" unique_id=1210662601]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -432,23 +414,24 @@ mouse_filter = 1
 flat = true
 script = ExtResource("2_c3fu3")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel" unique_id=1257478398]
 visible = false
 custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
+layout_mode = 0
 offset_left = -28.0
 offset_top = 89.0
 offset_right = 154.0
 offset_bottom = 129.0
 theme_override_constants/separation = 10
 
-[node name="PlayerIcon" type="TextureRect" parent="Panel/HBoxContainer2"]
+[node name="PlayerIcon" type="TextureRect" parent="Panel/HBoxContainer2" unique_id=992017666]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 texture = ExtResource("3_wpwhv")
 expand_mode = 1
 
-[node name="PrivateIcon" type="TextureRect" parent="Panel"]
+[node name="PrivateIcon" type="TextureRect" parent="Panel" unique_id=1466819370]
+visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -459,6 +442,23 @@ offset_bottom = 30.0
 grow_vertical = 2
 texture = ExtResource("11_e6rdb")
 expand_mode = 1
+
+[node name="ScoreLb" type="Label" parent="Panel" unique_id=689010289]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -13.0
+offset_right = 89.0
+offset_bottom = 13.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.3046875, 0.14216958, 0.0011901855, 0.72156864)
+theme_override_fonts/font = ExtResource("12_cgdy6")
+theme_override_font_sizes/font_size = 25
+text = "10 : 11"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="pressed" from="Panel/ViewBtn" to="." method="_click_view"]
 [connection signal="pressed" from="Panel/PlayBtn" to="." method="_click_play"]

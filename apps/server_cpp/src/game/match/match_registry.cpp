@@ -259,11 +259,11 @@ void MatchRegistry::handle_quick_play(uint64_t uid) {
         }
     }
 
-  //  for (int i = 0; i < 10; i++) {
-  //      // test
-		//auto test_match = create_match(TRESSETTE_MODE, PLAYER_SOLO_MODE, false, 21);
-  //      test_match->test_fill_bots();
-  //  }
+//    for (int i = 0; i < 10; i++) {
+//        // test
+// 		auto test_match = create_match(TRESSETTE_MODE, PLAYER_SOLO_MODE, false, 21);
+//        test_match->test_fill_bots();
+//    }
 
     std::cout << "User " << uid << " joining match " << match->match_id() << " via quick play.\n";
     user_join_match(match, uid);
@@ -334,6 +334,7 @@ void MatchRegistry::receive_request_table_list(uint64_t uid) {
             pkg.add_avatars(player.avatar);
             pkg.add_player_uids(static_cast<int64_t>(player.uid));
             pkg.add_avatar_frames(player.avatar_frame);
+            pkg.add_points(player.points);
         }
     }
 

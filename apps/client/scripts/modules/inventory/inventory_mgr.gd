@@ -2,7 +2,7 @@ extends RefCounted
 class_name InventoryMgr
 
 
-const AVATAR_IDS = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+const AVATAR_IDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
 const AVATAR_VIP = [14, 15, 16, 17, 18, 19, 20, 21]
 const PACK_AVATAR_ANIMAL = [14, 15, 16, 17]
 const SAVE_ITEMS_PATH := "user://inventory_items.json"
@@ -21,8 +21,10 @@ var my_items: Array = []
 var key_cardback: String
 var key_carpet: String
 var key_avatar_frame: String
+var key_avatar: String
 
 var current_avatar_frame: int = 0
+var current_avatar: int = 0
 
 
 func _init() -> void:
@@ -90,6 +92,7 @@ func _load_local_user_state() -> void:
 	key_cardback = "current_cardback"
 	key_carpet = "current_carpet"
 	key_avatar_frame = "current_avatar_frame"
+	key_avatar = "current_avatar"
 
 	current_cardback = g.v.storage_cache.fetch(
 		key_cardback,
@@ -102,6 +105,12 @@ func _load_local_user_state() -> void:
 	current_avatar_frame = g.v.storage_cache.fetch(
 		key_avatar_frame,
 		g.v.game_constants.AVATAR_FRAME_IDS.DEFAULT
+	)
+	
+	var random_avt = AVATAR_IDS.pick_random()
+	current_avatar = g.v.storage_cache.fetch(
+		key_avatar,
+		0
 	)
 
 	if is_expire(current_cardback):
@@ -295,6 +304,8 @@ func use_item(item_id):
 		g.v.storage_cache.store(key_carpet, current_carpet)
 
 	elif type == g.v.game_constants.AVATAR_TYPE:
+		current_avatar = item_id
+		g.v.storage_cache.store(key_avatar, current_avatar)
 		g.v.player_info_mgr.on_update_avatar_by_id(item_id)
 
 	elif type == g.v.game_constants.ITEM_TYPE_STACKABLE:

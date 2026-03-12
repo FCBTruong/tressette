@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://hxhcl2lvd7qj"]
 
-[ext_resource type="Texture2D" uid="uid://0oconvjkpusw" path="res://assets/images/login/login_scene.png" id="1_t8h7q"]
+[ext_resource type="Texture2D" uid="uid://cx6qbrregb73n" path="res://assets/images/lobby.jpg" id="1_1m361"]
 [ext_resource type="FontFile" uid="uid://deo8melbvd5n0" path="res://assets/fonts/signika/Signika-Bold.ttf" id="2_gx2ns"]
 [ext_resource type="FontFile" uid="uid://c4g6xixij753i" path="res://assets/fonts/mithella/Mithella-Bold.otf" id="3_abeha"]
 [ext_resource type="Script" uid="uid://516367qjy1v2" path="res://addons/AdmobPlugin/Admob.gd" id="4_ttrxn"]
@@ -42,7 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_t8h7q")
+texture = ExtResource("1_1m361")
 expand_mode = 1
 
 [node name="DownloadPn" type="Panel" parent="TextureRect" unique_id=125301093]
