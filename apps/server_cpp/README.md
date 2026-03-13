@@ -45,17 +45,10 @@ cd C:\vcpkg
 bootstrap-vcpkg.bat
 ````
 
-### 2. Install Boost.Beast
+### 2. Install Dependencies
 
 ```bash
-.\vcpkg install boost-beast
-```
-
-`boost-beast` will pull the Boost dependencies needed for Beast and Asio.
-
-### 3. Install Dependencies
-``` bash
-.\vcpkg install nlohmann-json
+& "C:\vcpkg\vcpkg.exe" install
 ```
 
 ## Build

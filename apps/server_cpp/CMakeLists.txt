@@ -13,24 +13,34 @@ list(REMOVE_ITEM TRESSETTE_SERVER_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/test_client.cpp
 )
 
+set(PROTO_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/proto/packet.pb.cpp
+)
+
 add_executable(tressette_server
     ${TRESSETTE_SERVER_SOURCES}
-    proto/packet.pb.cpp
+    ${PROTO_SOURCES}
 )
 
 add_executable(test_client
-    src/test_client.cpp
-    proto/packet.pb.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/test_client.cpp
+    ${PROTO_SOURCES}
+)
+
+add_custom_command(TARGET tressette_server POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_CURRENT_SOURCE_DIR}/config
+    $<TARGET_FILE_DIR:tressette_server>/config
 )
 
 target_include_directories(tressette_server PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/proto
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/proto
 )
 
 target_include_directories(test_client PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/proto
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/proto
 )
 
 if(WIN32)
@@ -76,25 +86,24 @@ if(WIN32)
         optimized libprotobuf
     )
 else()
-    find_package(Protobuf REQUIRED)
+    set(PROTOBUF_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/protobuf/include)
+    set(PROTOBUF_LINUX_STATIC_LIB ${CMAKE_CURRENT_SOURCE_DIR}/third_party/protobuf/lib/Linux/libprotobuf.a)
 
     target_include_directories(tressette_server PRIVATE
-        ${Protobuf_INCLUDE_DIRS}
-        ${CMAKE_CURRENT_SOURCE_DIR}/third_party/protobuf/include
+        ${PROTOBUF_INCLUDE_DIR}
     )
 
     target_include_directories(test_client PRIVATE
-        ${Protobuf_INCLUDE_DIRS}
-        ${CMAKE_CURRENT_SOURCE_DIR}/third_party/protobuf/include
+        ${PROTOBUF_INCLUDE_DIR}
     )
 
     target_link_libraries(tressette_server PRIVATE
-        ${Protobuf_LIBRARIES}
+        ${PROTOBUF_LINUX_STATIC_LIB}
         pthread
     )
 
     target_link_libraries(test_client PRIVATE
-        ${Protobuf_LIBRARIES}
+        ${PROTOBUF_LINUX_STATIC_LIB}
         pthread
     )
 endif()

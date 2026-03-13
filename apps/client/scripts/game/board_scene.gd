@@ -431,8 +431,7 @@ func play_my_card(id: int, auto: bool = false):
 	if not card:
 		print('not found card')
 		return
-	if g.v.game_manager.enable_sound:
-		$AudioPlayCard.play()
+
 	card.is_played = true
 	card.z_index = COMPARE_CARD_Z_INDEX
 	card.player_id = g.v.player_info_mgr.my_user_data.uid

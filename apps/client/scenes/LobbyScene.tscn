@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://0slqyi8fy58y" path="res://assets/images/ranking/ranking_icon.png" id="12_hwrjc"]
 [ext_resource type="Texture2D" uid="uid://dcgslu7rw0vn1" path="res://assets/images/lobby/buttons/guide_btn.png" id="13_t7q2e"]
 [ext_resource type="Texture2D" uid="uid://b6tsxlt8m77j2" path="res://assets/images/room_bg.png" id="15_ph83y"]
-[ext_resource type="PackedScene" uid="uid://coalpvybk074r" path="res://scenes/lobby/rooms/TableNode.tscn" id="16_cxrji"]
 [ext_resource type="Texture2D" uid="uid://cjvl0gkvick8q" path="res://assets/images/lobby/buttons/inventory_btn.png" id="17_ftiv5"]
 [ext_resource type="Texture2D" uid="uid://c3cvhcijeqyq6" path="res://assets/images/lobby/chplay_color_icon.png" id="25_f38q8"]
 [ext_resource type="Texture2D" uid="uid://bl4mmldeh4mqd" path="res://assets/images/lobby/btn_watch_ads.png" id="25_iyd1h"]
@@ -484,12 +483,6 @@ vertical_scroll_mode = 4
 [node name="VBoxTables" type="VBoxContainer" parent="CenterPn/ScrollContainer" unique_id=760725090]
 layout_mode = 2
 size_flags_horizontal = 6
-
-[node name="TableNode" parent="CenterPn/ScrollContainer/VBoxTables" unique_id=424473314 instance=ExtResource("16_cxrji")]
-layout_mode = 2
-
-[node name="TableNode2" parent="CenterPn/ScrollContainer/VBoxTables" unique_id=1525654836 instance=ExtResource("16_cxrji")]
-layout_mode = 2
 
 [node name="StartBtn" type="Button" parent="." unique_id=415863508]
 custom_minimum_size = Vector2(150, 50)

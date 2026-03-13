@@ -6,7 +6,7 @@ public:
     static constexpr int EMPTY_PLAYER_UID = -1;
 	static constexpr int TIME_AUTO_PLAY = 15; // seconds to auto play after player turn
 	static constexpr int TIME_AUTO_PLAY_SEVERE = 1; // seconds to auto play after player turn when severe (e.g. last won player is auto play)
-	static constexpr bool DEV_MODE = true; // If true, will use fixed cards for testing
+	static constexpr bool DEV_MODE = false; // If true, will use fixed cards for testing
 
 	inline static constexpr std::array<int, 21> AVATAR_IDS = {
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,

@@ -2,8 +2,6 @@ extends Node
 
 @onready var pn_cheat = find_child('PnCheat')
 @onready var input_uid_cheat = find_child('InputUIDCheat')
-@onready var apple_btn = find_child("ApplePn")
-@onready var login_pn = find_child("LoginPn")
 @onready var select_uid_cheat = find_child("SelectUIDCheat")
 @onready var privacy_pn = find_child("PrivacyTermPn")
 var uids_cheat = []
@@ -22,33 +20,6 @@ func _ready() -> void:
 		input_uid_cheat.text = g.v.storage_cache.fetch('login_uid_cheat', '')
 	else:
 		pn_cheat.visible = false
-	
-	if g.v.config.get_platform() == g.v.config.PLATFORMS.IOS:
-		apple_btn.visible = true
-	else:
-		apple_btn.visible = false
-		
-	var tween = create_tween()
-	var default_pos = login_pn.position
-	
-	login_pn.modulate.a = 0
-	login_pn.position.y -= 300
-	var delay = 0
-	
-	tween.parallel().tween_property(login_pn,
-		"position", default_pos, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT) \
-			.set_delay(delay) 
-	tween.parallel().tween_property(login_pn,
-		"modulate:a", 1, 0.4).set_delay(delay) 
-	
-	var privacy_pn_pos = privacy_pn.position
-	privacy_pn.position.y += 200
-	tween.parallel().tween_property(privacy_pn,
-		"position:y", privacy_pn_pos.y, 0.4).set_delay(delay) 
-		
-	var screen_size = DisplayServer.window_get_size()
-	if screen_size.y > screen_size.x * 1.4:
-		login_pn.scale = Vector2(2.5, 2.5)
 		
 
 func on_login_local_firebase_succeeed(auth):

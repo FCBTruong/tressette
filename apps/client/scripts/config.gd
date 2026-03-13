@@ -26,8 +26,9 @@ func on_ready():
 	elif CURRENT_MODE == MODES.LOCAL:
 		WEBSOCKET_URL = "ws://%s:%s" % [SERVER_IP, SERVER_PORT]
 	else:
-		WEBSOCKET_URL = "ws://tressette-live-cpp.clareentertainment.com/ws"
-
+		WEBSOCKET_URL = "ws://tressette-live-cpp.clareentertainment.com"
+	
+	#WEBSOCKET_URL = "ws://35.152.52.25:8000"	
 	print("WebSocket xxxxxURL: %s" % WEBSOCKET_URL)
 
 var platform = OS.get_name()
