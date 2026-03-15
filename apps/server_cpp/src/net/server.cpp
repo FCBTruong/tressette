@@ -10,7 +10,7 @@ Server::Server(asio::io_context& io, uint16_t port)
       session_registry_(),
       game_client_(session_registry_),
       users_info_mgr_(),
-      match_registry_(game_client_, users_info_mgr_), // inject net sender into match system
+      match_registry_(game_client_, users_info_mgr_, session_registry_), // inject net sender into match system
       game_manager_(game_client_, users_info_mgr_)
 {
     if (!app_config_.load()) {

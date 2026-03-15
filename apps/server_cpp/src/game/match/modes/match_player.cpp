@@ -1,7 +1,7 @@
 // match_player.cpp
 #include "match_player.hpp"
-#include "match.hpp"
-#include "ai/tressette_bot.hpp"
+#include "game/match/modes/tressette.hpp"
+#include "game/match/ai/tressette_bot.hpp"
 #include "game/game_constants.hpp"
 
 void MatchPlayer::on_turn() {
@@ -93,8 +93,6 @@ void MatchPlayer::bot_play_card() {
         return;
     }
 
-    std::cout << "Bot player " << uid << " is thinking...\n";
-
     const int hand_suit = match_->hand_suit();
 
     std::vector<int> bot_cards = cards;
@@ -177,7 +175,6 @@ void MatchPlayer::bot_play_card() {
         card_to_play = cards[0];
     }
 
-    std::cout << "Bot player " << uid << " plays card " << card_to_play << '\n';
     match_->handle_play_card(uid, card_to_play);
 }
 
@@ -209,5 +206,5 @@ void MatchPlayer::send_cheat_view_card() {
     for (const auto& c : cards) {
         pkg.add_cards(c);
     }
-    match_->broadcast_pkg(Cmd::CHEAT_VIEW_CARD_BOT, pkg);
+    // match_->broadcast_pkg(Cmd::CHEAT_VIEW_CARD_BOT, pkg);
 }

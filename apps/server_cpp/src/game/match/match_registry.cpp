@@ -2,12 +2,12 @@
 
 #include <iostream>
 
-#include "match_player.hpp"
 #include "net/cmd.hpp"
 #include "packet.pb.h"
+#include "game/match/modes/tressette.hpp"
 
-MatchRegistry::MatchRegistry(IGameClient& net, UsersInfoMgr& users_info_mgr)
-    : net_(net), users_info_mgr_(users_info_mgr) {
+MatchRegistry::MatchRegistry(IGameClient& net, UsersInfoMgr& users_info_mgr, SessionRegistry& session_registry)
+    : net_(net), users_info_mgr_(users_info_mgr), session_registry_(session_registry) {
 
 }
 
@@ -25,8 +25,12 @@ void MatchRegistry::update() {
     }
 
     for (auto& [match_id, match] : matches_) {
-        if (match) {
+        if (match && !match->is_pending_destroyed()) {
             match->loop();
+
+            if (match->should_destroy() && !match->is_pending_destroyed()) {
+                request_destroy_match(match_id);
+            }
         }
     }
 
@@ -61,7 +65,7 @@ void MatchRegistry::on_received_packet(uint64_t uid, Cmd cmd_id, const std::stri
     }
 }
 
-std::shared_ptr<Match> MatchRegistry::create_match(
+std::shared_ptr<IMatch> MatchRegistry::create_match(
     int game_mode,
     int player_mode,
     bool is_private,
@@ -72,15 +76,14 @@ std::shared_ptr<Match> MatchRegistry::create_match(
     const int64_t match_id = next_match_id_++;
     std::cout << "Creating match " << match_id << '\n';
 
-    auto match = std::make_shared<Match>(
+    auto match = std::make_shared<Tressette>(
         match_id,
         player_mode,
         point_mode,
         net_,
-        users_info_mgr_
+        users_info_mgr_,
+        session_registry_
     );
-
-    match->set_public(!is_private);
 
     match->set_user_removed_callback(
         [this](uint64_t uid, int64_t removed_match_id) {
@@ -92,7 +95,7 @@ std::shared_ptr<Match> MatchRegistry::create_match(
     return match;
 }
 
-std::shared_ptr<Match> MatchRegistry::get_match(int64_t match_id) const {
+std::shared_ptr<IMatch> MatchRegistry::get_match(int64_t match_id) const {
     const auto it = matches_.find(match_id);
     if (it == matches_.end()) {
         return nullptr;
@@ -100,7 +103,7 @@ std::shared_ptr<Match> MatchRegistry::get_match(int64_t match_id) const {
     return it->second;
 }
 
-std::shared_ptr<Match> MatchRegistry::get_match_of_user(uint64_t uid) const {
+std::shared_ptr<IMatch> MatchRegistry::get_match_of_user(uint64_t uid) const {
     const auto it = user_match_ids_.find(uid);
     if (it == user_match_ids_.end()) {
         return nullptr;
@@ -153,7 +156,7 @@ void MatchRegistry::request_destroy_match(int64_t match_id) {
     pending_destroy_match_ids_.insert(match_id);
 }
 
-bool MatchRegistry::user_join_match(const std::shared_ptr<Match>& match, uint64_t uid) {
+bool MatchRegistry::user_join_match(const std::shared_ptr<IMatch>& match, uint64_t uid) {
     if (!match) {
         return false;
     }
@@ -177,7 +180,7 @@ void MatchRegistry::user_disconnect(uint64_t uid) {
     match->user_disconnect(uid);
 }
 
-std::shared_ptr<Match> MatchRegistry::find_a_suitable_match_quickplay() const {
+std::shared_ptr<IMatch> MatchRegistry::find_a_suitable_match_quickplay() const {
     for (const auto& [match_id, match] : matches_) {
         (void)match_id;
 
@@ -195,9 +198,9 @@ std::shared_ptr<Match> MatchRegistry::find_a_suitable_match_quickplay() const {
     return nullptr;
 }
 
-std::vector<std::shared_ptr<Match>> MatchRegistry::prioritize_matches(uint64_t /*uid*/) const {
-    std::vector<std::shared_ptr<Match>> waiting;
-    std::vector<std::shared_ptr<Match>> others;
+std::vector<std::shared_ptr<IMatch>> MatchRegistry::prioritize_matches(uint64_t /*uid*/) const {
+    std::vector<std::shared_ptr<IMatch>> waiting;
+    std::vector<std::shared_ptr<IMatch>> others;
 
     for (const auto& [match_id, match] : matches_) {
         (void)match_id;
@@ -265,7 +268,6 @@ void MatchRegistry::handle_quick_play(uint64_t uid) {
 //        test_match->test_fill_bots();
 //    }
 
-    std::cout << "User " << uid << " joining match " << match->match_id() << " via quick play.\n";
     user_join_match(match, uid);
 }
 
@@ -334,7 +336,7 @@ void MatchRegistry::receive_request_table_list(uint64_t uid) {
             pkg.add_avatars(player.avatar);
             pkg.add_player_uids(static_cast<int64_t>(player.uid));
             pkg.add_avatar_frames(player.avatar_frame);
-            pkg.add_points(player.points);
+            pkg.add_points(player.points); 
         }
     }
 
@@ -351,15 +353,6 @@ void MatchRegistry::on_user_removed_from_match(uint64_t uid, int64_t match_id) {
     const auto it = user_match_ids_.find(uid);
     if (it != user_match_ids_.end() && it->second == match_id) {
         user_match_ids_.erase(it);
-    }
-
-    auto match = get_match(match_id);
-    if (!match) {
-        return;
-    }
-
-    if (!match->check_has_real_players()) {
-        request_destroy_match(match_id);
     }
 }
 

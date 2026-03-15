@@ -2,7 +2,7 @@ cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.c
 cmake --build build --config Debug
 
 # Run the server
-.\build\Debug\card_server.exe
+.\build\Debug\tressette_server.exe
 
 # Run the client test
 .\build\Debug\test_client.exe
@@ -23,7 +23,7 @@ sudo apt install -y build-essential cmake libboost-dev nlohmann-json3-dev libpro
 mkdir -p ~/workspace
 
 
-rsync -av \
+rsync -av --delete \
   --exclude '.git' \
   --exclude '.vs' \
   --exclude 'build' \

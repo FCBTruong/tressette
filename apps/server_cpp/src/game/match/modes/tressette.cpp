@@ -1,4 +1,4 @@
-#include "match.hpp"
+#include "tressette.hpp"
 
 #include <cstdint>
 #include <iostream>
@@ -9,10 +9,11 @@
 #include <random>
 #include "packet.pb.h"
 
-Match::Match(int64_t match_id, int player_mode, int point_mode,
-             IGameClient& net, UsersInfoMgr& users_info_mgr)
+Tressette::Tressette(int64_t match_id, int player_mode, int point_mode,
+             IGameClient& net, UsersInfoMgr& users_info_mgr, SessionRegistry& session_registry)
     : net_(net),
       users_info_mgr_(users_info_mgr),
+      session_registry_(session_registry),  
       match_id_(match_id),
       player_mode_(player_mode),
       point_mode_(point_mode) 
@@ -30,7 +31,7 @@ Match::Match(int64_t match_id, int player_mode, int point_mode,
     point_to_win_ = point_mode_ * 3;
 }
 
-void Match::on_received_packet(uint64_t uid, int cmd_id, const std::string& payload) {
+void Tressette::on_received_packet(uint64_t uid, int cmd_id, const std::string& payload) {
     if (is_pending_destroyed_) {
         return;
     }
@@ -100,7 +101,7 @@ void Match::on_received_packet(uint64_t uid, int cmd_id, const std::string& payl
     }
 }
 
-int Match::find_player_index(uint64_t uid) const {
+int Tressette::find_player_index(uint64_t uid) const {
     for (std::size_t i = 0; i < players_.size(); ++i) {
         if (!players_[i].is_empty() && players_[i].uid == uid) {
             return static_cast<int>(i);
@@ -109,32 +110,31 @@ int Match::find_player_index(uint64_t uid) const {
     return -1;
 }
 
-bool Match::is_player(uint64_t uid) const {
+bool Tressette::is_player(uint64_t uid) const {
     return find_player_index(uid) >= 0;
 }
 
-bool Match::is_viewer(uint64_t uid) const {
+bool Tressette::is_viewer(uint64_t uid) const {
     return viewers_.count(uid) > 0;
 }
 
-bool Match::has_user(uint64_t uid) const {
+bool Tressette::has_user(uint64_t uid) const {
     return is_player(uid) || is_viewer(uid);
 }
 
-void Match::notify_user_removed(uint64_t uid) {
+void Tressette::notify_user_removed(uint64_t uid) {
     if (on_user_removed_) {
         on_user_removed_(uid, match_id_);
     }
 }
 
-void Match::broadcast_pkg(Cmd cmd, const google::protobuf::Message& msg,
+void Tressette::broadcast_pkg(Cmd cmd, const google::protobuf::Message& msg,
                           const std::vector<uint64_t>& exclude_uids) 
 {
     std::unordered_set<uint64_t> excluded(exclude_uids.begin(), exclude_uids.end());
     
     for (const auto& player : players_) {
         if (player.is_empty()) {
-            std::cout << "Skipping empty player slot for broadcasting cmd " << static_cast<int>(cmd) << '\n';
             continue;
         }
         if (excluded.count(player.uid) > 0) {
@@ -151,7 +151,7 @@ void Match::broadcast_pkg(Cmd cmd, const google::protobuf::Message& msg,
     }
 }
 
-JoinMatchErrors Match::try_join(uint64_t user_id, bool is_bot) {
+JoinMatchErrors Tressette::try_join(uint64_t user_id, bool is_bot) {
     if (is_player(user_id)) {
         return JoinMatchErrors::AlreadyInMatch;
     }
@@ -218,9 +218,7 @@ JoinMatchErrors Match::try_join(uint64_t user_id, bool is_bot) {
     return JoinMatchErrors::Success;
 }
 
-void Match::send_game_info_to_user(uint64_t uid) {
-    std::cout << "Sending game info to user " << uid << " in match " << match_id() << '\n';
-
+void Tressette::send_game_info_to_user(uint64_t uid) {
     packet::GameInfo game_info;
     game_info.set_match_id(match_id());
     game_info.set_game_mode(game_mode());
@@ -250,7 +248,6 @@ void Match::send_game_info_to_user(uint64_t uid) {
         game_info.add_is_vips(false);
 
         if (p.uid == uid) {
-            std::cout << "Adding cards for user " << uid << ": ";
             for (int card : p.cards) {
                 game_info.add_my_cards(card);
             }
@@ -268,7 +265,7 @@ void Match::send_game_info_to_user(uint64_t uid) {
     net_.send_packet(uid, Cmd::GAME_INFO, game_info);
 }
 
-void Match::user_leave(uint64_t uid, int reason) {
+void Tressette::user_leave(uint64_t uid, int reason) {
     bool removed = false;
 
     const int player_idx = find_player_index(uid);
@@ -307,7 +304,7 @@ void Match::user_leave(uint64_t uid, int reason) {
     notify_user_removed(uid);
 }
 
-void Match::user_reconnect(uint64_t uid) {
+void Tressette::user_reconnect(uint64_t uid) {
     if (!has_user(uid)) {
         return;
     }
@@ -322,7 +319,7 @@ void Match::user_reconnect(uint64_t uid) {
     send_game_info_to_user(uid);
 }
 
-void Match::loop() {
+void Tressette::loop() {
     if (is_pending_destroyed_) {
         return;
     }
@@ -362,12 +359,12 @@ void Match::loop() {
             }
         }
     } catch (const std::exception& e) {
-        std::cerr << "Match::loop exception: " << e.what() << '\n';
+        std::cerr << "Tressette::loop exception: " << e.what() << '\n';
         throw;
     }
 }
 
-void Match::broadcast_chat_emoticon(uint64_t uid, int emoticon) {
+void Tressette::broadcast_chat_emoticon(uint64_t uid, int emoticon) {
     (void)uid;
 
     packet::InGameChatEmoticon pkg;
@@ -376,7 +373,7 @@ void Match::broadcast_chat_emoticon(uint64_t uid, int emoticon) {
     broadcast_pkg(Cmd::CHAT_EMOTICON, pkg);
 }
 
-void Match::broadcast_chat_message(uint64_t uid, const std::string& message) {
+void Tressette::broadcast_chat_message(uint64_t uid, const std::string& message) {
     (void)uid;
 
     packet::InGameChatMessage pkg;
@@ -385,7 +382,7 @@ void Match::broadcast_chat_message(uint64_t uid, const std::string& message) {
     broadcast_pkg(Cmd::NEW_INGAME_CHAT_MESSAGE, pkg);
 }
 
-void Match::user_return_to_table(uint64_t uid) {
+void Tressette::user_return_to_table(uint64_t uid) {
     if (!is_player(uid)) {
         return;
 	}
@@ -395,15 +392,15 @@ void Match::user_return_to_table(uint64_t uid) {
 	}
 }
 
-void Match::user_ready(uint64_t uid) {
+void Tressette::user_ready(uint64_t uid) {
     (void)uid;
 }
 
-bool Match::check_room_full() const {
+bool Tressette::check_room_full() const {
     return get_num_players() >= player_mode_;
 }
 
-bool Match::check_has_real_players() const {
+bool Tressette::check_has_real_players() const {
     for (const auto& p : players_) {
         if (!p.is_empty() && !p.is_bot) {
             return true;
@@ -412,7 +409,7 @@ bool Match::check_has_real_players() const {
     return !viewers_.empty();
 }
 
-int Match::get_num_players() const {
+int Tressette::get_num_players() const {
     int count = 0;
     for (const auto& p : players_) {
         if (!p.is_empty()) {
@@ -422,7 +419,7 @@ int Match::get_num_players() const {
     return count;
 }
 
-void Match::handle_register_leave_game(uint64_t uid, const packet::RegisterLeaveGame& req) {
+void Tressette::handle_register_leave_game(uint64_t uid, const packet::RegisterLeaveGame& req) {
     std::cout << "User " << uid << " register_leave_game with status " << req.status() << '\n';
     if (is_in_game_ && is_player(uid)) {
         if (req.status() == 0) {
@@ -438,7 +435,7 @@ void Match::handle_register_leave_game(uint64_t uid, const packet::RegisterLeave
     user_leave(uid, 0);
 }
 
-void Match::end_game() {
+void Tressette::end_game() {
     state_ = MatchState::Ended;
     time_start_ = -1;
 
@@ -504,14 +501,12 @@ void Match::end_game() {
     is_in_game_ = false;
 }
 
-void Match::start_game() {
+void Tressette::start_game() {
     state_ = MatchState::Playing;
     time_start_ = std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::system_clock::now().time_since_epoch()
     ).count();
     is_in_game_ = true;
-
-    std::cout << "Game started in match " << match_id_ << " at time " << time_start_ << '\n';
 
     // reset game-related states
     current_turn_idx_ = 0;
@@ -539,7 +534,7 @@ void Match::start_game() {
     });
 }
 
-void Match::prepare_start_game() {
+void Tressette::prepare_start_game() {
     state_ = MatchState::PreparingStart;
    
     int64_t now_ts = std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -550,7 +545,7 @@ void Match::prepare_start_game() {
     broadcast_pkg(Cmd::PREPARE_START_GAME, pkg);
 }
 
-void Match::deal_cards() {
+void Tressette::deal_cards() {
     cards_ = TRESSETTE_CARDS;
 
     std::random_device rd;
@@ -592,7 +587,7 @@ void Match::deal_cards() {
     }
 }
 
-void Match::handle_new_hand() {
+void Tressette::handle_new_hand() {
     current_hand_ += 1;
     hand_suit_ = -1;
     hand_in_round_ += 1;
@@ -620,7 +615,7 @@ void Match::handle_new_hand() {
     players_[current_turn_idx_].on_turn();
 }
 
-void Match::handle_play_card(uint64_t uid, int card_id, bool is_auto) {
+void Tressette::handle_play_card(uint64_t uid, int card_id, bool is_auto) {
     if (state_ != MatchState::Playing) {
         return;
     }
@@ -680,13 +675,13 @@ void Match::handle_play_card(uint64_t uid, int card_id, bool is_auto) {
     }
 }
 
-void Match::send_card_play_response(uint64_t uid, PlayCardErrors status) {
+void Tressette::send_card_play_response(uint64_t uid, PlayCardErrors status) {
     packet::PlayCardResponse pkg;
     pkg.set_status(static_cast<int>(status));
     net_.send_packet(uid, Cmd::PLAY_CARD_RESPONSE, pkg);
 }
 
-bool Match::check_done_hand() const {
+bool Tressette::check_done_hand() const {
     for (const auto& c : cards_compare_) {
         if (c == -1) {
             return false;
@@ -695,7 +690,7 @@ bool Match::check_done_hand() const {
     return true;
 }
 
-void Match::end_hand(packet::PlayCard& play_card_pkg) {
+void Tressette::end_hand(packet::PlayCard& play_card_pkg) {
     int win_card = get_win_card_in_hand();
     int win_score = get_win_score_in_hand();
     int win_player_idx = -1;
@@ -713,8 +708,6 @@ void Match::end_hand(packet::PlayCard& play_card_pkg) {
     last_won_uid_ = players_[static_cast<std::size_t>(win_player_idx)].uid;
     MatchPlayer& win_player = players_[static_cast<std::size_t>(win_player_idx)];
     win_player.points += win_score;
-    std::cout << "Player " << win_player.uid << " wins hand with card " << win_card
-              << " and score " << win_score << " in match " << match_id_ << '\n';
     // reset cards_compare to -1
     for (auto& c : cards_compare_) {
         c = -1;
@@ -764,7 +757,7 @@ void Match::end_hand(packet::PlayCard& play_card_pkg) {
     }
 }
 
-int Match::get_win_card_in_hand() const {
+int Tressette::get_win_card_in_hand() const {
     std::vector<int> cards_valid;
     for (const auto card : cards_compare_) {
         if (card % 4 == hand_suit_) {
@@ -786,7 +779,7 @@ int Match::get_win_card_in_hand() const {
     return win_card;
 }
 
-int Match::get_win_score_in_hand() const {
+int Tressette::get_win_score_in_hand() const {
     int score = 0;
     for (const auto card : cards_compare_) {
         score += TRESSETTE_CARD_VALUES.at(card);
@@ -794,7 +787,7 @@ int Match::get_win_score_in_hand() const {
     return score;
 }
 
-void Match::handle_end_round() {
+void Tressette::handle_end_round() {
     std::cout << "Round " << cur_round_ << " ended in match " << match_id_ << '\n';
 
     // Start new round after 3 seconds to give clients time to receive end round info
@@ -803,7 +796,7 @@ void Match::handle_end_round() {
     });
 }
 
-void Match::handle_new_round() {
+void Tressette::handle_new_round() {
     cur_round_ += 1;
     napoli_claimed_status_.clear();
     hand_in_round_ = -1;
@@ -868,7 +861,7 @@ void Match::handle_new_round() {
     });
 }
 
-void Match::handle_draw_card() {
+void Tressette::handle_draw_card() {
     std::vector<int> new_cards;
     for (size_t i = 0; i < players_.size(); ++i) {
         if (cards_.empty()) {
@@ -887,7 +880,7 @@ void Match::handle_draw_card() {
     broadcast_pkg(Cmd::DRAW_CARD, pkg);
 }
 
-void Match::user_disconnect(uint64_t uid) {
+void Tressette::user_disconnect(uint64_t uid) {
     std::cout << "User disconnect";
     if (!has_user(uid)) {
         return;
@@ -899,7 +892,7 @@ void Match::user_disconnect(uint64_t uid) {
     user_leave(uid);
 }
 
-bool Match::check_end_game() {
+bool Tressette::check_end_game() {
     // Check if one team reaches point_to_win, then end game
     team_scores_ = {0, 0};
 
@@ -913,15 +906,16 @@ bool Match::check_end_game() {
     // if (true) {
     //     return true;
     // }
+    std::cout << "Team scores: " << team_scores_[0] << " - " << team_scores_[1] << '\n';
 
-    if (team_scores_[0] >= point_to_win_ || team_scores_[1] >= point_to_win_) {
+    if (team_scores_[TEAM_ID_1] >= point_to_win_ || team_scores_[TEAM_ID_2] >= point_to_win_) {
         return true;
     }
 
     return false;
 }
 
-void Match::update_users_staying_endgame() {
+void Tressette::update_users_staying_endgame() {
     std::unordered_set<uint64_t> uids_to_kick;
 
     for (const auto& uid : register_leave_uids_) {
@@ -944,7 +938,7 @@ void Match::update_users_staying_endgame() {
     }
 }
 
-void Match::handle_game_action_napoli(int64_t uid)
+void Tressette::handle_game_action_napoli(int64_t uid)
 {
     auto it = napoli_claimed_status_.find(uid);
     if (it != napoli_claimed_status_.end() && it->second) {
@@ -991,7 +985,7 @@ void Match::handle_game_action_napoli(int64_t uid)
     broadcast_pkg(Cmd::GAME_ACTION_NAPOLI, pkg);
 }
 
-std::vector<std::vector<int>> Match::find_napoli(const std::vector<int>& hand)
+std::vector<std::vector<int>> Tressette::find_napoli(const std::vector<int>& hand)
 {
     std::vector<std::vector<int>> napoli_sets;
 
@@ -1011,7 +1005,7 @@ std::vector<std::vector<int>> Match::find_napoli(const std::vector<int>& hand)
     return napoli_sets;
 }
 
-void Match::handle_viewer_enter_match(uint64_t uid, int seat_idx)
+void Tressette::handle_viewer_enter_match(uint64_t uid, int seat_idx)
 {
     if (!is_viewer(uid)) {
         return;
@@ -1023,7 +1017,7 @@ void Match::handle_viewer_enter_match(uint64_t uid, int seat_idx)
 	try_join(uid);
 }
 
-void Match::check_gen_bot() {
+void Tressette::check_gen_bot() {
     if (!check_has_real_players()) {
         return;
     }
@@ -1046,7 +1040,7 @@ void Match::check_gen_bot() {
     }
 }
 
-void Match::schedule_gen_bot(){
+void Tressette::schedule_gen_bot(){
     int64_t now_ts_sec = std::chrono::duration_cast<std::chrono::seconds>(
         std::chrono::system_clock::now().time_since_epoch()
     ).count();
@@ -1055,7 +1049,7 @@ void Match::schedule_gen_bot(){
     time_gen_bot_interval_sec_ = 5 + (std::rand() % 10); // random interval between 5 to 14 seconds
 }
 
-void Match::test_fill_bots() {
+void Tressette::test_fill_bots() {
     for (int i = 0; i < player_mode_; ++i) {
         if (players_[i].is_empty()) {
             uint64_t bot_uid = users_info_mgr_.request_bot();
@@ -1066,4 +1060,46 @@ void Match::test_fill_bots() {
             try_join(bot_uid, true);
         }
     }
+}
+
+bool Tressette::has_online_user() const {
+    for (const auto& player : players_) {
+        if (!player.is_empty() && !player.is_bot) {
+            if (session_registry_.is_online(player.uid)) {
+                return true;
+            }
+        }
+    }
+    for (const auto& uid : viewers_) {
+        if (session_registry_.is_online(uid)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Tressette::set_is_pending_destroyed(bool pending) {
+    is_pending_destroyed_ = pending;
+
+    //  release bots immediately if pending destroyed, to free up resources
+    if (pending) {
+        for (const auto& player : players_) {
+            if (!player.is_empty() && player.is_bot) {
+                users_info_mgr_.release_bot(player.uid);
+            }
+        }
+    }
+}
+
+bool Tressette::should_destroy() const {
+    if (is_pending_destroyed_) {
+        return false;
+    }
+
+    // If there are still online users, do not destroy yet
+    if (has_online_user()) {
+        return false;
+    }
+
+    return true;
 }

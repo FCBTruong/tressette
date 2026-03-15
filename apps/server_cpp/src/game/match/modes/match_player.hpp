@@ -5,11 +5,12 @@
 #include <string>
 #include <vector>
 #include "game/game_constants.hpp"
-class Match;
+
+class Tressette;
 
 class MatchPlayer {
 public:
-    explicit MatchPlayer(Match* match) : match_(match) {}
+    explicit MatchPlayer(Tressette* match) : match_(match) {}
     ~MatchPlayer() = default;
 
     void on_turn();
@@ -56,7 +57,7 @@ public:
     int avatar_frame = 0;
 
 private:
-    Match* match_ = nullptr;
+    Tressette* match_ = nullptr;
 	bool is_on_turn_ = false;
 	int64_t time_auto_play_ms_ = 0;
 	int64_t time_auto_play_severe_ms_ = 0;

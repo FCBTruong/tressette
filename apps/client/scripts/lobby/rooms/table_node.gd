@@ -63,12 +63,6 @@ func set_info(table: TableInfo):
 
 
 func _click_play():
-	if self._info.num_player == self._info.player_mode:
-		g.v.scene_manager.show_dialog(
-			tr("ROOM_IS_FULL")
-		)
-		return
-		
 	if self._info.is_private:
 		var gui = g.v.scene_manager.open_gui("res://scenes/lobby/JoinPrivateTable.tscn")
 		gui.set_info(self._info.match_id, true)
