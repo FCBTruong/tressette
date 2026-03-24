@@ -21,7 +21,7 @@ class Router;
 
 class Server {
 public:
-    Server(asio::io_context& io, uint16_t port);
+    Server(asio::io_context& io);
     ~Server();
 
     void start();

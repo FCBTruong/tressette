@@ -130,9 +130,16 @@ bootstrap-vcpkg.bat
 ```bash
 & "C:\vcpkg\vcpkg.exe" install
 ```
+## Environment
+Before running the server, copy the example environment file and update it with your local values.
+
+### Windows
+
+```bash
+copy .env.example .env
+``` 
 
 ## Build
-
 Configure the project with the vcpkg toolchain:
 
 ```bash

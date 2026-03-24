@@ -12,3 +12,4 @@
 /.vs/
 /secrets/
 /vcpkg_installed/
+.env

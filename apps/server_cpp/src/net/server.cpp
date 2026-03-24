@@ -5,7 +5,7 @@
 #include <iostream>
 #include <boost/asio/steady_timer.hpp>
 
-Server::Server(asio::io_context& io, uint16_t port)
+Server::Server(asio::io_context& io)
     : io_(io),
       session_registry_(),
       game_client_(session_registry_),
@@ -16,9 +16,12 @@ Server::Server(asio::io_context& io, uint16_t port)
     if (!app_config_.load()) {
         throw std::runtime_error("Failed to load app config");
     }
+    uint64_t port = app_config_.port();
     router_ = std::make_unique<Router>(*this);
     listener_ = std::make_unique<Listener>(io_, port, *this);
     update_timer_ = std::make_unique<asio::steady_timer>(io_);
+
+    std::cout << "Server initialized, listening on port " << port << '\n';
 }
 
 Server::~Server() = default;
