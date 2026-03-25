@@ -1,4 +1,6 @@
-cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
+cmake -S . -B build `
+  -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake `
+  -DVCPKG_INSTALLED_DIR=C:/Workspace/GameStudio/Tressette/apps/server_cpp/vcpkg_installed
 cmake --build build --config Debug
 
 # Run the server

@@ -46,7 +46,7 @@ target_include_directories(test_client PRIVATE
 if(WIN32)
     set(PROTOBUF_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/protobuf/include)
     set(PROTOBUF_LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/protobuf/lib/Win64)
-    set(VCPKG_INSTALLED_DIR C:/vcpkg/installed/x64-windows)
+    set(VCPKG_INSTALLED_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vcpkg_installed/x64-windows)
 
     target_include_directories(tressette_server PRIVATE
         ${VCPKG_INSTALLED_DIR}/include
@@ -59,10 +59,12 @@ if(WIN32)
     )
 
     target_link_directories(tressette_server PRIVATE
+        ${VCPKG_INSTALLED_DIR}/lib
         ${PROTOBUF_LIB_DIR}
     )
 
     target_link_directories(test_client PRIVATE
+        ${VCPKG_INSTALLED_DIR}/lib
         ${PROTOBUF_LIB_DIR}
     )
 
@@ -76,12 +78,22 @@ if(WIN32)
 
     target_link_libraries(tressette_server PRIVATE
         ws2_32
+        libpq
+        pqxx
+        crypt32
+        libssl
+        libcrypto
         debug libprotobufd
         optimized libprotobuf
     )
 
     target_link_libraries(test_client PRIVATE
         ws2_32
+        libpq
+        pqxx
+        crypt32
+        libssl
+        libcrypto
         debug libprotobufd
         optimized libprotobuf
     )

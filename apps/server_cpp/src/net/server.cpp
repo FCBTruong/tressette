@@ -16,6 +16,20 @@ Server::Server(asio::io_context& io)
     if (!app_config_.load()) {
         throw std::runtime_error("Failed to load app config");
     }
+
+    db_ = std::make_unique<PostgresClient>(app_config_.db_url());
+    if (!db_->connect()) {
+        std::cout << "Database base is not active yet: " << db_->last_error() << '\n';
+    } else {
+        std::cout << "Database base ready for repositories: " << db_->connection_info().summary() << '\n';
+    }
+
+    telegram_notifier_ = std::make_unique<TelegramNotifier>(
+        app_config_.telegram_bot_token(),
+        app_config_.telegram_chat_id(),
+        app_config_.telegram_skip_tls_verify()
+    );
+
     uint64_t port = app_config_.port();
     router_ = std::make_unique<Router>(*this);
     listener_ = std::make_unique<Listener>(io_, port, *this);
@@ -30,6 +44,7 @@ void Server::start() {
     listener_->start();
     match_registry_.start();
     schedule_update();
+    notify_startup();
 }
 
 void Server::on_new_connection(tcp::socket socket) {
@@ -75,4 +90,25 @@ void Server::schedule_update() {
         match_registry_.update();
         schedule_update();
     });
+}
+
+void Server::notify_startup() {
+    if (!telegram_notifier_ || !telegram_notifier_->enabled()) {
+        return;
+    }
+
+    std::string error_message;
+    const std::string message =
+        "Tressette server started.\n"
+        "Port: " + std::to_string(app_config_.port());
+
+    if (!telegram_notifier_->send_message(message, &error_message)) {
+        std::cout << "Telegram startup notification failed: " << error_message << '\n';
+    } else {
+        std::cout << "Telegram startup notification sent\n";
+    }
+
+    if (app_config_.telegram_skip_tls_verify()) {
+        std::cout << "Warning: Telegram notifier is running with TLS verification disabled\n";
+    }
 }
