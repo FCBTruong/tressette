@@ -21,6 +21,7 @@ public:
     bool telegram_skip_tls_verify() const;
     bool telegram_enabled() const;
     int port() const;
+    EnvironmentMode environment_mode() const;
 
 private:
     bool load_env();

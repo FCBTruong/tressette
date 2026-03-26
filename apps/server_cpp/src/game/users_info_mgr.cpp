@@ -23,7 +23,7 @@ UserInfo& UsersInfoMgr::get_or_create_internal(uint64_t uid) {
     return inserted_it->second;
 }
 
-const UserInfo& UsersInfoMgr::get_or_create(uint64_t uid) {
+UserInfo UsersInfoMgr::get_or_create(uint64_t uid) {
     std::lock_guard<std::mutex> lk(mu_);
     return get_or_create_internal(uid);
 }
@@ -109,6 +109,7 @@ void UsersInfoMgr::handle_change_user_name(uint64_t uid, const std::string& payl
 }
 
 int UsersInfoMgr::request_bot() {
+    std::lock_guard<std::mutex> lk(mu_);
     if (available_uids_.empty()) {
         return -1;
     }
@@ -119,6 +120,7 @@ int UsersInfoMgr::request_bot() {
 }
 
 void UsersInfoMgr::release_bot(int bot_uid) {
+    std::lock_guard<std::mutex> lk(mu_);
     if (in_use_uids_.erase(bot_uid) > 0) {
         available_uids_.push_back(bot_uid);
     }

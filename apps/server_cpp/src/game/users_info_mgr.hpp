@@ -41,7 +41,7 @@ public:
     UsersInfoMgr();
 
     // Get cached user; create if missing (default values).
-    const UserInfo& get_or_create(uint64_t uid);
+    UserInfo get_or_create(uint64_t uid);
 
     // Update full user object in cache (overwrite).
     void upsert(const UserInfo& info);

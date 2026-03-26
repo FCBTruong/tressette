@@ -165,3 +165,7 @@ bool AppConfig::telegram_enabled() const {
 int AppConfig::port() const {
     return port_;
 }
+
+AppConfig::EnvironmentMode AppConfig::environment_mode() const {
+    return environment_mode_;
+}

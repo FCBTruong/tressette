@@ -2,8 +2,12 @@
 #include "listener.hpp"
 #include "client_session.hpp"
 #include "router.hpp"
+
+#include <exception>
 #include <iostream>
 #include <boost/asio/steady_timer.hpp>
+
+#include "core/app_events.hpp"
 
 Server::Server(asio::io_context& io)
     : io_(io),
@@ -32,6 +36,7 @@ Server::Server(asio::io_context& io)
 
     uint64_t port = app_config_.port();
     router_ = std::make_unique<Router>(*this);
+    wire_signal_handlers();
     listener_ = std::make_unique<Listener>(io_, port, *this);
     update_timer_ = std::make_unique<asio::steady_timer>(io_);
 
@@ -68,8 +73,7 @@ void Server::remove_session(uint64_t session_id) {
     if (session) {
         int64_t uid = session->uid().value_or(0);
         if (uid) {
-            // disconnect event may trigger some cleanup in game system, so we need to notify game manager about it.
-            match_registry_.user_disconnect(uid);
+            signal_bus_.publish(UserDisconnectedEvent{static_cast<uint64_t>(uid)});
         }
     }
     session_registry_.remove_session(session_id);
@@ -78,6 +82,46 @@ void Server::remove_session(uint64_t session_id) {
 
 Router& Server::router() {
     return *router_;
+}
+
+void Server::wire_signal_handlers() {
+    signal_bus_.subscribe<PacketReceivedEvent>(
+        [this](const PacketReceivedEvent& event) {
+            match_registry_.on_received_packet(event.uid, event.cmd_id, event.payload);
+        });
+
+    signal_bus_.subscribe<PacketReceivedEvent>(
+        [this](const PacketReceivedEvent& event) {
+            users_info_mgr_.on_receive_packet(event.uid, event.cmd_id, event.payload);
+        });
+
+    signal_bus_.subscribe<PacketReceivedEvent>(
+        [this](const PacketReceivedEvent& event) {
+            game_manager_.on_receive_packet(event.uid, event.cmd_id, event.payload);
+        });
+
+    signal_bus_.subscribe<UserLoggedInEvent>(
+        [this](const UserLoggedInEvent& event) {
+            game_manager_.on_login_success(event.uid);
+
+            auto timer = std::make_shared<asio::steady_timer>(io_);
+            timer->expires_after(std::chrono::seconds(2));
+            timer->async_wait([this, timer, uid = event.uid](const boost::system::error_code& ec) {
+                if (!ec) {
+                    signal_bus_.publish(UserLoginSettledEvent{uid});
+                }
+            });
+        });
+
+    signal_bus_.subscribe<UserLoginSettledEvent>(
+        [this](const UserLoginSettledEvent& event) {
+            match_registry_.on_user_login(event.uid);
+        });
+
+    signal_bus_.subscribe<UserDisconnectedEvent>(
+        [this](const UserDisconnectedEvent& event) {
+            match_registry_.user_disconnect(event.uid);
+        });
 }
 
 void Server::schedule_update() {
@@ -93,6 +137,11 @@ void Server::schedule_update() {
 }
 
 void Server::notify_startup() {
+    if (app_config_.environment_mode() == AppConfig::EnvironmentMode::kDevelopment) {
+        std::cout << "Running in development mode, skipping Telegram notification\n";
+        return;
+    }
+
     if (!telegram_notifier_ || !telegram_notifier_->enabled()) {
         return;
     }
@@ -111,4 +160,38 @@ void Server::notify_startup() {
     if (app_config_.telegram_skip_tls_verify()) {
         std::cout << "Warning: Telegram notifier is running with TLS verification disabled\n";
     }
+}
+
+void Server::execute_db_async(
+    std::string sql,
+    std::vector<DbValue> params,
+    std::function<void(DbResult)> on_success,
+    std::function<void(std::string)> on_error) {
+    asio::post(
+        db_executor_,
+        [this,
+         sql = std::move(sql),
+         params = std::move(params),
+         on_success = std::move(on_success),
+         on_error = std::move(on_error)]() mutable {
+            try {
+                DbResult result = db_->execute(sql, params);
+                asio::post(
+                    io_,
+                    [result = std::move(result), on_success = std::move(on_success)]() mutable {
+                        if (on_success) {
+                            on_success(std::move(result));
+                        }
+                    });
+            } catch (const std::exception& e) {
+                std::string error_message = e.what();
+                asio::post(
+                    io_,
+                    [error_message = std::move(error_message), on_error = std::move(on_error)]() mutable {
+                        if (on_error) {
+                            on_error(std::move(error_message));
+                        }
+                    });
+            }
+        });
 }

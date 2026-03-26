@@ -8,6 +8,7 @@
 #include "auth/auth_service.hpp"
 #include "client_session.hpp"
 #include "cmd.hpp"
+#include "core/app_events.hpp"
 #include "server.hpp"
 #include "game/game_constants.hpp"
 
@@ -31,10 +32,11 @@ void Router::handle(const std::shared_ptr<ClientSession>& session, const packet:
             Cmd cmd_id = static_cast<Cmd>(packet.cmd_id());
             int uid = session->uid().value_or(0);
 
-            // Dispatch on received packet event to listeners
-            server_.match_registry().on_received_packet(uid, cmd_id, packet.payload());
-            server_.users_info_mgr().on_receive_packet(uid, cmd_id, packet.payload());
-            server_.game_manager().on_receive_packet(uid, cmd_id, packet.payload());
+            server_.signal_bus().publish(PacketReceivedEvent{
+                static_cast<uint64_t>(uid),
+                cmd_id,
+                packet.payload()
+            });
             break;
     }
 }
@@ -100,12 +102,7 @@ void Router::handle_login(const std::shared_ptr<ClientSession>& session, const p
 
     session->send(reply);
 
-    server_.game_manager().on_login_success(result.uid);
-
-    std::thread([this, uid = result.uid]() {
-        std::this_thread::sleep_for(std::chrono::seconds(2));
-        server_.match_registry().on_user_login(uid);
-    }).detach();
+    server_.signal_bus().publish(UserLoggedInEvent{result.uid});
 }
 
 void Router::send_auth_error(const std::shared_ptr<ClientSession>& session, int cmd_id) {

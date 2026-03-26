@@ -21,10 +21,6 @@ void MatchPlayer::on_turn() {
                 std::chrono::system_clock::now().time_since_epoch()
             ).count() + GameConstants::TIME_AUTO_PLAY * 1000;
     }
-
-    if (GameConstants::DEV_MODE && is_bot) {
-        send_cheat_view_card();
-	}
 }
 
 void MatchPlayer::reset_new_game() {
