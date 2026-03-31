@@ -1,7 +1,4 @@
-Dear Hiring Manager,
-
-This project implements an online turn-based card game based on a client–server architecture.
-The server operates as an authoritative source of truth, handling all game logic, validating player actions, and synchronizing game state across clients.
+Tressette - Online multiplayer card game
 
 ## Features
 
