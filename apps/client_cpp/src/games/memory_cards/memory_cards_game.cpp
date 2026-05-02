@@ -1,7 +1,6 @@
 #include "memory_cards_game.h"
 
 #include <SDL3/SDL.h>
-#include <SDL3_ttf/SDL_ttf.h>
 
 #include <algorithm>
 #include <array>
@@ -40,14 +39,6 @@ constexpr std::array<SDL_Color, 5> kArtPalettes{{
     SDL_Color{164, 115, 212, 255},
 }};
 
-constexpr std::array<std::uint32_t, 50> kEmojiCodepoints{{
-    0x1F436, 0x1F431, 0x1F438, 0x1F43C, 0x1F98A, 0x1F435, 0x1F42F, 0x1F981, 0x1F98B, 0x1F984,
-    0x1F437, 0x1F42E, 0x1F439, 0x1F430, 0x1F43B, 0x1F428, 0x1F42D, 0x1F414, 0x1F423, 0x1F986,
-    0x1F34E, 0x1F34B, 0x1F347, 0x1F353, 0x1F352, 0x1F349, 0x1F34D, 0x1F955, 0x1F33D, 0x1F966,
-    0x1F697, 0x1F695, 0x1F699, 0x1F6B2, 0x2708, 0x1F680, 0x26F5, 0x1F6F8, 0x1F6A4, 0x1F3AE,
-    0x1F3B8, 0x1F3B5, 0x1F381, 0x1F388, 0x1F48E, 0x2B50, 0x1F525, 0x1F4A7, 0x1F33B, 0x1F335,
-}};
-
 constexpr float kFlipSpeed = 7.8f;
 constexpr float kMinFlipScale = 0.08f;
 
@@ -68,12 +59,6 @@ struct MemoryCard {
     SDL_FRect rect{};
 };
 
-struct EmojiTexture {
-    SDL_Texture* texture = nullptr;
-    int width = 0;
-    int height = 0;
-};
-
 struct FireworkParticle {
     SDL_FPoint position{};
     SDL_FPoint velocity{};
@@ -87,14 +72,12 @@ struct FireworkParticle {
 struct App {
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
-    TTF_Font* emojiFont = nullptr;
     SDL_AudioDeviceID audioDevice = 0;
     std::mt19937 rng{std::random_device{}()};
     std::vector<MemoryCard> cards;
     std::vector<int> selectedIds;
     std::vector<FireworkParticle> fireworks;
     std::vector<SDL_AudioStream*> activeAudioStreams;
-    std::unordered_map<int, EmojiTexture> emojiCache;
     SDL_FRect backRect{};
     SDL_FRect restartRect{};
     SDL_FRect modalNextRect{};
@@ -220,35 +203,6 @@ void drawCardBack(SDL_Renderer* renderer, const SDL_FRect& rect) {
     }
 }
 
-std::string utf8FromCodepoint(std::uint32_t codepoint) {
-    std::string output;
-    if (codepoint <= 0x7F) {
-        output.push_back(static_cast<char>(codepoint));
-    } else if (codepoint <= 0x7FF) {
-        output.push_back(static_cast<char>(0xC0 | ((codepoint >> 6) & 0x1F)));
-        output.push_back(static_cast<char>(0x80 | (codepoint & 0x3F)));
-    } else if (codepoint <= 0xFFFF) {
-        output.push_back(static_cast<char>(0xE0 | ((codepoint >> 12) & 0x0F)));
-        output.push_back(static_cast<char>(0x80 | ((codepoint >> 6) & 0x3F)));
-        output.push_back(static_cast<char>(0x80 | (codepoint & 0x3F)));
-    } else {
-        output.push_back(static_cast<char>(0xF0 | ((codepoint >> 18) & 0x07)));
-        output.push_back(static_cast<char>(0x80 | ((codepoint >> 12) & 0x3F)));
-        output.push_back(static_cast<char>(0x80 | ((codepoint >> 6) & 0x3F)));
-        output.push_back(static_cast<char>(0x80 | (codepoint & 0x3F)));
-    }
-    return output;
-}
-
-void clearEmojiCache(App& app) {
-    for (auto& [_, sprite] : app.emojiCache) {
-        if (sprite.texture) {
-            SDL_DestroyTexture(sprite.texture);
-        }
-    }
-    app.emojiCache.clear();
-}
-
 void releaseLoadedSounds() {
     for (auto& [_, sound] : g_soundCache) {
         if (sound.data) {
@@ -281,7 +235,7 @@ std::filesystem::path soundPath(SoundEffect effect) {
     case SoundEffect::UiTap:
         return g_soundAssetRoot / "touch_sound.wav";
     case SoundEffect::WinCongrat:
-        return g_soundAssetRoot / "win_congrat_sound.wav";
+        return g_soundAssetRoot / "win_turn_sound.wav";
     }
     return {};
 }
@@ -351,50 +305,6 @@ void cleanupFinishedAudioStreams(App& app) {
         SDL_DestroyAudioStream(stream);
         app.activeAudioStreams.erase(app.activeAudioStreams.begin() + static_cast<std::ptrdiff_t>(i));
     }
-}
-
-TTF_Font* loadEmojiFont() {
-    constexpr std::array<const char*, 3> paths{{
-        "C:/Windows/Fonts/seguiemj.ttf",
-        "C:/Windows/Fonts/Segoeuiemoji.ttf",
-        "C:/Windows/Fonts/seguisym.ttf",
-    }};
-    for (const char* path : paths) {
-        if (TTF_Font* font = TTF_OpenFont(path, 96.0f)) {
-            return font;
-        }
-    }
-    return nullptr;
-}
-
-EmojiTexture* getEmojiTexture(App& app, int artId) {
-    if (!app.emojiFont || artId < 0 || artId >= static_cast<int>(kEmojiCodepoints.size())) {
-        return nullptr;
-    }
-    auto it = app.emojiCache.find(artId);
-    if (it != app.emojiCache.end()) {
-        return &it->second;
-    }
-
-    const std::string emoji = utf8FromCodepoint(kEmojiCodepoints[static_cast<std::size_t>(artId)]);
-    SDL_Surface* surface = TTF_RenderText_Blended(app.emojiFont, emoji.c_str(), 0, SDL_Color{255, 255, 255, 255});
-    if (!surface) {
-        return nullptr;
-    }
-
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(app.renderer, surface);
-    if (!texture) {
-        SDL_DestroySurface(surface);
-        return nullptr;
-    }
-    SDL_SetTextureScaleMode(texture, SDL_SCALEMODE_LINEAR);
-    EmojiTexture sprite;
-    sprite.texture = texture;
-    sprite.width = surface->w;
-    sprite.height = surface->h;
-    SDL_DestroySurface(surface);
-    auto [inserted, _] = app.emojiCache.emplace(artId, sprite);
-    return &inserted->second;
 }
 
 void drawCardIcon(SDL_Renderer* renderer, const SDL_FRect& rect, int artId, SDL_Color background) {
@@ -641,7 +551,6 @@ void startLevel(App& app, int levelIndex) {
     app.won = false;
     app.locked = false;
     app.winSoundPlayed = false;
-    clearEmojiCache(app);
 
     const LevelConfig level = kLevels[static_cast<std::size_t>(levelIndex)];
     const int pairCount = (level.size * level.size) / 2;
@@ -773,22 +682,7 @@ void drawApp(App& app) {
             if (card.matched) {
                 fillRect(app.renderer, SDL_FRect{drawRect.x + 4.0f, drawRect.y + 4.0f, std::max(0.0f, drawRect.w - 8.0f), 6.0f}, 255, 255, 255, 64);
             }
-            if (EmojiTexture* emoji = getEmojiTexture(app, card.artId)) {
-                const float maxW = drawRect.w - 10.0f;
-                const float maxH = drawRect.h - 10.0f;
-                const float textureScale = std::min(maxW / static_cast<float>(emoji->width), maxH / static_cast<float>(emoji->height));
-                const float renderedW = static_cast<float>(emoji->width) * textureScale;
-                const float renderedH = static_cast<float>(emoji->height) * textureScale;
-                const SDL_FRect emojiRect{
-                    drawRect.x + (drawRect.w - renderedW) * 0.5f,
-                    drawRect.y + (drawRect.h - renderedH) * 0.5f,
-                    renderedW,
-                    renderedH,
-                };
-                SDL_RenderTexture(app.renderer, emoji->texture, nullptr, &emojiRect);
-            } else {
-                drawCardIcon(app.renderer, insetRect(drawRect, 6.0f), card.artId, faceFill);
-            }
+            drawCardIcon(app.renderer, insetRect(drawRect, 6.0f), card.artId, faceFill);
         } else {
             drawCardBack(app.renderer, drawRect);
         }
@@ -858,9 +752,6 @@ bool init(App& app, const AppWindowState& initialWindowState) {
         SDL_Log("SDL_Init failed: %s", SDL_GetError());
         return false;
     }
-    if (!TTF_Init()) {
-        SDL_Log("TTF_Init failed: %s", SDL_GetError());
-    }
     app.window = SDL_CreateWindow("Memory Cards", kBaseWidth, kBaseHeight, SDL_WINDOW_RESIZABLE);
     if (!app.window) {
         SDL_Log("SDL_CreateWindow failed: %s", SDL_GetError());
@@ -885,23 +776,19 @@ bool init(App& app, const AppWindowState& initialWindowState) {
         SDL_Log("Memory Cards sound asset root not found. Audio disabled.");
         app.audioEnabled = false;
     }
-    app.emojiFont = loadEmojiFont();
     startLevel(app, 0);
     return true;
 }
 
 void shutdown(App& app) {
-    clearEmojiCache(app);
     for (SDL_AudioStream* stream : app.activeAudioStreams) {
         SDL_DestroyAudioStream(stream);
     }
     app.activeAudioStreams.clear();
     releaseLoadedSounds();
-    if (app.emojiFont) TTF_CloseFont(app.emojiFont);
     if (app.audioDevice) SDL_CloseAudioDevice(app.audioDevice);
     if (app.renderer) SDL_DestroyRenderer(app.renderer);
     if (app.window) SDL_DestroyWindow(app.window);
-    if (TTF_WasInit()) TTF_Quit();
     SDL_Quit();
 }
 
@@ -969,6 +856,9 @@ MemoryCardsRunResult runMemoryCardsApp(const AppWindowState& initialWindowState)
                     startLevel(app, app.levelIndex);
                 }
             } else if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+                if (event.button.which == SDL_TOUCH_MOUSEID) {
+                    continue;
+                }
                 const SDL_FPoint logical = windowToLogical(app.renderer, event.button.x, event.button.y);
                 handlePointerDown(app, logical.x, logical.y);
             } else if (event.type == SDL_EVENT_FINGER_DOWN) {

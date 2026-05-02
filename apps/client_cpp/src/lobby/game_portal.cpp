@@ -85,6 +85,9 @@ void strokeRect(SDL_Renderer* renderer, const SDL_FRect& rect, std::uint8_t r, s
     SDL_RenderRect(renderer, &rect);
 }
 
+float uiTextWidth(const std::string& value, float scale);
+void uiText(SDL_Renderer* renderer, float x, float y, const std::string& value, float scale);
+
 SDL_FRect insetRect(SDL_FRect rect, float amount) {
     rect.x += amount;
     rect.y += amount;
@@ -103,6 +106,9 @@ void fillCircle(SDL_Renderer* renderer, float cx, float cy, float radius, std::u
 }
 
 std::filesystem::path findGameIconRoot() {
+#ifdef __ANDROID__
+    return std::filesystem::path{"game_icons"};
+#else
     const std::array<std::filesystem::path, 4> candidates{
         std::filesystem::path{"assets/game_icons"},
         std::filesystem::path{"../client_cpp/assets/game_icons"},
@@ -120,10 +126,20 @@ std::filesystem::path findGameIconRoot() {
         }
     }
     return {};
+#endif
 }
 
 std::filesystem::path iconTexturePath(PortalSelection selection) {
     static const std::filesystem::path iconRoot = findGameIconRoot();
+    if (selection == PortalSelection::Farm) {
+        return iconRoot / "farm_icon.png";
+    }
+    if (selection == PortalSelection::FlappyBird) {
+        return iconRoot / "flappy_icon.png";
+    }
+    if (selection == PortalSelection::Scopa) {
+        return iconRoot / "scopa_icon.png";
+    }
     if (selection == PortalSelection::MemoryCards) {
         return iconRoot / "memory_icon.png";
     }
@@ -176,6 +192,47 @@ void drawTextureContain(SDL_Renderer* renderer, SDL_Texture* texture, const SDL_
     SDL_RenderTexture(renderer, texture, nullptr, &dst);
 }
 
+void drawFallbackPortalIcon(SDL_Renderer* renderer, const SDL_FRect& rect, PortalSelection selection, const std::string& title) {
+    if (selection == PortalSelection::FlappyBird) {
+        const SDL_FRect pipeTop{rect.x + rect.w * 0.16f, rect.y + 28.0f, 40.0f, 54.0f};
+        const SDL_FRect pipeBottom{rect.x + rect.w * 0.68f, rect.y + 80.0f, 40.0f, 54.0f};
+        fillRect(renderer, pipeTop, 79, 194, 111, 245);
+        fillRect(renderer, pipeBottom, 79, 194, 111, 245);
+        fillRect(renderer, SDL_FRect{pipeTop.x - 4.0f, pipeTop.y + pipeTop.h - 12.0f, pipeTop.w + 8.0f, 12.0f}, 51, 132, 79, 255);
+        fillRect(renderer, SDL_FRect{pipeBottom.x - 4.0f, pipeBottom.y, pipeBottom.w + 8.0f, 12.0f}, 51, 132, 79, 255);
+        strokeRect(renderer, pipeTop, 25, 92, 48, 255);
+        strokeRect(renderer, pipeBottom, 25, 92, 48, 255);
+        fillCircle(renderer, rect.x + rect.w * 0.48f, rect.y + rect.h * 0.5f, 19.0f, 255, 220, 87, 250);
+        fillCircle(renderer, rect.x + rect.w * 0.45f, rect.y + rect.h * 0.45f, 7.0f, 255, 245, 214, 240);
+        fillRect(renderer, SDL_FRect{rect.x + rect.w * 0.51f, rect.y + rect.h * 0.48f, 14.0f, 7.0f}, 238, 116, 52, 255);
+    } else if (selection == PortalSelection::Scopa) {
+        const SDL_FRect leftCard{rect.x + rect.w * 0.24f, rect.y + 30.0f, 56.0f, 82.0f};
+        const SDL_FRect rightCard{rect.x + rect.w * 0.46f, rect.y + 42.0f, 56.0f, 82.0f};
+        fillRect(renderer, leftCard, 247, 240, 223, 250);
+        fillRect(renderer, rightCard, 247, 240, 223, 250);
+        strokeRect(renderer, leftCard, 76, 54, 39, 255);
+        strokeRect(renderer, rightCard, 76, 54, 39, 255);
+        fillCircle(renderer, rect.x + rect.w * 0.62f, rect.y + rect.h * 0.42f, 15.0f, 239, 191, 72, 250);
+        fillCircle(renderer, rect.x + rect.w * 0.62f, rect.y + rect.h * 0.42f, 8.0f, 252, 228, 164, 220);
+        setColor(renderer, 184, 46, 38, 255);
+        uiText(renderer, leftCard.x + 12.0f, leftCard.y + 16.0f, "7", 1.05f);
+        uiText(renderer, rightCard.x + 14.0f, rightCard.y + 18.0f, "A", 1.05f);
+    } else if (selection == PortalSelection::Farm) {
+        const SDL_FRect soil{rect.x + 26.0f, rect.y + 42.0f, rect.w - 52.0f, 74.0f};
+        fillRect(renderer, soil, 132, 92, 58, 245);
+        strokeRect(renderer, soil, 78, 55, 35, 255);
+        for (int i = 0; i < 3; ++i) {
+            const float cx = soil.x + 34.0f + static_cast<float>(i) * 36.0f;
+            fillCircle(renderer, cx, soil.y + 48.0f, 8.0f, 87, 186, 90, 255);
+            fillCircle(renderer, cx - 5.0f, soil.y + 42.0f, 5.0f, 112, 214, 102, 255);
+            fillCircle(renderer, cx + 5.0f, soil.y + 42.0f, 5.0f, 112, 214, 102, 255);
+        }
+        fillCircle(renderer, rect.x + rect.w - 34.0f, rect.y + 42.0f, 12.0f, 245, 208, 102, 240);
+    }
+    setColor(renderer, 251, 240, 213, 255);
+    uiText(renderer, rect.x + rect.w * 0.5f - uiTextWidth(title, 1.18f) * 0.5f, rect.y + rect.h - 36.0f, title, 1.18f);
+}
+
 void uiText(SDL_Renderer* renderer, float x, float y, const std::string& value, float scale = 1.35f) {
     const float invScale = 1.0f / scale;
     std::uint8_t r = 255;
@@ -210,10 +267,34 @@ SDL_FPoint windowToLogical(SDL_Renderer* renderer, float x, float y) {
 }
 
 void layoutEntries(PortalApp& app) {
+    if (app.entries.size() >= 4) {
+        const float itemW = 158.0f;
+        const float itemH = 172.0f;
+        const float gapX = 18.0f;
+        const float gapY = 18.0f;
+        const float startX = (kBaseWidth - (itemW * 2.0f + gapX)) * 0.5f;
+        const float startY = 244.0f;
+        for (std::size_t i = 0; i < app.entries.size(); ++i) {
+            const int row = static_cast<int>(i) / 2;
+            const int col = static_cast<int>(i) % 2;
+            float x = startX + static_cast<float>(col) * (itemW + gapX);
+            if (i == app.entries.size() - 1 && (app.entries.size() % 2) == 1) {
+                x = (kBaseWidth - itemW) * 0.5f;
+            }
+            app.entries[i].rect = SDL_FRect{
+                x,
+                startY + static_cast<float>(row) * (itemH + gapY),
+                itemW,
+                itemH,
+            };
+        }
+        return;
+    }
+
     const float itemW = 336.0f;
-    const float itemH = 176.0f;
-    const float startY = 250.0f;
-    const float gap = 26.0f;
+    const float itemH = 164.0f;
+    const float startY = 216.0f;
+    const float gap = 22.0f;
     for (std::size_t i = 0; i < app.entries.size(); ++i) {
         app.entries[i].rect = SDL_FRect{
             (kBaseWidth - itemW) * 0.5f,
@@ -295,12 +376,22 @@ void drawPortal(PortalApp& app) {
         const SDL_FRect glowRect{rect.x - 18.0f, rect.y - 16.0f, rect.w + 36.0f, rect.h + 32.0f};
         if (app.entries[i].selection == PortalSelection::Tressette) {
             fillCircle(app.renderer, glowRect.x + glowRect.w * 0.28f, glowRect.y + glowRect.h * 0.34f, 46.0f + pulse * 10.0f, 252, 181, 72, 22);
+        } else if (app.entries[i].selection == PortalSelection::Farm) {
+            fillCircle(app.renderer, glowRect.x + glowRect.w * 0.5f, glowRect.y + glowRect.h * 0.4f, 48.0f + pulse * 10.0f, 110, 212, 112, 24);
+        } else if (app.entries[i].selection == PortalSelection::FlappyBird) {
+            fillCircle(app.renderer, glowRect.x + glowRect.w * 0.5f, glowRect.y + glowRect.h * 0.4f, 48.0f + pulse * 10.0f, 118, 229, 127, 24);
+        } else if (app.entries[i].selection == PortalSelection::Scopa) {
+            fillCircle(app.renderer, glowRect.x + glowRect.w * 0.5f, glowRect.y + glowRect.h * 0.4f, 48.0f + pulse * 10.0f, 243, 202, 102, 24);
         } else {
             fillCircle(app.renderer, glowRect.x + glowRect.w * 0.72f, glowRect.y + glowRect.h * 0.34f, 44.0f + pulse * 10.0f, 90, 164, 255, 22);
         }
 
         SDL_Texture* icon = loadTexture(app.renderer, iconTexturePath(app.entries[i].selection));
-        drawTextureContain(app.renderer, icon, SDL_FRect{rect.x + 24.0f, rect.y + 14.0f, rect.w - 48.0f, rect.h - 28.0f});
+        if (icon) {
+            drawTextureContain(app.renderer, icon, SDL_FRect{rect.x + 24.0f, rect.y + 14.0f, rect.w - 48.0f, rect.h - 28.0f});
+        } else {
+            drawFallbackPortalIcon(app.renderer, rect, app.entries[i].selection, app.entries[i].title);
+        }
     }
 
     SDL_RenderPresent(app.renderer);
@@ -325,7 +416,13 @@ bool init(PortalApp& app, const AppWindowState& initialWindowState) {
     applyWindowState(app.window, initialWindowState);
     SDL_SetRenderVSync(app.renderer, 1);
     SDL_SetRenderDrawBlendMode(app.renderer, SDL_BLENDMODE_BLEND);
-    app.entries = {{"Tressette", PortalSelection::Tressette, {}}, {"Memory Cards", PortalSelection::MemoryCards, {}}};
+    app.entries = {
+        {"Tressette", PortalSelection::Tressette, {}},
+        {"Flappy Bird", PortalSelection::FlappyBird, {}},
+        {"Memory Cards", PortalSelection::MemoryCards, {}},
+        {"Scopa", PortalSelection::Scopa, {}},
+        {"Tiny Farm", PortalSelection::Farm, {}},
+    };
     layoutEntries(app);
     return true;
 }
@@ -387,9 +484,15 @@ PortalResult runGamePortal(const AppWindowState& initialWindowState) {
                     app.running = false;
                 }
             } else if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+                if (event.button.which == SDL_TOUCH_MOUSEID) {
+                    continue;
+                }
                 const SDL_FPoint logical = windowToLogical(app.renderer, event.button.x, event.button.y);
                 handlePointerDown(app, logical.x, logical.y);
             } else if (event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                if (event.button.which == SDL_TOUCH_MOUSEID) {
+                    continue;
+                }
                 const SDL_FPoint logical = windowToLogical(app.renderer, event.button.x, event.button.y);
                 handlePointerUp(app, logical.x, logical.y);
             } else if (event.type == SDL_EVENT_FINGER_DOWN) {

@@ -331,6 +331,9 @@ std::string cardLabel(const Card& card) {
 }
 
 std::filesystem::path findCardAssetRoot() {
+#ifdef __ANDROID__
+    return std::filesystem::path{"images/card_tressette"};
+#else
     const std::array<std::filesystem::path, 4> candidates{
         std::filesystem::path{"../client/assets/images/card_tressette"},
         std::filesystem::path{"../../client/assets/images/card_tressette"},
@@ -347,9 +350,13 @@ std::filesystem::path findCardAssetRoot() {
         }
     }
     return {};
+#endif
 }
 
 std::filesystem::path findLightAssetRoot() {
+#ifdef __ANDROID__
+    return std::filesystem::path{"images/lights"};
+#else
     const std::array<std::filesystem::path, 4> candidates{
         std::filesystem::path{"assets/images/lights"},
         std::filesystem::path{"../client/assets/images/lights"},
@@ -367,9 +374,13 @@ std::filesystem::path findLightAssetRoot() {
         }
     }
     return {};
+#endif
 }
 
 std::filesystem::path findAvatarAssetRoot() {
+#ifdef __ANDROID__
+    return std::filesystem::path{"images/avatars"};
+#else
     const std::array<std::filesystem::path, 5> candidates{
         std::filesystem::path{"assets/images/avatars"},
         std::filesystem::path{"../client/assets/images/lobby/avatars"},
@@ -387,9 +398,13 @@ std::filesystem::path findAvatarAssetRoot() {
         }
     }
     return {};
+#endif
 }
 
 std::filesystem::path findSoundAssetRoot() {
+#ifdef __ANDROID__
+    return std::filesystem::path{"sounds"};
+#else
     const std::array<std::filesystem::path, 5> candidates{
         std::filesystem::path{"assets/sounds"},
         std::filesystem::path{"../client_cpp/assets/sounds"},
@@ -407,6 +422,7 @@ std::filesystem::path findSoundAssetRoot() {
         }
     }
     return {};
+#endif
 }
 
 std::filesystem::path cardTexturePath(int cardId) {
@@ -2147,6 +2163,9 @@ TressetteRunResult runTressetteApp(const AppWindowState& initialWindowState) {
                 }
                 if (event.key.key == SDLK_N) newDeal(app);
             } else if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+                if (event.button.which == SDL_TOUCH_MOUSEID) {
+                    continue;
+                }
                 const SDL_FPoint logical = windowToLogical(app.renderer, event.button.x, event.button.y);
                 handlePointerDown(app, logical.x, logical.y);
             } else if (event.type == SDL_EVENT_FINGER_DOWN) {

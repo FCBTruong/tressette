@@ -1,10 +1,17 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.22)
 
 project(TressetteOfflineCpp LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+if(ANDROID)
+    add_link_options(
+        "LINKER:-z,max-page-size=16384"
+        "LINKER:-z,common-page-size=16384"
+    )
+endif()
 
 include(FetchContent)
 
@@ -44,40 +51,40 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SDL3_image)
 
-set(SDL3_TTF_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/external/SDL3_ttf-3.2.2")
-if(NOT TARGET SDL3_ttf::SDL3_ttf)
-    add_library(SDL3_ttf::SDL3_ttf SHARED IMPORTED)
-    set_target_properties(SDL3_ttf::SDL3_ttf PROPERTIES
-        IMPORTED_IMPLIB "${SDL3_TTF_ROOT}/lib/x64/SDL3_ttf.lib"
-        IMPORTED_LOCATION "${SDL3_TTF_ROOT}/lib/x64/SDL3_ttf.dll"
-        INTERFACE_INCLUDE_DIRECTORIES "${SDL3_TTF_ROOT}/include"
-    )
-endif()
-
-add_executable(tressette_offline
+set(TRESSETTE_SOURCES
     src/main.cpp
     src/loading_scene.cpp
     src/lobby/game_portal.cpp
-    src/games/memory_cards/memory_cards_game.cpp
+    src/games/farm/farm_game.cpp
+    src/games/flappy_bird/flappy_bird_game.cpp
+    src/games/scopa/scopa_game.cpp
     src/games/tressette/tressette_game.cpp
 )
 
-target_link_libraries(tressette_offline PRIVATE SDL3::SDL3)
-target_link_libraries(tressette_offline PRIVATE SDL3_image::SDL3_image)
-target_link_libraries(tressette_offline PRIVATE SDL3_ttf::SDL3_ttf)
+list(APPEND TRESSETTE_SOURCES src/games/memory_cards/memory_cards_game.cpp)
 
-add_custom_command(TARGET tressette_offline POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        $<TARGET_RUNTIME_DLLS:tressette_offline>
-        $<TARGET_FILE_DIR:tressette_offline>
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_CURRENT_SOURCE_DIR}/external/SDL3_ttf-3.2.2/lib/x64/SDL3_ttf.dll"
-        $<TARGET_FILE_DIR:tressette_offline>
-    COMMAND_EXPAND_LISTS
-)
+if(ANDROID)
+    add_library(main SHARED ${TRESSETTE_SOURCES})
+    set(TRESSETTE_TARGET main)
+else()
+    add_executable(tressette_offline ${TRESSETTE_SOURCES})
+    set(TRESSETTE_TARGET tressette_offline)
+endif()
+
+target_link_libraries(${TRESSETTE_TARGET} PRIVATE SDL3::SDL3)
+target_link_libraries(${TRESSETTE_TARGET} PRIVATE SDL3_image::SDL3_image)
+
+if(NOT ANDROID)
+    add_custom_command(TARGET ${TRESSETTE_TARGET} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_RUNTIME_DLLS:${TRESSETTE_TARGET}>
+            $<TARGET_FILE_DIR:${TRESSETTE_TARGET}>
+        COMMAND_EXPAND_LISTS
+    )
+endif()
 
 if(MSVC)
-    target_compile_options(tressette_offline PRIVATE /W4 /permissive-)
+    target_compile_options(${TRESSETTE_TARGET} PRIVATE /W4 /permissive-)
 else()
-    target_compile_options(tressette_offline PRIVATE -Wall -Wextra -Wpedantic)
+    target_compile_options(${TRESSETTE_TARGET} PRIVATE -Wall -Wextra -Wpedantic)
 endif()

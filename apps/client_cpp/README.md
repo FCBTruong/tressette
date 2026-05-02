@@ -1,10 +1,13 @@
-# Tressette Offline C++/SDL3
+# Game Studio SDL3
 
-Offline prototype for a 2-player Tressette game in portrait mode, using C++20 and SDL3.
+Offline C++20/SDL3 portrait game collection with a lobby and several small games:
+Tressette, Scopa, Memory Cards, Flappy Bird, and Tiny Golden Farm.
 
 ![Tressette Offline screenshot](docs/image.png)
+![Tressette Offline screenshot1](docs/lobby.png)
+![Tressette Offline screenshot2](docs/flappy.png)
 
-## Build
+## Desktop Build
 
 ```powershell
 cmake -S . -B build
@@ -30,14 +33,37 @@ cmake --build build --config Debug
 .\build\Debug\tressette_offline.exe
 ```
 
+## Android Build
+
+The Android project lives in `android-project/`. Build it with the root CMake project so the real C++ sources are compiled instead of the SDL template source:
+
+```powershell
+cd android-project
+.\gradlew.bat assembleDebug -PBUILD_WITH_CMAKE
+```
+
+The debug APK is generated at:
+
+```powershell
+android-project\app\build\outputs\apk\debug\app-debug.apk
+```
+
+`android-project/local.properties`, Gradle caches, native `.cxx` output, APKs, and app build folders are local machine/build artifacts and are ignored by git.
+
+## Save Data
+
+Flappy Bird high score uses SDL app-local storage via `SDL_GetPrefPath("GameStudio", "Tressette")`. If an old desktop save exists at `save/flappy_high_score.txt`, the game migrates the higher value into the app-local high score file.
+
+Tiny Golden Farm currently stores its save in `farm_save.txt` from the working directory.
+
 ## Controls
 
-* Click/touch a card in the bottom hand to play it.
-* Press `N` or the `New Deal` button to deal again.
-* Press `Esc` to quit.
-* When a card is played, it flies from the hand to the table. After 2 cards are on the table, there is a short delay before comparing them and scoring the trick.
+* Use the lobby to select a game.
+* Click/touch cards, buttons, plots, or tabs depending on the current game.
+* Press `Esc` to quit the active desktop window.
+* In Tressette, press `N` or use the menu to start a new deal.
 
-## Current Gameplay
+## Tressette Gameplay
 
 * 2 players: the human player is at the bottom, the bot is at the top.
 * Italian 40-card deck: Denari, Coppe, Spade, Bastoni.

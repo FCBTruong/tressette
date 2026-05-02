@@ -5,7 +5,10 @@
 enum class PortalSelection {
     Quit,
     Tressette,
+    Farm,
     MemoryCards,
+    FlappyBird,
+    Scopa,
 };
 
 struct PortalResult {
