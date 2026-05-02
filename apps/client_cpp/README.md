@@ -3,9 +3,11 @@
 Offline C++20/SDL3 portrait game collection with a lobby and several small games:
 Tressette, Scopa, Memory Cards, Flappy Bird, and Tiny Golden Farm.
 
-![Tressette Offline screenshot](docs/image.png)
-![Tressette Offline screenshot1](docs/lobby.png)
-![Tressette Offline screenshot2](docs/flappy.png)
+<p align="center">
+  <img src="docs/image.png" alt="Tressette Offline screenshot" width="30%" />
+  <img src="docs/lobby.png" alt="Tressette Offline screenshot1" width="30%" />
+  <img src="docs/flappy.png" alt="Tressette Offline screenshot2" width="30%" />
+</p>
 
 ## Desktop Build
 
