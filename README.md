@@ -26,7 +26,6 @@ Tressette - Online multiplayer card game
 ---
 ## Demo
 You can play the game at: [https://tressette.clareentertainment.com/](https://tressette.clareentertainment.com/)
-or download it from Google Play and the App Store (search **Tressette Royal Online**).
 
 
 https://github.com/user-attachments/assets/88ef0b51-caa8-4605-b02b-749d10d66500
